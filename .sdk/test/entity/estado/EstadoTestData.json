@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "estado": {
+      "ESTADO00": {
+        "aleatorio": "s14",
+        "estado": "s15",
+        "id": "ESTADO00"
+      },
+      "ESTADO01": {
+        "aleatorio": "s28",
+        "estado": "s29",
+        "id": "ESTADO01"
+      },
+      "ESTADO02": {
+        "aleatorio": "s3c",
+        "estado": "s3d",
+        "id": "ESTADO02"
+      }
+    }
+  },
+  "new": {
+    "estado": {
+      "estado_ref01": {
+        "aleatorio": "s50",
+        "estado": "s51"
+      }
+    }
+  }
+}

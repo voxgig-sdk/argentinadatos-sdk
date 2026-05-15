@@ -1,0 +1,27 @@
+# BasicRemFlow
+
+main: kit: flow: BasicRemFlow:
+{
+  entity: "rem",
+  kind: "basic",
+  name: "BasicRemFlow",
+  step: [
+    {
+      match: {
+        "año": "año01",
+        mes: "mes01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "rem_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRemFlow"
+}

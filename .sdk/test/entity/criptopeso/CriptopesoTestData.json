@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "criptopeso": {
+      "CRIPTOPESO00": {
+        "entidad": "s1e",
+        "tna": 31,
+        "token": "s20",
+        "id": "CRIPTOPESO00"
+      },
+      "CRIPTOPESO01": {
+        "entidad": "s3c",
+        "tna": 61,
+        "token": "s3e",
+        "id": "CRIPTOPESO01"
+      },
+      "CRIPTOPESO02": {
+        "entidad": "s5a",
+        "tna": 91,
+        "token": "s5c",
+        "id": "CRIPTOPESO02"
+      }
+    }
+  },
+  "new": {
+    "criptopeso": {
+      "criptopeso_ref01": {
+        "entidad": "s78",
+        "tna": 121,
+        "token": "s7a"
+      }
+    }
+  }
+}

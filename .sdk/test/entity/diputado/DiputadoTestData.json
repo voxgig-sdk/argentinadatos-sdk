@@ -1,0 +1,61 @@
+{
+  "existing": {
+    "diputado": {
+      "DIPUTADO00": {
+        "apellido": "s6e",
+        "bloque": "s6f",
+        "cese_fecha": "s70",
+        "foto": "s71",
+        "genero": "s72",
+        "id": "DIPUTADO00",
+        "juramento_fecha": "s74",
+        "nombre": "s75",
+        "periodo_bloque": {},
+        "periodo_mandato": {},
+        "provincia": "s78"
+      },
+      "DIPUTADO01": {
+        "apellido": "sdc",
+        "bloque": "sdd",
+        "cese_fecha": "sde",
+        "foto": "sdf",
+        "genero": "se0",
+        "id": "DIPUTADO01",
+        "juramento_fecha": "se2",
+        "nombre": "se3",
+        "periodo_bloque": {},
+        "periodo_mandato": {},
+        "provincia": "se6"
+      },
+      "DIPUTADO02": {
+        "apellido": "s14a",
+        "bloque": "s14b",
+        "cese_fecha": "s14c",
+        "foto": "s14d",
+        "genero": "s14e",
+        "id": "DIPUTADO02",
+        "juramento_fecha": "s150",
+        "nombre": "s151",
+        "periodo_bloque": {},
+        "periodo_mandato": {},
+        "provincia": "s154"
+      }
+    }
+  },
+  "new": {
+    "diputado": {
+      "diputado_ref01": {
+        "apellido": "s1b8",
+        "bloque": "s1b9",
+        "cese_fecha": "s1ba",
+        "foto": "s1bb",
+        "genero": "s1bc",
+        "juramento_fecha": "s1be",
+        "nombre": "s1bf",
+        "periodo_bloque": {},
+        "periodo_mandato": {},
+        "provincia": "s1c2"
+      }
+    }
+  }
+}

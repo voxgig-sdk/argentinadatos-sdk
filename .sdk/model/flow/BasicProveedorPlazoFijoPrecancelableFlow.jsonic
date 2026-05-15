@@ -1,0 +1,22 @@
+# BasicProveedorPlazoFijoPrecancelableFlow
+
+main: kit: flow: BasicProveedorPlazoFijoPrecancelableFlow:
+{
+  entity: "proveedor_plazo_fijo_precancelable",
+  kind: "basic",
+  name: "BasicProveedorPlazoFijoPrecancelableFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "proveedor_plazo_fijo_precancelable_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProveedorPlazoFijoPrecancelableFlow"
+}

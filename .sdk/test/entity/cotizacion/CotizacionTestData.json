@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "cotizacion": {
+      "COTIZACION00": {
+        "casa": "s32",
+        "compra": 51,
+        "fecha": "s34",
+        "moneda": "s35",
+        "venta": 54,
+        "id": "COTIZACION00"
+      },
+      "COTIZACION01": {
+        "casa": "s64",
+        "compra": 101,
+        "fecha": "s66",
+        "moneda": "s67",
+        "venta": 104,
+        "id": "COTIZACION01"
+      },
+      "COTIZACION02": {
+        "casa": "s96",
+        "compra": 151,
+        "fecha": "s98",
+        "moneda": "s99",
+        "venta": 154,
+        "id": "COTIZACION02"
+      }
+    }
+  },
+  "new": {
+    "cotizacion": {
+      "cotizacion_ref01": {
+        "casa": "sc8",
+        "compra": 201,
+        "fecha": "sca",
+        "moneda": "scb",
+        "venta": 204
+      }
+    }
+  }
+}

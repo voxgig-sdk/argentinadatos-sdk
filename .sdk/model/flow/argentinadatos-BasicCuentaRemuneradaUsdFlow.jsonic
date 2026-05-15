@@ -1,0 +1,22 @@
+# BasicCuentaRemuneradaUsdFlow
+
+main: kit: flow: BasicCuentaRemuneradaUsdFlow:
+{
+  entity: "cuenta_remunerada_usd",
+  kind: "basic",
+  name: "BasicCuentaRemuneradaUsdFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "cuenta_remunerada_usd_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCuentaRemuneradaUsdFlow"
+}

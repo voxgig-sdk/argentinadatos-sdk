@@ -1,0 +1,53 @@
+{
+  "existing": {
+    "presidente": {
+      "PRESIDENTE00": {
+        "fin": "s50",
+        "imagen": "s51",
+        "inicio": "s52",
+        "nombre": "s53",
+        "partido": "s54",
+        "partido_imagen": "s55",
+        "periodo_presidencial": "s56",
+        "vicepresidente": "s57",
+        "id": "PRESIDENTE00"
+      },
+      "PRESIDENTE01": {
+        "fin": "sa0",
+        "imagen": "sa1",
+        "inicio": "sa2",
+        "nombre": "sa3",
+        "partido": "sa4",
+        "partido_imagen": "sa5",
+        "periodo_presidencial": "sa6",
+        "vicepresidente": "sa7",
+        "id": "PRESIDENTE01"
+      },
+      "PRESIDENTE02": {
+        "fin": "sf0",
+        "imagen": "sf1",
+        "inicio": "sf2",
+        "nombre": "sf3",
+        "partido": "sf4",
+        "partido_imagen": "sf5",
+        "periodo_presidencial": "sf6",
+        "vicepresidente": "sf7",
+        "id": "PRESIDENTE02"
+      }
+    }
+  },
+  "new": {
+    "presidente": {
+      "presidente_ref01": {
+        "fin": "s140",
+        "imagen": "s141",
+        "inicio": "s142",
+        "nombre": "s143",
+        "partido": "s144",
+        "partido_imagen": "s145",
+        "periodo_presidencial": "s146",
+        "vicepresidente": "s147"
+      }
+    }
+  }
+}

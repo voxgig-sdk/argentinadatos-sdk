@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "cuenta_remunerada_usd": {
+      "CUENTA_REMUNERADA_USD00": {
+        "entidad": "s1e",
+        "tasa": 31,
+        "tope": 32,
+        "id": "CUENTA_REMUNERADA_USD00"
+      },
+      "CUENTA_REMUNERADA_USD01": {
+        "entidad": "s3c",
+        "tasa": 61,
+        "tope": 62,
+        "id": "CUENTA_REMUNERADA_USD01"
+      },
+      "CUENTA_REMUNERADA_USD02": {
+        "entidad": "s5a",
+        "tasa": 91,
+        "tope": 92,
+        "id": "CUENTA_REMUNERADA_USD02"
+      }
+    }
+  },
+  "new": {
+    "cuenta_remunerada_usd": {
+      "cuenta_remunerada_usd_ref01": {
+        "entidad": "s78",
+        "tasa": 121,
+        "tope": 122
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "proveedor_plazo_fijo_uva_pago_periodico": {
+      "PROVEEDOR_PLAZO_FIJO_UVA_PAGO_PERIODICO00": {
+        "entidad": "s28",
+        "id": "PROVEEDOR_PLAZO_FIJO_UVA_PAGO_PERIODICO00",
+        "logo": "s2a",
+        "tasa": []
+      },
+      "PROVEEDOR_PLAZO_FIJO_UVA_PAGO_PERIODICO01": {
+        "entidad": "s50",
+        "id": "PROVEEDOR_PLAZO_FIJO_UVA_PAGO_PERIODICO01",
+        "logo": "s52",
+        "tasa": []
+      },
+      "PROVEEDOR_PLAZO_FIJO_UVA_PAGO_PERIODICO02": {
+        "entidad": "s78",
+        "id": "PROVEEDOR_PLAZO_FIJO_UVA_PAGO_PERIODICO02",
+        "logo": "s7a",
+        "tasa": []
+      }
+    }
+  },
+  "new": {
+    "proveedor_plazo_fijo_uva_pago_periodico": {
+      "proveedor_plazo_fijo_uva_pago_periodico_ref01": {
+        "entidad": "sa0",
+        "logo": "sa2",
+        "tasa": []
+      }
+    }
+  }
+}

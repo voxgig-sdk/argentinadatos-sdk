@@ -1,0 +1,22 @@
+# BasicProveedorPlazoFijoUvaPagoPeriodicoFlow
+
+main: kit: flow: BasicProveedorPlazoFijoUvaPagoPeriodicoFlow:
+{
+  entity: "proveedor_plazo_fijo_uva_pago_periodico",
+  kind: "basic",
+  name: "BasicProveedorPlazoFijoUvaPagoPeriodicoFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "proveedor_plazo_fijo_uva_pago_periodico_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProveedorPlazoFijoUvaPagoPeriodicoFlow"
+}

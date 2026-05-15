@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "evento_presidencial": {
+      "EVENTO_PRESIDENCIAL00": {
+        "evento": "s1e",
+        "fecha": "s1f",
+        "tipo": "s20",
+        "id": "EVENTO_PRESIDENCIAL00"
+      },
+      "EVENTO_PRESIDENCIAL01": {
+        "evento": "s3c",
+        "fecha": "s3d",
+        "tipo": "s3e",
+        "id": "EVENTO_PRESIDENCIAL01"
+      },
+      "EVENTO_PRESIDENCIAL02": {
+        "evento": "s5a",
+        "fecha": "s5b",
+        "tipo": "s5c",
+        "id": "EVENTO_PRESIDENCIAL02"
+      }
+    }
+  },
+  "new": {
+    "evento_presidencial": {
+      "evento_presidencial_ref01": {
+        "evento": "s78",
+        "fecha": "s79",
+        "tipo": "s7a"
+      }
+    }
+  }
+}

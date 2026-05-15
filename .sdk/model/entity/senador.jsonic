@@ -1,0 +1,99 @@
+# Entity: senador
+
+main: kit: entity: senador: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "email"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "foto"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "nombre"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "observacione"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "partido"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "periodo_legal"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "periodo_real"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "provincia"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "rede"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "reemplazo"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "telefono"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "senador"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/v1/senado/senadores"
+          parts: [
+            "v1"
+            "senado"
+            "senadores"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

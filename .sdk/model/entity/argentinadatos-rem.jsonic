@@ -1,0 +1,189 @@
+# Entity: rem
+
+main: kit: entity: rem: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "desvio"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "fecha"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "fuente"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "indicador"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "informe"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "maximo"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "mediana"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "minimo"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "muestra"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "participante"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "percentil10"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "percentil25"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "percentil75"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "percentil90"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "periodo"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "periodo_desde"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "periodo_hasta"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "periodo_tipo"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "promedio"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "publicacion_url"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "referencia"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "referencia_fecha"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "unidad"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "xlsx_url"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "rem"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: 2026
+                kind: "param"
+                name: "año"
+                orig: "año"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+              {
+                example: "03"
+                kind: "param"
+                name: "mes"
+                orig: "mes"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/v1/rems/{año}/{mes}"
+          parts: [
+            "v1"
+            "rems"
+            "{año}"
+            "{mes}"
+          ]
+          select: {
+            exist: [
+              "año"
+              "mes"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "rems"
+      ]
+    ]
+  }
+
+
+
+}

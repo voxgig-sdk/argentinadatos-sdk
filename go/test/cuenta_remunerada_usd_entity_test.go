@@ -1,0 +1,151 @@
+package sdktest
+
+import (
+	"encoding/json"
+	"os"
+	"path/filepath"
+	"runtime"
+	"strings"
+	"testing"
+	"time"
+
+	sdk "github.com/voxgig-sdk/argentinadatos-sdk"
+	"github.com/voxgig-sdk/argentinadatos-sdk/core"
+
+	vs "github.com/voxgig/struct"
+)
+
+func TestCuentaRemuneradaUsdEntity(t *testing.T) {
+	t.Run("instance", func(t *testing.T) {
+		testsdk := sdk.TestSDK(nil, nil)
+		ent := testsdk.CuentaRemuneradaUsd(nil)
+		if ent == nil {
+			t.Fatal("expected non-nil CuentaRemuneradaUsdEntity")
+		}
+	})
+
+	t.Run("basic", func(t *testing.T) {
+		setup := cuenta_remunerada_usdBasicSetup(nil)
+		// Per-op sdk-test-control.json skip — basic test exercises a flow
+		// with multiple ops; skipping any op skips the whole flow.
+		_mode := "unit"
+		if setup.live {
+			_mode = "live"
+		}
+		for _, _op := range []string{"list"} {
+			if _shouldSkip, _reason := isControlSkipped("entityOp", "cuenta_remunerada_usd." + _op, _mode); _shouldSkip {
+				if _reason == "" {
+					_reason = "skipped via sdk-test-control.json"
+				}
+				t.Skip(_reason)
+				return
+			}
+		}
+		// The basic flow consumes synthetic IDs from the fixture. In live mode
+		// without an *_ENTID env override, those IDs hit the live API and 4xx.
+		if setup.syntheticOnly {
+			t.Skip("live entity test uses synthetic IDs from fixture — set ARGENTINADATOS_TEST_CUENTA_REMUNERADA_USD_ENTID JSON to run live")
+			return
+		}
+		client := setup.client
+
+		// Bootstrap entity data from existing test data (no create step in flow).
+		cuentaRemuneradaUsdRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.cuenta_remunerada_usd", setup.data)))
+		var cuentaRemuneradaUsdRef01Data map[string]any
+		if len(cuentaRemuneradaUsdRef01DataRaw) > 0 {
+			cuentaRemuneradaUsdRef01Data = core.ToMapAny(cuentaRemuneradaUsdRef01DataRaw[0][1])
+		}
+		// Discard guards against Go's unused-var check when the flow's steps
+		// happen not to consume the bootstrap data (e.g. list-only flows).
+		_ = cuentaRemuneradaUsdRef01Data
+
+		// LIST
+		cuentaRemuneradaUsdRef01Ent := client.CuentaRemuneradaUsd(nil)
+		cuentaRemuneradaUsdRef01Match := map[string]any{}
+
+		cuentaRemuneradaUsdRef01ListResult, err := cuentaRemuneradaUsdRef01Ent.List(cuentaRemuneradaUsdRef01Match, nil)
+		if err != nil {
+			t.Fatalf("list failed: %v", err)
+		}
+		_, cuentaRemuneradaUsdRef01ListOk := cuentaRemuneradaUsdRef01ListResult.([]any)
+		if !cuentaRemuneradaUsdRef01ListOk {
+			t.Fatalf("expected list result to be an array, got %T", cuentaRemuneradaUsdRef01ListResult)
+		}
+
+	})
+}
+
+func cuenta_remunerada_usdBasicSetup(extra map[string]any) *entityTestSetup {
+	loadEnvLocal()
+
+	_, filename, _, _ := runtime.Caller(0)
+	dir := filepath.Dir(filename)
+
+	entityDataFile := filepath.Join(dir, "..", "..", ".sdk", "test", "entity", "cuenta_remunerada_usd", "CuentaRemuneradaUsdTestData.json")
+
+	entityDataSource, err := os.ReadFile(entityDataFile)
+	if err != nil {
+		panic("failed to read cuenta_remunerada_usd test data: " + err.Error())
+	}
+
+	var entityData map[string]any
+	if err := json.Unmarshal(entityDataSource, &entityData); err != nil {
+		panic("failed to parse cuenta_remunerada_usd test data: " + err.Error())
+	}
+
+	options := map[string]any{}
+	options["entity"] = entityData["existing"]
+
+	client := sdk.TestSDK(options, extra)
+
+	// Generate idmap via transform, matching TS pattern.
+	idmap := vs.Transform(
+		[]any{"cuenta_remunerada_usd01", "cuenta_remunerada_usd02", "cuenta_remunerada_usd03"},
+		map[string]any{
+			"`$PACK`": []any{"", map[string]any{
+				"`$KEY`": "`$COPY`",
+				"`$VAL`": []any{"`$FORMAT`", "upper", "`$COPY`"},
+			}},
+		},
+	)
+
+	// Detect ENTID env override before envOverride consumes it. When live
+	// mode is on without a real override, the basic test runs against synthetic
+	// IDs from the fixture and 4xx's. Surface this so the test can skip.
+	entidEnvRaw := os.Getenv("ARGENTINADATOS_TEST_CUENTA_REMUNERADA_USD_ENTID")
+	idmapOverridden := entidEnvRaw != "" && strings.HasPrefix(strings.TrimSpace(entidEnvRaw), "{")
+
+	env := envOverride(map[string]any{
+		"ARGENTINADATOS_TEST_CUENTA_REMUNERADA_USD_ENTID": idmap,
+		"ARGENTINADATOS_TEST_LIVE":      "FALSE",
+		"ARGENTINADATOS_TEST_EXPLAIN":   "FALSE",
+		"ARGENTINADATOS_APIKEY":         "NONE",
+	})
+
+	idmapResolved := core.ToMapAny(env["ARGENTINADATOS_TEST_CUENTA_REMUNERADA_USD_ENTID"])
+	if idmapResolved == nil {
+		idmapResolved = core.ToMapAny(idmap)
+	}
+
+	if env["ARGENTINADATOS_TEST_LIVE"] == "TRUE" {
+		mergedOpts := vs.Merge([]any{
+			map[string]any{
+				"apikey": env["ARGENTINADATOS_APIKEY"],
+			},
+			extra,
+		})
+		client = sdk.NewArgentinadatosSDK(core.ToMapAny(mergedOpts))
+	}
+
+	live := env["ARGENTINADATOS_TEST_LIVE"] == "TRUE"
+	return &entityTestSetup{
+		client:        client,
+		data:          entityData,
+		idmap:         idmapResolved,
+		env:           env,
+		explain:       env["ARGENTINADATOS_TEST_EXPLAIN"] == "TRUE",
+		live:          live,
+		syntheticOnly: live && !idmapOverridden,
+		now:           time.Now().UnixMilli(),
+	}
+}

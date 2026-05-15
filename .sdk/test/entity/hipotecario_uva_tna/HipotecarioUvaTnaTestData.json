@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "hipotecario_uva_tna": {
+      "HIPOTECARIO_UVA_TNA00": {
+        "entidad": "s28",
+        "metadata": {},
+        "nombre_comercial": "s2a",
+        "tna": 43,
+        "id": "HIPOTECARIO_UVA_TNA00"
+      },
+      "HIPOTECARIO_UVA_TNA01": {
+        "entidad": "s50",
+        "metadata": {},
+        "nombre_comercial": "s52",
+        "tna": 83,
+        "id": "HIPOTECARIO_UVA_TNA01"
+      },
+      "HIPOTECARIO_UVA_TNA02": {
+        "entidad": "s78",
+        "metadata": {},
+        "nombre_comercial": "s7a",
+        "tna": 123,
+        "id": "HIPOTECARIO_UVA_TNA02"
+      }
+    }
+  },
+  "new": {
+    "hipotecario_uva_tna": {
+      "hipotecario_uva_tna_ref01": {
+        "entidad": "sa0",
+        "metadata": {},
+        "nombre_comercial": "sa2",
+        "tna": 163
+      }
+    }
+  }
+}

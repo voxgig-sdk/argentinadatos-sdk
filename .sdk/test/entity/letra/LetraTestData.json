@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "letra": {
+      "LETRA00": {
+        "fecha_emision": "s32",
+        "fecha_vencimiento": "s33",
+        "tem": 52,
+        "ticker": "s35",
+        "vpv": 54,
+        "id": "LETRA00"
+      },
+      "LETRA01": {
+        "fecha_emision": "s64",
+        "fecha_vencimiento": "s65",
+        "tem": 102,
+        "ticker": "s67",
+        "vpv": 104,
+        "id": "LETRA01"
+      },
+      "LETRA02": {
+        "fecha_emision": "s96",
+        "fecha_vencimiento": "s97",
+        "tem": 152,
+        "ticker": "s99",
+        "vpv": 154,
+        "id": "LETRA02"
+      }
+    }
+  },
+  "new": {
+    "letra": {
+      "letra_ref01": {
+        "fecha_emision": "sc8",
+        "fecha_vencimiento": "sc9",
+        "tem": 202,
+        "ticker": "scb",
+        "vpv": 204
+      }
+    }
+  }
+}

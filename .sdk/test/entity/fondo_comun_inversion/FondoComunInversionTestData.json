@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "fondo_comun_inversion": {
+      "FONDO_COMUN_INVERSION00": {
+        "ccp": 70,
+        "fecha": "s47",
+        "fondo": "s48",
+        "horizonte": "s49",
+        "patrimonio": 74,
+        "tipo": "s4b",
+        "vcp": 76,
+        "id": "FONDO_COMUN_INVERSION00"
+      },
+      "FONDO_COMUN_INVERSION01": {
+        "ccp": 140,
+        "fecha": "s8d",
+        "fondo": "s8e",
+        "horizonte": "s8f",
+        "patrimonio": 144,
+        "tipo": "s91",
+        "vcp": 146,
+        "id": "FONDO_COMUN_INVERSION01"
+      },
+      "FONDO_COMUN_INVERSION02": {
+        "ccp": 210,
+        "fecha": "sd3",
+        "fondo": "sd4",
+        "horizonte": "sd5",
+        "patrimonio": 214,
+        "tipo": "sd7",
+        "vcp": 216,
+        "id": "FONDO_COMUN_INVERSION02"
+      }
+    }
+  },
+  "new": {
+    "fondo_comun_inversion": {
+      "fondo_comun_inversion_ref01": {
+        "ccp": 280,
+        "fecha": "s119",
+        "fondo": "s11a",
+        "horizonte": "s11b",
+        "patrimonio": 284,
+        "tipo": "s11d",
+        "vcp": 286
+      }
+    }
+  }
+}

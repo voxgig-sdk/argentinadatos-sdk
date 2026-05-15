@@ -1,0 +1,22 @@
+# BasicLetraFlow
+
+main: kit: flow: BasicLetraFlow:
+{
+  entity: "letra",
+  kind: "basic",
+  name: "BasicLetraFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "letra_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicLetraFlow"
+}

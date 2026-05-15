@@ -1,0 +1,236 @@
+# Entity: fondo_comun_inversion
+
+main: kit: entity: fondo_comun_inversion: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "ccp"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "fecha"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "fondo"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "horizonte"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "patrimonio"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "tipo"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "vcp"
+      req: false
+      type: "`$NUMBER`"
+    }
+  ]
+
+  name: "fondo_comun_inversion"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "ultimo"
+                kind: "param"
+                name: "fecha"
+                orig: "fecha"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/v1/finanzas/fci/mercadoDinero/{fecha}"
+          parts: [
+            "v1"
+            "finanzas"
+            "fci"
+            "mercadoDinero"
+            "{fecha}"
+          ]
+          select: {
+            exist: [
+              "fecha"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                example: "ultimo"
+                kind: "param"
+                name: "fecha"
+                orig: "fecha"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/v1/finanzas/fci/rentaFija/{fecha}"
+          parts: [
+            "v1"
+            "finanzas"
+            "fci"
+            "rentaFija"
+            "{fecha}"
+          ]
+          select: {
+            exist: [
+              "fecha"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                example: "ultimo"
+                kind: "param"
+                name: "fecha"
+                orig: "fecha"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/v1/finanzas/fci/rentaMixta/{fecha}"
+          parts: [
+            "v1"
+            "finanzas"
+            "fci"
+            "rentaMixta"
+            "{fecha}"
+          ]
+          select: {
+            exist: [
+              "fecha"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                example: "ultimo"
+                kind: "param"
+                name: "fecha"
+                orig: "fecha"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/v1/finanzas/fci/rentaVariable/{fecha}"
+          parts: [
+            "v1"
+            "finanzas"
+            "fci"
+            "rentaVariable"
+            "{fecha}"
+          ]
+          select: {
+            exist: [
+              "fecha"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                example: "ultimo"
+                kind: "param"
+                name: "fecha"
+                orig: "fecha"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/v1/finanzas/fci/retornoTotal/{fecha}"
+          parts: [
+            "v1"
+            "finanzas"
+            "fci"
+            "retornoTotal"
+            "{fecha}"
+          ]
+          select: {
+            exist: [
+              "fecha"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "mercado_dinero"
+      ]
+      [
+        "renta_fija"
+      ]
+      [
+        "renta_mixta"
+      ]
+      [
+        "renta_variable"
+      ]
+      [
+        "retorno_total"
+      ]
+    ]
+  }
+
+
+
+}

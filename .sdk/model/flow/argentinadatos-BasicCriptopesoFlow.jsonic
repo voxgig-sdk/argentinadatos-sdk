@@ -1,0 +1,22 @@
+# BasicCriptopesoFlow
+
+main: kit: flow: BasicCriptopesoFlow:
+{
+  entity: "criptopeso",
+  kind: "basic",
+  name: "BasicCriptopesoFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "criptopeso_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCriptopesoFlow"
+}

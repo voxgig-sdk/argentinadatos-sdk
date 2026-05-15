@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "indice_inflacion": {
+      "INDICE_INFLACION00": {
+        "fecha": "s14",
+        "valor": 21,
+        "id": "INDICE_INFLACION00"
+      },
+      "INDICE_INFLACION01": {
+        "fecha": "s28",
+        "valor": 41,
+        "id": "INDICE_INFLACION01"
+      },
+      "INDICE_INFLACION02": {
+        "fecha": "s3c",
+        "valor": 61,
+        "id": "INDICE_INFLACION02"
+      }
+    }
+  },
+  "new": {
+    "indice_inflacion": {
+      "indice_inflacion_ref01": {
+        "fecha": "s50",
+        "valor": 81
+      }
+    }
+  }
+}

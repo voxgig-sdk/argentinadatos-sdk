@@ -1,0 +1,22 @@
+# BasicIndiceUvaFlow
+
+main: kit: flow: BasicIndiceUvaFlow:
+{
+  entity: "indice_uva",
+  kind: "basic",
+  name: "BasicIndiceUvaFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "indice_uva_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicIndiceUvaFlow"
+}

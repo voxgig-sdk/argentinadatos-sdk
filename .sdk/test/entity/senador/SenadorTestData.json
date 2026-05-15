@@ -1,0 +1,65 @@
+{
+  "existing": {
+    "senador": {
+      "SENADOR00": {
+        "email": "s78",
+        "foto": "s79",
+        "id": "SENADOR00",
+        "nombre": "s7b",
+        "observacione": "s7c",
+        "partido": "s7d",
+        "periodo_legal": {},
+        "periodo_real": {},
+        "provincia": "s80",
+        "rede": [],
+        "reemplazo": "s82",
+        "telefono": "s83"
+      },
+      "SENADOR01": {
+        "email": "sf0",
+        "foto": "sf1",
+        "id": "SENADOR01",
+        "nombre": "sf3",
+        "observacione": "sf4",
+        "partido": "sf5",
+        "periodo_legal": {},
+        "periodo_real": {},
+        "provincia": "sf8",
+        "rede": [],
+        "reemplazo": "sfa",
+        "telefono": "sfb"
+      },
+      "SENADOR02": {
+        "email": "s168",
+        "foto": "s169",
+        "id": "SENADOR02",
+        "nombre": "s16b",
+        "observacione": "s16c",
+        "partido": "s16d",
+        "periodo_legal": {},
+        "periodo_real": {},
+        "provincia": "s170",
+        "rede": [],
+        "reemplazo": "s172",
+        "telefono": "s173"
+      }
+    }
+  },
+  "new": {
+    "senador": {
+      "senador_ref01": {
+        "email": "s1e0",
+        "foto": "s1e1",
+        "nombre": "s1e3",
+        "observacione": "s1e4",
+        "partido": "s1e5",
+        "periodo_legal": {},
+        "periodo_real": {},
+        "provincia": "s1e8",
+        "rede": [],
+        "reemplazo": "s1ea",
+        "telefono": "s1eb"
+      }
+    }
+  }
+}

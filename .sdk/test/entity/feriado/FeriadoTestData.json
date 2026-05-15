@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "feriado": {
+      "FERIADO00": {
+        "fecha": "s1e",
+        "nombre": "s1f",
+        "tipo": "s20",
+        "id": "FERIADO00"
+      },
+      "FERIADO01": {
+        "fecha": "s3c",
+        "nombre": "s3d",
+        "tipo": "s3e",
+        "id": "FERIADO01"
+      },
+      "FERIADO02": {
+        "fecha": "s5a",
+        "nombre": "s5b",
+        "tipo": "s5c",
+        "id": "FERIADO02"
+      }
+    }
+  },
+  "new": {
+    "feriado": {
+      "feriado_ref01": {
+        "fecha": "s78",
+        "nombre": "s79",
+        "tipo": "s7a"
+      }
+    }
+  }
+}

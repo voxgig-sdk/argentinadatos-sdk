@@ -1,0 +1,22 @@
+# BasicRemExpectativaFlow
+
+main: kit: flow: BasicRemExpectativaFlow:
+{
+  entity: "rem_expectativa",
+  kind: "basic",
+  name: "BasicRemExpectativaFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "rem_expectativa_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRemExpectativaFlow"
+}

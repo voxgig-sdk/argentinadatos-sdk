@@ -1,0 +1,32 @@
+# BasicFondoComunInversionOtroFlow
+
+main: kit: flow: BasicFondoComunInversionOtroFlow:
+{
+  entity: "fondo_comun_inversion_otro",
+  kind: "basic",
+  name: "BasicFondoComunInversionOtroFlow",
+  step: [
+    {
+      input: {
+        ref: "fondo_comun_inversion_otro_ref01",
+        srcdatavar: "fondo_comun_inversion_otro_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "fondo_comun_inversion_otro01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-fondo_comun_inversion_otro_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicFondoComunInversionOtroFlow"
+}

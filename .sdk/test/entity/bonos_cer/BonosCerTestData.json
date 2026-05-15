@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "bonos_cer": {
+      "BONOS_CER00": {
+        "fecha_vencimiento": "s32",
+        "precio_ar": 51,
+        "ticker": "s34",
+        "tir_porcentaje": 53,
+        "voluman": 54,
+        "id": "BONOS_CER00"
+      },
+      "BONOS_CER01": {
+        "fecha_vencimiento": "s64",
+        "precio_ar": 101,
+        "ticker": "s66",
+        "tir_porcentaje": 103,
+        "voluman": 104,
+        "id": "BONOS_CER01"
+      },
+      "BONOS_CER02": {
+        "fecha_vencimiento": "s96",
+        "precio_ar": 151,
+        "ticker": "s98",
+        "tir_porcentaje": 153,
+        "voluman": 154,
+        "id": "BONOS_CER02"
+      }
+    }
+  },
+  "new": {
+    "bonos_cer": {
+      "bonos_cer_ref01": {
+        "fecha_vencimiento": "sc8",
+        "precio_ar": 201,
+        "ticker": "sca",
+        "tir_porcentaje": 203,
+        "voluman": 204
+      }
+    }
+  }
+}

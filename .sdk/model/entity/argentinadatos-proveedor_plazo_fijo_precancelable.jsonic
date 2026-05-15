@@ -1,0 +1,125 @@
+# Entity: proveedor_plazo_fijo_precancelable
+
+main: kit: entity: proveedor_plazo_fijo_precancelable: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "aviso_precancelacion_dia"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "canal"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "enlace"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "entidad"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "logo"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "modalidad"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "moneda"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "monto_maximo"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "monto_minimo"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "plazo_max_dia"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "plazo_min_dia"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "plazo_precancelacion_dia"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "tea"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "tea_precancelacion"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "tna"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "tna_precancelacion"
+      req: false
+      type: "`$NUMBER`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "proveedor_plazo_fijo_precancelable"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/v1/finanzas/tasas/plazoFijoPrecancelable"
+          parts: [
+            "v1"
+            "finanzas"
+            "tasas"
+            "plazoFijoPrecancelable"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

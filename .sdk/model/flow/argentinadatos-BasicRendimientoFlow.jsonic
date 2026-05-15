@@ -1,0 +1,32 @@
+# BasicRendimientoFlow
+
+main: kit: flow: BasicRendimientoFlow:
+{
+  entity: "rendimiento",
+  kind: "basic",
+  name: "BasicRendimientoFlow",
+  step: [
+    {
+      input: {
+        ref: "rendimiento_ref01",
+        srcdatavar: "rendimiento_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "rendimiento01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-rendimiento_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRendimientoFlow"
+}

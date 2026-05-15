@@ -1,0 +1,60 @@
+# Entity: proveedor_plazo_fijo_uva_pago_periodico
+
+main: kit: entity: proveedor_plazo_fijo_uva_pago_periodico: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "entidad"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "logo"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "tasa"
+      req: false
+      type: "`$ARRAY`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "proveedor_plazo_fijo_uva_pago_periodico"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/v1/finanzas/tasas/plazoFijoUvaPagoPeriodico"
+          parts: [
+            "v1"
+            "finanzas"
+            "tasas"
+            "plazoFijoUvaPagoPeriodico"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

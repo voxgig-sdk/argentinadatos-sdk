@@ -1,0 +1,57 @@
+{
+  "existing": {
+    "fondo_comun_inversion_variable": {
+      "FONDO_COMUN_INVERSION_VARIABLE00": {
+        "condicione": "s5a",
+        "condiciones_corto": "s5b",
+        "fecha": "s5c",
+        "fondo": "s5d",
+        "nombre": "s5e",
+        "tea": 95,
+        "tipo": "s60",
+        "tna": 97,
+        "tope": 98,
+        "id": "FONDO_COMUN_INVERSION_VARIABLE00"
+      },
+      "FONDO_COMUN_INVERSION_VARIABLE01": {
+        "condicione": "sb4",
+        "condiciones_corto": "sb5",
+        "fecha": "sb6",
+        "fondo": "sb7",
+        "nombre": "sb8",
+        "tea": 185,
+        "tipo": "sba",
+        "tna": 187,
+        "tope": 188,
+        "id": "FONDO_COMUN_INVERSION_VARIABLE01"
+      },
+      "FONDO_COMUN_INVERSION_VARIABLE02": {
+        "condicione": "s10e",
+        "condiciones_corto": "s10f",
+        "fecha": "s110",
+        "fondo": "s111",
+        "nombre": "s112",
+        "tea": 275,
+        "tipo": "s114",
+        "tna": 277,
+        "tope": 278,
+        "id": "FONDO_COMUN_INVERSION_VARIABLE02"
+      }
+    }
+  },
+  "new": {
+    "fondo_comun_inversion_variable": {
+      "fondo_comun_inversion_variable_ref01": {
+        "condicione": "s168",
+        "condiciones_corto": "s169",
+        "fecha": "s16a",
+        "fondo": "s16b",
+        "nombre": "s16c",
+        "tea": 365,
+        "tipo": "s16e",
+        "tna": 367,
+        "tope": 368
+      }
+    }
+  }
+}

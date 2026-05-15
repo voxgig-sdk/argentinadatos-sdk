@@ -1,0 +1,94 @@
+# Entity: diputado
+
+main: kit: entity: diputado: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "apellido"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "bloque"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "cese_fecha"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "foto"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "genero"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "juramento_fecha"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "nombre"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "periodo_bloque"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "periodo_mandato"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "provincia"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "diputado"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/v1/diputados/diputados"
+          parts: [
+            "v1"
+            "diputados"
+            "diputados"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

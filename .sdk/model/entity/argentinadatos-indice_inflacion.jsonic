@@ -1,0 +1,59 @@
+# Entity: indice_inflacion
+
+main: kit: entity: indice_inflacion: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "fecha"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "valor"
+      req: false
+      type: "`$NUMBER`"
+    }
+  ]
+
+  name: "indice_inflacion"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/v1/finanzas/indices/inflacion"
+          parts: [
+            "v1"
+            "finanzas"
+            "indices"
+            "inflacion"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/v1/finanzas/indices/inflacionInteranual"
+          parts: [
+            "v1"
+            "finanzas"
+            "indices"
+            "inflacionInteranual"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

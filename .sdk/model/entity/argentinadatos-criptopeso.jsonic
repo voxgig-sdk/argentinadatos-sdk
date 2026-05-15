@@ -1,0 +1,49 @@
+# Entity: criptopeso
+
+main: kit: entity: criptopeso: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "entidad"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "tna"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "token"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "criptopeso"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/v1/finanzas/criptopesos"
+          parts: [
+            "v1"
+            "finanzas"
+            "criptopesos"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

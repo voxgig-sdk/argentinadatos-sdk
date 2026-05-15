@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "fondo_comun_inversion_otro": {
+      "FONDO_COMUN_INVERSION_OTRO00": {
+        "fecha": "s32",
+        "fondo": "s33",
+        "tea": 52,
+        "tna": 53,
+        "tope": 54,
+        "id": "FONDO_COMUN_INVERSION_OTRO00"
+      },
+      "FONDO_COMUN_INVERSION_OTRO01": {
+        "fecha": "s64",
+        "fondo": "s65",
+        "tea": 102,
+        "tna": 103,
+        "tope": 104,
+        "id": "FONDO_COMUN_INVERSION_OTRO01"
+      },
+      "FONDO_COMUN_INVERSION_OTRO02": {
+        "fecha": "s96",
+        "fondo": "s97",
+        "tea": 152,
+        "tna": 153,
+        "tope": 154,
+        "id": "FONDO_COMUN_INVERSION_OTRO02"
+      }
+    }
+  },
+  "new": {
+    "fondo_comun_inversion_otro": {
+      "fondo_comun_inversion_otro_ref01": {
+        "fecha": "sc8",
+        "fondo": "sc9",
+        "tea": 202,
+        "tna": 203,
+        "tope": 204
+      }
+    }
+  }
+}

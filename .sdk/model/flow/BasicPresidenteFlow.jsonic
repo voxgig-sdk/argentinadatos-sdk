@@ -1,0 +1,22 @@
+# BasicPresidenteFlow
+
+main: kit: flow: BasicPresidenteFlow:
+{
+  entity: "presidente",
+  kind: "basic",
+  name: "BasicPresidenteFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "presidente_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPresidenteFlow"
+}

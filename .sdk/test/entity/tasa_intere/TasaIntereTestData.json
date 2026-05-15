@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "tasa_intere": {
+      "TASA_INTERE00": {
+        "fecha": "s14",
+        "valor": 21,
+        "id": "TASA_INTERE00"
+      },
+      "TASA_INTERE01": {
+        "fecha": "s28",
+        "valor": 41,
+        "id": "TASA_INTERE01"
+      },
+      "TASA_INTERE02": {
+        "fecha": "s3c",
+        "valor": 61,
+        "id": "TASA_INTERE02"
+      }
+    }
+  },
+  "new": {
+    "tasa_intere": {
+      "tasa_intere_ref01": {
+        "fecha": "s50",
+        "valor": 81
+      }
+    }
+  }
+}

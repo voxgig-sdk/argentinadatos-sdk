@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "entidad_rendimiento": {
+      "ENTIDAD_RENDIMIENTO00": {
+        "entidad": "s14",
+        "rendimiento": [],
+        "id": "ENTIDAD_RENDIMIENTO00"
+      },
+      "ENTIDAD_RENDIMIENTO01": {
+        "entidad": "s28",
+        "rendimiento": [],
+        "id": "ENTIDAD_RENDIMIENTO01"
+      },
+      "ENTIDAD_RENDIMIENTO02": {
+        "entidad": "s3c",
+        "rendimiento": [],
+        "id": "ENTIDAD_RENDIMIENTO02"
+      }
+    }
+  },
+  "new": {
+    "entidad_rendimiento": {
+      "entidad_rendimiento_ref01": {
+        "entidad": "s50",
+        "rendimiento": []
+      }
+    }
+  }
+}

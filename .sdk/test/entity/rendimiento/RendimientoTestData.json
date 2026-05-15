@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "rendimiento": {
+      "RENDIMIENTO00": {
+        "apy": 30,
+        "fecha": "s1f",
+        "moneda": "s20",
+        "id": "RENDIMIENTO00"
+      },
+      "RENDIMIENTO01": {
+        "apy": 60,
+        "fecha": "s3d",
+        "moneda": "s3e",
+        "id": "RENDIMIENTO01"
+      },
+      "RENDIMIENTO02": {
+        "apy": 90,
+        "fecha": "s5b",
+        "moneda": "s5c",
+        "id": "RENDIMIENTO02"
+      }
+    }
+  },
+  "new": {
+    "rendimiento": {
+      "rendimiento_ref01": {
+        "apy": 120,
+        "fecha": "s79",
+        "moneda": "s7a"
+      }
+    }
+  }
+}

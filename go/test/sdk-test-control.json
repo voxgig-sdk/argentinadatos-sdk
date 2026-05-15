@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "_doc": "Per-SDK test control. Lists tests/operations to skip in unit and live modes; tunes per-test pacing. Edit by hand. Loaded by go test runner.",
+  "test": {
+    "skip": {
+      "live": {
+        "direct": [
+          {
+            "test": "direct-load-acta",
+            "reason": "bad example: spec sets a\u00f1o=2026 but the diputados actas API has no data past 2024"
+          }
+        ],
+        "entityOp": []
+      },
+      "unit": {
+        "direct": [],
+        "entityOp": []
+      }
+    },
+    "live": {
+      "delayMs": 500
+    }
+  }
+}

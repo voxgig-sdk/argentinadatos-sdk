@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "riesgo_pai": {
+      "RIESGO_PAI00": {
+        "fecha": "s14",
+        "valor": 21,
+        "id": "RIESGO_PAI00"
+      },
+      "RIESGO_PAI01": {
+        "fecha": "s28",
+        "valor": 41,
+        "id": "RIESGO_PAI01"
+      },
+      "RIESGO_PAI02": {
+        "fecha": "s3c",
+        "valor": 61,
+        "id": "RIESGO_PAI02"
+      }
+    }
+  },
+  "new": {
+    "riesgo_pai": {
+      "riesgo_pai_ref01": {
+        "fecha": "s50",
+        "valor": 81
+      }
+    }
+  }
+}

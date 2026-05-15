@@ -1,0 +1,254 @@
+# Entity: acta
+
+main: kit: entity: acta: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "abstencione"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "acta"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "acta_id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "afirmativo"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "amn"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "ausente"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "descripcion"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "fecha"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "mayoria"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "miembro"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "negativo"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "numero_acta"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "observacione"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "periodo"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "presente"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "presidente"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "proyecto"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "quorum_tipo"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "resultado"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "reunion"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "titulo"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "voto"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "votos_afirmativo"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "votos_negativo"
+      req: false
+      type: "`$INTEGER`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "acta"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/v1/diputados/actas"
+          parts: [
+            "v1"
+            "diputados"
+            "actas"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/v1/senado/actas"
+          parts: [
+            "v1"
+            "senado"
+            "actas"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: 2026
+                kind: "param"
+                name: "id"
+                orig: "año"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/v1/diputados/actas/{año}"
+          parts: [
+            "v1"
+            "diputados"
+            "actas"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              "año": "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                example: 2026
+                kind: "param"
+                name: "id"
+                orig: "año"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/v1/senado/actas/{año}"
+          parts: [
+            "v1"
+            "senado"
+            "actas"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              "año": "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

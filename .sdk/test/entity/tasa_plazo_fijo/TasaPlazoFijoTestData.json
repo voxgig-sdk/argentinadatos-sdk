@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "tasa_plazo_fijo": {
+      "TASA_PLAZO_FIJO00": {
+        "entidad": "s28",
+        "logo": "s29",
+        "tna_cliente": 42,
+        "tna_no_cliente": 43,
+        "id": "TASA_PLAZO_FIJO00"
+      },
+      "TASA_PLAZO_FIJO01": {
+        "entidad": "s50",
+        "logo": "s51",
+        "tna_cliente": 82,
+        "tna_no_cliente": 83,
+        "id": "TASA_PLAZO_FIJO01"
+      },
+      "TASA_PLAZO_FIJO02": {
+        "entidad": "s78",
+        "logo": "s79",
+        "tna_cliente": 122,
+        "tna_no_cliente": 123,
+        "id": "TASA_PLAZO_FIJO02"
+      }
+    }
+  },
+  "new": {
+    "tasa_plazo_fijo": {
+      "tasa_plazo_fijo_ref01": {
+        "entidad": "sa0",
+        "logo": "sa1",
+        "tna_cliente": 162,
+        "tna_no_cliente": 163
+      }
+    }
+  }
+}

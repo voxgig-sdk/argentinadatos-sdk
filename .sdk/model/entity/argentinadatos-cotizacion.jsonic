@@ -1,0 +1,144 @@
+# Entity: cotizacion
+
+main: kit: entity: cotizacion: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "casa"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "compra"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "fecha"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "moneda"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "venta"
+      req: false
+      type: "`$NUMBER`"
+    }
+  ]
+
+  name: "cotizacion"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/v1/cotizaciones/dolares"
+          parts: [
+            "v1"
+            "cotizaciones"
+            "dolares"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "blue"
+                kind: "param"
+                name: "casa"
+                orig: "casa"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                example: "2024/01/01"
+                kind: "param"
+                name: "fecha"
+                orig: "fecha"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/v1/cotizaciones/dolares/{casa}/{fecha}"
+          parts: [
+            "v1"
+            "cotizaciones"
+            "dolares"
+            "{casa}"
+            "{fecha}"
+          ]
+          select: {
+            exist: [
+              "casa"
+              "fecha"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                example: "blue"
+                kind: "param"
+                name: "casa"
+                orig: "casa"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/v1/cotizaciones/dolares/{casa}"
+          parts: [
+            "v1"
+            "cotizaciones"
+            "dolares"
+            "{casa}"
+          ]
+          select: {
+            exist: [
+              "casa"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "dolares"
+      ]
+    ]
+  }
+
+
+
+}

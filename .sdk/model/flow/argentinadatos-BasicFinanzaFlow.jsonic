@@ -1,0 +1,22 @@
+# BasicFinanzaFlow
+
+main: kit: flow: BasicFinanzaFlow:
+{
+  entity: "finanza",
+  kind: "basic",
+  name: "BasicFinanzaFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "finanza_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicFinanzaFlow"
+}

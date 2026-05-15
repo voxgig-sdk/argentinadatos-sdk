@@ -1,0 +1,22 @@
+# BasicDiputadoFlow
+
+main: kit: flow: BasicDiputadoFlow:
+{
+  entity: "diputado",
+  kind: "basic",
+  name: "BasicDiputadoFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "diputado_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDiputadoFlow"
+}

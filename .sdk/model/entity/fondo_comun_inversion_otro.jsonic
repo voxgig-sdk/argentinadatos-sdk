@@ -1,0 +1,83 @@
+# Entity: fondo_comun_inversion_otro
+
+main: kit: entity: fondo_comun_inversion_otro: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "fecha"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "fondo"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "tea"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "tna"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "tope"
+      req: false
+      type: "`$NUMBER`"
+    }
+  ]
+
+  name: "fondo_comun_inversion_otro"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "ultimo"
+                kind: "param"
+                name: "id"
+                orig: "fecha"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/v1/finanzas/fci/otros/{fecha}"
+          parts: [
+            "v1"
+            "finanzas"
+            "fci"
+            "otros"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              fecha: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

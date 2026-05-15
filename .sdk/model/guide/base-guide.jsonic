@@ -1,0 +1,217 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 28
+  metrics: count: path: 39
+  metrics: count: method: 39
+
+  entity: acta: {
+    path: "/v1/diputados/actas": {
+      op: list: method: *GET
+    }
+    path: "/v1/diputados/actas/{año}": {
+      rename: param: "año": *"id"
+      op: load: method: *GET
+    }
+    path: "/v1/senado/actas": {
+      op: list: method: *GET
+    }
+    path: "/v1/senado/actas/{año}": {
+      rename: param: "año": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: bonos_cer: {
+    path: "/v1/finanzas/bonos-cer": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: cotizacion: {
+    path: "/v1/cotizaciones/dolares": {
+      op: list: method: *GET
+    }
+    path: "/v1/cotizaciones/dolares/{casa}": {
+      op: load: method: *GET
+    }
+    path: "/v1/cotizaciones/dolares/{casa}/{fecha}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: criptopeso: {
+    path: "/v1/finanzas/criptopesos": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: cuenta_remunerada_usd: {
+    path: "/v1/finanzas/cuentas-remuneradas-usd": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: diputado: {
+    path: "/v1/diputados/diputados": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: entidad_rendimiento: {
+    path: "/v1/finanzas/rendimientos": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: estado: {
+    path: "/v1/estado": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.estado`")|top
+    }
+  }
+
+  entity: evento_presidencial: {
+    path: "/v1/eventos/presidenciales": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: feriado: {
+    path: "/v1/feriados/{año}": {
+      rename: param: "año": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: finanza: {
+    path: "/v1/rems": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: fondo_comun_inversion: {
+    path: "/v1/finanzas/fci/mercadoDinero/{fecha}": {
+      op: load: method: *GET
+    }
+    path: "/v1/finanzas/fci/rentaFija/{fecha}": {
+      op: load: method: *GET
+    }
+    path: "/v1/finanzas/fci/rentaMixta/{fecha}": {
+      op: load: method: *GET
+    }
+    path: "/v1/finanzas/fci/rentaVariable/{fecha}": {
+      op: load: method: *GET
+    }
+    path: "/v1/finanzas/fci/retornoTotal/{fecha}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: fondo_comun_inversion_otro: {
+    path: "/v1/finanzas/fci/otros/{fecha}": {
+      rename: param: "fecha": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: fondo_comun_inversion_variable: {
+    path: "/v1/finanzas/fci/variables/{fecha}": {
+      rename: param: "fecha": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: hipotecario_uva_tna: {
+    path: "/v1/finanzas/creditos/hipotecariosUva": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: indice_inflacion: {
+    path: "/v1/finanzas/indices/inflacion": {
+      op: list: method: *GET
+    }
+    path: "/v1/finanzas/indices/inflacionInteranual": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: indice_uva: {
+    path: "/v1/finanzas/indices/uva": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: letra: {
+    path: "/v1/finanzas/letras": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: presidente: {
+    path: "/v1/presidentes": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: proveedor_plazo_fijo_precancelable: {
+    path: "/v1/finanzas/tasas/plazoFijoPrecancelable": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: proveedor_plazo_fijo_uva_pago_periodico: {
+    path: "/v1/finanzas/tasas/plazoFijoUvaPagoPeriodico": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: rem: {
+    path: "/v1/rems/{año}/{mes}": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: rem_expectativa: {
+    path: "/v1/rems/ultimo": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: rendimiento: {
+    path: "/v1/finanzas/rendimientos/{entidad}": {
+      rename: param: "entidad": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: riesgo_pai: {
+    path: "/v1/finanzas/indices/riesgo-pais": {
+      op: list: method: *GET
+    }
+    path: "/v1/finanzas/indices/riesgo-pais/ultimo": {
+      action: "ultimo": {}
+      op: load: method: *GET
+    }
+  }
+
+  entity: senador: {
+    path: "/v1/senado/senadores": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: tasa_intere: {
+    path: "/v1/finanzas/tasas/depositos30Dias": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: tasa_plazo_fijo: {
+    path: "/v1/finanzas/tasas/plazoFijo": {
+      op: list: method: *GET
+    }
+  }
+
+}

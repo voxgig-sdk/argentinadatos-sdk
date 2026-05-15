@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "finanza": {
+      "FINANZA00": {
+        "id": "FINANZA00"
+      },
+      "FINANZA01": {
+        "id": "FINANZA01"
+      },
+      "FINANZA02": {
+        "id": "FINANZA02"
+      }
+    }
+  },
+  "new": {
+    "finanza": {
+      "finanza_ref01": {}
+    }
+  }
+}
