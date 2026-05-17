@@ -5,22 +5,19 @@
         "entidad": "s28",
         "metadata": {},
         "nombre_comercial": "s2a",
-        "tna": 43,
-        "id": "HIPOTECARIO_UVA_TNA00"
+        "tna": 43
       },
       "HIPOTECARIO_UVA_TNA01": {
         "entidad": "s50",
         "metadata": {},
         "nombre_comercial": "s52",
-        "tna": 83,
-        "id": "HIPOTECARIO_UVA_TNA01"
+        "tna": 83
       },
       "HIPOTECARIO_UVA_TNA02": {
         "entidad": "s78",
         "metadata": {},
         "nombre_comercial": "s7a",
-        "tna": 123,
-        "id": "HIPOTECARIO_UVA_TNA02"
+        "tna": 123
       }
     }
   },

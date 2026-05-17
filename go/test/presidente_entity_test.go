@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/argentinadatos-sdk"
-	"github.com/voxgig-sdk/argentinadatos-sdk/core"
+	sdk "github.com/voxgig-sdk/argentinadatos-sdk/go"
+	"github.com/voxgig-sdk/argentinadatos-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/argentinadatos-sdk/go/utility/struct"
 )
 
 func TestPresidenteEntity(t *testing.T) {

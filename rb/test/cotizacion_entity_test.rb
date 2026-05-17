@@ -70,7 +70,7 @@ def cotizacion_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["cotizacion01", "cotizacion02", "cotizacion03", "dolares01", "dolares02", "dolares03"],
+    ["cotizacion01", "cotizacion02", "cotizacion03", "dolare01", "dolare02", "dolare03"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",

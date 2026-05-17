@@ -1,9 +1,9 @@
 package utility
 
 import (
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/argentinadatos-sdk/go/utility/struct"
 
-	"github.com/voxgig-sdk/argentinadatos-sdk/core"
+	"github.com/voxgig-sdk/argentinadatos-sdk/go/core"
 )
 
 func prepareParamsUtil(ctx *core.Context) map[string]any {

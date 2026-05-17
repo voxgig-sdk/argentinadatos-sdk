@@ -3,18 +3,15 @@
     "indice_inflacion": {
       "INDICE_INFLACION00": {
         "fecha": "s14",
-        "valor": 21,
-        "id": "INDICE_INFLACION00"
+        "valor": 21
       },
       "INDICE_INFLACION01": {
         "fecha": "s28",
-        "valor": 41,
-        "id": "INDICE_INFLACION01"
+        "valor": 41
       },
       "INDICE_INFLACION02": {
         "fecha": "s3c",
-        "valor": 61,
-        "id": "INDICE_INFLACION02"
+        "valor": 61
       }
     }
   },

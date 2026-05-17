@@ -75,7 +75,7 @@ def _rem_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["rem01", "rem02", "rem03", "rems01", "rems02", "rems03", "año01", "mes01"],
+        ["rem01", "rem02", "rem03", "año01", "mes01"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

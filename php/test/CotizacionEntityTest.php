@@ -78,7 +78,7 @@ function cotizacion_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["cotizacion01", "cotizacion02", "cotizacion03", "dolares01", "dolares02", "dolares03"] as $k) {
+    foreach (["cotizacion01", "cotizacion02", "cotizacion03", "dolare01", "dolare02", "dolare03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

@@ -586,7 +586,7 @@ local function make_config()
         ["relations"] = {
           ["ancestors"] = {
             {
-              "dolares",
+              "dolare",
             },
           },
         },
@@ -1310,19 +1310,19 @@ local function make_config()
         ["relations"] = {
           ["ancestors"] = {
             {
-              "mercadoDinero",
+              "mercado_dinero",
             },
             {
-              "rentaFija",
+              "renta_fija",
             },
             {
-              "rentaMixta",
+              "renta_mixta",
             },
             {
-              "rentaVariable",
+              "renta_variable",
             },
             {
-              "retornoTotal",
+              "retorno_total",
             },
           },
         },
@@ -2321,7 +2321,7 @@ local function make_config()
         ["relations"] = {
           ["ancestors"] = {
             {
-              "rems",
+              "rem",
             },
           },
         },

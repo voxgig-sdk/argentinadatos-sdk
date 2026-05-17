@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/argentinadatos-sdk"
-	"github.com/voxgig-sdk/argentinadatos-sdk/core"
+	sdk "github.com/voxgig-sdk/argentinadatos-sdk/go"
+	"github.com/voxgig-sdk/argentinadatos-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/argentinadatos-sdk/go/utility/struct"
 )
 
 func TestRemEntity(t *testing.T) {
@@ -103,7 +103,7 @@ func remBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap := vs.Transform(
-		[]any{"rem01", "rem02", "rem03", "rems01", "rems02", "rems03", "año01", "mes01"},
+		[]any{"rem01", "rem02", "rem03", "año01", "mes01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

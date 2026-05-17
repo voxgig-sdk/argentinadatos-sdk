@@ -6,24 +6,21 @@
         "fecha_vencimiento": "s33",
         "tem": 52,
         "ticker": "s35",
-        "vpv": 54,
-        "id": "LETRA00"
+        "vpv": 54
       },
       "LETRA01": {
         "fecha_emision": "s64",
         "fecha_vencimiento": "s65",
         "tem": 102,
         "ticker": "s67",
-        "vpv": 104,
-        "id": "LETRA01"
+        "vpv": 104
       },
       "LETRA02": {
         "fecha_emision": "s96",
         "fecha_vencimiento": "s97",
         "tem": 152,
         "ticker": "s99",
-        "vpv": 154,
-        "id": "LETRA02"
+        "vpv": 154
       }
     }
   },

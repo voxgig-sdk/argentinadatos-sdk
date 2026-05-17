@@ -3,18 +3,15 @@
     "indice_uva": {
       "INDICE_UVA00": {
         "fecha": "s14",
-        "valor": 21,
-        "id": "INDICE_UVA00"
+        "valor": 21
       },
       "INDICE_UVA01": {
         "fecha": "s28",
-        "valor": 41,
-        "id": "INDICE_UVA01"
+        "valor": 41
       },
       "INDICE_UVA02": {
         "fecha": "s3c",
-        "valor": 61,
-        "id": "INDICE_UVA02"
+        "valor": 61
       }
     }
   },

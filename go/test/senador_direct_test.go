@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/argentinadatos-sdk"
-	"github.com/voxgig-sdk/argentinadatos-sdk/core"
+	sdk "github.com/voxgig-sdk/argentinadatos-sdk/go"
+	"github.com/voxgig-sdk/argentinadatos-sdk/go/core"
 )
 
 func TestSenadorDirect(t *testing.T) {

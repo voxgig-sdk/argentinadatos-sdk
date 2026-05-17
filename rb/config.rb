@@ -587,7 +587,7 @@ module ArgentinadatosConfig
           "relations" => {
             "ancestors" => [
               [
-                "dolares",
+                "dolare",
               ],
             ],
           },
@@ -1311,19 +1311,19 @@ module ArgentinadatosConfig
           "relations" => {
             "ancestors" => [
               [
-                "mercadoDinero",
+                "mercado_dinero",
               ],
               [
-                "rentaFija",
+                "renta_fija",
               ],
               [
-                "rentaMixta",
+                "renta_mixta",
               ],
               [
-                "rentaVariable",
+                "renta_variable",
               ],
               [
-                "retornoTotal",
+                "retorno_total",
               ],
             ],
           },
@@ -2322,7 +2322,7 @@ module ArgentinadatosConfig
           "relations" => {
             "ancestors" => [
               [
-                "rems",
+                "rem",
               ],
             ],
           },

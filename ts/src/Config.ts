@@ -671,7 +671,7 @@ class Config {
       "relations": {
         "ancestors": [
           [
-            "dolares"
+            "dolare"
           ]
         ]
       }
@@ -1395,19 +1395,19 @@ class Config {
       "relations": {
         "ancestors": [
           [
-            "mercadoDinero"
+            "mercado_dinero"
           ],
           [
-            "rentaFija"
+            "renta_fija"
           ],
           [
-            "rentaMixta"
+            "renta_mixta"
           ],
           [
-            "rentaVariable"
+            "renta_variable"
           ],
           [
-            "retornoTotal"
+            "retorno_total"
           ]
         ]
       }
@@ -2406,7 +2406,7 @@ class Config {
       "relations": {
         "ancestors": [
           [
-            "rems"
+            "rem"
           ]
         ]
       }

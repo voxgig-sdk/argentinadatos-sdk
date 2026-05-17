@@ -525,7 +525,7 @@
           "relations": {
             "ancestors": [
               [
-                "dolares"
+                "dolare"
               ]
             ]
           },
@@ -1233,19 +1233,19 @@
           "relations": {
             "ancestors": [
               [
-                "mercadoDinero"
+                "mercado_dinero"
               ],
               [
-                "rentaFija"
+                "renta_fija"
               ],
               [
-                "rentaMixta"
+                "renta_mixta"
               ],
               [
-                "rentaVariable"
+                "renta_variable"
               ],
               [
-                "retornoTotal"
+                "retorno_total"
               ]
             ]
           },
@@ -2191,7 +2191,7 @@
           "relations": {
             "ancestors": [
               [
-                "rems"
+                "rem"
               ]
             ]
           },
@@ -2831,6 +2831,9 @@
               "deps": {}
             },
             "rb": {
+              "deps": {}
+            },
+            "go-cli": {
               "deps": {}
             }
           }
@@ -3668,6 +3671,33 @@
         }
       },
       "target": {
+        "go-cli": {
+          "title": "Go CLI",
+          "ext": "go",
+          "comment": {
+            "line": "//"
+          },
+          "module": {
+            "name": "argentinadatos"
+          },
+          "phase": {
+            "entity": {
+              "active": false
+            },
+            "feature": {
+              "active": false
+            },
+            "readme": {
+              "active": false
+            },
+            "test": {
+              "active": false
+            }
+          },
+          "deps": {},
+          "name": "go-cli",
+          "active": true
+        },
         "ts": {
           "title": "TypeScript",
           "ext": "ts",
@@ -3708,14 +3738,7 @@
             "name": "argentinadatos"
           },
           "srcfeature": false,
-          "deps": {
-            "github.com/voxgig/struct": {
-              "active": true,
-              "version": "v0.0.0",
-              "replace": "./utility/struct",
-              "kind": "prod"
-            }
-          },
+          "deps": {},
           "name": "go",
           "active": true
         },

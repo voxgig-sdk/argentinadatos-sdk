@@ -4,20 +4,17 @@
       "CRIPTOPESO00": {
         "entidad": "s1e",
         "tna": 31,
-        "token": "s20",
-        "id": "CRIPTOPESO00"
+        "token": "s20"
       },
       "CRIPTOPESO01": {
         "entidad": "s3c",
         "tna": 61,
-        "token": "s3e",
-        "id": "CRIPTOPESO01"
+        "token": "s3e"
       },
       "CRIPTOPESO02": {
         "entidad": "s5a",
         "tna": 91,
-        "token": "s5c",
-        "id": "CRIPTOPESO02"
+        "token": "s5c"
       }
     }
   },

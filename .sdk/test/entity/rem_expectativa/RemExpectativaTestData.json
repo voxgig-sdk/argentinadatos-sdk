@@ -25,8 +25,7 @@
         "referencia": "s104",
         "referencia_fecha": "s105",
         "unidad": "s106",
-        "xlsx_url": "s107",
-        "id": "REM_EXPECTATIVA00"
+        "xlsx_url": "s107"
       },
       "REM_EXPECTATIVA01": {
         "desvio": 480,
@@ -52,8 +51,7 @@
         "referencia": "s1f4",
         "referencia_fecha": "s1f5",
         "unidad": "s1f6",
-        "xlsx_url": "s1f7",
-        "id": "REM_EXPECTATIVA01"
+        "xlsx_url": "s1f7"
       },
       "REM_EXPECTATIVA02": {
         "desvio": 720,
@@ -79,8 +77,7 @@
         "referencia": "s2e4",
         "referencia_fecha": "s2e5",
         "unidad": "s2e6",
-        "xlsx_url": "s2e7",
-        "id": "REM_EXPECTATIVA02"
+        "xlsx_url": "s2e7"
       }
     }
   },

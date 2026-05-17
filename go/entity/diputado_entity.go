@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/argentinadatos-sdk/core"
+	"github.com/voxgig-sdk/argentinadatos-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/argentinadatos-sdk/go/utility/struct"
 )
 
 type DiputadoEntity struct {

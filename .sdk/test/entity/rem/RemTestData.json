@@ -27,8 +27,7 @@
         "unidad": "s106",
         "xlsx_url": "s107",
         "año": "AÑO01",
-        "mes": "MES01",
-        "id": "REM00"
+        "mes": "MES01"
       },
       "REM01": {
         "desvio": 480,
@@ -56,8 +55,7 @@
         "unidad": "s1f6",
         "xlsx_url": "s1f7",
         "año": "AÑO01",
-        "mes": "MES01",
-        "id": "REM01"
+        "mes": "MES01"
       },
       "REM02": {
         "desvio": 720,
@@ -85,8 +83,7 @@
         "unidad": "s2e6",
         "xlsx_url": "s2e7",
         "año": "AÑO01",
-        "mes": "MES01",
-        "id": "REM02"
+        "mes": "MES01"
       }
     }
   },

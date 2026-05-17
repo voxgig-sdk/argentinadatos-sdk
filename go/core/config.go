@@ -586,7 +586,7 @@ func MakeConfig() map[string]any {
 				"relations": map[string]any{
 					"ancestors": []any{
 						[]any{
-							"dolares",
+							"dolare",
 						},
 					},
 				},
@@ -1310,19 +1310,19 @@ func MakeConfig() map[string]any {
 				"relations": map[string]any{
 					"ancestors": []any{
 						[]any{
-							"mercadoDinero",
+							"mercado_dinero",
 						},
 						[]any{
-							"rentaFija",
+							"renta_fija",
 						},
 						[]any{
-							"rentaMixta",
+							"renta_mixta",
 						},
 						[]any{
-							"rentaVariable",
+							"renta_variable",
 						},
 						[]any{
-							"retornoTotal",
+							"retorno_total",
 						},
 					},
 				},
@@ -2321,7 +2321,7 @@ func MakeConfig() map[string]any {
 				"relations": map[string]any{
 					"ancestors": []any{
 						[]any{
-							"rems",
+							"rem",
 						},
 					},
 				},

@@ -4,9 +4,7 @@
   "test": {
     "skip": {
       "live": {
-        "direct": [
-          { "test": "direct-load-acta", "reason": "bad example: spec sets año=2026 but the diputados actas API has no data past 2024" }
-        ],
+        "direct": [],
         "entityOp": []
       },
       "unit": {

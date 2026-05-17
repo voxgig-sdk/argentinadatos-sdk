@@ -1,10 +1,10 @@
 package voxgigargentinadatossdk
 
 import (
-	"github.com/voxgig-sdk/argentinadatos-sdk/core"
-	"github.com/voxgig-sdk/argentinadatos-sdk/entity"
-	"github.com/voxgig-sdk/argentinadatos-sdk/feature"
-	_ "github.com/voxgig-sdk/argentinadatos-sdk/utility"
+	"github.com/voxgig-sdk/argentinadatos-sdk/go/core"
+	"github.com/voxgig-sdk/argentinadatos-sdk/go/entity"
+	"github.com/voxgig-sdk/argentinadatos-sdk/go/feature"
+	_ "github.com/voxgig-sdk/argentinadatos-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

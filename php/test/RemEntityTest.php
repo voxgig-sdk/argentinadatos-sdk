@@ -75,7 +75,7 @@ function rem_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["rem01", "rem02", "rem03", "rems01", "rems02", "rems03", "año01", "mes01"] as $k) {
+    foreach (["rem01", "rem02", "rem03", "año01", "mes01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

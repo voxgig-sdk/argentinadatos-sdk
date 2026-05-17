@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/argentinadatos-sdk/core"
+import "github.com/voxgig-sdk/argentinadatos-sdk/go/core"
 
 func makeRequestUtil(ctx *core.Context) (*core.Response, error) {
 	if ctx.Out["request"] != nil {

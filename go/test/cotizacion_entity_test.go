@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/argentinadatos-sdk"
-	"github.com/voxgig-sdk/argentinadatos-sdk/core"
+	sdk "github.com/voxgig-sdk/argentinadatos-sdk/go"
+	"github.com/voxgig-sdk/argentinadatos-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/argentinadatos-sdk/go/utility/struct"
 )
 
 func TestCotizacionEntity(t *testing.T) {
@@ -110,7 +110,7 @@ func cotizacionBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap := vs.Transform(
-		[]any{"cotizacion01", "cotizacion02", "cotizacion03", "dolares01", "dolares02", "dolares03"},
+		[]any{"cotizacion01", "cotizacion02", "cotizacion03", "dolare01", "dolare02", "dolare03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

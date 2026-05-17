@@ -92,7 +92,7 @@ function basicSetup(extra?: any) {
   const transform = struct.transform
 
   let idmap = transform(
-    ['fondo_comun_inversion01','fondo_comun_inversion02','fondo_comun_inversion03','mercadoDinero01','mercadoDinero02','mercadoDinero03','rentaFija01','rentaFija02','rentaFija03','rentaMixta01','rentaMixta02','rentaMixta03','rentaVariable01','rentaVariable02','rentaVariable03','retornoTotal01','retornoTotal02','retornoTotal03'],
+    ['fondo_comun_inversion01','fondo_comun_inversion02','fondo_comun_inversion03','mercado_dinero01','mercado_dinero02','mercado_dinero03','renta_fija01','renta_fija02','renta_fija03','renta_mixta01','renta_mixta02','renta_mixta03','renta_variable01','renta_variable02','renta_variable03','retorno_total01','retorno_total02','retorno_total03'],
     {
       '`$PACK`': ['', {
         '`$KEY`': '`$COPY`',

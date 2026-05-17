@@ -3,18 +3,15 @@
     "entidad_rendimiento": {
       "ENTIDAD_RENDIMIENTO00": {
         "entidad": "s14",
-        "rendimiento": [],
-        "id": "ENTIDAD_RENDIMIENTO00"
+        "rendimiento": []
       },
       "ENTIDAD_RENDIMIENTO01": {
         "entidad": "s28",
-        "rendimiento": [],
-        "id": "ENTIDAD_RENDIMIENTO01"
+        "rendimiento": []
       },
       "ENTIDAD_RENDIMIENTO02": {
         "entidad": "s3c",
-        "rendimiento": [],
-        "id": "ENTIDAD_RENDIMIENTO02"
+        "rendimiento": []
       }
     }
   },

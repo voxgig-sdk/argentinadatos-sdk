@@ -592,7 +592,7 @@ class ArgentinadatosConfig
           'relations' => [
             'ancestors' => [
               [
-                'dolares',
+                'dolare',
               ],
             ],
           ],
@@ -1316,19 +1316,19 @@ class ArgentinadatosConfig
           'relations' => [
             'ancestors' => [
               [
-                'mercadoDinero',
+                'mercado_dinero',
               ],
               [
-                'rentaFija',
+                'renta_fija',
               ],
               [
-                'rentaMixta',
+                'renta_mixta',
               ],
               [
-                'rentaVariable',
+                'renta_variable',
               ],
               [
-                'retornoTotal',
+                'retorno_total',
               ],
             ],
           ],
@@ -2327,7 +2327,7 @@ class ArgentinadatosConfig
           'relations' => [
             'ancestors' => [
               [
-                'rems',
+                'rem',
               ],
             ],
           ],

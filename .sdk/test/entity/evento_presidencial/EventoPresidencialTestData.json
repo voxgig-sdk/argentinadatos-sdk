@@ -4,20 +4,17 @@
       "EVENTO_PRESIDENCIAL00": {
         "evento": "s1e",
         "fecha": "s1f",
-        "tipo": "s20",
-        "id": "EVENTO_PRESIDENCIAL00"
+        "tipo": "s20"
       },
       "EVENTO_PRESIDENCIAL01": {
         "evento": "s3c",
         "fecha": "s3d",
-        "tipo": "s3e",
-        "id": "EVENTO_PRESIDENCIAL01"
+        "tipo": "s3e"
       },
       "EVENTO_PRESIDENCIAL02": {
         "evento": "s5a",
         "fecha": "s5b",
-        "tipo": "s5c",
-        "id": "EVENTO_PRESIDENCIAL02"
+        "tipo": "s5c"
       }
     }
   },
