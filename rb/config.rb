@@ -15,9 +15,6 @@ module ArgentinadatosConfig
       },
       "options" => {
         "base" => "https://api.argentinadatos.com",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },

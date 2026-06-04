@@ -180,14 +180,12 @@ func cotizacionDirectSetup(mockres any) *cotizacionDirectSetupResult {
 	env := envOverride(map[string]any{
 		"ARGENTINADATOS_TEST_COTIZACION_ENTID": map[string]any{},
 		"ARGENTINADATOS_TEST_LIVE":    "FALSE",
-		"ARGENTINADATOS_APIKEY":       "NONE",
 	})
 
 	live := env["ARGENTINADATOS_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["ARGENTINADATOS_APIKEY"],
 		}
 		client := sdk.NewArgentinadatosSDK(mergedOpts)
 

@@ -23,12 +23,9 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
-import os
 from argentinadatos_sdk import ArgentinadatosSDK
 
-client = ArgentinadatosSDK({
-    "apikey": os.environ.get("ARGENTINADATOS_APIKEY"),
-})
+client = ArgentinadatosSDK({})
 ```
 
 ### 2. List actas
@@ -130,7 +127,6 @@ Create a `.env.local` file at the project root:
 
 ```
 ARGENTINADATOS_TEST_LIVE=TRUE
-ARGENTINADATOS_APIKEY=<your-key>
 ```
 
 Then run:
@@ -154,7 +150,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |

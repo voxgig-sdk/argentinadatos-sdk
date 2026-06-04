@@ -92,7 +92,6 @@ function indice_uva_basic_setup(extra)
     ["ARGENTINADATOS_TEST_INDICE_UVA_ENTID"] = idmap,
     ["ARGENTINADATOS_TEST_LIVE"] = "FALSE",
     ["ARGENTINADATOS_TEST_EXPLAIN"] = "FALSE",
-    ["ARGENTINADATOS_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -104,7 +103,6 @@ function indice_uva_basic_setup(extra)
   if env["ARGENTINADATOS_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["ARGENTINADATOS_APIKEY"],
       },
       extra or {},
     })

@@ -86,7 +86,6 @@ function criptopeso_basic_setup($extra)
         "ARGENTINADATOS_TEST_CRIPTOPESO_ENTID" => $idmap,
         "ARGENTINADATOS_TEST_LIVE" => "FALSE",
         "ARGENTINADATOS_TEST_EXPLAIN" => "FALSE",
-        "ARGENTINADATOS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +97,6 @@ function criptopeso_basic_setup($extra)
     if ($env["ARGENTINADATOS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ARGENTINADATOS_APIKEY"],
             ],
             $extra ?? [],
         ]);

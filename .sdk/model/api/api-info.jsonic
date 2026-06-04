@@ -15,8 +15,58 @@ main: {
       ]
       title: "ArgentinaDatos API"
       version: "1.0.0"
+      tagline: "Free public API aggregating Argentine economic, financial, and political data from official sources"
+      homepage: "https://argentinadatos.com"
+      docs_url: "https://argentinadatos.com/docs/"
+      license_short: "MIT License (unofficial public project; data sourced from public Argentine institutions)."
+      license_md: `- Source code released under the MIT License.
+- API is explicitly described as \`no oficial\` (unofficial) — it is a community project, not an endorsement by any Argentine government body.
+- Data is aggregated from public sources (BCRA, INDEC, CAFCI, Congreso); consult the original sources for authoritative use.
+- See the project's legal notice on the docs site for full terms.`
+      about_md: `[ArgentinaDatos](https://argentinadatos.com) is a free, unofficial public API maintained by Enzo Notario and built in [EsJS](https://es.js.org). It exposes up-to-date information about Argentina across economics, finance, politics, and public-life events, drawn from public institutional sources.
+
+What you get from the API:
+
+- Historical USD exchange rates (\`/cotizaciones/dolares\`) broken down by \`casa\` (oficial, blue, MEP, CCL, cripto, mayorista, tarjeta) and date.
+- Macroeconomic indices: monthly and year-over-year inflation, UVA index, and country risk (\`/finanzas/indices/...\`).
+- Interest rates: fixed-term deposits, UVA fixed-term variants, 30-day deposits, USD remunerated accounts, and crypto-peso products (\`/finanzas/tasas/...\`).
+- Mutual fund (FCI) data by category — money market, fixed/variable/mixed income, total return — plus per-fund detail and history (\`/finanzas/fci/...\`).
+- Government bonds and bills (LECAP / BONCAP) under \`/finanzas/letras\`.
+- Congressional data: senators, deputies, and voting session records (\`actas\`) under \`/senado/...\` and \`/diputados/...\`.
+- Historical and current events: presidents (\`/presidentes\`), presidential events (\`/eventos-presidenciales\`), and public holidays (\`/feriados\`).
+
+Operational notes: data is sourced from public institutions including BCRA (Central Bank), INDEC (national statistics), CAFCI (mutual fund chamber), and the Senate and Chamber of Deputies. The community catalogue lists the API as having CORS disabled and no documented authentication or rate limits; treat published quotas as best-effort and avoid heavy hammering.`
+      entity_desc: {
+        acta: "Voting session record (`acta`) from either house of Congress — see `/senado/actas` and `/diputados/actas`, optionally filtered by year."
+        bonos_cer: "CER-adjusted Argentine government bonds series."
+        cotizacion: "Historical USD exchange-rate quote across the various `casa` (oficial, blue, MEP, CCL, cripto, mayorista, tarjeta) — see `/cotizaciones/dolares`, `/cotizaciones/dolares/{casa}`, and `/cotizaciones/dolares/{casa}/{fecha}`."
+        criptopeso: "Crypto-peso (stablecoin / crypto-denominated peso) rate data exposed at `/finanzas/criptopesos`."
+        cuenta_remunerada_usd: "USD remunerated account rates offered by Argentine providers — see `/finanzas/cuentas-remuneradas-usd`."
+        diputado: "Member of the Argentine Chamber of Deputies — see `/diputados/diputados`."
+        entidad_rendimiento: "Per-entity yield breakdown exposed at `/finanzas/rendimientos/entidad`."
+        estado: "API status / health-check response from `/estado`."
+        evento_presidencial: "Notable presidential event entries from `/eventos-presidenciales`."
+        feriado: "Argentine public holiday for a given year — see `/feriados`."
+        finanza: "Umbrella grouping for the `/finanzas/...` namespace (indices, rates, FCI, yields, letras, REM, remesas)."
+        fondo_comun_inversion: "Mutual fund (FCI) record — see `/finanzas/fci/fondos` and `/finanzas/fci/fondos/{nombre}` plus historical data at `/finanzas/fci/fondos/{nombre}/historico`."
+        fondo_comun_inversion_otro: "FCI category `otros` (other) — see `/finanzas/fci/otros/{fecha}`."
+        fondo_comun_inversion_variable: "FCI variable-income / variable category — see `/finanzas/fci/renta-variable/{fecha}` and `/finanzas/fci/variables/{fecha}`."
+        hipotecario_uva_tna: "UVA-indexed mortgage TNA (nominal annual rate) data point."
+        indice_inflacion: "Monthly and year-over-year inflation indices — see `/finanzas/indices/inflacion` and `/finanzas/indices/inflacion-interanual`."
+        indice_uva: "UVA (Unidad de Valor Adquisitivo) index series — see `/finanzas/indices/uva`."
+        letra: "Argentine treasury bills (LECAP / BONCAP) — see `/finanzas/letras`."
+        presidente: "Argentine head of state biographical record — see `/presidentes`."
+        proveedor_plazo_fijo_precancelable: "Provider-level offer for prepayable UVA fixed-term deposits — see `/finanzas/tasas/plazo-fijo-uva-precancelable`."
+        proveedor_plazo_fijo_uva_pago_periodico: "Provider-level offer for UVA fixed-term deposits with periodic interest payments — see `/finanzas/tasas/plazo-fijo-uva-pago-periodico`."
+        rem: "Relevamiento de Expectativas de Mercado (BCRA's market-expectations survey) — see `/finanzas/rem`, `/finanzas/rem/ultimo`, and `/finanzas/rem/{anio}/{mes}`."
+        rem_expectativa: "Individual expectation entry inside a REM report."
+        rendimiento: "Yield record exposed at `/finanzas/rendimientos`."
+        riesgo_pai: "Country-risk (`riesgo país`) index series — see `/finanzas/indices/riesgo-pais` and `/finanzas/indices/riesgo-pais/ultimo`."
+        senador: "Member of the Argentine Senate — see `/senado/senadores`."
+        tasa_intere: "General interest-rate record under the `/finanzas/tasas/...` namespace."
+        tasa_plazo_fijo: "Fixed-term deposit (plazo fijo) rate offering — see `/finanzas/tasas/plazo-fijo` and `/finanzas/tasas/depositos-30-dias`."
+      }
+      auth: false
     }
   }
-}
-
 }

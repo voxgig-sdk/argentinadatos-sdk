@@ -62,14 +62,12 @@ def presidente_direct_setup(mockres)
   env = Runner.env_override({
     "ARGENTINADATOS_TEST_PRESIDENTE_ENTID" => {},
     "ARGENTINADATOS_TEST_LIVE" => "FALSE",
-    "ARGENTINADATOS_APIKEY" => "NONE",
   })
 
   live = env["ARGENTINADATOS_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["ARGENTINADATOS_APIKEY"],
     }
     client = ArgentinadatosSDK.new(merged_opts)
     return {
