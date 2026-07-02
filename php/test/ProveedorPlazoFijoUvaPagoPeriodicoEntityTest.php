@@ -86,6 +86,7 @@ function proveedor_plazo_fijo_uva_pago_periodico_basic_setup($extra)
         "ARGENTINADATOS_TEST_PROVEEDOR_PLAZO_FIJO_UVA_PAGO_PERIODICO_ENTID" => $idmap,
         "ARGENTINADATOS_TEST_LIVE" => "FALSE",
         "ARGENTINADATOS_TEST_EXPLAIN" => "FALSE",
+        "ARGENTINADATOS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,6 +98,7 @@ function proveedor_plazo_fijo_uva_pago_periodico_basic_setup($extra)
     if ($env["ARGENTINADATOS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
+                "apikey" => $env["ARGENTINADATOS_APIKEY"],
             ],
             $extra ?? [],
         ]);

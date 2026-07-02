@@ -114,6 +114,7 @@ function basicSetup(extra?: any) {
     'ARGENTINADATOS_TEST_COTIZACION_ENTID': idmap,
     'ARGENTINADATOS_TEST_LIVE': 'FALSE',
     'ARGENTINADATOS_TEST_EXPLAIN': 'FALSE',
+    'ARGENTINADATOS_APIKEY': 'NONE',
   })
 
   idmap = env['ARGENTINADATOS_TEST_COTIZACION_ENTID']
@@ -123,6 +124,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new ArgentinadatosSDK(merge([
       {
+        apikey: env.ARGENTINADATOS_APIKEY,
       },
       extra
     ]))

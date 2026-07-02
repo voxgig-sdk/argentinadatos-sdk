@@ -79,12 +79,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'ARGENTINADATOS_TEST_RENDIMIENTO_ENTID': {},
     'ARGENTINADATOS_TEST_LIVE': 'FALSE',
+    'ARGENTINADATOS_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.ARGENTINADATOS_TEST_LIVE
 
   if (live) {
     const client = new ArgentinadatosSDK({
+      apikey: env.ARGENTINADATOS_APIKEY,
     })
 
     let idmap: any = env['ARGENTINADATOS_TEST_RENDIMIENTO_ENTID']

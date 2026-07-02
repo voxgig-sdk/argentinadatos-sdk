@@ -63,12 +63,14 @@ function hipotecario_uva_tna_direct_setup(mockres)
   local env = runner.env_override({
     ["ARGENTINADATOS_TEST_HIPOTECARIO_UVA_TNA_ENTID"] = {},
     ["ARGENTINADATOS_TEST_LIVE"] = "FALSE",
+    ["ARGENTINADATOS_APIKEY"] = "NONE",
   })
 
   local live = env["ARGENTINADATOS_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["ARGENTINADATOS_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

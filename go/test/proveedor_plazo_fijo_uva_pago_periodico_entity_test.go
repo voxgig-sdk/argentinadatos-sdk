@@ -119,6 +119,7 @@ func proveedor_plazo_fijo_uva_pago_periodicoBasicSetup(extra map[string]any) *en
 		"ARGENTINADATOS_TEST_PROVEEDOR_PLAZO_FIJO_UVA_PAGO_PERIODICO_ENTID": idmap,
 		"ARGENTINADATOS_TEST_LIVE":      "FALSE",
 		"ARGENTINADATOS_TEST_EXPLAIN":   "FALSE",
+		"ARGENTINADATOS_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["ARGENTINADATOS_TEST_PROVEEDOR_PLAZO_FIJO_UVA_PAGO_PERIODICO_ENTID"])
@@ -129,6 +130,7 @@ func proveedor_plazo_fijo_uva_pago_periodicoBasicSetup(extra map[string]any) *en
 	if env["ARGENTINADATOS_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["ARGENTINADATOS_APIKEY"],
 			},
 			extra,
 		})

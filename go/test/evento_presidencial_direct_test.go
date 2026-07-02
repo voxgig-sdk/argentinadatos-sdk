@@ -93,12 +93,14 @@ func evento_presidencialDirectSetup(mockres any) *evento_presidencialDirectSetup
 	env := envOverride(map[string]any{
 		"ARGENTINADATOS_TEST_EVENTO_PRESIDENCIAL_ENTID": map[string]any{},
 		"ARGENTINADATOS_TEST_LIVE":    "FALSE",
+		"ARGENTINADATOS_APIKEY":       "NONE",
 	})
 
 	live := env["ARGENTINADATOS_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["ARGENTINADATOS_APIKEY"],
 		}
 		client := sdk.NewArgentinadatosSDK(mergedOpts)
 

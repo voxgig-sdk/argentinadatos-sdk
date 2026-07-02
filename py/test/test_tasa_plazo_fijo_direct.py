@@ -61,12 +61,14 @@ def _tasa_plazo_fijo_direct_setup(mockres):
     env = runner.env_override({
         "ARGENTINADATOS_TEST_TASA_PLAZO_FIJO_ENTID": {},
         "ARGENTINADATOS_TEST_LIVE": "FALSE",
+        "ARGENTINADATOS_APIKEY": "NONE",
     })
 
     live = env.get("ARGENTINADATOS_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("ARGENTINADATOS_APIKEY"),
         }
         client = ArgentinadatosSDK(merged_opts)
         return {

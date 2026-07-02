@@ -119,6 +119,7 @@ func entidad_rendimientoBasicSetup(extra map[string]any) *entityTestSetup {
 		"ARGENTINADATOS_TEST_ENTIDAD_RENDIMIENTO_ENTID": idmap,
 		"ARGENTINADATOS_TEST_LIVE":      "FALSE",
 		"ARGENTINADATOS_TEST_EXPLAIN":   "FALSE",
+		"ARGENTINADATOS_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["ARGENTINADATOS_TEST_ENTIDAD_RENDIMIENTO_ENTID"])
@@ -129,6 +130,7 @@ func entidad_rendimientoBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["ARGENTINADATOS_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["ARGENTINADATOS_APIKEY"],
 			},
 			extra,
 		})

@@ -92,6 +92,7 @@ function proveedor_plazo_fijo_uva_pago_periodico_basic_setup(extra)
     ["ARGENTINADATOS_TEST_PROVEEDOR_PLAZO_FIJO_UVA_PAGO_PERIODICO_ENTID"] = idmap,
     ["ARGENTINADATOS_TEST_LIVE"] = "FALSE",
     ["ARGENTINADATOS_TEST_EXPLAIN"] = "FALSE",
+    ["ARGENTINADATOS_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -103,6 +104,7 @@ function proveedor_plazo_fijo_uva_pago_periodico_basic_setup(extra)
   if env["ARGENTINADATOS_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["ARGENTINADATOS_APIKEY"],
       },
       extra or {},
     })

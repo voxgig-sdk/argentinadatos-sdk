@@ -119,6 +119,7 @@ func proveedor_plazo_fijo_precancelableBasicSetup(extra map[string]any) *entityT
 		"ARGENTINADATOS_TEST_PROVEEDOR_PLAZO_FIJO_PRECANCELABLE_ENTID": idmap,
 		"ARGENTINADATOS_TEST_LIVE":      "FALSE",
 		"ARGENTINADATOS_TEST_EXPLAIN":   "FALSE",
+		"ARGENTINADATOS_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["ARGENTINADATOS_TEST_PROVEEDOR_PLAZO_FIJO_PRECANCELABLE_ENTID"])
@@ -129,6 +130,7 @@ func proveedor_plazo_fijo_precancelableBasicSetup(extra map[string]any) *entityT
 	if env["ARGENTINADATOS_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["ARGENTINADATOS_APIKEY"],
 			},
 			extra,
 		})

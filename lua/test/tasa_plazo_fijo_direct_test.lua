@@ -63,12 +63,14 @@ function tasa_plazo_fijo_direct_setup(mockres)
   local env = runner.env_override({
     ["ARGENTINADATOS_TEST_TASA_PLAZO_FIJO_ENTID"] = {},
     ["ARGENTINADATOS_TEST_LIVE"] = "FALSE",
+    ["ARGENTINADATOS_APIKEY"] = "NONE",
   })
 
   local live = env["ARGENTINADATOS_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["ARGENTINADATOS_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {
