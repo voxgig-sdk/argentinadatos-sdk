@@ -10,7 +10,7 @@ The Python SDK for the Argentinadatos API — an entity-oriented client followin
 
 ## Install
 ```bash
-pip install argentinadatos-sdk
+pip install voxgig-sdk-argentinadatos
 ```
 
 Or install from source:

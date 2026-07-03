@@ -10,7 +10,7 @@ The Lua SDK for the Argentinadatos API — an entity-oriented client using Lua c
 
 ## Install
 ```bash
-luarocks install argentinadatos-sdk
+luarocks install voxgig-sdk-argentinadatos
 ```
 
 If the module is not yet published, add the source directory to

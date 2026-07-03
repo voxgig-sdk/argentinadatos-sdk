@@ -10,7 +10,7 @@ The TypeScript SDK for the Argentinadatos API — a type-safe, entity-oriented c
 
 ## Install
 ```bash
-npm install argentinadatos
+npm install @voxgig-sdk/argentinadatos
 ```
 ## Tutorial: your first API call
 

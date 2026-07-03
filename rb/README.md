@@ -10,13 +10,13 @@ The Ruby SDK for the Argentinadatos API — an entity-oriented client using idio
 
 ## Install
 ```bash
-gem install argentinadatos-sdk
+gem install voxgig-sdk-argentinadatos
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "argentinadatos-sdk"
+gem "voxgig-sdk-argentinadatos"
 ```
 
 Then run:

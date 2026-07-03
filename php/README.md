@@ -10,7 +10,7 @@ The PHP SDK for the Argentinadatos API — an entity-oriented client using PHP c
 
 ## Install
 ```bash
-composer require voxgig/argentinadatos-sdk
+composer require voxgig-sdk/argentinadatos
 ```
 
 
