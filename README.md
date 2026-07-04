@@ -26,9 +26,11 @@ import { ArgentinadatosSDK } from '@voxgig-sdk/argentinadatos'
 
 const client = new ArgentinadatosSDK()
 
-// List all actas
-const actas = await client.acta.list()
-console.log(actas.data)
+// List all actas (returns Acta[])
+const actas = await client.Acta().list()
+for (const acta of actas) {
+  console.log(acta)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -110,12 +112,13 @@ from argentinadatos_sdk import ArgentinadatosSDK
 
 client = ArgentinadatosSDK()
 
-# List all actas
-actas = client.acta.list()
-print(actas)
+# List all actas (returns a list, raises on error)
+actas = client.Acta().list({})
+for acta in actas:
+    print(acta)
 
-# Load a specific acta
-acta = client.acta.load({"id": "example_id"})
+# Load a specific acta (returns the record, raises on error)
+acta = client.Acta().load({"id": "example_id"})
 print(acta)
 ```
 
@@ -127,12 +130,12 @@ require_once 'argentinadatos_sdk.php';
 
 $client = new ArgentinadatosSDK();
 
-// List all actas (throws on error)
-$actas = $client->acta()->list();
+// List all actas (returns an array; throws on error)
+$actas = $client->Acta()->list();
 print_r($actas);
 
-// Load a specific acta
-$acta = $client->acta()->load(["id" => "example_id"]);
+// Load a specific acta (returns the bare record; throws on error)
+$acta = $client->Acta()->load(["id" => "example_id"]);
 print_r($acta);
 ```
 
@@ -155,12 +158,12 @@ require_relative "Argentinadatos_sdk"
 
 client = ArgentinadatosSDK.new
 
-# List all actas
-actas = client.acta.list
+# List all actas (returns an Array; raises on error)
+actas = client.Acta.list
 puts actas
 
-# Load a specific acta
-acta = client.acta.load({ "id" => "example_id" })
+# Load a specific acta (returns the bare record; raises on error)
+acta = client.Acta.load({ "id" => "example_id" })
 puts acta
 ```
 
@@ -172,11 +175,11 @@ local sdk = require("argentinadatos_sdk")
 local client = sdk.new()
 
 -- List all actas
-local actas, err = client:acta():list()
+local actas, err = client:Acta():list()
 print(actas)
 
 -- Load a specific acta
-local acta, err = client:acta():load({ id = "example_id" })
+local acta, err = client:Acta():load({ id = "example_id" })
 print(acta)
 ```
 
@@ -189,22 +192,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = ArgentinadatosSDK.test()
-const result = await client.acta.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const acta = await client.Acta().load({ id: 'test01' })
+// acta is a bare Acta populated with mock data
+console.log(acta)
 ```
 
 ### Python
 
 ```python
 client = ArgentinadatosSDK.test()
-result = client.acta.load({"id": "test01"})
+acta = client.Acta().load({"id": "test01"})
+print(acta)
 ```
 
 ### PHP
 
 ```php
-$client = ArgentinadatosSDK::test();
-$result = $client->acta()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = ArgentinadatosSDK::test([
+    "entity" => ["acta" => ["test01" => ["id" => "test01"]]],
+]);
+$acta = $client->Acta()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -219,15 +227,18 @@ result, err := client.Acta(nil).Load(
 ### Ruby
 
 ```ruby
-client = ArgentinadatosSDK.test
-result = client.acta.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = ArgentinadatosSDK.test({
+  "entity" => { "acta" => { "test01" => { "id" => "test01" } } },
+})
+acta = client.Acta.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:acta():load({ id = "test01" })
+local result, err = client:Acta():load({ id = "test01" })
 ```
 
 ## How it works
@@ -275,6 +286,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

@@ -191,7 +191,7 @@ same parameters as `direct()`.
 ## ActaEntity
 
 ```lua
-local acta = client:acta(nil)
+local acta = client:Acta(nil)
 ```
 
 ### Fields
@@ -231,7 +231,7 @@ local acta = client:acta(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:acta():list()
+local results, err = client:Acta():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -239,7 +239,7 @@ local results, err = client:acta():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:acta():load({ id = "acta_id" })
+local result, err = client:Acta():load({ id = "acta_id" })
 ```
 
 ### Common Methods
@@ -275,7 +275,7 @@ Return the entity name.
 ## BonosCerEntity
 
 ```lua
-local bonos_cer = client:bonos_cer(nil)
+local bonos_cer = client:BonosCer(nil)
 ```
 
 ### Fields
@@ -295,7 +295,7 @@ local bonos_cer = client:bonos_cer(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:bonos_cer():list()
+local results, err = client:BonosCer():list()
 ```
 
 ### Common Methods
@@ -331,7 +331,7 @@ Return the entity name.
 ## CotizacionEntity
 
 ```lua
-local cotizacion = client:cotizacion(nil)
+local cotizacion = client:Cotizacion(nil)
 ```
 
 ### Fields
@@ -351,7 +351,7 @@ local cotizacion = client:cotizacion(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:cotizacion():list()
+local results, err = client:Cotizacion():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -359,7 +359,7 @@ local results, err = client:cotizacion():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:cotizacion():load({ id = "cotizacion_id" })
+local result, err = client:Cotizacion():load({ id = "cotizacion_id" })
 ```
 
 ### Common Methods
@@ -395,7 +395,7 @@ Return the entity name.
 ## CriptopesoEntity
 
 ```lua
-local criptopeso = client:criptopeso(nil)
+local criptopeso = client:Criptopeso(nil)
 ```
 
 ### Fields
@@ -413,7 +413,7 @@ local criptopeso = client:criptopeso(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:criptopeso():list()
+local results, err = client:Criptopeso():list()
 ```
 
 ### Common Methods
@@ -449,7 +449,7 @@ Return the entity name.
 ## CuentaRemuneradaUsdEntity
 
 ```lua
-local cuenta_remunerada_usd = client:cuenta_remunerada_usd(nil)
+local cuenta_remunerada_usd = client:CuentaRemuneradaUsd(nil)
 ```
 
 ### Fields
@@ -467,7 +467,7 @@ local cuenta_remunerada_usd = client:cuenta_remunerada_usd(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:cuenta_remunerada_usd():list()
+local results, err = client:CuentaRemuneradaUsd():list()
 ```
 
 ### Common Methods
@@ -503,7 +503,7 @@ Return the entity name.
 ## DiputadoEntity
 
 ```lua
-local diputado = client:diputado(nil)
+local diputado = client:Diputado(nil)
 ```
 
 ### Fields
@@ -529,7 +529,7 @@ local diputado = client:diputado(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:diputado():list()
+local results, err = client:Diputado():list()
 ```
 
 ### Common Methods
@@ -565,7 +565,7 @@ Return the entity name.
 ## EntidadRendimientoEntity
 
 ```lua
-local entidad_rendimiento = client:entidad_rendimiento(nil)
+local entidad_rendimiento = client:EntidadRendimiento(nil)
 ```
 
 ### Fields
@@ -582,7 +582,7 @@ local entidad_rendimiento = client:entidad_rendimiento(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:entidad_rendimiento():list()
+local results, err = client:EntidadRendimiento():list()
 ```
 
 ### Common Methods
@@ -618,7 +618,7 @@ Return the entity name.
 ## EstadoEntity
 
 ```lua
-local estado = client:estado(nil)
+local estado = client:Estado(nil)
 ```
 
 ### Fields
@@ -635,7 +635,7 @@ local estado = client:estado(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:estado():load({ id = "estado_id" })
+local result, err = client:Estado():load({ id = "estado_id" })
 ```
 
 ### Common Methods
@@ -671,7 +671,7 @@ Return the entity name.
 ## EventoPresidencialEntity
 
 ```lua
-local evento_presidencial = client:evento_presidencial(nil)
+local evento_presidencial = client:EventoPresidencial(nil)
 ```
 
 ### Fields
@@ -689,7 +689,7 @@ local evento_presidencial = client:evento_presidencial(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:evento_presidencial():list()
+local results, err = client:EventoPresidencial():list()
 ```
 
 ### Common Methods
@@ -725,7 +725,7 @@ Return the entity name.
 ## FeriadoEntity
 
 ```lua
-local feriado = client:feriado(nil)
+local feriado = client:Feriado(nil)
 ```
 
 ### Fields
@@ -743,7 +743,7 @@ local feriado = client:feriado(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:feriado():load({ id = "feriado_id" })
+local result, err = client:Feriado():load({ id = "feriado_id" })
 ```
 
 ### Common Methods
@@ -779,7 +779,7 @@ Return the entity name.
 ## FinanzaEntity
 
 ```lua
-local finanza = client:finanza(nil)
+local finanza = client:Finanza(nil)
 ```
 
 ### Operations
@@ -789,7 +789,7 @@ local finanza = client:finanza(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:finanza():list()
+local results, err = client:Finanza():list()
 ```
 
 ### Common Methods
@@ -825,7 +825,7 @@ Return the entity name.
 ## FondoComunInversionEntity
 
 ```lua
-local fondo_comun_inversion = client:fondo_comun_inversion(nil)
+local fondo_comun_inversion = client:FondoComunInversion(nil)
 ```
 
 ### Fields
@@ -847,7 +847,7 @@ local fondo_comun_inversion = client:fondo_comun_inversion(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:fondo_comun_inversion():load({ id = "fondo_comun_inversion_id" })
+local result, err = client:FondoComunInversion():load({ id = "fondo_comun_inversion_id" })
 ```
 
 ### Common Methods
@@ -883,7 +883,7 @@ Return the entity name.
 ## FondoComunInversionOtroEntity
 
 ```lua
-local fondo_comun_inversion_otro = client:fondo_comun_inversion_otro(nil)
+local fondo_comun_inversion_otro = client:FondoComunInversionOtro(nil)
 ```
 
 ### Fields
@@ -903,7 +903,7 @@ local fondo_comun_inversion_otro = client:fondo_comun_inversion_otro(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:fondo_comun_inversion_otro():load({ id = "fondo_comun_inversion_otro_id" })
+local result, err = client:FondoComunInversionOtro():load({ id = "fondo_comun_inversion_otro_id" })
 ```
 
 ### Common Methods
@@ -939,7 +939,7 @@ Return the entity name.
 ## FondoComunInversionVariableEntity
 
 ```lua
-local fondo_comun_inversion_variable = client:fondo_comun_inversion_variable(nil)
+local fondo_comun_inversion_variable = client:FondoComunInversionVariable(nil)
 ```
 
 ### Fields
@@ -963,7 +963,7 @@ local fondo_comun_inversion_variable = client:fondo_comun_inversion_variable(nil
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:fondo_comun_inversion_variable():load({ id = "fondo_comun_inversion_variable_id" })
+local result, err = client:FondoComunInversionVariable():load({ id = "fondo_comun_inversion_variable_id" })
 ```
 
 ### Common Methods
@@ -999,7 +999,7 @@ Return the entity name.
 ## HipotecarioUvaTnaEntity
 
 ```lua
-local hipotecario_uva_tna = client:hipotecario_uva_tna(nil)
+local hipotecario_uva_tna = client:HipotecarioUvaTna(nil)
 ```
 
 ### Fields
@@ -1018,7 +1018,7 @@ local hipotecario_uva_tna = client:hipotecario_uva_tna(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:hipotecario_uva_tna():list()
+local results, err = client:HipotecarioUvaTna():list()
 ```
 
 ### Common Methods
@@ -1054,7 +1054,7 @@ Return the entity name.
 ## IndiceInflacionEntity
 
 ```lua
-local indice_inflacion = client:indice_inflacion(nil)
+local indice_inflacion = client:IndiceInflacion(nil)
 ```
 
 ### Fields
@@ -1071,7 +1071,7 @@ local indice_inflacion = client:indice_inflacion(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:indice_inflacion():list()
+local results, err = client:IndiceInflacion():list()
 ```
 
 ### Common Methods
@@ -1107,7 +1107,7 @@ Return the entity name.
 ## IndiceUvaEntity
 
 ```lua
-local indice_uva = client:indice_uva(nil)
+local indice_uva = client:IndiceUva(nil)
 ```
 
 ### Fields
@@ -1124,7 +1124,7 @@ local indice_uva = client:indice_uva(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:indice_uva():list()
+local results, err = client:IndiceUva():list()
 ```
 
 ### Common Methods
@@ -1160,7 +1160,7 @@ Return the entity name.
 ## LetraEntity
 
 ```lua
-local letra = client:letra(nil)
+local letra = client:Letra(nil)
 ```
 
 ### Fields
@@ -1180,7 +1180,7 @@ local letra = client:letra(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:letra():list()
+local results, err = client:Letra():list()
 ```
 
 ### Common Methods
@@ -1216,7 +1216,7 @@ Return the entity name.
 ## PresidenteEntity
 
 ```lua
-local presidente = client:presidente(nil)
+local presidente = client:Presidente(nil)
 ```
 
 ### Fields
@@ -1239,7 +1239,7 @@ local presidente = client:presidente(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:presidente():list()
+local results, err = client:Presidente():list()
 ```
 
 ### Common Methods
@@ -1275,7 +1275,7 @@ Return the entity name.
 ## ProveedorPlazoFijoPrecancelableEntity
 
 ```lua
-local proveedor_plazo_fijo_precancelable = client:proveedor_plazo_fijo_precancelable(nil)
+local proveedor_plazo_fijo_precancelable = client:ProveedorPlazoFijoPrecancelable(nil)
 ```
 
 ### Fields
@@ -1307,7 +1307,7 @@ local proveedor_plazo_fijo_precancelable = client:proveedor_plazo_fijo_precancel
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:proveedor_plazo_fijo_precancelable():list()
+local results, err = client:ProveedorPlazoFijoPrecancelable():list()
 ```
 
 ### Common Methods
@@ -1343,7 +1343,7 @@ Return the entity name.
 ## ProveedorPlazoFijoUvaPagoPeriodicoEntity
 
 ```lua
-local proveedor_plazo_fijo_uva_pago_periodico = client:proveedor_plazo_fijo_uva_pago_periodico(nil)
+local proveedor_plazo_fijo_uva_pago_periodico = client:ProveedorPlazoFijoUvaPagoPeriodico(nil)
 ```
 
 ### Fields
@@ -1362,7 +1362,7 @@ local proveedor_plazo_fijo_uva_pago_periodico = client:proveedor_plazo_fijo_uva_
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:proveedor_plazo_fijo_uva_pago_periodico():list()
+local results, err = client:ProveedorPlazoFijoUvaPagoPeriodico():list()
 ```
 
 ### Common Methods
@@ -1398,7 +1398,7 @@ Return the entity name.
 ## RemEntity
 
 ```lua
-local rem = client:rem(nil)
+local rem = client:Rem(nil)
 ```
 
 ### Fields
@@ -1437,7 +1437,7 @@ local rem = client:rem(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:rem():list()
+local results, err = client:Rem():list()
 ```
 
 ### Common Methods
@@ -1473,7 +1473,7 @@ Return the entity name.
 ## RemExpectativaEntity
 
 ```lua
-local rem_expectativa = client:rem_expectativa(nil)
+local rem_expectativa = client:RemExpectativa(nil)
 ```
 
 ### Fields
@@ -1512,7 +1512,7 @@ local rem_expectativa = client:rem_expectativa(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:rem_expectativa():list()
+local results, err = client:RemExpectativa():list()
 ```
 
 ### Common Methods
@@ -1548,7 +1548,7 @@ Return the entity name.
 ## RendimientoEntity
 
 ```lua
-local rendimiento = client:rendimiento(nil)
+local rendimiento = client:Rendimiento(nil)
 ```
 
 ### Fields
@@ -1566,7 +1566,7 @@ local rendimiento = client:rendimiento(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:rendimiento():load({ id = "rendimiento_id" })
+local result, err = client:Rendimiento():load({ id = "rendimiento_id" })
 ```
 
 ### Common Methods
@@ -1602,7 +1602,7 @@ Return the entity name.
 ## RiesgoPaiEntity
 
 ```lua
-local riesgo_pai = client:riesgo_pai(nil)
+local riesgo_pai = client:RiesgoPai(nil)
 ```
 
 ### Fields
@@ -1619,7 +1619,7 @@ local riesgo_pai = client:riesgo_pai(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:riesgo_pai():list()
+local results, err = client:RiesgoPai():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -1627,7 +1627,7 @@ local results, err = client:riesgo_pai():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:riesgo_pai():load({ id = "riesgo_pai_id" })
+local result, err = client:RiesgoPai():load({ id = "riesgo_pai_id" })
 ```
 
 ### Common Methods
@@ -1663,7 +1663,7 @@ Return the entity name.
 ## SenadorEntity
 
 ```lua
-local senador = client:senador(nil)
+local senador = client:Senador(nil)
 ```
 
 ### Fields
@@ -1690,7 +1690,7 @@ local senador = client:senador(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:senador():list()
+local results, err = client:Senador():list()
 ```
 
 ### Common Methods
@@ -1726,7 +1726,7 @@ Return the entity name.
 ## TasaIntereEntity
 
 ```lua
-local tasa_intere = client:tasa_intere(nil)
+local tasa_intere = client:TasaIntere(nil)
 ```
 
 ### Fields
@@ -1743,7 +1743,7 @@ local tasa_intere = client:tasa_intere(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:tasa_intere():list()
+local results, err = client:TasaIntere():list()
 ```
 
 ### Common Methods
@@ -1779,7 +1779,7 @@ Return the entity name.
 ## TasaPlazoFijoEntity
 
 ```lua
-local tasa_plazo_fijo = client:tasa_plazo_fijo(nil)
+local tasa_plazo_fijo = client:TasaPlazoFijo(nil)
 ```
 
 ### Fields
@@ -1798,7 +1798,7 @@ local tasa_plazo_fijo = client:tasa_plazo_fijo(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:tasa_plazo_fijo():list()
+local results, err = client:TasaPlazoFijo():list()
 ```
 
 ### Common Methods

@@ -231,392 +231,196 @@ class ArgentinadatosSDK {
 
 
 
-  _acta?: ActaEntity
-
-  // Idiomatic facade: `client.acta.list()` / `client.acta.load({ id })`.
-  get acta(): ActaEntity {
-    return (this._acta ??= new ActaEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.acta` instead. */
+  // Entity access: `client.Acta().list()` / `client.Acta().load({ id })`.
   Acta(data?: any) {
     const self = this
     return new ActaEntity(self,data)
   }
 
 
-  _bonos_cer?: BonosCerEntity
-
-  // Idiomatic facade: `client.bonos_cer.list()` / `client.bonos_cer.load({ id })`.
-  get bonos_cer(): BonosCerEntity {
-    return (this._bonos_cer ??= new BonosCerEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.bonos_cer` instead. */
+  // Entity access: `client.BonosCer().list()` / `client.BonosCer().load({ id })`.
   BonosCer(data?: any) {
     const self = this
     return new BonosCerEntity(self,data)
   }
 
 
-  _cotizacion?: CotizacionEntity
-
-  // Idiomatic facade: `client.cotizacion.list()` / `client.cotizacion.load({ id })`.
-  get cotizacion(): CotizacionEntity {
-    return (this._cotizacion ??= new CotizacionEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.cotizacion` instead. */
+  // Entity access: `client.Cotizacion().list()` / `client.Cotizacion().load({ id })`.
   Cotizacion(data?: any) {
     const self = this
     return new CotizacionEntity(self,data)
   }
 
 
-  _criptopeso?: CriptopesoEntity
-
-  // Idiomatic facade: `client.criptopeso.list()` / `client.criptopeso.load({ id })`.
-  get criptopeso(): CriptopesoEntity {
-    return (this._criptopeso ??= new CriptopesoEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.criptopeso` instead. */
+  // Entity access: `client.Criptopeso().list()` / `client.Criptopeso().load({ id })`.
   Criptopeso(data?: any) {
     const self = this
     return new CriptopesoEntity(self,data)
   }
 
 
-  _cuenta_remunerada_usd?: CuentaRemuneradaUsdEntity
-
-  // Idiomatic facade: `client.cuenta_remunerada_usd.list()` / `client.cuenta_remunerada_usd.load({ id })`.
-  get cuenta_remunerada_usd(): CuentaRemuneradaUsdEntity {
-    return (this._cuenta_remunerada_usd ??= new CuentaRemuneradaUsdEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.cuenta_remunerada_usd` instead. */
+  // Entity access: `client.CuentaRemuneradaUsd().list()` / `client.CuentaRemuneradaUsd().load({ id })`.
   CuentaRemuneradaUsd(data?: any) {
     const self = this
     return new CuentaRemuneradaUsdEntity(self,data)
   }
 
 
-  _diputado?: DiputadoEntity
-
-  // Idiomatic facade: `client.diputado.list()` / `client.diputado.load({ id })`.
-  get diputado(): DiputadoEntity {
-    return (this._diputado ??= new DiputadoEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.diputado` instead. */
+  // Entity access: `client.Diputado().list()` / `client.Diputado().load({ id })`.
   Diputado(data?: any) {
     const self = this
     return new DiputadoEntity(self,data)
   }
 
 
-  _entidad_rendimiento?: EntidadRendimientoEntity
-
-  // Idiomatic facade: `client.entidad_rendimiento.list()` / `client.entidad_rendimiento.load({ id })`.
-  get entidad_rendimiento(): EntidadRendimientoEntity {
-    return (this._entidad_rendimiento ??= new EntidadRendimientoEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.entidad_rendimiento` instead. */
+  // Entity access: `client.EntidadRendimiento().list()` / `client.EntidadRendimiento().load({ id })`.
   EntidadRendimiento(data?: any) {
     const self = this
     return new EntidadRendimientoEntity(self,data)
   }
 
 
-  _estado?: EstadoEntity
-
-  // Idiomatic facade: `client.estado.list()` / `client.estado.load({ id })`.
-  get estado(): EstadoEntity {
-    return (this._estado ??= new EstadoEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.estado` instead. */
+  // Entity access: `client.Estado().list()` / `client.Estado().load({ id })`.
   Estado(data?: any) {
     const self = this
     return new EstadoEntity(self,data)
   }
 
 
-  _evento_presidencial?: EventoPresidencialEntity
-
-  // Idiomatic facade: `client.evento_presidencial.list()` / `client.evento_presidencial.load({ id })`.
-  get evento_presidencial(): EventoPresidencialEntity {
-    return (this._evento_presidencial ??= new EventoPresidencialEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.evento_presidencial` instead. */
+  // Entity access: `client.EventoPresidencial().list()` / `client.EventoPresidencial().load({ id })`.
   EventoPresidencial(data?: any) {
     const self = this
     return new EventoPresidencialEntity(self,data)
   }
 
 
-  _feriado?: FeriadoEntity
-
-  // Idiomatic facade: `client.feriado.list()` / `client.feriado.load({ id })`.
-  get feriado(): FeriadoEntity {
-    return (this._feriado ??= new FeriadoEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.feriado` instead. */
+  // Entity access: `client.Feriado().list()` / `client.Feriado().load({ id })`.
   Feriado(data?: any) {
     const self = this
     return new FeriadoEntity(self,data)
   }
 
 
-  _finanza?: FinanzaEntity
-
-  // Idiomatic facade: `client.finanza.list()` / `client.finanza.load({ id })`.
-  get finanza(): FinanzaEntity {
-    return (this._finanza ??= new FinanzaEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.finanza` instead. */
+  // Entity access: `client.Finanza().list()` / `client.Finanza().load({ id })`.
   Finanza(data?: any) {
     const self = this
     return new FinanzaEntity(self,data)
   }
 
 
-  _fondo_comun_inversion?: FondoComunInversionEntity
-
-  // Idiomatic facade: `client.fondo_comun_inversion.list()` / `client.fondo_comun_inversion.load({ id })`.
-  get fondo_comun_inversion(): FondoComunInversionEntity {
-    return (this._fondo_comun_inversion ??= new FondoComunInversionEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.fondo_comun_inversion` instead. */
+  // Entity access: `client.FondoComunInversion().list()` / `client.FondoComunInversion().load({ id })`.
   FondoComunInversion(data?: any) {
     const self = this
     return new FondoComunInversionEntity(self,data)
   }
 
 
-  _fondo_comun_inversion_otro?: FondoComunInversionOtroEntity
-
-  // Idiomatic facade: `client.fondo_comun_inversion_otro.list()` / `client.fondo_comun_inversion_otro.load({ id })`.
-  get fondo_comun_inversion_otro(): FondoComunInversionOtroEntity {
-    return (this._fondo_comun_inversion_otro ??= new FondoComunInversionOtroEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.fondo_comun_inversion_otro` instead. */
+  // Entity access: `client.FondoComunInversionOtro().list()` / `client.FondoComunInversionOtro().load({ id })`.
   FondoComunInversionOtro(data?: any) {
     const self = this
     return new FondoComunInversionOtroEntity(self,data)
   }
 
 
-  _fondo_comun_inversion_variable?: FondoComunInversionVariableEntity
-
-  // Idiomatic facade: `client.fondo_comun_inversion_variable.list()` / `client.fondo_comun_inversion_variable.load({ id })`.
-  get fondo_comun_inversion_variable(): FondoComunInversionVariableEntity {
-    return (this._fondo_comun_inversion_variable ??= new FondoComunInversionVariableEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.fondo_comun_inversion_variable` instead. */
+  // Entity access: `client.FondoComunInversionVariable().list()` / `client.FondoComunInversionVariable().load({ id })`.
   FondoComunInversionVariable(data?: any) {
     const self = this
     return new FondoComunInversionVariableEntity(self,data)
   }
 
 
-  _hipotecario_uva_tna?: HipotecarioUvaTnaEntity
-
-  // Idiomatic facade: `client.hipotecario_uva_tna.list()` / `client.hipotecario_uva_tna.load({ id })`.
-  get hipotecario_uva_tna(): HipotecarioUvaTnaEntity {
-    return (this._hipotecario_uva_tna ??= new HipotecarioUvaTnaEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.hipotecario_uva_tna` instead. */
+  // Entity access: `client.HipotecarioUvaTna().list()` / `client.HipotecarioUvaTna().load({ id })`.
   HipotecarioUvaTna(data?: any) {
     const self = this
     return new HipotecarioUvaTnaEntity(self,data)
   }
 
 
-  _indice_inflacion?: IndiceInflacionEntity
-
-  // Idiomatic facade: `client.indice_inflacion.list()` / `client.indice_inflacion.load({ id })`.
-  get indice_inflacion(): IndiceInflacionEntity {
-    return (this._indice_inflacion ??= new IndiceInflacionEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.indice_inflacion` instead. */
+  // Entity access: `client.IndiceInflacion().list()` / `client.IndiceInflacion().load({ id })`.
   IndiceInflacion(data?: any) {
     const self = this
     return new IndiceInflacionEntity(self,data)
   }
 
 
-  _indice_uva?: IndiceUvaEntity
-
-  // Idiomatic facade: `client.indice_uva.list()` / `client.indice_uva.load({ id })`.
-  get indice_uva(): IndiceUvaEntity {
-    return (this._indice_uva ??= new IndiceUvaEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.indice_uva` instead. */
+  // Entity access: `client.IndiceUva().list()` / `client.IndiceUva().load({ id })`.
   IndiceUva(data?: any) {
     const self = this
     return new IndiceUvaEntity(self,data)
   }
 
 
-  _letra?: LetraEntity
-
-  // Idiomatic facade: `client.letra.list()` / `client.letra.load({ id })`.
-  get letra(): LetraEntity {
-    return (this._letra ??= new LetraEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.letra` instead. */
+  // Entity access: `client.Letra().list()` / `client.Letra().load({ id })`.
   Letra(data?: any) {
     const self = this
     return new LetraEntity(self,data)
   }
 
 
-  _presidente?: PresidenteEntity
-
-  // Idiomatic facade: `client.presidente.list()` / `client.presidente.load({ id })`.
-  get presidente(): PresidenteEntity {
-    return (this._presidente ??= new PresidenteEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.presidente` instead. */
+  // Entity access: `client.Presidente().list()` / `client.Presidente().load({ id })`.
   Presidente(data?: any) {
     const self = this
     return new PresidenteEntity(self,data)
   }
 
 
-  _proveedor_plazo_fijo_precancelable?: ProveedorPlazoFijoPrecancelableEntity
-
-  // Idiomatic facade: `client.proveedor_plazo_fijo_precancelable.list()` / `client.proveedor_plazo_fijo_precancelable.load({ id })`.
-  get proveedor_plazo_fijo_precancelable(): ProveedorPlazoFijoPrecancelableEntity {
-    return (this._proveedor_plazo_fijo_precancelable ??= new ProveedorPlazoFijoPrecancelableEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.proveedor_plazo_fijo_precancelable` instead. */
+  // Entity access: `client.ProveedorPlazoFijoPrecancelable().list()` / `client.ProveedorPlazoFijoPrecancelable().load({ id })`.
   ProveedorPlazoFijoPrecancelable(data?: any) {
     const self = this
     return new ProveedorPlazoFijoPrecancelableEntity(self,data)
   }
 
 
-  _proveedor_plazo_fijo_uva_pago_periodico?: ProveedorPlazoFijoUvaPagoPeriodicoEntity
-
-  // Idiomatic facade: `client.proveedor_plazo_fijo_uva_pago_periodico.list()` / `client.proveedor_plazo_fijo_uva_pago_periodico.load({ id })`.
-  get proveedor_plazo_fijo_uva_pago_periodico(): ProveedorPlazoFijoUvaPagoPeriodicoEntity {
-    return (this._proveedor_plazo_fijo_uva_pago_periodico ??= new ProveedorPlazoFijoUvaPagoPeriodicoEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.proveedor_plazo_fijo_uva_pago_periodico` instead. */
+  // Entity access: `client.ProveedorPlazoFijoUvaPagoPeriodico().list()` / `client.ProveedorPlazoFijoUvaPagoPeriodico().load({ id })`.
   ProveedorPlazoFijoUvaPagoPeriodico(data?: any) {
     const self = this
     return new ProveedorPlazoFijoUvaPagoPeriodicoEntity(self,data)
   }
 
 
-  _rem?: RemEntity
-
-  // Idiomatic facade: `client.rem.list()` / `client.rem.load({ id })`.
-  get rem(): RemEntity {
-    return (this._rem ??= new RemEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.rem` instead. */
+  // Entity access: `client.Rem().list()` / `client.Rem().load({ id })`.
   Rem(data?: any) {
     const self = this
     return new RemEntity(self,data)
   }
 
 
-  _rem_expectativa?: RemExpectativaEntity
-
-  // Idiomatic facade: `client.rem_expectativa.list()` / `client.rem_expectativa.load({ id })`.
-  get rem_expectativa(): RemExpectativaEntity {
-    return (this._rem_expectativa ??= new RemExpectativaEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.rem_expectativa` instead. */
+  // Entity access: `client.RemExpectativa().list()` / `client.RemExpectativa().load({ id })`.
   RemExpectativa(data?: any) {
     const self = this
     return new RemExpectativaEntity(self,data)
   }
 
 
-  _rendimiento?: RendimientoEntity
-
-  // Idiomatic facade: `client.rendimiento.list()` / `client.rendimiento.load({ id })`.
-  get rendimiento(): RendimientoEntity {
-    return (this._rendimiento ??= new RendimientoEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.rendimiento` instead. */
+  // Entity access: `client.Rendimiento().list()` / `client.Rendimiento().load({ id })`.
   Rendimiento(data?: any) {
     const self = this
     return new RendimientoEntity(self,data)
   }
 
 
-  _riesgo_pai?: RiesgoPaiEntity
-
-  // Idiomatic facade: `client.riesgo_pai.list()` / `client.riesgo_pai.load({ id })`.
-  get riesgo_pai(): RiesgoPaiEntity {
-    return (this._riesgo_pai ??= new RiesgoPaiEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.riesgo_pai` instead. */
+  // Entity access: `client.RiesgoPai().list()` / `client.RiesgoPai().load({ id })`.
   RiesgoPai(data?: any) {
     const self = this
     return new RiesgoPaiEntity(self,data)
   }
 
 
-  _senador?: SenadorEntity
-
-  // Idiomatic facade: `client.senador.list()` / `client.senador.load({ id })`.
-  get senador(): SenadorEntity {
-    return (this._senador ??= new SenadorEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.senador` instead. */
+  // Entity access: `client.Senador().list()` / `client.Senador().load({ id })`.
   Senador(data?: any) {
     const self = this
     return new SenadorEntity(self,data)
   }
 
 
-  _tasa_intere?: TasaIntereEntity
-
-  // Idiomatic facade: `client.tasa_intere.list()` / `client.tasa_intere.load({ id })`.
-  get tasa_intere(): TasaIntereEntity {
-    return (this._tasa_intere ??= new TasaIntereEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.tasa_intere` instead. */
+  // Entity access: `client.TasaIntere().list()` / `client.TasaIntere().load({ id })`.
   TasaIntere(data?: any) {
     const self = this
     return new TasaIntereEntity(self,data)
   }
 
 
-  _tasa_plazo_fijo?: TasaPlazoFijoEntity
-
-  // Idiomatic facade: `client.tasa_plazo_fijo.list()` / `client.tasa_plazo_fijo.load({ id })`.
-  get tasa_plazo_fijo(): TasaPlazoFijoEntity {
-    return (this._tasa_plazo_fijo ??= new TasaPlazoFijoEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.tasa_plazo_fijo` instead. */
+  // Entity access: `client.TasaPlazoFijo().list()` / `client.TasaPlazoFijo().load({ id })`.
   TasaPlazoFijo(data?: any) {
     const self = this
     return new TasaPlazoFijoEntity(self,data)

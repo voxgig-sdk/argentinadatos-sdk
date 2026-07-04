@@ -67,7 +67,6 @@ guide: {
   entity: estado: {
     path: "/v1/estado": {
       op: load: method: *GET
-      op: load: transform: res: *("`body.estado`")|top
     }
   }
 

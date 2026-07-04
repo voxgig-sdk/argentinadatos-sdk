@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:acta():list() / client:acta():load({ id = ... })
-function ArgentinadatosSDK:acta(data)
+-- Idiomatic facade: client:Acta():list() / client:Acta():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentinadatosSDK:Acta(data)
   local EntityMod = require("entity.acta_entity")
   if data == nil then
     if self._acta == nil then
@@ -256,15 +257,10 @@ function ArgentinadatosSDK:acta(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:acta() instead.
-function ArgentinadatosSDK:Acta(data)
-  local EntityMod = require("entity.acta_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:bonos_cer():list() / client:bonos_cer():load({ id = ... })
-function ArgentinadatosSDK:bonos_cer(data)
+-- Idiomatic facade: client:BonosCer():list() / client:BonosCer():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentinadatosSDK:BonosCer(data)
   local EntityMod = require("entity.bonos_cer_entity")
   if data == nil then
     if self._bonos_cer == nil then
@@ -275,15 +271,10 @@ function ArgentinadatosSDK:bonos_cer(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:bonos_cer() instead.
-function ArgentinadatosSDK:BonosCer(data)
-  local EntityMod = require("entity.bonos_cer_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:cotizacion():list() / client:cotizacion():load({ id = ... })
-function ArgentinadatosSDK:cotizacion(data)
+-- Idiomatic facade: client:Cotizacion():list() / client:Cotizacion():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentinadatosSDK:Cotizacion(data)
   local EntityMod = require("entity.cotizacion_entity")
   if data == nil then
     if self._cotizacion == nil then
@@ -294,15 +285,10 @@ function ArgentinadatosSDK:cotizacion(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:cotizacion() instead.
-function ArgentinadatosSDK:Cotizacion(data)
-  local EntityMod = require("entity.cotizacion_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:criptopeso():list() / client:criptopeso():load({ id = ... })
-function ArgentinadatosSDK:criptopeso(data)
+-- Idiomatic facade: client:Criptopeso():list() / client:Criptopeso():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentinadatosSDK:Criptopeso(data)
   local EntityMod = require("entity.criptopeso_entity")
   if data == nil then
     if self._criptopeso == nil then
@@ -313,15 +299,10 @@ function ArgentinadatosSDK:criptopeso(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:criptopeso() instead.
-function ArgentinadatosSDK:Criptopeso(data)
-  local EntityMod = require("entity.criptopeso_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:cuenta_remunerada_usd():list() / client:cuenta_remunerada_usd():load({ id = ... })
-function ArgentinadatosSDK:cuenta_remunerada_usd(data)
+-- Idiomatic facade: client:CuentaRemuneradaUsd():list() / client:CuentaRemuneradaUsd():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentinadatosSDK:CuentaRemuneradaUsd(data)
   local EntityMod = require("entity.cuenta_remunerada_usd_entity")
   if data == nil then
     if self._cuenta_remunerada_usd == nil then
@@ -332,15 +313,10 @@ function ArgentinadatosSDK:cuenta_remunerada_usd(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:cuenta_remunerada_usd() instead.
-function ArgentinadatosSDK:CuentaRemuneradaUsd(data)
-  local EntityMod = require("entity.cuenta_remunerada_usd_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:diputado():list() / client:diputado():load({ id = ... })
-function ArgentinadatosSDK:diputado(data)
+-- Idiomatic facade: client:Diputado():list() / client:Diputado():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentinadatosSDK:Diputado(data)
   local EntityMod = require("entity.diputado_entity")
   if data == nil then
     if self._diputado == nil then
@@ -351,15 +327,10 @@ function ArgentinadatosSDK:diputado(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:diputado() instead.
-function ArgentinadatosSDK:Diputado(data)
-  local EntityMod = require("entity.diputado_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:entidad_rendimiento():list() / client:entidad_rendimiento():load({ id = ... })
-function ArgentinadatosSDK:entidad_rendimiento(data)
+-- Idiomatic facade: client:EntidadRendimiento():list() / client:EntidadRendimiento():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentinadatosSDK:EntidadRendimiento(data)
   local EntityMod = require("entity.entidad_rendimiento_entity")
   if data == nil then
     if self._entidad_rendimiento == nil then
@@ -370,15 +341,10 @@ function ArgentinadatosSDK:entidad_rendimiento(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:entidad_rendimiento() instead.
-function ArgentinadatosSDK:EntidadRendimiento(data)
-  local EntityMod = require("entity.entidad_rendimiento_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:estado():list() / client:estado():load({ id = ... })
-function ArgentinadatosSDK:estado(data)
+-- Idiomatic facade: client:Estado():list() / client:Estado():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentinadatosSDK:Estado(data)
   local EntityMod = require("entity.estado_entity")
   if data == nil then
     if self._estado == nil then
@@ -389,15 +355,10 @@ function ArgentinadatosSDK:estado(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:estado() instead.
-function ArgentinadatosSDK:Estado(data)
-  local EntityMod = require("entity.estado_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:evento_presidencial():list() / client:evento_presidencial():load({ id = ... })
-function ArgentinadatosSDK:evento_presidencial(data)
+-- Idiomatic facade: client:EventoPresidencial():list() / client:EventoPresidencial():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentinadatosSDK:EventoPresidencial(data)
   local EntityMod = require("entity.evento_presidencial_entity")
   if data == nil then
     if self._evento_presidencial == nil then
@@ -408,15 +369,10 @@ function ArgentinadatosSDK:evento_presidencial(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:evento_presidencial() instead.
-function ArgentinadatosSDK:EventoPresidencial(data)
-  local EntityMod = require("entity.evento_presidencial_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:feriado():list() / client:feriado():load({ id = ... })
-function ArgentinadatosSDK:feriado(data)
+-- Idiomatic facade: client:Feriado():list() / client:Feriado():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentinadatosSDK:Feriado(data)
   local EntityMod = require("entity.feriado_entity")
   if data == nil then
     if self._feriado == nil then
@@ -427,15 +383,10 @@ function ArgentinadatosSDK:feriado(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:feriado() instead.
-function ArgentinadatosSDK:Feriado(data)
-  local EntityMod = require("entity.feriado_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:finanza():list() / client:finanza():load({ id = ... })
-function ArgentinadatosSDK:finanza(data)
+-- Idiomatic facade: client:Finanza():list() / client:Finanza():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentinadatosSDK:Finanza(data)
   local EntityMod = require("entity.finanza_entity")
   if data == nil then
     if self._finanza == nil then
@@ -446,15 +397,10 @@ function ArgentinadatosSDK:finanza(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:finanza() instead.
-function ArgentinadatosSDK:Finanza(data)
-  local EntityMod = require("entity.finanza_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:fondo_comun_inversion():list() / client:fondo_comun_inversion():load({ id = ... })
-function ArgentinadatosSDK:fondo_comun_inversion(data)
+-- Idiomatic facade: client:FondoComunInversion():list() / client:FondoComunInversion():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentinadatosSDK:FondoComunInversion(data)
   local EntityMod = require("entity.fondo_comun_inversion_entity")
   if data == nil then
     if self._fondo_comun_inversion == nil then
@@ -465,15 +411,10 @@ function ArgentinadatosSDK:fondo_comun_inversion(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:fondo_comun_inversion() instead.
-function ArgentinadatosSDK:FondoComunInversion(data)
-  local EntityMod = require("entity.fondo_comun_inversion_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:fondo_comun_inversion_otro():list() / client:fondo_comun_inversion_otro():load({ id = ... })
-function ArgentinadatosSDK:fondo_comun_inversion_otro(data)
+-- Idiomatic facade: client:FondoComunInversionOtro():list() / client:FondoComunInversionOtro():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentinadatosSDK:FondoComunInversionOtro(data)
   local EntityMod = require("entity.fondo_comun_inversion_otro_entity")
   if data == nil then
     if self._fondo_comun_inversion_otro == nil then
@@ -484,15 +425,10 @@ function ArgentinadatosSDK:fondo_comun_inversion_otro(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:fondo_comun_inversion_otro() instead.
-function ArgentinadatosSDK:FondoComunInversionOtro(data)
-  local EntityMod = require("entity.fondo_comun_inversion_otro_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:fondo_comun_inversion_variable():list() / client:fondo_comun_inversion_variable():load({ id = ... })
-function ArgentinadatosSDK:fondo_comun_inversion_variable(data)
+-- Idiomatic facade: client:FondoComunInversionVariable():list() / client:FondoComunInversionVariable():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentinadatosSDK:FondoComunInversionVariable(data)
   local EntityMod = require("entity.fondo_comun_inversion_variable_entity")
   if data == nil then
     if self._fondo_comun_inversion_variable == nil then
@@ -503,15 +439,10 @@ function ArgentinadatosSDK:fondo_comun_inversion_variable(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:fondo_comun_inversion_variable() instead.
-function ArgentinadatosSDK:FondoComunInversionVariable(data)
-  local EntityMod = require("entity.fondo_comun_inversion_variable_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:hipotecario_uva_tna():list() / client:hipotecario_uva_tna():load({ id = ... })
-function ArgentinadatosSDK:hipotecario_uva_tna(data)
+-- Idiomatic facade: client:HipotecarioUvaTna():list() / client:HipotecarioUvaTna():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentinadatosSDK:HipotecarioUvaTna(data)
   local EntityMod = require("entity.hipotecario_uva_tna_entity")
   if data == nil then
     if self._hipotecario_uva_tna == nil then
@@ -522,15 +453,10 @@ function ArgentinadatosSDK:hipotecario_uva_tna(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:hipotecario_uva_tna() instead.
-function ArgentinadatosSDK:HipotecarioUvaTna(data)
-  local EntityMod = require("entity.hipotecario_uva_tna_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:indice_inflacion():list() / client:indice_inflacion():load({ id = ... })
-function ArgentinadatosSDK:indice_inflacion(data)
+-- Idiomatic facade: client:IndiceInflacion():list() / client:IndiceInflacion():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentinadatosSDK:IndiceInflacion(data)
   local EntityMod = require("entity.indice_inflacion_entity")
   if data == nil then
     if self._indice_inflacion == nil then
@@ -541,15 +467,10 @@ function ArgentinadatosSDK:indice_inflacion(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:indice_inflacion() instead.
-function ArgentinadatosSDK:IndiceInflacion(data)
-  local EntityMod = require("entity.indice_inflacion_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:indice_uva():list() / client:indice_uva():load({ id = ... })
-function ArgentinadatosSDK:indice_uva(data)
+-- Idiomatic facade: client:IndiceUva():list() / client:IndiceUva():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentinadatosSDK:IndiceUva(data)
   local EntityMod = require("entity.indice_uva_entity")
   if data == nil then
     if self._indice_uva == nil then
@@ -560,15 +481,10 @@ function ArgentinadatosSDK:indice_uva(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:indice_uva() instead.
-function ArgentinadatosSDK:IndiceUva(data)
-  local EntityMod = require("entity.indice_uva_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:letra():list() / client:letra():load({ id = ... })
-function ArgentinadatosSDK:letra(data)
+-- Idiomatic facade: client:Letra():list() / client:Letra():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentinadatosSDK:Letra(data)
   local EntityMod = require("entity.letra_entity")
   if data == nil then
     if self._letra == nil then
@@ -579,15 +495,10 @@ function ArgentinadatosSDK:letra(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:letra() instead.
-function ArgentinadatosSDK:Letra(data)
-  local EntityMod = require("entity.letra_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:presidente():list() / client:presidente():load({ id = ... })
-function ArgentinadatosSDK:presidente(data)
+-- Idiomatic facade: client:Presidente():list() / client:Presidente():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentinadatosSDK:Presidente(data)
   local EntityMod = require("entity.presidente_entity")
   if data == nil then
     if self._presidente == nil then
@@ -598,15 +509,10 @@ function ArgentinadatosSDK:presidente(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:presidente() instead.
-function ArgentinadatosSDK:Presidente(data)
-  local EntityMod = require("entity.presidente_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:proveedor_plazo_fijo_precancelable():list() / client:proveedor_plazo_fijo_precancelable():load({ id = ... })
-function ArgentinadatosSDK:proveedor_plazo_fijo_precancelable(data)
+-- Idiomatic facade: client:ProveedorPlazoFijoPrecancelable():list() / client:ProveedorPlazoFijoPrecancelable():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentinadatosSDK:ProveedorPlazoFijoPrecancelable(data)
   local EntityMod = require("entity.proveedor_plazo_fijo_precancelable_entity")
   if data == nil then
     if self._proveedor_plazo_fijo_precancelable == nil then
@@ -617,15 +523,10 @@ function ArgentinadatosSDK:proveedor_plazo_fijo_precancelable(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:proveedor_plazo_fijo_precancelable() instead.
-function ArgentinadatosSDK:ProveedorPlazoFijoPrecancelable(data)
-  local EntityMod = require("entity.proveedor_plazo_fijo_precancelable_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:proveedor_plazo_fijo_uva_pago_periodico():list() / client:proveedor_plazo_fijo_uva_pago_periodico():load({ id = ... })
-function ArgentinadatosSDK:proveedor_plazo_fijo_uva_pago_periodico(data)
+-- Idiomatic facade: client:ProveedorPlazoFijoUvaPagoPeriodico():list() / client:ProveedorPlazoFijoUvaPagoPeriodico():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentinadatosSDK:ProveedorPlazoFijoUvaPagoPeriodico(data)
   local EntityMod = require("entity.proveedor_plazo_fijo_uva_pago_periodico_entity")
   if data == nil then
     if self._proveedor_plazo_fijo_uva_pago_periodico == nil then
@@ -636,15 +537,10 @@ function ArgentinadatosSDK:proveedor_plazo_fijo_uva_pago_periodico(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:proveedor_plazo_fijo_uva_pago_periodico() instead.
-function ArgentinadatosSDK:ProveedorPlazoFijoUvaPagoPeriodico(data)
-  local EntityMod = require("entity.proveedor_plazo_fijo_uva_pago_periodico_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:rem():list() / client:rem():load({ id = ... })
-function ArgentinadatosSDK:rem(data)
+-- Idiomatic facade: client:Rem():list() / client:Rem():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentinadatosSDK:Rem(data)
   local EntityMod = require("entity.rem_entity")
   if data == nil then
     if self._rem == nil then
@@ -655,15 +551,10 @@ function ArgentinadatosSDK:rem(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:rem() instead.
-function ArgentinadatosSDK:Rem(data)
-  local EntityMod = require("entity.rem_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:rem_expectativa():list() / client:rem_expectativa():load({ id = ... })
-function ArgentinadatosSDK:rem_expectativa(data)
+-- Idiomatic facade: client:RemExpectativa():list() / client:RemExpectativa():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentinadatosSDK:RemExpectativa(data)
   local EntityMod = require("entity.rem_expectativa_entity")
   if data == nil then
     if self._rem_expectativa == nil then
@@ -674,15 +565,10 @@ function ArgentinadatosSDK:rem_expectativa(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:rem_expectativa() instead.
-function ArgentinadatosSDK:RemExpectativa(data)
-  local EntityMod = require("entity.rem_expectativa_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:rendimiento():list() / client:rendimiento():load({ id = ... })
-function ArgentinadatosSDK:rendimiento(data)
+-- Idiomatic facade: client:Rendimiento():list() / client:Rendimiento():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentinadatosSDK:Rendimiento(data)
   local EntityMod = require("entity.rendimiento_entity")
   if data == nil then
     if self._rendimiento == nil then
@@ -693,15 +579,10 @@ function ArgentinadatosSDK:rendimiento(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:rendimiento() instead.
-function ArgentinadatosSDK:Rendimiento(data)
-  local EntityMod = require("entity.rendimiento_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:riesgo_pai():list() / client:riesgo_pai():load({ id = ... })
-function ArgentinadatosSDK:riesgo_pai(data)
+-- Idiomatic facade: client:RiesgoPai():list() / client:RiesgoPai():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentinadatosSDK:RiesgoPai(data)
   local EntityMod = require("entity.riesgo_pai_entity")
   if data == nil then
     if self._riesgo_pai == nil then
@@ -712,15 +593,10 @@ function ArgentinadatosSDK:riesgo_pai(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:riesgo_pai() instead.
-function ArgentinadatosSDK:RiesgoPai(data)
-  local EntityMod = require("entity.riesgo_pai_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:senador():list() / client:senador():load({ id = ... })
-function ArgentinadatosSDK:senador(data)
+-- Idiomatic facade: client:Senador():list() / client:Senador():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentinadatosSDK:Senador(data)
   local EntityMod = require("entity.senador_entity")
   if data == nil then
     if self._senador == nil then
@@ -731,15 +607,10 @@ function ArgentinadatosSDK:senador(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:senador() instead.
-function ArgentinadatosSDK:Senador(data)
-  local EntityMod = require("entity.senador_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:tasa_intere():list() / client:tasa_intere():load({ id = ... })
-function ArgentinadatosSDK:tasa_intere(data)
+-- Idiomatic facade: client:TasaIntere():list() / client:TasaIntere():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentinadatosSDK:TasaIntere(data)
   local EntityMod = require("entity.tasa_intere_entity")
   if data == nil then
     if self._tasa_intere == nil then
@@ -750,15 +621,10 @@ function ArgentinadatosSDK:tasa_intere(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:tasa_intere() instead.
-function ArgentinadatosSDK:TasaIntere(data)
-  local EntityMod = require("entity.tasa_intere_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:tasa_plazo_fijo():list() / client:tasa_plazo_fijo():load({ id = ... })
-function ArgentinadatosSDK:tasa_plazo_fijo(data)
+-- Idiomatic facade: client:TasaPlazoFijo():list() / client:TasaPlazoFijo():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentinadatosSDK:TasaPlazoFijo(data)
   local EntityMod = require("entity.tasa_plazo_fijo_entity")
   if data == nil then
     if self._tasa_plazo_fijo == nil then
@@ -766,12 +632,6 @@ function ArgentinadatosSDK:tasa_plazo_fijo(data)
     end
     return self._tasa_plazo_fijo
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:tasa_plazo_fijo() instead.
-function ArgentinadatosSDK:TasaPlazoFijo(data)
-  local EntityMod = require("entity.tasa_plazo_fijo_entity")
   return EntityMod.new(self, data)
 end
 

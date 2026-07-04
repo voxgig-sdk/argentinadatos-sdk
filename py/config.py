@@ -898,7 +898,7 @@ def make_config():
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body.estado`",
+                  "res": "`body`",
                 },
                 "index$": 0,
               },

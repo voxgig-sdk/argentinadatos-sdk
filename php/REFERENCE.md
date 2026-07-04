@@ -193,7 +193,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## ActaEntity
 
 ```php
-$acta = $client->acta();
+$acta = $client->Acta();
 ```
 
 ### Fields
@@ -233,7 +233,7 @@ $acta = $client->acta();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->acta()->list([]);
+$results = $client->Acta()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -241,7 +241,7 @@ $results = $client->acta()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->acta()->load(["id" => "acta_id"]);
+$result = $client->Acta()->load(["id" => "acta_id"]);
 ```
 
 ### Common Methods
@@ -277,7 +277,7 @@ Return the entity name.
 ## BonosCerEntity
 
 ```php
-$bonos_cer = $client->bonos_cer();
+$bonos_cer = $client->BonosCer();
 ```
 
 ### Fields
@@ -297,7 +297,7 @@ $bonos_cer = $client->bonos_cer();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->bonos_cer()->list([]);
+$results = $client->BonosCer()->list([]);
 ```
 
 ### Common Methods
@@ -333,7 +333,7 @@ Return the entity name.
 ## CotizacionEntity
 
 ```php
-$cotizacion = $client->cotizacion();
+$cotizacion = $client->Cotizacion();
 ```
 
 ### Fields
@@ -353,7 +353,7 @@ $cotizacion = $client->cotizacion();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->cotizacion()->list([]);
+$results = $client->Cotizacion()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -361,7 +361,7 @@ $results = $client->cotizacion()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->cotizacion()->load(["id" => "cotizacion_id"]);
+$result = $client->Cotizacion()->load(["id" => "cotizacion_id"]);
 ```
 
 ### Common Methods
@@ -397,7 +397,7 @@ Return the entity name.
 ## CriptopesoEntity
 
 ```php
-$criptopeso = $client->criptopeso();
+$criptopeso = $client->Criptopeso();
 ```
 
 ### Fields
@@ -415,7 +415,7 @@ $criptopeso = $client->criptopeso();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->criptopeso()->list([]);
+$results = $client->Criptopeso()->list([]);
 ```
 
 ### Common Methods
@@ -451,7 +451,7 @@ Return the entity name.
 ## CuentaRemuneradaUsdEntity
 
 ```php
-$cuenta_remunerada_usd = $client->cuenta_remunerada_usd();
+$cuenta_remunerada_usd = $client->CuentaRemuneradaUsd();
 ```
 
 ### Fields
@@ -469,7 +469,7 @@ $cuenta_remunerada_usd = $client->cuenta_remunerada_usd();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->cuenta_remunerada_usd()->list([]);
+$results = $client->CuentaRemuneradaUsd()->list([]);
 ```
 
 ### Common Methods
@@ -505,7 +505,7 @@ Return the entity name.
 ## DiputadoEntity
 
 ```php
-$diputado = $client->diputado();
+$diputado = $client->Diputado();
 ```
 
 ### Fields
@@ -531,7 +531,7 @@ $diputado = $client->diputado();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->diputado()->list([]);
+$results = $client->Diputado()->list([]);
 ```
 
 ### Common Methods
@@ -567,7 +567,7 @@ Return the entity name.
 ## EntidadRendimientoEntity
 
 ```php
-$entidad_rendimiento = $client->entidad_rendimiento();
+$entidad_rendimiento = $client->EntidadRendimiento();
 ```
 
 ### Fields
@@ -584,7 +584,7 @@ $entidad_rendimiento = $client->entidad_rendimiento();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->entidad_rendimiento()->list([]);
+$results = $client->EntidadRendimiento()->list([]);
 ```
 
 ### Common Methods
@@ -620,7 +620,7 @@ Return the entity name.
 ## EstadoEntity
 
 ```php
-$estado = $client->estado();
+$estado = $client->Estado();
 ```
 
 ### Fields
@@ -637,7 +637,7 @@ $estado = $client->estado();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->estado()->load(["id" => "estado_id"]);
+$result = $client->Estado()->load(["id" => "estado_id"]);
 ```
 
 ### Common Methods
@@ -673,7 +673,7 @@ Return the entity name.
 ## EventoPresidencialEntity
 
 ```php
-$evento_presidencial = $client->evento_presidencial();
+$evento_presidencial = $client->EventoPresidencial();
 ```
 
 ### Fields
@@ -691,7 +691,7 @@ $evento_presidencial = $client->evento_presidencial();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->evento_presidencial()->list([]);
+$results = $client->EventoPresidencial()->list([]);
 ```
 
 ### Common Methods
@@ -727,7 +727,7 @@ Return the entity name.
 ## FeriadoEntity
 
 ```php
-$feriado = $client->feriado();
+$feriado = $client->Feriado();
 ```
 
 ### Fields
@@ -745,7 +745,7 @@ $feriado = $client->feriado();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->feriado()->load(["id" => "feriado_id"]);
+$result = $client->Feriado()->load(["id" => "feriado_id"]);
 ```
 
 ### Common Methods
@@ -781,7 +781,7 @@ Return the entity name.
 ## FinanzaEntity
 
 ```php
-$finanza = $client->finanza();
+$finanza = $client->Finanza();
 ```
 
 ### Operations
@@ -791,7 +791,7 @@ $finanza = $client->finanza();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->finanza()->list([]);
+$results = $client->Finanza()->list([]);
 ```
 
 ### Common Methods
@@ -827,7 +827,7 @@ Return the entity name.
 ## FondoComunInversionEntity
 
 ```php
-$fondo_comun_inversion = $client->fondo_comun_inversion();
+$fondo_comun_inversion = $client->FondoComunInversion();
 ```
 
 ### Fields
@@ -849,7 +849,7 @@ $fondo_comun_inversion = $client->fondo_comun_inversion();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->fondo_comun_inversion()->load(["id" => "fondo_comun_inversion_id"]);
+$result = $client->FondoComunInversion()->load(["id" => "fondo_comun_inversion_id"]);
 ```
 
 ### Common Methods
@@ -885,7 +885,7 @@ Return the entity name.
 ## FondoComunInversionOtroEntity
 
 ```php
-$fondo_comun_inversion_otro = $client->fondo_comun_inversion_otro();
+$fondo_comun_inversion_otro = $client->FondoComunInversionOtro();
 ```
 
 ### Fields
@@ -905,7 +905,7 @@ $fondo_comun_inversion_otro = $client->fondo_comun_inversion_otro();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->fondo_comun_inversion_otro()->load(["id" => "fondo_comun_inversion_otro_id"]);
+$result = $client->FondoComunInversionOtro()->load(["id" => "fondo_comun_inversion_otro_id"]);
 ```
 
 ### Common Methods
@@ -941,7 +941,7 @@ Return the entity name.
 ## FondoComunInversionVariableEntity
 
 ```php
-$fondo_comun_inversion_variable = $client->fondo_comun_inversion_variable();
+$fondo_comun_inversion_variable = $client->FondoComunInversionVariable();
 ```
 
 ### Fields
@@ -965,7 +965,7 @@ $fondo_comun_inversion_variable = $client->fondo_comun_inversion_variable();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->fondo_comun_inversion_variable()->load(["id" => "fondo_comun_inversion_variable_id"]);
+$result = $client->FondoComunInversionVariable()->load(["id" => "fondo_comun_inversion_variable_id"]);
 ```
 
 ### Common Methods
@@ -1001,7 +1001,7 @@ Return the entity name.
 ## HipotecarioUvaTnaEntity
 
 ```php
-$hipotecario_uva_tna = $client->hipotecario_uva_tna();
+$hipotecario_uva_tna = $client->HipotecarioUvaTna();
 ```
 
 ### Fields
@@ -1020,7 +1020,7 @@ $hipotecario_uva_tna = $client->hipotecario_uva_tna();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->hipotecario_uva_tna()->list([]);
+$results = $client->HipotecarioUvaTna()->list([]);
 ```
 
 ### Common Methods
@@ -1056,7 +1056,7 @@ Return the entity name.
 ## IndiceInflacionEntity
 
 ```php
-$indice_inflacion = $client->indice_inflacion();
+$indice_inflacion = $client->IndiceInflacion();
 ```
 
 ### Fields
@@ -1073,7 +1073,7 @@ $indice_inflacion = $client->indice_inflacion();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->indice_inflacion()->list([]);
+$results = $client->IndiceInflacion()->list([]);
 ```
 
 ### Common Methods
@@ -1109,7 +1109,7 @@ Return the entity name.
 ## IndiceUvaEntity
 
 ```php
-$indice_uva = $client->indice_uva();
+$indice_uva = $client->IndiceUva();
 ```
 
 ### Fields
@@ -1126,7 +1126,7 @@ $indice_uva = $client->indice_uva();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->indice_uva()->list([]);
+$results = $client->IndiceUva()->list([]);
 ```
 
 ### Common Methods
@@ -1162,7 +1162,7 @@ Return the entity name.
 ## LetraEntity
 
 ```php
-$letra = $client->letra();
+$letra = $client->Letra();
 ```
 
 ### Fields
@@ -1182,7 +1182,7 @@ $letra = $client->letra();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->letra()->list([]);
+$results = $client->Letra()->list([]);
 ```
 
 ### Common Methods
@@ -1218,7 +1218,7 @@ Return the entity name.
 ## PresidenteEntity
 
 ```php
-$presidente = $client->presidente();
+$presidente = $client->Presidente();
 ```
 
 ### Fields
@@ -1241,7 +1241,7 @@ $presidente = $client->presidente();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->presidente()->list([]);
+$results = $client->Presidente()->list([]);
 ```
 
 ### Common Methods
@@ -1277,7 +1277,7 @@ Return the entity name.
 ## ProveedorPlazoFijoPrecancelableEntity
 
 ```php
-$proveedor_plazo_fijo_precancelable = $client->proveedor_plazo_fijo_precancelable();
+$proveedor_plazo_fijo_precancelable = $client->ProveedorPlazoFijoPrecancelable();
 ```
 
 ### Fields
@@ -1309,7 +1309,7 @@ $proveedor_plazo_fijo_precancelable = $client->proveedor_plazo_fijo_precancelabl
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->proveedor_plazo_fijo_precancelable()->list([]);
+$results = $client->ProveedorPlazoFijoPrecancelable()->list([]);
 ```
 
 ### Common Methods
@@ -1345,7 +1345,7 @@ Return the entity name.
 ## ProveedorPlazoFijoUvaPagoPeriodicoEntity
 
 ```php
-$proveedor_plazo_fijo_uva_pago_periodico = $client->proveedor_plazo_fijo_uva_pago_periodico();
+$proveedor_plazo_fijo_uva_pago_periodico = $client->ProveedorPlazoFijoUvaPagoPeriodico();
 ```
 
 ### Fields
@@ -1364,7 +1364,7 @@ $proveedor_plazo_fijo_uva_pago_periodico = $client->proveedor_plazo_fijo_uva_pag
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->proveedor_plazo_fijo_uva_pago_periodico()->list([]);
+$results = $client->ProveedorPlazoFijoUvaPagoPeriodico()->list([]);
 ```
 
 ### Common Methods
@@ -1400,7 +1400,7 @@ Return the entity name.
 ## RemEntity
 
 ```php
-$rem = $client->rem();
+$rem = $client->Rem();
 ```
 
 ### Fields
@@ -1439,7 +1439,7 @@ $rem = $client->rem();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->rem()->list([]);
+$results = $client->Rem()->list([]);
 ```
 
 ### Common Methods
@@ -1475,7 +1475,7 @@ Return the entity name.
 ## RemExpectativaEntity
 
 ```php
-$rem_expectativa = $client->rem_expectativa();
+$rem_expectativa = $client->RemExpectativa();
 ```
 
 ### Fields
@@ -1514,7 +1514,7 @@ $rem_expectativa = $client->rem_expectativa();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->rem_expectativa()->list([]);
+$results = $client->RemExpectativa()->list([]);
 ```
 
 ### Common Methods
@@ -1550,7 +1550,7 @@ Return the entity name.
 ## RendimientoEntity
 
 ```php
-$rendimiento = $client->rendimiento();
+$rendimiento = $client->Rendimiento();
 ```
 
 ### Fields
@@ -1568,7 +1568,7 @@ $rendimiento = $client->rendimiento();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->rendimiento()->load(["id" => "rendimiento_id"]);
+$result = $client->Rendimiento()->load(["id" => "rendimiento_id"]);
 ```
 
 ### Common Methods
@@ -1604,7 +1604,7 @@ Return the entity name.
 ## RiesgoPaiEntity
 
 ```php
-$riesgo_pai = $client->riesgo_pai();
+$riesgo_pai = $client->RiesgoPai();
 ```
 
 ### Fields
@@ -1621,7 +1621,7 @@ $riesgo_pai = $client->riesgo_pai();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->riesgo_pai()->list([]);
+$results = $client->RiesgoPai()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -1629,7 +1629,7 @@ $results = $client->riesgo_pai()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->riesgo_pai()->load(["id" => "riesgo_pai_id"]);
+$result = $client->RiesgoPai()->load(["id" => "riesgo_pai_id"]);
 ```
 
 ### Common Methods
@@ -1665,7 +1665,7 @@ Return the entity name.
 ## SenadorEntity
 
 ```php
-$senador = $client->senador();
+$senador = $client->Senador();
 ```
 
 ### Fields
@@ -1692,7 +1692,7 @@ $senador = $client->senador();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->senador()->list([]);
+$results = $client->Senador()->list([]);
 ```
 
 ### Common Methods
@@ -1728,7 +1728,7 @@ Return the entity name.
 ## TasaIntereEntity
 
 ```php
-$tasa_intere = $client->tasa_intere();
+$tasa_intere = $client->TasaIntere();
 ```
 
 ### Fields
@@ -1745,7 +1745,7 @@ $tasa_intere = $client->tasa_intere();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->tasa_intere()->list([]);
+$results = $client->TasaIntere()->list([]);
 ```
 
 ### Common Methods
@@ -1781,7 +1781,7 @@ Return the entity name.
 ## TasaPlazoFijoEntity
 
 ```php
-$tasa_plazo_fijo = $client->tasa_plazo_fijo();
+$tasa_plazo_fijo = $client->TasaPlazoFijo();
 ```
 
 ### Fields
@@ -1800,7 +1800,7 @@ $tasa_plazo_fijo = $client->tasa_plazo_fijo();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->tasa_plazo_fijo()->list([]);
+$results = $client->TasaPlazoFijo()->list([]);
 ```
 
 ### Common Methods

@@ -4,599 +4,547 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Acta:
-    abstencione: Optional[int] = None
-    acta: Optional[str] = None
-    acta_id: Optional[int] = None
-    afirmativo: Optional[int] = None
-    amn: Optional[int] = None
-    ausente: Optional[int] = None
-    descripcion: Optional[str] = None
-    fecha: Optional[str] = None
-    id: Optional[str] = None
-    mayoria: Optional[str] = None
-    miembro: Optional[int] = None
-    negativo: Optional[int] = None
-    numero_acta: Optional[str] = None
-    observacione: Optional[list] = None
-    periodo: Optional[str] = None
-    presente: Optional[int] = None
-    presidente: Optional[str] = None
-    proyecto: Optional[str] = None
-    quorum_tipo: Optional[str] = None
-    resultado: Optional[str] = None
-    reunion: Optional[str] = None
-    titulo: Optional[str] = None
-    voto: Optional[list] = None
-    votos_afirmativo: Optional[int] = None
-    votos_negativo: Optional[int] = None
+class Acta(TypedDict, total=False):
+    abstencione: int
+    acta: str
+    acta_id: int
+    afirmativo: int
+    amn: int
+    ausente: int
+    descripcion: str
+    fecha: str
+    id: str
+    mayoria: str
+    miembro: int
+    negativo: int
+    numero_acta: str
+    observacione: list
+    periodo: str
+    presente: int
+    presidente: str
+    proyecto: str
+    quorum_tipo: str
+    resultado: str
+    reunion: str
+    titulo: str
+    voto: list
+    votos_afirmativo: int
+    votos_negativo: int
 
 
-@dataclass
-class ActaLoadMatch:
+class ActaLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class ActaListMatch:
-    abstencione: Optional[int] = None
-    acta: Optional[str] = None
-    acta_id: Optional[int] = None
-    afirmativo: Optional[int] = None
-    amn: Optional[int] = None
-    ausente: Optional[int] = None
-    descripcion: Optional[str] = None
-    fecha: Optional[str] = None
-    id: Optional[str] = None
-    mayoria: Optional[str] = None
-    miembro: Optional[int] = None
-    negativo: Optional[int] = None
-    numero_acta: Optional[str] = None
-    observacione: Optional[list] = None
-    periodo: Optional[str] = None
-    presente: Optional[int] = None
-    presidente: Optional[str] = None
-    proyecto: Optional[str] = None
-    quorum_tipo: Optional[str] = None
-    resultado: Optional[str] = None
-    reunion: Optional[str] = None
-    titulo: Optional[str] = None
-    voto: Optional[list] = None
-    votos_afirmativo: Optional[int] = None
-    votos_negativo: Optional[int] = None
+class ActaListMatch(TypedDict, total=False):
+    abstencione: int
+    acta: str
+    acta_id: int
+    afirmativo: int
+    amn: int
+    ausente: int
+    descripcion: str
+    fecha: str
+    id: str
+    mayoria: str
+    miembro: int
+    negativo: int
+    numero_acta: str
+    observacione: list
+    periodo: str
+    presente: int
+    presidente: str
+    proyecto: str
+    quorum_tipo: str
+    resultado: str
+    reunion: str
+    titulo: str
+    voto: list
+    votos_afirmativo: int
+    votos_negativo: int
 
 
-@dataclass
-class BonosCer:
+class BonosCerRequired(TypedDict):
     fecha_vencimiento: str
     precio_ar: float
     ticker: str
     tir_porcentaje: float
-    voluman: Optional[float] = None
 
 
-@dataclass
-class BonosCerListMatch:
-    fecha_vencimiento: Optional[str] = None
-    precio_ar: Optional[float] = None
-    ticker: Optional[str] = None
-    tir_porcentaje: Optional[float] = None
-    voluman: Optional[float] = None
+class BonosCer(BonosCerRequired, total=False):
+    voluman: float
 
 
-@dataclass
-class Cotizacion:
-    casa: Optional[str] = None
-    compra: Optional[float] = None
-    fecha: Optional[str] = None
-    moneda: Optional[str] = None
-    venta: Optional[float] = None
+class BonosCerListMatch(TypedDict, total=False):
+    fecha_vencimiento: str
+    precio_ar: float
+    ticker: str
+    tir_porcentaje: float
+    voluman: float
 
 
-@dataclass
-class CotizacionLoadMatch:
+class Cotizacion(TypedDict, total=False):
+    casa: str
+    compra: float
+    fecha: str
+    moneda: str
+    venta: float
+
+
+class CotizacionLoadMatch(TypedDict):
     casa: str
     fecha: str
 
 
-@dataclass
-class CotizacionListMatch:
-    casa: Optional[str] = None
-    compra: Optional[float] = None
-    fecha: Optional[str] = None
-    moneda: Optional[str] = None
-    venta: Optional[float] = None
+class CotizacionListMatch(TypedDict, total=False):
+    casa: str
+    compra: float
+    fecha: str
+    moneda: str
+    venta: float
 
 
-@dataclass
-class Criptopeso:
-    entidad: Optional[str] = None
-    tna: Optional[float] = None
-    token: Optional[str] = None
+class Criptopeso(TypedDict, total=False):
+    entidad: str
+    tna: float
+    token: str
 
 
-@dataclass
-class CriptopesoListMatch:
-    entidad: Optional[str] = None
-    tna: Optional[float] = None
-    token: Optional[str] = None
+class CriptopesoListMatch(TypedDict, total=False):
+    entidad: str
+    tna: float
+    token: str
 
 
-@dataclass
-class CuentaRemuneradaUsd:
-    entidad: Optional[str] = None
-    tasa: Optional[float] = None
-    tope: Optional[float] = None
+class CuentaRemuneradaUsd(TypedDict, total=False):
+    entidad: str
+    tasa: float
+    tope: float
 
 
-@dataclass
-class CuentaRemuneradaUsdListMatch:
-    entidad: Optional[str] = None
-    tasa: Optional[float] = None
-    tope: Optional[float] = None
+class CuentaRemuneradaUsdListMatch(TypedDict, total=False):
+    entidad: str
+    tasa: float
+    tope: float
 
 
-@dataclass
-class Diputado:
-    apellido: Optional[str] = None
-    bloque: Optional[str] = None
-    cese_fecha: Optional[str] = None
-    foto: Optional[str] = None
-    genero: Optional[str] = None
-    id: Optional[str] = None
-    juramento_fecha: Optional[str] = None
-    nombre: Optional[str] = None
-    periodo_bloque: Optional[dict] = None
-    periodo_mandato: Optional[dict] = None
-    provincia: Optional[str] = None
+class Diputado(TypedDict, total=False):
+    apellido: str
+    bloque: str
+    cese_fecha: str
+    foto: str
+    genero: str
+    id: str
+    juramento_fecha: str
+    nombre: str
+    periodo_bloque: dict
+    periodo_mandato: dict
+    provincia: str
 
 
-@dataclass
-class DiputadoListMatch:
-    apellido: Optional[str] = None
-    bloque: Optional[str] = None
-    cese_fecha: Optional[str] = None
-    foto: Optional[str] = None
-    genero: Optional[str] = None
-    id: Optional[str] = None
-    juramento_fecha: Optional[str] = None
-    nombre: Optional[str] = None
-    periodo_bloque: Optional[dict] = None
-    periodo_mandato: Optional[dict] = None
-    provincia: Optional[str] = None
+class DiputadoListMatch(TypedDict, total=False):
+    apellido: str
+    bloque: str
+    cese_fecha: str
+    foto: str
+    genero: str
+    id: str
+    juramento_fecha: str
+    nombre: str
+    periodo_bloque: dict
+    periodo_mandato: dict
+    provincia: str
 
 
-@dataclass
-class EntidadRendimiento:
-    entidad: Optional[str] = None
-    rendimiento: Optional[list] = None
+class EntidadRendimiento(TypedDict, total=False):
+    entidad: str
+    rendimiento: list
 
 
-@dataclass
-class EntidadRendimientoListMatch:
-    entidad: Optional[str] = None
-    rendimiento: Optional[list] = None
+class EntidadRendimientoListMatch(TypedDict, total=False):
+    entidad: str
+    rendimiento: list
 
 
-@dataclass
-class Estado:
-    aleatorio: Optional[int] = None
-    estado: Optional[str] = None
+class Estado(TypedDict, total=False):
+    aleatorio: int
+    estado: str
 
 
-@dataclass
-class EstadoLoadMatch:
-    aleatorio: Optional[int] = None
-    estado: Optional[str] = None
+class EstadoLoadMatch(TypedDict, total=False):
+    aleatorio: int
+    estado: str
 
 
-@dataclass
-class EventoPresidencial:
-    evento: Optional[str] = None
-    fecha: Optional[str] = None
-    tipo: Optional[str] = None
+class EventoPresidencial(TypedDict, total=False):
+    evento: str
+    fecha: str
+    tipo: str
 
 
-@dataclass
-class EventoPresidencialListMatch:
-    evento: Optional[str] = None
-    fecha: Optional[str] = None
-    tipo: Optional[str] = None
+class EventoPresidencialListMatch(TypedDict, total=False):
+    evento: str
+    fecha: str
+    tipo: str
 
 
-@dataclass
-class Feriado:
-    fecha: Optional[str] = None
-    nombre: Optional[str] = None
-    tipo: Optional[str] = None
+class Feriado(TypedDict, total=False):
+    fecha: str
+    nombre: str
+    tipo: str
 
 
-@dataclass
-class FeriadoLoadMatch:
+class FeriadoLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class Finanza:
+class Finanza(TypedDict):
     pass
 
 
-@dataclass
-class FinanzaListMatch:
+class FinanzaListMatch(TypedDict):
     pass
 
 
-@dataclass
-class FondoComunInversion:
-    ccp: Optional[float] = None
-    fecha: Optional[str] = None
-    fondo: Optional[str] = None
-    horizonte: Optional[str] = None
-    patrimonio: Optional[float] = None
-    tipo: Optional[str] = None
-    vcp: Optional[float] = None
+class FondoComunInversion(TypedDict, total=False):
+    ccp: float
+    fecha: str
+    fondo: str
+    horizonte: str
+    patrimonio: float
+    tipo: str
+    vcp: float
 
 
-@dataclass
-class FondoComunInversionLoadMatch:
+class FondoComunInversionLoadMatch(TypedDict):
     fecha: str
 
 
-@dataclass
-class FondoComunInversionOtro:
-    fecha: Optional[str] = None
-    fondo: Optional[str] = None
-    tea: Optional[float] = None
-    tna: Optional[float] = None
-    tope: Optional[float] = None
+class FondoComunInversionOtro(TypedDict, total=False):
+    fecha: str
+    fondo: str
+    tea: float
+    tna: float
+    tope: float
 
 
-@dataclass
-class FondoComunInversionOtroLoadMatch:
+class FondoComunInversionOtroLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class FondoComunInversionVariable:
-    condicione: Optional[str] = None
-    condiciones_corto: Optional[str] = None
-    fecha: Optional[str] = None
-    fondo: Optional[str] = None
-    nombre: Optional[str] = None
-    tea: Optional[float] = None
-    tipo: Optional[str] = None
-    tna: Optional[float] = None
-    tope: Optional[float] = None
+class FondoComunInversionVariable(TypedDict, total=False):
+    condicione: str
+    condiciones_corto: str
+    fecha: str
+    fondo: str
+    nombre: str
+    tea: float
+    tipo: str
+    tna: float
+    tope: float
 
 
-@dataclass
-class FondoComunInversionVariableLoadMatch:
+class FondoComunInversionVariableLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class HipotecarioUvaTna:
-    entidad: Optional[str] = None
-    metadata: Optional[dict] = None
-    nombre_comercial: Optional[str] = None
-    tna: Optional[float] = None
+class HipotecarioUvaTna(TypedDict, total=False):
+    entidad: str
+    metadata: dict
+    nombre_comercial: str
+    tna: float
 
 
-@dataclass
-class HipotecarioUvaTnaListMatch:
-    entidad: Optional[str] = None
-    metadata: Optional[dict] = None
-    nombre_comercial: Optional[str] = None
-    tna: Optional[float] = None
+class HipotecarioUvaTnaListMatch(TypedDict, total=False):
+    entidad: str
+    metadata: dict
+    nombre_comercial: str
+    tna: float
 
 
-@dataclass
-class IndiceInflacion:
-    fecha: Optional[str] = None
-    valor: Optional[float] = None
+class IndiceInflacion(TypedDict, total=False):
+    fecha: str
+    valor: float
 
 
-@dataclass
-class IndiceInflacionListMatch:
-    fecha: Optional[str] = None
-    valor: Optional[float] = None
+class IndiceInflacionListMatch(TypedDict, total=False):
+    fecha: str
+    valor: float
 
 
-@dataclass
-class IndiceUva:
-    fecha: Optional[str] = None
-    valor: Optional[float] = None
+class IndiceUva(TypedDict, total=False):
+    fecha: str
+    valor: float
 
 
-@dataclass
-class IndiceUvaListMatch:
-    fecha: Optional[str] = None
-    valor: Optional[float] = None
+class IndiceUvaListMatch(TypedDict, total=False):
+    fecha: str
+    valor: float
 
 
-@dataclass
-class Letra:
-    fecha_emision: Optional[str] = None
-    fecha_vencimiento: Optional[str] = None
-    tem: Optional[float] = None
-    ticker: Optional[str] = None
-    vpv: Optional[float] = None
+class Letra(TypedDict, total=False):
+    fecha_emision: str
+    fecha_vencimiento: str
+    tem: float
+    ticker: str
+    vpv: float
 
 
-@dataclass
-class LetraListMatch:
-    fecha_emision: Optional[str] = None
-    fecha_vencimiento: Optional[str] = None
-    tem: Optional[float] = None
-    ticker: Optional[str] = None
-    vpv: Optional[float] = None
+class LetraListMatch(TypedDict, total=False):
+    fecha_emision: str
+    fecha_vencimiento: str
+    tem: float
+    ticker: str
+    vpv: float
 
 
-@dataclass
-class Presidente:
-    fin: Optional[str] = None
-    imagen: Optional[str] = None
-    inicio: Optional[str] = None
-    nombre: Optional[str] = None
-    partido: Optional[str] = None
-    partido_imagen: Optional[str] = None
-    periodo_presidencial: Optional[str] = None
-    vicepresidente: Optional[str] = None
+class Presidente(TypedDict, total=False):
+    fin: str
+    imagen: str
+    inicio: str
+    nombre: str
+    partido: str
+    partido_imagen: str
+    periodo_presidencial: str
+    vicepresidente: str
 
 
-@dataclass
-class PresidenteListMatch:
-    fin: Optional[str] = None
-    imagen: Optional[str] = None
-    inicio: Optional[str] = None
-    nombre: Optional[str] = None
-    partido: Optional[str] = None
-    partido_imagen: Optional[str] = None
-    periodo_presidencial: Optional[str] = None
-    vicepresidente: Optional[str] = None
+class PresidenteListMatch(TypedDict, total=False):
+    fin: str
+    imagen: str
+    inicio: str
+    nombre: str
+    partido: str
+    partido_imagen: str
+    periodo_presidencial: str
+    vicepresidente: str
 
 
-@dataclass
-class ProveedorPlazoFijoPrecancelable:
-    aviso_precancelacion_dia: Optional[int] = None
-    canal: Optional[str] = None
-    enlace: Optional[str] = None
-    entidad: Optional[str] = None
-    id: Optional[str] = None
-    logo: Optional[str] = None
-    modalidad: Optional[str] = None
-    moneda: Optional[str] = None
-    monto_maximo: Optional[float] = None
-    monto_minimo: Optional[float] = None
-    plazo_max_dia: Optional[int] = None
-    plazo_min_dia: Optional[int] = None
-    plazo_precancelacion_dia: Optional[int] = None
-    tea: Optional[float] = None
-    tea_precancelacion: Optional[float] = None
-    tna: Optional[float] = None
-    tna_precancelacion: Optional[float] = None
+class ProveedorPlazoFijoPrecancelable(TypedDict, total=False):
+    aviso_precancelacion_dia: int
+    canal: str
+    enlace: str
+    entidad: str
+    id: str
+    logo: str
+    modalidad: str
+    moneda: str
+    monto_maximo: float
+    monto_minimo: float
+    plazo_max_dia: int
+    plazo_min_dia: int
+    plazo_precancelacion_dia: int
+    tea: float
+    tea_precancelacion: float
+    tna: float
+    tna_precancelacion: float
 
 
-@dataclass
-class ProveedorPlazoFijoPrecancelableListMatch:
-    aviso_precancelacion_dia: Optional[int] = None
-    canal: Optional[str] = None
-    enlace: Optional[str] = None
-    entidad: Optional[str] = None
-    id: Optional[str] = None
-    logo: Optional[str] = None
-    modalidad: Optional[str] = None
-    moneda: Optional[str] = None
-    monto_maximo: Optional[float] = None
-    monto_minimo: Optional[float] = None
-    plazo_max_dia: Optional[int] = None
-    plazo_min_dia: Optional[int] = None
-    plazo_precancelacion_dia: Optional[int] = None
-    tea: Optional[float] = None
-    tea_precancelacion: Optional[float] = None
-    tna: Optional[float] = None
-    tna_precancelacion: Optional[float] = None
+class ProveedorPlazoFijoPrecancelableListMatch(TypedDict, total=False):
+    aviso_precancelacion_dia: int
+    canal: str
+    enlace: str
+    entidad: str
+    id: str
+    logo: str
+    modalidad: str
+    moneda: str
+    monto_maximo: float
+    monto_minimo: float
+    plazo_max_dia: int
+    plazo_min_dia: int
+    plazo_precancelacion_dia: int
+    tea: float
+    tea_precancelacion: float
+    tna: float
+    tna_precancelacion: float
 
 
-@dataclass
-class ProveedorPlazoFijoUvaPagoPeriodico:
-    entidad: Optional[str] = None
-    id: Optional[str] = None
-    logo: Optional[str] = None
-    tasa: Optional[list] = None
+class ProveedorPlazoFijoUvaPagoPeriodico(TypedDict, total=False):
+    entidad: str
+    id: str
+    logo: str
+    tasa: list
 
 
-@dataclass
-class ProveedorPlazoFijoUvaPagoPeriodicoListMatch:
-    entidad: Optional[str] = None
-    id: Optional[str] = None
-    logo: Optional[str] = None
-    tasa: Optional[list] = None
+class ProveedorPlazoFijoUvaPagoPeriodicoListMatch(TypedDict, total=False):
+    entidad: str
+    id: str
+    logo: str
+    tasa: list
 
 
-@dataclass
-class Rem:
-    desvio: Optional[float] = None
-    fecha: Optional[str] = None
-    fuente: Optional[str] = None
-    indicador: Optional[str] = None
-    informe: Optional[str] = None
-    maximo: Optional[float] = None
-    mediana: Optional[float] = None
-    minimo: Optional[float] = None
-    muestra: Optional[str] = None
-    participante: Optional[int] = None
-    percentil10: Optional[float] = None
-    percentil25: Optional[float] = None
-    percentil75: Optional[float] = None
-    percentil90: Optional[float] = None
-    periodo: Optional[str] = None
-    periodo_desde: Optional[str] = None
-    periodo_hasta: Optional[str] = None
-    periodo_tipo: Optional[str] = None
-    promedio: Optional[float] = None
-    publicacion_url: Optional[str] = None
-    referencia: Optional[str] = None
-    referencia_fecha: Optional[str] = None
-    unidad: Optional[str] = None
-    xlsx_url: Optional[str] = None
+class Rem(TypedDict, total=False):
+    desvio: float
+    fecha: str
+    fuente: str
+    indicador: str
+    informe: str
+    maximo: float
+    mediana: float
+    minimo: float
+    muestra: str
+    participante: int
+    percentil10: float
+    percentil25: float
+    percentil75: float
+    percentil90: float
+    periodo: str
+    periodo_desde: str
+    periodo_hasta: str
+    periodo_tipo: str
+    promedio: float
+    publicacion_url: str
+    referencia: str
+    referencia_fecha: str
+    unidad: str
+    xlsx_url: str
 
 
-@dataclass
-class RemListMatch:
+class RemListMatch(TypedDict):
     mes: str
 
 
-@dataclass
-class RemExpectativa:
-    desvio: Optional[float] = None
-    fecha: Optional[str] = None
-    fuente: Optional[str] = None
-    indicador: Optional[str] = None
-    informe: Optional[str] = None
-    maximo: Optional[float] = None
-    mediana: Optional[float] = None
-    minimo: Optional[float] = None
-    muestra: Optional[str] = None
-    participante: Optional[int] = None
-    percentil10: Optional[float] = None
-    percentil25: Optional[float] = None
-    percentil75: Optional[float] = None
-    percentil90: Optional[float] = None
-    periodo: Optional[str] = None
-    periodo_desde: Optional[str] = None
-    periodo_hasta: Optional[str] = None
-    periodo_tipo: Optional[str] = None
-    promedio: Optional[float] = None
-    publicacion_url: Optional[str] = None
-    referencia: Optional[str] = None
-    referencia_fecha: Optional[str] = None
-    unidad: Optional[str] = None
-    xlsx_url: Optional[str] = None
+class RemExpectativa(TypedDict, total=False):
+    desvio: float
+    fecha: str
+    fuente: str
+    indicador: str
+    informe: str
+    maximo: float
+    mediana: float
+    minimo: float
+    muestra: str
+    participante: int
+    percentil10: float
+    percentil25: float
+    percentil75: float
+    percentil90: float
+    periodo: str
+    periodo_desde: str
+    periodo_hasta: str
+    periodo_tipo: str
+    promedio: float
+    publicacion_url: str
+    referencia: str
+    referencia_fecha: str
+    unidad: str
+    xlsx_url: str
 
 
-@dataclass
-class RemExpectativaListMatch:
-    desvio: Optional[float] = None
-    fecha: Optional[str] = None
-    fuente: Optional[str] = None
-    indicador: Optional[str] = None
-    informe: Optional[str] = None
-    maximo: Optional[float] = None
-    mediana: Optional[float] = None
-    minimo: Optional[float] = None
-    muestra: Optional[str] = None
-    participante: Optional[int] = None
-    percentil10: Optional[float] = None
-    percentil25: Optional[float] = None
-    percentil75: Optional[float] = None
-    percentil90: Optional[float] = None
-    periodo: Optional[str] = None
-    periodo_desde: Optional[str] = None
-    periodo_hasta: Optional[str] = None
-    periodo_tipo: Optional[str] = None
-    promedio: Optional[float] = None
-    publicacion_url: Optional[str] = None
-    referencia: Optional[str] = None
-    referencia_fecha: Optional[str] = None
-    unidad: Optional[str] = None
-    xlsx_url: Optional[str] = None
+class RemExpectativaListMatch(TypedDict, total=False):
+    desvio: float
+    fecha: str
+    fuente: str
+    indicador: str
+    informe: str
+    maximo: float
+    mediana: float
+    minimo: float
+    muestra: str
+    participante: int
+    percentil10: float
+    percentil25: float
+    percentil75: float
+    percentil90: float
+    periodo: str
+    periodo_desde: str
+    periodo_hasta: str
+    periodo_tipo: str
+    promedio: float
+    publicacion_url: str
+    referencia: str
+    referencia_fecha: str
+    unidad: str
+    xlsx_url: str
 
 
-@dataclass
-class Rendimiento:
-    apy: Optional[float] = None
-    fecha: Optional[str] = None
-    moneda: Optional[str] = None
+class Rendimiento(TypedDict, total=False):
+    apy: float
+    fecha: str
+    moneda: str
 
 
-@dataclass
-class RendimientoLoadMatch:
+class RendimientoLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class RiesgoPai:
-    fecha: Optional[str] = None
-    valor: Optional[float] = None
+class RiesgoPai(TypedDict, total=False):
+    fecha: str
+    valor: float
 
 
-@dataclass
-class RiesgoPaiLoadMatch:
-    fecha: Optional[str] = None
-    valor: Optional[float] = None
+class RiesgoPaiLoadMatch(TypedDict, total=False):
+    fecha: str
+    valor: float
 
 
-@dataclass
-class RiesgoPaiListMatch:
-    fecha: Optional[str] = None
-    valor: Optional[float] = None
+class RiesgoPaiListMatch(TypedDict, total=False):
+    fecha: str
+    valor: float
 
 
-@dataclass
-class Senador:
-    email: Optional[str] = None
-    foto: Optional[str] = None
-    id: Optional[str] = None
-    nombre: Optional[str] = None
-    observacione: Optional[str] = None
-    partido: Optional[str] = None
-    periodo_legal: Optional[dict] = None
-    periodo_real: Optional[dict] = None
-    provincia: Optional[str] = None
-    rede: Optional[list] = None
-    reemplazo: Optional[str] = None
-    telefono: Optional[str] = None
+class Senador(TypedDict, total=False):
+    email: str
+    foto: str
+    id: str
+    nombre: str
+    observacione: str
+    partido: str
+    periodo_legal: dict
+    periodo_real: dict
+    provincia: str
+    rede: list
+    reemplazo: str
+    telefono: str
 
 
-@dataclass
-class SenadorListMatch:
-    email: Optional[str] = None
-    foto: Optional[str] = None
-    id: Optional[str] = None
-    nombre: Optional[str] = None
-    observacione: Optional[str] = None
-    partido: Optional[str] = None
-    periodo_legal: Optional[dict] = None
-    periodo_real: Optional[dict] = None
-    provincia: Optional[str] = None
-    rede: Optional[list] = None
-    reemplazo: Optional[str] = None
-    telefono: Optional[str] = None
+class SenadorListMatch(TypedDict, total=False):
+    email: str
+    foto: str
+    id: str
+    nombre: str
+    observacione: str
+    partido: str
+    periodo_legal: dict
+    periodo_real: dict
+    provincia: str
+    rede: list
+    reemplazo: str
+    telefono: str
 
 
-@dataclass
-class TasaIntere:
-    fecha: Optional[str] = None
-    valor: Optional[float] = None
+class TasaIntere(TypedDict, total=False):
+    fecha: str
+    valor: float
 
 
-@dataclass
-class TasaIntereListMatch:
-    fecha: Optional[str] = None
-    valor: Optional[float] = None
+class TasaIntereListMatch(TypedDict, total=False):
+    fecha: str
+    valor: float
 
 
-@dataclass
-class TasaPlazoFijo:
-    entidad: Optional[str] = None
-    logo: Optional[str] = None
-    tna_cliente: Optional[float] = None
-    tna_no_cliente: Optional[float] = None
+class TasaPlazoFijo(TypedDict, total=False):
+    entidad: str
+    logo: str
+    tna_cliente: float
+    tna_no_cliente: float
 
 
-@dataclass
-class TasaPlazoFijoListMatch:
-    entidad: Optional[str] = None
-    logo: Optional[str] = None
-    tna_cliente: Optional[float] = None
-    tna_no_cliente: Optional[float] = None
-
+class TasaPlazoFijoListMatch(TypedDict, total=False):
+    entidad: str
+    logo: str
+    tna_cliente: float
+    tna_no_cliente: float

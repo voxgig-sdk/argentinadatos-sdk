@@ -29,18 +29,16 @@ require_once 'argentinadatos_sdk.php';
 $client = new ArgentinadatosSDK();
 ```
 
-### 2. List actas
+### 2. List acta records
 
 ```php
 try {
-    $result = $client->acta()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Acta records — iterate directly.
+    $actas = $client->Acta()->list();
+    foreach ($actas as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -49,9 +47,10 @@ try {
 
 ```php
 try {
-    $result = $client->acta()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Acta record (throws on error).
+    $acta = $client->Acta()->load(["id" => "example_id"]);
+    print_r($acta);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -97,13 +96,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = ArgentinadatosSDK::test();
+$client = ArgentinadatosSDK::test([
+    "entity" => ["acta" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->acta()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$acta = $client->Acta()->load(["id" => "test01"]);
+print_r($acta);
 ```
 
 ### Use a custom fetch function
@@ -182,23 +185,23 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `Acta` | `($data): ActaEntity` | Create a Acta entity instance. |
+| `Acta` | `($data): ActaEntity` | Create an Acta entity instance. |
 | `BonosCer` | `($data): BonosCerEntity` | Create a BonosCer entity instance. |
 | `Cotizacion` | `($data): CotizacionEntity` | Create a Cotizacion entity instance. |
 | `Criptopeso` | `($data): CriptopesoEntity` | Create a Criptopeso entity instance. |
 | `CuentaRemuneradaUsd` | `($data): CuentaRemuneradaUsdEntity` | Create a CuentaRemuneradaUsd entity instance. |
 | `Diputado` | `($data): DiputadoEntity` | Create a Diputado entity instance. |
-| `EntidadRendimiento` | `($data): EntidadRendimientoEntity` | Create a EntidadRendimiento entity instance. |
-| `Estado` | `($data): EstadoEntity` | Create a Estado entity instance. |
-| `EventoPresidencial` | `($data): EventoPresidencialEntity` | Create a EventoPresidencial entity instance. |
+| `EntidadRendimiento` | `($data): EntidadRendimientoEntity` | Create an EntidadRendimiento entity instance. |
+| `Estado` | `($data): EstadoEntity` | Create an Estado entity instance. |
+| `EventoPresidencial` | `($data): EventoPresidencialEntity` | Create an EventoPresidencial entity instance. |
 | `Feriado` | `($data): FeriadoEntity` | Create a Feriado entity instance. |
 | `Finanza` | `($data): FinanzaEntity` | Create a Finanza entity instance. |
 | `FondoComunInversion` | `($data): FondoComunInversionEntity` | Create a FondoComunInversion entity instance. |
 | `FondoComunInversionOtro` | `($data): FondoComunInversionOtroEntity` | Create a FondoComunInversionOtro entity instance. |
 | `FondoComunInversionVariable` | `($data): FondoComunInversionVariableEntity` | Create a FondoComunInversionVariable entity instance. |
 | `HipotecarioUvaTna` | `($data): HipotecarioUvaTnaEntity` | Create a HipotecarioUvaTna entity instance. |
-| `IndiceInflacion` | `($data): IndiceInflacionEntity` | Create a IndiceInflacion entity instance. |
-| `IndiceUva` | `($data): IndiceUvaEntity` | Create a IndiceUva entity instance. |
+| `IndiceInflacion` | `($data): IndiceInflacionEntity` | Create an IndiceInflacion entity instance. |
+| `IndiceUva` | `($data): IndiceUvaEntity` | Create an IndiceUva entity instance. |
 | `Letra` | `($data): LetraEntity` | Create a Letra entity instance. |
 | `Presidente` | `($data): PresidenteEntity` | Create a Presidente entity instance. |
 | `ProveedorPlazoFijoPrecancelable` | `($data): ProveedorPlazoFijoPrecancelableEntity` | Create a ProveedorPlazoFijoPrecancelable entity instance. |
@@ -704,7 +707,7 @@ API path: `/v1/finanzas/tasas/plazoFijo`
 
 ### Acta
 
-Create an instance: `const acta = client.acta`
+Create an instance: `$acta = $client->Acta();`
 
 #### Operations
 
@@ -745,20 +748,22 @@ Create an instance: `const acta = client.acta`
 
 #### Example: Load
 
-```ts
-const acta = await client.acta.load({ id: 'acta_id' })
+```php
+// load() returns the bare Acta record (throws on error).
+$acta = $client->Acta()->load(["id" => "acta_id"]);
 ```
 
 #### Example: List
 
-```ts
-const actas = await client.acta.list()
+```php
+// list() returns an array of Acta records (throws on error).
+$actas = $client->Acta()->list();
 ```
 
 
 ### BonosCer
 
-Create an instance: `const bonos_cer = client.bonos_cer`
+Create an instance: `$bonos_cer = $client->BonosCer();`
 
 #### Operations
 
@@ -778,14 +783,15 @@ Create an instance: `const bonos_cer = client.bonos_cer`
 
 #### Example: List
 
-```ts
-const bonos_cers = await client.bonos_cer.list()
+```php
+// list() returns an array of BonosCer records (throws on error).
+$bonos_cers = $client->BonosCer()->list();
 ```
 
 
 ### Cotizacion
 
-Create an instance: `const cotizacion = client.cotizacion`
+Create an instance: `$cotizacion = $client->Cotizacion();`
 
 #### Operations
 
@@ -806,20 +812,22 @@ Create an instance: `const cotizacion = client.cotizacion`
 
 #### Example: Load
 
-```ts
-const cotizacion = await client.cotizacion.load({ id: 'cotizacion_id' })
+```php
+// load() returns the bare Cotizacion record (throws on error).
+$cotizacion = $client->Cotizacion()->load(["id" => "cotizacion_id"]);
 ```
 
 #### Example: List
 
-```ts
-const cotizacions = await client.cotizacion.list()
+```php
+// list() returns an array of Cotizacion records (throws on error).
+$cotizacions = $client->Cotizacion()->list();
 ```
 
 
 ### Criptopeso
 
-Create an instance: `const criptopeso = client.criptopeso`
+Create an instance: `$criptopeso = $client->Criptopeso();`
 
 #### Operations
 
@@ -837,14 +845,15 @@ Create an instance: `const criptopeso = client.criptopeso`
 
 #### Example: List
 
-```ts
-const criptopesos = await client.criptopeso.list()
+```php
+// list() returns an array of Criptopeso records (throws on error).
+$criptopesos = $client->Criptopeso()->list();
 ```
 
 
 ### CuentaRemuneradaUsd
 
-Create an instance: `const cuenta_remunerada_usd = client.cuenta_remunerada_usd`
+Create an instance: `$cuenta_remunerada_usd = $client->CuentaRemuneradaUsd();`
 
 #### Operations
 
@@ -862,14 +871,15 @@ Create an instance: `const cuenta_remunerada_usd = client.cuenta_remunerada_usd`
 
 #### Example: List
 
-```ts
-const cuenta_remunerada_usds = await client.cuenta_remunerada_usd.list()
+```php
+// list() returns an array of CuentaRemuneradaUsd records (throws on error).
+$cuenta_remunerada_usds = $client->CuentaRemuneradaUsd()->list();
 ```
 
 
 ### Diputado
 
-Create an instance: `const diputado = client.diputado`
+Create an instance: `$diputado = $client->Diputado();`
 
 #### Operations
 
@@ -895,14 +905,15 @@ Create an instance: `const diputado = client.diputado`
 
 #### Example: List
 
-```ts
-const diputados = await client.diputado.list()
+```php
+// list() returns an array of Diputado records (throws on error).
+$diputados = $client->Diputado()->list();
 ```
 
 
 ### EntidadRendimiento
 
-Create an instance: `const entidad_rendimiento = client.entidad_rendimiento`
+Create an instance: `$entidad_rendimiento = $client->EntidadRendimiento();`
 
 #### Operations
 
@@ -919,14 +930,15 @@ Create an instance: `const entidad_rendimiento = client.entidad_rendimiento`
 
 #### Example: List
 
-```ts
-const entidad_rendimientos = await client.entidad_rendimiento.list()
+```php
+// list() returns an array of EntidadRendimiento records (throws on error).
+$entidad_rendimientos = $client->EntidadRendimiento()->list();
 ```
 
 
 ### Estado
 
-Create an instance: `const estado = client.estado`
+Create an instance: `$estado = $client->Estado();`
 
 #### Operations
 
@@ -943,14 +955,15 @@ Create an instance: `const estado = client.estado`
 
 #### Example: Load
 
-```ts
-const estado = await client.estado.load({ id: 'estado_id' })
+```php
+// load() returns the bare Estado record (throws on error).
+$estado = $client->Estado()->load(["id" => "estado_id"]);
 ```
 
 
 ### EventoPresidencial
 
-Create an instance: `const evento_presidencial = client.evento_presidencial`
+Create an instance: `$evento_presidencial = $client->EventoPresidencial();`
 
 #### Operations
 
@@ -968,14 +981,15 @@ Create an instance: `const evento_presidencial = client.evento_presidencial`
 
 #### Example: List
 
-```ts
-const evento_presidencials = await client.evento_presidencial.list()
+```php
+// list() returns an array of EventoPresidencial records (throws on error).
+$evento_presidencials = $client->EventoPresidencial()->list();
 ```
 
 
 ### Feriado
 
-Create an instance: `const feriado = client.feriado`
+Create an instance: `$feriado = $client->Feriado();`
 
 #### Operations
 
@@ -993,14 +1007,15 @@ Create an instance: `const feriado = client.feriado`
 
 #### Example: Load
 
-```ts
-const feriado = await client.feriado.load({ id: 'feriado_id' })
+```php
+// load() returns the bare Feriado record (throws on error).
+$feriado = $client->Feriado()->load(["id" => "feriado_id"]);
 ```
 
 
 ### Finanza
 
-Create an instance: `const finanza = client.finanza`
+Create an instance: `$finanza = $client->Finanza();`
 
 #### Operations
 
@@ -1010,14 +1025,15 @@ Create an instance: `const finanza = client.finanza`
 
 #### Example: List
 
-```ts
-const finanzas = await client.finanza.list()
+```php
+// list() returns an array of Finanza records (throws on error).
+$finanzas = $client->Finanza()->list();
 ```
 
 
 ### FondoComunInversion
 
-Create an instance: `const fondo_comun_inversion = client.fondo_comun_inversion`
+Create an instance: `$fondo_comun_inversion = $client->FondoComunInversion();`
 
 #### Operations
 
@@ -1039,14 +1055,15 @@ Create an instance: `const fondo_comun_inversion = client.fondo_comun_inversion`
 
 #### Example: Load
 
-```ts
-const fondo_comun_inversion = await client.fondo_comun_inversion.load({ id: 'fondo_comun_inversion_id' })
+```php
+// load() returns the bare FondoComunInversion record (throws on error).
+$fondo_comun_inversion = $client->FondoComunInversion()->load(["id" => "fondo_comun_inversion_id"]);
 ```
 
 
 ### FondoComunInversionOtro
 
-Create an instance: `const fondo_comun_inversion_otro = client.fondo_comun_inversion_otro`
+Create an instance: `$fondo_comun_inversion_otro = $client->FondoComunInversionOtro();`
 
 #### Operations
 
@@ -1066,14 +1083,15 @@ Create an instance: `const fondo_comun_inversion_otro = client.fondo_comun_inver
 
 #### Example: Load
 
-```ts
-const fondo_comun_inversion_otro = await client.fondo_comun_inversion_otro.load({ id: 'fondo_comun_inversion_otro_id' })
+```php
+// load() returns the bare FondoComunInversionOtro record (throws on error).
+$fondo_comun_inversion_otro = $client->FondoComunInversionOtro()->load(["id" => "fondo_comun_inversion_otro_id"]);
 ```
 
 
 ### FondoComunInversionVariable
 
-Create an instance: `const fondo_comun_inversion_variable = client.fondo_comun_inversion_variable`
+Create an instance: `$fondo_comun_inversion_variable = $client->FondoComunInversionVariable();`
 
 #### Operations
 
@@ -1097,14 +1115,15 @@ Create an instance: `const fondo_comun_inversion_variable = client.fondo_comun_i
 
 #### Example: Load
 
-```ts
-const fondo_comun_inversion_variable = await client.fondo_comun_inversion_variable.load({ id: 'fondo_comun_inversion_variable_id' })
+```php
+// load() returns the bare FondoComunInversionVariable record (throws on error).
+$fondo_comun_inversion_variable = $client->FondoComunInversionVariable()->load(["id" => "fondo_comun_inversion_variable_id"]);
 ```
 
 
 ### HipotecarioUvaTna
 
-Create an instance: `const hipotecario_uva_tna = client.hipotecario_uva_tna`
+Create an instance: `$hipotecario_uva_tna = $client->HipotecarioUvaTna();`
 
 #### Operations
 
@@ -1123,14 +1142,15 @@ Create an instance: `const hipotecario_uva_tna = client.hipotecario_uva_tna`
 
 #### Example: List
 
-```ts
-const hipotecario_uva_tnas = await client.hipotecario_uva_tna.list()
+```php
+// list() returns an array of HipotecarioUvaTna records (throws on error).
+$hipotecario_uva_tnas = $client->HipotecarioUvaTna()->list();
 ```
 
 
 ### IndiceInflacion
 
-Create an instance: `const indice_inflacion = client.indice_inflacion`
+Create an instance: `$indice_inflacion = $client->IndiceInflacion();`
 
 #### Operations
 
@@ -1147,14 +1167,15 @@ Create an instance: `const indice_inflacion = client.indice_inflacion`
 
 #### Example: List
 
-```ts
-const indice_inflacions = await client.indice_inflacion.list()
+```php
+// list() returns an array of IndiceInflacion records (throws on error).
+$indice_inflacions = $client->IndiceInflacion()->list();
 ```
 
 
 ### IndiceUva
 
-Create an instance: `const indice_uva = client.indice_uva`
+Create an instance: `$indice_uva = $client->IndiceUva();`
 
 #### Operations
 
@@ -1171,14 +1192,15 @@ Create an instance: `const indice_uva = client.indice_uva`
 
 #### Example: List
 
-```ts
-const indice_uvas = await client.indice_uva.list()
+```php
+// list() returns an array of IndiceUva records (throws on error).
+$indice_uvas = $client->IndiceUva()->list();
 ```
 
 
 ### Letra
 
-Create an instance: `const letra = client.letra`
+Create an instance: `$letra = $client->Letra();`
 
 #### Operations
 
@@ -1198,14 +1220,15 @@ Create an instance: `const letra = client.letra`
 
 #### Example: List
 
-```ts
-const letras = await client.letra.list()
+```php
+// list() returns an array of Letra records (throws on error).
+$letras = $client->Letra()->list();
 ```
 
 
 ### Presidente
 
-Create an instance: `const presidente = client.presidente`
+Create an instance: `$presidente = $client->Presidente();`
 
 #### Operations
 
@@ -1228,14 +1251,15 @@ Create an instance: `const presidente = client.presidente`
 
 #### Example: List
 
-```ts
-const presidentes = await client.presidente.list()
+```php
+// list() returns an array of Presidente records (throws on error).
+$presidentes = $client->Presidente()->list();
 ```
 
 
 ### ProveedorPlazoFijoPrecancelable
 
-Create an instance: `const proveedor_plazo_fijo_precancelable = client.proveedor_plazo_fijo_precancelable`
+Create an instance: `$proveedor_plazo_fijo_precancelable = $client->ProveedorPlazoFijoPrecancelable();`
 
 #### Operations
 
@@ -1267,14 +1291,15 @@ Create an instance: `const proveedor_plazo_fijo_precancelable = client.proveedor
 
 #### Example: List
 
-```ts
-const proveedor_plazo_fijo_precancelables = await client.proveedor_plazo_fijo_precancelable.list()
+```php
+// list() returns an array of ProveedorPlazoFijoPrecancelable records (throws on error).
+$proveedor_plazo_fijo_precancelables = $client->ProveedorPlazoFijoPrecancelable()->list();
 ```
 
 
 ### ProveedorPlazoFijoUvaPagoPeriodico
 
-Create an instance: `const proveedor_plazo_fijo_uva_pago_periodico = client.proveedor_plazo_fijo_uva_pago_periodico`
+Create an instance: `$proveedor_plazo_fijo_uva_pago_periodico = $client->ProveedorPlazoFijoUvaPagoPeriodico();`
 
 #### Operations
 
@@ -1293,14 +1318,15 @@ Create an instance: `const proveedor_plazo_fijo_uva_pago_periodico = client.prov
 
 #### Example: List
 
-```ts
-const proveedor_plazo_fijo_uva_pago_periodicos = await client.proveedor_plazo_fijo_uva_pago_periodico.list()
+```php
+// list() returns an array of ProveedorPlazoFijoUvaPagoPeriodico records (throws on error).
+$proveedor_plazo_fijo_uva_pago_periodicos = $client->ProveedorPlazoFijoUvaPagoPeriodico()->list();
 ```
 
 
 ### Rem
 
-Create an instance: `const rem = client.rem`
+Create an instance: `$rem = $client->Rem();`
 
 #### Operations
 
@@ -1339,14 +1365,15 @@ Create an instance: `const rem = client.rem`
 
 #### Example: List
 
-```ts
-const rems = await client.rem.list()
+```php
+// list() returns an array of Rem records (throws on error).
+$rems = $client->Rem()->list();
 ```
 
 
 ### RemExpectativa
 
-Create an instance: `const rem_expectativa = client.rem_expectativa`
+Create an instance: `$rem_expectativa = $client->RemExpectativa();`
 
 #### Operations
 
@@ -1385,14 +1412,15 @@ Create an instance: `const rem_expectativa = client.rem_expectativa`
 
 #### Example: List
 
-```ts
-const rem_expectativas = await client.rem_expectativa.list()
+```php
+// list() returns an array of RemExpectativa records (throws on error).
+$rem_expectativas = $client->RemExpectativa()->list();
 ```
 
 
 ### Rendimiento
 
-Create an instance: `const rendimiento = client.rendimiento`
+Create an instance: `$rendimiento = $client->Rendimiento();`
 
 #### Operations
 
@@ -1410,14 +1438,15 @@ Create an instance: `const rendimiento = client.rendimiento`
 
 #### Example: Load
 
-```ts
-const rendimiento = await client.rendimiento.load({ id: 'rendimiento_id' })
+```php
+// load() returns the bare Rendimiento record (throws on error).
+$rendimiento = $client->Rendimiento()->load(["id" => "rendimiento_id"]);
 ```
 
 
 ### RiesgoPai
 
-Create an instance: `const riesgo_pai = client.riesgo_pai`
+Create an instance: `$riesgo_pai = $client->RiesgoPai();`
 
 #### Operations
 
@@ -1435,20 +1464,22 @@ Create an instance: `const riesgo_pai = client.riesgo_pai`
 
 #### Example: Load
 
-```ts
-const riesgo_pai = await client.riesgo_pai.load({ id: 'riesgo_pai_id' })
+```php
+// load() returns the bare RiesgoPai record (throws on error).
+$riesgo_pai = $client->RiesgoPai()->load(["id" => "riesgo_pai_id"]);
 ```
 
 #### Example: List
 
-```ts
-const riesgo_pais = await client.riesgo_pai.list()
+```php
+// list() returns an array of RiesgoPai records (throws on error).
+$riesgo_pais = $client->RiesgoPai()->list();
 ```
 
 
 ### Senador
 
-Create an instance: `const senador = client.senador`
+Create an instance: `$senador = $client->Senador();`
 
 #### Operations
 
@@ -1475,14 +1506,15 @@ Create an instance: `const senador = client.senador`
 
 #### Example: List
 
-```ts
-const senadors = await client.senador.list()
+```php
+// list() returns an array of Senador records (throws on error).
+$senadors = $client->Senador()->list();
 ```
 
 
 ### TasaIntere
 
-Create an instance: `const tasa_intere = client.tasa_intere`
+Create an instance: `$tasa_intere = $client->TasaIntere();`
 
 #### Operations
 
@@ -1499,14 +1531,15 @@ Create an instance: `const tasa_intere = client.tasa_intere`
 
 #### Example: List
 
-```ts
-const tasa_interes = await client.tasa_intere.list()
+```php
+// list() returns an array of TasaIntere records (throws on error).
+$tasa_interes = $client->TasaIntere()->list();
 ```
 
 
 ### TasaPlazoFijo
 
-Create an instance: `const tasa_plazo_fijo = client.tasa_plazo_fijo`
+Create an instance: `$tasa_plazo_fijo = $client->TasaPlazoFijo();`
 
 #### Operations
 
@@ -1525,8 +1558,9 @@ Create an instance: `const tasa_plazo_fijo = client.tasa_plazo_fijo`
 
 #### Example: List
 
-```ts
-const tasa_plazo_fijos = await client.tasa_plazo_fijo.list()
+```php
+// list() returns an array of TasaPlazoFijo records (throws on error).
+$tasa_plazo_fijos = $client->TasaPlazoFijo()->list();
 ```
 
 
@@ -1601,7 +1635,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$acta = $client->acta();
+$acta = $client->Acta();
 $acta->load(["id" => "example_id"]);
 
 // $acta->dataGet() now returns the loaded acta data

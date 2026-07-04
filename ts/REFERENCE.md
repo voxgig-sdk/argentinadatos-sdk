@@ -433,7 +433,7 @@ Alias for `ArgentinadatosSDK.test()`.
 ## ActaEntity
 
 ```ts
-const acta = client.acta
+const acta = client.Acta()
 ```
 
 ### Fields
@@ -473,7 +473,7 @@ const acta = client.acta
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.acta.list()
+const results = await client.Acta().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -481,7 +481,7 @@ const results = await client.acta.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.acta.load({ id: 'acta_id' })
+const result = await client.Acta().load({ id: 'acta_id' })
 ```
 
 ### Common Methods
@@ -515,7 +515,7 @@ Return a copy of the entity options.
 ## BonosCerEntity
 
 ```ts
-const bonos_cer = client.bonos_cer
+const bonos_cer = client.BonosCer()
 ```
 
 ### Fields
@@ -535,7 +535,7 @@ const bonos_cer = client.bonos_cer
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.bonos_cer.list()
+const results = await client.BonosCer().list()
 ```
 
 ### Common Methods
@@ -569,7 +569,7 @@ Return a copy of the entity options.
 ## CotizacionEntity
 
 ```ts
-const cotizacion = client.cotizacion
+const cotizacion = client.Cotizacion()
 ```
 
 ### Fields
@@ -589,7 +589,7 @@ const cotizacion = client.cotizacion
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.cotizacion.list()
+const results = await client.Cotizacion().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -597,7 +597,7 @@ const results = await client.cotizacion.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.cotizacion.load({ id: 'cotizacion_id' })
+const result = await client.Cotizacion().load({ id: 'cotizacion_id' })
 ```
 
 ### Common Methods
@@ -631,7 +631,7 @@ Return a copy of the entity options.
 ## CriptopesoEntity
 
 ```ts
-const criptopeso = client.criptopeso
+const criptopeso = client.Criptopeso()
 ```
 
 ### Fields
@@ -649,7 +649,7 @@ const criptopeso = client.criptopeso
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.criptopeso.list()
+const results = await client.Criptopeso().list()
 ```
 
 ### Common Methods
@@ -683,7 +683,7 @@ Return a copy of the entity options.
 ## CuentaRemuneradaUsdEntity
 
 ```ts
-const cuenta_remunerada_usd = client.cuenta_remunerada_usd
+const cuenta_remunerada_usd = client.CuentaRemuneradaUsd()
 ```
 
 ### Fields
@@ -701,7 +701,7 @@ const cuenta_remunerada_usd = client.cuenta_remunerada_usd
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.cuenta_remunerada_usd.list()
+const results = await client.CuentaRemuneradaUsd().list()
 ```
 
 ### Common Methods
@@ -735,7 +735,7 @@ Return a copy of the entity options.
 ## DiputadoEntity
 
 ```ts
-const diputado = client.diputado
+const diputado = client.Diputado()
 ```
 
 ### Fields
@@ -761,7 +761,7 @@ const diputado = client.diputado
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.diputado.list()
+const results = await client.Diputado().list()
 ```
 
 ### Common Methods
@@ -795,7 +795,7 @@ Return a copy of the entity options.
 ## EntidadRendimientoEntity
 
 ```ts
-const entidad_rendimiento = client.entidad_rendimiento
+const entidad_rendimiento = client.EntidadRendimiento()
 ```
 
 ### Fields
@@ -812,7 +812,7 @@ const entidad_rendimiento = client.entidad_rendimiento
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.entidad_rendimiento.list()
+const results = await client.EntidadRendimiento().list()
 ```
 
 ### Common Methods
@@ -846,7 +846,7 @@ Return a copy of the entity options.
 ## EstadoEntity
 
 ```ts
-const estado = client.estado
+const estado = client.Estado()
 ```
 
 ### Fields
@@ -863,7 +863,7 @@ const estado = client.estado
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.estado.load({ id: 'estado_id' })
+const result = await client.Estado().load({ id: 'estado_id' })
 ```
 
 ### Common Methods
@@ -897,7 +897,7 @@ Return a copy of the entity options.
 ## EventoPresidencialEntity
 
 ```ts
-const evento_presidencial = client.evento_presidencial
+const evento_presidencial = client.EventoPresidencial()
 ```
 
 ### Fields
@@ -915,7 +915,7 @@ const evento_presidencial = client.evento_presidencial
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.evento_presidencial.list()
+const results = await client.EventoPresidencial().list()
 ```
 
 ### Common Methods
@@ -949,7 +949,7 @@ Return a copy of the entity options.
 ## FeriadoEntity
 
 ```ts
-const feriado = client.feriado
+const feriado = client.Feriado()
 ```
 
 ### Fields
@@ -967,7 +967,7 @@ const feriado = client.feriado
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.feriado.load({ id: 'feriado_id' })
+const result = await client.Feriado().load({ id: 'feriado_id' })
 ```
 
 ### Common Methods
@@ -1001,7 +1001,7 @@ Return a copy of the entity options.
 ## FinanzaEntity
 
 ```ts
-const finanza = client.finanza
+const finanza = client.Finanza()
 ```
 
 ### Operations
@@ -1011,7 +1011,7 @@ const finanza = client.finanza
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.finanza.list()
+const results = await client.Finanza().list()
 ```
 
 ### Common Methods
@@ -1045,7 +1045,7 @@ Return a copy of the entity options.
 ## FondoComunInversionEntity
 
 ```ts
-const fondo_comun_inversion = client.fondo_comun_inversion
+const fondo_comun_inversion = client.FondoComunInversion()
 ```
 
 ### Fields
@@ -1067,7 +1067,7 @@ const fondo_comun_inversion = client.fondo_comun_inversion
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.fondo_comun_inversion.load({ id: 'fondo_comun_inversion_id' })
+const result = await client.FondoComunInversion().load({ id: 'fondo_comun_inversion_id' })
 ```
 
 ### Common Methods
@@ -1101,7 +1101,7 @@ Return a copy of the entity options.
 ## FondoComunInversionOtroEntity
 
 ```ts
-const fondo_comun_inversion_otro = client.fondo_comun_inversion_otro
+const fondo_comun_inversion_otro = client.FondoComunInversionOtro()
 ```
 
 ### Fields
@@ -1121,7 +1121,7 @@ const fondo_comun_inversion_otro = client.fondo_comun_inversion_otro
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.fondo_comun_inversion_otro.load({ id: 'fondo_comun_inversion_otro_id' })
+const result = await client.FondoComunInversionOtro().load({ id: 'fondo_comun_inversion_otro_id' })
 ```
 
 ### Common Methods
@@ -1155,7 +1155,7 @@ Return a copy of the entity options.
 ## FondoComunInversionVariableEntity
 
 ```ts
-const fondo_comun_inversion_variable = client.fondo_comun_inversion_variable
+const fondo_comun_inversion_variable = client.FondoComunInversionVariable()
 ```
 
 ### Fields
@@ -1179,7 +1179,7 @@ const fondo_comun_inversion_variable = client.fondo_comun_inversion_variable
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.fondo_comun_inversion_variable.load({ id: 'fondo_comun_inversion_variable_id' })
+const result = await client.FondoComunInversionVariable().load({ id: 'fondo_comun_inversion_variable_id' })
 ```
 
 ### Common Methods
@@ -1213,7 +1213,7 @@ Return a copy of the entity options.
 ## HipotecarioUvaTnaEntity
 
 ```ts
-const hipotecario_uva_tna = client.hipotecario_uva_tna
+const hipotecario_uva_tna = client.HipotecarioUvaTna()
 ```
 
 ### Fields
@@ -1232,7 +1232,7 @@ const hipotecario_uva_tna = client.hipotecario_uva_tna
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.hipotecario_uva_tna.list()
+const results = await client.HipotecarioUvaTna().list()
 ```
 
 ### Common Methods
@@ -1266,7 +1266,7 @@ Return a copy of the entity options.
 ## IndiceInflacionEntity
 
 ```ts
-const indice_inflacion = client.indice_inflacion
+const indice_inflacion = client.IndiceInflacion()
 ```
 
 ### Fields
@@ -1283,7 +1283,7 @@ const indice_inflacion = client.indice_inflacion
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.indice_inflacion.list()
+const results = await client.IndiceInflacion().list()
 ```
 
 ### Common Methods
@@ -1317,7 +1317,7 @@ Return a copy of the entity options.
 ## IndiceUvaEntity
 
 ```ts
-const indice_uva = client.indice_uva
+const indice_uva = client.IndiceUva()
 ```
 
 ### Fields
@@ -1334,7 +1334,7 @@ const indice_uva = client.indice_uva
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.indice_uva.list()
+const results = await client.IndiceUva().list()
 ```
 
 ### Common Methods
@@ -1368,7 +1368,7 @@ Return a copy of the entity options.
 ## LetraEntity
 
 ```ts
-const letra = client.letra
+const letra = client.Letra()
 ```
 
 ### Fields
@@ -1388,7 +1388,7 @@ const letra = client.letra
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.letra.list()
+const results = await client.Letra().list()
 ```
 
 ### Common Methods
@@ -1422,7 +1422,7 @@ Return a copy of the entity options.
 ## PresidenteEntity
 
 ```ts
-const presidente = client.presidente
+const presidente = client.Presidente()
 ```
 
 ### Fields
@@ -1445,7 +1445,7 @@ const presidente = client.presidente
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.presidente.list()
+const results = await client.Presidente().list()
 ```
 
 ### Common Methods
@@ -1479,7 +1479,7 @@ Return a copy of the entity options.
 ## ProveedorPlazoFijoPrecancelableEntity
 
 ```ts
-const proveedor_plazo_fijo_precancelable = client.proveedor_plazo_fijo_precancelable
+const proveedor_plazo_fijo_precancelable = client.ProveedorPlazoFijoPrecancelable()
 ```
 
 ### Fields
@@ -1511,7 +1511,7 @@ const proveedor_plazo_fijo_precancelable = client.proveedor_plazo_fijo_precancel
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.proveedor_plazo_fijo_precancelable.list()
+const results = await client.ProveedorPlazoFijoPrecancelable().list()
 ```
 
 ### Common Methods
@@ -1545,7 +1545,7 @@ Return a copy of the entity options.
 ## ProveedorPlazoFijoUvaPagoPeriodicoEntity
 
 ```ts
-const proveedor_plazo_fijo_uva_pago_periodico = client.proveedor_plazo_fijo_uva_pago_periodico
+const proveedor_plazo_fijo_uva_pago_periodico = client.ProveedorPlazoFijoUvaPagoPeriodico()
 ```
 
 ### Fields
@@ -1564,7 +1564,7 @@ const proveedor_plazo_fijo_uva_pago_periodico = client.proveedor_plazo_fijo_uva_
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.proveedor_plazo_fijo_uva_pago_periodico.list()
+const results = await client.ProveedorPlazoFijoUvaPagoPeriodico().list()
 ```
 
 ### Common Methods
@@ -1598,7 +1598,7 @@ Return a copy of the entity options.
 ## RemEntity
 
 ```ts
-const rem = client.rem
+const rem = client.Rem()
 ```
 
 ### Fields
@@ -1637,7 +1637,7 @@ const rem = client.rem
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.rem.list()
+const results = await client.Rem().list()
 ```
 
 ### Common Methods
@@ -1671,7 +1671,7 @@ Return a copy of the entity options.
 ## RemExpectativaEntity
 
 ```ts
-const rem_expectativa = client.rem_expectativa
+const rem_expectativa = client.RemExpectativa()
 ```
 
 ### Fields
@@ -1710,7 +1710,7 @@ const rem_expectativa = client.rem_expectativa
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.rem_expectativa.list()
+const results = await client.RemExpectativa().list()
 ```
 
 ### Common Methods
@@ -1744,7 +1744,7 @@ Return a copy of the entity options.
 ## RendimientoEntity
 
 ```ts
-const rendimiento = client.rendimiento
+const rendimiento = client.Rendimiento()
 ```
 
 ### Fields
@@ -1762,7 +1762,7 @@ const rendimiento = client.rendimiento
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.rendimiento.load({ id: 'rendimiento_id' })
+const result = await client.Rendimiento().load({ id: 'rendimiento_id' })
 ```
 
 ### Common Methods
@@ -1796,7 +1796,7 @@ Return a copy of the entity options.
 ## RiesgoPaiEntity
 
 ```ts
-const riesgo_pai = client.riesgo_pai
+const riesgo_pai = client.RiesgoPai()
 ```
 
 ### Fields
@@ -1813,7 +1813,7 @@ const riesgo_pai = client.riesgo_pai
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.riesgo_pai.list()
+const results = await client.RiesgoPai().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -1821,7 +1821,7 @@ const results = await client.riesgo_pai.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.riesgo_pai.load({ id: 'riesgo_pai_id' })
+const result = await client.RiesgoPai().load({ id: 'riesgo_pai_id' })
 ```
 
 ### Common Methods
@@ -1855,7 +1855,7 @@ Return a copy of the entity options.
 ## SenadorEntity
 
 ```ts
-const senador = client.senador
+const senador = client.Senador()
 ```
 
 ### Fields
@@ -1882,7 +1882,7 @@ const senador = client.senador
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.senador.list()
+const results = await client.Senador().list()
 ```
 
 ### Common Methods
@@ -1916,7 +1916,7 @@ Return a copy of the entity options.
 ## TasaIntereEntity
 
 ```ts
-const tasa_intere = client.tasa_intere
+const tasa_intere = client.TasaIntere()
 ```
 
 ### Fields
@@ -1933,7 +1933,7 @@ const tasa_intere = client.tasa_intere
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.tasa_intere.list()
+const results = await client.TasaIntere().list()
 ```
 
 ### Common Methods
@@ -1967,7 +1967,7 @@ Return a copy of the entity options.
 ## TasaPlazoFijoEntity
 
 ```ts
-const tasa_plazo_fijo = client.tasa_plazo_fijo
+const tasa_plazo_fijo = client.TasaPlazoFijo()
 ```
 
 ### Fields
@@ -1986,7 +1986,7 @@ const tasa_plazo_fijo = client.tasa_plazo_fijo
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.tasa_plazo_fijo.list()
+const results = await client.TasaPlazoFijo().list()
 ```
 
 ### Common Methods

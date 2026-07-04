@@ -31,26 +31,26 @@ local sdk = require("argentinadatos_sdk")
 local client = sdk.new()
 ```
 
-### 2. List actas
+### 2. List acta records
+
+Entity operations return `(value, err)`. For `list`, `value` is the
+array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local result, err = client:acta():list()
+local actas, err = client:Acta():list()
 if err then error(err) end
 
-if type(result) == "table" then
-  for _, item in ipairs(result) do
-    local d = item:data_get()
-    print(d["id"], d["name"])
-  end
+for _, item in ipairs(actas) do
+  print(item["id"], item["name"])
 end
 ```
 
 ### 3. Load an acta
 
 ```lua
-local result, err = client:acta():load({ id = "example_id" })
+local acta, err = client:Acta():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(acta)
 ```
 
 
@@ -96,8 +96,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:acta():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Acta():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -175,23 +175,23 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> table, err` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
-| `Acta` | `(data) -> ActaEntity` | Create a Acta entity instance. |
+| `Acta` | `(data) -> ActaEntity` | Create an Acta entity instance. |
 | `BonosCer` | `(data) -> BonosCerEntity` | Create a BonosCer entity instance. |
 | `Cotizacion` | `(data) -> CotizacionEntity` | Create a Cotizacion entity instance. |
 | `Criptopeso` | `(data) -> CriptopesoEntity` | Create a Criptopeso entity instance. |
 | `CuentaRemuneradaUsd` | `(data) -> CuentaRemuneradaUsdEntity` | Create a CuentaRemuneradaUsd entity instance. |
 | `Diputado` | `(data) -> DiputadoEntity` | Create a Diputado entity instance. |
-| `EntidadRendimiento` | `(data) -> EntidadRendimientoEntity` | Create a EntidadRendimiento entity instance. |
-| `Estado` | `(data) -> EstadoEntity` | Create a Estado entity instance. |
-| `EventoPresidencial` | `(data) -> EventoPresidencialEntity` | Create a EventoPresidencial entity instance. |
+| `EntidadRendimiento` | `(data) -> EntidadRendimientoEntity` | Create an EntidadRendimiento entity instance. |
+| `Estado` | `(data) -> EstadoEntity` | Create an Estado entity instance. |
+| `EventoPresidencial` | `(data) -> EventoPresidencialEntity` | Create an EventoPresidencial entity instance. |
 | `Feriado` | `(data) -> FeriadoEntity` | Create a Feriado entity instance. |
 | `Finanza` | `(data) -> FinanzaEntity` | Create a Finanza entity instance. |
 | `FondoComunInversion` | `(data) -> FondoComunInversionEntity` | Create a FondoComunInversion entity instance. |
 | `FondoComunInversionOtro` | `(data) -> FondoComunInversionOtroEntity` | Create a FondoComunInversionOtro entity instance. |
 | `FondoComunInversionVariable` | `(data) -> FondoComunInversionVariableEntity` | Create a FondoComunInversionVariable entity instance. |
 | `HipotecarioUvaTna` | `(data) -> HipotecarioUvaTnaEntity` | Create a HipotecarioUvaTna entity instance. |
-| `IndiceInflacion` | `(data) -> IndiceInflacionEntity` | Create a IndiceInflacion entity instance. |
-| `IndiceUva` | `(data) -> IndiceUvaEntity` | Create a IndiceUva entity instance. |
+| `IndiceInflacion` | `(data) -> IndiceInflacionEntity` | Create an IndiceInflacion entity instance. |
+| `IndiceUva` | `(data) -> IndiceUvaEntity` | Create an IndiceUva entity instance. |
 | `Letra` | `(data) -> LetraEntity` | Create a Letra entity instance. |
 | `Presidente` | `(data) -> PresidenteEntity` | Create a Presidente entity instance. |
 | `ProveedorPlazoFijoPrecancelable` | `(data) -> ProveedorPlazoFijoPrecancelableEntity` | Create a ProveedorPlazoFijoPrecancelable entity instance. |
@@ -224,17 +224,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local acta, err = client:Acta():load({ id = "example_id" })
+    if err then error(err) end
+    -- acta is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -693,7 +698,7 @@ API path: `/v1/finanzas/tasas/plazoFijo`
 
 ### Acta
 
-Create an instance: `const acta = client.acta`
+Create an instance: `local acta = client:Acta(nil)`
 
 #### Operations
 
@@ -734,20 +739,20 @@ Create an instance: `const acta = client.acta`
 
 #### Example: Load
 
-```ts
-const acta = await client.acta.load({ id: 'acta_id' })
+```lua
+local acta, err = client:Acta():load({ id = "acta_id" })
 ```
 
 #### Example: List
 
-```ts
-const actas = await client.acta.list()
+```lua
+local actas, err = client:Acta():list()
 ```
 
 
 ### BonosCer
 
-Create an instance: `const bonos_cer = client.bonos_cer`
+Create an instance: `local bonos_cer = client:BonosCer(nil)`
 
 #### Operations
 
@@ -767,14 +772,14 @@ Create an instance: `const bonos_cer = client.bonos_cer`
 
 #### Example: List
 
-```ts
-const bonos_cers = await client.bonos_cer.list()
+```lua
+local bonos_cers, err = client:BonosCer():list()
 ```
 
 
 ### Cotizacion
 
-Create an instance: `const cotizacion = client.cotizacion`
+Create an instance: `local cotizacion = client:Cotizacion(nil)`
 
 #### Operations
 
@@ -795,20 +800,20 @@ Create an instance: `const cotizacion = client.cotizacion`
 
 #### Example: Load
 
-```ts
-const cotizacion = await client.cotizacion.load({ id: 'cotizacion_id' })
+```lua
+local cotizacion, err = client:Cotizacion():load({ id = "cotizacion_id" })
 ```
 
 #### Example: List
 
-```ts
-const cotizacions = await client.cotizacion.list()
+```lua
+local cotizacions, err = client:Cotizacion():list()
 ```
 
 
 ### Criptopeso
 
-Create an instance: `const criptopeso = client.criptopeso`
+Create an instance: `local criptopeso = client:Criptopeso(nil)`
 
 #### Operations
 
@@ -826,14 +831,14 @@ Create an instance: `const criptopeso = client.criptopeso`
 
 #### Example: List
 
-```ts
-const criptopesos = await client.criptopeso.list()
+```lua
+local criptopesos, err = client:Criptopeso():list()
 ```
 
 
 ### CuentaRemuneradaUsd
 
-Create an instance: `const cuenta_remunerada_usd = client.cuenta_remunerada_usd`
+Create an instance: `local cuenta_remunerada_usd = client:CuentaRemuneradaUsd(nil)`
 
 #### Operations
 
@@ -851,14 +856,14 @@ Create an instance: `const cuenta_remunerada_usd = client.cuenta_remunerada_usd`
 
 #### Example: List
 
-```ts
-const cuenta_remunerada_usds = await client.cuenta_remunerada_usd.list()
+```lua
+local cuenta_remunerada_usds, err = client:CuentaRemuneradaUsd():list()
 ```
 
 
 ### Diputado
 
-Create an instance: `const diputado = client.diputado`
+Create an instance: `local diputado = client:Diputado(nil)`
 
 #### Operations
 
@@ -884,14 +889,14 @@ Create an instance: `const diputado = client.diputado`
 
 #### Example: List
 
-```ts
-const diputados = await client.diputado.list()
+```lua
+local diputados, err = client:Diputado():list()
 ```
 
 
 ### EntidadRendimiento
 
-Create an instance: `const entidad_rendimiento = client.entidad_rendimiento`
+Create an instance: `local entidad_rendimiento = client:EntidadRendimiento(nil)`
 
 #### Operations
 
@@ -908,14 +913,14 @@ Create an instance: `const entidad_rendimiento = client.entidad_rendimiento`
 
 #### Example: List
 
-```ts
-const entidad_rendimientos = await client.entidad_rendimiento.list()
+```lua
+local entidad_rendimientos, err = client:EntidadRendimiento():list()
 ```
 
 
 ### Estado
 
-Create an instance: `const estado = client.estado`
+Create an instance: `local estado = client:Estado(nil)`
 
 #### Operations
 
@@ -932,14 +937,14 @@ Create an instance: `const estado = client.estado`
 
 #### Example: Load
 
-```ts
-const estado = await client.estado.load({ id: 'estado_id' })
+```lua
+local estado, err = client:Estado():load({ id = "estado_id" })
 ```
 
 
 ### EventoPresidencial
 
-Create an instance: `const evento_presidencial = client.evento_presidencial`
+Create an instance: `local evento_presidencial = client:EventoPresidencial(nil)`
 
 #### Operations
 
@@ -957,14 +962,14 @@ Create an instance: `const evento_presidencial = client.evento_presidencial`
 
 #### Example: List
 
-```ts
-const evento_presidencials = await client.evento_presidencial.list()
+```lua
+local evento_presidencials, err = client:EventoPresidencial():list()
 ```
 
 
 ### Feriado
 
-Create an instance: `const feriado = client.feriado`
+Create an instance: `local feriado = client:Feriado(nil)`
 
 #### Operations
 
@@ -982,14 +987,14 @@ Create an instance: `const feriado = client.feriado`
 
 #### Example: Load
 
-```ts
-const feriado = await client.feriado.load({ id: 'feriado_id' })
+```lua
+local feriado, err = client:Feriado():load({ id = "feriado_id" })
 ```
 
 
 ### Finanza
 
-Create an instance: `const finanza = client.finanza`
+Create an instance: `local finanza = client:Finanza(nil)`
 
 #### Operations
 
@@ -999,14 +1004,14 @@ Create an instance: `const finanza = client.finanza`
 
 #### Example: List
 
-```ts
-const finanzas = await client.finanza.list()
+```lua
+local finanzas, err = client:Finanza():list()
 ```
 
 
 ### FondoComunInversion
 
-Create an instance: `const fondo_comun_inversion = client.fondo_comun_inversion`
+Create an instance: `local fondo_comun_inversion = client:FondoComunInversion(nil)`
 
 #### Operations
 
@@ -1028,14 +1033,14 @@ Create an instance: `const fondo_comun_inversion = client.fondo_comun_inversion`
 
 #### Example: Load
 
-```ts
-const fondo_comun_inversion = await client.fondo_comun_inversion.load({ id: 'fondo_comun_inversion_id' })
+```lua
+local fondo_comun_inversion, err = client:FondoComunInversion():load({ id = "fondo_comun_inversion_id" })
 ```
 
 
 ### FondoComunInversionOtro
 
-Create an instance: `const fondo_comun_inversion_otro = client.fondo_comun_inversion_otro`
+Create an instance: `local fondo_comun_inversion_otro = client:FondoComunInversionOtro(nil)`
 
 #### Operations
 
@@ -1055,14 +1060,14 @@ Create an instance: `const fondo_comun_inversion_otro = client.fondo_comun_inver
 
 #### Example: Load
 
-```ts
-const fondo_comun_inversion_otro = await client.fondo_comun_inversion_otro.load({ id: 'fondo_comun_inversion_otro_id' })
+```lua
+local fondo_comun_inversion_otro, err = client:FondoComunInversionOtro():load({ id = "fondo_comun_inversion_otro_id" })
 ```
 
 
 ### FondoComunInversionVariable
 
-Create an instance: `const fondo_comun_inversion_variable = client.fondo_comun_inversion_variable`
+Create an instance: `local fondo_comun_inversion_variable = client:FondoComunInversionVariable(nil)`
 
 #### Operations
 
@@ -1086,14 +1091,14 @@ Create an instance: `const fondo_comun_inversion_variable = client.fondo_comun_i
 
 #### Example: Load
 
-```ts
-const fondo_comun_inversion_variable = await client.fondo_comun_inversion_variable.load({ id: 'fondo_comun_inversion_variable_id' })
+```lua
+local fondo_comun_inversion_variable, err = client:FondoComunInversionVariable():load({ id = "fondo_comun_inversion_variable_id" })
 ```
 
 
 ### HipotecarioUvaTna
 
-Create an instance: `const hipotecario_uva_tna = client.hipotecario_uva_tna`
+Create an instance: `local hipotecario_uva_tna = client:HipotecarioUvaTna(nil)`
 
 #### Operations
 
@@ -1112,14 +1117,14 @@ Create an instance: `const hipotecario_uva_tna = client.hipotecario_uva_tna`
 
 #### Example: List
 
-```ts
-const hipotecario_uva_tnas = await client.hipotecario_uva_tna.list()
+```lua
+local hipotecario_uva_tnas, err = client:HipotecarioUvaTna():list()
 ```
 
 
 ### IndiceInflacion
 
-Create an instance: `const indice_inflacion = client.indice_inflacion`
+Create an instance: `local indice_inflacion = client:IndiceInflacion(nil)`
 
 #### Operations
 
@@ -1136,14 +1141,14 @@ Create an instance: `const indice_inflacion = client.indice_inflacion`
 
 #### Example: List
 
-```ts
-const indice_inflacions = await client.indice_inflacion.list()
+```lua
+local indice_inflacions, err = client:IndiceInflacion():list()
 ```
 
 
 ### IndiceUva
 
-Create an instance: `const indice_uva = client.indice_uva`
+Create an instance: `local indice_uva = client:IndiceUva(nil)`
 
 #### Operations
 
@@ -1160,14 +1165,14 @@ Create an instance: `const indice_uva = client.indice_uva`
 
 #### Example: List
 
-```ts
-const indice_uvas = await client.indice_uva.list()
+```lua
+local indice_uvas, err = client:IndiceUva():list()
 ```
 
 
 ### Letra
 
-Create an instance: `const letra = client.letra`
+Create an instance: `local letra = client:Letra(nil)`
 
 #### Operations
 
@@ -1187,14 +1192,14 @@ Create an instance: `const letra = client.letra`
 
 #### Example: List
 
-```ts
-const letras = await client.letra.list()
+```lua
+local letras, err = client:Letra():list()
 ```
 
 
 ### Presidente
 
-Create an instance: `const presidente = client.presidente`
+Create an instance: `local presidente = client:Presidente(nil)`
 
 #### Operations
 
@@ -1217,14 +1222,14 @@ Create an instance: `const presidente = client.presidente`
 
 #### Example: List
 
-```ts
-const presidentes = await client.presidente.list()
+```lua
+local presidentes, err = client:Presidente():list()
 ```
 
 
 ### ProveedorPlazoFijoPrecancelable
 
-Create an instance: `const proveedor_plazo_fijo_precancelable = client.proveedor_plazo_fijo_precancelable`
+Create an instance: `local proveedor_plazo_fijo_precancelable = client:ProveedorPlazoFijoPrecancelable(nil)`
 
 #### Operations
 
@@ -1256,14 +1261,14 @@ Create an instance: `const proveedor_plazo_fijo_precancelable = client.proveedor
 
 #### Example: List
 
-```ts
-const proveedor_plazo_fijo_precancelables = await client.proveedor_plazo_fijo_precancelable.list()
+```lua
+local proveedor_plazo_fijo_precancelables, err = client:ProveedorPlazoFijoPrecancelable():list()
 ```
 
 
 ### ProveedorPlazoFijoUvaPagoPeriodico
 
-Create an instance: `const proveedor_plazo_fijo_uva_pago_periodico = client.proveedor_plazo_fijo_uva_pago_periodico`
+Create an instance: `local proveedor_plazo_fijo_uva_pago_periodico = client:ProveedorPlazoFijoUvaPagoPeriodico(nil)`
 
 #### Operations
 
@@ -1282,14 +1287,14 @@ Create an instance: `const proveedor_plazo_fijo_uva_pago_periodico = client.prov
 
 #### Example: List
 
-```ts
-const proveedor_plazo_fijo_uva_pago_periodicos = await client.proveedor_plazo_fijo_uva_pago_periodico.list()
+```lua
+local proveedor_plazo_fijo_uva_pago_periodicos, err = client:ProveedorPlazoFijoUvaPagoPeriodico():list()
 ```
 
 
 ### Rem
 
-Create an instance: `const rem = client.rem`
+Create an instance: `local rem = client:Rem(nil)`
 
 #### Operations
 
@@ -1328,14 +1333,14 @@ Create an instance: `const rem = client.rem`
 
 #### Example: List
 
-```ts
-const rems = await client.rem.list()
+```lua
+local rems, err = client:Rem():list()
 ```
 
 
 ### RemExpectativa
 
-Create an instance: `const rem_expectativa = client.rem_expectativa`
+Create an instance: `local rem_expectativa = client:RemExpectativa(nil)`
 
 #### Operations
 
@@ -1374,14 +1379,14 @@ Create an instance: `const rem_expectativa = client.rem_expectativa`
 
 #### Example: List
 
-```ts
-const rem_expectativas = await client.rem_expectativa.list()
+```lua
+local rem_expectativas, err = client:RemExpectativa():list()
 ```
 
 
 ### Rendimiento
 
-Create an instance: `const rendimiento = client.rendimiento`
+Create an instance: `local rendimiento = client:Rendimiento(nil)`
 
 #### Operations
 
@@ -1399,14 +1404,14 @@ Create an instance: `const rendimiento = client.rendimiento`
 
 #### Example: Load
 
-```ts
-const rendimiento = await client.rendimiento.load({ id: 'rendimiento_id' })
+```lua
+local rendimiento, err = client:Rendimiento():load({ id = "rendimiento_id" })
 ```
 
 
 ### RiesgoPai
 
-Create an instance: `const riesgo_pai = client.riesgo_pai`
+Create an instance: `local riesgo_pai = client:RiesgoPai(nil)`
 
 #### Operations
 
@@ -1424,20 +1429,20 @@ Create an instance: `const riesgo_pai = client.riesgo_pai`
 
 #### Example: Load
 
-```ts
-const riesgo_pai = await client.riesgo_pai.load({ id: 'riesgo_pai_id' })
+```lua
+local riesgo_pai, err = client:RiesgoPai():load({ id = "riesgo_pai_id" })
 ```
 
 #### Example: List
 
-```ts
-const riesgo_pais = await client.riesgo_pai.list()
+```lua
+local riesgo_pais, err = client:RiesgoPai():list()
 ```
 
 
 ### Senador
 
-Create an instance: `const senador = client.senador`
+Create an instance: `local senador = client:Senador(nil)`
 
 #### Operations
 
@@ -1464,14 +1469,14 @@ Create an instance: `const senador = client.senador`
 
 #### Example: List
 
-```ts
-const senadors = await client.senador.list()
+```lua
+local senadors, err = client:Senador():list()
 ```
 
 
 ### TasaIntere
 
-Create an instance: `const tasa_intere = client.tasa_intere`
+Create an instance: `local tasa_intere = client:TasaIntere(nil)`
 
 #### Operations
 
@@ -1488,14 +1493,14 @@ Create an instance: `const tasa_intere = client.tasa_intere`
 
 #### Example: List
 
-```ts
-const tasa_interes = await client.tasa_intere.list()
+```lua
+local tasa_interes, err = client:TasaIntere():list()
 ```
 
 
 ### TasaPlazoFijo
 
-Create an instance: `const tasa_plazo_fijo = client.tasa_plazo_fijo`
+Create an instance: `local tasa_plazo_fijo = client:TasaPlazoFijo(nil)`
 
 #### Operations
 
@@ -1514,8 +1519,8 @@ Create an instance: `const tasa_plazo_fijo = client.tasa_plazo_fijo`
 
 #### Example: List
 
-```ts
-const tasa_plazo_fijos = await client.tasa_plazo_fijo.list()
+```lua
+local tasa_plazo_fijos, err = client:TasaPlazoFijo():list()
 ```
 
 
@@ -1590,7 +1595,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local acta = client:acta()
+local acta = client:Acta()
 acta:load({ id = "example_id" })
 
 -- acta:data_get() now returns the loaded acta data

@@ -897,7 +897,7 @@ func MakeConfig() map[string]any {
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body.estado`",
+									"res": "`body`",
 								},
 								"index$": 0,
 							},

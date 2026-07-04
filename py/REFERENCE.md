@@ -188,7 +188,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## ActaEntity
 
 ```python
-acta = client.acta
+acta = client.Acta()
 ```
 
 ### Fields
@@ -228,7 +228,9 @@ acta = client.acta
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.acta.list({})
+results = client.Acta().list({})
+for acta in results:
+    print(acta)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -236,7 +238,7 @@ results = client.acta.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.acta.load({"id": "acta_id"})
+result = client.Acta().load({"id": "acta_id"})
 ```
 
 ### Common Methods
@@ -271,7 +273,7 @@ Return the entity name.
 ## BonosCerEntity
 
 ```python
-bonos_cer = client.bonos_cer
+bonos_cer = client.BonosCer()
 ```
 
 ### Fields
@@ -291,7 +293,9 @@ bonos_cer = client.bonos_cer
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.bonos_cer.list({})
+results = client.BonosCer().list({})
+for bonos_cer in results:
+    print(bonos_cer)
 ```
 
 ### Common Methods
@@ -326,7 +330,7 @@ Return the entity name.
 ## CotizacionEntity
 
 ```python
-cotizacion = client.cotizacion
+cotizacion = client.Cotizacion()
 ```
 
 ### Fields
@@ -346,7 +350,9 @@ cotizacion = client.cotizacion
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.cotizacion.list({})
+results = client.Cotizacion().list({})
+for cotizacion in results:
+    print(cotizacion)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -354,7 +360,7 @@ results = client.cotizacion.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.cotizacion.load({"id": "cotizacion_id"})
+result = client.Cotizacion().load({"id": "cotizacion_id"})
 ```
 
 ### Common Methods
@@ -389,7 +395,7 @@ Return the entity name.
 ## CriptopesoEntity
 
 ```python
-criptopeso = client.criptopeso
+criptopeso = client.Criptopeso()
 ```
 
 ### Fields
@@ -407,7 +413,9 @@ criptopeso = client.criptopeso
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.criptopeso.list({})
+results = client.Criptopeso().list({})
+for criptopeso in results:
+    print(criptopeso)
 ```
 
 ### Common Methods
@@ -442,7 +450,7 @@ Return the entity name.
 ## CuentaRemuneradaUsdEntity
 
 ```python
-cuenta_remunerada_usd = client.cuenta_remunerada_usd
+cuenta_remunerada_usd = client.CuentaRemuneradaUsd()
 ```
 
 ### Fields
@@ -460,7 +468,9 @@ cuenta_remunerada_usd = client.cuenta_remunerada_usd
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.cuenta_remunerada_usd.list({})
+results = client.CuentaRemuneradaUsd().list({})
+for cuenta_remunerada_usd in results:
+    print(cuenta_remunerada_usd)
 ```
 
 ### Common Methods
@@ -495,7 +505,7 @@ Return the entity name.
 ## DiputadoEntity
 
 ```python
-diputado = client.diputado
+diputado = client.Diputado()
 ```
 
 ### Fields
@@ -521,7 +531,9 @@ diputado = client.diputado
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.diputado.list({})
+results = client.Diputado().list({})
+for diputado in results:
+    print(diputado)
 ```
 
 ### Common Methods
@@ -556,7 +568,7 @@ Return the entity name.
 ## EntidadRendimientoEntity
 
 ```python
-entidad_rendimiento = client.entidad_rendimiento
+entidad_rendimiento = client.EntidadRendimiento()
 ```
 
 ### Fields
@@ -573,7 +585,9 @@ entidad_rendimiento = client.entidad_rendimiento
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.entidad_rendimiento.list({})
+results = client.EntidadRendimiento().list({})
+for entidad_rendimiento in results:
+    print(entidad_rendimiento)
 ```
 
 ### Common Methods
@@ -608,7 +622,7 @@ Return the entity name.
 ## EstadoEntity
 
 ```python
-estado = client.estado
+estado = client.Estado()
 ```
 
 ### Fields
@@ -625,7 +639,7 @@ estado = client.estado
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.estado.load({"id": "estado_id"})
+result = client.Estado().load({"id": "estado_id"})
 ```
 
 ### Common Methods
@@ -660,7 +674,7 @@ Return the entity name.
 ## EventoPresidencialEntity
 
 ```python
-evento_presidencial = client.evento_presidencial
+evento_presidencial = client.EventoPresidencial()
 ```
 
 ### Fields
@@ -678,7 +692,9 @@ evento_presidencial = client.evento_presidencial
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.evento_presidencial.list({})
+results = client.EventoPresidencial().list({})
+for evento_presidencial in results:
+    print(evento_presidencial)
 ```
 
 ### Common Methods
@@ -713,7 +729,7 @@ Return the entity name.
 ## FeriadoEntity
 
 ```python
-feriado = client.feriado
+feriado = client.Feriado()
 ```
 
 ### Fields
@@ -731,7 +747,7 @@ feriado = client.feriado
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.feriado.load({"id": "feriado_id"})
+result = client.Feriado().load({"id": "feriado_id"})
 ```
 
 ### Common Methods
@@ -766,7 +782,7 @@ Return the entity name.
 ## FinanzaEntity
 
 ```python
-finanza = client.finanza
+finanza = client.Finanza()
 ```
 
 ### Operations
@@ -776,7 +792,9 @@ finanza = client.finanza
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.finanza.list({})
+results = client.Finanza().list({})
+for finanza in results:
+    print(finanza)
 ```
 
 ### Common Methods
@@ -811,7 +829,7 @@ Return the entity name.
 ## FondoComunInversionEntity
 
 ```python
-fondo_comun_inversion = client.fondo_comun_inversion
+fondo_comun_inversion = client.FondoComunInversion()
 ```
 
 ### Fields
@@ -833,7 +851,7 @@ fondo_comun_inversion = client.fondo_comun_inversion
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.fondo_comun_inversion.load({"id": "fondo_comun_inversion_id"})
+result = client.FondoComunInversion().load({"id": "fondo_comun_inversion_id"})
 ```
 
 ### Common Methods
@@ -868,7 +886,7 @@ Return the entity name.
 ## FondoComunInversionOtroEntity
 
 ```python
-fondo_comun_inversion_otro = client.fondo_comun_inversion_otro
+fondo_comun_inversion_otro = client.FondoComunInversionOtro()
 ```
 
 ### Fields
@@ -888,7 +906,7 @@ fondo_comun_inversion_otro = client.fondo_comun_inversion_otro
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.fondo_comun_inversion_otro.load({"id": "fondo_comun_inversion_otro_id"})
+result = client.FondoComunInversionOtro().load({"id": "fondo_comun_inversion_otro_id"})
 ```
 
 ### Common Methods
@@ -923,7 +941,7 @@ Return the entity name.
 ## FondoComunInversionVariableEntity
 
 ```python
-fondo_comun_inversion_variable = client.fondo_comun_inversion_variable
+fondo_comun_inversion_variable = client.FondoComunInversionVariable()
 ```
 
 ### Fields
@@ -947,7 +965,7 @@ fondo_comun_inversion_variable = client.fondo_comun_inversion_variable
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.fondo_comun_inversion_variable.load({"id": "fondo_comun_inversion_variable_id"})
+result = client.FondoComunInversionVariable().load({"id": "fondo_comun_inversion_variable_id"})
 ```
 
 ### Common Methods
@@ -982,7 +1000,7 @@ Return the entity name.
 ## HipotecarioUvaTnaEntity
 
 ```python
-hipotecario_uva_tna = client.hipotecario_uva_tna
+hipotecario_uva_tna = client.HipotecarioUvaTna()
 ```
 
 ### Fields
@@ -1001,7 +1019,9 @@ hipotecario_uva_tna = client.hipotecario_uva_tna
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.hipotecario_uva_tna.list({})
+results = client.HipotecarioUvaTna().list({})
+for hipotecario_uva_tna in results:
+    print(hipotecario_uva_tna)
 ```
 
 ### Common Methods
@@ -1036,7 +1056,7 @@ Return the entity name.
 ## IndiceInflacionEntity
 
 ```python
-indice_inflacion = client.indice_inflacion
+indice_inflacion = client.IndiceInflacion()
 ```
 
 ### Fields
@@ -1053,7 +1073,9 @@ indice_inflacion = client.indice_inflacion
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.indice_inflacion.list({})
+results = client.IndiceInflacion().list({})
+for indice_inflacion in results:
+    print(indice_inflacion)
 ```
 
 ### Common Methods
@@ -1088,7 +1110,7 @@ Return the entity name.
 ## IndiceUvaEntity
 
 ```python
-indice_uva = client.indice_uva
+indice_uva = client.IndiceUva()
 ```
 
 ### Fields
@@ -1105,7 +1127,9 @@ indice_uva = client.indice_uva
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.indice_uva.list({})
+results = client.IndiceUva().list({})
+for indice_uva in results:
+    print(indice_uva)
 ```
 
 ### Common Methods
@@ -1140,7 +1164,7 @@ Return the entity name.
 ## LetraEntity
 
 ```python
-letra = client.letra
+letra = client.Letra()
 ```
 
 ### Fields
@@ -1160,7 +1184,9 @@ letra = client.letra
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.letra.list({})
+results = client.Letra().list({})
+for letra in results:
+    print(letra)
 ```
 
 ### Common Methods
@@ -1195,7 +1221,7 @@ Return the entity name.
 ## PresidenteEntity
 
 ```python
-presidente = client.presidente
+presidente = client.Presidente()
 ```
 
 ### Fields
@@ -1218,7 +1244,9 @@ presidente = client.presidente
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.presidente.list({})
+results = client.Presidente().list({})
+for presidente in results:
+    print(presidente)
 ```
 
 ### Common Methods
@@ -1253,7 +1281,7 @@ Return the entity name.
 ## ProveedorPlazoFijoPrecancelableEntity
 
 ```python
-proveedor_plazo_fijo_precancelable = client.proveedor_plazo_fijo_precancelable
+proveedor_plazo_fijo_precancelable = client.ProveedorPlazoFijoPrecancelable()
 ```
 
 ### Fields
@@ -1285,7 +1313,9 @@ proveedor_plazo_fijo_precancelable = client.proveedor_plazo_fijo_precancelable
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.proveedor_plazo_fijo_precancelable.list({})
+results = client.ProveedorPlazoFijoPrecancelable().list({})
+for proveedor_plazo_fijo_precancelable in results:
+    print(proveedor_plazo_fijo_precancelable)
 ```
 
 ### Common Methods
@@ -1320,7 +1350,7 @@ Return the entity name.
 ## ProveedorPlazoFijoUvaPagoPeriodicoEntity
 
 ```python
-proveedor_plazo_fijo_uva_pago_periodico = client.proveedor_plazo_fijo_uva_pago_periodico
+proveedor_plazo_fijo_uva_pago_periodico = client.ProveedorPlazoFijoUvaPagoPeriodico()
 ```
 
 ### Fields
@@ -1339,7 +1369,9 @@ proveedor_plazo_fijo_uva_pago_periodico = client.proveedor_plazo_fijo_uva_pago_p
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.proveedor_plazo_fijo_uva_pago_periodico.list({})
+results = client.ProveedorPlazoFijoUvaPagoPeriodico().list({})
+for proveedor_plazo_fijo_uva_pago_periodico in results:
+    print(proveedor_plazo_fijo_uva_pago_periodico)
 ```
 
 ### Common Methods
@@ -1374,7 +1406,7 @@ Return the entity name.
 ## RemEntity
 
 ```python
-rem = client.rem
+rem = client.Rem()
 ```
 
 ### Fields
@@ -1413,7 +1445,9 @@ rem = client.rem
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.rem.list({})
+results = client.Rem().list({})
+for rem in results:
+    print(rem)
 ```
 
 ### Common Methods
@@ -1448,7 +1482,7 @@ Return the entity name.
 ## RemExpectativaEntity
 
 ```python
-rem_expectativa = client.rem_expectativa
+rem_expectativa = client.RemExpectativa()
 ```
 
 ### Fields
@@ -1487,7 +1521,9 @@ rem_expectativa = client.rem_expectativa
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.rem_expectativa.list({})
+results = client.RemExpectativa().list({})
+for rem_expectativa in results:
+    print(rem_expectativa)
 ```
 
 ### Common Methods
@@ -1522,7 +1558,7 @@ Return the entity name.
 ## RendimientoEntity
 
 ```python
-rendimiento = client.rendimiento
+rendimiento = client.Rendimiento()
 ```
 
 ### Fields
@@ -1540,7 +1576,7 @@ rendimiento = client.rendimiento
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.rendimiento.load({"id": "rendimiento_id"})
+result = client.Rendimiento().load({"id": "rendimiento_id"})
 ```
 
 ### Common Methods
@@ -1575,7 +1611,7 @@ Return the entity name.
 ## RiesgoPaiEntity
 
 ```python
-riesgo_pai = client.riesgo_pai
+riesgo_pai = client.RiesgoPai()
 ```
 
 ### Fields
@@ -1592,7 +1628,9 @@ riesgo_pai = client.riesgo_pai
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.riesgo_pai.list({})
+results = client.RiesgoPai().list({})
+for riesgo_pai in results:
+    print(riesgo_pai)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -1600,7 +1638,7 @@ results = client.riesgo_pai.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.riesgo_pai.load({"id": "riesgo_pai_id"})
+result = client.RiesgoPai().load({"id": "riesgo_pai_id"})
 ```
 
 ### Common Methods
@@ -1635,7 +1673,7 @@ Return the entity name.
 ## SenadorEntity
 
 ```python
-senador = client.senador
+senador = client.Senador()
 ```
 
 ### Fields
@@ -1662,7 +1700,9 @@ senador = client.senador
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.senador.list({})
+results = client.Senador().list({})
+for senador in results:
+    print(senador)
 ```
 
 ### Common Methods
@@ -1697,7 +1737,7 @@ Return the entity name.
 ## TasaIntereEntity
 
 ```python
-tasa_intere = client.tasa_intere
+tasa_intere = client.TasaIntere()
 ```
 
 ### Fields
@@ -1714,7 +1754,9 @@ tasa_intere = client.tasa_intere
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.tasa_intere.list({})
+results = client.TasaIntere().list({})
+for tasa_intere in results:
+    print(tasa_intere)
 ```
 
 ### Common Methods
@@ -1749,7 +1791,7 @@ Return the entity name.
 ## TasaPlazoFijoEntity
 
 ```python
-tasa_plazo_fijo = client.tasa_plazo_fijo
+tasa_plazo_fijo = client.TasaPlazoFijo()
 ```
 
 ### Fields
@@ -1768,7 +1810,9 @@ tasa_plazo_fijo = client.tasa_plazo_fijo
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.tasa_plazo_fijo.list({})
+results = client.TasaPlazoFijo().list({})
+for tasa_plazo_fijo in results:
+    print(tasa_plazo_fijo)
 ```
 
 ### Common Methods

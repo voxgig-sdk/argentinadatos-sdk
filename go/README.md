@@ -30,53 +30,39 @@ go mod edit -replace github.com/voxgig-sdk/argentinadatos-sdk/go=../argentinadat
 This tutorial walks through creating a client, listing entities, and
 loading a specific record.
 
-### 1. Create a client
+### Quickstart
+
+A complete program: create a client, then call the entity operations.
+Each operation returns `(value, error)` — the value is the data itself
+(there is no `{ok, data}` wrapper), so check `err` and use the value
+directly.
 
 ```go
 package main
 
 import (
     "fmt"
-
     sdk "github.com/voxgig-sdk/argentinadatos-sdk/go"
-    "github.com/voxgig-sdk/argentinadatos-sdk/go/core"
 )
 
 func main() {
     client := sdk.New()
-```
 
-### 2. List actas
-
-```go
-    result, err := client.Acta(nil).List(nil, nil)
+    // List acta records — the value is the array of records itself.
+    actas, err := client.Acta(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
-
-    rm := core.ToMapAny(result)
-    if rm["ok"] == true {
-        for _, item := range rm["data"].([]any) {
-            p := core.ToMapAny(item)
-            fmt.Println(p["id"], p["name"])
-        }
+    for _, item := range actas.([]any) {
+        fmt.Println(item)
     }
-```
 
-### 3. Load an acta
-
-```go
-    result, err = client.Acta(nil).Load(
-        map[string]any{"id": "example_id"}, nil,
-    )
+    // Load a single acta — the value is the loaded record.
+    acta, err := client.Acta(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
-
-    rm = core.ToMapAny(result)
-    if rm["ok"] == true {
-        fmt.Println(rm["data"])
-    }
+    fmt.Println(acta)
 }
 ```
 
@@ -127,10 +113,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-result, err := client.Acta(nil).Load(
+acta, err := client.Acta(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
-// result contains mock response data
+if err != nil {
+    panic(err)
+}
+fmt.Println(acta) // the loaded mock data
 ```
 
 ### Use a custom fetch function
@@ -207,23 +196,23 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `GetUtility` | `() *Utility` | Copy of the SDK utility object. |
 | `Prepare` | `(fetchargs map[string]any) (map[string]any, error)` | Build an HTTP request definition without sending. |
 | `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
-| `Acta` | `(data map[string]any) ArgentinadatosEntity` | Create a Acta entity instance. |
+| `Acta` | `(data map[string]any) ArgentinadatosEntity` | Create an Acta entity instance. |
 | `BonosCer` | `(data map[string]any) ArgentinadatosEntity` | Create a BonosCer entity instance. |
 | `Cotizacion` | `(data map[string]any) ArgentinadatosEntity` | Create a Cotizacion entity instance. |
 | `Criptopeso` | `(data map[string]any) ArgentinadatosEntity` | Create a Criptopeso entity instance. |
 | `CuentaRemuneradaUsd` | `(data map[string]any) ArgentinadatosEntity` | Create a CuentaRemuneradaUsd entity instance. |
 | `Diputado` | `(data map[string]any) ArgentinadatosEntity` | Create a Diputado entity instance. |
-| `EntidadRendimiento` | `(data map[string]any) ArgentinadatosEntity` | Create a EntidadRendimiento entity instance. |
-| `Estado` | `(data map[string]any) ArgentinadatosEntity` | Create a Estado entity instance. |
-| `EventoPresidencial` | `(data map[string]any) ArgentinadatosEntity` | Create a EventoPresidencial entity instance. |
+| `EntidadRendimiento` | `(data map[string]any) ArgentinadatosEntity` | Create an EntidadRendimiento entity instance. |
+| `Estado` | `(data map[string]any) ArgentinadatosEntity` | Create an Estado entity instance. |
+| `EventoPresidencial` | `(data map[string]any) ArgentinadatosEntity` | Create an EventoPresidencial entity instance. |
 | `Feriado` | `(data map[string]any) ArgentinadatosEntity` | Create a Feriado entity instance. |
 | `Finanza` | `(data map[string]any) ArgentinadatosEntity` | Create a Finanza entity instance. |
 | `FondoComunInversion` | `(data map[string]any) ArgentinadatosEntity` | Create a FondoComunInversion entity instance. |
 | `FondoComunInversionOtro` | `(data map[string]any) ArgentinadatosEntity` | Create a FondoComunInversionOtro entity instance. |
 | `FondoComunInversionVariable` | `(data map[string]any) ArgentinadatosEntity` | Create a FondoComunInversionVariable entity instance. |
 | `HipotecarioUvaTna` | `(data map[string]any) ArgentinadatosEntity` | Create a HipotecarioUvaTna entity instance. |
-| `IndiceInflacion` | `(data map[string]any) ArgentinadatosEntity` | Create a IndiceInflacion entity instance. |
-| `IndiceUva` | `(data map[string]any) ArgentinadatosEntity` | Create a IndiceUva entity instance. |
+| `IndiceInflacion` | `(data map[string]any) ArgentinadatosEntity` | Create an IndiceInflacion entity instance. |
+| `IndiceUva` | `(data map[string]any) ArgentinadatosEntity` | Create an IndiceUva entity instance. |
 | `Letra` | `(data map[string]any) ArgentinadatosEntity` | Create a Letra entity instance. |
 | `Presidente` | `(data map[string]any) ArgentinadatosEntity` | Create a Presidente entity instance. |
 | `ProveedorPlazoFijoPrecancelable` | `(data map[string]any) ArgentinadatosEntity` | Create a ProveedorPlazoFijoPrecancelable entity instance. |
@@ -254,17 +243,24 @@ All entities implement the `ArgentinadatosEntity` interface.
 
 ### Result shape
 
-Entity operations return `(any, error)`. The `any` value is a
-`map[string]any` with these keys:
+Entity operations return `(value, error)`. The `value` is the
+operation's data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `"ok"` | `bool` | `true` if the HTTP status is 2xx. |
-| `"status"` | `int` | HTTP status code. |
-| `"headers"` | `map[string]any` | Response headers. |
-| `"data"` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `List` | a `[]any` of entity records |
 
-On error, `"ok"` is `false` and `"err"` contains the error value.
+Check `err` first, then use the value directly (or the typed
+`...Typed` variants, which return the entity's model struct and a typed
+slice):
+
+    acta, err := client.Acta(nil).Load(map[string]any{"id": "example_id"}, nil)
+    if err != nil { /* handle */ }
+    // acta is the loaded record
+
+Only `Direct()` returns a response envelope — a `map[string]any` with
+`"ok"`, `"status"`, `"headers"`, and `"data"` keys.
 
 ### Entities
 
@@ -765,13 +761,21 @@ Create an instance: `acta := client.Acta(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Acta(nil).Load(map[string]any{"id": "acta_id"}, nil)
+acta, err := client.Acta(nil).Load(map[string]any{"id": "acta_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(acta) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Acta(nil).List(nil, nil)
+actas, err := client.Acta(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(actas) // the array of records
 ```
 
 
@@ -798,7 +802,11 @@ Create an instance: `bonos_cer := client.BonosCer(nil)`
 #### Example: List
 
 ```go
-results, err := client.BonosCer(nil).List(nil, nil)
+bonos_cers, err := client.BonosCer(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(bonos_cers) // the array of records
 ```
 
 
@@ -826,13 +834,21 @@ Create an instance: `cotizacion := client.Cotizacion(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Cotizacion(nil).Load(map[string]any{"id": "cotizacion_id"}, nil)
+cotizacion, err := client.Cotizacion(nil).Load(map[string]any{"id": "cotizacion_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(cotizacion) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Cotizacion(nil).List(nil, nil)
+cotizacions, err := client.Cotizacion(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(cotizacions) // the array of records
 ```
 
 
@@ -857,7 +873,11 @@ Create an instance: `criptopeso := client.Criptopeso(nil)`
 #### Example: List
 
 ```go
-results, err := client.Criptopeso(nil).List(nil, nil)
+criptopesos, err := client.Criptopeso(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(criptopesos) // the array of records
 ```
 
 
@@ -882,7 +902,11 @@ Create an instance: `cuenta_remunerada_usd := client.CuentaRemuneradaUsd(nil)`
 #### Example: List
 
 ```go
-results, err := client.CuentaRemuneradaUsd(nil).List(nil, nil)
+cuenta_remunerada_usds, err := client.CuentaRemuneradaUsd(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(cuenta_remunerada_usds) // the array of records
 ```
 
 
@@ -915,7 +939,11 @@ Create an instance: `diputado := client.Diputado(nil)`
 #### Example: List
 
 ```go
-results, err := client.Diputado(nil).List(nil, nil)
+diputados, err := client.Diputado(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(diputados) // the array of records
 ```
 
 
@@ -939,7 +967,11 @@ Create an instance: `entidad_rendimiento := client.EntidadRendimiento(nil)`
 #### Example: List
 
 ```go
-results, err := client.EntidadRendimiento(nil).List(nil, nil)
+entidad_rendimientos, err := client.EntidadRendimiento(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(entidad_rendimientos) // the array of records
 ```
 
 
@@ -963,7 +995,11 @@ Create an instance: `estado := client.Estado(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Estado(nil).Load(map[string]any{"id": "estado_id"}, nil)
+estado, err := client.Estado(nil).Load(map[string]any{"id": "estado_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(estado) // the loaded record
 ```
 
 
@@ -988,7 +1024,11 @@ Create an instance: `evento_presidencial := client.EventoPresidencial(nil)`
 #### Example: List
 
 ```go
-results, err := client.EventoPresidencial(nil).List(nil, nil)
+evento_presidencials, err := client.EventoPresidencial(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(evento_presidencials) // the array of records
 ```
 
 
@@ -1013,7 +1053,11 @@ Create an instance: `feriado := client.Feriado(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Feriado(nil).Load(map[string]any{"id": "feriado_id"}, nil)
+feriado, err := client.Feriado(nil).Load(map[string]any{"id": "feriado_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(feriado) // the loaded record
 ```
 
 
@@ -1030,7 +1074,11 @@ Create an instance: `finanza := client.Finanza(nil)`
 #### Example: List
 
 ```go
-results, err := client.Finanza(nil).List(nil, nil)
+finanzas, err := client.Finanza(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(finanzas) // the array of records
 ```
 
 
@@ -1059,7 +1107,11 @@ Create an instance: `fondo_comun_inversion := client.FondoComunInversion(nil)`
 #### Example: Load
 
 ```go
-result, err := client.FondoComunInversion(nil).Load(map[string]any{"id": "fondo_comun_inversion_id"}, nil)
+fondo_comun_inversion, err := client.FondoComunInversion(nil).Load(map[string]any{"id": "fondo_comun_inversion_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(fondo_comun_inversion) // the loaded record
 ```
 
 
@@ -1086,7 +1138,11 @@ Create an instance: `fondo_comun_inversion_otro := client.FondoComunInversionOtr
 #### Example: Load
 
 ```go
-result, err := client.FondoComunInversionOtro(nil).Load(map[string]any{"id": "fondo_comun_inversion_otro_id"}, nil)
+fondo_comun_inversion_otro, err := client.FondoComunInversionOtro(nil).Load(map[string]any{"id": "fondo_comun_inversion_otro_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(fondo_comun_inversion_otro) // the loaded record
 ```
 
 
@@ -1117,7 +1173,11 @@ Create an instance: `fondo_comun_inversion_variable := client.FondoComunInversio
 #### Example: Load
 
 ```go
-result, err := client.FondoComunInversionVariable(nil).Load(map[string]any{"id": "fondo_comun_inversion_variable_id"}, nil)
+fondo_comun_inversion_variable, err := client.FondoComunInversionVariable(nil).Load(map[string]any{"id": "fondo_comun_inversion_variable_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(fondo_comun_inversion_variable) // the loaded record
 ```
 
 
@@ -1143,7 +1203,11 @@ Create an instance: `hipotecario_uva_tna := client.HipotecarioUvaTna(nil)`
 #### Example: List
 
 ```go
-results, err := client.HipotecarioUvaTna(nil).List(nil, nil)
+hipotecario_uva_tnas, err := client.HipotecarioUvaTna(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(hipotecario_uva_tnas) // the array of records
 ```
 
 
@@ -1167,7 +1231,11 @@ Create an instance: `indice_inflacion := client.IndiceInflacion(nil)`
 #### Example: List
 
 ```go
-results, err := client.IndiceInflacion(nil).List(nil, nil)
+indice_inflacions, err := client.IndiceInflacion(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(indice_inflacions) // the array of records
 ```
 
 
@@ -1191,7 +1259,11 @@ Create an instance: `indice_uva := client.IndiceUva(nil)`
 #### Example: List
 
 ```go
-results, err := client.IndiceUva(nil).List(nil, nil)
+indice_uvas, err := client.IndiceUva(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(indice_uvas) // the array of records
 ```
 
 
@@ -1218,7 +1290,11 @@ Create an instance: `letra := client.Letra(nil)`
 #### Example: List
 
 ```go
-results, err := client.Letra(nil).List(nil, nil)
+letras, err := client.Letra(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(letras) // the array of records
 ```
 
 
@@ -1248,7 +1324,11 @@ Create an instance: `presidente := client.Presidente(nil)`
 #### Example: List
 
 ```go
-results, err := client.Presidente(nil).List(nil, nil)
+presidentes, err := client.Presidente(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(presidentes) // the array of records
 ```
 
 
@@ -1287,7 +1367,11 @@ Create an instance: `proveedor_plazo_fijo_precancelable := client.ProveedorPlazo
 #### Example: List
 
 ```go
-results, err := client.ProveedorPlazoFijoPrecancelable(nil).List(nil, nil)
+proveedor_plazo_fijo_precancelables, err := client.ProveedorPlazoFijoPrecancelable(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(proveedor_plazo_fijo_precancelables) // the array of records
 ```
 
 
@@ -1313,7 +1397,11 @@ Create an instance: `proveedor_plazo_fijo_uva_pago_periodico := client.Proveedor
 #### Example: List
 
 ```go
-results, err := client.ProveedorPlazoFijoUvaPagoPeriodico(nil).List(nil, nil)
+proveedor_plazo_fijo_uva_pago_periodicos, err := client.ProveedorPlazoFijoUvaPagoPeriodico(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(proveedor_plazo_fijo_uva_pago_periodicos) // the array of records
 ```
 
 
@@ -1359,7 +1447,11 @@ Create an instance: `rem := client.Rem(nil)`
 #### Example: List
 
 ```go
-results, err := client.Rem(nil).List(nil, nil)
+rems, err := client.Rem(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(rems) // the array of records
 ```
 
 
@@ -1405,7 +1497,11 @@ Create an instance: `rem_expectativa := client.RemExpectativa(nil)`
 #### Example: List
 
 ```go
-results, err := client.RemExpectativa(nil).List(nil, nil)
+rem_expectativas, err := client.RemExpectativa(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(rem_expectativas) // the array of records
 ```
 
 
@@ -1430,7 +1526,11 @@ Create an instance: `rendimiento := client.Rendimiento(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Rendimiento(nil).Load(map[string]any{"id": "rendimiento_id"}, nil)
+rendimiento, err := client.Rendimiento(nil).Load(map[string]any{"id": "rendimiento_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(rendimiento) // the loaded record
 ```
 
 
@@ -1455,13 +1555,21 @@ Create an instance: `riesgo_pai := client.RiesgoPai(nil)`
 #### Example: Load
 
 ```go
-result, err := client.RiesgoPai(nil).Load(map[string]any{"id": "riesgo_pai_id"}, nil)
+riesgo_pai, err := client.RiesgoPai(nil).Load(map[string]any{"id": "riesgo_pai_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(riesgo_pai) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.RiesgoPai(nil).List(nil, nil)
+riesgo_pais, err := client.RiesgoPai(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(riesgo_pais) // the array of records
 ```
 
 
@@ -1495,7 +1603,11 @@ Create an instance: `senador := client.Senador(nil)`
 #### Example: List
 
 ```go
-results, err := client.Senador(nil).List(nil, nil)
+senadors, err := client.Senador(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(senadors) // the array of records
 ```
 
 
@@ -1519,7 +1631,11 @@ Create an instance: `tasa_intere := client.TasaIntere(nil)`
 #### Example: List
 
 ```go
-results, err := client.TasaIntere(nil).List(nil, nil)
+tasa_interes, err := client.TasaIntere(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(tasa_interes) // the array of records
 ```
 
 
@@ -1545,7 +1661,11 @@ Create an instance: `tasa_plazo_fijo := client.TasaPlazoFijo(nil)`
 #### Example: List
 
 ```go
-results, err := client.TasaPlazoFijo(nil).List(nil, nil)
+tasa_plazo_fijos, err := client.TasaPlazoFijo(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(tasa_plazo_fijos) // the array of records
 ```
 
 
