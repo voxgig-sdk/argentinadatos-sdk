@@ -49,8 +49,7 @@ class TestFondoComunInversionEntity:
         # LOAD
         fondo_comun_inversion_ref01_ent = client.FondoComunInversion(None)
         fondo_comun_inversion_ref01_match_dt0 = {}
-        fondo_comun_inversion_ref01_data_dt0_loaded, err = fondo_comun_inversion_ref01_ent.load(fondo_comun_inversion_ref01_match_dt0, None)
-        assert err is None
+        fondo_comun_inversion_ref01_data_dt0_loaded = fondo_comun_inversion_ref01_ent.load(fondo_comun_inversion_ref01_match_dt0, None)
         assert fondo_comun_inversion_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _fondo_comun_inversion_basic_setup(extra):
         "ARGENTINADATOS_TEST_FONDO_COMUN_INVERSION_ENTID": idmap,
         "ARGENTINADATOS_TEST_LIVE": "FALSE",
         "ARGENTINADATOS_TEST_EXPLAIN": "FALSE",
-        "ARGENTINADATOS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _fondo_comun_inversion_basic_setup(extra):
     if env.get("ARGENTINADATOS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ARGENTINADATOS_APIKEY"),
             },
             extra or {},
         ])

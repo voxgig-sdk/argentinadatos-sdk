@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  HipotecarioUvaTna,
+  HipotecarioUvaTnaListMatch,
+} from '../ArgentinadatosTypes'
 
 // TODO: needs Entity superclass
-class HipotecarioUvaTnaEntity extends ArgentinadatosEntityBase {
+class HipotecarioUvaTnaEntity extends ArgentinadatosEntityBase<HipotecarioUvaTna> {
 
   constructor(client: ArgentinadatosSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class HipotecarioUvaTnaEntity extends ArgentinadatosEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: HipotecarioUvaTnaListMatch, ctrl?: Control): Promise<HipotecarioUvaTna[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class HipotecarioUvaTnaEntity extends ArgentinadatosEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<HipotecarioUvaTna[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

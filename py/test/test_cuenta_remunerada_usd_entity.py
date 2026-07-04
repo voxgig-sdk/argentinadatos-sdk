@@ -50,8 +50,7 @@ class TestCuentaRemuneradaUsdEntity:
         cuenta_remunerada_usd_ref01_ent = client.CuentaRemuneradaUsd(None)
         cuenta_remunerada_usd_ref01_match = {}
 
-        cuenta_remunerada_usd_ref01_list_result, err = cuenta_remunerada_usd_ref01_ent.list(cuenta_remunerada_usd_ref01_match, None)
-        assert err is None
+        cuenta_remunerada_usd_ref01_list_result = cuenta_remunerada_usd_ref01_ent.list(cuenta_remunerada_usd_ref01_match, None)
         assert isinstance(cuenta_remunerada_usd_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _cuenta_remunerada_usd_basic_setup(extra):
         "ARGENTINADATOS_TEST_CUENTA_REMUNERADA_USD_ENTID": idmap,
         "ARGENTINADATOS_TEST_LIVE": "FALSE",
         "ARGENTINADATOS_TEST_EXPLAIN": "FALSE",
-        "ARGENTINADATOS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _cuenta_remunerada_usd_basic_setup(extra):
     if env.get("ARGENTINADATOS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ARGENTINADATOS_APIKEY"),
             },
             extra or {},
         ])

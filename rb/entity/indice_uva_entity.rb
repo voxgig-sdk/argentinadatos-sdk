@@ -45,6 +45,7 @@ class IndiceUvaEntity
     end
   end
 
+  # @return [IndiceUva, Hash] the current IndiceUva data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class IndiceUvaEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of IndiceUva fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class IndiceUvaEntity
   
 
   
+  # List IndiceUva items matching the given filter.
+  #
+  # @param reqmatch [IndiceUvaListMatch, Hash, nil] match filter (any subset of IndiceUva fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<IndiceUva>, Array] the matching IndiceUva items; raises ArgentinadatosError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

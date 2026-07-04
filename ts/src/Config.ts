@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://api.argentinadatos.com',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -373,7 +369,8 @@ class Config {
                     "name": "id",
                     "orig": "año",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },
@@ -412,7 +409,8 @@ class Config {
                     "name": "id",
                     "orig": "año",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },
@@ -596,7 +594,8 @@ class Config {
                     "name": "casa",
                     "orig": "casa",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   },
                   {
                     "active": true,
@@ -605,7 +604,8 @@ class Config {
                     "name": "fecha",
                     "orig": "fecha",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 1
                   }
                 ]
               },
@@ -641,7 +641,8 @@ class Config {
                     "name": "casa",
                     "orig": "casa",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1088,7 +1089,8 @@ class Config {
                     "name": "id",
                     "orig": "año",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1224,7 +1226,8 @@ class Config {
                     "name": "fecha",
                     "orig": "fecha",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1259,7 +1262,8 @@ class Config {
                     "name": "fecha",
                     "orig": "fecha",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1294,7 +1298,8 @@ class Config {
                     "name": "fecha",
                     "orig": "fecha",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1329,7 +1334,8 @@ class Config {
                     "name": "fecha",
                     "orig": "fecha",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1364,7 +1370,8 @@ class Config {
                     "name": "fecha",
                     "orig": "fecha",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1467,7 +1474,8 @@ class Config {
                     "name": "id",
                     "orig": "fecha",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1587,7 +1595,8 @@ class Config {
                     "name": "id",
                     "orig": "fecha",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -2366,7 +2375,8 @@ class Config {
                     "name": "año",
                     "orig": "año",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   },
                   {
                     "active": true,
@@ -2375,7 +2385,8 @@ class Config {
                     "name": "mes",
                     "orig": "mes",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 1
                   }
                 ]
               },
@@ -2654,7 +2665,8 @@ class Config {
                     "name": "id",
                     "orig": "entidad",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },

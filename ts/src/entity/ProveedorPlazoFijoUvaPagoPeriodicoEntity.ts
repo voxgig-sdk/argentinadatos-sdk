@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  ProveedorPlazoFijoUvaPagoPeriodico,
+  ProveedorPlazoFijoUvaPagoPeriodicoListMatch,
+} from '../ArgentinadatosTypes'
 
 // TODO: needs Entity superclass
-class ProveedorPlazoFijoUvaPagoPeriodicoEntity extends ArgentinadatosEntityBase {
+class ProveedorPlazoFijoUvaPagoPeriodicoEntity extends ArgentinadatosEntityBase<ProveedorPlazoFijoUvaPagoPeriodico> {
 
   constructor(client: ArgentinadatosSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class ProveedorPlazoFijoUvaPagoPeriodicoEntity extends ArgentinadatosEntityBase 
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: ProveedorPlazoFijoUvaPagoPeriodicoListMatch, ctrl?: Control): Promise<ProveedorPlazoFijoUvaPagoPeriodico[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class ProveedorPlazoFijoUvaPagoPeriodicoEntity extends ArgentinadatosEntityBase 
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<ProveedorPlazoFijoUvaPagoPeriodico[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

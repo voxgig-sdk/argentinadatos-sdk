@@ -50,8 +50,7 @@ class TestProveedorPlazoFijoUvaPagoPeriodicoEntity:
         proveedor_plazo_fijo_uva_pago_periodico_ref01_ent = client.ProveedorPlazoFijoUvaPagoPeriodico(None)
         proveedor_plazo_fijo_uva_pago_periodico_ref01_match = {}
 
-        proveedor_plazo_fijo_uva_pago_periodico_ref01_list_result, err = proveedor_plazo_fijo_uva_pago_periodico_ref01_ent.list(proveedor_plazo_fijo_uva_pago_periodico_ref01_match, None)
-        assert err is None
+        proveedor_plazo_fijo_uva_pago_periodico_ref01_list_result = proveedor_plazo_fijo_uva_pago_periodico_ref01_ent.list(proveedor_plazo_fijo_uva_pago_periodico_ref01_match, None)
         assert isinstance(proveedor_plazo_fijo_uva_pago_periodico_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _proveedor_plazo_fijo_uva_pago_periodico_basic_setup(extra):
         "ARGENTINADATOS_TEST_PROVEEDOR_PLAZO_FIJO_UVA_PAGO_PERIODICO_ENTID": idmap,
         "ARGENTINADATOS_TEST_LIVE": "FALSE",
         "ARGENTINADATOS_TEST_EXPLAIN": "FALSE",
-        "ARGENTINADATOS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _proveedor_plazo_fijo_uva_pago_periodico_basic_setup(extra):
     if env.get("ARGENTINADATOS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ARGENTINADATOS_APIKEY"),
             },
             extra or {},
         ])

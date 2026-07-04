@@ -45,6 +45,7 @@ class RendimientoEntity
     end
   end
 
+  # @return [Rendimiento, Hash] the current Rendimiento data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class RendimientoEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Rendimiento fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Rendimiento.
+  #
+  # @param reqmatch [RendimientoLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Rendimiento, Hash] the loaded Rendimiento; raises ArgentinadatosError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

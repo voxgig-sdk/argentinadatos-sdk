@@ -43,8 +43,7 @@ class HipotecarioUvaTnaEntityTest < Minitest::Test
     hipotecario_uva_tna_ref01_ent = client.HipotecarioUvaTna(nil)
     hipotecario_uva_tna_ref01_match = {}
 
-    hipotecario_uva_tna_ref01_list_result, err = hipotecario_uva_tna_ref01_ent.list(hipotecario_uva_tna_ref01_match, nil)
-    assert_nil err
+    hipotecario_uva_tna_ref01_list_result = hipotecario_uva_tna_ref01_ent.list(hipotecario_uva_tna_ref01_match, nil)
     assert hipotecario_uva_tna_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def hipotecario_uva_tna_basic_setup(extra)
     "ARGENTINADATOS_TEST_HIPOTECARIO_UVA_TNA_ENTID" => idmap,
     "ARGENTINADATOS_TEST_LIVE" => "FALSE",
     "ARGENTINADATOS_TEST_EXPLAIN" => "FALSE",
-    "ARGENTINADATOS_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def hipotecario_uva_tna_basic_setup(extra)
   if env["ARGENTINADATOS_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ARGENTINADATOS_APIKEY"],
       },
       extra || {},
     ])

@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch RemListMatch
+---@param ctrl? table
+---@return Rem[]
+---@return string? err
 function RemEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

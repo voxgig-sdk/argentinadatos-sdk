@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Letra,
+  LetraListMatch,
+} from '../ArgentinadatosTypes'
 
 // TODO: needs Entity superclass
-class LetraEntity extends ArgentinadatosEntityBase {
+class LetraEntity extends ArgentinadatosEntityBase<Letra> {
 
   constructor(client: ArgentinadatosSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class LetraEntity extends ArgentinadatosEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: LetraListMatch, ctrl?: Control): Promise<Letra[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class LetraEntity extends ArgentinadatosEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Letra[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

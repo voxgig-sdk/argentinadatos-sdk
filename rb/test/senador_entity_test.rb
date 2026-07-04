@@ -43,8 +43,7 @@ class SenadorEntityTest < Minitest::Test
     senador_ref01_ent = client.Senador(nil)
     senador_ref01_match = {}
 
-    senador_ref01_list_result, err = senador_ref01_ent.list(senador_ref01_match, nil)
-    assert_nil err
+    senador_ref01_list_result = senador_ref01_ent.list(senador_ref01_match, nil)
     assert senador_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def senador_basic_setup(extra)
     "ARGENTINADATOS_TEST_SENADOR_ENTID" => idmap,
     "ARGENTINADATOS_TEST_LIVE" => "FALSE",
     "ARGENTINADATOS_TEST_EXPLAIN" => "FALSE",
-    "ARGENTINADATOS_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def senador_basic_setup(extra)
   if env["ARGENTINADATOS_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ARGENTINADATOS_APIKEY"],
       },
       extra || {},
     ])

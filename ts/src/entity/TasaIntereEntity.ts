@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  TasaIntere,
+  TasaIntereListMatch,
+} from '../ArgentinadatosTypes'
 
 // TODO: needs Entity superclass
-class TasaIntereEntity extends ArgentinadatosEntityBase {
+class TasaIntereEntity extends ArgentinadatosEntityBase<TasaIntere> {
 
   constructor(client: ArgentinadatosSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class TasaIntereEntity extends ArgentinadatosEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: TasaIntereListMatch, ctrl?: Control): Promise<TasaIntere[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class TasaIntereEntity extends ArgentinadatosEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<TasaIntere[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

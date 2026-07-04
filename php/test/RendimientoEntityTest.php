@@ -49,8 +49,7 @@ class RendimientoEntityTest extends TestCase
         // LOAD
         $rendimiento_ref01_ent = $client->Rendimiento(null);
         $rendimiento_ref01_match_dt0 = [];
-        [$rendimiento_ref01_data_dt0_loaded, $err] = $rendimiento_ref01_ent->load($rendimiento_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $rendimiento_ref01_data_dt0_loaded = $rendimiento_ref01_ent->load($rendimiento_ref01_match_dt0, null);
         $this->assertNotNull($rendimiento_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function rendimiento_basic_setup($extra)
         "ARGENTINADATOS_TEST_RENDIMIENTO_ENTID" => $idmap,
         "ARGENTINADATOS_TEST_LIVE" => "FALSE",
         "ARGENTINADATOS_TEST_EXPLAIN" => "FALSE",
-        "ARGENTINADATOS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function rendimiento_basic_setup($extra)
     if ($env["ARGENTINADATOS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ARGENTINADATOS_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -45,6 +45,7 @@ class RiesgoPaiEntity
     end
   end
 
+  # @return [RiesgoPai, Hash] the current RiesgoPai data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class RiesgoPaiEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of RiesgoPai fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single RiesgoPai.
+  #
+  # @param reqmatch [RiesgoPaiLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [RiesgoPai, Hash] the loaded RiesgoPai; raises ArgentinadatosError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class RiesgoPaiEntity
 
 
   
+  # List RiesgoPai items matching the given filter.
+  #
+  # @param reqmatch [RiesgoPaiListMatch, Hash, nil] match filter (any subset of RiesgoPai fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<RiesgoPai>, Array] the matching RiesgoPai items; raises ArgentinadatosError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

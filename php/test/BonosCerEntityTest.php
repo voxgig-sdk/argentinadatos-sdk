@@ -50,8 +50,7 @@ class BonosCerEntityTest extends TestCase
         $bonos_cer_ref01_ent = $client->BonosCer(null);
         $bonos_cer_ref01_match = [];
 
-        [$bonos_cer_ref01_list_result, $err] = $bonos_cer_ref01_ent->list($bonos_cer_ref01_match, null);
-        $this->assertNull($err);
+        $bonos_cer_ref01_list_result = $bonos_cer_ref01_ent->list($bonos_cer_ref01_match, null);
         $this->assertIsArray($bonos_cer_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function bonos_cer_basic_setup($extra)
         "ARGENTINADATOS_TEST_BONOS_CER_ENTID" => $idmap,
         "ARGENTINADATOS_TEST_LIVE" => "FALSE",
         "ARGENTINADATOS_TEST_EXPLAIN" => "FALSE",
-        "ARGENTINADATOS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function bonos_cer_basic_setup($extra)
     if ($env["ARGENTINADATOS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ARGENTINADATOS_APIKEY"],
             ],
             $extra ?? [],
         ]);

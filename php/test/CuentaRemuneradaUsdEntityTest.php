@@ -50,8 +50,7 @@ class CuentaRemuneradaUsdEntityTest extends TestCase
         $cuenta_remunerada_usd_ref01_ent = $client->CuentaRemuneradaUsd(null);
         $cuenta_remunerada_usd_ref01_match = [];
 
-        [$cuenta_remunerada_usd_ref01_list_result, $err] = $cuenta_remunerada_usd_ref01_ent->list($cuenta_remunerada_usd_ref01_match, null);
-        $this->assertNull($err);
+        $cuenta_remunerada_usd_ref01_list_result = $cuenta_remunerada_usd_ref01_ent->list($cuenta_remunerada_usd_ref01_match, null);
         $this->assertIsArray($cuenta_remunerada_usd_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function cuenta_remunerada_usd_basic_setup($extra)
         "ARGENTINADATOS_TEST_CUENTA_REMUNERADA_USD_ENTID" => $idmap,
         "ARGENTINADATOS_TEST_LIVE" => "FALSE",
         "ARGENTINADATOS_TEST_EXPLAIN" => "FALSE",
-        "ARGENTINADATOS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function cuenta_remunerada_usd_basic_setup($extra)
     if ($env["ARGENTINADATOS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ARGENTINADATOS_APIKEY"],
             ],
             $extra ?? [],
         ]);

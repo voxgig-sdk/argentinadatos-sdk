@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  RiesgoPai,
+  RiesgoPaiLoadMatch,
+  RiesgoPaiListMatch,
+} from '../ArgentinadatosTypes'
 
 // TODO: needs Entity superclass
-class RiesgoPaiEntity extends ArgentinadatosEntityBase {
+class RiesgoPaiEntity extends ArgentinadatosEntityBase<RiesgoPai> {
 
   constructor(client: ArgentinadatosSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class RiesgoPaiEntity extends ArgentinadatosEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: RiesgoPaiLoadMatch, ctrl?: Control): Promise<RiesgoPai> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class RiesgoPaiEntity extends ArgentinadatosEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<RiesgoPai> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: RiesgoPaiListMatch, ctrl?: Control): Promise<RiesgoPai[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class RiesgoPaiEntity extends ArgentinadatosEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<RiesgoPai[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

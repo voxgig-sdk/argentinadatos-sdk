@@ -50,8 +50,7 @@ class FinanzaEntityTest extends TestCase
         $finanza_ref01_ent = $client->Finanza(null);
         $finanza_ref01_match = [];
 
-        [$finanza_ref01_list_result, $err] = $finanza_ref01_ent->list($finanza_ref01_match, null);
-        $this->assertNull($err);
+        $finanza_ref01_list_result = $finanza_ref01_ent->list($finanza_ref01_match, null);
         $this->assertIsArray($finanza_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function finanza_basic_setup($extra)
         "ARGENTINADATOS_TEST_FINANZA_ENTID" => $idmap,
         "ARGENTINADATOS_TEST_LIVE" => "FALSE",
         "ARGENTINADATOS_TEST_EXPLAIN" => "FALSE",
-        "ARGENTINADATOS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function finanza_basic_setup($extra)
     if ($env["ARGENTINADATOS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ARGENTINADATOS_APIKEY"],
             ],
             $extra ?? [],
         ]);

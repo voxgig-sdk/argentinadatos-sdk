@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch EstadoLoadMatch
+---@param ctrl? table
+---@return Estado
+---@return string? err
 function EstadoEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

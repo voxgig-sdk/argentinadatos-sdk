@@ -45,6 +45,7 @@ class DiputadoEntity
     end
   end
 
+  # @return [Diputado, Hash] the current Diputado data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class DiputadoEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Diputado fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class DiputadoEntity
   
 
   
+  # List Diputado items matching the given filter.
+  #
+  # @param reqmatch [DiputadoListMatch, Hash, nil] match filter (any subset of Diputado fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Diputado>, Array] the matching Diputado items; raises ArgentinadatosError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

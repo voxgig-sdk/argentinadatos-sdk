@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch LetraListMatch
+---@param ctrl? table
+---@return Letra[]
+---@return string? err
 function LetraEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

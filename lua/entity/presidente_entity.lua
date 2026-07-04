@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch PresidenteListMatch
+---@param ctrl? table
+---@return Presidente[]
+---@return string? err
 function PresidenteEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

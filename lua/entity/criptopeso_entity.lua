@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch CriptopesoListMatch
+---@param ctrl? table
+---@return Criptopeso[]
+---@return string? err
 function CriptopesoEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch RendimientoLoadMatch
+---@param ctrl? table
+---@return Rendimiento
+---@return string? err
 function RendimientoEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

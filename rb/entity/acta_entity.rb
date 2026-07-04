@@ -45,6 +45,7 @@ class ActaEntity
     end
   end
 
+  # @return [Acta, Hash] the current Acta data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class ActaEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Acta fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Acta.
+  #
+  # @param reqmatch [ActaLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Acta, Hash] the loaded Acta; raises ArgentinadatosError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class ActaEntity
 
 
   
+  # List Acta items matching the given filter.
+  #
+  # @param reqmatch [ActaListMatch, Hash, nil] match filter (any subset of Acta fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Acta>, Array] the matching Acta items; raises ArgentinadatosError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

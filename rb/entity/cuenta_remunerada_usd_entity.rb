@@ -45,6 +45,7 @@ class CuentaRemuneradaUsdEntity
     end
   end
 
+  # @return [CuentaRemuneradaUsd, Hash] the current CuentaRemuneradaUsd data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class CuentaRemuneradaUsdEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of CuentaRemuneradaUsd fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class CuentaRemuneradaUsdEntity
   
 
   
+  # List CuentaRemuneradaUsd items matching the given filter.
+  #
+  # @param reqmatch [CuentaRemuneradaUsdListMatch, Hash, nil] match filter (any subset of CuentaRemuneradaUsd fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<CuentaRemuneradaUsd>, Array] the matching CuentaRemuneradaUsd items; raises ArgentinadatosError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

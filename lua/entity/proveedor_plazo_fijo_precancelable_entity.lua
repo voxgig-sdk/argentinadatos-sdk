@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch ProveedorPlazoFijoPrecancelableListMatch
+---@param ctrl? table
+---@return ProveedorPlazoFijoPrecancelable[]
+---@return string? err
 function ProveedorPlazoFijoPrecancelableEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

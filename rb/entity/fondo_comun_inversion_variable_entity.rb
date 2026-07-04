@@ -45,6 +45,7 @@ class FondoComunInversionVariableEntity
     end
   end
 
+  # @return [FondoComunInversionVariable, Hash] the current FondoComunInversionVariable data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class FondoComunInversionVariableEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of FondoComunInversionVariable fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single FondoComunInversionVariable.
+  #
+  # @param reqmatch [FondoComunInversionVariableLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [FondoComunInversionVariable, Hash] the loaded FondoComunInversionVariable; raises ArgentinadatosError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

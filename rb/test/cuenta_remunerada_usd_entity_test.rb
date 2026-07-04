@@ -43,8 +43,7 @@ class CuentaRemuneradaUsdEntityTest < Minitest::Test
     cuenta_remunerada_usd_ref01_ent = client.CuentaRemuneradaUsd(nil)
     cuenta_remunerada_usd_ref01_match = {}
 
-    cuenta_remunerada_usd_ref01_list_result, err = cuenta_remunerada_usd_ref01_ent.list(cuenta_remunerada_usd_ref01_match, nil)
-    assert_nil err
+    cuenta_remunerada_usd_ref01_list_result = cuenta_remunerada_usd_ref01_ent.list(cuenta_remunerada_usd_ref01_match, nil)
     assert cuenta_remunerada_usd_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def cuenta_remunerada_usd_basic_setup(extra)
     "ARGENTINADATOS_TEST_CUENTA_REMUNERADA_USD_ENTID" => idmap,
     "ARGENTINADATOS_TEST_LIVE" => "FALSE",
     "ARGENTINADATOS_TEST_EXPLAIN" => "FALSE",
-    "ARGENTINADATOS_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def cuenta_remunerada_usd_basic_setup(extra)
   if env["ARGENTINADATOS_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ARGENTINADATOS_APIKEY"],
       },
       extra || {},
     ])

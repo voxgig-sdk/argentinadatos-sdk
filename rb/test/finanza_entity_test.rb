@@ -43,8 +43,7 @@ class FinanzaEntityTest < Minitest::Test
     finanza_ref01_ent = client.Finanza(nil)
     finanza_ref01_match = {}
 
-    finanza_ref01_list_result, err = finanza_ref01_ent.list(finanza_ref01_match, nil)
-    assert_nil err
+    finanza_ref01_list_result = finanza_ref01_ent.list(finanza_ref01_match, nil)
     assert finanza_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def finanza_basic_setup(extra)
     "ARGENTINADATOS_TEST_FINANZA_ENTID" => idmap,
     "ARGENTINADATOS_TEST_LIVE" => "FALSE",
     "ARGENTINADATOS_TEST_EXPLAIN" => "FALSE",
-    "ARGENTINADATOS_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def finanza_basic_setup(extra)
   if env["ARGENTINADATOS_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ARGENTINADATOS_APIKEY"],
       },
       extra || {},
     ])

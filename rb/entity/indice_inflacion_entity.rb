@@ -45,6 +45,7 @@ class IndiceInflacionEntity
     end
   end
 
+  # @return [IndiceInflacion, Hash] the current IndiceInflacion data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class IndiceInflacionEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of IndiceInflacion fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class IndiceInflacionEntity
   
 
   
+  # List IndiceInflacion items matching the given filter.
+  #
+  # @param reqmatch [IndiceInflacionListMatch, Hash, nil] match filter (any subset of IndiceInflacion fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<IndiceInflacion>, Array] the matching IndiceInflacion items; raises ArgentinadatosError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

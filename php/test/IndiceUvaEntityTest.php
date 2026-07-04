@@ -50,8 +50,7 @@ class IndiceUvaEntityTest extends TestCase
         $indice_uva_ref01_ent = $client->IndiceUva(null);
         $indice_uva_ref01_match = [];
 
-        [$indice_uva_ref01_list_result, $err] = $indice_uva_ref01_ent->list($indice_uva_ref01_match, null);
-        $this->assertNull($err);
+        $indice_uva_ref01_list_result = $indice_uva_ref01_ent->list($indice_uva_ref01_match, null);
         $this->assertIsArray($indice_uva_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function indice_uva_basic_setup($extra)
         "ARGENTINADATOS_TEST_INDICE_UVA_ENTID" => $idmap,
         "ARGENTINADATOS_TEST_LIVE" => "FALSE",
         "ARGENTINADATOS_TEST_EXPLAIN" => "FALSE",
-        "ARGENTINADATOS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function indice_uva_basic_setup($extra)
     if ($env["ARGENTINADATOS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ARGENTINADATOS_APIKEY"],
             ],
             $extra ?? [],
         ]);

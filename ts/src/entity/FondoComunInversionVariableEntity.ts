@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  FondoComunInversionVariable,
+  FondoComunInversionVariableLoadMatch,
+} from '../ArgentinadatosTypes'
 
 // TODO: needs Entity superclass
-class FondoComunInversionVariableEntity extends ArgentinadatosEntityBase {
+class FondoComunInversionVariableEntity extends ArgentinadatosEntityBase<FondoComunInversionVariable> {
 
   constructor(client: ArgentinadatosSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class FondoComunInversionVariableEntity extends ArgentinadatosEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: FondoComunInversionVariableLoadMatch, ctrl?: Control): Promise<FondoComunInversionVariable> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class FondoComunInversionVariableEntity extends ArgentinadatosEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<FondoComunInversionVariable> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

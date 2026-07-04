@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch EntidadRendimientoListMatch
+---@param ctrl? table
+---@return EntidadRendimiento[]
+---@return string? err
 function EntidadRendimientoEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

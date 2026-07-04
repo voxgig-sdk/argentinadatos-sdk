@@ -50,8 +50,7 @@ class PresidenteEntityTest extends TestCase
         $presidente_ref01_ent = $client->Presidente(null);
         $presidente_ref01_match = [];
 
-        [$presidente_ref01_list_result, $err] = $presidente_ref01_ent->list($presidente_ref01_match, null);
-        $this->assertNull($err);
+        $presidente_ref01_list_result = $presidente_ref01_ent->list($presidente_ref01_match, null);
         $this->assertIsArray($presidente_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function presidente_basic_setup($extra)
         "ARGENTINADATOS_TEST_PRESIDENTE_ENTID" => $idmap,
         "ARGENTINADATOS_TEST_LIVE" => "FALSE",
         "ARGENTINADATOS_TEST_EXPLAIN" => "FALSE",
-        "ARGENTINADATOS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function presidente_basic_setup($extra)
     if ($env["ARGENTINADATOS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ARGENTINADATOS_APIKEY"],
             ],
             $extra ?? [],
         ]);

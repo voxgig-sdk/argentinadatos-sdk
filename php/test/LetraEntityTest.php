@@ -50,8 +50,7 @@ class LetraEntityTest extends TestCase
         $letra_ref01_ent = $client->Letra(null);
         $letra_ref01_match = [];
 
-        [$letra_ref01_list_result, $err] = $letra_ref01_ent->list($letra_ref01_match, null);
-        $this->assertNull($err);
+        $letra_ref01_list_result = $letra_ref01_ent->list($letra_ref01_match, null);
         $this->assertIsArray($letra_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function letra_basic_setup($extra)
         "ARGENTINADATOS_TEST_LETRA_ENTID" => $idmap,
         "ARGENTINADATOS_TEST_LIVE" => "FALSE",
         "ARGENTINADATOS_TEST_EXPLAIN" => "FALSE",
-        "ARGENTINADATOS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function letra_basic_setup($extra)
     if ($env["ARGENTINADATOS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ARGENTINADATOS_APIKEY"],
             ],
             $extra ?? [],
         ]);

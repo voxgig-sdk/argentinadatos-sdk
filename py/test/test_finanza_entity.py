@@ -50,8 +50,7 @@ class TestFinanzaEntity:
         finanza_ref01_ent = client.Finanza(None)
         finanza_ref01_match = {}
 
-        finanza_ref01_list_result, err = finanza_ref01_ent.list(finanza_ref01_match, None)
-        assert err is None
+        finanza_ref01_list_result = finanza_ref01_ent.list(finanza_ref01_match, None)
         assert isinstance(finanza_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _finanza_basic_setup(extra):
         "ARGENTINADATOS_TEST_FINANZA_ENTID": idmap,
         "ARGENTINADATOS_TEST_LIVE": "FALSE",
         "ARGENTINADATOS_TEST_EXPLAIN": "FALSE",
-        "ARGENTINADATOS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _finanza_basic_setup(extra):
     if env.get("ARGENTINADATOS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ARGENTINADATOS_APIKEY"),
             },
             extra or {},
         ])

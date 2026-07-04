@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch FondoComunInversionOtroLoadMatch
+---@param ctrl? table
+---@return FondoComunInversionOtro
+---@return string? err
 function FondoComunInversionOtroEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

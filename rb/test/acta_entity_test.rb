@@ -43,16 +43,14 @@ class ActaEntityTest < Minitest::Test
     acta_ref01_ent = client.Acta(nil)
     acta_ref01_match = {}
 
-    acta_ref01_list_result, err = acta_ref01_ent.list(acta_ref01_match, nil)
-    assert_nil err
+    acta_ref01_list_result = acta_ref01_ent.list(acta_ref01_match, nil)
     assert acta_ref01_list_result.is_a?(Array)
 
     # LOAD
     acta_ref01_match_dt0 = {
       "id" => acta_ref01_data["id"],
     }
-    acta_ref01_data_dt0_loaded, err = acta_ref01_ent.load(acta_ref01_match_dt0, nil)
-    assert_nil err
+    acta_ref01_data_dt0_loaded = acta_ref01_ent.load(acta_ref01_match_dt0, nil)
     acta_ref01_data_dt0_load_result = Helpers.to_map(acta_ref01_data_dt0_loaded)
     assert !acta_ref01_data_dt0_load_result.nil?
     assert_equal acta_ref01_data_dt0_load_result["id"], acta_ref01_data["id"]
@@ -93,7 +91,6 @@ def acta_basic_setup(extra)
     "ARGENTINADATOS_TEST_ACTA_ENTID" => idmap,
     "ARGENTINADATOS_TEST_LIVE" => "FALSE",
     "ARGENTINADATOS_TEST_EXPLAIN" => "FALSE",
-    "ARGENTINADATOS_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def acta_basic_setup(extra)
   if env["ARGENTINADATOS_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ARGENTINADATOS_APIKEY"],
       },
       extra || {},
     ])

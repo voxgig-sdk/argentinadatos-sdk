@@ -45,6 +45,7 @@ class RemEntity
     end
   end
 
+  # @return [Rem, Hash] the current Rem data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class RemEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Rem fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class RemEntity
   
 
   
+  # List Rem items matching the given filter.
+  #
+  # @param reqmatch [RemListMatch, Hash, nil] match filter (any subset of Rem fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Rem>, Array] the matching Rem items; raises ArgentinadatosError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

@@ -45,6 +45,7 @@ class TasaIntereEntity
     end
   end
 
+  # @return [TasaIntere, Hash] the current TasaIntere data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class TasaIntereEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of TasaIntere fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class TasaIntereEntity
   
 
   
+  # List TasaIntere items matching the given filter.
+  #
+  # @param reqmatch [TasaIntereListMatch, Hash, nil] match filter (any subset of TasaIntere fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<TasaIntere>, Array] the matching TasaIntere items; raises ArgentinadatosError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

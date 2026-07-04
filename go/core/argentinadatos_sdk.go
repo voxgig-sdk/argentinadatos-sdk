@@ -245,141 +245,225 @@ func (sdk *ArgentinadatosSDK) Direct(fetchargs map[string]any) (map[string]any, 
 }
 
 
+// Acta returns a Acta entity bound to this client.
+// Idiomatic usage: client.Acta(nil).List(nil, nil) or
+// client.Acta(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentinadatosSDK) Acta(data map[string]any) ArgentinadatosEntity {
 	return NewActaEntityFunc(sdk, data)
 }
 
 
+// BonosCer returns a BonosCer entity bound to this client.
+// Idiomatic usage: client.BonosCer(nil).List(nil, nil) or
+// client.BonosCer(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentinadatosSDK) BonosCer(data map[string]any) ArgentinadatosEntity {
 	return NewBonosCerEntityFunc(sdk, data)
 }
 
 
+// Cotizacion returns a Cotizacion entity bound to this client.
+// Idiomatic usage: client.Cotizacion(nil).List(nil, nil) or
+// client.Cotizacion(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentinadatosSDK) Cotizacion(data map[string]any) ArgentinadatosEntity {
 	return NewCotizacionEntityFunc(sdk, data)
 }
 
 
+// Criptopeso returns a Criptopeso entity bound to this client.
+// Idiomatic usage: client.Criptopeso(nil).List(nil, nil) or
+// client.Criptopeso(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentinadatosSDK) Criptopeso(data map[string]any) ArgentinadatosEntity {
 	return NewCriptopesoEntityFunc(sdk, data)
 }
 
 
+// CuentaRemuneradaUsd returns a CuentaRemuneradaUsd entity bound to this client.
+// Idiomatic usage: client.CuentaRemuneradaUsd(nil).List(nil, nil) or
+// client.CuentaRemuneradaUsd(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentinadatosSDK) CuentaRemuneradaUsd(data map[string]any) ArgentinadatosEntity {
 	return NewCuentaRemuneradaUsdEntityFunc(sdk, data)
 }
 
 
+// Diputado returns a Diputado entity bound to this client.
+// Idiomatic usage: client.Diputado(nil).List(nil, nil) or
+// client.Diputado(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentinadatosSDK) Diputado(data map[string]any) ArgentinadatosEntity {
 	return NewDiputadoEntityFunc(sdk, data)
 }
 
 
+// EntidadRendimiento returns a EntidadRendimiento entity bound to this client.
+// Idiomatic usage: client.EntidadRendimiento(nil).List(nil, nil) or
+// client.EntidadRendimiento(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentinadatosSDK) EntidadRendimiento(data map[string]any) ArgentinadatosEntity {
 	return NewEntidadRendimientoEntityFunc(sdk, data)
 }
 
 
+// Estado returns a Estado entity bound to this client.
+// Idiomatic usage: client.Estado(nil).List(nil, nil) or
+// client.Estado(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentinadatosSDK) Estado(data map[string]any) ArgentinadatosEntity {
 	return NewEstadoEntityFunc(sdk, data)
 }
 
 
+// EventoPresidencial returns a EventoPresidencial entity bound to this client.
+// Idiomatic usage: client.EventoPresidencial(nil).List(nil, nil) or
+// client.EventoPresidencial(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentinadatosSDK) EventoPresidencial(data map[string]any) ArgentinadatosEntity {
 	return NewEventoPresidencialEntityFunc(sdk, data)
 }
 
 
+// Feriado returns a Feriado entity bound to this client.
+// Idiomatic usage: client.Feriado(nil).List(nil, nil) or
+// client.Feriado(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentinadatosSDK) Feriado(data map[string]any) ArgentinadatosEntity {
 	return NewFeriadoEntityFunc(sdk, data)
 }
 
 
+// Finanza returns a Finanza entity bound to this client.
+// Idiomatic usage: client.Finanza(nil).List(nil, nil) or
+// client.Finanza(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentinadatosSDK) Finanza(data map[string]any) ArgentinadatosEntity {
 	return NewFinanzaEntityFunc(sdk, data)
 }
 
 
+// FondoComunInversion returns a FondoComunInversion entity bound to this client.
+// Idiomatic usage: client.FondoComunInversion(nil).List(nil, nil) or
+// client.FondoComunInversion(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentinadatosSDK) FondoComunInversion(data map[string]any) ArgentinadatosEntity {
 	return NewFondoComunInversionEntityFunc(sdk, data)
 }
 
 
+// FondoComunInversionOtro returns a FondoComunInversionOtro entity bound to this client.
+// Idiomatic usage: client.FondoComunInversionOtro(nil).List(nil, nil) or
+// client.FondoComunInversionOtro(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentinadatosSDK) FondoComunInversionOtro(data map[string]any) ArgentinadatosEntity {
 	return NewFondoComunInversionOtroEntityFunc(sdk, data)
 }
 
 
+// FondoComunInversionVariable returns a FondoComunInversionVariable entity bound to this client.
+// Idiomatic usage: client.FondoComunInversionVariable(nil).List(nil, nil) or
+// client.FondoComunInversionVariable(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentinadatosSDK) FondoComunInversionVariable(data map[string]any) ArgentinadatosEntity {
 	return NewFondoComunInversionVariableEntityFunc(sdk, data)
 }
 
 
+// HipotecarioUvaTna returns a HipotecarioUvaTna entity bound to this client.
+// Idiomatic usage: client.HipotecarioUvaTna(nil).List(nil, nil) or
+// client.HipotecarioUvaTna(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentinadatosSDK) HipotecarioUvaTna(data map[string]any) ArgentinadatosEntity {
 	return NewHipotecarioUvaTnaEntityFunc(sdk, data)
 }
 
 
+// IndiceInflacion returns a IndiceInflacion entity bound to this client.
+// Idiomatic usage: client.IndiceInflacion(nil).List(nil, nil) or
+// client.IndiceInflacion(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentinadatosSDK) IndiceInflacion(data map[string]any) ArgentinadatosEntity {
 	return NewIndiceInflacionEntityFunc(sdk, data)
 }
 
 
+// IndiceUva returns a IndiceUva entity bound to this client.
+// Idiomatic usage: client.IndiceUva(nil).List(nil, nil) or
+// client.IndiceUva(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentinadatosSDK) IndiceUva(data map[string]any) ArgentinadatosEntity {
 	return NewIndiceUvaEntityFunc(sdk, data)
 }
 
 
+// Letra returns a Letra entity bound to this client.
+// Idiomatic usage: client.Letra(nil).List(nil, nil) or
+// client.Letra(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentinadatosSDK) Letra(data map[string]any) ArgentinadatosEntity {
 	return NewLetraEntityFunc(sdk, data)
 }
 
 
+// Presidente returns a Presidente entity bound to this client.
+// Idiomatic usage: client.Presidente(nil).List(nil, nil) or
+// client.Presidente(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentinadatosSDK) Presidente(data map[string]any) ArgentinadatosEntity {
 	return NewPresidenteEntityFunc(sdk, data)
 }
 
 
+// ProveedorPlazoFijoPrecancelable returns a ProveedorPlazoFijoPrecancelable entity bound to this client.
+// Idiomatic usage: client.ProveedorPlazoFijoPrecancelable(nil).List(nil, nil) or
+// client.ProveedorPlazoFijoPrecancelable(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentinadatosSDK) ProveedorPlazoFijoPrecancelable(data map[string]any) ArgentinadatosEntity {
 	return NewProveedorPlazoFijoPrecancelableEntityFunc(sdk, data)
 }
 
 
+// ProveedorPlazoFijoUvaPagoPeriodico returns a ProveedorPlazoFijoUvaPagoPeriodico entity bound to this client.
+// Idiomatic usage: client.ProveedorPlazoFijoUvaPagoPeriodico(nil).List(nil, nil) or
+// client.ProveedorPlazoFijoUvaPagoPeriodico(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentinadatosSDK) ProveedorPlazoFijoUvaPagoPeriodico(data map[string]any) ArgentinadatosEntity {
 	return NewProveedorPlazoFijoUvaPagoPeriodicoEntityFunc(sdk, data)
 }
 
 
+// Rem returns a Rem entity bound to this client.
+// Idiomatic usage: client.Rem(nil).List(nil, nil) or
+// client.Rem(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentinadatosSDK) Rem(data map[string]any) ArgentinadatosEntity {
 	return NewRemEntityFunc(sdk, data)
 }
 
 
+// RemExpectativa returns a RemExpectativa entity bound to this client.
+// Idiomatic usage: client.RemExpectativa(nil).List(nil, nil) or
+// client.RemExpectativa(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentinadatosSDK) RemExpectativa(data map[string]any) ArgentinadatosEntity {
 	return NewRemExpectativaEntityFunc(sdk, data)
 }
 
 
+// Rendimiento returns a Rendimiento entity bound to this client.
+// Idiomatic usage: client.Rendimiento(nil).List(nil, nil) or
+// client.Rendimiento(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentinadatosSDK) Rendimiento(data map[string]any) ArgentinadatosEntity {
 	return NewRendimientoEntityFunc(sdk, data)
 }
 
 
+// RiesgoPai returns a RiesgoPai entity bound to this client.
+// Idiomatic usage: client.RiesgoPai(nil).List(nil, nil) or
+// client.RiesgoPai(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentinadatosSDK) RiesgoPai(data map[string]any) ArgentinadatosEntity {
 	return NewRiesgoPaiEntityFunc(sdk, data)
 }
 
 
+// Senador returns a Senador entity bound to this client.
+// Idiomatic usage: client.Senador(nil).List(nil, nil) or
+// client.Senador(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentinadatosSDK) Senador(data map[string]any) ArgentinadatosEntity {
 	return NewSenadorEntityFunc(sdk, data)
 }
 
 
+// TasaIntere returns a TasaIntere entity bound to this client.
+// Idiomatic usage: client.TasaIntere(nil).List(nil, nil) or
+// client.TasaIntere(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentinadatosSDK) TasaIntere(data map[string]any) ArgentinadatosEntity {
 	return NewTasaIntereEntityFunc(sdk, data)
 }
 
 
+// TasaPlazoFijo returns a TasaPlazoFijo entity bound to this client.
+// Idiomatic usage: client.TasaPlazoFijo(nil).List(nil, nil) or
+// client.TasaPlazoFijo(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentinadatosSDK) TasaPlazoFijo(data map[string]any) ArgentinadatosEntity {
 	return NewTasaPlazoFijoEntityFunc(sdk, data)
 }

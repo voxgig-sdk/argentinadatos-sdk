@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch CotizacionLoadMatch
+---@param ctrl? table
+---@return Cotizacion
+---@return string? err
 function CotizacionEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch CotizacionListMatch
+---@param ctrl? table
+---@return Cotizacion[]
+---@return string? err
 function CotizacionEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

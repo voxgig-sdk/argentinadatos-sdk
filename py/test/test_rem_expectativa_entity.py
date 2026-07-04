@@ -50,8 +50,7 @@ class TestRemExpectativaEntity:
         rem_expectativa_ref01_ent = client.RemExpectativa(None)
         rem_expectativa_ref01_match = {}
 
-        rem_expectativa_ref01_list_result, err = rem_expectativa_ref01_ent.list(rem_expectativa_ref01_match, None)
-        assert err is None
+        rem_expectativa_ref01_list_result = rem_expectativa_ref01_ent.list(rem_expectativa_ref01_match, None)
         assert isinstance(rem_expectativa_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _rem_expectativa_basic_setup(extra):
         "ARGENTINADATOS_TEST_REM_EXPECTATIVA_ENTID": idmap,
         "ARGENTINADATOS_TEST_LIVE": "FALSE",
         "ARGENTINADATOS_TEST_EXPLAIN": "FALSE",
-        "ARGENTINADATOS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _rem_expectativa_basic_setup(extra):
     if env.get("ARGENTINADATOS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ARGENTINADATOS_APIKEY"),
             },
             extra or {},
         ])

@@ -50,8 +50,7 @@ class TestIndiceInflacionEntity:
         indice_inflacion_ref01_ent = client.IndiceInflacion(None)
         indice_inflacion_ref01_match = {}
 
-        indice_inflacion_ref01_list_result, err = indice_inflacion_ref01_ent.list(indice_inflacion_ref01_match, None)
-        assert err is None
+        indice_inflacion_ref01_list_result = indice_inflacion_ref01_ent.list(indice_inflacion_ref01_match, None)
         assert isinstance(indice_inflacion_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _indice_inflacion_basic_setup(extra):
         "ARGENTINADATOS_TEST_INDICE_INFLACION_ENTID": idmap,
         "ARGENTINADATOS_TEST_LIVE": "FALSE",
         "ARGENTINADATOS_TEST_EXPLAIN": "FALSE",
-        "ARGENTINADATOS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _indice_inflacion_basic_setup(extra):
     if env.get("ARGENTINADATOS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ARGENTINADATOS_APIKEY"),
             },
             extra or {},
         ])

@@ -50,16 +50,14 @@ class TestActaEntity:
         acta_ref01_ent = client.Acta(None)
         acta_ref01_match = {}
 
-        acta_ref01_list_result, err = acta_ref01_ent.list(acta_ref01_match, None)
-        assert err is None
+        acta_ref01_list_result = acta_ref01_ent.list(acta_ref01_match, None)
         assert isinstance(acta_ref01_list_result, list)
 
         # LOAD
         acta_ref01_match_dt0 = {
             "id": acta_ref01_data["id"],
         }
-        acta_ref01_data_dt0_loaded, err = acta_ref01_ent.load(acta_ref01_match_dt0, None)
-        assert err is None
+        acta_ref01_data_dt0_loaded = acta_ref01_ent.load(acta_ref01_match_dt0, None)
         acta_ref01_data_dt0_load_result = helpers.to_map(acta_ref01_data_dt0_loaded)
         assert acta_ref01_data_dt0_load_result is not None
         assert acta_ref01_data_dt0_load_result["id"] == acta_ref01_data["id"]
@@ -102,7 +100,6 @@ def _acta_basic_setup(extra):
         "ARGENTINADATOS_TEST_ACTA_ENTID": idmap,
         "ARGENTINADATOS_TEST_LIVE": "FALSE",
         "ARGENTINADATOS_TEST_EXPLAIN": "FALSE",
-        "ARGENTINADATOS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _acta_basic_setup(extra):
     if env.get("ARGENTINADATOS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ARGENTINADATOS_APIKEY"),
             },
             extra or {},
         ])

@@ -45,6 +45,7 @@ class TasaPlazoFijoEntity
     end
   end
 
+  # @return [TasaPlazoFijo, Hash] the current TasaPlazoFijo data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class TasaPlazoFijoEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of TasaPlazoFijo fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class TasaPlazoFijoEntity
   
 
   
+  # List TasaPlazoFijo items matching the given filter.
+  #
+  # @param reqmatch [TasaPlazoFijoListMatch, Hash, nil] match filter (any subset of TasaPlazoFijo fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<TasaPlazoFijo>, Array] the matching TasaPlazoFijo items; raises ArgentinadatosError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

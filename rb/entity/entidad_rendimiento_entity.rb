@@ -45,6 +45,7 @@ class EntidadRendimientoEntity
     end
   end
 
+  # @return [EntidadRendimiento, Hash] the current EntidadRendimiento data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class EntidadRendimientoEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of EntidadRendimiento fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class EntidadRendimientoEntity
   
 
   
+  # List EntidadRendimiento items matching the given filter.
+  #
+  # @param reqmatch [EntidadRendimientoListMatch, Hash, nil] match filter (any subset of EntidadRendimiento fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<EntidadRendimiento>, Array] the matching EntidadRendimiento items; raises ArgentinadatosError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

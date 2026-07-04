@@ -45,6 +45,7 @@ class HipotecarioUvaTnaEntity
     end
   end
 
+  # @return [HipotecarioUvaTna, Hash] the current HipotecarioUvaTna data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class HipotecarioUvaTnaEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of HipotecarioUvaTna fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class HipotecarioUvaTnaEntity
   
 
   
+  # List HipotecarioUvaTna items matching the given filter.
+  #
+  # @param reqmatch [HipotecarioUvaTnaListMatch, Hash, nil] match filter (any subset of HipotecarioUvaTna fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<HipotecarioUvaTna>, Array] the matching HipotecarioUvaTna items; raises ArgentinadatosError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch BonosCerListMatch
+---@param ctrl? table
+---@return BonosCer[]
+---@return string? err
 function BonosCerEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

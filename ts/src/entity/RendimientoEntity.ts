@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Rendimiento,
+  RendimientoLoadMatch,
+} from '../ArgentinadatosTypes'
 
 // TODO: needs Entity superclass
-class RendimientoEntity extends ArgentinadatosEntityBase {
+class RendimientoEntity extends ArgentinadatosEntityBase<Rendimiento> {
 
   constructor(client: ArgentinadatosSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class RendimientoEntity extends ArgentinadatosEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: RendimientoLoadMatch, ctrl?: Control): Promise<Rendimiento> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class RendimientoEntity extends ArgentinadatosEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Rendimiento> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

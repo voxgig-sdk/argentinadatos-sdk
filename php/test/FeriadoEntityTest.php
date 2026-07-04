@@ -49,8 +49,7 @@ class FeriadoEntityTest extends TestCase
         // LOAD
         $feriado_ref01_ent = $client->Feriado(null);
         $feriado_ref01_match_dt0 = [];
-        [$feriado_ref01_data_dt0_loaded, $err] = $feriado_ref01_ent->load($feriado_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $feriado_ref01_data_dt0_loaded = $feriado_ref01_ent->load($feriado_ref01_match_dt0, null);
         $this->assertNotNull($feriado_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function feriado_basic_setup($extra)
         "ARGENTINADATOS_TEST_FERIADO_ENTID" => $idmap,
         "ARGENTINADATOS_TEST_LIVE" => "FALSE",
         "ARGENTINADATOS_TEST_EXPLAIN" => "FALSE",
-        "ARGENTINADATOS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function feriado_basic_setup($extra)
     if ($env["ARGENTINADATOS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ARGENTINADATOS_APIKEY"],
             ],
             $extra ?? [],
         ]);

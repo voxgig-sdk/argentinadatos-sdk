@@ -45,6 +45,7 @@ class ProveedorPlazoFijoUvaPagoPeriodicoEntity
     end
   end
 
+  # @return [ProveedorPlazoFijoUvaPagoPeriodico, Hash] the current ProveedorPlazoFijoUvaPagoPeriodico data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class ProveedorPlazoFijoUvaPagoPeriodicoEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of ProveedorPlazoFijoUvaPagoPeriodico fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class ProveedorPlazoFijoUvaPagoPeriodicoEntity
   
 
   
+  # List ProveedorPlazoFijoUvaPagoPeriodico items matching the given filter.
+  #
+  # @param reqmatch [ProveedorPlazoFijoUvaPagoPeriodicoListMatch, Hash, nil] match filter (any subset of ProveedorPlazoFijoUvaPagoPeriodico fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<ProveedorPlazoFijoUvaPagoPeriodico>, Array] the matching ProveedorPlazoFijoUvaPagoPeriodico items; raises ArgentinadatosError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

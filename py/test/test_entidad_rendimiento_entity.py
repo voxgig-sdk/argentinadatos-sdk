@@ -50,8 +50,7 @@ class TestEntidadRendimientoEntity:
         entidad_rendimiento_ref01_ent = client.EntidadRendimiento(None)
         entidad_rendimiento_ref01_match = {}
 
-        entidad_rendimiento_ref01_list_result, err = entidad_rendimiento_ref01_ent.list(entidad_rendimiento_ref01_match, None)
-        assert err is None
+        entidad_rendimiento_ref01_list_result = entidad_rendimiento_ref01_ent.list(entidad_rendimiento_ref01_match, None)
         assert isinstance(entidad_rendimiento_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _entidad_rendimiento_basic_setup(extra):
         "ARGENTINADATOS_TEST_ENTIDAD_RENDIMIENTO_ENTID": idmap,
         "ARGENTINADATOS_TEST_LIVE": "FALSE",
         "ARGENTINADATOS_TEST_EXPLAIN": "FALSE",
-        "ARGENTINADATOS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _entidad_rendimiento_basic_setup(extra):
     if env.get("ARGENTINADATOS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ARGENTINADATOS_APIKEY"),
             },
             extra or {},
         ])

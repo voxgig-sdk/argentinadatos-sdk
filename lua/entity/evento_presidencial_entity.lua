@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch EventoPresidencialListMatch
+---@param ctrl? table
+---@return EventoPresidencial[]
+---@return string? err
 function EventoPresidencialEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

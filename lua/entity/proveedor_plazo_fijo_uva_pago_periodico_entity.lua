@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch ProveedorPlazoFijoUvaPagoPeriodicoListMatch
+---@param ctrl? table
+---@return ProveedorPlazoFijoUvaPagoPeriodico[]
+---@return string? err
 function ProveedorPlazoFijoUvaPagoPeriodicoEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

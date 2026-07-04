@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch IndiceInflacionListMatch
+---@param ctrl? table
+---@return IndiceInflacion[]
+---@return string? err
 function IndiceInflacionEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

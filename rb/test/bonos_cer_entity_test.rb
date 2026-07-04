@@ -43,8 +43,7 @@ class BonosCerEntityTest < Minitest::Test
     bonos_cer_ref01_ent = client.BonosCer(nil)
     bonos_cer_ref01_match = {}
 
-    bonos_cer_ref01_list_result, err = bonos_cer_ref01_ent.list(bonos_cer_ref01_match, nil)
-    assert_nil err
+    bonos_cer_ref01_list_result = bonos_cer_ref01_ent.list(bonos_cer_ref01_match, nil)
     assert bonos_cer_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def bonos_cer_basic_setup(extra)
     "ARGENTINADATOS_TEST_BONOS_CER_ENTID" => idmap,
     "ARGENTINADATOS_TEST_LIVE" => "FALSE",
     "ARGENTINADATOS_TEST_EXPLAIN" => "FALSE",
-    "ARGENTINADATOS_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def bonos_cer_basic_setup(extra)
   if env["ARGENTINADATOS_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ARGENTINADATOS_APIKEY"],
       },
       extra || {},
     ])

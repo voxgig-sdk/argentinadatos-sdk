@@ -45,6 +45,7 @@ class SenadorEntity
     end
   end
 
+  # @return [Senador, Hash] the current Senador data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class SenadorEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Senador fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class SenadorEntity
   
 
   
+  # List Senador items matching the given filter.
+  #
+  # @param reqmatch [SenadorListMatch, Hash, nil] match filter (any subset of Senador fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Senador>, Array] the matching Senador items; raises ArgentinadatosError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

@@ -43,8 +43,7 @@ class EventoPresidencialEntityTest < Minitest::Test
     evento_presidencial_ref01_ent = client.EventoPresidencial(nil)
     evento_presidencial_ref01_match = {}
 
-    evento_presidencial_ref01_list_result, err = evento_presidencial_ref01_ent.list(evento_presidencial_ref01_match, nil)
-    assert_nil err
+    evento_presidencial_ref01_list_result = evento_presidencial_ref01_ent.list(evento_presidencial_ref01_match, nil)
     assert evento_presidencial_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def evento_presidencial_basic_setup(extra)
     "ARGENTINADATOS_TEST_EVENTO_PRESIDENCIAL_ENTID" => idmap,
     "ARGENTINADATOS_TEST_LIVE" => "FALSE",
     "ARGENTINADATOS_TEST_EXPLAIN" => "FALSE",
-    "ARGENTINADATOS_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def evento_presidencial_basic_setup(extra)
   if env["ARGENTINADATOS_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ARGENTINADATOS_APIKEY"],
       },
       extra || {},
     ])

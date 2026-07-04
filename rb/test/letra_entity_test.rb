@@ -43,8 +43,7 @@ class LetraEntityTest < Minitest::Test
     letra_ref01_ent = client.Letra(nil)
     letra_ref01_match = {}
 
-    letra_ref01_list_result, err = letra_ref01_ent.list(letra_ref01_match, nil)
-    assert_nil err
+    letra_ref01_list_result = letra_ref01_ent.list(letra_ref01_match, nil)
     assert letra_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def letra_basic_setup(extra)
     "ARGENTINADATOS_TEST_LETRA_ENTID" => idmap,
     "ARGENTINADATOS_TEST_LIVE" => "FALSE",
     "ARGENTINADATOS_TEST_EXPLAIN" => "FALSE",
-    "ARGENTINADATOS_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def letra_basic_setup(extra)
   if env["ARGENTINADATOS_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ARGENTINADATOS_APIKEY"],
       },
       extra || {},
     ])

@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `Hash` | SDK configuration options. |
-| `options["apikey"]` | `String` | API key for authentication. |
 | `options["base"]` | `String` | Base URL for API requests. |
 | `options["prefix"]` | `String` | URL prefix appended after base. |
 | `options["suffix"]` | `String` | URL suffix appended after path. |
@@ -162,9 +161,11 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs = {}) -> Hash, err`
+#### `direct(fetchargs = {}) -> Hash`
 
-Make a direct HTTP request to any API endpoint.
+Make a direct HTTP request to any API endpoint. Returns a result hash
+(`{ "ok" => ..., "status" => ..., "data" => ..., "err" => ... }`); it
+does not raise — inspect `result["ok"]`.
 
 **Parameters:**
 
@@ -178,14 +179,14 @@ Make a direct HTTP request to any API endpoint.
 | `fetchargs["body"]` | `any` | Request body (hashes are JSON-serialized). |
 | `fetchargs["ctrl"]` | `Hash` | Control options (e.g. `{ "explain" => true }`). |
 
-**Returns:** `Hash, err`
+**Returns:** `Hash`
 
-#### `prepare(fetchargs = {}) -> Hash, err`
+#### `prepare(fetchargs = {}) -> Hash`
 
 Prepare a fetch definition without sending the request. Accepts the
-same parameters as `direct()`.
+same parameters as `direct()`. Raises on error.
 
-**Returns:** `Hash, err`
+**Returns:** `Hash` (the fetch definition; raises on error)
 
 
 ---
@@ -193,7 +194,7 @@ same parameters as `direct()`.
 ## ActaEntity
 
 ```ruby
-acta = client.Acta
+acta = client.acta
 ```
 
 ### Fields
@@ -228,20 +229,20 @@ acta = client.Acta
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Acta.list(nil)
+results = client.acta.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Acta.load({ "id" => "acta_id" })
+result = client.acta.load({ "id" => "acta_id" })
 ```
 
 ### Common Methods
@@ -277,7 +278,7 @@ Return the entity name.
 ## BonosCerEntity
 
 ```ruby
-bonos_cer = client.BonosCer
+bonos_cer = client.bonos_cer
 ```
 
 ### Fields
@@ -292,12 +293,12 @@ bonos_cer = client.BonosCer
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.BonosCer.list(nil)
+results = client.bonos_cer.list(nil)
 ```
 
 ### Common Methods
@@ -333,7 +334,7 @@ Return the entity name.
 ## CotizacionEntity
 
 ```ruby
-cotizacion = client.Cotizacion
+cotizacion = client.cotizacion
 ```
 
 ### Fields
@@ -348,20 +349,20 @@ cotizacion = client.Cotizacion
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Cotizacion.list(nil)
+results = client.cotizacion.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Cotizacion.load({ "id" => "cotizacion_id" })
+result = client.cotizacion.load({ "id" => "cotizacion_id" })
 ```
 
 ### Common Methods
@@ -397,7 +398,7 @@ Return the entity name.
 ## CriptopesoEntity
 
 ```ruby
-criptopeso = client.Criptopeso
+criptopeso = client.criptopeso
 ```
 
 ### Fields
@@ -410,12 +411,12 @@ criptopeso = client.Criptopeso
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Criptopeso.list(nil)
+results = client.criptopeso.list(nil)
 ```
 
 ### Common Methods
@@ -451,7 +452,7 @@ Return the entity name.
 ## CuentaRemuneradaUsdEntity
 
 ```ruby
-cuenta_remunerada_usd = client.CuentaRemuneradaUsd
+cuenta_remunerada_usd = client.cuenta_remunerada_usd
 ```
 
 ### Fields
@@ -464,12 +465,12 @@ cuenta_remunerada_usd = client.CuentaRemuneradaUsd
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.CuentaRemuneradaUsd.list(nil)
+results = client.cuenta_remunerada_usd.list(nil)
 ```
 
 ### Common Methods
@@ -505,7 +506,7 @@ Return the entity name.
 ## DiputadoEntity
 
 ```ruby
-diputado = client.Diputado
+diputado = client.diputado
 ```
 
 ### Fields
@@ -526,12 +527,12 @@ diputado = client.Diputado
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Diputado.list(nil)
+results = client.diputado.list(nil)
 ```
 
 ### Common Methods
@@ -567,7 +568,7 @@ Return the entity name.
 ## EntidadRendimientoEntity
 
 ```ruby
-entidad_rendimiento = client.EntidadRendimiento
+entidad_rendimiento = client.entidad_rendimiento
 ```
 
 ### Fields
@@ -579,12 +580,12 @@ entidad_rendimiento = client.EntidadRendimiento
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.EntidadRendimiento.list(nil)
+results = client.entidad_rendimiento.list(nil)
 ```
 
 ### Common Methods
@@ -620,7 +621,7 @@ Return the entity name.
 ## EstadoEntity
 
 ```ruby
-estado = client.Estado
+estado = client.estado
 ```
 
 ### Fields
@@ -632,12 +633,12 @@ estado = client.Estado
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Estado.load({ "id" => "estado_id" })
+result = client.estado.load({ "id" => "estado_id" })
 ```
 
 ### Common Methods
@@ -673,7 +674,7 @@ Return the entity name.
 ## EventoPresidencialEntity
 
 ```ruby
-evento_presidencial = client.EventoPresidencial
+evento_presidencial = client.evento_presidencial
 ```
 
 ### Fields
@@ -686,12 +687,12 @@ evento_presidencial = client.EventoPresidencial
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.EventoPresidencial.list(nil)
+results = client.evento_presidencial.list(nil)
 ```
 
 ### Common Methods
@@ -727,7 +728,7 @@ Return the entity name.
 ## FeriadoEntity
 
 ```ruby
-feriado = client.Feriado
+feriado = client.feriado
 ```
 
 ### Fields
@@ -740,12 +741,12 @@ feriado = client.Feriado
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Feriado.load({ "id" => "feriado_id" })
+result = client.feriado.load({ "id" => "feriado_id" })
 ```
 
 ### Common Methods
@@ -781,17 +782,17 @@ Return the entity name.
 ## FinanzaEntity
 
 ```ruby
-finanza = client.Finanza
+finanza = client.finanza
 ```
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Finanza.list(nil)
+results = client.finanza.list(nil)
 ```
 
 ### Common Methods
@@ -827,7 +828,7 @@ Return the entity name.
 ## FondoComunInversionEntity
 
 ```ruby
-fondo_comun_inversion = client.FondoComunInversion
+fondo_comun_inversion = client.fondo_comun_inversion
 ```
 
 ### Fields
@@ -844,12 +845,12 @@ fondo_comun_inversion = client.FondoComunInversion
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.FondoComunInversion.load({ "id" => "fondo_comun_inversion_id" })
+result = client.fondo_comun_inversion.load({ "id" => "fondo_comun_inversion_id" })
 ```
 
 ### Common Methods
@@ -885,7 +886,7 @@ Return the entity name.
 ## FondoComunInversionOtroEntity
 
 ```ruby
-fondo_comun_inversion_otro = client.FondoComunInversionOtro
+fondo_comun_inversion_otro = client.fondo_comun_inversion_otro
 ```
 
 ### Fields
@@ -900,12 +901,12 @@ fondo_comun_inversion_otro = client.FondoComunInversionOtro
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.FondoComunInversionOtro.load({ "id" => "fondo_comun_inversion_otro_id" })
+result = client.fondo_comun_inversion_otro.load({ "id" => "fondo_comun_inversion_otro_id" })
 ```
 
 ### Common Methods
@@ -941,7 +942,7 @@ Return the entity name.
 ## FondoComunInversionVariableEntity
 
 ```ruby
-fondo_comun_inversion_variable = client.FondoComunInversionVariable
+fondo_comun_inversion_variable = client.fondo_comun_inversion_variable
 ```
 
 ### Fields
@@ -960,12 +961,12 @@ fondo_comun_inversion_variable = client.FondoComunInversionVariable
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.FondoComunInversionVariable.load({ "id" => "fondo_comun_inversion_variable_id" })
+result = client.fondo_comun_inversion_variable.load({ "id" => "fondo_comun_inversion_variable_id" })
 ```
 
 ### Common Methods
@@ -1001,7 +1002,7 @@ Return the entity name.
 ## HipotecarioUvaTnaEntity
 
 ```ruby
-hipotecario_uva_tna = client.HipotecarioUvaTna
+hipotecario_uva_tna = client.hipotecario_uva_tna
 ```
 
 ### Fields
@@ -1015,12 +1016,12 @@ hipotecario_uva_tna = client.HipotecarioUvaTna
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.HipotecarioUvaTna.list(nil)
+results = client.hipotecario_uva_tna.list(nil)
 ```
 
 ### Common Methods
@@ -1056,7 +1057,7 @@ Return the entity name.
 ## IndiceInflacionEntity
 
 ```ruby
-indice_inflacion = client.IndiceInflacion
+indice_inflacion = client.indice_inflacion
 ```
 
 ### Fields
@@ -1068,12 +1069,12 @@ indice_inflacion = client.IndiceInflacion
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.IndiceInflacion.list(nil)
+results = client.indice_inflacion.list(nil)
 ```
 
 ### Common Methods
@@ -1109,7 +1110,7 @@ Return the entity name.
 ## IndiceUvaEntity
 
 ```ruby
-indice_uva = client.IndiceUva
+indice_uva = client.indice_uva
 ```
 
 ### Fields
@@ -1121,12 +1122,12 @@ indice_uva = client.IndiceUva
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.IndiceUva.list(nil)
+results = client.indice_uva.list(nil)
 ```
 
 ### Common Methods
@@ -1162,7 +1163,7 @@ Return the entity name.
 ## LetraEntity
 
 ```ruby
-letra = client.Letra
+letra = client.letra
 ```
 
 ### Fields
@@ -1177,12 +1178,12 @@ letra = client.Letra
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Letra.list(nil)
+results = client.letra.list(nil)
 ```
 
 ### Common Methods
@@ -1218,7 +1219,7 @@ Return the entity name.
 ## PresidenteEntity
 
 ```ruby
-presidente = client.Presidente
+presidente = client.presidente
 ```
 
 ### Fields
@@ -1236,12 +1237,12 @@ presidente = client.Presidente
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Presidente.list(nil)
+results = client.presidente.list(nil)
 ```
 
 ### Common Methods
@@ -1277,7 +1278,7 @@ Return the entity name.
 ## ProveedorPlazoFijoPrecancelableEntity
 
 ```ruby
-proveedor_plazo_fijo_precancelable = client.ProveedorPlazoFijoPrecancelable
+proveedor_plazo_fijo_precancelable = client.proveedor_plazo_fijo_precancelable
 ```
 
 ### Fields
@@ -1304,12 +1305,12 @@ proveedor_plazo_fijo_precancelable = client.ProveedorPlazoFijoPrecancelable
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.ProveedorPlazoFijoPrecancelable.list(nil)
+results = client.proveedor_plazo_fijo_precancelable.list(nil)
 ```
 
 ### Common Methods
@@ -1345,7 +1346,7 @@ Return the entity name.
 ## ProveedorPlazoFijoUvaPagoPeriodicoEntity
 
 ```ruby
-proveedor_plazo_fijo_uva_pago_periodico = client.ProveedorPlazoFijoUvaPagoPeriodico
+proveedor_plazo_fijo_uva_pago_periodico = client.proveedor_plazo_fijo_uva_pago_periodico
 ```
 
 ### Fields
@@ -1359,12 +1360,12 @@ proveedor_plazo_fijo_uva_pago_periodico = client.ProveedorPlazoFijoUvaPagoPeriod
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.ProveedorPlazoFijoUvaPagoPeriodico.list(nil)
+results = client.proveedor_plazo_fijo_uva_pago_periodico.list(nil)
 ```
 
 ### Common Methods
@@ -1400,7 +1401,7 @@ Return the entity name.
 ## RemEntity
 
 ```ruby
-rem = client.Rem
+rem = client.rem
 ```
 
 ### Fields
@@ -1434,12 +1435,12 @@ rem = client.Rem
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Rem.list(nil)
+results = client.rem.list(nil)
 ```
 
 ### Common Methods
@@ -1475,7 +1476,7 @@ Return the entity name.
 ## RemExpectativaEntity
 
 ```ruby
-rem_expectativa = client.RemExpectativa
+rem_expectativa = client.rem_expectativa
 ```
 
 ### Fields
@@ -1509,12 +1510,12 @@ rem_expectativa = client.RemExpectativa
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.RemExpectativa.list(nil)
+results = client.rem_expectativa.list(nil)
 ```
 
 ### Common Methods
@@ -1550,7 +1551,7 @@ Return the entity name.
 ## RendimientoEntity
 
 ```ruby
-rendimiento = client.Rendimiento
+rendimiento = client.rendimiento
 ```
 
 ### Fields
@@ -1563,12 +1564,12 @@ rendimiento = client.Rendimiento
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Rendimiento.load({ "id" => "rendimiento_id" })
+result = client.rendimiento.load({ "id" => "rendimiento_id" })
 ```
 
 ### Common Methods
@@ -1604,7 +1605,7 @@ Return the entity name.
 ## RiesgoPaiEntity
 
 ```ruby
-riesgo_pai = client.RiesgoPai
+riesgo_pai = client.riesgo_pai
 ```
 
 ### Fields
@@ -1616,20 +1617,20 @@ riesgo_pai = client.RiesgoPai
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.RiesgoPai.list(nil)
+results = client.riesgo_pai.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.RiesgoPai.load({ "id" => "riesgo_pai_id" })
+result = client.riesgo_pai.load({ "id" => "riesgo_pai_id" })
 ```
 
 ### Common Methods
@@ -1665,7 +1666,7 @@ Return the entity name.
 ## SenadorEntity
 
 ```ruby
-senador = client.Senador
+senador = client.senador
 ```
 
 ### Fields
@@ -1687,12 +1688,12 @@ senador = client.Senador
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Senador.list(nil)
+results = client.senador.list(nil)
 ```
 
 ### Common Methods
@@ -1728,7 +1729,7 @@ Return the entity name.
 ## TasaIntereEntity
 
 ```ruby
-tasa_intere = client.TasaIntere
+tasa_intere = client.tasa_intere
 ```
 
 ### Fields
@@ -1740,12 +1741,12 @@ tasa_intere = client.TasaIntere
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.TasaIntere.list(nil)
+results = client.tasa_intere.list(nil)
 ```
 
 ### Common Methods
@@ -1781,7 +1782,7 @@ Return the entity name.
 ## TasaPlazoFijoEntity
 
 ```ruby
-tasa_plazo_fijo = client.TasaPlazoFijo
+tasa_plazo_fijo = client.tasa_plazo_fijo
 ```
 
 ### Fields
@@ -1795,12 +1796,12 @@ tasa_plazo_fijo = client.TasaPlazoFijo
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.TasaPlazoFijo.list(nil)
+results = client.tasa_plazo_fijo.list(nil)
 ```
 
 ### Common Methods

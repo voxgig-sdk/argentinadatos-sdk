@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch FinanzaListMatch
+---@param ctrl? table
+---@return Finanza[]
+---@return string? err
 function FinanzaEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

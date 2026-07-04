@@ -53,8 +53,7 @@ class RemEntityTest extends TestCase
             "mes" => $setup["idmap"]["mes01"],
         ];
 
-        [$rem_ref01_list_result, $err] = $rem_ref01_ent->list($rem_ref01_match, null);
-        $this->assertNull($err);
+        $rem_ref01_list_result = $rem_ref01_ent->list($rem_ref01_match, null);
         $this->assertIsArray($rem_ref01_list_result);
 
     }
@@ -89,7 +88,6 @@ function rem_basic_setup($extra)
         "ARGENTINADATOS_TEST_REM_ENTID" => $idmap,
         "ARGENTINADATOS_TEST_LIVE" => "FALSE",
         "ARGENTINADATOS_TEST_EXPLAIN" => "FALSE",
-        "ARGENTINADATOS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -101,7 +99,6 @@ function rem_basic_setup($extra)
     if ($env["ARGENTINADATOS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ARGENTINADATOS_APIKEY"],
             ],
             $extra ?? [],
         ]);

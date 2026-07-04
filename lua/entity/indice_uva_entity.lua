@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch IndiceUvaListMatch
+---@param ctrl? table
+---@return IndiceUva[]
+---@return string? err
 function IndiceUvaEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

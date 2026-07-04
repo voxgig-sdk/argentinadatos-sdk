@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch TasaIntereListMatch
+---@param ctrl? table
+---@return TasaIntere[]
+---@return string? err
 function TasaIntereEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

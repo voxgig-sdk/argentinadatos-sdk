@@ -55,6 +55,9 @@ class CotizacionEntity
         return new CotizacionEntity($this->_client, $opts);
     }
 
+    /**
+     * @param Cotizacion|array $args Cotizacion data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class CotizacionEntity
         }
     }
 
+    /**
+     * @return Cotizacion|array The current Cotizacion data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of Cotizacion fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class CotizacionEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of Cotizacion fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class CotizacionEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single Cotizacion.
+     *
+     * @param CotizacionLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed CotizacionLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Cotizacion|array The loaded Cotizacion as an assoc-array at the
+     *   SDK boundary; throws ArgentinadatosError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -110,7 +131,16 @@ class CotizacionEntity
 
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List Cotizacion items matching the given filter.
+     *
+     * @param CotizacionListMatch|array|null $reqmatch Match filter (any subset
+     *   of Cotizacion fields) as an assoc-array; CotizacionListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Cotizacion[]|array A list of Cotizacion items as assoc-arrays at
+     *   the SDK boundary; throws ArgentinadatosError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -138,7 +168,7 @@ class CotizacionEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

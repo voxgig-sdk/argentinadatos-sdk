@@ -43,8 +43,7 @@ class PresidenteEntityTest < Minitest::Test
     presidente_ref01_ent = client.Presidente(nil)
     presidente_ref01_match = {}
 
-    presidente_ref01_list_result, err = presidente_ref01_ent.list(presidente_ref01_match, nil)
-    assert_nil err
+    presidente_ref01_list_result = presidente_ref01_ent.list(presidente_ref01_match, nil)
     assert presidente_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def presidente_basic_setup(extra)
     "ARGENTINADATOS_TEST_PRESIDENTE_ENTID" => idmap,
     "ARGENTINADATOS_TEST_LIVE" => "FALSE",
     "ARGENTINADATOS_TEST_EXPLAIN" => "FALSE",
-    "ARGENTINADATOS_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def presidente_basic_setup(extra)
   if env["ARGENTINADATOS_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ARGENTINADATOS_APIKEY"],
       },
       extra || {},
     ])

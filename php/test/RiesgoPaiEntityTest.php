@@ -50,14 +50,12 @@ class RiesgoPaiEntityTest extends TestCase
         $riesgo_pai_ref01_ent = $client->RiesgoPai(null);
         $riesgo_pai_ref01_match = [];
 
-        [$riesgo_pai_ref01_list_result, $err] = $riesgo_pai_ref01_ent->list($riesgo_pai_ref01_match, null);
-        $this->assertNull($err);
+        $riesgo_pai_ref01_list_result = $riesgo_pai_ref01_ent->list($riesgo_pai_ref01_match, null);
         $this->assertIsArray($riesgo_pai_ref01_list_result);
 
         // LOAD
         $riesgo_pai_ref01_match_dt0 = [];
-        [$riesgo_pai_ref01_data_dt0_loaded, $err] = $riesgo_pai_ref01_ent->load($riesgo_pai_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $riesgo_pai_ref01_data_dt0_loaded = $riesgo_pai_ref01_ent->load($riesgo_pai_ref01_match_dt0, null);
         $this->assertNotNull($riesgo_pai_ref01_data_dt0_loaded);
 
     }
@@ -92,7 +90,6 @@ function riesgo_pai_basic_setup($extra)
         "ARGENTINADATOS_TEST_RIESGO_PAI_ENTID" => $idmap,
         "ARGENTINADATOS_TEST_LIVE" => "FALSE",
         "ARGENTINADATOS_TEST_EXPLAIN" => "FALSE",
-        "ARGENTINADATOS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -104,7 +101,6 @@ function riesgo_pai_basic_setup($extra)
     if ($env["ARGENTINADATOS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ARGENTINADATOS_APIKEY"],
             ],
             $extra ?? [],
         ]);

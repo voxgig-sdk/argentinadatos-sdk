@@ -50,14 +50,12 @@ class TestCotizacionEntity:
         cotizacion_ref01_ent = client.Cotizacion(None)
         cotizacion_ref01_match = {}
 
-        cotizacion_ref01_list_result, err = cotizacion_ref01_ent.list(cotizacion_ref01_match, None)
-        assert err is None
+        cotizacion_ref01_list_result = cotizacion_ref01_ent.list(cotizacion_ref01_match, None)
         assert isinstance(cotizacion_ref01_list_result, list)
 
         # LOAD
         cotizacion_ref01_match_dt0 = {}
-        cotizacion_ref01_data_dt0_loaded, err = cotizacion_ref01_ent.load(cotizacion_ref01_match_dt0, None)
-        assert err is None
+        cotizacion_ref01_data_dt0_loaded = cotizacion_ref01_ent.load(cotizacion_ref01_match_dt0, None)
         assert cotizacion_ref01_data_dt0_loaded is not None
 
 
@@ -98,7 +96,6 @@ def _cotizacion_basic_setup(extra):
         "ARGENTINADATOS_TEST_COTIZACION_ENTID": idmap,
         "ARGENTINADATOS_TEST_LIVE": "FALSE",
         "ARGENTINADATOS_TEST_EXPLAIN": "FALSE",
-        "ARGENTINADATOS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +106,6 @@ def _cotizacion_basic_setup(extra):
     if env.get("ARGENTINADATOS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ARGENTINADATOS_APIKEY"),
             },
             extra or {},
         ])

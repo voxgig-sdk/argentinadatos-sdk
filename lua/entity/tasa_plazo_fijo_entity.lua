@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch TasaPlazoFijoListMatch
+---@param ctrl? table
+---@return TasaPlazoFijo[]
+---@return string? err
 function TasaPlazoFijoEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

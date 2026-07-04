@@ -43,14 +43,12 @@ class CotizacionEntityTest < Minitest::Test
     cotizacion_ref01_ent = client.Cotizacion(nil)
     cotizacion_ref01_match = {}
 
-    cotizacion_ref01_list_result, err = cotizacion_ref01_ent.list(cotizacion_ref01_match, nil)
-    assert_nil err
+    cotizacion_ref01_list_result = cotizacion_ref01_ent.list(cotizacion_ref01_match, nil)
     assert cotizacion_ref01_list_result.is_a?(Array)
 
     # LOAD
     cotizacion_ref01_match_dt0 = {}
-    cotizacion_ref01_data_dt0_loaded, err = cotizacion_ref01_ent.load(cotizacion_ref01_match_dt0, nil)
-    assert_nil err
+    cotizacion_ref01_data_dt0_loaded = cotizacion_ref01_ent.load(cotizacion_ref01_match_dt0, nil)
     assert !cotizacion_ref01_data_dt0_loaded.nil?
 
   end
@@ -89,7 +87,6 @@ def cotizacion_basic_setup(extra)
     "ARGENTINADATOS_TEST_COTIZACION_ENTID" => idmap,
     "ARGENTINADATOS_TEST_LIVE" => "FALSE",
     "ARGENTINADATOS_TEST_EXPLAIN" => "FALSE",
-    "ARGENTINADATOS_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -101,7 +98,6 @@ def cotizacion_basic_setup(extra)
   if env["ARGENTINADATOS_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ARGENTINADATOS_APIKEY"],
       },
       extra || {},
     ])

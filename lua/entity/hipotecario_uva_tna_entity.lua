@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch HipotecarioUvaTnaListMatch
+---@param ctrl? table
+---@return HipotecarioUvaTna[]
+---@return string? err
 function HipotecarioUvaTnaEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

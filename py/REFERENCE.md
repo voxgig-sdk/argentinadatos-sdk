@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `dict` | SDK configuration options. |
-| `options["apikey"]` | `str` | API key for authentication. |
 | `options["base"]` | `str` | Base URL for API requests. |
 | `options["prefix"]` | `str` | URL prefix appended after base. |
 | `options["suffix"]` | `str` | URL suffix appended after path. |
@@ -162,9 +161,9 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs=None) -> tuple`
+#### `direct(fetchargs=None) -> dict`
 
-Make a direct HTTP request to any API endpoint. Returns `(result, err)`.
+Make a direct HTTP request to any API endpoint. Returns a result `dict` with `ok`, `status`, `headers`, and `data` (or `err` on failure). This escape hatch never raises — branch on `result["ok"]`.
 
 **Parameters:**
 
@@ -177,11 +176,11 @@ Make a direct HTTP request to any API endpoint. Returns `(result, err)`.
 | `fetchargs["headers"]` | `dict` | Request headers (merged with defaults). |
 | `fetchargs["body"]` | `any` | Request body (dicts are JSON-serialized). |
 
-**Returns:** `(result_dict, err)`
+**Returns:** `result_dict`
 
-#### `prepare(fetchargs=None) -> tuple`
+#### `prepare(fetchargs=None) -> dict`
 
-Prepare a fetch definition without sending. Returns `(fetchdef, err)`.
+Prepare a fetch definition without sending. Returns the `fetchdef` and raises on error.
 
 
 ---
@@ -189,7 +188,7 @@ Prepare a fetch definition without sending. Returns `(fetchdef, err)`.
 ## ActaEntity
 
 ```python
-acta = client.Acta()
+acta = client.acta
 ```
 
 ### Fields
@@ -224,20 +223,20 @@ acta = client.Acta()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Acta().list({})
+results = client.acta.list({})
 ```
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.Acta().load({"id": "acta_id"})
+result = client.acta.load({"id": "acta_id"})
 ```
 
 ### Common Methods
@@ -272,7 +271,7 @@ Return the entity name.
 ## BonosCerEntity
 
 ```python
-bonos_cer = client.BonosCer()
+bonos_cer = client.bonos_cer
 ```
 
 ### Fields
@@ -287,12 +286,12 @@ bonos_cer = client.BonosCer()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.BonosCer().list({})
+results = client.bonos_cer.list({})
 ```
 
 ### Common Methods
@@ -327,7 +326,7 @@ Return the entity name.
 ## CotizacionEntity
 
 ```python
-cotizacion = client.Cotizacion()
+cotizacion = client.cotizacion
 ```
 
 ### Fields
@@ -342,20 +341,20 @@ cotizacion = client.Cotizacion()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Cotizacion().list({})
+results = client.cotizacion.list({})
 ```
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.Cotizacion().load({"id": "cotizacion_id"})
+result = client.cotizacion.load({"id": "cotizacion_id"})
 ```
 
 ### Common Methods
@@ -390,7 +389,7 @@ Return the entity name.
 ## CriptopesoEntity
 
 ```python
-criptopeso = client.Criptopeso()
+criptopeso = client.criptopeso
 ```
 
 ### Fields
@@ -403,12 +402,12 @@ criptopeso = client.Criptopeso()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Criptopeso().list({})
+results = client.criptopeso.list({})
 ```
 
 ### Common Methods
@@ -443,7 +442,7 @@ Return the entity name.
 ## CuentaRemuneradaUsdEntity
 
 ```python
-cuenta_remunerada_usd = client.CuentaRemuneradaUsd()
+cuenta_remunerada_usd = client.cuenta_remunerada_usd
 ```
 
 ### Fields
@@ -456,12 +455,12 @@ cuenta_remunerada_usd = client.CuentaRemuneradaUsd()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.CuentaRemuneradaUsd().list({})
+results = client.cuenta_remunerada_usd.list({})
 ```
 
 ### Common Methods
@@ -496,7 +495,7 @@ Return the entity name.
 ## DiputadoEntity
 
 ```python
-diputado = client.Diputado()
+diputado = client.diputado
 ```
 
 ### Fields
@@ -517,12 +516,12 @@ diputado = client.Diputado()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Diputado().list({})
+results = client.diputado.list({})
 ```
 
 ### Common Methods
@@ -557,7 +556,7 @@ Return the entity name.
 ## EntidadRendimientoEntity
 
 ```python
-entidad_rendimiento = client.EntidadRendimiento()
+entidad_rendimiento = client.entidad_rendimiento
 ```
 
 ### Fields
@@ -569,12 +568,12 @@ entidad_rendimiento = client.EntidadRendimiento()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.EntidadRendimiento().list({})
+results = client.entidad_rendimiento.list({})
 ```
 
 ### Common Methods
@@ -609,7 +608,7 @@ Return the entity name.
 ## EstadoEntity
 
 ```python
-estado = client.Estado()
+estado = client.estado
 ```
 
 ### Fields
@@ -621,12 +620,12 @@ estado = client.Estado()
 
 ### Operations
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.Estado().load({"id": "estado_id"})
+result = client.estado.load({"id": "estado_id"})
 ```
 
 ### Common Methods
@@ -661,7 +660,7 @@ Return the entity name.
 ## EventoPresidencialEntity
 
 ```python
-evento_presidencial = client.EventoPresidencial()
+evento_presidencial = client.evento_presidencial
 ```
 
 ### Fields
@@ -674,12 +673,12 @@ evento_presidencial = client.EventoPresidencial()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.EventoPresidencial().list({})
+results = client.evento_presidencial.list({})
 ```
 
 ### Common Methods
@@ -714,7 +713,7 @@ Return the entity name.
 ## FeriadoEntity
 
 ```python
-feriado = client.Feriado()
+feriado = client.feriado
 ```
 
 ### Fields
@@ -727,12 +726,12 @@ feriado = client.Feriado()
 
 ### Operations
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.Feriado().load({"id": "feriado_id"})
+result = client.feriado.load({"id": "feriado_id"})
 ```
 
 ### Common Methods
@@ -767,17 +766,17 @@ Return the entity name.
 ## FinanzaEntity
 
 ```python
-finanza = client.Finanza()
+finanza = client.finanza
 ```
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Finanza().list({})
+results = client.finanza.list({})
 ```
 
 ### Common Methods
@@ -812,7 +811,7 @@ Return the entity name.
 ## FondoComunInversionEntity
 
 ```python
-fondo_comun_inversion = client.FondoComunInversion()
+fondo_comun_inversion = client.fondo_comun_inversion
 ```
 
 ### Fields
@@ -829,12 +828,12 @@ fondo_comun_inversion = client.FondoComunInversion()
 
 ### Operations
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.FondoComunInversion().load({"id": "fondo_comun_inversion_id"})
+result = client.fondo_comun_inversion.load({"id": "fondo_comun_inversion_id"})
 ```
 
 ### Common Methods
@@ -869,7 +868,7 @@ Return the entity name.
 ## FondoComunInversionOtroEntity
 
 ```python
-fondo_comun_inversion_otro = client.FondoComunInversionOtro()
+fondo_comun_inversion_otro = client.fondo_comun_inversion_otro
 ```
 
 ### Fields
@@ -884,12 +883,12 @@ fondo_comun_inversion_otro = client.FondoComunInversionOtro()
 
 ### Operations
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.FondoComunInversionOtro().load({"id": "fondo_comun_inversion_otro_id"})
+result = client.fondo_comun_inversion_otro.load({"id": "fondo_comun_inversion_otro_id"})
 ```
 
 ### Common Methods
@@ -924,7 +923,7 @@ Return the entity name.
 ## FondoComunInversionVariableEntity
 
 ```python
-fondo_comun_inversion_variable = client.FondoComunInversionVariable()
+fondo_comun_inversion_variable = client.fondo_comun_inversion_variable
 ```
 
 ### Fields
@@ -943,12 +942,12 @@ fondo_comun_inversion_variable = client.FondoComunInversionVariable()
 
 ### Operations
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.FondoComunInversionVariable().load({"id": "fondo_comun_inversion_variable_id"})
+result = client.fondo_comun_inversion_variable.load({"id": "fondo_comun_inversion_variable_id"})
 ```
 
 ### Common Methods
@@ -983,7 +982,7 @@ Return the entity name.
 ## HipotecarioUvaTnaEntity
 
 ```python
-hipotecario_uva_tna = client.HipotecarioUvaTna()
+hipotecario_uva_tna = client.hipotecario_uva_tna
 ```
 
 ### Fields
@@ -997,12 +996,12 @@ hipotecario_uva_tna = client.HipotecarioUvaTna()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.HipotecarioUvaTna().list({})
+results = client.hipotecario_uva_tna.list({})
 ```
 
 ### Common Methods
@@ -1037,7 +1036,7 @@ Return the entity name.
 ## IndiceInflacionEntity
 
 ```python
-indice_inflacion = client.IndiceInflacion()
+indice_inflacion = client.indice_inflacion
 ```
 
 ### Fields
@@ -1049,12 +1048,12 @@ indice_inflacion = client.IndiceInflacion()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.IndiceInflacion().list({})
+results = client.indice_inflacion.list({})
 ```
 
 ### Common Methods
@@ -1089,7 +1088,7 @@ Return the entity name.
 ## IndiceUvaEntity
 
 ```python
-indice_uva = client.IndiceUva()
+indice_uva = client.indice_uva
 ```
 
 ### Fields
@@ -1101,12 +1100,12 @@ indice_uva = client.IndiceUva()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.IndiceUva().list({})
+results = client.indice_uva.list({})
 ```
 
 ### Common Methods
@@ -1141,7 +1140,7 @@ Return the entity name.
 ## LetraEntity
 
 ```python
-letra = client.Letra()
+letra = client.letra
 ```
 
 ### Fields
@@ -1156,12 +1155,12 @@ letra = client.Letra()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Letra().list({})
+results = client.letra.list({})
 ```
 
 ### Common Methods
@@ -1196,7 +1195,7 @@ Return the entity name.
 ## PresidenteEntity
 
 ```python
-presidente = client.Presidente()
+presidente = client.presidente
 ```
 
 ### Fields
@@ -1214,12 +1213,12 @@ presidente = client.Presidente()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Presidente().list({})
+results = client.presidente.list({})
 ```
 
 ### Common Methods
@@ -1254,7 +1253,7 @@ Return the entity name.
 ## ProveedorPlazoFijoPrecancelableEntity
 
 ```python
-proveedor_plazo_fijo_precancelable = client.ProveedorPlazoFijoPrecancelable()
+proveedor_plazo_fijo_precancelable = client.proveedor_plazo_fijo_precancelable
 ```
 
 ### Fields
@@ -1281,12 +1280,12 @@ proveedor_plazo_fijo_precancelable = client.ProveedorPlazoFijoPrecancelable()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.ProveedorPlazoFijoPrecancelable().list({})
+results = client.proveedor_plazo_fijo_precancelable.list({})
 ```
 
 ### Common Methods
@@ -1321,7 +1320,7 @@ Return the entity name.
 ## ProveedorPlazoFijoUvaPagoPeriodicoEntity
 
 ```python
-proveedor_plazo_fijo_uva_pago_periodico = client.ProveedorPlazoFijoUvaPagoPeriodico()
+proveedor_plazo_fijo_uva_pago_periodico = client.proveedor_plazo_fijo_uva_pago_periodico
 ```
 
 ### Fields
@@ -1335,12 +1334,12 @@ proveedor_plazo_fijo_uva_pago_periodico = client.ProveedorPlazoFijoUvaPagoPeriod
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.ProveedorPlazoFijoUvaPagoPeriodico().list({})
+results = client.proveedor_plazo_fijo_uva_pago_periodico.list({})
 ```
 
 ### Common Methods
@@ -1375,7 +1374,7 @@ Return the entity name.
 ## RemEntity
 
 ```python
-rem = client.Rem()
+rem = client.rem
 ```
 
 ### Fields
@@ -1409,12 +1408,12 @@ rem = client.Rem()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Rem().list({})
+results = client.rem.list({})
 ```
 
 ### Common Methods
@@ -1449,7 +1448,7 @@ Return the entity name.
 ## RemExpectativaEntity
 
 ```python
-rem_expectativa = client.RemExpectativa()
+rem_expectativa = client.rem_expectativa
 ```
 
 ### Fields
@@ -1483,12 +1482,12 @@ rem_expectativa = client.RemExpectativa()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.RemExpectativa().list({})
+results = client.rem_expectativa.list({})
 ```
 
 ### Common Methods
@@ -1523,7 +1522,7 @@ Return the entity name.
 ## RendimientoEntity
 
 ```python
-rendimiento = client.Rendimiento()
+rendimiento = client.rendimiento
 ```
 
 ### Fields
@@ -1536,12 +1535,12 @@ rendimiento = client.Rendimiento()
 
 ### Operations
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.Rendimiento().load({"id": "rendimiento_id"})
+result = client.rendimiento.load({"id": "rendimiento_id"})
 ```
 
 ### Common Methods
@@ -1576,7 +1575,7 @@ Return the entity name.
 ## RiesgoPaiEntity
 
 ```python
-riesgo_pai = client.RiesgoPai()
+riesgo_pai = client.riesgo_pai
 ```
 
 ### Fields
@@ -1588,20 +1587,20 @@ riesgo_pai = client.RiesgoPai()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.RiesgoPai().list({})
+results = client.riesgo_pai.list({})
 ```
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.RiesgoPai().load({"id": "riesgo_pai_id"})
+result = client.riesgo_pai.load({"id": "riesgo_pai_id"})
 ```
 
 ### Common Methods
@@ -1636,7 +1635,7 @@ Return the entity name.
 ## SenadorEntity
 
 ```python
-senador = client.Senador()
+senador = client.senador
 ```
 
 ### Fields
@@ -1658,12 +1657,12 @@ senador = client.Senador()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Senador().list({})
+results = client.senador.list({})
 ```
 
 ### Common Methods
@@ -1698,7 +1697,7 @@ Return the entity name.
 ## TasaIntereEntity
 
 ```python
-tasa_intere = client.TasaIntere()
+tasa_intere = client.tasa_intere
 ```
 
 ### Fields
@@ -1710,12 +1709,12 @@ tasa_intere = client.TasaIntere()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.TasaIntere().list({})
+results = client.tasa_intere.list({})
 ```
 
 ### Common Methods
@@ -1750,7 +1749,7 @@ Return the entity name.
 ## TasaPlazoFijoEntity
 
 ```python
-tasa_plazo_fijo = client.TasaPlazoFijo()
+tasa_plazo_fijo = client.tasa_plazo_fijo
 ```
 
 ### Fields
@@ -1764,12 +1763,12 @@ tasa_plazo_fijo = client.TasaPlazoFijo()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.TasaPlazoFijo().list({})
+results = client.tasa_plazo_fijo.list({})
 ```
 
 ### Common Methods

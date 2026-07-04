@@ -49,8 +49,7 @@ class EstadoEntityTest extends TestCase
         // LOAD
         $estado_ref01_ent = $client->Estado(null);
         $estado_ref01_match_dt0 = [];
-        [$estado_ref01_data_dt0_loaded, $err] = $estado_ref01_ent->load($estado_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $estado_ref01_data_dt0_loaded = $estado_ref01_ent->load($estado_ref01_match_dt0, null);
         $this->assertNotNull($estado_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function estado_basic_setup($extra)
         "ARGENTINADATOS_TEST_ESTADO_ENTID" => $idmap,
         "ARGENTINADATOS_TEST_LIVE" => "FALSE",
         "ARGENTINADATOS_TEST_EXPLAIN" => "FALSE",
-        "ARGENTINADATOS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function estado_basic_setup($extra)
     if ($env["ARGENTINADATOS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ARGENTINADATOS_APIKEY"],
             ],
             $extra ?? [],
         ]);

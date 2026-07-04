@@ -43,8 +43,7 @@ class RemExpectativaEntityTest < Minitest::Test
     rem_expectativa_ref01_ent = client.RemExpectativa(nil)
     rem_expectativa_ref01_match = {}
 
-    rem_expectativa_ref01_list_result, err = rem_expectativa_ref01_ent.list(rem_expectativa_ref01_match, nil)
-    assert_nil err
+    rem_expectativa_ref01_list_result = rem_expectativa_ref01_ent.list(rem_expectativa_ref01_match, nil)
     assert rem_expectativa_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def rem_expectativa_basic_setup(extra)
     "ARGENTINADATOS_TEST_REM_EXPECTATIVA_ENTID" => idmap,
     "ARGENTINADATOS_TEST_LIVE" => "FALSE",
     "ARGENTINADATOS_TEST_EXPLAIN" => "FALSE",
-    "ARGENTINADATOS_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def rem_expectativa_basic_setup(extra)
   if env["ARGENTINADATOS_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ARGENTINADATOS_APIKEY"],
       },
       extra || {},
     ])

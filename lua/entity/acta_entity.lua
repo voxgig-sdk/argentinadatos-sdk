@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch ActaLoadMatch
+---@param ctrl? table
+---@return Acta
+---@return string? err
 function ActaEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch ActaListMatch
+---@param ctrl? table
+---@return Acta[]
+---@return string? err
 function ActaEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

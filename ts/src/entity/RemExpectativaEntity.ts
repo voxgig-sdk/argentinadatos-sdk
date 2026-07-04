@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  RemExpectativa,
+  RemExpectativaListMatch,
+} from '../ArgentinadatosTypes'
 
 // TODO: needs Entity superclass
-class RemExpectativaEntity extends ArgentinadatosEntityBase {
+class RemExpectativaEntity extends ArgentinadatosEntityBase<RemExpectativa> {
 
   constructor(client: ArgentinadatosSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class RemExpectativaEntity extends ArgentinadatosEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: RemExpectativaListMatch, ctrl?: Control): Promise<RemExpectativa[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class RemExpectativaEntity extends ArgentinadatosEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<RemExpectativa[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

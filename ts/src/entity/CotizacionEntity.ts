@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Cotizacion,
+  CotizacionLoadMatch,
+  CotizacionListMatch,
+} from '../ArgentinadatosTypes'
 
 // TODO: needs Entity superclass
-class CotizacionEntity extends ArgentinadatosEntityBase {
+class CotizacionEntity extends ArgentinadatosEntityBase<Cotizacion> {
 
   constructor(client: ArgentinadatosSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class CotizacionEntity extends ArgentinadatosEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: CotizacionLoadMatch, ctrl?: Control): Promise<Cotizacion> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class CotizacionEntity extends ArgentinadatosEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Cotizacion> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: CotizacionListMatch, ctrl?: Control): Promise<Cotizacion[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class CotizacionEntity extends ArgentinadatosEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Cotizacion[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

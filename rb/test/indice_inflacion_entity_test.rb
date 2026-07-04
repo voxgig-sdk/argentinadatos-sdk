@@ -43,8 +43,7 @@ class IndiceInflacionEntityTest < Minitest::Test
     indice_inflacion_ref01_ent = client.IndiceInflacion(nil)
     indice_inflacion_ref01_match = {}
 
-    indice_inflacion_ref01_list_result, err = indice_inflacion_ref01_ent.list(indice_inflacion_ref01_match, nil)
-    assert_nil err
+    indice_inflacion_ref01_list_result = indice_inflacion_ref01_ent.list(indice_inflacion_ref01_match, nil)
     assert indice_inflacion_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def indice_inflacion_basic_setup(extra)
     "ARGENTINADATOS_TEST_INDICE_INFLACION_ENTID" => idmap,
     "ARGENTINADATOS_TEST_LIVE" => "FALSE",
     "ARGENTINADATOS_TEST_EXPLAIN" => "FALSE",
-    "ARGENTINADATOS_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def indice_inflacion_basic_setup(extra)
   if env["ARGENTINADATOS_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ARGENTINADATOS_APIKEY"],
       },
       extra || {},
     ])

@@ -43,8 +43,7 @@ class TasaPlazoFijoEntityTest < Minitest::Test
     tasa_plazo_fijo_ref01_ent = client.TasaPlazoFijo(nil)
     tasa_plazo_fijo_ref01_match = {}
 
-    tasa_plazo_fijo_ref01_list_result, err = tasa_plazo_fijo_ref01_ent.list(tasa_plazo_fijo_ref01_match, nil)
-    assert_nil err
+    tasa_plazo_fijo_ref01_list_result = tasa_plazo_fijo_ref01_ent.list(tasa_plazo_fijo_ref01_match, nil)
     assert tasa_plazo_fijo_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def tasa_plazo_fijo_basic_setup(extra)
     "ARGENTINADATOS_TEST_TASA_PLAZO_FIJO_ENTID" => idmap,
     "ARGENTINADATOS_TEST_LIVE" => "FALSE",
     "ARGENTINADATOS_TEST_EXPLAIN" => "FALSE",
-    "ARGENTINADATOS_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def tasa_plazo_fijo_basic_setup(extra)
   if env["ARGENTINADATOS_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ARGENTINADATOS_APIKEY"],
       },
       extra || {},
     ])

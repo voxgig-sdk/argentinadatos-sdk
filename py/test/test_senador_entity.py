@@ -50,8 +50,7 @@ class TestSenadorEntity:
         senador_ref01_ent = client.Senador(None)
         senador_ref01_match = {}
 
-        senador_ref01_list_result, err = senador_ref01_ent.list(senador_ref01_match, None)
-        assert err is None
+        senador_ref01_list_result = senador_ref01_ent.list(senador_ref01_match, None)
         assert isinstance(senador_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _senador_basic_setup(extra):
         "ARGENTINADATOS_TEST_SENADOR_ENTID": idmap,
         "ARGENTINADATOS_TEST_LIVE": "FALSE",
         "ARGENTINADATOS_TEST_EXPLAIN": "FALSE",
-        "ARGENTINADATOS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _senador_basic_setup(extra):
     if env.get("ARGENTINADATOS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ARGENTINADATOS_APIKEY"),
             },
             extra or {},
         ])

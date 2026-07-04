@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch RiesgoPaiLoadMatch
+---@param ctrl? table
+---@return RiesgoPai
+---@return string? err
 function RiesgoPaiEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch RiesgoPaiListMatch
+---@param ctrl? table
+---@return RiesgoPai[]
+---@return string? err
 function RiesgoPaiEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

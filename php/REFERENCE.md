@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `$options` | `array` | SDK configuration options. |
-| `$options["apikey"]` | `string` | API key for authentication. |
 | `$options["base"]` | `string` | Base URL for API requests. |
 | `$options["prefix"]` | `string` | URL prefix appended after base. |
 | `$options["suffix"]` | `string` | URL suffix appended after path. |
@@ -164,7 +163,10 @@ Return a copy of the SDK utility object.
 
 #### `direct(array $fetchargs = []): array`
 
-Make a direct HTTP request to any API endpoint. Returns `[$result, $err]`.
+Make a direct HTTP request to any API endpoint. This is the raw-HTTP escape
+hatch: it does **not** throw. It returns a result array
+`["ok" => bool, "status" => int, "headers" => array, "data" => mixed]`, or
+`["ok" => false, "err" => \Exception]` on failure. Branch on `$result["ok"]`.
 
 **Parameters:**
 
@@ -178,11 +180,12 @@ Make a direct HTTP request to any API endpoint. Returns `[$result, $err]`.
 | `$fetchargs["body"]` | `mixed` | Request body (arrays are JSON-serialized). |
 | `$fetchargs["ctrl"]` | `array` | Control options. |
 
-**Returns:** `array [$result, $err]`
+**Returns:** `array` — the result dict (see above); never throws.
 
-#### `prepare(array $fetchargs = []): array`
+#### `prepare(array $fetchargs = []): mixed`
 
-Prepare a fetch definition without sending the request. Returns `[$fetchdef, $err]`.
+Prepare a fetch definition without sending the request. Returns the
+`$fetchdef` array. Throws on error.
 
 
 ---
@@ -190,7 +193,7 @@ Prepare a fetch definition without sending the request. Returns `[$fetchdef, $er
 ## ActaEntity
 
 ```php
-$acta = $client->Acta();
+$acta = $client->acta();
 ```
 
 ### Fields
@@ -225,20 +228,20 @@ $acta = $client->Acta();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Acta()->list([]);
+$results = $client->acta()->list([]);
 ```
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->Acta()->load(["id" => "acta_id"]);
+$result = $client->acta()->load(["id" => "acta_id"]);
 ```
 
 ### Common Methods
@@ -274,7 +277,7 @@ Return the entity name.
 ## BonosCerEntity
 
 ```php
-$bonos_cer = $client->BonosCer();
+$bonos_cer = $client->bonos_cer();
 ```
 
 ### Fields
@@ -289,12 +292,12 @@ $bonos_cer = $client->BonosCer();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->BonosCer()->list([]);
+$results = $client->bonos_cer()->list([]);
 ```
 
 ### Common Methods
@@ -330,7 +333,7 @@ Return the entity name.
 ## CotizacionEntity
 
 ```php
-$cotizacion = $client->Cotizacion();
+$cotizacion = $client->cotizacion();
 ```
 
 ### Fields
@@ -345,20 +348,20 @@ $cotizacion = $client->Cotizacion();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Cotizacion()->list([]);
+$results = $client->cotizacion()->list([]);
 ```
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->Cotizacion()->load(["id" => "cotizacion_id"]);
+$result = $client->cotizacion()->load(["id" => "cotizacion_id"]);
 ```
 
 ### Common Methods
@@ -394,7 +397,7 @@ Return the entity name.
 ## CriptopesoEntity
 
 ```php
-$criptopeso = $client->Criptopeso();
+$criptopeso = $client->criptopeso();
 ```
 
 ### Fields
@@ -407,12 +410,12 @@ $criptopeso = $client->Criptopeso();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Criptopeso()->list([]);
+$results = $client->criptopeso()->list([]);
 ```
 
 ### Common Methods
@@ -448,7 +451,7 @@ Return the entity name.
 ## CuentaRemuneradaUsdEntity
 
 ```php
-$cuenta_remunerada_usd = $client->CuentaRemuneradaUsd();
+$cuenta_remunerada_usd = $client->cuenta_remunerada_usd();
 ```
 
 ### Fields
@@ -461,12 +464,12 @@ $cuenta_remunerada_usd = $client->CuentaRemuneradaUsd();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->CuentaRemuneradaUsd()->list([]);
+$results = $client->cuenta_remunerada_usd()->list([]);
 ```
 
 ### Common Methods
@@ -502,7 +505,7 @@ Return the entity name.
 ## DiputadoEntity
 
 ```php
-$diputado = $client->Diputado();
+$diputado = $client->diputado();
 ```
 
 ### Fields
@@ -523,12 +526,12 @@ $diputado = $client->Diputado();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Diputado()->list([]);
+$results = $client->diputado()->list([]);
 ```
 
 ### Common Methods
@@ -564,7 +567,7 @@ Return the entity name.
 ## EntidadRendimientoEntity
 
 ```php
-$entidad_rendimiento = $client->EntidadRendimiento();
+$entidad_rendimiento = $client->entidad_rendimiento();
 ```
 
 ### Fields
@@ -576,12 +579,12 @@ $entidad_rendimiento = $client->EntidadRendimiento();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->EntidadRendimiento()->list([]);
+$results = $client->entidad_rendimiento()->list([]);
 ```
 
 ### Common Methods
@@ -617,7 +620,7 @@ Return the entity name.
 ## EstadoEntity
 
 ```php
-$estado = $client->Estado();
+$estado = $client->estado();
 ```
 
 ### Fields
@@ -629,12 +632,12 @@ $estado = $client->Estado();
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->Estado()->load(["id" => "estado_id"]);
+$result = $client->estado()->load(["id" => "estado_id"]);
 ```
 
 ### Common Methods
@@ -670,7 +673,7 @@ Return the entity name.
 ## EventoPresidencialEntity
 
 ```php
-$evento_presidencial = $client->EventoPresidencial();
+$evento_presidencial = $client->evento_presidencial();
 ```
 
 ### Fields
@@ -683,12 +686,12 @@ $evento_presidencial = $client->EventoPresidencial();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->EventoPresidencial()->list([]);
+$results = $client->evento_presidencial()->list([]);
 ```
 
 ### Common Methods
@@ -724,7 +727,7 @@ Return the entity name.
 ## FeriadoEntity
 
 ```php
-$feriado = $client->Feriado();
+$feriado = $client->feriado();
 ```
 
 ### Fields
@@ -737,12 +740,12 @@ $feriado = $client->Feriado();
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->Feriado()->load(["id" => "feriado_id"]);
+$result = $client->feriado()->load(["id" => "feriado_id"]);
 ```
 
 ### Common Methods
@@ -778,17 +781,17 @@ Return the entity name.
 ## FinanzaEntity
 
 ```php
-$finanza = $client->Finanza();
+$finanza = $client->finanza();
 ```
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Finanza()->list([]);
+$results = $client->finanza()->list([]);
 ```
 
 ### Common Methods
@@ -824,7 +827,7 @@ Return the entity name.
 ## FondoComunInversionEntity
 
 ```php
-$fondo_comun_inversion = $client->FondoComunInversion();
+$fondo_comun_inversion = $client->fondo_comun_inversion();
 ```
 
 ### Fields
@@ -841,12 +844,12 @@ $fondo_comun_inversion = $client->FondoComunInversion();
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->FondoComunInversion()->load(["id" => "fondo_comun_inversion_id"]);
+$result = $client->fondo_comun_inversion()->load(["id" => "fondo_comun_inversion_id"]);
 ```
 
 ### Common Methods
@@ -882,7 +885,7 @@ Return the entity name.
 ## FondoComunInversionOtroEntity
 
 ```php
-$fondo_comun_inversion_otro = $client->FondoComunInversionOtro();
+$fondo_comun_inversion_otro = $client->fondo_comun_inversion_otro();
 ```
 
 ### Fields
@@ -897,12 +900,12 @@ $fondo_comun_inversion_otro = $client->FondoComunInversionOtro();
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->FondoComunInversionOtro()->load(["id" => "fondo_comun_inversion_otro_id"]);
+$result = $client->fondo_comun_inversion_otro()->load(["id" => "fondo_comun_inversion_otro_id"]);
 ```
 
 ### Common Methods
@@ -938,7 +941,7 @@ Return the entity name.
 ## FondoComunInversionVariableEntity
 
 ```php
-$fondo_comun_inversion_variable = $client->FondoComunInversionVariable();
+$fondo_comun_inversion_variable = $client->fondo_comun_inversion_variable();
 ```
 
 ### Fields
@@ -957,12 +960,12 @@ $fondo_comun_inversion_variable = $client->FondoComunInversionVariable();
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->FondoComunInversionVariable()->load(["id" => "fondo_comun_inversion_variable_id"]);
+$result = $client->fondo_comun_inversion_variable()->load(["id" => "fondo_comun_inversion_variable_id"]);
 ```
 
 ### Common Methods
@@ -998,7 +1001,7 @@ Return the entity name.
 ## HipotecarioUvaTnaEntity
 
 ```php
-$hipotecario_uva_tna = $client->HipotecarioUvaTna();
+$hipotecario_uva_tna = $client->hipotecario_uva_tna();
 ```
 
 ### Fields
@@ -1012,12 +1015,12 @@ $hipotecario_uva_tna = $client->HipotecarioUvaTna();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->HipotecarioUvaTna()->list([]);
+$results = $client->hipotecario_uva_tna()->list([]);
 ```
 
 ### Common Methods
@@ -1053,7 +1056,7 @@ Return the entity name.
 ## IndiceInflacionEntity
 
 ```php
-$indice_inflacion = $client->IndiceInflacion();
+$indice_inflacion = $client->indice_inflacion();
 ```
 
 ### Fields
@@ -1065,12 +1068,12 @@ $indice_inflacion = $client->IndiceInflacion();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->IndiceInflacion()->list([]);
+$results = $client->indice_inflacion()->list([]);
 ```
 
 ### Common Methods
@@ -1106,7 +1109,7 @@ Return the entity name.
 ## IndiceUvaEntity
 
 ```php
-$indice_uva = $client->IndiceUva();
+$indice_uva = $client->indice_uva();
 ```
 
 ### Fields
@@ -1118,12 +1121,12 @@ $indice_uva = $client->IndiceUva();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->IndiceUva()->list([]);
+$results = $client->indice_uva()->list([]);
 ```
 
 ### Common Methods
@@ -1159,7 +1162,7 @@ Return the entity name.
 ## LetraEntity
 
 ```php
-$letra = $client->Letra();
+$letra = $client->letra();
 ```
 
 ### Fields
@@ -1174,12 +1177,12 @@ $letra = $client->Letra();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Letra()->list([]);
+$results = $client->letra()->list([]);
 ```
 
 ### Common Methods
@@ -1215,7 +1218,7 @@ Return the entity name.
 ## PresidenteEntity
 
 ```php
-$presidente = $client->Presidente();
+$presidente = $client->presidente();
 ```
 
 ### Fields
@@ -1233,12 +1236,12 @@ $presidente = $client->Presidente();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Presidente()->list([]);
+$results = $client->presidente()->list([]);
 ```
 
 ### Common Methods
@@ -1274,7 +1277,7 @@ Return the entity name.
 ## ProveedorPlazoFijoPrecancelableEntity
 
 ```php
-$proveedor_plazo_fijo_precancelable = $client->ProveedorPlazoFijoPrecancelable();
+$proveedor_plazo_fijo_precancelable = $client->proveedor_plazo_fijo_precancelable();
 ```
 
 ### Fields
@@ -1301,12 +1304,12 @@ $proveedor_plazo_fijo_precancelable = $client->ProveedorPlazoFijoPrecancelable()
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->ProveedorPlazoFijoPrecancelable()->list([]);
+$results = $client->proveedor_plazo_fijo_precancelable()->list([]);
 ```
 
 ### Common Methods
@@ -1342,7 +1345,7 @@ Return the entity name.
 ## ProveedorPlazoFijoUvaPagoPeriodicoEntity
 
 ```php
-$proveedor_plazo_fijo_uva_pago_periodico = $client->ProveedorPlazoFijoUvaPagoPeriodico();
+$proveedor_plazo_fijo_uva_pago_periodico = $client->proveedor_plazo_fijo_uva_pago_periodico();
 ```
 
 ### Fields
@@ -1356,12 +1359,12 @@ $proveedor_plazo_fijo_uva_pago_periodico = $client->ProveedorPlazoFijoUvaPagoPer
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->ProveedorPlazoFijoUvaPagoPeriodico()->list([]);
+$results = $client->proveedor_plazo_fijo_uva_pago_periodico()->list([]);
 ```
 
 ### Common Methods
@@ -1397,7 +1400,7 @@ Return the entity name.
 ## RemEntity
 
 ```php
-$rem = $client->Rem();
+$rem = $client->rem();
 ```
 
 ### Fields
@@ -1431,12 +1434,12 @@ $rem = $client->Rem();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Rem()->list([]);
+$results = $client->rem()->list([]);
 ```
 
 ### Common Methods
@@ -1472,7 +1475,7 @@ Return the entity name.
 ## RemExpectativaEntity
 
 ```php
-$rem_expectativa = $client->RemExpectativa();
+$rem_expectativa = $client->rem_expectativa();
 ```
 
 ### Fields
@@ -1506,12 +1509,12 @@ $rem_expectativa = $client->RemExpectativa();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->RemExpectativa()->list([]);
+$results = $client->rem_expectativa()->list([]);
 ```
 
 ### Common Methods
@@ -1547,7 +1550,7 @@ Return the entity name.
 ## RendimientoEntity
 
 ```php
-$rendimiento = $client->Rendimiento();
+$rendimiento = $client->rendimiento();
 ```
 
 ### Fields
@@ -1560,12 +1563,12 @@ $rendimiento = $client->Rendimiento();
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->Rendimiento()->load(["id" => "rendimiento_id"]);
+$result = $client->rendimiento()->load(["id" => "rendimiento_id"]);
 ```
 
 ### Common Methods
@@ -1601,7 +1604,7 @@ Return the entity name.
 ## RiesgoPaiEntity
 
 ```php
-$riesgo_pai = $client->RiesgoPai();
+$riesgo_pai = $client->riesgo_pai();
 ```
 
 ### Fields
@@ -1613,20 +1616,20 @@ $riesgo_pai = $client->RiesgoPai();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->RiesgoPai()->list([]);
+$results = $client->riesgo_pai()->list([]);
 ```
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->RiesgoPai()->load(["id" => "riesgo_pai_id"]);
+$result = $client->riesgo_pai()->load(["id" => "riesgo_pai_id"]);
 ```
 
 ### Common Methods
@@ -1662,7 +1665,7 @@ Return the entity name.
 ## SenadorEntity
 
 ```php
-$senador = $client->Senador();
+$senador = $client->senador();
 ```
 
 ### Fields
@@ -1684,12 +1687,12 @@ $senador = $client->Senador();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Senador()->list([]);
+$results = $client->senador()->list([]);
 ```
 
 ### Common Methods
@@ -1725,7 +1728,7 @@ Return the entity name.
 ## TasaIntereEntity
 
 ```php
-$tasa_intere = $client->TasaIntere();
+$tasa_intere = $client->tasa_intere();
 ```
 
 ### Fields
@@ -1737,12 +1740,12 @@ $tasa_intere = $client->TasaIntere();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->TasaIntere()->list([]);
+$results = $client->tasa_intere()->list([]);
 ```
 
 ### Common Methods
@@ -1778,7 +1781,7 @@ Return the entity name.
 ## TasaPlazoFijoEntity
 
 ```php
-$tasa_plazo_fijo = $client->TasaPlazoFijo();
+$tasa_plazo_fijo = $client->tasa_plazo_fijo();
 ```
 
 ### Fields
@@ -1792,12 +1795,12 @@ $tasa_plazo_fijo = $client->TasaPlazoFijo();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->TasaPlazoFijo()->list([]);
+$results = $client->tasa_plazo_fijo()->list([]);
 ```
 
 ### Common Methods

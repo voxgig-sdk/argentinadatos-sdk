@@ -50,8 +50,7 @@ class HipotecarioUvaTnaEntityTest extends TestCase
         $hipotecario_uva_tna_ref01_ent = $client->HipotecarioUvaTna(null);
         $hipotecario_uva_tna_ref01_match = [];
 
-        [$hipotecario_uva_tna_ref01_list_result, $err] = $hipotecario_uva_tna_ref01_ent->list($hipotecario_uva_tna_ref01_match, null);
-        $this->assertNull($err);
+        $hipotecario_uva_tna_ref01_list_result = $hipotecario_uva_tna_ref01_ent->list($hipotecario_uva_tna_ref01_match, null);
         $this->assertIsArray($hipotecario_uva_tna_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function hipotecario_uva_tna_basic_setup($extra)
         "ARGENTINADATOS_TEST_HIPOTECARIO_UVA_TNA_ENTID" => $idmap,
         "ARGENTINADATOS_TEST_LIVE" => "FALSE",
         "ARGENTINADATOS_TEST_EXPLAIN" => "FALSE",
-        "ARGENTINADATOS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function hipotecario_uva_tna_basic_setup($extra)
     if ($env["ARGENTINADATOS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ARGENTINADATOS_APIKEY"],
             ],
             $extra ?? [],
         ]);

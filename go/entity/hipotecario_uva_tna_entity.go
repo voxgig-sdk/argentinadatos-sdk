@@ -85,6 +85,27 @@ func (e *HipotecarioUvaTnaEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an HipotecarioUvaTna; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *HipotecarioUvaTnaEntity) DataTyped(data ...HipotecarioUvaTna) HipotecarioUvaTna {
+	if len(data) > 0 {
+		return typedFrom[HipotecarioUvaTna](e.Data(asMap(data[0])))
+	}
+	return typedFrom[HipotecarioUvaTna](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through HipotecarioUvaTna (all fields
+// optional at the wire level).
+func (e *HipotecarioUvaTnaEntity) MatchTyped(match ...HipotecarioUvaTna) HipotecarioUvaTna {
+	if len(match) > 0 {
+		return typedFrom[HipotecarioUvaTna](e.Match(asMap(match[0])))
+	}
+	return typedFrom[HipotecarioUvaTna](e.Match())
+}
+
 func (e *HipotecarioUvaTnaEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("load", e.name)
 }
@@ -108,6 +129,17 @@ func (e *HipotecarioUvaTnaEntity) List(reqmatch map[string]any, ctrl map[string]
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// HipotecarioUvaTnaListMatch and returns []HipotecarioUvaTna. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *HipotecarioUvaTnaEntity) ListTyped(reqmatch HipotecarioUvaTnaListMatch, ctrl map[string]any) ([]HipotecarioUvaTna, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[HipotecarioUvaTna](res), nil
 }
 
 

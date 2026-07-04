@@ -45,6 +45,7 @@ class BonosCerEntity
     end
   end
 
+  # @return [BonosCer, Hash] the current BonosCer data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class BonosCerEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of BonosCer fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class BonosCerEntity
   
 
   
+  # List BonosCer items matching the given filter.
+  #
+  # @param reqmatch [BonosCerListMatch, Hash, nil] match filter (any subset of BonosCer fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<BonosCer>, Array] the matching BonosCer items; raises ArgentinadatosError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

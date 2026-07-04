@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  TasaPlazoFijo,
+  TasaPlazoFijoListMatch,
+} from '../ArgentinadatosTypes'
 
 // TODO: needs Entity superclass
-class TasaPlazoFijoEntity extends ArgentinadatosEntityBase {
+class TasaPlazoFijoEntity extends ArgentinadatosEntityBase<TasaPlazoFijo> {
 
   constructor(client: ArgentinadatosSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class TasaPlazoFijoEntity extends ArgentinadatosEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: TasaPlazoFijoListMatch, ctrl?: Control): Promise<TasaPlazoFijo[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class TasaPlazoFijoEntity extends ArgentinadatosEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<TasaPlazoFijo[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

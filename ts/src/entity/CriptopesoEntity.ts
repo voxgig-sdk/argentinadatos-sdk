@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Criptopeso,
+  CriptopesoListMatch,
+} from '../ArgentinadatosTypes'
 
 // TODO: needs Entity superclass
-class CriptopesoEntity extends ArgentinadatosEntityBase {
+class CriptopesoEntity extends ArgentinadatosEntityBase<Criptopeso> {
 
   constructor(client: ArgentinadatosSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class CriptopesoEntity extends ArgentinadatosEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: CriptopesoListMatch, ctrl?: Control): Promise<Criptopeso[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class CriptopesoEntity extends ArgentinadatosEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Criptopeso[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

@@ -50,8 +50,7 @@ class TestBonosCerEntity:
         bonos_cer_ref01_ent = client.BonosCer(None)
         bonos_cer_ref01_match = {}
 
-        bonos_cer_ref01_list_result, err = bonos_cer_ref01_ent.list(bonos_cer_ref01_match, None)
-        assert err is None
+        bonos_cer_ref01_list_result = bonos_cer_ref01_ent.list(bonos_cer_ref01_match, None)
         assert isinstance(bonos_cer_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _bonos_cer_basic_setup(extra):
         "ARGENTINADATOS_TEST_BONOS_CER_ENTID": idmap,
         "ARGENTINADATOS_TEST_LIVE": "FALSE",
         "ARGENTINADATOS_TEST_EXPLAIN": "FALSE",
-        "ARGENTINADATOS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _bonos_cer_basic_setup(extra):
     if env.get("ARGENTINADATOS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ARGENTINADATOS_APIKEY"),
             },
             extra or {},
         ])

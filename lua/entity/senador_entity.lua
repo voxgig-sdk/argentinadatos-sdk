@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch SenadorListMatch
+---@param ctrl? table
+---@return Senador[]
+---@return string? err
 function SenadorEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
