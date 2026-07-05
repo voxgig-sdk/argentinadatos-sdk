@@ -4,6 +4,8 @@
 
 The Golang SDK for the Argentinadatos API — an entity-oriented client using standard Go conventions. No generics required; data flows as `map[string]any`.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client.Acta(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -58,12 +60,41 @@ func main() {
     }
 
     // Load a single acta — the value is the loaded record.
-    acta, err := client.Acta(nil).Load(map[string]any{"id": "example_id"}, nil)
+    acta, err := client.Acta(nil).Load(map[string]any{"id": 1}, nil)
     if err != nil {
         panic(err)
     }
     fmt.Println(acta)
 }
+```
+
+
+## Error handling
+
+Every entity operation returns `(value, error)`. Check `err` before
+using the value — there is no exception to catch:
+
+```go
+actas, err := client.Acta(nil).List(nil, nil)
+if err != nil {
+    // handle err
+    return
+}
+_ = actas
+```
+
+`Direct` follows the same `(value, error)` convention:
+
+```go
+result, err := client.Direct(map[string]any{
+    "path":   "/api/resource/{id}",
+    "method": "GET",
+    "params": map[string]any{"id": "example_id"},
+})
+if err != nil {
+    // handle err
+}
+_ = result
 ```
 
 
@@ -113,13 +144,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-acta, err := client.Acta(nil).Load(
-    map[string]any{"id": "test01"}, nil,
+acta, err := client.Acta(nil).List(
+    nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(acta) // the loaded mock data
+fmt.Println(acta) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -233,9 +264,6 @@ All entities implement the `ArgentinadatosEntity` interface.
 | --- | --- | --- |
 | `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria. |
 | `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria. |
-| `Create` | `(reqdata, ctrl map[string]any) (any, error)` | Create a new entity. |
-| `Update` | `(reqdata, ctrl map[string]any) (any, error)` | Update an existing entity. |
-| `Remove` | `(reqmatch, ctrl map[string]any) (any, error)` | Remove an entity. |
 | `Data` | `(args ...any) any` | Get or set entity data. |
 | `Match` | `(args ...any) any` | Get or set entity match criteria. |
 | `Make` | `() Entity` | Create a new instance with the same options. |
@@ -248,16 +276,16 @@ operation's data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `Load` | the entity record (`map[string]any`) |
 | `List` | a `[]any` of entity records |
 
 Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    acta, err := client.Acta(nil).Load(map[string]any{"id": "example_id"}, nil)
+    acta, err := client.Acta(nil).List(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // acta is the loaded record
+    // acta is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -732,31 +760,31 @@ Create an instance: `acta := client.Acta(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `abstencione` | ``$INTEGER`` |  |
-| `acta` | ``$STRING`` |  |
-| `acta_id` | ``$INTEGER`` |  |
-| `afirmativo` | ``$INTEGER`` |  |
-| `amn` | ``$INTEGER`` |  |
-| `ausente` | ``$INTEGER`` |  |
-| `descripcion` | ``$STRING`` |  |
-| `fecha` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `mayoria` | ``$STRING`` |  |
-| `miembro` | ``$INTEGER`` |  |
-| `negativo` | ``$INTEGER`` |  |
-| `numero_acta` | ``$STRING`` |  |
-| `observacione` | ``$ARRAY`` |  |
-| `periodo` | ``$STRING`` |  |
-| `presente` | ``$INTEGER`` |  |
-| `presidente` | ``$STRING`` |  |
-| `proyecto` | ``$STRING`` |  |
-| `quorum_tipo` | ``$STRING`` |  |
-| `resultado` | ``$STRING`` |  |
-| `reunion` | ``$STRING`` |  |
-| `titulo` | ``$STRING`` |  |
-| `voto` | ``$ARRAY`` |  |
-| `votos_afirmativo` | ``$INTEGER`` |  |
-| `votos_negativo` | ``$INTEGER`` |  |
+| `abstencione` | `int` |  |
+| `acta` | `string` |  |
+| `acta_id` | `int` |  |
+| `afirmativo` | `int` |  |
+| `amn` | `int` |  |
+| `ausente` | `int` |  |
+| `descripcion` | `string` |  |
+| `fecha` | `string` |  |
+| `id` | `string` |  |
+| `mayoria` | `string` |  |
+| `miembro` | `int` |  |
+| `negativo` | `int` |  |
+| `numero_acta` | `string` |  |
+| `observacione` | `[]any` |  |
+| `periodo` | `string` |  |
+| `presente` | `int` |  |
+| `presidente` | `string` |  |
+| `proyecto` | `string` |  |
+| `quorum_tipo` | `string` |  |
+| `resultado` | `string` |  |
+| `reunion` | `string` |  |
+| `titulo` | `string` |  |
+| `voto` | `[]any` |  |
+| `votos_afirmativo` | `int` |  |
+| `votos_negativo` | `int` |  |
 
 #### Example: Load
 
@@ -793,11 +821,11 @@ Create an instance: `bonos_cer := client.BonosCer(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha_vencimiento` | ``$STRING`` |  |
-| `precio_ar` | ``$NUMBER`` |  |
-| `ticker` | ``$STRING`` |  |
-| `tir_porcentaje` | ``$NUMBER`` |  |
-| `voluman` | ``$NUMBER`` |  |
+| `fecha_vencimiento` | `string` |  |
+| `precio_ar` | `float64` |  |
+| `ticker` | `string` |  |
+| `tir_porcentaje` | `float64` |  |
+| `voluman` | `float64` |  |
 
 #### Example: List
 
@@ -825,16 +853,16 @@ Create an instance: `cotizacion := client.Cotizacion(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `casa` | ``$STRING`` |  |
-| `compra` | ``$NUMBER`` |  |
-| `fecha` | ``$STRING`` |  |
-| `moneda` | ``$STRING`` |  |
-| `venta` | ``$NUMBER`` |  |
+| `casa` | `string` |  |
+| `compra` | `float64` |  |
+| `fecha` | `string` |  |
+| `moneda` | `string` |  |
+| `venta` | `float64` |  |
 
 #### Example: Load
 
 ```go
-cotizacion, err := client.Cotizacion(nil).Load(map[string]any{"id": "cotizacion_id"}, nil)
+cotizacion, err := client.Cotizacion(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -866,9 +894,9 @@ Create an instance: `criptopeso := client.Criptopeso(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `tna` | ``$NUMBER`` |  |
-| `token` | ``$STRING`` |  |
+| `entidad` | `string` |  |
+| `tna` | `float64` |  |
+| `token` | `string` |  |
 
 #### Example: List
 
@@ -895,9 +923,9 @@ Create an instance: `cuenta_remunerada_usd := client.CuentaRemuneradaUsd(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `tasa` | ``$NUMBER`` |  |
-| `tope` | ``$NUMBER`` |  |
+| `entidad` | `string` |  |
+| `tasa` | `float64` |  |
+| `tope` | `float64` |  |
 
 #### Example: List
 
@@ -924,17 +952,17 @@ Create an instance: `diputado := client.Diputado(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `apellido` | ``$STRING`` |  |
-| `bloque` | ``$STRING`` |  |
-| `cese_fecha` | ``$STRING`` |  |
-| `foto` | ``$STRING`` |  |
-| `genero` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `juramento_fecha` | ``$STRING`` |  |
-| `nombre` | ``$STRING`` |  |
-| `periodo_bloque` | ``$OBJECT`` |  |
-| `periodo_mandato` | ``$OBJECT`` |  |
-| `provincia` | ``$STRING`` |  |
+| `apellido` | `string` |  |
+| `bloque` | `string` |  |
+| `cese_fecha` | `string` |  |
+| `foto` | `string` |  |
+| `genero` | `string` |  |
+| `id` | `string` |  |
+| `juramento_fecha` | `string` |  |
+| `nombre` | `string` |  |
+| `periodo_bloque` | `map[string]any` |  |
+| `periodo_mandato` | `map[string]any` |  |
+| `provincia` | `string` |  |
 
 #### Example: List
 
@@ -961,8 +989,8 @@ Create an instance: `entidad_rendimiento := client.EntidadRendimiento(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `rendimiento` | ``$ARRAY`` |  |
+| `entidad` | `string` |  |
+| `rendimiento` | `[]any` |  |
 
 #### Example: List
 
@@ -989,13 +1017,13 @@ Create an instance: `estado := client.Estado(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aleatorio` | ``$INTEGER`` |  |
-| `estado` | ``$STRING`` |  |
+| `aleatorio` | `int` |  |
+| `estado` | `string` |  |
 
 #### Example: Load
 
 ```go
-estado, err := client.Estado(nil).Load(map[string]any{"id": "estado_id"}, nil)
+estado, err := client.Estado(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -1017,9 +1045,9 @@ Create an instance: `evento_presidencial := client.EventoPresidencial(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `evento` | ``$STRING`` |  |
-| `fecha` | ``$STRING`` |  |
-| `tipo` | ``$STRING`` |  |
+| `evento` | `string` |  |
+| `fecha` | `string` |  |
+| `tipo` | `string` |  |
 
 #### Example: List
 
@@ -1046,9 +1074,9 @@ Create an instance: `feriado := client.Feriado(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `nombre` | ``$STRING`` |  |
-| `tipo` | ``$STRING`` |  |
+| `fecha` | `string` |  |
+| `nombre` | `string` |  |
+| `tipo` | `string` |  |
 
 #### Example: Load
 
@@ -1096,18 +1124,18 @@ Create an instance: `fondo_comun_inversion := client.FondoComunInversion(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ccp` | ``$NUMBER`` |  |
-| `fecha` | ``$STRING`` |  |
-| `fondo` | ``$STRING`` |  |
-| `horizonte` | ``$STRING`` |  |
-| `patrimonio` | ``$NUMBER`` |  |
-| `tipo` | ``$STRING`` |  |
-| `vcp` | ``$NUMBER`` |  |
+| `ccp` | `float64` |  |
+| `fecha` | `string` |  |
+| `fondo` | `string` |  |
+| `horizonte` | `string` |  |
+| `patrimonio` | `float64` |  |
+| `tipo` | `string` |  |
+| `vcp` | `float64` |  |
 
 #### Example: Load
 
 ```go
-fondo_comun_inversion, err := client.FondoComunInversion(nil).Load(map[string]any{"id": "fondo_comun_inversion_id"}, nil)
+fondo_comun_inversion, err := client.FondoComunInversion(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -1129,11 +1157,11 @@ Create an instance: `fondo_comun_inversion_otro := client.FondoComunInversionOtr
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `fondo` | ``$STRING`` |  |
-| `tea` | ``$NUMBER`` |  |
-| `tna` | ``$NUMBER`` |  |
-| `tope` | ``$NUMBER`` |  |
+| `fecha` | `string` |  |
+| `fondo` | `string` |  |
+| `tea` | `float64` |  |
+| `tna` | `float64` |  |
+| `tope` | `float64` |  |
 
 #### Example: Load
 
@@ -1160,15 +1188,15 @@ Create an instance: `fondo_comun_inversion_variable := client.FondoComunInversio
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `condicione` | ``$STRING`` |  |
-| `condiciones_corto` | ``$STRING`` |  |
-| `fecha` | ``$STRING`` |  |
-| `fondo` | ``$STRING`` |  |
-| `nombre` | ``$STRING`` |  |
-| `tea` | ``$NUMBER`` |  |
-| `tipo` | ``$STRING`` |  |
-| `tna` | ``$NUMBER`` |  |
-| `tope` | ``$NUMBER`` |  |
+| `condicione` | `string` |  |
+| `condiciones_corto` | `string` |  |
+| `fecha` | `string` |  |
+| `fondo` | `string` |  |
+| `nombre` | `string` |  |
+| `tea` | `float64` |  |
+| `tipo` | `string` |  |
+| `tna` | `float64` |  |
+| `tope` | `float64` |  |
 
 #### Example: Load
 
@@ -1195,10 +1223,10 @@ Create an instance: `hipotecario_uva_tna := client.HipotecarioUvaTna(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `metadata` | ``$OBJECT`` |  |
-| `nombre_comercial` | ``$STRING`` |  |
-| `tna` | ``$NUMBER`` |  |
+| `entidad` | `string` |  |
+| `metadata` | `map[string]any` |  |
+| `nombre_comercial` | `string` |  |
+| `tna` | `float64` |  |
 
 #### Example: List
 
@@ -1225,8 +1253,8 @@ Create an instance: `indice_inflacion := client.IndiceInflacion(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `valor` | ``$NUMBER`` |  |
+| `fecha` | `string` |  |
+| `valor` | `float64` |  |
 
 #### Example: List
 
@@ -1253,8 +1281,8 @@ Create an instance: `indice_uva := client.IndiceUva(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `valor` | ``$NUMBER`` |  |
+| `fecha` | `string` |  |
+| `valor` | `float64` |  |
 
 #### Example: List
 
@@ -1281,11 +1309,11 @@ Create an instance: `letra := client.Letra(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha_emision` | ``$STRING`` |  |
-| `fecha_vencimiento` | ``$STRING`` |  |
-| `tem` | ``$NUMBER`` |  |
-| `ticker` | ``$STRING`` |  |
-| `vpv` | ``$NUMBER`` |  |
+| `fecha_emision` | `string` |  |
+| `fecha_vencimiento` | `string` |  |
+| `tem` | `float64` |  |
+| `ticker` | `string` |  |
+| `vpv` | `float64` |  |
 
 #### Example: List
 
@@ -1312,14 +1340,14 @@ Create an instance: `presidente := client.Presidente(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fin` | ``$STRING`` |  |
-| `imagen` | ``$STRING`` |  |
-| `inicio` | ``$STRING`` |  |
-| `nombre` | ``$STRING`` |  |
-| `partido` | ``$STRING`` |  |
-| `partido_imagen` | ``$STRING`` |  |
-| `periodo_presidencial` | ``$STRING`` |  |
-| `vicepresidente` | ``$STRING`` |  |
+| `fin` | `string` |  |
+| `imagen` | `string` |  |
+| `inicio` | `string` |  |
+| `nombre` | `string` |  |
+| `partido` | `string` |  |
+| `partido_imagen` | `string` |  |
+| `periodo_presidencial` | `string` |  |
+| `vicepresidente` | `string` |  |
 
 #### Example: List
 
@@ -1346,23 +1374,23 @@ Create an instance: `proveedor_plazo_fijo_precancelable := client.ProveedorPlazo
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aviso_precancelacion_dia` | ``$INTEGER`` |  |
-| `canal` | ``$STRING`` |  |
-| `enlace` | ``$STRING`` |  |
-| `entidad` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `logo` | ``$STRING`` |  |
-| `modalidad` | ``$STRING`` |  |
-| `moneda` | ``$STRING`` |  |
-| `monto_maximo` | ``$NUMBER`` |  |
-| `monto_minimo` | ``$NUMBER`` |  |
-| `plazo_max_dia` | ``$INTEGER`` |  |
-| `plazo_min_dia` | ``$INTEGER`` |  |
-| `plazo_precancelacion_dia` | ``$INTEGER`` |  |
-| `tea` | ``$NUMBER`` |  |
-| `tea_precancelacion` | ``$NUMBER`` |  |
-| `tna` | ``$NUMBER`` |  |
-| `tna_precancelacion` | ``$NUMBER`` |  |
+| `aviso_precancelacion_dia` | `int` |  |
+| `canal` | `string` |  |
+| `enlace` | `string` |  |
+| `entidad` | `string` |  |
+| `id` | `string` |  |
+| `logo` | `string` |  |
+| `modalidad` | `string` |  |
+| `moneda` | `string` |  |
+| `monto_maximo` | `float64` |  |
+| `monto_minimo` | `float64` |  |
+| `plazo_max_dia` | `int` |  |
+| `plazo_min_dia` | `int` |  |
+| `plazo_precancelacion_dia` | `int` |  |
+| `tea` | `float64` |  |
+| `tea_precancelacion` | `float64` |  |
+| `tna` | `float64` |  |
+| `tna_precancelacion` | `float64` |  |
 
 #### Example: List
 
@@ -1389,10 +1417,10 @@ Create an instance: `proveedor_plazo_fijo_uva_pago_periodico := client.Proveedor
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `logo` | ``$STRING`` |  |
-| `tasa` | ``$ARRAY`` |  |
+| `entidad` | `string` |  |
+| `id` | `string` |  |
+| `logo` | `string` |  |
+| `tasa` | `[]any` |  |
 
 #### Example: List
 
@@ -1419,30 +1447,30 @@ Create an instance: `rem := client.Rem(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `desvio` | ``$NUMBER`` |  |
-| `fecha` | ``$STRING`` |  |
-| `fuente` | ``$STRING`` |  |
-| `indicador` | ``$STRING`` |  |
-| `informe` | ``$STRING`` |  |
-| `maximo` | ``$NUMBER`` |  |
-| `mediana` | ``$NUMBER`` |  |
-| `minimo` | ``$NUMBER`` |  |
-| `muestra` | ``$STRING`` |  |
-| `participante` | ``$INTEGER`` |  |
-| `percentil10` | ``$NUMBER`` |  |
-| `percentil25` | ``$NUMBER`` |  |
-| `percentil75` | ``$NUMBER`` |  |
-| `percentil90` | ``$NUMBER`` |  |
-| `periodo` | ``$STRING`` |  |
-| `periodo_desde` | ``$STRING`` |  |
-| `periodo_hasta` | ``$STRING`` |  |
-| `periodo_tipo` | ``$STRING`` |  |
-| `promedio` | ``$NUMBER`` |  |
-| `publicacion_url` | ``$STRING`` |  |
-| `referencia` | ``$STRING`` |  |
-| `referencia_fecha` | ``$STRING`` |  |
-| `unidad` | ``$STRING`` |  |
-| `xlsx_url` | ``$STRING`` |  |
+| `desvio` | `float64` |  |
+| `fecha` | `string` |  |
+| `fuente` | `string` |  |
+| `indicador` | `string` |  |
+| `informe` | `string` |  |
+| `maximo` | `float64` |  |
+| `mediana` | `float64` |  |
+| `minimo` | `float64` |  |
+| `muestra` | `string` |  |
+| `participante` | `int` |  |
+| `percentil10` | `float64` |  |
+| `percentil25` | `float64` |  |
+| `percentil75` | `float64` |  |
+| `percentil90` | `float64` |  |
+| `periodo` | `string` |  |
+| `periodo_desde` | `string` |  |
+| `periodo_hasta` | `string` |  |
+| `periodo_tipo` | `string` |  |
+| `promedio` | `float64` |  |
+| `publicacion_url` | `string` |  |
+| `referencia` | `string` |  |
+| `referencia_fecha` | `string` |  |
+| `unidad` | `string` |  |
+| `xlsx_url` | `string` |  |
 
 #### Example: List
 
@@ -1469,30 +1497,30 @@ Create an instance: `rem_expectativa := client.RemExpectativa(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `desvio` | ``$NUMBER`` |  |
-| `fecha` | ``$STRING`` |  |
-| `fuente` | ``$STRING`` |  |
-| `indicador` | ``$STRING`` |  |
-| `informe` | ``$STRING`` |  |
-| `maximo` | ``$NUMBER`` |  |
-| `mediana` | ``$NUMBER`` |  |
-| `minimo` | ``$NUMBER`` |  |
-| `muestra` | ``$STRING`` |  |
-| `participante` | ``$INTEGER`` |  |
-| `percentil10` | ``$NUMBER`` |  |
-| `percentil25` | ``$NUMBER`` |  |
-| `percentil75` | ``$NUMBER`` |  |
-| `percentil90` | ``$NUMBER`` |  |
-| `periodo` | ``$STRING`` |  |
-| `periodo_desde` | ``$STRING`` |  |
-| `periodo_hasta` | ``$STRING`` |  |
-| `periodo_tipo` | ``$STRING`` |  |
-| `promedio` | ``$NUMBER`` |  |
-| `publicacion_url` | ``$STRING`` |  |
-| `referencia` | ``$STRING`` |  |
-| `referencia_fecha` | ``$STRING`` |  |
-| `unidad` | ``$STRING`` |  |
-| `xlsx_url` | ``$STRING`` |  |
+| `desvio` | `float64` |  |
+| `fecha` | `string` |  |
+| `fuente` | `string` |  |
+| `indicador` | `string` |  |
+| `informe` | `string` |  |
+| `maximo` | `float64` |  |
+| `mediana` | `float64` |  |
+| `minimo` | `float64` |  |
+| `muestra` | `string` |  |
+| `participante` | `int` |  |
+| `percentil10` | `float64` |  |
+| `percentil25` | `float64` |  |
+| `percentil75` | `float64` |  |
+| `percentil90` | `float64` |  |
+| `periodo` | `string` |  |
+| `periodo_desde` | `string` |  |
+| `periodo_hasta` | `string` |  |
+| `periodo_tipo` | `string` |  |
+| `promedio` | `float64` |  |
+| `publicacion_url` | `string` |  |
+| `referencia` | `string` |  |
+| `referencia_fecha` | `string` |  |
+| `unidad` | `string` |  |
+| `xlsx_url` | `string` |  |
 
 #### Example: List
 
@@ -1519,9 +1547,9 @@ Create an instance: `rendimiento := client.Rendimiento(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `apy` | ``$NUMBER`` |  |
-| `fecha` | ``$STRING`` |  |
-| `moneda` | ``$STRING`` |  |
+| `apy` | `float64` |  |
+| `fecha` | `string` |  |
+| `moneda` | `string` |  |
 
 #### Example: Load
 
@@ -1549,13 +1577,13 @@ Create an instance: `riesgo_pai := client.RiesgoPai(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `valor` | ``$NUMBER`` |  |
+| `fecha` | `string` |  |
+| `valor` | `float64` |  |
 
 #### Example: Load
 
 ```go
-riesgo_pai, err := client.RiesgoPai(nil).Load(map[string]any{"id": "riesgo_pai_id"}, nil)
+riesgo_pai, err := client.RiesgoPai(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -1587,18 +1615,18 @@ Create an instance: `senador := client.Senador(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `email` | ``$STRING`` |  |
-| `foto` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `nombre` | ``$STRING`` |  |
-| `observacione` | ``$STRING`` |  |
-| `partido` | ``$STRING`` |  |
-| `periodo_legal` | ``$OBJECT`` |  |
-| `periodo_real` | ``$OBJECT`` |  |
-| `provincia` | ``$STRING`` |  |
-| `rede` | ``$ARRAY`` |  |
-| `reemplazo` | ``$STRING`` |  |
-| `telefono` | ``$STRING`` |  |
+| `email` | `string` |  |
+| `foto` | `string` |  |
+| `id` | `string` |  |
+| `nombre` | `string` |  |
+| `observacione` | `string` |  |
+| `partido` | `string` |  |
+| `periodo_legal` | `map[string]any` |  |
+| `periodo_real` | `map[string]any` |  |
+| `provincia` | `string` |  |
+| `rede` | `[]any` |  |
+| `reemplazo` | `string` |  |
+| `telefono` | `string` |  |
 
 #### Example: List
 
@@ -1625,8 +1653,8 @@ Create an instance: `tasa_intere := client.TasaIntere(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `valor` | ``$NUMBER`` |  |
+| `fecha` | `string` |  |
+| `valor` | `float64` |  |
 
 #### Example: List
 
@@ -1653,10 +1681,10 @@ Create an instance: `tasa_plazo_fijo := client.TasaPlazoFijo(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `logo` | ``$STRING`` |  |
-| `tna_cliente` | ``$NUMBER`` |  |
-| `tna_no_cliente` | ``$NUMBER`` |  |
+| `entidad` | `string` |  |
+| `logo` | `string` |  |
+| `tna_cliente` | `float64` |  |
+| `tna_no_cliente` | `float64` |  |
 
 #### Example: List
 
@@ -1669,12 +1697,16 @@ fmt.Println(tasa_plazo_fijos) // the array of records
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -1691,9 +1723,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller. An unexpected panic triggers the
-`PreUnexpected` hook.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -1734,14 +1766,14 @@ like `core.ToMapAny`.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `Load`, the entity
+Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
 acta := client.Acta(nil)
-acta.Load(map[string]any{"id": "example_id"}, nil)
+acta.List(nil, nil)
 
-// acta.Data() now returns the loaded acta data
+// acta.Data() now returns the acta data from the last list
 // acta.Match() returns the last match criteria
 ```
 

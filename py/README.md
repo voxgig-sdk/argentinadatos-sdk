@@ -4,6 +4,11 @@
 
 The Python SDK for the Argentinadatos API — an entity-oriented client following Pythonic conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Acta()` — each
+carrying a small, uniform set of operations (`list`, `load`) instead of raw URL
+paths and query strings. You work with named resources and verbs, which
+keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -38,7 +43,7 @@ error — iterate it directly.
 
 ```python
 try:
-    actas = client.Acta().list({})
+    actas = client.Acta().list()
     for acta in actas:
         print(acta)
 except Exception as err:
@@ -55,6 +60,34 @@ try:
     print(acta)
 except Exception as err:
     print(f"load failed: {err}")
+```
+
+
+## Error handling
+
+Entity operations raise on failure, so wrap them in `try` / `except`:
+
+```python
+try:
+    actas = client.Acta().list()
+    print(actas)
+except Exception as err:
+    print(f"list failed: {err}")
+```
+
+`direct()` does **not** raise — it returns the result envelope. Branch
+on `ok`; on failure `status` holds the HTTP status (for error responses)
+and `err` holds a transport error, so read both defensively:
+
+```python
+result = client.direct({
+    "path": "/api/resource/{id}",
+    "method": "GET",
+    "params": {"id": "example_id"},
+})
+
+if not result["ok"]:
+    print("request failed:", result.get("status"), result.get("err"))
 ```
 
 
@@ -75,7 +108,10 @@ if result["ok"]:
     print(result["status"])  # 200
     print(result["data"])    # response body
 else:
-    print(result["err"])     # error value
+    # A non-2xx response carries status + data (the error body); a
+    # transport-level failure carries err instead. Only one is present, so
+    # read both with .get() rather than indexing a key that may be absent.
+    print(result.get("status"), result.get("err"))
 ```
 
 ### Prepare a request without sending it
@@ -101,7 +137,7 @@ Create a mock client for unit testing — no server required:
 client = ArgentinadatosSDK.test()
 
 # Entity ops return the bare record and raise on error.
-acta = client.Acta().load({"id": "test01"})
+acta = client.Acta().list()
 # acta contains the mock response record
 ```
 
@@ -215,9 +251,6 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
 | `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria. Raises on error. |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -706,38 +739,38 @@ Create an instance: `acta = client.Acta()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `abstencione` | ``$INTEGER`` |  |
-| `acta` | ``$STRING`` |  |
-| `acta_id` | ``$INTEGER`` |  |
-| `afirmativo` | ``$INTEGER`` |  |
-| `amn` | ``$INTEGER`` |  |
-| `ausente` | ``$INTEGER`` |  |
-| `descripcion` | ``$STRING`` |  |
-| `fecha` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `mayoria` | ``$STRING`` |  |
-| `miembro` | ``$INTEGER`` |  |
-| `negativo` | ``$INTEGER`` |  |
-| `numero_acta` | ``$STRING`` |  |
-| `observacione` | ``$ARRAY`` |  |
-| `periodo` | ``$STRING`` |  |
-| `presente` | ``$INTEGER`` |  |
-| `presidente` | ``$STRING`` |  |
-| `proyecto` | ``$STRING`` |  |
-| `quorum_tipo` | ``$STRING`` |  |
-| `resultado` | ``$STRING`` |  |
-| `reunion` | ``$STRING`` |  |
-| `titulo` | ``$STRING`` |  |
-| `voto` | ``$ARRAY`` |  |
-| `votos_afirmativo` | ``$INTEGER`` |  |
-| `votos_negativo` | ``$INTEGER`` |  |
+| `abstencione` | `int` |  |
+| `acta` | `str` |  |
+| `acta_id` | `int` |  |
+| `afirmativo` | `int` |  |
+| `amn` | `int` |  |
+| `ausente` | `int` |  |
+| `descripcion` | `str` |  |
+| `fecha` | `str` |  |
+| `id` | `str` |  |
+| `mayoria` | `str` |  |
+| `miembro` | `int` |  |
+| `negativo` | `int` |  |
+| `numero_acta` | `str` |  |
+| `observacione` | `list` |  |
+| `periodo` | `str` |  |
+| `presente` | `int` |  |
+| `presidente` | `str` |  |
+| `proyecto` | `str` |  |
+| `quorum_tipo` | `str` |  |
+| `resultado` | `str` |  |
+| `reunion` | `str` |  |
+| `titulo` | `str` |  |
+| `voto` | `list` |  |
+| `votos_afirmativo` | `int` |  |
+| `votos_negativo` | `int` |  |
 
 #### Example: Load
 
@@ -748,7 +781,7 @@ acta = client.Acta().load({"id": "acta_id"})
 #### Example: List
 
 ```python
-actas = client.Acta().list({})
+actas = client.Acta().list()
 ```
 
 
@@ -760,22 +793,22 @@ Create an instance: `bonos_cer = client.BonosCer()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha_vencimiento` | ``$STRING`` |  |
-| `precio_ar` | ``$NUMBER`` |  |
-| `ticker` | ``$STRING`` |  |
-| `tir_porcentaje` | ``$NUMBER`` |  |
-| `voluman` | ``$NUMBER`` |  |
+| `fecha_vencimiento` | `str` |  |
+| `precio_ar` | `float` |  |
+| `ticker` | `str` |  |
+| `tir_porcentaje` | `float` |  |
+| `voluman` | `float` |  |
 
 #### Example: List
 
 ```python
-bonos_cers = client.BonosCer().list({})
+bonos_cers = client.BonosCer().list()
 ```
 
 
@@ -787,29 +820,29 @@ Create an instance: `cotizacion = client.Cotizacion()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `casa` | ``$STRING`` |  |
-| `compra` | ``$NUMBER`` |  |
-| `fecha` | ``$STRING`` |  |
-| `moneda` | ``$STRING`` |  |
-| `venta` | ``$NUMBER`` |  |
+| `casa` | `str` |  |
+| `compra` | `float` |  |
+| `fecha` | `str` |  |
+| `moneda` | `str` |  |
+| `venta` | `float` |  |
 
 #### Example: Load
 
 ```python
-cotizacion = client.Cotizacion().load({"id": "cotizacion_id"})
+cotizacion = client.Cotizacion().load()
 ```
 
 #### Example: List
 
 ```python
-cotizacions = client.Cotizacion().list({})
+cotizacions = client.Cotizacion().list()
 ```
 
 
@@ -821,20 +854,20 @@ Create an instance: `criptopeso = client.Criptopeso()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `tna` | ``$NUMBER`` |  |
-| `token` | ``$STRING`` |  |
+| `entidad` | `str` |  |
+| `tna` | `float` |  |
+| `token` | `str` |  |
 
 #### Example: List
 
 ```python
-criptopesos = client.Criptopeso().list({})
+criptopesos = client.Criptopeso().list()
 ```
 
 
@@ -846,20 +879,20 @@ Create an instance: `cuenta_remunerada_usd = client.CuentaRemuneradaUsd()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `tasa` | ``$NUMBER`` |  |
-| `tope` | ``$NUMBER`` |  |
+| `entidad` | `str` |  |
+| `tasa` | `float` |  |
+| `tope` | `float` |  |
 
 #### Example: List
 
 ```python
-cuenta_remunerada_usds = client.CuentaRemuneradaUsd().list({})
+cuenta_remunerada_usds = client.CuentaRemuneradaUsd().list()
 ```
 
 
@@ -871,28 +904,28 @@ Create an instance: `diputado = client.Diputado()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `apellido` | ``$STRING`` |  |
-| `bloque` | ``$STRING`` |  |
-| `cese_fecha` | ``$STRING`` |  |
-| `foto` | ``$STRING`` |  |
-| `genero` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `juramento_fecha` | ``$STRING`` |  |
-| `nombre` | ``$STRING`` |  |
-| `periodo_bloque` | ``$OBJECT`` |  |
-| `periodo_mandato` | ``$OBJECT`` |  |
-| `provincia` | ``$STRING`` |  |
+| `apellido` | `str` |  |
+| `bloque` | `str` |  |
+| `cese_fecha` | `str` |  |
+| `foto` | `str` |  |
+| `genero` | `str` |  |
+| `id` | `str` |  |
+| `juramento_fecha` | `str` |  |
+| `nombre` | `str` |  |
+| `periodo_bloque` | `dict` |  |
+| `periodo_mandato` | `dict` |  |
+| `provincia` | `str` |  |
 
 #### Example: List
 
 ```python
-diputados = client.Diputado().list({})
+diputados = client.Diputado().list()
 ```
 
 
@@ -904,19 +937,19 @@ Create an instance: `entidad_rendimiento = client.EntidadRendimiento()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `rendimiento` | ``$ARRAY`` |  |
+| `entidad` | `str` |  |
+| `rendimiento` | `list` |  |
 
 #### Example: List
 
 ```python
-entidad_rendimientos = client.EntidadRendimiento().list({})
+entidad_rendimientos = client.EntidadRendimiento().list()
 ```
 
 
@@ -934,13 +967,13 @@ Create an instance: `estado = client.Estado()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aleatorio` | ``$INTEGER`` |  |
-| `estado` | ``$STRING`` |  |
+| `aleatorio` | `int` |  |
+| `estado` | `str` |  |
 
 #### Example: Load
 
 ```python
-estado = client.Estado().load({"id": "estado_id"})
+estado = client.Estado().load()
 ```
 
 
@@ -952,20 +985,20 @@ Create an instance: `evento_presidencial = client.EventoPresidencial()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `evento` | ``$STRING`` |  |
-| `fecha` | ``$STRING`` |  |
-| `tipo` | ``$STRING`` |  |
+| `evento` | `str` |  |
+| `fecha` | `str` |  |
+| `tipo` | `str` |  |
 
 #### Example: List
 
 ```python
-evento_presidencials = client.EventoPresidencial().list({})
+evento_presidencials = client.EventoPresidencial().list()
 ```
 
 
@@ -983,9 +1016,9 @@ Create an instance: `feriado = client.Feriado()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `nombre` | ``$STRING`` |  |
-| `tipo` | ``$STRING`` |  |
+| `fecha` | `str` |  |
+| `nombre` | `str` |  |
+| `tipo` | `str` |  |
 
 #### Example: Load
 
@@ -1002,12 +1035,12 @@ Create an instance: `finanza = client.Finanza()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Example: List
 
 ```python
-finanzas = client.Finanza().list({})
+finanzas = client.Finanza().list()
 ```
 
 
@@ -1025,18 +1058,18 @@ Create an instance: `fondo_comun_inversion = client.FondoComunInversion()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ccp` | ``$NUMBER`` |  |
-| `fecha` | ``$STRING`` |  |
-| `fondo` | ``$STRING`` |  |
-| `horizonte` | ``$STRING`` |  |
-| `patrimonio` | ``$NUMBER`` |  |
-| `tipo` | ``$STRING`` |  |
-| `vcp` | ``$NUMBER`` |  |
+| `ccp` | `float` |  |
+| `fecha` | `str` |  |
+| `fondo` | `str` |  |
+| `horizonte` | `str` |  |
+| `patrimonio` | `float` |  |
+| `tipo` | `str` |  |
+| `vcp` | `float` |  |
 
 #### Example: Load
 
 ```python
-fondo_comun_inversion = client.FondoComunInversion().load({"id": "fondo_comun_inversion_id"})
+fondo_comun_inversion = client.FondoComunInversion().load()
 ```
 
 
@@ -1054,11 +1087,11 @@ Create an instance: `fondo_comun_inversion_otro = client.FondoComunInversionOtro
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `fondo` | ``$STRING`` |  |
-| `tea` | ``$NUMBER`` |  |
-| `tna` | ``$NUMBER`` |  |
-| `tope` | ``$NUMBER`` |  |
+| `fecha` | `str` |  |
+| `fondo` | `str` |  |
+| `tea` | `float` |  |
+| `tna` | `float` |  |
+| `tope` | `float` |  |
 
 #### Example: Load
 
@@ -1081,15 +1114,15 @@ Create an instance: `fondo_comun_inversion_variable = client.FondoComunInversion
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `condicione` | ``$STRING`` |  |
-| `condiciones_corto` | ``$STRING`` |  |
-| `fecha` | ``$STRING`` |  |
-| `fondo` | ``$STRING`` |  |
-| `nombre` | ``$STRING`` |  |
-| `tea` | ``$NUMBER`` |  |
-| `tipo` | ``$STRING`` |  |
-| `tna` | ``$NUMBER`` |  |
-| `tope` | ``$NUMBER`` |  |
+| `condicione` | `str` |  |
+| `condiciones_corto` | `str` |  |
+| `fecha` | `str` |  |
+| `fondo` | `str` |  |
+| `nombre` | `str` |  |
+| `tea` | `float` |  |
+| `tipo` | `str` |  |
+| `tna` | `float` |  |
+| `tope` | `float` |  |
 
 #### Example: Load
 
@@ -1106,21 +1139,21 @@ Create an instance: `hipotecario_uva_tna = client.HipotecarioUvaTna()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `metadata` | ``$OBJECT`` |  |
-| `nombre_comercial` | ``$STRING`` |  |
-| `tna` | ``$NUMBER`` |  |
+| `entidad` | `str` |  |
+| `metadata` | `dict` |  |
+| `nombre_comercial` | `str` |  |
+| `tna` | `float` |  |
 
 #### Example: List
 
 ```python
-hipotecario_uva_tnas = client.HipotecarioUvaTna().list({})
+hipotecario_uva_tnas = client.HipotecarioUvaTna().list()
 ```
 
 
@@ -1132,19 +1165,19 @@ Create an instance: `indice_inflacion = client.IndiceInflacion()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `valor` | ``$NUMBER`` |  |
+| `fecha` | `str` |  |
+| `valor` | `float` |  |
 
 #### Example: List
 
 ```python
-indice_inflacions = client.IndiceInflacion().list({})
+indice_inflacions = client.IndiceInflacion().list()
 ```
 
 
@@ -1156,19 +1189,19 @@ Create an instance: `indice_uva = client.IndiceUva()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `valor` | ``$NUMBER`` |  |
+| `fecha` | `str` |  |
+| `valor` | `float` |  |
 
 #### Example: List
 
 ```python
-indice_uvas = client.IndiceUva().list({})
+indice_uvas = client.IndiceUva().list()
 ```
 
 
@@ -1180,22 +1213,22 @@ Create an instance: `letra = client.Letra()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha_emision` | ``$STRING`` |  |
-| `fecha_vencimiento` | ``$STRING`` |  |
-| `tem` | ``$NUMBER`` |  |
-| `ticker` | ``$STRING`` |  |
-| `vpv` | ``$NUMBER`` |  |
+| `fecha_emision` | `str` |  |
+| `fecha_vencimiento` | `str` |  |
+| `tem` | `float` |  |
+| `ticker` | `str` |  |
+| `vpv` | `float` |  |
 
 #### Example: List
 
 ```python
-letras = client.Letra().list({})
+letras = client.Letra().list()
 ```
 
 
@@ -1207,25 +1240,25 @@ Create an instance: `presidente = client.Presidente()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fin` | ``$STRING`` |  |
-| `imagen` | ``$STRING`` |  |
-| `inicio` | ``$STRING`` |  |
-| `nombre` | ``$STRING`` |  |
-| `partido` | ``$STRING`` |  |
-| `partido_imagen` | ``$STRING`` |  |
-| `periodo_presidencial` | ``$STRING`` |  |
-| `vicepresidente` | ``$STRING`` |  |
+| `fin` | `str` |  |
+| `imagen` | `str` |  |
+| `inicio` | `str` |  |
+| `nombre` | `str` |  |
+| `partido` | `str` |  |
+| `partido_imagen` | `str` |  |
+| `periodo_presidencial` | `str` |  |
+| `vicepresidente` | `str` |  |
 
 #### Example: List
 
 ```python
-presidentes = client.Presidente().list({})
+presidentes = client.Presidente().list()
 ```
 
 
@@ -1237,34 +1270,34 @@ Create an instance: `proveedor_plazo_fijo_precancelable = client.ProveedorPlazoF
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aviso_precancelacion_dia` | ``$INTEGER`` |  |
-| `canal` | ``$STRING`` |  |
-| `enlace` | ``$STRING`` |  |
-| `entidad` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `logo` | ``$STRING`` |  |
-| `modalidad` | ``$STRING`` |  |
-| `moneda` | ``$STRING`` |  |
-| `monto_maximo` | ``$NUMBER`` |  |
-| `monto_minimo` | ``$NUMBER`` |  |
-| `plazo_max_dia` | ``$INTEGER`` |  |
-| `plazo_min_dia` | ``$INTEGER`` |  |
-| `plazo_precancelacion_dia` | ``$INTEGER`` |  |
-| `tea` | ``$NUMBER`` |  |
-| `tea_precancelacion` | ``$NUMBER`` |  |
-| `tna` | ``$NUMBER`` |  |
-| `tna_precancelacion` | ``$NUMBER`` |  |
+| `aviso_precancelacion_dia` | `int` |  |
+| `canal` | `str` |  |
+| `enlace` | `str` |  |
+| `entidad` | `str` |  |
+| `id` | `str` |  |
+| `logo` | `str` |  |
+| `modalidad` | `str` |  |
+| `moneda` | `str` |  |
+| `monto_maximo` | `float` |  |
+| `monto_minimo` | `float` |  |
+| `plazo_max_dia` | `int` |  |
+| `plazo_min_dia` | `int` |  |
+| `plazo_precancelacion_dia` | `int` |  |
+| `tea` | `float` |  |
+| `tea_precancelacion` | `float` |  |
+| `tna` | `float` |  |
+| `tna_precancelacion` | `float` |  |
 
 #### Example: List
 
 ```python
-proveedor_plazo_fijo_precancelables = client.ProveedorPlazoFijoPrecancelable().list({})
+proveedor_plazo_fijo_precancelables = client.ProveedorPlazoFijoPrecancelable().list()
 ```
 
 
@@ -1276,21 +1309,21 @@ Create an instance: `proveedor_plazo_fijo_uva_pago_periodico = client.ProveedorP
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `logo` | ``$STRING`` |  |
-| `tasa` | ``$ARRAY`` |  |
+| `entidad` | `str` |  |
+| `id` | `str` |  |
+| `logo` | `str` |  |
+| `tasa` | `list` |  |
 
 #### Example: List
 
 ```python
-proveedor_plazo_fijo_uva_pago_periodicos = client.ProveedorPlazoFijoUvaPagoPeriodico().list({})
+proveedor_plazo_fijo_uva_pago_periodicos = client.ProveedorPlazoFijoUvaPagoPeriodico().list()
 ```
 
 
@@ -1302,41 +1335,41 @@ Create an instance: `rem = client.Rem()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `desvio` | ``$NUMBER`` |  |
-| `fecha` | ``$STRING`` |  |
-| `fuente` | ``$STRING`` |  |
-| `indicador` | ``$STRING`` |  |
-| `informe` | ``$STRING`` |  |
-| `maximo` | ``$NUMBER`` |  |
-| `mediana` | ``$NUMBER`` |  |
-| `minimo` | ``$NUMBER`` |  |
-| `muestra` | ``$STRING`` |  |
-| `participante` | ``$INTEGER`` |  |
-| `percentil10` | ``$NUMBER`` |  |
-| `percentil25` | ``$NUMBER`` |  |
-| `percentil75` | ``$NUMBER`` |  |
-| `percentil90` | ``$NUMBER`` |  |
-| `periodo` | ``$STRING`` |  |
-| `periodo_desde` | ``$STRING`` |  |
-| `periodo_hasta` | ``$STRING`` |  |
-| `periodo_tipo` | ``$STRING`` |  |
-| `promedio` | ``$NUMBER`` |  |
-| `publicacion_url` | ``$STRING`` |  |
-| `referencia` | ``$STRING`` |  |
-| `referencia_fecha` | ``$STRING`` |  |
-| `unidad` | ``$STRING`` |  |
-| `xlsx_url` | ``$STRING`` |  |
+| `desvio` | `float` |  |
+| `fecha` | `str` |  |
+| `fuente` | `str` |  |
+| `indicador` | `str` |  |
+| `informe` | `str` |  |
+| `maximo` | `float` |  |
+| `mediana` | `float` |  |
+| `minimo` | `float` |  |
+| `muestra` | `str` |  |
+| `participante` | `int` |  |
+| `percentil10` | `float` |  |
+| `percentil25` | `float` |  |
+| `percentil75` | `float` |  |
+| `percentil90` | `float` |  |
+| `periodo` | `str` |  |
+| `periodo_desde` | `str` |  |
+| `periodo_hasta` | `str` |  |
+| `periodo_tipo` | `str` |  |
+| `promedio` | `float` |  |
+| `publicacion_url` | `str` |  |
+| `referencia` | `str` |  |
+| `referencia_fecha` | `str` |  |
+| `unidad` | `str` |  |
+| `xlsx_url` | `str` |  |
 
 #### Example: List
 
 ```python
-rems = client.Rem().list({})
+rems = client.Rem().list()
 ```
 
 
@@ -1348,41 +1381,41 @@ Create an instance: `rem_expectativa = client.RemExpectativa()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `desvio` | ``$NUMBER`` |  |
-| `fecha` | ``$STRING`` |  |
-| `fuente` | ``$STRING`` |  |
-| `indicador` | ``$STRING`` |  |
-| `informe` | ``$STRING`` |  |
-| `maximo` | ``$NUMBER`` |  |
-| `mediana` | ``$NUMBER`` |  |
-| `minimo` | ``$NUMBER`` |  |
-| `muestra` | ``$STRING`` |  |
-| `participante` | ``$INTEGER`` |  |
-| `percentil10` | ``$NUMBER`` |  |
-| `percentil25` | ``$NUMBER`` |  |
-| `percentil75` | ``$NUMBER`` |  |
-| `percentil90` | ``$NUMBER`` |  |
-| `periodo` | ``$STRING`` |  |
-| `periodo_desde` | ``$STRING`` |  |
-| `periodo_hasta` | ``$STRING`` |  |
-| `periodo_tipo` | ``$STRING`` |  |
-| `promedio` | ``$NUMBER`` |  |
-| `publicacion_url` | ``$STRING`` |  |
-| `referencia` | ``$STRING`` |  |
-| `referencia_fecha` | ``$STRING`` |  |
-| `unidad` | ``$STRING`` |  |
-| `xlsx_url` | ``$STRING`` |  |
+| `desvio` | `float` |  |
+| `fecha` | `str` |  |
+| `fuente` | `str` |  |
+| `indicador` | `str` |  |
+| `informe` | `str` |  |
+| `maximo` | `float` |  |
+| `mediana` | `float` |  |
+| `minimo` | `float` |  |
+| `muestra` | `str` |  |
+| `participante` | `int` |  |
+| `percentil10` | `float` |  |
+| `percentil25` | `float` |  |
+| `percentil75` | `float` |  |
+| `percentil90` | `float` |  |
+| `periodo` | `str` |  |
+| `periodo_desde` | `str` |  |
+| `periodo_hasta` | `str` |  |
+| `periodo_tipo` | `str` |  |
+| `promedio` | `float` |  |
+| `publicacion_url` | `str` |  |
+| `referencia` | `str` |  |
+| `referencia_fecha` | `str` |  |
+| `unidad` | `str` |  |
+| `xlsx_url` | `str` |  |
 
 #### Example: List
 
 ```python
-rem_expectativas = client.RemExpectativa().list({})
+rem_expectativas = client.RemExpectativa().list()
 ```
 
 
@@ -1400,9 +1433,9 @@ Create an instance: `rendimiento = client.Rendimiento()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `apy` | ``$NUMBER`` |  |
-| `fecha` | ``$STRING`` |  |
-| `moneda` | ``$STRING`` |  |
+| `apy` | `float` |  |
+| `fecha` | `str` |  |
+| `moneda` | `str` |  |
 
 #### Example: Load
 
@@ -1419,26 +1452,26 @@ Create an instance: `riesgo_pai = client.RiesgoPai()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `valor` | ``$NUMBER`` |  |
+| `fecha` | `str` |  |
+| `valor` | `float` |  |
 
 #### Example: Load
 
 ```python
-riesgo_pai = client.RiesgoPai().load({"id": "riesgo_pai_id"})
+riesgo_pai = client.RiesgoPai().load()
 ```
 
 #### Example: List
 
 ```python
-riesgo_pais = client.RiesgoPai().list({})
+riesgo_pais = client.RiesgoPai().list()
 ```
 
 
@@ -1450,29 +1483,29 @@ Create an instance: `senador = client.Senador()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `email` | ``$STRING`` |  |
-| `foto` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `nombre` | ``$STRING`` |  |
-| `observacione` | ``$STRING`` |  |
-| `partido` | ``$STRING`` |  |
-| `periodo_legal` | ``$OBJECT`` |  |
-| `periodo_real` | ``$OBJECT`` |  |
-| `provincia` | ``$STRING`` |  |
-| `rede` | ``$ARRAY`` |  |
-| `reemplazo` | ``$STRING`` |  |
-| `telefono` | ``$STRING`` |  |
+| `email` | `str` |  |
+| `foto` | `str` |  |
+| `id` | `str` |  |
+| `nombre` | `str` |  |
+| `observacione` | `str` |  |
+| `partido` | `str` |  |
+| `periodo_legal` | `dict` |  |
+| `periodo_real` | `dict` |  |
+| `provincia` | `str` |  |
+| `rede` | `list` |  |
+| `reemplazo` | `str` |  |
+| `telefono` | `str` |  |
 
 #### Example: List
 
 ```python
-senadors = client.Senador().list({})
+senadors = client.Senador().list()
 ```
 
 
@@ -1484,19 +1517,19 @@ Create an instance: `tasa_intere = client.TasaIntere()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `valor` | ``$NUMBER`` |  |
+| `fecha` | `str` |  |
+| `valor` | `float` |  |
 
 #### Example: List
 
 ```python
-tasa_interes = client.TasaIntere().list({})
+tasa_interes = client.TasaIntere().list()
 ```
 
 
@@ -1508,30 +1541,34 @@ Create an instance: `tasa_plazo_fijo = client.TasaPlazoFijo()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `logo` | ``$STRING`` |  |
-| `tna_cliente` | ``$NUMBER`` |  |
-| `tna_no_cliente` | ``$NUMBER`` |  |
+| `entidad` | `str` |  |
+| `logo` | `str` |  |
+| `tna_cliente` | `float` |  |
+| `tna_no_cliente` | `float` |  |
 
 #### Example: List
 
 ```python
-tasa_plazo_fijos = client.TasaPlazoFijo().list({})
+tasa_plazo_fijos = client.TasaPlazoFijo().list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -1548,8 +1585,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return tuple.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -1592,14 +1630,14 @@ Import entity or utility modules directly only when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
 acta = client.Acta()
-acta.load({"id": "example_id"})
+acta.list()
 
-# acta.data_get() now returns the loaded acta data
+# acta.data_get() now returns the acta data from the last list
 # acta.match_get() returns the last match criteria
 ```
 

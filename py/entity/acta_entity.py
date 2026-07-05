@@ -65,8 +65,13 @@ class ActaEntity:
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch: ActaLoadMatch, ctrl=None) -> Acta:
+    def load(self, reqmatch=None, ctrl=None) -> Acta:
         utility = self._utility
+        # reqmatch is optional: an entity with no id-like key loads with no
+        # match. Treat None as an empty match so client.Acta().load()
+        # works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "load",
             "ctrl": ctrl,
@@ -87,8 +92,12 @@ class ActaEntity:
 
 
     
-    def list(self, reqmatch: ActaListMatch, ctrl=None) -> list[Acta]:
+    def list(self, reqmatch=None, ctrl=None) -> list[Acta]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.Acta().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,

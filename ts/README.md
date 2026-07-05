@@ -4,6 +4,11 @@
 
 The TypeScript SDK for the Argentinadatos API — a type-safe, entity-oriented client with full async/await support.
 
+The API is exposed as capitalised, semantic **Entities** — e.g.
+`client.Acta()` — each with a small set of operations (`list`, `load`)
+instead of raw URL paths and query parameters. This keeps the surface
+predictable and low-friction for both humans and AI agents.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -46,10 +51,39 @@ for (const acta of actas) {
 
 ```ts
 try {
-  const acta = await client.Acta().load({ id: 'example_id' })
+  const acta = await client.Acta().load({ id: 1 })
   console.log(acta)
 } catch (err) {
   console.error('load failed:', err)
+}
+```
+
+
+## Error handling
+
+Entity operations reject on failure, so wrap them in `try` / `catch`:
+
+```ts
+try {
+  const actas = await client.Acta().list()
+  console.log(actas)
+} catch (err) {
+  console.error('list failed:', err)
+}
+```
+
+The low-level `direct()` method does **not** throw — it returns the
+value or an `Error`, so check the result before using it:
+
+```ts
+const result = await client.direct({
+  path: '/api/resource/{id}',
+  method: 'GET',
+  params: { id: 'example_id' },
+})
+
+if (result instanceof Error) {
+  throw result
 }
 ```
 
@@ -98,7 +132,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = ArgentinadatosSDK.test()
 
-const acta = await client.Acta().load({ id: 'test01' })
+const acta = await client.Acta().list()
 // acta is a bare entity populated with mock response data
 console.log(acta)
 ```
@@ -117,12 +151,12 @@ Entity instances remember their last match and data:
 ```ts
 const entity = client.Acta()
 
-// First call sets internal match
-await entity.load({ id: 'example' })
+// First call runs the operation and stores its result
+await entity.list()
 
-// Subsequent calls reuse the stored match
+// Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data.id) // 'example'
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -239,11 +273,8 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
 | `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
-| `data` | `data(data?): any` | Get or set entity data. |
-| `match` | `match(match?): any` | Get or set entity match criteria. |
+| `data` | `data(data?: Partial<Entity>): Entity` | Get or set entity data. |
+| `match` | `match(match?: Partial<Entity>): Partial<Entity>` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): ArgentinadatosSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
@@ -253,10 +284,9 @@ All entities share the same interface.
 Entity operations resolve to the entity data directly — there is no
 result envelope:
 
-- `load`, `create` and `update` resolve to a single entity object.
+- `load` resolves to a single entity object.
 - `list` resolves to an **array** of entity objects (iterate it directly;
   there is no `.data` and no `.ok`).
-- `remove` resolves to `void`.
 
 On a failed request these methods **throw**, so wrap calls in
 `try`/`catch` to handle errors. Only `direct()` returns the result
@@ -760,36 +790,36 @@ Create an instance: `const acta = client.Acta()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `abstencione` | ``$INTEGER`` |  |
-| `acta` | ``$STRING`` |  |
-| `acta_id` | ``$INTEGER`` |  |
-| `afirmativo` | ``$INTEGER`` |  |
-| `amn` | ``$INTEGER`` |  |
-| `ausente` | ``$INTEGER`` |  |
-| `descripcion` | ``$STRING`` |  |
-| `fecha` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `mayoria` | ``$STRING`` |  |
-| `miembro` | ``$INTEGER`` |  |
-| `negativo` | ``$INTEGER`` |  |
-| `numero_acta` | ``$STRING`` |  |
-| `observacione` | ``$ARRAY`` |  |
-| `periodo` | ``$STRING`` |  |
-| `presente` | ``$INTEGER`` |  |
-| `presidente` | ``$STRING`` |  |
-| `proyecto` | ``$STRING`` |  |
-| `quorum_tipo` | ``$STRING`` |  |
-| `resultado` | ``$STRING`` |  |
-| `reunion` | ``$STRING`` |  |
-| `titulo` | ``$STRING`` |  |
-| `voto` | ``$ARRAY`` |  |
-| `votos_afirmativo` | ``$INTEGER`` |  |
-| `votos_negativo` | ``$INTEGER`` |  |
+| `abstencione` | `number` |  |
+| `acta` | `string` |  |
+| `acta_id` | `number` |  |
+| `afirmativo` | `number` |  |
+| `amn` | `number` |  |
+| `ausente` | `number` |  |
+| `descripcion` | `string` |  |
+| `fecha` | `string` |  |
+| `id` | `string` |  |
+| `mayoria` | `string` |  |
+| `miembro` | `number` |  |
+| `negativo` | `number` |  |
+| `numero_acta` | `string` |  |
+| `observacione` | `any[]` |  |
+| `periodo` | `string` |  |
+| `presente` | `number` |  |
+| `presidente` | `string` |  |
+| `proyecto` | `string` |  |
+| `quorum_tipo` | `string` |  |
+| `resultado` | `string` |  |
+| `reunion` | `string` |  |
+| `titulo` | `string` |  |
+| `voto` | `any[]` |  |
+| `votos_afirmativo` | `number` |  |
+| `votos_negativo` | `number` |  |
 
 #### Example: Load
 
 ```ts
-const acta = await client.Acta().load({ id: 'acta_id' })
+const acta = await client.Acta().load({ id: 1 })
 ```
 
 #### Example: List
@@ -813,11 +843,11 @@ Create an instance: `const bonos_cer = client.BonosCer()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha_vencimiento` | ``$STRING`` |  |
-| `precio_ar` | ``$NUMBER`` |  |
-| `ticker` | ``$STRING`` |  |
-| `tir_porcentaje` | ``$NUMBER`` |  |
-| `voluman` | ``$NUMBER`` |  |
+| `fecha_vencimiento` | `string` |  |
+| `precio_ar` | `number` |  |
+| `ticker` | `string` |  |
+| `tir_porcentaje` | `number` |  |
+| `voluman` | `number` |  |
 
 #### Example: List
 
@@ -841,16 +871,16 @@ Create an instance: `const cotizacion = client.Cotizacion()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `casa` | ``$STRING`` |  |
-| `compra` | ``$NUMBER`` |  |
-| `fecha` | ``$STRING`` |  |
-| `moneda` | ``$STRING`` |  |
-| `venta` | ``$NUMBER`` |  |
+| `casa` | `string` |  |
+| `compra` | `number` |  |
+| `fecha` | `string` |  |
+| `moneda` | `string` |  |
+| `venta` | `number` |  |
 
 #### Example: Load
 
 ```ts
-const cotizacion = await client.Cotizacion().load({ id: 'cotizacion_id' })
+const cotizacion = await client.Cotizacion().load()
 ```
 
 #### Example: List
@@ -874,9 +904,9 @@ Create an instance: `const criptopeso = client.Criptopeso()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `tna` | ``$NUMBER`` |  |
-| `token` | ``$STRING`` |  |
+| `entidad` | `string` |  |
+| `tna` | `number` |  |
+| `token` | `string` |  |
 
 #### Example: List
 
@@ -899,9 +929,9 @@ Create an instance: `const cuenta_remunerada_usd = client.CuentaRemuneradaUsd()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `tasa` | ``$NUMBER`` |  |
-| `tope` | ``$NUMBER`` |  |
+| `entidad` | `string` |  |
+| `tasa` | `number` |  |
+| `tope` | `number` |  |
 
 #### Example: List
 
@@ -924,17 +954,17 @@ Create an instance: `const diputado = client.Diputado()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `apellido` | ``$STRING`` |  |
-| `bloque` | ``$STRING`` |  |
-| `cese_fecha` | ``$STRING`` |  |
-| `foto` | ``$STRING`` |  |
-| `genero` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `juramento_fecha` | ``$STRING`` |  |
-| `nombre` | ``$STRING`` |  |
-| `periodo_bloque` | ``$OBJECT`` |  |
-| `periodo_mandato` | ``$OBJECT`` |  |
-| `provincia` | ``$STRING`` |  |
+| `apellido` | `string` |  |
+| `bloque` | `string` |  |
+| `cese_fecha` | `string` |  |
+| `foto` | `string` |  |
+| `genero` | `string` |  |
+| `id` | `string` |  |
+| `juramento_fecha` | `string` |  |
+| `nombre` | `string` |  |
+| `periodo_bloque` | `Record<string, any>` |  |
+| `periodo_mandato` | `Record<string, any>` |  |
+| `provincia` | `string` |  |
 
 #### Example: List
 
@@ -957,8 +987,8 @@ Create an instance: `const entidad_rendimiento = client.EntidadRendimiento()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `rendimiento` | ``$ARRAY`` |  |
+| `entidad` | `string` |  |
+| `rendimiento` | `any[]` |  |
 
 #### Example: List
 
@@ -981,13 +1011,13 @@ Create an instance: `const estado = client.Estado()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aleatorio` | ``$INTEGER`` |  |
-| `estado` | ``$STRING`` |  |
+| `aleatorio` | `number` |  |
+| `estado` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const estado = await client.Estado().load({ id: 'estado_id' })
+const estado = await client.Estado().load()
 ```
 
 
@@ -1005,9 +1035,9 @@ Create an instance: `const evento_presidencial = client.EventoPresidencial()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `evento` | ``$STRING`` |  |
-| `fecha` | ``$STRING`` |  |
-| `tipo` | ``$STRING`` |  |
+| `evento` | `string` |  |
+| `fecha` | `string` |  |
+| `tipo` | `string` |  |
 
 #### Example: List
 
@@ -1030,14 +1060,14 @@ Create an instance: `const feriado = client.Feriado()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `nombre` | ``$STRING`` |  |
-| `tipo` | ``$STRING`` |  |
+| `fecha` | `string` |  |
+| `nombre` | `string` |  |
+| `tipo` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const feriado = await client.Feriado().load({ id: 'feriado_id' })
+const feriado = await client.Feriado().load({ id: 1 })
 ```
 
 
@@ -1072,18 +1102,18 @@ Create an instance: `const fondo_comun_inversion = client.FondoComunInversion()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ccp` | ``$NUMBER`` |  |
-| `fecha` | ``$STRING`` |  |
-| `fondo` | ``$STRING`` |  |
-| `horizonte` | ``$STRING`` |  |
-| `patrimonio` | ``$NUMBER`` |  |
-| `tipo` | ``$STRING`` |  |
-| `vcp` | ``$NUMBER`` |  |
+| `ccp` | `number` |  |
+| `fecha` | `string` |  |
+| `fondo` | `string` |  |
+| `horizonte` | `string` |  |
+| `patrimonio` | `number` |  |
+| `tipo` | `string` |  |
+| `vcp` | `number` |  |
 
 #### Example: Load
 
 ```ts
-const fondo_comun_inversion = await client.FondoComunInversion().load({ id: 'fondo_comun_inversion_id' })
+const fondo_comun_inversion = await client.FondoComunInversion().load()
 ```
 
 
@@ -1101,11 +1131,11 @@ Create an instance: `const fondo_comun_inversion_otro = client.FondoComunInversi
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `fondo` | ``$STRING`` |  |
-| `tea` | ``$NUMBER`` |  |
-| `tna` | ``$NUMBER`` |  |
-| `tope` | ``$NUMBER`` |  |
+| `fecha` | `string` |  |
+| `fondo` | `string` |  |
+| `tea` | `number` |  |
+| `tna` | `number` |  |
+| `tope` | `number` |  |
 
 #### Example: Load
 
@@ -1128,15 +1158,15 @@ Create an instance: `const fondo_comun_inversion_variable = client.FondoComunInv
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `condicione` | ``$STRING`` |  |
-| `condiciones_corto` | ``$STRING`` |  |
-| `fecha` | ``$STRING`` |  |
-| `fondo` | ``$STRING`` |  |
-| `nombre` | ``$STRING`` |  |
-| `tea` | ``$NUMBER`` |  |
-| `tipo` | ``$STRING`` |  |
-| `tna` | ``$NUMBER`` |  |
-| `tope` | ``$NUMBER`` |  |
+| `condicione` | `string` |  |
+| `condiciones_corto` | `string` |  |
+| `fecha` | `string` |  |
+| `fondo` | `string` |  |
+| `nombre` | `string` |  |
+| `tea` | `number` |  |
+| `tipo` | `string` |  |
+| `tna` | `number` |  |
+| `tope` | `number` |  |
 
 #### Example: Load
 
@@ -1159,10 +1189,10 @@ Create an instance: `const hipotecario_uva_tna = client.HipotecarioUvaTna()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `metadata` | ``$OBJECT`` |  |
-| `nombre_comercial` | ``$STRING`` |  |
-| `tna` | ``$NUMBER`` |  |
+| `entidad` | `string` |  |
+| `metadata` | `Record<string, any>` |  |
+| `nombre_comercial` | `string` |  |
+| `tna` | `number` |  |
 
 #### Example: List
 
@@ -1185,8 +1215,8 @@ Create an instance: `const indice_inflacion = client.IndiceInflacion()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `valor` | ``$NUMBER`` |  |
+| `fecha` | `string` |  |
+| `valor` | `number` |  |
 
 #### Example: List
 
@@ -1209,8 +1239,8 @@ Create an instance: `const indice_uva = client.IndiceUva()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `valor` | ``$NUMBER`` |  |
+| `fecha` | `string` |  |
+| `valor` | `number` |  |
 
 #### Example: List
 
@@ -1233,11 +1263,11 @@ Create an instance: `const letra = client.Letra()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha_emision` | ``$STRING`` |  |
-| `fecha_vencimiento` | ``$STRING`` |  |
-| `tem` | ``$NUMBER`` |  |
-| `ticker` | ``$STRING`` |  |
-| `vpv` | ``$NUMBER`` |  |
+| `fecha_emision` | `string` |  |
+| `fecha_vencimiento` | `string` |  |
+| `tem` | `number` |  |
+| `ticker` | `string` |  |
+| `vpv` | `number` |  |
 
 #### Example: List
 
@@ -1260,14 +1290,14 @@ Create an instance: `const presidente = client.Presidente()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fin` | ``$STRING`` |  |
-| `imagen` | ``$STRING`` |  |
-| `inicio` | ``$STRING`` |  |
-| `nombre` | ``$STRING`` |  |
-| `partido` | ``$STRING`` |  |
-| `partido_imagen` | ``$STRING`` |  |
-| `periodo_presidencial` | ``$STRING`` |  |
-| `vicepresidente` | ``$STRING`` |  |
+| `fin` | `string` |  |
+| `imagen` | `string` |  |
+| `inicio` | `string` |  |
+| `nombre` | `string` |  |
+| `partido` | `string` |  |
+| `partido_imagen` | `string` |  |
+| `periodo_presidencial` | `string` |  |
+| `vicepresidente` | `string` |  |
 
 #### Example: List
 
@@ -1290,23 +1320,23 @@ Create an instance: `const proveedor_plazo_fijo_precancelable = client.Proveedor
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aviso_precancelacion_dia` | ``$INTEGER`` |  |
-| `canal` | ``$STRING`` |  |
-| `enlace` | ``$STRING`` |  |
-| `entidad` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `logo` | ``$STRING`` |  |
-| `modalidad` | ``$STRING`` |  |
-| `moneda` | ``$STRING`` |  |
-| `monto_maximo` | ``$NUMBER`` |  |
-| `monto_minimo` | ``$NUMBER`` |  |
-| `plazo_max_dia` | ``$INTEGER`` |  |
-| `plazo_min_dia` | ``$INTEGER`` |  |
-| `plazo_precancelacion_dia` | ``$INTEGER`` |  |
-| `tea` | ``$NUMBER`` |  |
-| `tea_precancelacion` | ``$NUMBER`` |  |
-| `tna` | ``$NUMBER`` |  |
-| `tna_precancelacion` | ``$NUMBER`` |  |
+| `aviso_precancelacion_dia` | `number` |  |
+| `canal` | `string` |  |
+| `enlace` | `string` |  |
+| `entidad` | `string` |  |
+| `id` | `string` |  |
+| `logo` | `string` |  |
+| `modalidad` | `string` |  |
+| `moneda` | `string` |  |
+| `monto_maximo` | `number` |  |
+| `monto_minimo` | `number` |  |
+| `plazo_max_dia` | `number` |  |
+| `plazo_min_dia` | `number` |  |
+| `plazo_precancelacion_dia` | `number` |  |
+| `tea` | `number` |  |
+| `tea_precancelacion` | `number` |  |
+| `tna` | `number` |  |
+| `tna_precancelacion` | `number` |  |
 
 #### Example: List
 
@@ -1329,10 +1359,10 @@ Create an instance: `const proveedor_plazo_fijo_uva_pago_periodico = client.Prov
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `logo` | ``$STRING`` |  |
-| `tasa` | ``$ARRAY`` |  |
+| `entidad` | `string` |  |
+| `id` | `string` |  |
+| `logo` | `string` |  |
+| `tasa` | `any[]` |  |
 
 #### Example: List
 
@@ -1355,30 +1385,30 @@ Create an instance: `const rem = client.Rem()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `desvio` | ``$NUMBER`` |  |
-| `fecha` | ``$STRING`` |  |
-| `fuente` | ``$STRING`` |  |
-| `indicador` | ``$STRING`` |  |
-| `informe` | ``$STRING`` |  |
-| `maximo` | ``$NUMBER`` |  |
-| `mediana` | ``$NUMBER`` |  |
-| `minimo` | ``$NUMBER`` |  |
-| `muestra` | ``$STRING`` |  |
-| `participante` | ``$INTEGER`` |  |
-| `percentil10` | ``$NUMBER`` |  |
-| `percentil25` | ``$NUMBER`` |  |
-| `percentil75` | ``$NUMBER`` |  |
-| `percentil90` | ``$NUMBER`` |  |
-| `periodo` | ``$STRING`` |  |
-| `periodo_desde` | ``$STRING`` |  |
-| `periodo_hasta` | ``$STRING`` |  |
-| `periodo_tipo` | ``$STRING`` |  |
-| `promedio` | ``$NUMBER`` |  |
-| `publicacion_url` | ``$STRING`` |  |
-| `referencia` | ``$STRING`` |  |
-| `referencia_fecha` | ``$STRING`` |  |
-| `unidad` | ``$STRING`` |  |
-| `xlsx_url` | ``$STRING`` |  |
+| `desvio` | `number` |  |
+| `fecha` | `string` |  |
+| `fuente` | `string` |  |
+| `indicador` | `string` |  |
+| `informe` | `string` |  |
+| `maximo` | `number` |  |
+| `mediana` | `number` |  |
+| `minimo` | `number` |  |
+| `muestra` | `string` |  |
+| `participante` | `number` |  |
+| `percentil10` | `number` |  |
+| `percentil25` | `number` |  |
+| `percentil75` | `number` |  |
+| `percentil90` | `number` |  |
+| `periodo` | `string` |  |
+| `periodo_desde` | `string` |  |
+| `periodo_hasta` | `string` |  |
+| `periodo_tipo` | `string` |  |
+| `promedio` | `number` |  |
+| `publicacion_url` | `string` |  |
+| `referencia` | `string` |  |
+| `referencia_fecha` | `string` |  |
+| `unidad` | `string` |  |
+| `xlsx_url` | `string` |  |
 
 #### Example: List
 
@@ -1401,30 +1431,30 @@ Create an instance: `const rem_expectativa = client.RemExpectativa()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `desvio` | ``$NUMBER`` |  |
-| `fecha` | ``$STRING`` |  |
-| `fuente` | ``$STRING`` |  |
-| `indicador` | ``$STRING`` |  |
-| `informe` | ``$STRING`` |  |
-| `maximo` | ``$NUMBER`` |  |
-| `mediana` | ``$NUMBER`` |  |
-| `minimo` | ``$NUMBER`` |  |
-| `muestra` | ``$STRING`` |  |
-| `participante` | ``$INTEGER`` |  |
-| `percentil10` | ``$NUMBER`` |  |
-| `percentil25` | ``$NUMBER`` |  |
-| `percentil75` | ``$NUMBER`` |  |
-| `percentil90` | ``$NUMBER`` |  |
-| `periodo` | ``$STRING`` |  |
-| `periodo_desde` | ``$STRING`` |  |
-| `periodo_hasta` | ``$STRING`` |  |
-| `periodo_tipo` | ``$STRING`` |  |
-| `promedio` | ``$NUMBER`` |  |
-| `publicacion_url` | ``$STRING`` |  |
-| `referencia` | ``$STRING`` |  |
-| `referencia_fecha` | ``$STRING`` |  |
-| `unidad` | ``$STRING`` |  |
-| `xlsx_url` | ``$STRING`` |  |
+| `desvio` | `number` |  |
+| `fecha` | `string` |  |
+| `fuente` | `string` |  |
+| `indicador` | `string` |  |
+| `informe` | `string` |  |
+| `maximo` | `number` |  |
+| `mediana` | `number` |  |
+| `minimo` | `number` |  |
+| `muestra` | `string` |  |
+| `participante` | `number` |  |
+| `percentil10` | `number` |  |
+| `percentil25` | `number` |  |
+| `percentil75` | `number` |  |
+| `percentil90` | `number` |  |
+| `periodo` | `string` |  |
+| `periodo_desde` | `string` |  |
+| `periodo_hasta` | `string` |  |
+| `periodo_tipo` | `string` |  |
+| `promedio` | `number` |  |
+| `publicacion_url` | `string` |  |
+| `referencia` | `string` |  |
+| `referencia_fecha` | `string` |  |
+| `unidad` | `string` |  |
+| `xlsx_url` | `string` |  |
 
 #### Example: List
 
@@ -1447,9 +1477,9 @@ Create an instance: `const rendimiento = client.Rendimiento()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `apy` | ``$NUMBER`` |  |
-| `fecha` | ``$STRING`` |  |
-| `moneda` | ``$STRING`` |  |
+| `apy` | `number` |  |
+| `fecha` | `string` |  |
+| `moneda` | `string` |  |
 
 #### Example: Load
 
@@ -1473,13 +1503,13 @@ Create an instance: `const riesgo_pai = client.RiesgoPai()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `valor` | ``$NUMBER`` |  |
+| `fecha` | `string` |  |
+| `valor` | `number` |  |
 
 #### Example: Load
 
 ```ts
-const riesgo_pai = await client.RiesgoPai().load({ id: 'riesgo_pai_id' })
+const riesgo_pai = await client.RiesgoPai().load()
 ```
 
 #### Example: List
@@ -1503,18 +1533,18 @@ Create an instance: `const senador = client.Senador()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `email` | ``$STRING`` |  |
-| `foto` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `nombre` | ``$STRING`` |  |
-| `observacione` | ``$STRING`` |  |
-| `partido` | ``$STRING`` |  |
-| `periodo_legal` | ``$OBJECT`` |  |
-| `periodo_real` | ``$OBJECT`` |  |
-| `provincia` | ``$STRING`` |  |
-| `rede` | ``$ARRAY`` |  |
-| `reemplazo` | ``$STRING`` |  |
-| `telefono` | ``$STRING`` |  |
+| `email` | `string` |  |
+| `foto` | `string` |  |
+| `id` | `string` |  |
+| `nombre` | `string` |  |
+| `observacione` | `string` |  |
+| `partido` | `string` |  |
+| `periodo_legal` | `Record<string, any>` |  |
+| `periodo_real` | `Record<string, any>` |  |
+| `provincia` | `string` |  |
+| `rede` | `any[]` |  |
+| `reemplazo` | `string` |  |
+| `telefono` | `string` |  |
 
 #### Example: List
 
@@ -1537,8 +1567,8 @@ Create an instance: `const tasa_intere = client.TasaIntere()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `valor` | ``$NUMBER`` |  |
+| `fecha` | `string` |  |
+| `valor` | `number` |  |
 
 #### Example: List
 
@@ -1561,10 +1591,10 @@ Create an instance: `const tasa_plazo_fijo = client.TasaPlazoFijo()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `logo` | ``$STRING`` |  |
-| `tna_cliente` | ``$NUMBER`` |  |
-| `tna_no_cliente` | ``$NUMBER`` |  |
+| `entidad` | `string` |  |
+| `logo` | `string` |  |
+| `tna_cliente` | `number` |  |
+| `tna_no_cliente` | `number` |  |
 
 #### Example: List
 
@@ -1573,12 +1603,16 @@ const tasa_plazo_fijos = await client.TasaPlazoFijo().list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -1595,11 +1629,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller.
-
-An unexpected exception triggers the `PreUnexpected` hook before
-propagating.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -1635,16 +1667,16 @@ import { ArgentinadatosSDK } from '@voxgig-sdk/argentinadatos'
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
 const acta = client.Acta()
-await acta.load({ id: "example_id" })
+await acta.list()
 
-// acta.data() now returns the loaded acta data
-// acta.match() returns { id: "example_id" }
+// acta.data() now returns the acta data from the last `list`
+// acta.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

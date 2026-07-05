@@ -122,7 +122,7 @@ ActaLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Acta#list (any subset of Acta fields).
+# Request payload for Acta#list.
 #
 # @!attribute [rw] abstencione
 #   @return [Integer, nil]
@@ -252,7 +252,7 @@ BonosCer = Struct.new(
   keyword_init: true
 )
 
-# Match filter for BonosCer#list (any subset of BonosCer fields).
+# Request payload for BonosCer#list.
 #
 # @!attribute [rw] fecha_vencimiento
 #   @return [String, nil]
@@ -315,7 +315,7 @@ CotizacionLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Cotizacion#list (any subset of Cotizacion fields).
+# Request payload for Cotizacion#list.
 #
 # @!attribute [rw] casa
 #   @return [String, nil]
@@ -357,7 +357,7 @@ Criptopeso = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Criptopeso#list (any subset of Criptopeso fields).
+# Request payload for Criptopeso#list.
 #
 # @!attribute [rw] entidad
 #   @return [String, nil]
@@ -391,7 +391,7 @@ CuentaRemuneradaUsd = Struct.new(
   keyword_init: true
 )
 
-# Match filter for CuentaRemuneradaUsd#list (any subset of CuentaRemuneradaUsd fields).
+# Request payload for CuentaRemuneradaUsd#list.
 #
 # @!attribute [rw] entidad
 #   @return [String, nil]
@@ -457,7 +457,7 @@ Diputado = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Diputado#list (any subset of Diputado fields).
+# Request payload for Diputado#list.
 #
 # @!attribute [rw] apellido
 #   @return [String, nil]
@@ -519,7 +519,7 @@ EntidadRendimiento = Struct.new(
   keyword_init: true
 )
 
-# Match filter for EntidadRendimiento#list (any subset of EntidadRendimiento fields).
+# Request payload for EntidadRendimiento#list.
 #
 # @!attribute [rw] entidad
 #   @return [String, nil]
@@ -545,7 +545,7 @@ Estado = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Estado#load (any subset of Estado fields).
+# Request payload for Estado#load.
 #
 # @!attribute [rw] aleatorio
 #   @return [Integer, nil]
@@ -575,7 +575,7 @@ EventoPresidencial = Struct.new(
   keyword_init: true
 )
 
-# Match filter for EventoPresidencial#list (any subset of EventoPresidencial fields).
+# Request payload for EventoPresidencial#list.
 #
 # @!attribute [rw] evento
 #   @return [String, nil]
@@ -622,7 +622,7 @@ FeriadoLoadMatch = Struct.new(
 class Finanza
 end
 
-# Match filter for Finanza#list (any subset of Finanza fields).
+# Request payload for Finanza#list.
 class FinanzaListMatch
 end
 
@@ -773,7 +773,7 @@ HipotecarioUvaTna = Struct.new(
   keyword_init: true
 )
 
-# Match filter for HipotecarioUvaTna#list (any subset of HipotecarioUvaTna fields).
+# Request payload for HipotecarioUvaTna#list.
 #
 # @!attribute [rw] entidad
 #   @return [String, nil]
@@ -807,7 +807,7 @@ IndiceInflacion = Struct.new(
   keyword_init: true
 )
 
-# Match filter for IndiceInflacion#list (any subset of IndiceInflacion fields).
+# Request payload for IndiceInflacion#list.
 #
 # @!attribute [rw] fecha
 #   @return [String, nil]
@@ -833,7 +833,7 @@ IndiceUva = Struct.new(
   keyword_init: true
 )
 
-# Match filter for IndiceUva#list (any subset of IndiceUva fields).
+# Request payload for IndiceUva#list.
 #
 # @!attribute [rw] fecha
 #   @return [String, nil]
@@ -871,7 +871,7 @@ Letra = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Letra#list (any subset of Letra fields).
+# Request payload for Letra#list.
 #
 # @!attribute [rw] fecha_emision
 #   @return [String, nil]
@@ -933,7 +933,7 @@ Presidente = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Presidente#list (any subset of Presidente fields).
+# Request payload for Presidente#list.
 #
 # @!attribute [rw] fin
 #   @return [String, nil]
@@ -1043,7 +1043,7 @@ ProveedorPlazoFijoPrecancelable = Struct.new(
   keyword_init: true
 )
 
-# Match filter for ProveedorPlazoFijoPrecancelable#list (any subset of ProveedorPlazoFijoPrecancelable fields).
+# Request payload for ProveedorPlazoFijoPrecancelable#list.
 #
 # @!attribute [rw] aviso_precancelacion_dia
 #   @return [Integer, nil]
@@ -1137,7 +1137,7 @@ ProveedorPlazoFijoUvaPagoPeriodico = Struct.new(
   keyword_init: true
 )
 
-# Match filter for ProveedorPlazoFijoUvaPagoPeriodico#list (any subset of ProveedorPlazoFijoUvaPagoPeriodico fields).
+# Request payload for ProveedorPlazoFijoUvaPagoPeriodico#list.
 #
 # @!attribute [rw] entidad
 #   @return [String, nil]
@@ -1373,7 +1373,7 @@ RemExpectativa = Struct.new(
   keyword_init: true
 )
 
-# Match filter for RemExpectativa#list (any subset of RemExpectativa fields).
+# Request payload for RemExpectativa#list.
 #
 # @!attribute [rw] desvio
 #   @return [Float, nil]
@@ -1513,7 +1513,7 @@ RiesgoPai = Struct.new(
   keyword_init: true
 )
 
-# Match filter for RiesgoPai#load (any subset of RiesgoPai fields).
+# Request payload for RiesgoPai#load.
 #
 # @!attribute [rw] fecha
 #   @return [String, nil]
@@ -1526,7 +1526,7 @@ RiesgoPaiLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for RiesgoPai#list (any subset of RiesgoPai fields).
+# Request payload for RiesgoPai#list.
 #
 # @!attribute [rw] fecha
 #   @return [String, nil]
@@ -1592,7 +1592,7 @@ Senador = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Senador#list (any subset of Senador fields).
+# Request payload for Senador#list.
 #
 # @!attribute [rw] email
 #   @return [String, nil]
@@ -1658,7 +1658,7 @@ TasaIntere = Struct.new(
   keyword_init: true
 )
 
-# Match filter for TasaIntere#list (any subset of TasaIntere fields).
+# Request payload for TasaIntere#list.
 #
 # @!attribute [rw] fecha
 #   @return [String, nil]
@@ -1692,7 +1692,7 @@ TasaPlazoFijo = Struct.new(
   keyword_init: true
 )
 
-# Match filter for TasaPlazoFijo#list (any subset of TasaPlazoFijo fields).
+# Request payload for TasaPlazoFijo#list.
 #
 # @!attribute [rw] entidad
 #   @return [String, nil]

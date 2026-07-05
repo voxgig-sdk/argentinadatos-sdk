@@ -195,40 +195,40 @@ acta = client.Acta()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abstencione` | ``$INTEGER`` | No |  |
-| `acta` | ``$STRING`` | No |  |
-| `acta_id` | ``$INTEGER`` | No |  |
-| `afirmativo` | ``$INTEGER`` | No |  |
-| `amn` | ``$INTEGER`` | No |  |
-| `ausente` | ``$INTEGER`` | No |  |
-| `descripcion` | ``$STRING`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `mayoria` | ``$STRING`` | No |  |
-| `miembro` | ``$INTEGER`` | No |  |
-| `negativo` | ``$INTEGER`` | No |  |
-| `numero_acta` | ``$STRING`` | No |  |
-| `observacione` | ``$ARRAY`` | No |  |
-| `periodo` | ``$STRING`` | No |  |
-| `presente` | ``$INTEGER`` | No |  |
-| `presidente` | ``$STRING`` | No |  |
-| `proyecto` | ``$STRING`` | No |  |
-| `quorum_tipo` | ``$STRING`` | No |  |
-| `resultado` | ``$STRING`` | No |  |
-| `reunion` | ``$STRING`` | No |  |
-| `titulo` | ``$STRING`` | No |  |
-| `voto` | ``$ARRAY`` | No |  |
-| `votos_afirmativo` | ``$INTEGER`` | No |  |
-| `votos_negativo` | ``$INTEGER`` | No |  |
+| `abstencione` | `int` | No |  |
+| `acta` | `str` | No |  |
+| `acta_id` | `int` | No |  |
+| `afirmativo` | `int` | No |  |
+| `amn` | `int` | No |  |
+| `ausente` | `int` | No |  |
+| `descripcion` | `str` | No |  |
+| `fecha` | `str` | No |  |
+| `id` | `str` | No |  |
+| `mayoria` | `str` | No |  |
+| `miembro` | `int` | No |  |
+| `negativo` | `int` | No |  |
+| `numero_acta` | `str` | No |  |
+| `observacione` | `list` | No |  |
+| `periodo` | `str` | No |  |
+| `presente` | `int` | No |  |
+| `presidente` | `str` | No |  |
+| `proyecto` | `str` | No |  |
+| `quorum_tipo` | `str` | No |  |
+| `resultado` | `str` | No |  |
+| `reunion` | `str` | No |  |
+| `titulo` | `str` | No |  |
+| `voto` | `list` | No |  |
+| `votos_afirmativo` | `int` | No |  |
+| `votos_negativo` | `int` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Acta().list({})
+results = client.Acta().list()
 for acta in results:
     print(acta)
 ```
@@ -280,20 +280,20 @@ bonos_cer = client.BonosCer()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha_vencimiento` | ``$STRING`` | Yes |  |
-| `precio_ar` | ``$NUMBER`` | Yes |  |
-| `ticker` | ``$STRING`` | Yes |  |
-| `tir_porcentaje` | ``$NUMBER`` | Yes |  |
-| `voluman` | ``$NUMBER`` | No |  |
+| `fecha_vencimiento` | `str` | Yes |  |
+| `precio_ar` | `float` | Yes |  |
+| `ticker` | `str` | Yes |  |
+| `tir_porcentaje` | `float` | Yes |  |
+| `voluman` | `float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.BonosCer().list({})
+results = client.BonosCer().list()
 for bonos_cer in results:
     print(bonos_cer)
 ```
@@ -337,20 +337,20 @@ cotizacion = client.Cotizacion()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `casa` | ``$STRING`` | No |  |
-| `compra` | ``$NUMBER`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `moneda` | ``$STRING`` | No |  |
-| `venta` | ``$NUMBER`` | No |  |
+| `casa` | `str` | No |  |
+| `compra` | `float` | No |  |
+| `fecha` | `str` | No |  |
+| `moneda` | `str` | No |  |
+| `venta` | `float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Cotizacion().list({})
+results = client.Cotizacion().list()
 for cotizacion in results:
     print(cotizacion)
 ```
@@ -360,7 +360,7 @@ for cotizacion in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Cotizacion().load({"id": "cotizacion_id"})
+result = client.Cotizacion().load()
 ```
 
 ### Common Methods
@@ -402,18 +402,18 @@ criptopeso = client.Criptopeso()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `tna` | ``$NUMBER`` | No |  |
-| `token` | ``$STRING`` | No |  |
+| `entidad` | `str` | No |  |
+| `tna` | `float` | No |  |
+| `token` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Criptopeso().list({})
+results = client.Criptopeso().list()
 for criptopeso in results:
     print(criptopeso)
 ```
@@ -457,18 +457,18 @@ cuenta_remunerada_usd = client.CuentaRemuneradaUsd()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `tasa` | ``$NUMBER`` | No |  |
-| `tope` | ``$NUMBER`` | No |  |
+| `entidad` | `str` | No |  |
+| `tasa` | `float` | No |  |
+| `tope` | `float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.CuentaRemuneradaUsd().list({})
+results = client.CuentaRemuneradaUsd().list()
 for cuenta_remunerada_usd in results:
     print(cuenta_remunerada_usd)
 ```
@@ -512,26 +512,26 @@ diputado = client.Diputado()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `apellido` | ``$STRING`` | No |  |
-| `bloque` | ``$STRING`` | No |  |
-| `cese_fecha` | ``$STRING`` | No |  |
-| `foto` | ``$STRING`` | No |  |
-| `genero` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `juramento_fecha` | ``$STRING`` | No |  |
-| `nombre` | ``$STRING`` | No |  |
-| `periodo_bloque` | ``$OBJECT`` | No |  |
-| `periodo_mandato` | ``$OBJECT`` | No |  |
-| `provincia` | ``$STRING`` | No |  |
+| `apellido` | `str` | No |  |
+| `bloque` | `str` | No |  |
+| `cese_fecha` | `str` | No |  |
+| `foto` | `str` | No |  |
+| `genero` | `str` | No |  |
+| `id` | `str` | No |  |
+| `juramento_fecha` | `str` | No |  |
+| `nombre` | `str` | No |  |
+| `periodo_bloque` | `dict` | No |  |
+| `periodo_mandato` | `dict` | No |  |
+| `provincia` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Diputado().list({})
+results = client.Diputado().list()
 for diputado in results:
     print(diputado)
 ```
@@ -575,17 +575,17 @@ entidad_rendimiento = client.EntidadRendimiento()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `rendimiento` | ``$ARRAY`` | No |  |
+| `entidad` | `str` | No |  |
+| `rendimiento` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.EntidadRendimiento().list({})
+results = client.EntidadRendimiento().list()
 for entidad_rendimiento in results:
     print(entidad_rendimiento)
 ```
@@ -629,8 +629,8 @@ estado = client.Estado()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aleatorio` | ``$INTEGER`` | No |  |
-| `estado` | ``$STRING`` | No |  |
+| `aleatorio` | `int` | No |  |
+| `estado` | `str` | No |  |
 
 ### Operations
 
@@ -639,7 +639,7 @@ estado = client.Estado()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Estado().load({"id": "estado_id"})
+result = client.Estado().load()
 ```
 
 ### Common Methods
@@ -681,18 +681,18 @@ evento_presidencial = client.EventoPresidencial()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `evento` | ``$STRING`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `tipo` | ``$STRING`` | No |  |
+| `evento` | `str` | No |  |
+| `fecha` | `str` | No |  |
+| `tipo` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.EventoPresidencial().list({})
+results = client.EventoPresidencial().list()
 for evento_presidencial in results:
     print(evento_presidencial)
 ```
@@ -736,9 +736,9 @@ feriado = client.Feriado()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `nombre` | ``$STRING`` | No |  |
-| `tipo` | ``$STRING`` | No |  |
+| `fecha` | `str` | No |  |
+| `nombre` | `str` | No |  |
+| `tipo` | `str` | No |  |
 
 ### Operations
 
@@ -787,12 +787,12 @@ finanza = client.Finanza()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Finanza().list({})
+results = client.Finanza().list()
 for finanza in results:
     print(finanza)
 ```
@@ -836,13 +836,13 @@ fondo_comun_inversion = client.FondoComunInversion()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ccp` | ``$NUMBER`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `fondo` | ``$STRING`` | No |  |
-| `horizonte` | ``$STRING`` | No |  |
-| `patrimonio` | ``$NUMBER`` | No |  |
-| `tipo` | ``$STRING`` | No |  |
-| `vcp` | ``$NUMBER`` | No |  |
+| `ccp` | `float` | No |  |
+| `fecha` | `str` | No |  |
+| `fondo` | `str` | No |  |
+| `horizonte` | `str` | No |  |
+| `patrimonio` | `float` | No |  |
+| `tipo` | `str` | No |  |
+| `vcp` | `float` | No |  |
 
 ### Operations
 
@@ -851,7 +851,7 @@ fondo_comun_inversion = client.FondoComunInversion()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.FondoComunInversion().load({"id": "fondo_comun_inversion_id"})
+result = client.FondoComunInversion().load()
 ```
 
 ### Common Methods
@@ -893,11 +893,11 @@ fondo_comun_inversion_otro = client.FondoComunInversionOtro()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `fondo` | ``$STRING`` | No |  |
-| `tea` | ``$NUMBER`` | No |  |
-| `tna` | ``$NUMBER`` | No |  |
-| `tope` | ``$NUMBER`` | No |  |
+| `fecha` | `str` | No |  |
+| `fondo` | `str` | No |  |
+| `tea` | `float` | No |  |
+| `tna` | `float` | No |  |
+| `tope` | `float` | No |  |
 
 ### Operations
 
@@ -948,15 +948,15 @@ fondo_comun_inversion_variable = client.FondoComunInversionVariable()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `condicione` | ``$STRING`` | No |  |
-| `condiciones_corto` | ``$STRING`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `fondo` | ``$STRING`` | No |  |
-| `nombre` | ``$STRING`` | No |  |
-| `tea` | ``$NUMBER`` | No |  |
-| `tipo` | ``$STRING`` | No |  |
-| `tna` | ``$NUMBER`` | No |  |
-| `tope` | ``$NUMBER`` | No |  |
+| `condicione` | `str` | No |  |
+| `condiciones_corto` | `str` | No |  |
+| `fecha` | `str` | No |  |
+| `fondo` | `str` | No |  |
+| `nombre` | `str` | No |  |
+| `tea` | `float` | No |  |
+| `tipo` | `str` | No |  |
+| `tna` | `float` | No |  |
+| `tope` | `float` | No |  |
 
 ### Operations
 
@@ -1007,19 +1007,19 @@ hipotecario_uva_tna = client.HipotecarioUvaTna()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `metadata` | ``$OBJECT`` | No |  |
-| `nombre_comercial` | ``$STRING`` | No |  |
-| `tna` | ``$NUMBER`` | No |  |
+| `entidad` | `str` | No |  |
+| `metadata` | `dict` | No |  |
+| `nombre_comercial` | `str` | No |  |
+| `tna` | `float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.HipotecarioUvaTna().list({})
+results = client.HipotecarioUvaTna().list()
 for hipotecario_uva_tna in results:
     print(hipotecario_uva_tna)
 ```
@@ -1063,17 +1063,17 @@ indice_inflacion = client.IndiceInflacion()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `valor` | ``$NUMBER`` | No |  |
+| `fecha` | `str` | No |  |
+| `valor` | `float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.IndiceInflacion().list({})
+results = client.IndiceInflacion().list()
 for indice_inflacion in results:
     print(indice_inflacion)
 ```
@@ -1117,17 +1117,17 @@ indice_uva = client.IndiceUva()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `valor` | ``$NUMBER`` | No |  |
+| `fecha` | `str` | No |  |
+| `valor` | `float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.IndiceUva().list({})
+results = client.IndiceUva().list()
 for indice_uva in results:
     print(indice_uva)
 ```
@@ -1171,20 +1171,20 @@ letra = client.Letra()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha_emision` | ``$STRING`` | No |  |
-| `fecha_vencimiento` | ``$STRING`` | No |  |
-| `tem` | ``$NUMBER`` | No |  |
-| `ticker` | ``$STRING`` | No |  |
-| `vpv` | ``$NUMBER`` | No |  |
+| `fecha_emision` | `str` | No |  |
+| `fecha_vencimiento` | `str` | No |  |
+| `tem` | `float` | No |  |
+| `ticker` | `str` | No |  |
+| `vpv` | `float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Letra().list({})
+results = client.Letra().list()
 for letra in results:
     print(letra)
 ```
@@ -1228,23 +1228,23 @@ presidente = client.Presidente()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fin` | ``$STRING`` | No |  |
-| `imagen` | ``$STRING`` | No |  |
-| `inicio` | ``$STRING`` | No |  |
-| `nombre` | ``$STRING`` | No |  |
-| `partido` | ``$STRING`` | No |  |
-| `partido_imagen` | ``$STRING`` | No |  |
-| `periodo_presidencial` | ``$STRING`` | No |  |
-| `vicepresidente` | ``$STRING`` | No |  |
+| `fin` | `str` | No |  |
+| `imagen` | `str` | No |  |
+| `inicio` | `str` | No |  |
+| `nombre` | `str` | No |  |
+| `partido` | `str` | No |  |
+| `partido_imagen` | `str` | No |  |
+| `periodo_presidencial` | `str` | No |  |
+| `vicepresidente` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Presidente().list({})
+results = client.Presidente().list()
 for presidente in results:
     print(presidente)
 ```
@@ -1288,32 +1288,32 @@ proveedor_plazo_fijo_precancelable = client.ProveedorPlazoFijoPrecancelable()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aviso_precancelacion_dia` | ``$INTEGER`` | No |  |
-| `canal` | ``$STRING`` | No |  |
-| `enlace` | ``$STRING`` | No |  |
-| `entidad` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `logo` | ``$STRING`` | No |  |
-| `modalidad` | ``$STRING`` | No |  |
-| `moneda` | ``$STRING`` | No |  |
-| `monto_maximo` | ``$NUMBER`` | No |  |
-| `monto_minimo` | ``$NUMBER`` | No |  |
-| `plazo_max_dia` | ``$INTEGER`` | No |  |
-| `plazo_min_dia` | ``$INTEGER`` | No |  |
-| `plazo_precancelacion_dia` | ``$INTEGER`` | No |  |
-| `tea` | ``$NUMBER`` | No |  |
-| `tea_precancelacion` | ``$NUMBER`` | No |  |
-| `tna` | ``$NUMBER`` | No |  |
-| `tna_precancelacion` | ``$NUMBER`` | No |  |
+| `aviso_precancelacion_dia` | `int` | No |  |
+| `canal` | `str` | No |  |
+| `enlace` | `str` | No |  |
+| `entidad` | `str` | No |  |
+| `id` | `str` | No |  |
+| `logo` | `str` | No |  |
+| `modalidad` | `str` | No |  |
+| `moneda` | `str` | No |  |
+| `monto_maximo` | `float` | No |  |
+| `monto_minimo` | `float` | No |  |
+| `plazo_max_dia` | `int` | No |  |
+| `plazo_min_dia` | `int` | No |  |
+| `plazo_precancelacion_dia` | `int` | No |  |
+| `tea` | `float` | No |  |
+| `tea_precancelacion` | `float` | No |  |
+| `tna` | `float` | No |  |
+| `tna_precancelacion` | `float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ProveedorPlazoFijoPrecancelable().list({})
+results = client.ProveedorPlazoFijoPrecancelable().list()
 for proveedor_plazo_fijo_precancelable in results:
     print(proveedor_plazo_fijo_precancelable)
 ```
@@ -1357,19 +1357,19 @@ proveedor_plazo_fijo_uva_pago_periodico = client.ProveedorPlazoFijoUvaPagoPeriod
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `logo` | ``$STRING`` | No |  |
-| `tasa` | ``$ARRAY`` | No |  |
+| `entidad` | `str` | No |  |
+| `id` | `str` | No |  |
+| `logo` | `str` | No |  |
+| `tasa` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ProveedorPlazoFijoUvaPagoPeriodico().list({})
+results = client.ProveedorPlazoFijoUvaPagoPeriodico().list()
 for proveedor_plazo_fijo_uva_pago_periodico in results:
     print(proveedor_plazo_fijo_uva_pago_periodico)
 ```
@@ -1413,39 +1413,39 @@ rem = client.Rem()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `desvio` | ``$NUMBER`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `fuente` | ``$STRING`` | No |  |
-| `indicador` | ``$STRING`` | No |  |
-| `informe` | ``$STRING`` | No |  |
-| `maximo` | ``$NUMBER`` | No |  |
-| `mediana` | ``$NUMBER`` | No |  |
-| `minimo` | ``$NUMBER`` | No |  |
-| `muestra` | ``$STRING`` | No |  |
-| `participante` | ``$INTEGER`` | No |  |
-| `percentil10` | ``$NUMBER`` | No |  |
-| `percentil25` | ``$NUMBER`` | No |  |
-| `percentil75` | ``$NUMBER`` | No |  |
-| `percentil90` | ``$NUMBER`` | No |  |
-| `periodo` | ``$STRING`` | No |  |
-| `periodo_desde` | ``$STRING`` | No |  |
-| `periodo_hasta` | ``$STRING`` | No |  |
-| `periodo_tipo` | ``$STRING`` | No |  |
-| `promedio` | ``$NUMBER`` | No |  |
-| `publicacion_url` | ``$STRING`` | No |  |
-| `referencia` | ``$STRING`` | No |  |
-| `referencia_fecha` | ``$STRING`` | No |  |
-| `unidad` | ``$STRING`` | No |  |
-| `xlsx_url` | ``$STRING`` | No |  |
+| `desvio` | `float` | No |  |
+| `fecha` | `str` | No |  |
+| `fuente` | `str` | No |  |
+| `indicador` | `str` | No |  |
+| `informe` | `str` | No |  |
+| `maximo` | `float` | No |  |
+| `mediana` | `float` | No |  |
+| `minimo` | `float` | No |  |
+| `muestra` | `str` | No |  |
+| `participante` | `int` | No |  |
+| `percentil10` | `float` | No |  |
+| `percentil25` | `float` | No |  |
+| `percentil75` | `float` | No |  |
+| `percentil90` | `float` | No |  |
+| `periodo` | `str` | No |  |
+| `periodo_desde` | `str` | No |  |
+| `periodo_hasta` | `str` | No |  |
+| `periodo_tipo` | `str` | No |  |
+| `promedio` | `float` | No |  |
+| `publicacion_url` | `str` | No |  |
+| `referencia` | `str` | No |  |
+| `referencia_fecha` | `str` | No |  |
+| `unidad` | `str` | No |  |
+| `xlsx_url` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Rem().list({})
+results = client.Rem().list()
 for rem in results:
     print(rem)
 ```
@@ -1489,39 +1489,39 @@ rem_expectativa = client.RemExpectativa()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `desvio` | ``$NUMBER`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `fuente` | ``$STRING`` | No |  |
-| `indicador` | ``$STRING`` | No |  |
-| `informe` | ``$STRING`` | No |  |
-| `maximo` | ``$NUMBER`` | No |  |
-| `mediana` | ``$NUMBER`` | No |  |
-| `minimo` | ``$NUMBER`` | No |  |
-| `muestra` | ``$STRING`` | No |  |
-| `participante` | ``$INTEGER`` | No |  |
-| `percentil10` | ``$NUMBER`` | No |  |
-| `percentil25` | ``$NUMBER`` | No |  |
-| `percentil75` | ``$NUMBER`` | No |  |
-| `percentil90` | ``$NUMBER`` | No |  |
-| `periodo` | ``$STRING`` | No |  |
-| `periodo_desde` | ``$STRING`` | No |  |
-| `periodo_hasta` | ``$STRING`` | No |  |
-| `periodo_tipo` | ``$STRING`` | No |  |
-| `promedio` | ``$NUMBER`` | No |  |
-| `publicacion_url` | ``$STRING`` | No |  |
-| `referencia` | ``$STRING`` | No |  |
-| `referencia_fecha` | ``$STRING`` | No |  |
-| `unidad` | ``$STRING`` | No |  |
-| `xlsx_url` | ``$STRING`` | No |  |
+| `desvio` | `float` | No |  |
+| `fecha` | `str` | No |  |
+| `fuente` | `str` | No |  |
+| `indicador` | `str` | No |  |
+| `informe` | `str` | No |  |
+| `maximo` | `float` | No |  |
+| `mediana` | `float` | No |  |
+| `minimo` | `float` | No |  |
+| `muestra` | `str` | No |  |
+| `participante` | `int` | No |  |
+| `percentil10` | `float` | No |  |
+| `percentil25` | `float` | No |  |
+| `percentil75` | `float` | No |  |
+| `percentil90` | `float` | No |  |
+| `periodo` | `str` | No |  |
+| `periodo_desde` | `str` | No |  |
+| `periodo_hasta` | `str` | No |  |
+| `periodo_tipo` | `str` | No |  |
+| `promedio` | `float` | No |  |
+| `publicacion_url` | `str` | No |  |
+| `referencia` | `str` | No |  |
+| `referencia_fecha` | `str` | No |  |
+| `unidad` | `str` | No |  |
+| `xlsx_url` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.RemExpectativa().list({})
+results = client.RemExpectativa().list()
 for rem_expectativa in results:
     print(rem_expectativa)
 ```
@@ -1565,9 +1565,9 @@ rendimiento = client.Rendimiento()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `apy` | ``$NUMBER`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `moneda` | ``$STRING`` | No |  |
+| `apy` | `float` | No |  |
+| `fecha` | `str` | No |  |
+| `moneda` | `str` | No |  |
 
 ### Operations
 
@@ -1618,17 +1618,17 @@ riesgo_pai = client.RiesgoPai()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `valor` | ``$NUMBER`` | No |  |
+| `fecha` | `str` | No |  |
+| `valor` | `float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.RiesgoPai().list({})
+results = client.RiesgoPai().list()
 for riesgo_pai in results:
     print(riesgo_pai)
 ```
@@ -1638,7 +1638,7 @@ for riesgo_pai in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.RiesgoPai().load({"id": "riesgo_pai_id"})
+result = client.RiesgoPai().load()
 ```
 
 ### Common Methods
@@ -1680,27 +1680,27 @@ senador = client.Senador()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | ``$STRING`` | No |  |
-| `foto` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `nombre` | ``$STRING`` | No |  |
-| `observacione` | ``$STRING`` | No |  |
-| `partido` | ``$STRING`` | No |  |
-| `periodo_legal` | ``$OBJECT`` | No |  |
-| `periodo_real` | ``$OBJECT`` | No |  |
-| `provincia` | ``$STRING`` | No |  |
-| `rede` | ``$ARRAY`` | No |  |
-| `reemplazo` | ``$STRING`` | No |  |
-| `telefono` | ``$STRING`` | No |  |
+| `email` | `str` | No |  |
+| `foto` | `str` | No |  |
+| `id` | `str` | No |  |
+| `nombre` | `str` | No |  |
+| `observacione` | `str` | No |  |
+| `partido` | `str` | No |  |
+| `periodo_legal` | `dict` | No |  |
+| `periodo_real` | `dict` | No |  |
+| `provincia` | `str` | No |  |
+| `rede` | `list` | No |  |
+| `reemplazo` | `str` | No |  |
+| `telefono` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Senador().list({})
+results = client.Senador().list()
 for senador in results:
     print(senador)
 ```
@@ -1744,17 +1744,17 @@ tasa_intere = client.TasaIntere()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `valor` | ``$NUMBER`` | No |  |
+| `fecha` | `str` | No |  |
+| `valor` | `float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.TasaIntere().list({})
+results = client.TasaIntere().list()
 for tasa_intere in results:
     print(tasa_intere)
 ```
@@ -1798,19 +1798,19 @@ tasa_plazo_fijo = client.TasaPlazoFijo()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `logo` | ``$STRING`` | No |  |
-| `tna_cliente` | ``$NUMBER`` | No |  |
-| `tna_no_cliente` | ``$NUMBER`` | No |  |
+| `entidad` | `str` | No |  |
+| `logo` | `str` | No |  |
+| `tna_cliente` | `float` | No |  |
+| `tna_no_cliente` | `float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.TasaPlazoFijo().list({})
+results = client.TasaPlazoFijo().list()
 for tasa_plazo_fijo in results:
     print(tasa_plazo_fijo)
 ```

@@ -67,10 +67,12 @@ class FondoComunInversionEntity
   
   # Load a single FondoComunInversion.
   #
-  # @param reqmatch [FondoComunInversionLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param reqmatch [FondoComunInversionLoadMatch, Hash, nil] match criteria (id/query fields);
+  #   optional — an entity with no id-like key loads with no match (nil is treated
+  #   as an empty match, so client.FondoComunInversion.load works with no args).
   # @param ctrl [Object, nil] optional per-call control
   # @return [FondoComunInversion, Hash] the loaded FondoComunInversion; raises ArgentinadatosError on failure
-  def load(reqmatch, ctrl = nil)
+  def load(reqmatch = nil, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
       "opname" => "load",

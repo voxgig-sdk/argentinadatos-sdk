@@ -4,6 +4,8 @@
 
 The Ruby SDK for the Argentinadatos API — an entity-oriented client using idiomatic Ruby conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Acta` — with named operations (`list`/`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -35,7 +37,7 @@ begin
   # list returns an Array of Acta records — iterate directly.
   actas = client.Acta.list
   actas.each do |item|
-    puts "#{item["id"]} #{item["name"]}"
+    puts "#{item["id"]} #{item["abstencione"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -52,6 +54,33 @@ begin
 rescue => err
   warn "load failed: #{err}"
 end
+```
+
+
+## Error handling
+
+Entity operations raise on failure, so rescue them:
+
+```ruby
+begin
+  actas = client.Acta.list()
+rescue => err
+  warn "list failed: #{err}"
+end
+```
+
+`direct` does **not** raise — it returns the result hash. Branch on
+`ok`; on failure `status` holds the HTTP status (for error responses) and
+`err` holds a transport error, so read both defensively:
+
+```ruby
+result = client.direct({
+  "path" => "/api/resource/{id}",
+  "method" => "GET",
+  "params" => { "id" => "example_id" },
+})
+
+warn "request failed: #{result["err"] || "HTTP #{result["status"]}"}" unless result["ok"]
 ```
 
 
@@ -72,7 +101,9 @@ if result["ok"]
   puts result["status"]  # 200
   puts result["data"]    # response body
 else
-  warn result["err"]
+  # On an HTTP error status there is no err (only a transport failure sets
+  # it), so fall back to the status code.
+  warn(result["err"] || "HTTP #{result["status"]}")
 end
 ```
 
@@ -103,8 +134,8 @@ client = ArgentinadatosSDK.test({
   "entity" => { "acta" => { "test01" => { "id" => "test01" } } },
 })
 
-# load returns the bare mock record (raises on error).
-acta = client.Acta.load({ "id" => "test01" })
+# Entity ops return the bare mock record (raises on error).
+acta = client.Acta.list()
 puts acta
 ```
 
@@ -217,10 +248,7 @@ All entities share the same interface.
 | Method | Signature | Description |
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
-| `list` | `(reqmatch, ctrl) -> Array` | List entities matching the criteria. Raises on error. |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
+| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all). Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -715,31 +743,31 @@ Create an instance: `acta = client.Acta`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `abstencione` | ``$INTEGER`` |  |
-| `acta` | ``$STRING`` |  |
-| `acta_id` | ``$INTEGER`` |  |
-| `afirmativo` | ``$INTEGER`` |  |
-| `amn` | ``$INTEGER`` |  |
-| `ausente` | ``$INTEGER`` |  |
-| `descripcion` | ``$STRING`` |  |
-| `fecha` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `mayoria` | ``$STRING`` |  |
-| `miembro` | ``$INTEGER`` |  |
-| `negativo` | ``$INTEGER`` |  |
-| `numero_acta` | ``$STRING`` |  |
-| `observacione` | ``$ARRAY`` |  |
-| `periodo` | ``$STRING`` |  |
-| `presente` | ``$INTEGER`` |  |
-| `presidente` | ``$STRING`` |  |
-| `proyecto` | ``$STRING`` |  |
-| `quorum_tipo` | ``$STRING`` |  |
-| `resultado` | ``$STRING`` |  |
-| `reunion` | ``$STRING`` |  |
-| `titulo` | ``$STRING`` |  |
-| `voto` | ``$ARRAY`` |  |
-| `votos_afirmativo` | ``$INTEGER`` |  |
-| `votos_negativo` | ``$INTEGER`` |  |
+| `abstencione` | `Integer` |  |
+| `acta` | `String` |  |
+| `acta_id` | `Integer` |  |
+| `afirmativo` | `Integer` |  |
+| `amn` | `Integer` |  |
+| `ausente` | `Integer` |  |
+| `descripcion` | `String` |  |
+| `fecha` | `String` |  |
+| `id` | `String` |  |
+| `mayoria` | `String` |  |
+| `miembro` | `Integer` |  |
+| `negativo` | `Integer` |  |
+| `numero_acta` | `String` |  |
+| `observacione` | `Array` |  |
+| `periodo` | `String` |  |
+| `presente` | `Integer` |  |
+| `presidente` | `String` |  |
+| `proyecto` | `String` |  |
+| `quorum_tipo` | `String` |  |
+| `resultado` | `String` |  |
+| `reunion` | `String` |  |
+| `titulo` | `String` |  |
+| `voto` | `Array` |  |
+| `votos_afirmativo` | `Integer` |  |
+| `votos_negativo` | `Integer` |  |
 
 #### Example: Load
 
@@ -770,11 +798,11 @@ Create an instance: `bonos_cer = client.BonosCer`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha_vencimiento` | ``$STRING`` |  |
-| `precio_ar` | ``$NUMBER`` |  |
-| `ticker` | ``$STRING`` |  |
-| `tir_porcentaje` | ``$NUMBER`` |  |
-| `voluman` | ``$NUMBER`` |  |
+| `fecha_vencimiento` | `String` |  |
+| `precio_ar` | `Float` |  |
+| `ticker` | `String` |  |
+| `tir_porcentaje` | `Float` |  |
+| `voluman` | `Float` |  |
 
 #### Example: List
 
@@ -799,17 +827,17 @@ Create an instance: `cotizacion = client.Cotizacion`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `casa` | ``$STRING`` |  |
-| `compra` | ``$NUMBER`` |  |
-| `fecha` | ``$STRING`` |  |
-| `moneda` | ``$STRING`` |  |
-| `venta` | ``$NUMBER`` |  |
+| `casa` | `String` |  |
+| `compra` | `Float` |  |
+| `fecha` | `String` |  |
+| `moneda` | `String` |  |
+| `venta` | `Float` |  |
 
 #### Example: Load
 
 ```ruby
 # load returns the bare Cotizacion record (raises on error).
-cotizacion = client.Cotizacion.load({ "id" => "cotizacion_id" })
+cotizacion = client.Cotizacion.load()
 ```
 
 #### Example: List
@@ -834,9 +862,9 @@ Create an instance: `criptopeso = client.Criptopeso`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `tna` | ``$NUMBER`` |  |
-| `token` | ``$STRING`` |  |
+| `entidad` | `String` |  |
+| `tna` | `Float` |  |
+| `token` | `String` |  |
 
 #### Example: List
 
@@ -860,9 +888,9 @@ Create an instance: `cuenta_remunerada_usd = client.CuentaRemuneradaUsd`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `tasa` | ``$NUMBER`` |  |
-| `tope` | ``$NUMBER`` |  |
+| `entidad` | `String` |  |
+| `tasa` | `Float` |  |
+| `tope` | `Float` |  |
 
 #### Example: List
 
@@ -886,17 +914,17 @@ Create an instance: `diputado = client.Diputado`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `apellido` | ``$STRING`` |  |
-| `bloque` | ``$STRING`` |  |
-| `cese_fecha` | ``$STRING`` |  |
-| `foto` | ``$STRING`` |  |
-| `genero` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `juramento_fecha` | ``$STRING`` |  |
-| `nombre` | ``$STRING`` |  |
-| `periodo_bloque` | ``$OBJECT`` |  |
-| `periodo_mandato` | ``$OBJECT`` |  |
-| `provincia` | ``$STRING`` |  |
+| `apellido` | `String` |  |
+| `bloque` | `String` |  |
+| `cese_fecha` | `String` |  |
+| `foto` | `String` |  |
+| `genero` | `String` |  |
+| `id` | `String` |  |
+| `juramento_fecha` | `String` |  |
+| `nombre` | `String` |  |
+| `periodo_bloque` | `Hash` |  |
+| `periodo_mandato` | `Hash` |  |
+| `provincia` | `String` |  |
 
 #### Example: List
 
@@ -920,8 +948,8 @@ Create an instance: `entidad_rendimiento = client.EntidadRendimiento`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `rendimiento` | ``$ARRAY`` |  |
+| `entidad` | `String` |  |
+| `rendimiento` | `Array` |  |
 
 #### Example: List
 
@@ -945,14 +973,14 @@ Create an instance: `estado = client.Estado`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aleatorio` | ``$INTEGER`` |  |
-| `estado` | ``$STRING`` |  |
+| `aleatorio` | `Integer` |  |
+| `estado` | `String` |  |
 
 #### Example: Load
 
 ```ruby
 # load returns the bare Estado record (raises on error).
-estado = client.Estado.load({ "id" => "estado_id" })
+estado = client.Estado.load()
 ```
 
 
@@ -970,9 +998,9 @@ Create an instance: `evento_presidencial = client.EventoPresidencial`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `evento` | ``$STRING`` |  |
-| `fecha` | ``$STRING`` |  |
-| `tipo` | ``$STRING`` |  |
+| `evento` | `String` |  |
+| `fecha` | `String` |  |
+| `tipo` | `String` |  |
 
 #### Example: List
 
@@ -996,9 +1024,9 @@ Create an instance: `feriado = client.Feriado`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `nombre` | ``$STRING`` |  |
-| `tipo` | ``$STRING`` |  |
+| `fecha` | `String` |  |
+| `nombre` | `String` |  |
+| `tipo` | `String` |  |
 
 #### Example: Load
 
@@ -1040,19 +1068,19 @@ Create an instance: `fondo_comun_inversion = client.FondoComunInversion`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ccp` | ``$NUMBER`` |  |
-| `fecha` | ``$STRING`` |  |
-| `fondo` | ``$STRING`` |  |
-| `horizonte` | ``$STRING`` |  |
-| `patrimonio` | ``$NUMBER`` |  |
-| `tipo` | ``$STRING`` |  |
-| `vcp` | ``$NUMBER`` |  |
+| `ccp` | `Float` |  |
+| `fecha` | `String` |  |
+| `fondo` | `String` |  |
+| `horizonte` | `String` |  |
+| `patrimonio` | `Float` |  |
+| `tipo` | `String` |  |
+| `vcp` | `Float` |  |
 
 #### Example: Load
 
 ```ruby
 # load returns the bare FondoComunInversion record (raises on error).
-fondo_comun_inversion = client.FondoComunInversion.load({ "id" => "fondo_comun_inversion_id" })
+fondo_comun_inversion = client.FondoComunInversion.load()
 ```
 
 
@@ -1070,11 +1098,11 @@ Create an instance: `fondo_comun_inversion_otro = client.FondoComunInversionOtro
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `fondo` | ``$STRING`` |  |
-| `tea` | ``$NUMBER`` |  |
-| `tna` | ``$NUMBER`` |  |
-| `tope` | ``$NUMBER`` |  |
+| `fecha` | `String` |  |
+| `fondo` | `String` |  |
+| `tea` | `Float` |  |
+| `tna` | `Float` |  |
+| `tope` | `Float` |  |
 
 #### Example: Load
 
@@ -1098,15 +1126,15 @@ Create an instance: `fondo_comun_inversion_variable = client.FondoComunInversion
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `condicione` | ``$STRING`` |  |
-| `condiciones_corto` | ``$STRING`` |  |
-| `fecha` | ``$STRING`` |  |
-| `fondo` | ``$STRING`` |  |
-| `nombre` | ``$STRING`` |  |
-| `tea` | ``$NUMBER`` |  |
-| `tipo` | ``$STRING`` |  |
-| `tna` | ``$NUMBER`` |  |
-| `tope` | ``$NUMBER`` |  |
+| `condicione` | `String` |  |
+| `condiciones_corto` | `String` |  |
+| `fecha` | `String` |  |
+| `fondo` | `String` |  |
+| `nombre` | `String` |  |
+| `tea` | `Float` |  |
+| `tipo` | `String` |  |
+| `tna` | `Float` |  |
+| `tope` | `Float` |  |
 
 #### Example: Load
 
@@ -1130,10 +1158,10 @@ Create an instance: `hipotecario_uva_tna = client.HipotecarioUvaTna`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `metadata` | ``$OBJECT`` |  |
-| `nombre_comercial` | ``$STRING`` |  |
-| `tna` | ``$NUMBER`` |  |
+| `entidad` | `String` |  |
+| `metadata` | `Hash` |  |
+| `nombre_comercial` | `String` |  |
+| `tna` | `Float` |  |
 
 #### Example: List
 
@@ -1157,8 +1185,8 @@ Create an instance: `indice_inflacion = client.IndiceInflacion`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `valor` | ``$NUMBER`` |  |
+| `fecha` | `String` |  |
+| `valor` | `Float` |  |
 
 #### Example: List
 
@@ -1182,8 +1210,8 @@ Create an instance: `indice_uva = client.IndiceUva`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `valor` | ``$NUMBER`` |  |
+| `fecha` | `String` |  |
+| `valor` | `Float` |  |
 
 #### Example: List
 
@@ -1207,11 +1235,11 @@ Create an instance: `letra = client.Letra`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha_emision` | ``$STRING`` |  |
-| `fecha_vencimiento` | ``$STRING`` |  |
-| `tem` | ``$NUMBER`` |  |
-| `ticker` | ``$STRING`` |  |
-| `vpv` | ``$NUMBER`` |  |
+| `fecha_emision` | `String` |  |
+| `fecha_vencimiento` | `String` |  |
+| `tem` | `Float` |  |
+| `ticker` | `String` |  |
+| `vpv` | `Float` |  |
 
 #### Example: List
 
@@ -1235,14 +1263,14 @@ Create an instance: `presidente = client.Presidente`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fin` | ``$STRING`` |  |
-| `imagen` | ``$STRING`` |  |
-| `inicio` | ``$STRING`` |  |
-| `nombre` | ``$STRING`` |  |
-| `partido` | ``$STRING`` |  |
-| `partido_imagen` | ``$STRING`` |  |
-| `periodo_presidencial` | ``$STRING`` |  |
-| `vicepresidente` | ``$STRING`` |  |
+| `fin` | `String` |  |
+| `imagen` | `String` |  |
+| `inicio` | `String` |  |
+| `nombre` | `String` |  |
+| `partido` | `String` |  |
+| `partido_imagen` | `String` |  |
+| `periodo_presidencial` | `String` |  |
+| `vicepresidente` | `String` |  |
 
 #### Example: List
 
@@ -1266,23 +1294,23 @@ Create an instance: `proveedor_plazo_fijo_precancelable = client.ProveedorPlazoF
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aviso_precancelacion_dia` | ``$INTEGER`` |  |
-| `canal` | ``$STRING`` |  |
-| `enlace` | ``$STRING`` |  |
-| `entidad` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `logo` | ``$STRING`` |  |
-| `modalidad` | ``$STRING`` |  |
-| `moneda` | ``$STRING`` |  |
-| `monto_maximo` | ``$NUMBER`` |  |
-| `monto_minimo` | ``$NUMBER`` |  |
-| `plazo_max_dia` | ``$INTEGER`` |  |
-| `plazo_min_dia` | ``$INTEGER`` |  |
-| `plazo_precancelacion_dia` | ``$INTEGER`` |  |
-| `tea` | ``$NUMBER`` |  |
-| `tea_precancelacion` | ``$NUMBER`` |  |
-| `tna` | ``$NUMBER`` |  |
-| `tna_precancelacion` | ``$NUMBER`` |  |
+| `aviso_precancelacion_dia` | `Integer` |  |
+| `canal` | `String` |  |
+| `enlace` | `String` |  |
+| `entidad` | `String` |  |
+| `id` | `String` |  |
+| `logo` | `String` |  |
+| `modalidad` | `String` |  |
+| `moneda` | `String` |  |
+| `monto_maximo` | `Float` |  |
+| `monto_minimo` | `Float` |  |
+| `plazo_max_dia` | `Integer` |  |
+| `plazo_min_dia` | `Integer` |  |
+| `plazo_precancelacion_dia` | `Integer` |  |
+| `tea` | `Float` |  |
+| `tea_precancelacion` | `Float` |  |
+| `tna` | `Float` |  |
+| `tna_precancelacion` | `Float` |  |
 
 #### Example: List
 
@@ -1306,10 +1334,10 @@ Create an instance: `proveedor_plazo_fijo_uva_pago_periodico = client.ProveedorP
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `logo` | ``$STRING`` |  |
-| `tasa` | ``$ARRAY`` |  |
+| `entidad` | `String` |  |
+| `id` | `String` |  |
+| `logo` | `String` |  |
+| `tasa` | `Array` |  |
 
 #### Example: List
 
@@ -1333,30 +1361,30 @@ Create an instance: `rem = client.Rem`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `desvio` | ``$NUMBER`` |  |
-| `fecha` | ``$STRING`` |  |
-| `fuente` | ``$STRING`` |  |
-| `indicador` | ``$STRING`` |  |
-| `informe` | ``$STRING`` |  |
-| `maximo` | ``$NUMBER`` |  |
-| `mediana` | ``$NUMBER`` |  |
-| `minimo` | ``$NUMBER`` |  |
-| `muestra` | ``$STRING`` |  |
-| `participante` | ``$INTEGER`` |  |
-| `percentil10` | ``$NUMBER`` |  |
-| `percentil25` | ``$NUMBER`` |  |
-| `percentil75` | ``$NUMBER`` |  |
-| `percentil90` | ``$NUMBER`` |  |
-| `periodo` | ``$STRING`` |  |
-| `periodo_desde` | ``$STRING`` |  |
-| `periodo_hasta` | ``$STRING`` |  |
-| `periodo_tipo` | ``$STRING`` |  |
-| `promedio` | ``$NUMBER`` |  |
-| `publicacion_url` | ``$STRING`` |  |
-| `referencia` | ``$STRING`` |  |
-| `referencia_fecha` | ``$STRING`` |  |
-| `unidad` | ``$STRING`` |  |
-| `xlsx_url` | ``$STRING`` |  |
+| `desvio` | `Float` |  |
+| `fecha` | `String` |  |
+| `fuente` | `String` |  |
+| `indicador` | `String` |  |
+| `informe` | `String` |  |
+| `maximo` | `Float` |  |
+| `mediana` | `Float` |  |
+| `minimo` | `Float` |  |
+| `muestra` | `String` |  |
+| `participante` | `Integer` |  |
+| `percentil10` | `Float` |  |
+| `percentil25` | `Float` |  |
+| `percentil75` | `Float` |  |
+| `percentil90` | `Float` |  |
+| `periodo` | `String` |  |
+| `periodo_desde` | `String` |  |
+| `periodo_hasta` | `String` |  |
+| `periodo_tipo` | `String` |  |
+| `promedio` | `Float` |  |
+| `publicacion_url` | `String` |  |
+| `referencia` | `String` |  |
+| `referencia_fecha` | `String` |  |
+| `unidad` | `String` |  |
+| `xlsx_url` | `String` |  |
 
 #### Example: List
 
@@ -1380,30 +1408,30 @@ Create an instance: `rem_expectativa = client.RemExpectativa`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `desvio` | ``$NUMBER`` |  |
-| `fecha` | ``$STRING`` |  |
-| `fuente` | ``$STRING`` |  |
-| `indicador` | ``$STRING`` |  |
-| `informe` | ``$STRING`` |  |
-| `maximo` | ``$NUMBER`` |  |
-| `mediana` | ``$NUMBER`` |  |
-| `minimo` | ``$NUMBER`` |  |
-| `muestra` | ``$STRING`` |  |
-| `participante` | ``$INTEGER`` |  |
-| `percentil10` | ``$NUMBER`` |  |
-| `percentil25` | ``$NUMBER`` |  |
-| `percentil75` | ``$NUMBER`` |  |
-| `percentil90` | ``$NUMBER`` |  |
-| `periodo` | ``$STRING`` |  |
-| `periodo_desde` | ``$STRING`` |  |
-| `periodo_hasta` | ``$STRING`` |  |
-| `periodo_tipo` | ``$STRING`` |  |
-| `promedio` | ``$NUMBER`` |  |
-| `publicacion_url` | ``$STRING`` |  |
-| `referencia` | ``$STRING`` |  |
-| `referencia_fecha` | ``$STRING`` |  |
-| `unidad` | ``$STRING`` |  |
-| `xlsx_url` | ``$STRING`` |  |
+| `desvio` | `Float` |  |
+| `fecha` | `String` |  |
+| `fuente` | `String` |  |
+| `indicador` | `String` |  |
+| `informe` | `String` |  |
+| `maximo` | `Float` |  |
+| `mediana` | `Float` |  |
+| `minimo` | `Float` |  |
+| `muestra` | `String` |  |
+| `participante` | `Integer` |  |
+| `percentil10` | `Float` |  |
+| `percentil25` | `Float` |  |
+| `percentil75` | `Float` |  |
+| `percentil90` | `Float` |  |
+| `periodo` | `String` |  |
+| `periodo_desde` | `String` |  |
+| `periodo_hasta` | `String` |  |
+| `periodo_tipo` | `String` |  |
+| `promedio` | `Float` |  |
+| `publicacion_url` | `String` |  |
+| `referencia` | `String` |  |
+| `referencia_fecha` | `String` |  |
+| `unidad` | `String` |  |
+| `xlsx_url` | `String` |  |
 
 #### Example: List
 
@@ -1427,9 +1455,9 @@ Create an instance: `rendimiento = client.Rendimiento`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `apy` | ``$NUMBER`` |  |
-| `fecha` | ``$STRING`` |  |
-| `moneda` | ``$STRING`` |  |
+| `apy` | `Float` |  |
+| `fecha` | `String` |  |
+| `moneda` | `String` |  |
 
 #### Example: Load
 
@@ -1454,14 +1482,14 @@ Create an instance: `riesgo_pai = client.RiesgoPai`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `valor` | ``$NUMBER`` |  |
+| `fecha` | `String` |  |
+| `valor` | `Float` |  |
 
 #### Example: Load
 
 ```ruby
 # load returns the bare RiesgoPai record (raises on error).
-riesgo_pai = client.RiesgoPai.load({ "id" => "riesgo_pai_id" })
+riesgo_pai = client.RiesgoPai.load()
 ```
 
 #### Example: List
@@ -1486,18 +1514,18 @@ Create an instance: `senador = client.Senador`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `email` | ``$STRING`` |  |
-| `foto` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `nombre` | ``$STRING`` |  |
-| `observacione` | ``$STRING`` |  |
-| `partido` | ``$STRING`` |  |
-| `periodo_legal` | ``$OBJECT`` |  |
-| `periodo_real` | ``$OBJECT`` |  |
-| `provincia` | ``$STRING`` |  |
-| `rede` | ``$ARRAY`` |  |
-| `reemplazo` | ``$STRING`` |  |
-| `telefono` | ``$STRING`` |  |
+| `email` | `String` |  |
+| `foto` | `String` |  |
+| `id` | `String` |  |
+| `nombre` | `String` |  |
+| `observacione` | `String` |  |
+| `partido` | `String` |  |
+| `periodo_legal` | `Hash` |  |
+| `periodo_real` | `Hash` |  |
+| `provincia` | `String` |  |
+| `rede` | `Array` |  |
+| `reemplazo` | `String` |  |
+| `telefono` | `String` |  |
 
 #### Example: List
 
@@ -1521,8 +1549,8 @@ Create an instance: `tasa_intere = client.TasaIntere`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `valor` | ``$NUMBER`` |  |
+| `fecha` | `String` |  |
+| `valor` | `Float` |  |
 
 #### Example: List
 
@@ -1546,10 +1574,10 @@ Create an instance: `tasa_plazo_fijo = client.TasaPlazoFijo`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `logo` | ``$STRING`` |  |
-| `tna_cliente` | ``$NUMBER`` |  |
-| `tna_no_cliente` | ``$NUMBER`` |  |
+| `entidad` | `String` |  |
+| `logo` | `String` |  |
+| `tna_cliente` | `Float` |  |
+| `tna_no_cliente` | `Float` |  |
 
 #### Example: List
 
@@ -1559,12 +1587,16 @@ tasa_plazo_fijos = client.TasaPlazoFijo.list
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -1581,8 +1613,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as a second return value.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -1626,14 +1659,14 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
 acta = client.Acta
-acta.load({ "id" => "example_id" })
+acta.list()
 
-# acta.data_get now returns the loaded acta data
+# acta.data_get now returns the acta data from the last list
 # acta.match_get returns the last match criteria
 ```
 

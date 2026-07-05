@@ -440,31 +440,31 @@ const acta = client.Acta()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abstencione` | ``$INTEGER`` | No |  |
-| `acta` | ``$STRING`` | No |  |
-| `acta_id` | ``$INTEGER`` | No |  |
-| `afirmativo` | ``$INTEGER`` | No |  |
-| `amn` | ``$INTEGER`` | No |  |
-| `ausente` | ``$INTEGER`` | No |  |
-| `descripcion` | ``$STRING`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `mayoria` | ``$STRING`` | No |  |
-| `miembro` | ``$INTEGER`` | No |  |
-| `negativo` | ``$INTEGER`` | No |  |
-| `numero_acta` | ``$STRING`` | No |  |
-| `observacione` | ``$ARRAY`` | No |  |
-| `periodo` | ``$STRING`` | No |  |
-| `presente` | ``$INTEGER`` | No |  |
-| `presidente` | ``$STRING`` | No |  |
-| `proyecto` | ``$STRING`` | No |  |
-| `quorum_tipo` | ``$STRING`` | No |  |
-| `resultado` | ``$STRING`` | No |  |
-| `reunion` | ``$STRING`` | No |  |
-| `titulo` | ``$STRING`` | No |  |
-| `voto` | ``$ARRAY`` | No |  |
-| `votos_afirmativo` | ``$INTEGER`` | No |  |
-| `votos_negativo` | ``$INTEGER`` | No |  |
+| `abstencione` | `number` | No |  |
+| `acta` | `string` | No |  |
+| `acta_id` | `number` | No |  |
+| `afirmativo` | `number` | No |  |
+| `amn` | `number` | No |  |
+| `ausente` | `number` | No |  |
+| `descripcion` | `string` | No |  |
+| `fecha` | `string` | No |  |
+| `id` | `string` | No |  |
+| `mayoria` | `string` | No |  |
+| `miembro` | `number` | No |  |
+| `negativo` | `number` | No |  |
+| `numero_acta` | `string` | No |  |
+| `observacione` | `any[]` | No |  |
+| `periodo` | `string` | No |  |
+| `presente` | `number` | No |  |
+| `presidente` | `string` | No |  |
+| `proyecto` | `string` | No |  |
+| `quorum_tipo` | `string` | No |  |
+| `resultado` | `string` | No |  |
+| `reunion` | `string` | No |  |
+| `titulo` | `string` | No |  |
+| `voto` | `any[]` | No |  |
+| `votos_afirmativo` | `number` | No |  |
+| `votos_negativo` | `number` | No |  |
 
 ### Operations
 
@@ -481,7 +481,7 @@ const results = await client.Acta().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Acta().load({ id: 'acta_id' })
+const result = await client.Acta().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -522,11 +522,11 @@ const bonos_cer = client.BonosCer()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha_vencimiento` | ``$STRING`` | Yes |  |
-| `precio_ar` | ``$NUMBER`` | Yes |  |
-| `ticker` | ``$STRING`` | Yes |  |
-| `tir_porcentaje` | ``$NUMBER`` | Yes |  |
-| `voluman` | ``$NUMBER`` | No |  |
+| `fecha_vencimiento` | `string` | Yes |  |
+| `precio_ar` | `number` | Yes |  |
+| `ticker` | `string` | Yes |  |
+| `tir_porcentaje` | `number` | Yes |  |
+| `voluman` | `number` | No |  |
 
 ### Operations
 
@@ -576,11 +576,11 @@ const cotizacion = client.Cotizacion()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `casa` | ``$STRING`` | No |  |
-| `compra` | ``$NUMBER`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `moneda` | ``$STRING`` | No |  |
-| `venta` | ``$NUMBER`` | No |  |
+| `casa` | `string` | No |  |
+| `compra` | `number` | No |  |
+| `fecha` | `string` | No |  |
+| `moneda` | `string` | No |  |
+| `venta` | `number` | No |  |
 
 ### Operations
 
@@ -597,7 +597,7 @@ const results = await client.Cotizacion().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Cotizacion().load({ id: 'cotizacion_id' })
+const result = await client.Cotizacion().load()
 ```
 
 ### Common Methods
@@ -638,9 +638,9 @@ const criptopeso = client.Criptopeso()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `tna` | ``$NUMBER`` | No |  |
-| `token` | ``$STRING`` | No |  |
+| `entidad` | `string` | No |  |
+| `tna` | `number` | No |  |
+| `token` | `string` | No |  |
 
 ### Operations
 
@@ -690,9 +690,9 @@ const cuenta_remunerada_usd = client.CuentaRemuneradaUsd()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `tasa` | ``$NUMBER`` | No |  |
-| `tope` | ``$NUMBER`` | No |  |
+| `entidad` | `string` | No |  |
+| `tasa` | `number` | No |  |
+| `tope` | `number` | No |  |
 
 ### Operations
 
@@ -742,17 +742,17 @@ const diputado = client.Diputado()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `apellido` | ``$STRING`` | No |  |
-| `bloque` | ``$STRING`` | No |  |
-| `cese_fecha` | ``$STRING`` | No |  |
-| `foto` | ``$STRING`` | No |  |
-| `genero` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `juramento_fecha` | ``$STRING`` | No |  |
-| `nombre` | ``$STRING`` | No |  |
-| `periodo_bloque` | ``$OBJECT`` | No |  |
-| `periodo_mandato` | ``$OBJECT`` | No |  |
-| `provincia` | ``$STRING`` | No |  |
+| `apellido` | `string` | No |  |
+| `bloque` | `string` | No |  |
+| `cese_fecha` | `string` | No |  |
+| `foto` | `string` | No |  |
+| `genero` | `string` | No |  |
+| `id` | `string` | No |  |
+| `juramento_fecha` | `string` | No |  |
+| `nombre` | `string` | No |  |
+| `periodo_bloque` | `Record<string, any>` | No |  |
+| `periodo_mandato` | `Record<string, any>` | No |  |
+| `provincia` | `string` | No |  |
 
 ### Operations
 
@@ -802,8 +802,8 @@ const entidad_rendimiento = client.EntidadRendimiento()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `rendimiento` | ``$ARRAY`` | No |  |
+| `entidad` | `string` | No |  |
+| `rendimiento` | `any[]` | No |  |
 
 ### Operations
 
@@ -853,8 +853,8 @@ const estado = client.Estado()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aleatorio` | ``$INTEGER`` | No |  |
-| `estado` | ``$STRING`` | No |  |
+| `aleatorio` | `number` | No |  |
+| `estado` | `string` | No |  |
 
 ### Operations
 
@@ -863,7 +863,7 @@ const estado = client.Estado()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Estado().load({ id: 'estado_id' })
+const result = await client.Estado().load()
 ```
 
 ### Common Methods
@@ -904,9 +904,9 @@ const evento_presidencial = client.EventoPresidencial()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `evento` | ``$STRING`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `tipo` | ``$STRING`` | No |  |
+| `evento` | `string` | No |  |
+| `fecha` | `string` | No |  |
+| `tipo` | `string` | No |  |
 
 ### Operations
 
@@ -956,9 +956,9 @@ const feriado = client.Feriado()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `nombre` | ``$STRING`` | No |  |
-| `tipo` | ``$STRING`` | No |  |
+| `fecha` | `string` | No |  |
+| `nombre` | `string` | No |  |
+| `tipo` | `string` | No |  |
 
 ### Operations
 
@@ -967,7 +967,7 @@ const feriado = client.Feriado()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Feriado().load({ id: 'feriado_id' })
+const result = await client.Feriado().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -1052,13 +1052,13 @@ const fondo_comun_inversion = client.FondoComunInversion()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ccp` | ``$NUMBER`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `fondo` | ``$STRING`` | No |  |
-| `horizonte` | ``$STRING`` | No |  |
-| `patrimonio` | ``$NUMBER`` | No |  |
-| `tipo` | ``$STRING`` | No |  |
-| `vcp` | ``$NUMBER`` | No |  |
+| `ccp` | `number` | No |  |
+| `fecha` | `string` | No |  |
+| `fondo` | `string` | No |  |
+| `horizonte` | `string` | No |  |
+| `patrimonio` | `number` | No |  |
+| `tipo` | `string` | No |  |
+| `vcp` | `number` | No |  |
 
 ### Operations
 
@@ -1067,7 +1067,7 @@ const fondo_comun_inversion = client.FondoComunInversion()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.FondoComunInversion().load({ id: 'fondo_comun_inversion_id' })
+const result = await client.FondoComunInversion().load()
 ```
 
 ### Common Methods
@@ -1108,11 +1108,11 @@ const fondo_comun_inversion_otro = client.FondoComunInversionOtro()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `fondo` | ``$STRING`` | No |  |
-| `tea` | ``$NUMBER`` | No |  |
-| `tna` | ``$NUMBER`` | No |  |
-| `tope` | ``$NUMBER`` | No |  |
+| `fecha` | `string` | No |  |
+| `fondo` | `string` | No |  |
+| `tea` | `number` | No |  |
+| `tna` | `number` | No |  |
+| `tope` | `number` | No |  |
 
 ### Operations
 
@@ -1162,15 +1162,15 @@ const fondo_comun_inversion_variable = client.FondoComunInversionVariable()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `condicione` | ``$STRING`` | No |  |
-| `condiciones_corto` | ``$STRING`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `fondo` | ``$STRING`` | No |  |
-| `nombre` | ``$STRING`` | No |  |
-| `tea` | ``$NUMBER`` | No |  |
-| `tipo` | ``$STRING`` | No |  |
-| `tna` | ``$NUMBER`` | No |  |
-| `tope` | ``$NUMBER`` | No |  |
+| `condicione` | `string` | No |  |
+| `condiciones_corto` | `string` | No |  |
+| `fecha` | `string` | No |  |
+| `fondo` | `string` | No |  |
+| `nombre` | `string` | No |  |
+| `tea` | `number` | No |  |
+| `tipo` | `string` | No |  |
+| `tna` | `number` | No |  |
+| `tope` | `number` | No |  |
 
 ### Operations
 
@@ -1220,10 +1220,10 @@ const hipotecario_uva_tna = client.HipotecarioUvaTna()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `metadata` | ``$OBJECT`` | No |  |
-| `nombre_comercial` | ``$STRING`` | No |  |
-| `tna` | ``$NUMBER`` | No |  |
+| `entidad` | `string` | No |  |
+| `metadata` | `Record<string, any>` | No |  |
+| `nombre_comercial` | `string` | No |  |
+| `tna` | `number` | No |  |
 
 ### Operations
 
@@ -1273,8 +1273,8 @@ const indice_inflacion = client.IndiceInflacion()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `valor` | ``$NUMBER`` | No |  |
+| `fecha` | `string` | No |  |
+| `valor` | `number` | No |  |
 
 ### Operations
 
@@ -1324,8 +1324,8 @@ const indice_uva = client.IndiceUva()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `valor` | ``$NUMBER`` | No |  |
+| `fecha` | `string` | No |  |
+| `valor` | `number` | No |  |
 
 ### Operations
 
@@ -1375,11 +1375,11 @@ const letra = client.Letra()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha_emision` | ``$STRING`` | No |  |
-| `fecha_vencimiento` | ``$STRING`` | No |  |
-| `tem` | ``$NUMBER`` | No |  |
-| `ticker` | ``$STRING`` | No |  |
-| `vpv` | ``$NUMBER`` | No |  |
+| `fecha_emision` | `string` | No |  |
+| `fecha_vencimiento` | `string` | No |  |
+| `tem` | `number` | No |  |
+| `ticker` | `string` | No |  |
+| `vpv` | `number` | No |  |
 
 ### Operations
 
@@ -1429,14 +1429,14 @@ const presidente = client.Presidente()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fin` | ``$STRING`` | No |  |
-| `imagen` | ``$STRING`` | No |  |
-| `inicio` | ``$STRING`` | No |  |
-| `nombre` | ``$STRING`` | No |  |
-| `partido` | ``$STRING`` | No |  |
-| `partido_imagen` | ``$STRING`` | No |  |
-| `periodo_presidencial` | ``$STRING`` | No |  |
-| `vicepresidente` | ``$STRING`` | No |  |
+| `fin` | `string` | No |  |
+| `imagen` | `string` | No |  |
+| `inicio` | `string` | No |  |
+| `nombre` | `string` | No |  |
+| `partido` | `string` | No |  |
+| `partido_imagen` | `string` | No |  |
+| `periodo_presidencial` | `string` | No |  |
+| `vicepresidente` | `string` | No |  |
 
 ### Operations
 
@@ -1486,23 +1486,23 @@ const proveedor_plazo_fijo_precancelable = client.ProveedorPlazoFijoPrecancelabl
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aviso_precancelacion_dia` | ``$INTEGER`` | No |  |
-| `canal` | ``$STRING`` | No |  |
-| `enlace` | ``$STRING`` | No |  |
-| `entidad` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `logo` | ``$STRING`` | No |  |
-| `modalidad` | ``$STRING`` | No |  |
-| `moneda` | ``$STRING`` | No |  |
-| `monto_maximo` | ``$NUMBER`` | No |  |
-| `monto_minimo` | ``$NUMBER`` | No |  |
-| `plazo_max_dia` | ``$INTEGER`` | No |  |
-| `plazo_min_dia` | ``$INTEGER`` | No |  |
-| `plazo_precancelacion_dia` | ``$INTEGER`` | No |  |
-| `tea` | ``$NUMBER`` | No |  |
-| `tea_precancelacion` | ``$NUMBER`` | No |  |
-| `tna` | ``$NUMBER`` | No |  |
-| `tna_precancelacion` | ``$NUMBER`` | No |  |
+| `aviso_precancelacion_dia` | `number` | No |  |
+| `canal` | `string` | No |  |
+| `enlace` | `string` | No |  |
+| `entidad` | `string` | No |  |
+| `id` | `string` | No |  |
+| `logo` | `string` | No |  |
+| `modalidad` | `string` | No |  |
+| `moneda` | `string` | No |  |
+| `monto_maximo` | `number` | No |  |
+| `monto_minimo` | `number` | No |  |
+| `plazo_max_dia` | `number` | No |  |
+| `plazo_min_dia` | `number` | No |  |
+| `plazo_precancelacion_dia` | `number` | No |  |
+| `tea` | `number` | No |  |
+| `tea_precancelacion` | `number` | No |  |
+| `tna` | `number` | No |  |
+| `tna_precancelacion` | `number` | No |  |
 
 ### Operations
 
@@ -1552,10 +1552,10 @@ const proveedor_plazo_fijo_uva_pago_periodico = client.ProveedorPlazoFijoUvaPago
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `logo` | ``$STRING`` | No |  |
-| `tasa` | ``$ARRAY`` | No |  |
+| `entidad` | `string` | No |  |
+| `id` | `string` | No |  |
+| `logo` | `string` | No |  |
+| `tasa` | `any[]` | No |  |
 
 ### Operations
 
@@ -1605,30 +1605,30 @@ const rem = client.Rem()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `desvio` | ``$NUMBER`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `fuente` | ``$STRING`` | No |  |
-| `indicador` | ``$STRING`` | No |  |
-| `informe` | ``$STRING`` | No |  |
-| `maximo` | ``$NUMBER`` | No |  |
-| `mediana` | ``$NUMBER`` | No |  |
-| `minimo` | ``$NUMBER`` | No |  |
-| `muestra` | ``$STRING`` | No |  |
-| `participante` | ``$INTEGER`` | No |  |
-| `percentil10` | ``$NUMBER`` | No |  |
-| `percentil25` | ``$NUMBER`` | No |  |
-| `percentil75` | ``$NUMBER`` | No |  |
-| `percentil90` | ``$NUMBER`` | No |  |
-| `periodo` | ``$STRING`` | No |  |
-| `periodo_desde` | ``$STRING`` | No |  |
-| `periodo_hasta` | ``$STRING`` | No |  |
-| `periodo_tipo` | ``$STRING`` | No |  |
-| `promedio` | ``$NUMBER`` | No |  |
-| `publicacion_url` | ``$STRING`` | No |  |
-| `referencia` | ``$STRING`` | No |  |
-| `referencia_fecha` | ``$STRING`` | No |  |
-| `unidad` | ``$STRING`` | No |  |
-| `xlsx_url` | ``$STRING`` | No |  |
+| `desvio` | `number` | No |  |
+| `fecha` | `string` | No |  |
+| `fuente` | `string` | No |  |
+| `indicador` | `string` | No |  |
+| `informe` | `string` | No |  |
+| `maximo` | `number` | No |  |
+| `mediana` | `number` | No |  |
+| `minimo` | `number` | No |  |
+| `muestra` | `string` | No |  |
+| `participante` | `number` | No |  |
+| `percentil10` | `number` | No |  |
+| `percentil25` | `number` | No |  |
+| `percentil75` | `number` | No |  |
+| `percentil90` | `number` | No |  |
+| `periodo` | `string` | No |  |
+| `periodo_desde` | `string` | No |  |
+| `periodo_hasta` | `string` | No |  |
+| `periodo_tipo` | `string` | No |  |
+| `promedio` | `number` | No |  |
+| `publicacion_url` | `string` | No |  |
+| `referencia` | `string` | No |  |
+| `referencia_fecha` | `string` | No |  |
+| `unidad` | `string` | No |  |
+| `xlsx_url` | `string` | No |  |
 
 ### Operations
 
@@ -1678,30 +1678,30 @@ const rem_expectativa = client.RemExpectativa()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `desvio` | ``$NUMBER`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `fuente` | ``$STRING`` | No |  |
-| `indicador` | ``$STRING`` | No |  |
-| `informe` | ``$STRING`` | No |  |
-| `maximo` | ``$NUMBER`` | No |  |
-| `mediana` | ``$NUMBER`` | No |  |
-| `minimo` | ``$NUMBER`` | No |  |
-| `muestra` | ``$STRING`` | No |  |
-| `participante` | ``$INTEGER`` | No |  |
-| `percentil10` | ``$NUMBER`` | No |  |
-| `percentil25` | ``$NUMBER`` | No |  |
-| `percentil75` | ``$NUMBER`` | No |  |
-| `percentil90` | ``$NUMBER`` | No |  |
-| `periodo` | ``$STRING`` | No |  |
-| `periodo_desde` | ``$STRING`` | No |  |
-| `periodo_hasta` | ``$STRING`` | No |  |
-| `periodo_tipo` | ``$STRING`` | No |  |
-| `promedio` | ``$NUMBER`` | No |  |
-| `publicacion_url` | ``$STRING`` | No |  |
-| `referencia` | ``$STRING`` | No |  |
-| `referencia_fecha` | ``$STRING`` | No |  |
-| `unidad` | ``$STRING`` | No |  |
-| `xlsx_url` | ``$STRING`` | No |  |
+| `desvio` | `number` | No |  |
+| `fecha` | `string` | No |  |
+| `fuente` | `string` | No |  |
+| `indicador` | `string` | No |  |
+| `informe` | `string` | No |  |
+| `maximo` | `number` | No |  |
+| `mediana` | `number` | No |  |
+| `minimo` | `number` | No |  |
+| `muestra` | `string` | No |  |
+| `participante` | `number` | No |  |
+| `percentil10` | `number` | No |  |
+| `percentil25` | `number` | No |  |
+| `percentil75` | `number` | No |  |
+| `percentil90` | `number` | No |  |
+| `periodo` | `string` | No |  |
+| `periodo_desde` | `string` | No |  |
+| `periodo_hasta` | `string` | No |  |
+| `periodo_tipo` | `string` | No |  |
+| `promedio` | `number` | No |  |
+| `publicacion_url` | `string` | No |  |
+| `referencia` | `string` | No |  |
+| `referencia_fecha` | `string` | No |  |
+| `unidad` | `string` | No |  |
+| `xlsx_url` | `string` | No |  |
 
 ### Operations
 
@@ -1751,9 +1751,9 @@ const rendimiento = client.Rendimiento()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `apy` | ``$NUMBER`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `moneda` | ``$STRING`` | No |  |
+| `apy` | `number` | No |  |
+| `fecha` | `string` | No |  |
+| `moneda` | `string` | No |  |
 
 ### Operations
 
@@ -1803,8 +1803,8 @@ const riesgo_pai = client.RiesgoPai()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `valor` | ``$NUMBER`` | No |  |
+| `fecha` | `string` | No |  |
+| `valor` | `number` | No |  |
 
 ### Operations
 
@@ -1821,7 +1821,7 @@ const results = await client.RiesgoPai().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.RiesgoPai().load({ id: 'riesgo_pai_id' })
+const result = await client.RiesgoPai().load()
 ```
 
 ### Common Methods
@@ -1862,18 +1862,18 @@ const senador = client.Senador()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | ``$STRING`` | No |  |
-| `foto` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `nombre` | ``$STRING`` | No |  |
-| `observacione` | ``$STRING`` | No |  |
-| `partido` | ``$STRING`` | No |  |
-| `periodo_legal` | ``$OBJECT`` | No |  |
-| `periodo_real` | ``$OBJECT`` | No |  |
-| `provincia` | ``$STRING`` | No |  |
-| `rede` | ``$ARRAY`` | No |  |
-| `reemplazo` | ``$STRING`` | No |  |
-| `telefono` | ``$STRING`` | No |  |
+| `email` | `string` | No |  |
+| `foto` | `string` | No |  |
+| `id` | `string` | No |  |
+| `nombre` | `string` | No |  |
+| `observacione` | `string` | No |  |
+| `partido` | `string` | No |  |
+| `periodo_legal` | `Record<string, any>` | No |  |
+| `periodo_real` | `Record<string, any>` | No |  |
+| `provincia` | `string` | No |  |
+| `rede` | `any[]` | No |  |
+| `reemplazo` | `string` | No |  |
+| `telefono` | `string` | No |  |
 
 ### Operations
 
@@ -1923,8 +1923,8 @@ const tasa_intere = client.TasaIntere()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `valor` | ``$NUMBER`` | No |  |
+| `fecha` | `string` | No |  |
+| `valor` | `number` | No |  |
 
 ### Operations
 
@@ -1974,10 +1974,10 @@ const tasa_plazo_fijo = client.TasaPlazoFijo()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `logo` | ``$STRING`` | No |  |
-| `tna_cliente` | ``$NUMBER`` | No |  |
-| `tna_no_cliente` | ``$NUMBER`` | No |  |
+| `entidad` | `string` | No |  |
+| `logo` | `string` | No |  |
+| `tna_cliente` | `number` | No |  |
+| `tna_no_cliente` | `number` | No |  |
 
 ### Operations
 

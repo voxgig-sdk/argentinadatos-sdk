@@ -221,169 +221,169 @@ class ArgentinadatosSDK:
 
 
     def Acta(self, data=None) -> "ActaEntity":
-        """Entity factory: client.Acta().list({}) / client.Acta().load({"id": ...})."""
+        """Entity factory: client.Acta().list() / client.Acta().load({"id": ...})."""
         from entity.acta_entity import ActaEntity
         return ActaEntity(self, data)
 
 
     def BonosCer(self, data=None) -> "BonosCerEntity":
-        """Entity factory: client.BonosCer().list({}) / client.BonosCer().load({"id": ...})."""
+        """Entity factory: client.BonosCer().list() / client.BonosCer().load({"id": ...})."""
         from entity.bonos_cer_entity import BonosCerEntity
         return BonosCerEntity(self, data)
 
 
     def Cotizacion(self, data=None) -> "CotizacionEntity":
-        """Entity factory: client.Cotizacion().list({}) / client.Cotizacion().load({"id": ...})."""
+        """Entity factory: client.Cotizacion().list() / client.Cotizacion().load({"id": ...})."""
         from entity.cotizacion_entity import CotizacionEntity
         return CotizacionEntity(self, data)
 
 
     def Criptopeso(self, data=None) -> "CriptopesoEntity":
-        """Entity factory: client.Criptopeso().list({}) / client.Criptopeso().load({"id": ...})."""
+        """Entity factory: client.Criptopeso().list() / client.Criptopeso().load({"id": ...})."""
         from entity.criptopeso_entity import CriptopesoEntity
         return CriptopesoEntity(self, data)
 
 
     def CuentaRemuneradaUsd(self, data=None) -> "CuentaRemuneradaUsdEntity":
-        """Entity factory: client.CuentaRemuneradaUsd().list({}) / client.CuentaRemuneradaUsd().load({"id": ...})."""
+        """Entity factory: client.CuentaRemuneradaUsd().list() / client.CuentaRemuneradaUsd().load({"id": ...})."""
         from entity.cuenta_remunerada_usd_entity import CuentaRemuneradaUsdEntity
         return CuentaRemuneradaUsdEntity(self, data)
 
 
     def Diputado(self, data=None) -> "DiputadoEntity":
-        """Entity factory: client.Diputado().list({}) / client.Diputado().load({"id": ...})."""
+        """Entity factory: client.Diputado().list() / client.Diputado().load({"id": ...})."""
         from entity.diputado_entity import DiputadoEntity
         return DiputadoEntity(self, data)
 
 
     def EntidadRendimiento(self, data=None) -> "EntidadRendimientoEntity":
-        """Entity factory: client.EntidadRendimiento().list({}) / client.EntidadRendimiento().load({"id": ...})."""
+        """Entity factory: client.EntidadRendimiento().list() / client.EntidadRendimiento().load({"id": ...})."""
         from entity.entidad_rendimiento_entity import EntidadRendimientoEntity
         return EntidadRendimientoEntity(self, data)
 
 
     def Estado(self, data=None) -> "EstadoEntity":
-        """Entity factory: client.Estado().list({}) / client.Estado().load({"id": ...})."""
+        """Entity factory: client.Estado().list() / client.Estado().load({"id": ...})."""
         from entity.estado_entity import EstadoEntity
         return EstadoEntity(self, data)
 
 
     def EventoPresidencial(self, data=None) -> "EventoPresidencialEntity":
-        """Entity factory: client.EventoPresidencial().list({}) / client.EventoPresidencial().load({"id": ...})."""
+        """Entity factory: client.EventoPresidencial().list() / client.EventoPresidencial().load({"id": ...})."""
         from entity.evento_presidencial_entity import EventoPresidencialEntity
         return EventoPresidencialEntity(self, data)
 
 
     def Feriado(self, data=None) -> "FeriadoEntity":
-        """Entity factory: client.Feriado().list({}) / client.Feriado().load({"id": ...})."""
+        """Entity factory: client.Feriado().list() / client.Feriado().load({"id": ...})."""
         from entity.feriado_entity import FeriadoEntity
         return FeriadoEntity(self, data)
 
 
     def Finanza(self, data=None) -> "FinanzaEntity":
-        """Entity factory: client.Finanza().list({}) / client.Finanza().load({"id": ...})."""
+        """Entity factory: client.Finanza().list() / client.Finanza().load({"id": ...})."""
         from entity.finanza_entity import FinanzaEntity
         return FinanzaEntity(self, data)
 
 
     def FondoComunInversion(self, data=None) -> "FondoComunInversionEntity":
-        """Entity factory: client.FondoComunInversion().list({}) / client.FondoComunInversion().load({"id": ...})."""
+        """Entity factory: client.FondoComunInversion().list() / client.FondoComunInversion().load({"id": ...})."""
         from entity.fondo_comun_inversion_entity import FondoComunInversionEntity
         return FondoComunInversionEntity(self, data)
 
 
     def FondoComunInversionOtro(self, data=None) -> "FondoComunInversionOtroEntity":
-        """Entity factory: client.FondoComunInversionOtro().list({}) / client.FondoComunInversionOtro().load({"id": ...})."""
+        """Entity factory: client.FondoComunInversionOtro().list() / client.FondoComunInversionOtro().load({"id": ...})."""
         from entity.fondo_comun_inversion_otro_entity import FondoComunInversionOtroEntity
         return FondoComunInversionOtroEntity(self, data)
 
 
     def FondoComunInversionVariable(self, data=None) -> "FondoComunInversionVariableEntity":
-        """Entity factory: client.FondoComunInversionVariable().list({}) / client.FondoComunInversionVariable().load({"id": ...})."""
+        """Entity factory: client.FondoComunInversionVariable().list() / client.FondoComunInversionVariable().load({"id": ...})."""
         from entity.fondo_comun_inversion_variable_entity import FondoComunInversionVariableEntity
         return FondoComunInversionVariableEntity(self, data)
 
 
     def HipotecarioUvaTna(self, data=None) -> "HipotecarioUvaTnaEntity":
-        """Entity factory: client.HipotecarioUvaTna().list({}) / client.HipotecarioUvaTna().load({"id": ...})."""
+        """Entity factory: client.HipotecarioUvaTna().list() / client.HipotecarioUvaTna().load({"id": ...})."""
         from entity.hipotecario_uva_tna_entity import HipotecarioUvaTnaEntity
         return HipotecarioUvaTnaEntity(self, data)
 
 
     def IndiceInflacion(self, data=None) -> "IndiceInflacionEntity":
-        """Entity factory: client.IndiceInflacion().list({}) / client.IndiceInflacion().load({"id": ...})."""
+        """Entity factory: client.IndiceInflacion().list() / client.IndiceInflacion().load({"id": ...})."""
         from entity.indice_inflacion_entity import IndiceInflacionEntity
         return IndiceInflacionEntity(self, data)
 
 
     def IndiceUva(self, data=None) -> "IndiceUvaEntity":
-        """Entity factory: client.IndiceUva().list({}) / client.IndiceUva().load({"id": ...})."""
+        """Entity factory: client.IndiceUva().list() / client.IndiceUva().load({"id": ...})."""
         from entity.indice_uva_entity import IndiceUvaEntity
         return IndiceUvaEntity(self, data)
 
 
     def Letra(self, data=None) -> "LetraEntity":
-        """Entity factory: client.Letra().list({}) / client.Letra().load({"id": ...})."""
+        """Entity factory: client.Letra().list() / client.Letra().load({"id": ...})."""
         from entity.letra_entity import LetraEntity
         return LetraEntity(self, data)
 
 
     def Presidente(self, data=None) -> "PresidenteEntity":
-        """Entity factory: client.Presidente().list({}) / client.Presidente().load({"id": ...})."""
+        """Entity factory: client.Presidente().list() / client.Presidente().load({"id": ...})."""
         from entity.presidente_entity import PresidenteEntity
         return PresidenteEntity(self, data)
 
 
     def ProveedorPlazoFijoPrecancelable(self, data=None) -> "ProveedorPlazoFijoPrecancelableEntity":
-        """Entity factory: client.ProveedorPlazoFijoPrecancelable().list({}) / client.ProveedorPlazoFijoPrecancelable().load({"id": ...})."""
+        """Entity factory: client.ProveedorPlazoFijoPrecancelable().list() / client.ProveedorPlazoFijoPrecancelable().load({"id": ...})."""
         from entity.proveedor_plazo_fijo_precancelable_entity import ProveedorPlazoFijoPrecancelableEntity
         return ProveedorPlazoFijoPrecancelableEntity(self, data)
 
 
     def ProveedorPlazoFijoUvaPagoPeriodico(self, data=None) -> "ProveedorPlazoFijoUvaPagoPeriodicoEntity":
-        """Entity factory: client.ProveedorPlazoFijoUvaPagoPeriodico().list({}) / client.ProveedorPlazoFijoUvaPagoPeriodico().load({"id": ...})."""
+        """Entity factory: client.ProveedorPlazoFijoUvaPagoPeriodico().list() / client.ProveedorPlazoFijoUvaPagoPeriodico().load({"id": ...})."""
         from entity.proveedor_plazo_fijo_uva_pago_periodico_entity import ProveedorPlazoFijoUvaPagoPeriodicoEntity
         return ProveedorPlazoFijoUvaPagoPeriodicoEntity(self, data)
 
 
     def Rem(self, data=None) -> "RemEntity":
-        """Entity factory: client.Rem().list({}) / client.Rem().load({"id": ...})."""
+        """Entity factory: client.Rem().list() / client.Rem().load({"id": ...})."""
         from entity.rem_entity import RemEntity
         return RemEntity(self, data)
 
 
     def RemExpectativa(self, data=None) -> "RemExpectativaEntity":
-        """Entity factory: client.RemExpectativa().list({}) / client.RemExpectativa().load({"id": ...})."""
+        """Entity factory: client.RemExpectativa().list() / client.RemExpectativa().load({"id": ...})."""
         from entity.rem_expectativa_entity import RemExpectativaEntity
         return RemExpectativaEntity(self, data)
 
 
     def Rendimiento(self, data=None) -> "RendimientoEntity":
-        """Entity factory: client.Rendimiento().list({}) / client.Rendimiento().load({"id": ...})."""
+        """Entity factory: client.Rendimiento().list() / client.Rendimiento().load({"id": ...})."""
         from entity.rendimiento_entity import RendimientoEntity
         return RendimientoEntity(self, data)
 
 
     def RiesgoPai(self, data=None) -> "RiesgoPaiEntity":
-        """Entity factory: client.RiesgoPai().list({}) / client.RiesgoPai().load({"id": ...})."""
+        """Entity factory: client.RiesgoPai().list() / client.RiesgoPai().load({"id": ...})."""
         from entity.riesgo_pai_entity import RiesgoPaiEntity
         return RiesgoPaiEntity(self, data)
 
 
     def Senador(self, data=None) -> "SenadorEntity":
-        """Entity factory: client.Senador().list({}) / client.Senador().load({"id": ...})."""
+        """Entity factory: client.Senador().list() / client.Senador().load({"id": ...})."""
         from entity.senador_entity import SenadorEntity
         return SenadorEntity(self, data)
 
 
     def TasaIntere(self, data=None) -> "TasaIntereEntity":
-        """Entity factory: client.TasaIntere().list({}) / client.TasaIntere().load({"id": ...})."""
+        """Entity factory: client.TasaIntere().list() / client.TasaIntere().load({"id": ...})."""
         from entity.tasa_intere_entity import TasaIntereEntity
         return TasaIntereEntity(self, data)
 
 
     def TasaPlazoFijo(self, data=None) -> "TasaPlazoFijoEntity":
-        """Entity factory: client.TasaPlazoFijo().list({}) / client.TasaPlazoFijo().load({"id": ...})."""
+        """Entity factory: client.TasaPlazoFijo().list() / client.TasaPlazoFijo().load({"id": ...})."""
         from entity.tasa_plazo_fijo_entity import TasaPlazoFijoEntity
         return TasaPlazoFijoEntity(self, data)
 

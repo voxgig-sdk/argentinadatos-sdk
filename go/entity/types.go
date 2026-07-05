@@ -42,8 +42,7 @@ type ActaLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// ActaListMatch mirrors the acta fields as an all-optional match
-// filter (Go analog of Partial<Acta>).
+// ActaListMatch is the typed request payload for Acta.ListTyped.
 type ActaListMatch struct {
 	Abstencione *int `json:"abstencione,omitempty"`
 	Acta *string `json:"acta,omitempty"`
@@ -81,8 +80,7 @@ type BonosCer struct {
 	Voluman *float64 `json:"voluman,omitempty"`
 }
 
-// BonosCerListMatch mirrors the bonos_cer fields as an all-optional match
-// filter (Go analog of Partial<BonosCer>).
+// BonosCerListMatch is the typed request payload for BonosCer.ListTyped.
 type BonosCerListMatch struct {
 	FechaVencimiento *string `json:"fecha_vencimiento,omitempty"`
 	PrecioAr *float64 `json:"precio_ar,omitempty"`
@@ -106,8 +104,7 @@ type CotizacionLoadMatch struct {
 	Fecha string `json:"fecha"`
 }
 
-// CotizacionListMatch mirrors the cotizacion fields as an all-optional match
-// filter (Go analog of Partial<Cotizacion>).
+// CotizacionListMatch is the typed request payload for Cotizacion.ListTyped.
 type CotizacionListMatch struct {
 	Casa *string `json:"casa,omitempty"`
 	Compra *float64 `json:"compra,omitempty"`
@@ -123,8 +120,7 @@ type Criptopeso struct {
 	Token *string `json:"token,omitempty"`
 }
 
-// CriptopesoListMatch mirrors the criptopeso fields as an all-optional match
-// filter (Go analog of Partial<Criptopeso>).
+// CriptopesoListMatch is the typed request payload for Criptopeso.ListTyped.
 type CriptopesoListMatch struct {
 	Entidad *string `json:"entidad,omitempty"`
 	Tna *float64 `json:"tna,omitempty"`
@@ -138,8 +134,7 @@ type CuentaRemuneradaUsd struct {
 	Tope *float64 `json:"tope,omitempty"`
 }
 
-// CuentaRemuneradaUsdListMatch mirrors the cuenta_remunerada_usd fields as an all-optional match
-// filter (Go analog of Partial<CuentaRemuneradaUsd>).
+// CuentaRemuneradaUsdListMatch is the typed request payload for CuentaRemuneradaUsd.ListTyped.
 type CuentaRemuneradaUsdListMatch struct {
 	Entidad *string `json:"entidad,omitempty"`
 	Tasa *float64 `json:"tasa,omitempty"`
@@ -161,8 +156,7 @@ type Diputado struct {
 	Provincia *string `json:"provincia,omitempty"`
 }
 
-// DiputadoListMatch mirrors the diputado fields as an all-optional match
-// filter (Go analog of Partial<Diputado>).
+// DiputadoListMatch is the typed request payload for Diputado.ListTyped.
 type DiputadoListMatch struct {
 	Apellido *string `json:"apellido,omitempty"`
 	Bloque *string `json:"bloque,omitempty"`
@@ -183,8 +177,7 @@ type EntidadRendimiento struct {
 	Rendimiento *[]any `json:"rendimiento,omitempty"`
 }
 
-// EntidadRendimientoListMatch mirrors the entidad_rendimiento fields as an all-optional match
-// filter (Go analog of Partial<EntidadRendimiento>).
+// EntidadRendimientoListMatch is the typed request payload for EntidadRendimiento.ListTyped.
 type EntidadRendimientoListMatch struct {
 	Entidad *string `json:"entidad,omitempty"`
 	Rendimiento *[]any `json:"rendimiento,omitempty"`
@@ -196,8 +189,7 @@ type Estado struct {
 	Estado *string `json:"estado,omitempty"`
 }
 
-// EstadoLoadMatch mirrors the estado fields as an all-optional match
-// filter (Go analog of Partial<Estado>).
+// EstadoLoadMatch is the typed request payload for Estado.LoadTyped.
 type EstadoLoadMatch struct {
 	Aleatorio *int `json:"aleatorio,omitempty"`
 	Estado *string `json:"estado,omitempty"`
@@ -210,8 +202,7 @@ type EventoPresidencial struct {
 	Tipo *string `json:"tipo,omitempty"`
 }
 
-// EventoPresidencialListMatch mirrors the evento_presidencial fields as an all-optional match
-// filter (Go analog of Partial<EventoPresidencial>).
+// EventoPresidencialListMatch is the typed request payload for EventoPresidencial.ListTyped.
 type EventoPresidencialListMatch struct {
 	Evento *string `json:"evento,omitempty"`
 	Fecha *string `json:"fecha,omitempty"`
@@ -234,8 +225,7 @@ type FeriadoLoadMatch struct {
 type Finanza struct {
 }
 
-// FinanzaListMatch mirrors the finanza fields as an all-optional match
-// filter (Go analog of Partial<Finanza>).
+// FinanzaListMatch is the typed request payload for Finanza.ListTyped.
 type FinanzaListMatch struct {
 }
 
@@ -295,8 +285,7 @@ type HipotecarioUvaTna struct {
 	Tna *float64 `json:"tna,omitempty"`
 }
 
-// HipotecarioUvaTnaListMatch mirrors the hipotecario_uva_tna fields as an all-optional match
-// filter (Go analog of Partial<HipotecarioUvaTna>).
+// HipotecarioUvaTnaListMatch is the typed request payload for HipotecarioUvaTna.ListTyped.
 type HipotecarioUvaTnaListMatch struct {
 	Entidad *string `json:"entidad,omitempty"`
 	Metadata *map[string]any `json:"metadata,omitempty"`
@@ -310,8 +299,7 @@ type IndiceInflacion struct {
 	Valor *float64 `json:"valor,omitempty"`
 }
 
-// IndiceInflacionListMatch mirrors the indice_inflacion fields as an all-optional match
-// filter (Go analog of Partial<IndiceInflacion>).
+// IndiceInflacionListMatch is the typed request payload for IndiceInflacion.ListTyped.
 type IndiceInflacionListMatch struct {
 	Fecha *string `json:"fecha,omitempty"`
 	Valor *float64 `json:"valor,omitempty"`
@@ -323,8 +311,7 @@ type IndiceUva struct {
 	Valor *float64 `json:"valor,omitempty"`
 }
 
-// IndiceUvaListMatch mirrors the indice_uva fields as an all-optional match
-// filter (Go analog of Partial<IndiceUva>).
+// IndiceUvaListMatch is the typed request payload for IndiceUva.ListTyped.
 type IndiceUvaListMatch struct {
 	Fecha *string `json:"fecha,omitempty"`
 	Valor *float64 `json:"valor,omitempty"`
@@ -339,8 +326,7 @@ type Letra struct {
 	Vpv *float64 `json:"vpv,omitempty"`
 }
 
-// LetraListMatch mirrors the letra fields as an all-optional match
-// filter (Go analog of Partial<Letra>).
+// LetraListMatch is the typed request payload for Letra.ListTyped.
 type LetraListMatch struct {
 	FechaEmision *string `json:"fecha_emision,omitempty"`
 	FechaVencimiento *string `json:"fecha_vencimiento,omitempty"`
@@ -361,8 +347,7 @@ type Presidente struct {
 	Vicepresidente *string `json:"vicepresidente,omitempty"`
 }
 
-// PresidenteListMatch mirrors the presidente fields as an all-optional match
-// filter (Go analog of Partial<Presidente>).
+// PresidenteListMatch is the typed request payload for Presidente.ListTyped.
 type PresidenteListMatch struct {
 	Fin *string `json:"fin,omitempty"`
 	Imagen *string `json:"imagen,omitempty"`
@@ -395,8 +380,7 @@ type ProveedorPlazoFijoPrecancelable struct {
 	TnaPrecancelacion *float64 `json:"tna_precancelacion,omitempty"`
 }
 
-// ProveedorPlazoFijoPrecancelableListMatch mirrors the proveedor_plazo_fijo_precancelable fields as an all-optional match
-// filter (Go analog of Partial<ProveedorPlazoFijoPrecancelable>).
+// ProveedorPlazoFijoPrecancelableListMatch is the typed request payload for ProveedorPlazoFijoPrecancelable.ListTyped.
 type ProveedorPlazoFijoPrecancelableListMatch struct {
 	AvisoPrecancelacionDia *int `json:"aviso_precancelacion_dia,omitempty"`
 	Canal *string `json:"canal,omitempty"`
@@ -425,8 +409,7 @@ type ProveedorPlazoFijoUvaPagoPeriodico struct {
 	Tasa *[]any `json:"tasa,omitempty"`
 }
 
-// ProveedorPlazoFijoUvaPagoPeriodicoListMatch mirrors the proveedor_plazo_fijo_uva_pago_periodico fields as an all-optional match
-// filter (Go analog of Partial<ProveedorPlazoFijoUvaPagoPeriodico>).
+// ProveedorPlazoFijoUvaPagoPeriodicoListMatch is the typed request payload for ProveedorPlazoFijoUvaPagoPeriodico.ListTyped.
 type ProveedorPlazoFijoUvaPagoPeriodicoListMatch struct {
 	Entidad *string `json:"entidad,omitempty"`
 	Id *string `json:"id,omitempty"`
@@ -496,8 +479,7 @@ type RemExpectativa struct {
 	XlsxUrl *string `json:"xlsx_url,omitempty"`
 }
 
-// RemExpectativaListMatch mirrors the rem_expectativa fields as an all-optional match
-// filter (Go analog of Partial<RemExpectativa>).
+// RemExpectativaListMatch is the typed request payload for RemExpectativa.ListTyped.
 type RemExpectativaListMatch struct {
 	Desvio *float64 `json:"desvio,omitempty"`
 	Fecha *string `json:"fecha,omitempty"`
@@ -543,15 +525,13 @@ type RiesgoPai struct {
 	Valor *float64 `json:"valor,omitempty"`
 }
 
-// RiesgoPaiLoadMatch mirrors the riesgo_pai fields as an all-optional match
-// filter (Go analog of Partial<RiesgoPai>).
+// RiesgoPaiLoadMatch is the typed request payload for RiesgoPai.LoadTyped.
 type RiesgoPaiLoadMatch struct {
 	Fecha *string `json:"fecha,omitempty"`
 	Valor *float64 `json:"valor,omitempty"`
 }
 
-// RiesgoPaiListMatch mirrors the riesgo_pai fields as an all-optional match
-// filter (Go analog of Partial<RiesgoPai>).
+// RiesgoPaiListMatch is the typed request payload for RiesgoPai.ListTyped.
 type RiesgoPaiListMatch struct {
 	Fecha *string `json:"fecha,omitempty"`
 	Valor *float64 `json:"valor,omitempty"`
@@ -573,8 +553,7 @@ type Senador struct {
 	Telefono *string `json:"telefono,omitempty"`
 }
 
-// SenadorListMatch mirrors the senador fields as an all-optional match
-// filter (Go analog of Partial<Senador>).
+// SenadorListMatch is the typed request payload for Senador.ListTyped.
 type SenadorListMatch struct {
 	Email *string `json:"email,omitempty"`
 	Foto *string `json:"foto,omitempty"`
@@ -596,8 +575,7 @@ type TasaIntere struct {
 	Valor *float64 `json:"valor,omitempty"`
 }
 
-// TasaIntereListMatch mirrors the tasa_intere fields as an all-optional match
-// filter (Go analog of Partial<TasaIntere>).
+// TasaIntereListMatch is the typed request payload for TasaIntere.ListTyped.
 type TasaIntereListMatch struct {
 	Fecha *string `json:"fecha,omitempty"`
 	Valor *float64 `json:"valor,omitempty"`
@@ -611,8 +589,7 @@ type TasaPlazoFijo struct {
 	TnaNoCliente *float64 `json:"tna_no_cliente,omitempty"`
 }
 
-// TasaPlazoFijoListMatch mirrors the tasa_plazo_fijo fields as an all-optional match
-// filter (Go analog of Partial<TasaPlazoFijo>).
+// TasaPlazoFijoListMatch is the typed request payload for TasaPlazoFijo.ListTyped.
 type TasaPlazoFijoListMatch struct {
 	Entidad *string `json:"entidad,omitempty"`
 	Logo *string `json:"logo,omitempty"`

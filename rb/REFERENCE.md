@@ -8,7 +8,7 @@ Complete API reference for the Argentinadatos Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'argentinadatos_sdk'
+require_relative 'Argentinadatos_sdk'
 
 client = ArgentinadatosSDK.new(options)
 ```
@@ -201,40 +201,40 @@ acta = client.Acta
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abstencione` | ``$INTEGER`` | No |  |
-| `acta` | ``$STRING`` | No |  |
-| `acta_id` | ``$INTEGER`` | No |  |
-| `afirmativo` | ``$INTEGER`` | No |  |
-| `amn` | ``$INTEGER`` | No |  |
-| `ausente` | ``$INTEGER`` | No |  |
-| `descripcion` | ``$STRING`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `mayoria` | ``$STRING`` | No |  |
-| `miembro` | ``$INTEGER`` | No |  |
-| `negativo` | ``$INTEGER`` | No |  |
-| `numero_acta` | ``$STRING`` | No |  |
-| `observacione` | ``$ARRAY`` | No |  |
-| `periodo` | ``$STRING`` | No |  |
-| `presente` | ``$INTEGER`` | No |  |
-| `presidente` | ``$STRING`` | No |  |
-| `proyecto` | ``$STRING`` | No |  |
-| `quorum_tipo` | ``$STRING`` | No |  |
-| `resultado` | ``$STRING`` | No |  |
-| `reunion` | ``$STRING`` | No |  |
-| `titulo` | ``$STRING`` | No |  |
-| `voto` | ``$ARRAY`` | No |  |
-| `votos_afirmativo` | ``$INTEGER`` | No |  |
-| `votos_negativo` | ``$INTEGER`` | No |  |
+| `abstencione` | `Integer` | No |  |
+| `acta` | `String` | No |  |
+| `acta_id` | `Integer` | No |  |
+| `afirmativo` | `Integer` | No |  |
+| `amn` | `Integer` | No |  |
+| `ausente` | `Integer` | No |  |
+| `descripcion` | `String` | No |  |
+| `fecha` | `String` | No |  |
+| `id` | `String` | No |  |
+| `mayoria` | `String` | No |  |
+| `miembro` | `Integer` | No |  |
+| `negativo` | `Integer` | No |  |
+| `numero_acta` | `String` | No |  |
+| `observacione` | `Array` | No |  |
+| `periodo` | `String` | No |  |
+| `presente` | `Integer` | No |  |
+| `presidente` | `String` | No |  |
+| `proyecto` | `String` | No |  |
+| `quorum_tipo` | `String` | No |  |
+| `resultado` | `String` | No |  |
+| `reunion` | `String` | No |  |
+| `titulo` | `String` | No |  |
+| `voto` | `Array` | No |  |
+| `votos_afirmativo` | `Integer` | No |  |
+| `votos_negativo` | `Integer` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Acta.list(nil)
+results = client.Acta.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -285,20 +285,20 @@ bonos_cer = client.BonosCer
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha_vencimiento` | ``$STRING`` | Yes |  |
-| `precio_ar` | ``$NUMBER`` | Yes |  |
-| `ticker` | ``$STRING`` | Yes |  |
-| `tir_porcentaje` | ``$NUMBER`` | Yes |  |
-| `voluman` | ``$NUMBER`` | No |  |
+| `fecha_vencimiento` | `String` | Yes |  |
+| `precio_ar` | `Float` | Yes |  |
+| `ticker` | `String` | Yes |  |
+| `tir_porcentaje` | `Float` | Yes |  |
+| `voluman` | `Float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.BonosCer.list(nil)
+results = client.BonosCer.list
 ```
 
 ### Common Methods
@@ -341,20 +341,20 @@ cotizacion = client.Cotizacion
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `casa` | ``$STRING`` | No |  |
-| `compra` | ``$NUMBER`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `moneda` | ``$STRING`` | No |  |
-| `venta` | ``$NUMBER`` | No |  |
+| `casa` | `String` | No |  |
+| `compra` | `Float` | No |  |
+| `fecha` | `String` | No |  |
+| `moneda` | `String` | No |  |
+| `venta` | `Float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Cotizacion.list(nil)
+results = client.Cotizacion.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -362,7 +362,7 @@ results = client.Cotizacion.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Cotizacion.load({ "id" => "cotizacion_id" })
+result = client.Cotizacion.load()
 ```
 
 ### Common Methods
@@ -405,18 +405,18 @@ criptopeso = client.Criptopeso
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `tna` | ``$NUMBER`` | No |  |
-| `token` | ``$STRING`` | No |  |
+| `entidad` | `String` | No |  |
+| `tna` | `Float` | No |  |
+| `token` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Criptopeso.list(nil)
+results = client.Criptopeso.list
 ```
 
 ### Common Methods
@@ -459,18 +459,18 @@ cuenta_remunerada_usd = client.CuentaRemuneradaUsd
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `tasa` | ``$NUMBER`` | No |  |
-| `tope` | ``$NUMBER`` | No |  |
+| `entidad` | `String` | No |  |
+| `tasa` | `Float` | No |  |
+| `tope` | `Float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.CuentaRemuneradaUsd.list(nil)
+results = client.CuentaRemuneradaUsd.list
 ```
 
 ### Common Methods
@@ -513,26 +513,26 @@ diputado = client.Diputado
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `apellido` | ``$STRING`` | No |  |
-| `bloque` | ``$STRING`` | No |  |
-| `cese_fecha` | ``$STRING`` | No |  |
-| `foto` | ``$STRING`` | No |  |
-| `genero` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `juramento_fecha` | ``$STRING`` | No |  |
-| `nombre` | ``$STRING`` | No |  |
-| `periodo_bloque` | ``$OBJECT`` | No |  |
-| `periodo_mandato` | ``$OBJECT`` | No |  |
-| `provincia` | ``$STRING`` | No |  |
+| `apellido` | `String` | No |  |
+| `bloque` | `String` | No |  |
+| `cese_fecha` | `String` | No |  |
+| `foto` | `String` | No |  |
+| `genero` | `String` | No |  |
+| `id` | `String` | No |  |
+| `juramento_fecha` | `String` | No |  |
+| `nombre` | `String` | No |  |
+| `periodo_bloque` | `Hash` | No |  |
+| `periodo_mandato` | `Hash` | No |  |
+| `provincia` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Diputado.list(nil)
+results = client.Diputado.list
 ```
 
 ### Common Methods
@@ -575,17 +575,17 @@ entidad_rendimiento = client.EntidadRendimiento
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `rendimiento` | ``$ARRAY`` | No |  |
+| `entidad` | `String` | No |  |
+| `rendimiento` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.EntidadRendimiento.list(nil)
+results = client.EntidadRendimiento.list
 ```
 
 ### Common Methods
@@ -628,8 +628,8 @@ estado = client.Estado
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aleatorio` | ``$INTEGER`` | No |  |
-| `estado` | ``$STRING`` | No |  |
+| `aleatorio` | `Integer` | No |  |
+| `estado` | `String` | No |  |
 
 ### Operations
 
@@ -638,7 +638,7 @@ estado = client.Estado
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Estado.load({ "id" => "estado_id" })
+result = client.Estado.load()
 ```
 
 ### Common Methods
@@ -681,18 +681,18 @@ evento_presidencial = client.EventoPresidencial
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `evento` | ``$STRING`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `tipo` | ``$STRING`` | No |  |
+| `evento` | `String` | No |  |
+| `fecha` | `String` | No |  |
+| `tipo` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.EventoPresidencial.list(nil)
+results = client.EventoPresidencial.list
 ```
 
 ### Common Methods
@@ -735,9 +735,9 @@ feriado = client.Feriado
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `nombre` | ``$STRING`` | No |  |
-| `tipo` | ``$STRING`` | No |  |
+| `fecha` | `String` | No |  |
+| `nombre` | `String` | No |  |
+| `tipo` | `String` | No |  |
 
 ### Operations
 
@@ -787,12 +787,12 @@ finanza = client.Finanza
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Finanza.list(nil)
+results = client.Finanza.list
 ```
 
 ### Common Methods
@@ -835,13 +835,13 @@ fondo_comun_inversion = client.FondoComunInversion
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ccp` | ``$NUMBER`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `fondo` | ``$STRING`` | No |  |
-| `horizonte` | ``$STRING`` | No |  |
-| `patrimonio` | ``$NUMBER`` | No |  |
-| `tipo` | ``$STRING`` | No |  |
-| `vcp` | ``$NUMBER`` | No |  |
+| `ccp` | `Float` | No |  |
+| `fecha` | `String` | No |  |
+| `fondo` | `String` | No |  |
+| `horizonte` | `String` | No |  |
+| `patrimonio` | `Float` | No |  |
+| `tipo` | `String` | No |  |
+| `vcp` | `Float` | No |  |
 
 ### Operations
 
@@ -850,7 +850,7 @@ fondo_comun_inversion = client.FondoComunInversion
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.FondoComunInversion.load({ "id" => "fondo_comun_inversion_id" })
+result = client.FondoComunInversion.load()
 ```
 
 ### Common Methods
@@ -893,11 +893,11 @@ fondo_comun_inversion_otro = client.FondoComunInversionOtro
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `fondo` | ``$STRING`` | No |  |
-| `tea` | ``$NUMBER`` | No |  |
-| `tna` | ``$NUMBER`` | No |  |
-| `tope` | ``$NUMBER`` | No |  |
+| `fecha` | `String` | No |  |
+| `fondo` | `String` | No |  |
+| `tea` | `Float` | No |  |
+| `tna` | `Float` | No |  |
+| `tope` | `Float` | No |  |
 
 ### Operations
 
@@ -949,15 +949,15 @@ fondo_comun_inversion_variable = client.FondoComunInversionVariable
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `condicione` | ``$STRING`` | No |  |
-| `condiciones_corto` | ``$STRING`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `fondo` | ``$STRING`` | No |  |
-| `nombre` | ``$STRING`` | No |  |
-| `tea` | ``$NUMBER`` | No |  |
-| `tipo` | ``$STRING`` | No |  |
-| `tna` | ``$NUMBER`` | No |  |
-| `tope` | ``$NUMBER`` | No |  |
+| `condicione` | `String` | No |  |
+| `condiciones_corto` | `String` | No |  |
+| `fecha` | `String` | No |  |
+| `fondo` | `String` | No |  |
+| `nombre` | `String` | No |  |
+| `tea` | `Float` | No |  |
+| `tipo` | `String` | No |  |
+| `tna` | `Float` | No |  |
+| `tope` | `Float` | No |  |
 
 ### Operations
 
@@ -1009,19 +1009,19 @@ hipotecario_uva_tna = client.HipotecarioUvaTna
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `metadata` | ``$OBJECT`` | No |  |
-| `nombre_comercial` | ``$STRING`` | No |  |
-| `tna` | ``$NUMBER`` | No |  |
+| `entidad` | `String` | No |  |
+| `metadata` | `Hash` | No |  |
+| `nombre_comercial` | `String` | No |  |
+| `tna` | `Float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.HipotecarioUvaTna.list(nil)
+results = client.HipotecarioUvaTna.list
 ```
 
 ### Common Methods
@@ -1064,17 +1064,17 @@ indice_inflacion = client.IndiceInflacion
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `valor` | ``$NUMBER`` | No |  |
+| `fecha` | `String` | No |  |
+| `valor` | `Float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.IndiceInflacion.list(nil)
+results = client.IndiceInflacion.list
 ```
 
 ### Common Methods
@@ -1117,17 +1117,17 @@ indice_uva = client.IndiceUva
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `valor` | ``$NUMBER`` | No |  |
+| `fecha` | `String` | No |  |
+| `valor` | `Float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.IndiceUva.list(nil)
+results = client.IndiceUva.list
 ```
 
 ### Common Methods
@@ -1170,20 +1170,20 @@ letra = client.Letra
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha_emision` | ``$STRING`` | No |  |
-| `fecha_vencimiento` | ``$STRING`` | No |  |
-| `tem` | ``$NUMBER`` | No |  |
-| `ticker` | ``$STRING`` | No |  |
-| `vpv` | ``$NUMBER`` | No |  |
+| `fecha_emision` | `String` | No |  |
+| `fecha_vencimiento` | `String` | No |  |
+| `tem` | `Float` | No |  |
+| `ticker` | `String` | No |  |
+| `vpv` | `Float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Letra.list(nil)
+results = client.Letra.list
 ```
 
 ### Common Methods
@@ -1226,23 +1226,23 @@ presidente = client.Presidente
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fin` | ``$STRING`` | No |  |
-| `imagen` | ``$STRING`` | No |  |
-| `inicio` | ``$STRING`` | No |  |
-| `nombre` | ``$STRING`` | No |  |
-| `partido` | ``$STRING`` | No |  |
-| `partido_imagen` | ``$STRING`` | No |  |
-| `periodo_presidencial` | ``$STRING`` | No |  |
-| `vicepresidente` | ``$STRING`` | No |  |
+| `fin` | `String` | No |  |
+| `imagen` | `String` | No |  |
+| `inicio` | `String` | No |  |
+| `nombre` | `String` | No |  |
+| `partido` | `String` | No |  |
+| `partido_imagen` | `String` | No |  |
+| `periodo_presidencial` | `String` | No |  |
+| `vicepresidente` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Presidente.list(nil)
+results = client.Presidente.list
 ```
 
 ### Common Methods
@@ -1285,32 +1285,32 @@ proveedor_plazo_fijo_precancelable = client.ProveedorPlazoFijoPrecancelable
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aviso_precancelacion_dia` | ``$INTEGER`` | No |  |
-| `canal` | ``$STRING`` | No |  |
-| `enlace` | ``$STRING`` | No |  |
-| `entidad` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `logo` | ``$STRING`` | No |  |
-| `modalidad` | ``$STRING`` | No |  |
-| `moneda` | ``$STRING`` | No |  |
-| `monto_maximo` | ``$NUMBER`` | No |  |
-| `monto_minimo` | ``$NUMBER`` | No |  |
-| `plazo_max_dia` | ``$INTEGER`` | No |  |
-| `plazo_min_dia` | ``$INTEGER`` | No |  |
-| `plazo_precancelacion_dia` | ``$INTEGER`` | No |  |
-| `tea` | ``$NUMBER`` | No |  |
-| `tea_precancelacion` | ``$NUMBER`` | No |  |
-| `tna` | ``$NUMBER`` | No |  |
-| `tna_precancelacion` | ``$NUMBER`` | No |  |
+| `aviso_precancelacion_dia` | `Integer` | No |  |
+| `canal` | `String` | No |  |
+| `enlace` | `String` | No |  |
+| `entidad` | `String` | No |  |
+| `id` | `String` | No |  |
+| `logo` | `String` | No |  |
+| `modalidad` | `String` | No |  |
+| `moneda` | `String` | No |  |
+| `monto_maximo` | `Float` | No |  |
+| `monto_minimo` | `Float` | No |  |
+| `plazo_max_dia` | `Integer` | No |  |
+| `plazo_min_dia` | `Integer` | No |  |
+| `plazo_precancelacion_dia` | `Integer` | No |  |
+| `tea` | `Float` | No |  |
+| `tea_precancelacion` | `Float` | No |  |
+| `tna` | `Float` | No |  |
+| `tna_precancelacion` | `Float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.ProveedorPlazoFijoPrecancelable.list(nil)
+results = client.ProveedorPlazoFijoPrecancelable.list
 ```
 
 ### Common Methods
@@ -1353,19 +1353,19 @@ proveedor_plazo_fijo_uva_pago_periodico = client.ProveedorPlazoFijoUvaPagoPeriod
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `logo` | ``$STRING`` | No |  |
-| `tasa` | ``$ARRAY`` | No |  |
+| `entidad` | `String` | No |  |
+| `id` | `String` | No |  |
+| `logo` | `String` | No |  |
+| `tasa` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.ProveedorPlazoFijoUvaPagoPeriodico.list(nil)
+results = client.ProveedorPlazoFijoUvaPagoPeriodico.list
 ```
 
 ### Common Methods
@@ -1408,39 +1408,39 @@ rem = client.Rem
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `desvio` | ``$NUMBER`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `fuente` | ``$STRING`` | No |  |
-| `indicador` | ``$STRING`` | No |  |
-| `informe` | ``$STRING`` | No |  |
-| `maximo` | ``$NUMBER`` | No |  |
-| `mediana` | ``$NUMBER`` | No |  |
-| `minimo` | ``$NUMBER`` | No |  |
-| `muestra` | ``$STRING`` | No |  |
-| `participante` | ``$INTEGER`` | No |  |
-| `percentil10` | ``$NUMBER`` | No |  |
-| `percentil25` | ``$NUMBER`` | No |  |
-| `percentil75` | ``$NUMBER`` | No |  |
-| `percentil90` | ``$NUMBER`` | No |  |
-| `periodo` | ``$STRING`` | No |  |
-| `periodo_desde` | ``$STRING`` | No |  |
-| `periodo_hasta` | ``$STRING`` | No |  |
-| `periodo_tipo` | ``$STRING`` | No |  |
-| `promedio` | ``$NUMBER`` | No |  |
-| `publicacion_url` | ``$STRING`` | No |  |
-| `referencia` | ``$STRING`` | No |  |
-| `referencia_fecha` | ``$STRING`` | No |  |
-| `unidad` | ``$STRING`` | No |  |
-| `xlsx_url` | ``$STRING`` | No |  |
+| `desvio` | `Float` | No |  |
+| `fecha` | `String` | No |  |
+| `fuente` | `String` | No |  |
+| `indicador` | `String` | No |  |
+| `informe` | `String` | No |  |
+| `maximo` | `Float` | No |  |
+| `mediana` | `Float` | No |  |
+| `minimo` | `Float` | No |  |
+| `muestra` | `String` | No |  |
+| `participante` | `Integer` | No |  |
+| `percentil10` | `Float` | No |  |
+| `percentil25` | `Float` | No |  |
+| `percentil75` | `Float` | No |  |
+| `percentil90` | `Float` | No |  |
+| `periodo` | `String` | No |  |
+| `periodo_desde` | `String` | No |  |
+| `periodo_hasta` | `String` | No |  |
+| `periodo_tipo` | `String` | No |  |
+| `promedio` | `Float` | No |  |
+| `publicacion_url` | `String` | No |  |
+| `referencia` | `String` | No |  |
+| `referencia_fecha` | `String` | No |  |
+| `unidad` | `String` | No |  |
+| `xlsx_url` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Rem.list(nil)
+results = client.Rem.list
 ```
 
 ### Common Methods
@@ -1483,39 +1483,39 @@ rem_expectativa = client.RemExpectativa
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `desvio` | ``$NUMBER`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `fuente` | ``$STRING`` | No |  |
-| `indicador` | ``$STRING`` | No |  |
-| `informe` | ``$STRING`` | No |  |
-| `maximo` | ``$NUMBER`` | No |  |
-| `mediana` | ``$NUMBER`` | No |  |
-| `minimo` | ``$NUMBER`` | No |  |
-| `muestra` | ``$STRING`` | No |  |
-| `participante` | ``$INTEGER`` | No |  |
-| `percentil10` | ``$NUMBER`` | No |  |
-| `percentil25` | ``$NUMBER`` | No |  |
-| `percentil75` | ``$NUMBER`` | No |  |
-| `percentil90` | ``$NUMBER`` | No |  |
-| `periodo` | ``$STRING`` | No |  |
-| `periodo_desde` | ``$STRING`` | No |  |
-| `periodo_hasta` | ``$STRING`` | No |  |
-| `periodo_tipo` | ``$STRING`` | No |  |
-| `promedio` | ``$NUMBER`` | No |  |
-| `publicacion_url` | ``$STRING`` | No |  |
-| `referencia` | ``$STRING`` | No |  |
-| `referencia_fecha` | ``$STRING`` | No |  |
-| `unidad` | ``$STRING`` | No |  |
-| `xlsx_url` | ``$STRING`` | No |  |
+| `desvio` | `Float` | No |  |
+| `fecha` | `String` | No |  |
+| `fuente` | `String` | No |  |
+| `indicador` | `String` | No |  |
+| `informe` | `String` | No |  |
+| `maximo` | `Float` | No |  |
+| `mediana` | `Float` | No |  |
+| `minimo` | `Float` | No |  |
+| `muestra` | `String` | No |  |
+| `participante` | `Integer` | No |  |
+| `percentil10` | `Float` | No |  |
+| `percentil25` | `Float` | No |  |
+| `percentil75` | `Float` | No |  |
+| `percentil90` | `Float` | No |  |
+| `periodo` | `String` | No |  |
+| `periodo_desde` | `String` | No |  |
+| `periodo_hasta` | `String` | No |  |
+| `periodo_tipo` | `String` | No |  |
+| `promedio` | `Float` | No |  |
+| `publicacion_url` | `String` | No |  |
+| `referencia` | `String` | No |  |
+| `referencia_fecha` | `String` | No |  |
+| `unidad` | `String` | No |  |
+| `xlsx_url` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.RemExpectativa.list(nil)
+results = client.RemExpectativa.list
 ```
 
 ### Common Methods
@@ -1558,9 +1558,9 @@ rendimiento = client.Rendimiento
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `apy` | ``$NUMBER`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `moneda` | ``$STRING`` | No |  |
+| `apy` | `Float` | No |  |
+| `fecha` | `String` | No |  |
+| `moneda` | `String` | No |  |
 
 ### Operations
 
@@ -1612,17 +1612,17 @@ riesgo_pai = client.RiesgoPai
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `valor` | ``$NUMBER`` | No |  |
+| `fecha` | `String` | No |  |
+| `valor` | `Float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.RiesgoPai.list(nil)
+results = client.RiesgoPai.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -1630,7 +1630,7 @@ results = client.RiesgoPai.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.RiesgoPai.load({ "id" => "riesgo_pai_id" })
+result = client.RiesgoPai.load()
 ```
 
 ### Common Methods
@@ -1673,27 +1673,27 @@ senador = client.Senador
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | ``$STRING`` | No |  |
-| `foto` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `nombre` | ``$STRING`` | No |  |
-| `observacione` | ``$STRING`` | No |  |
-| `partido` | ``$STRING`` | No |  |
-| `periodo_legal` | ``$OBJECT`` | No |  |
-| `periodo_real` | ``$OBJECT`` | No |  |
-| `provincia` | ``$STRING`` | No |  |
-| `rede` | ``$ARRAY`` | No |  |
-| `reemplazo` | ``$STRING`` | No |  |
-| `telefono` | ``$STRING`` | No |  |
+| `email` | `String` | No |  |
+| `foto` | `String` | No |  |
+| `id` | `String` | No |  |
+| `nombre` | `String` | No |  |
+| `observacione` | `String` | No |  |
+| `partido` | `String` | No |  |
+| `periodo_legal` | `Hash` | No |  |
+| `periodo_real` | `Hash` | No |  |
+| `provincia` | `String` | No |  |
+| `rede` | `Array` | No |  |
+| `reemplazo` | `String` | No |  |
+| `telefono` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Senador.list(nil)
+results = client.Senador.list
 ```
 
 ### Common Methods
@@ -1736,17 +1736,17 @@ tasa_intere = client.TasaIntere
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `valor` | ``$NUMBER`` | No |  |
+| `fecha` | `String` | No |  |
+| `valor` | `Float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.TasaIntere.list(nil)
+results = client.TasaIntere.list
 ```
 
 ### Common Methods
@@ -1789,19 +1789,19 @@ tasa_plazo_fijo = client.TasaPlazoFijo
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `logo` | ``$STRING`` | No |  |
-| `tna_cliente` | ``$NUMBER`` | No |  |
-| `tna_no_cliente` | ``$NUMBER`` | No |  |
+| `entidad` | `String` | No |  |
+| `logo` | `String` | No |  |
+| `tna_cliente` | `Float` | No |  |
+| `tna_no_cliente` | `Float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.TasaPlazoFijo.list(nil)
+results = client.TasaPlazoFijo.list
 ```
 
 ### Common Methods

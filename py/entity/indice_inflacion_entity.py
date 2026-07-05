@@ -66,8 +66,12 @@ class IndiceInflacionEntity:
     
 
     
-    def list(self, reqmatch: IndiceInflacionListMatch, ctrl=None) -> list[IndiceInflacion]:
+    def list(self, reqmatch=None, ctrl=None) -> list[IndiceInflacion]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.IndiceInflacion().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,

@@ -66,8 +66,12 @@ class FinanzaEntity:
     
 
     
-    def list(self, reqmatch: FinanzaListMatch, ctrl=None) -> list[Finanza]:
+    def list(self, reqmatch=None, ctrl=None) -> list[Finanza]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.Finanza().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,

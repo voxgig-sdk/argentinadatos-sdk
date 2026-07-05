@@ -153,11 +153,11 @@ Create a new `TasaIntereEntity` instance. Pass `null` for no initial data.
 
 Create a new `TasaPlazoFijoEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): ArgentinadatosUtility`
 
 Return a copy of the SDK utility object.
 
@@ -200,40 +200,40 @@ $acta = $client->Acta();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abstencione` | ``$INTEGER`` | No |  |
-| `acta` | ``$STRING`` | No |  |
-| `acta_id` | ``$INTEGER`` | No |  |
-| `afirmativo` | ``$INTEGER`` | No |  |
-| `amn` | ``$INTEGER`` | No |  |
-| `ausente` | ``$INTEGER`` | No |  |
-| `descripcion` | ``$STRING`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `mayoria` | ``$STRING`` | No |  |
-| `miembro` | ``$INTEGER`` | No |  |
-| `negativo` | ``$INTEGER`` | No |  |
-| `numero_acta` | ``$STRING`` | No |  |
-| `observacione` | ``$ARRAY`` | No |  |
-| `periodo` | ``$STRING`` | No |  |
-| `presente` | ``$INTEGER`` | No |  |
-| `presidente` | ``$STRING`` | No |  |
-| `proyecto` | ``$STRING`` | No |  |
-| `quorum_tipo` | ``$STRING`` | No |  |
-| `resultado` | ``$STRING`` | No |  |
-| `reunion` | ``$STRING`` | No |  |
-| `titulo` | ``$STRING`` | No |  |
-| `voto` | ``$ARRAY`` | No |  |
-| `votos_afirmativo` | ``$INTEGER`` | No |  |
-| `votos_negativo` | ``$INTEGER`` | No |  |
+| `abstencione` | `int` | No |  |
+| `acta` | `string` | No |  |
+| `acta_id` | `int` | No |  |
+| `afirmativo` | `int` | No |  |
+| `amn` | `int` | No |  |
+| `ausente` | `int` | No |  |
+| `descripcion` | `string` | No |  |
+| `fecha` | `string` | No |  |
+| `id` | `string` | No |  |
+| `mayoria` | `string` | No |  |
+| `miembro` | `int` | No |  |
+| `negativo` | `int` | No |  |
+| `numero_acta` | `string` | No |  |
+| `observacione` | `array` | No |  |
+| `periodo` | `string` | No |  |
+| `presente` | `int` | No |  |
+| `presidente` | `string` | No |  |
+| `proyecto` | `string` | No |  |
+| `quorum_tipo` | `string` | No |  |
+| `resultado` | `string` | No |  |
+| `reunion` | `string` | No |  |
+| `titulo` | `string` | No |  |
+| `voto` | `array` | No |  |
+| `votos_afirmativo` | `int` | No |  |
+| `votos_negativo` | `int` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Acta()->list([]);
+$results = $client->Acta()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -246,19 +246,19 @@ $result = $client->Acta()->load(["id" => "acta_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -267,7 +267,7 @@ Set the entity match criteria.
 Create a new `ActaEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -284,37 +284,37 @@ $bonos_cer = $client->BonosCer();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha_vencimiento` | ``$STRING`` | Yes |  |
-| `precio_ar` | ``$NUMBER`` | Yes |  |
-| `ticker` | ``$STRING`` | Yes |  |
-| `tir_porcentaje` | ``$NUMBER`` | Yes |  |
-| `voluman` | ``$NUMBER`` | No |  |
+| `fecha_vencimiento` | `string` | Yes |  |
+| `precio_ar` | `float` | Yes |  |
+| `ticker` | `string` | Yes |  |
+| `tir_porcentaje` | `float` | Yes |  |
+| `voluman` | `float` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->BonosCer()->list([]);
+$results = $client->BonosCer()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -323,7 +323,7 @@ Set the entity match criteria.
 Create a new `BonosCerEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -340,20 +340,20 @@ $cotizacion = $client->Cotizacion();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `casa` | ``$STRING`` | No |  |
-| `compra` | ``$NUMBER`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `moneda` | ``$STRING`` | No |  |
-| `venta` | ``$NUMBER`` | No |  |
+| `casa` | `string` | No |  |
+| `compra` | `float` | No |  |
+| `fecha` | `string` | No |  |
+| `moneda` | `string` | No |  |
+| `venta` | `float` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Cotizacion()->list([]);
+$results = $client->Cotizacion()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -361,24 +361,24 @@ $results = $client->Cotizacion()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Cotizacion()->load(["id" => "cotizacion_id"]);
+$result = $client->Cotizacion()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -387,7 +387,7 @@ Set the entity match criteria.
 Create a new `CotizacionEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -404,35 +404,35 @@ $criptopeso = $client->Criptopeso();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `tna` | ``$NUMBER`` | No |  |
-| `token` | ``$STRING`` | No |  |
+| `entidad` | `string` | No |  |
+| `tna` | `float` | No |  |
+| `token` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Criptopeso()->list([]);
+$results = $client->Criptopeso()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -441,7 +441,7 @@ Set the entity match criteria.
 Create a new `CriptopesoEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -458,35 +458,35 @@ $cuenta_remunerada_usd = $client->CuentaRemuneradaUsd();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `tasa` | ``$NUMBER`` | No |  |
-| `tope` | ``$NUMBER`` | No |  |
+| `entidad` | `string` | No |  |
+| `tasa` | `float` | No |  |
+| `tope` | `float` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->CuentaRemuneradaUsd()->list([]);
+$results = $client->CuentaRemuneradaUsd()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -495,7 +495,7 @@ Set the entity match criteria.
 Create a new `CuentaRemuneradaUsdEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -512,43 +512,43 @@ $diputado = $client->Diputado();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `apellido` | ``$STRING`` | No |  |
-| `bloque` | ``$STRING`` | No |  |
-| `cese_fecha` | ``$STRING`` | No |  |
-| `foto` | ``$STRING`` | No |  |
-| `genero` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `juramento_fecha` | ``$STRING`` | No |  |
-| `nombre` | ``$STRING`` | No |  |
-| `periodo_bloque` | ``$OBJECT`` | No |  |
-| `periodo_mandato` | ``$OBJECT`` | No |  |
-| `provincia` | ``$STRING`` | No |  |
+| `apellido` | `string` | No |  |
+| `bloque` | `string` | No |  |
+| `cese_fecha` | `string` | No |  |
+| `foto` | `string` | No |  |
+| `genero` | `string` | No |  |
+| `id` | `string` | No |  |
+| `juramento_fecha` | `string` | No |  |
+| `nombre` | `string` | No |  |
+| `periodo_bloque` | `array` | No |  |
+| `periodo_mandato` | `array` | No |  |
+| `provincia` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Diputado()->list([]);
+$results = $client->Diputado()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -557,7 +557,7 @@ Set the entity match criteria.
 Create a new `DiputadoEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -574,34 +574,34 @@ $entidad_rendimiento = $client->EntidadRendimiento();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `rendimiento` | ``$ARRAY`` | No |  |
+| `entidad` | `string` | No |  |
+| `rendimiento` | `array` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->EntidadRendimiento()->list([]);
+$results = $client->EntidadRendimiento()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -610,7 +610,7 @@ Set the entity match criteria.
 Create a new `EntidadRendimientoEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -627,8 +627,8 @@ $estado = $client->Estado();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aleatorio` | ``$INTEGER`` | No |  |
-| `estado` | ``$STRING`` | No |  |
+| `aleatorio` | `int` | No |  |
+| `estado` | `string` | No |  |
 
 ### Operations
 
@@ -637,24 +637,24 @@ $estado = $client->Estado();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Estado()->load(["id" => "estado_id"]);
+$result = $client->Estado()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -663,7 +663,7 @@ Set the entity match criteria.
 Create a new `EstadoEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -680,35 +680,35 @@ $evento_presidencial = $client->EventoPresidencial();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `evento` | ``$STRING`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `tipo` | ``$STRING`` | No |  |
+| `evento` | `string` | No |  |
+| `fecha` | `string` | No |  |
+| `tipo` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->EventoPresidencial()->list([]);
+$results = $client->EventoPresidencial()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -717,7 +717,7 @@ Set the entity match criteria.
 Create a new `EventoPresidencialEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -734,9 +734,9 @@ $feriado = $client->Feriado();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `nombre` | ``$STRING`` | No |  |
-| `tipo` | ``$STRING`` | No |  |
+| `fecha` | `string` | No |  |
+| `nombre` | `string` | No |  |
+| `tipo` | `string` | No |  |
 
 ### Operations
 
@@ -750,19 +750,19 @@ $result = $client->Feriado()->load(["id" => "feriado_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -771,7 +771,7 @@ Set the entity match criteria.
 Create a new `FeriadoEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -786,29 +786,29 @@ $finanza = $client->Finanza();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Finanza()->list([]);
+$results = $client->Finanza()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -817,7 +817,7 @@ Set the entity match criteria.
 Create a new `FinanzaEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -834,13 +834,13 @@ $fondo_comun_inversion = $client->FondoComunInversion();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ccp` | ``$NUMBER`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `fondo` | ``$STRING`` | No |  |
-| `horizonte` | ``$STRING`` | No |  |
-| `patrimonio` | ``$NUMBER`` | No |  |
-| `tipo` | ``$STRING`` | No |  |
-| `vcp` | ``$NUMBER`` | No |  |
+| `ccp` | `float` | No |  |
+| `fecha` | `string` | No |  |
+| `fondo` | `string` | No |  |
+| `horizonte` | `string` | No |  |
+| `patrimonio` | `float` | No |  |
+| `tipo` | `string` | No |  |
+| `vcp` | `float` | No |  |
 
 ### Operations
 
@@ -849,24 +849,24 @@ $fondo_comun_inversion = $client->FondoComunInversion();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->FondoComunInversion()->load(["id" => "fondo_comun_inversion_id"]);
+$result = $client->FondoComunInversion()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -875,7 +875,7 @@ Set the entity match criteria.
 Create a new `FondoComunInversionEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -892,11 +892,11 @@ $fondo_comun_inversion_otro = $client->FondoComunInversionOtro();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `fondo` | ``$STRING`` | No |  |
-| `tea` | ``$NUMBER`` | No |  |
-| `tna` | ``$NUMBER`` | No |  |
-| `tope` | ``$NUMBER`` | No |  |
+| `fecha` | `string` | No |  |
+| `fondo` | `string` | No |  |
+| `tea` | `float` | No |  |
+| `tna` | `float` | No |  |
+| `tope` | `float` | No |  |
 
 ### Operations
 
@@ -910,19 +910,19 @@ $result = $client->FondoComunInversionOtro()->load(["id" => "fondo_comun_inversi
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -931,7 +931,7 @@ Set the entity match criteria.
 Create a new `FondoComunInversionOtroEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -948,15 +948,15 @@ $fondo_comun_inversion_variable = $client->FondoComunInversionVariable();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `condicione` | ``$STRING`` | No |  |
-| `condiciones_corto` | ``$STRING`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `fondo` | ``$STRING`` | No |  |
-| `nombre` | ``$STRING`` | No |  |
-| `tea` | ``$NUMBER`` | No |  |
-| `tipo` | ``$STRING`` | No |  |
-| `tna` | ``$NUMBER`` | No |  |
-| `tope` | ``$NUMBER`` | No |  |
+| `condicione` | `string` | No |  |
+| `condiciones_corto` | `string` | No |  |
+| `fecha` | `string` | No |  |
+| `fondo` | `string` | No |  |
+| `nombre` | `string` | No |  |
+| `tea` | `float` | No |  |
+| `tipo` | `string` | No |  |
+| `tna` | `float` | No |  |
+| `tope` | `float` | No |  |
 
 ### Operations
 
@@ -970,19 +970,19 @@ $result = $client->FondoComunInversionVariable()->load(["id" => "fondo_comun_inv
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -991,7 +991,7 @@ Set the entity match criteria.
 Create a new `FondoComunInversionVariableEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -1008,36 +1008,36 @@ $hipotecario_uva_tna = $client->HipotecarioUvaTna();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `metadata` | ``$OBJECT`` | No |  |
-| `nombre_comercial` | ``$STRING`` | No |  |
-| `tna` | ``$NUMBER`` | No |  |
+| `entidad` | `string` | No |  |
+| `metadata` | `array` | No |  |
+| `nombre_comercial` | `string` | No |  |
+| `tna` | `float` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->HipotecarioUvaTna()->list([]);
+$results = $client->HipotecarioUvaTna()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -1046,7 +1046,7 @@ Set the entity match criteria.
 Create a new `HipotecarioUvaTnaEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -1063,34 +1063,34 @@ $indice_inflacion = $client->IndiceInflacion();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `valor` | ``$NUMBER`` | No |  |
+| `fecha` | `string` | No |  |
+| `valor` | `float` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->IndiceInflacion()->list([]);
+$results = $client->IndiceInflacion()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -1099,7 +1099,7 @@ Set the entity match criteria.
 Create a new `IndiceInflacionEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -1116,34 +1116,34 @@ $indice_uva = $client->IndiceUva();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `valor` | ``$NUMBER`` | No |  |
+| `fecha` | `string` | No |  |
+| `valor` | `float` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->IndiceUva()->list([]);
+$results = $client->IndiceUva()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -1152,7 +1152,7 @@ Set the entity match criteria.
 Create a new `IndiceUvaEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -1169,37 +1169,37 @@ $letra = $client->Letra();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha_emision` | ``$STRING`` | No |  |
-| `fecha_vencimiento` | ``$STRING`` | No |  |
-| `tem` | ``$NUMBER`` | No |  |
-| `ticker` | ``$STRING`` | No |  |
-| `vpv` | ``$NUMBER`` | No |  |
+| `fecha_emision` | `string` | No |  |
+| `fecha_vencimiento` | `string` | No |  |
+| `tem` | `float` | No |  |
+| `ticker` | `string` | No |  |
+| `vpv` | `float` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Letra()->list([]);
+$results = $client->Letra()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -1208,7 +1208,7 @@ Set the entity match criteria.
 Create a new `LetraEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -1225,40 +1225,40 @@ $presidente = $client->Presidente();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fin` | ``$STRING`` | No |  |
-| `imagen` | ``$STRING`` | No |  |
-| `inicio` | ``$STRING`` | No |  |
-| `nombre` | ``$STRING`` | No |  |
-| `partido` | ``$STRING`` | No |  |
-| `partido_imagen` | ``$STRING`` | No |  |
-| `periodo_presidencial` | ``$STRING`` | No |  |
-| `vicepresidente` | ``$STRING`` | No |  |
+| `fin` | `string` | No |  |
+| `imagen` | `string` | No |  |
+| `inicio` | `string` | No |  |
+| `nombre` | `string` | No |  |
+| `partido` | `string` | No |  |
+| `partido_imagen` | `string` | No |  |
+| `periodo_presidencial` | `string` | No |  |
+| `vicepresidente` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Presidente()->list([]);
+$results = $client->Presidente()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -1267,7 +1267,7 @@ Set the entity match criteria.
 Create a new `PresidenteEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -1284,49 +1284,49 @@ $proveedor_plazo_fijo_precancelable = $client->ProveedorPlazoFijoPrecancelable()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aviso_precancelacion_dia` | ``$INTEGER`` | No |  |
-| `canal` | ``$STRING`` | No |  |
-| `enlace` | ``$STRING`` | No |  |
-| `entidad` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `logo` | ``$STRING`` | No |  |
-| `modalidad` | ``$STRING`` | No |  |
-| `moneda` | ``$STRING`` | No |  |
-| `monto_maximo` | ``$NUMBER`` | No |  |
-| `monto_minimo` | ``$NUMBER`` | No |  |
-| `plazo_max_dia` | ``$INTEGER`` | No |  |
-| `plazo_min_dia` | ``$INTEGER`` | No |  |
-| `plazo_precancelacion_dia` | ``$INTEGER`` | No |  |
-| `tea` | ``$NUMBER`` | No |  |
-| `tea_precancelacion` | ``$NUMBER`` | No |  |
-| `tna` | ``$NUMBER`` | No |  |
-| `tna_precancelacion` | ``$NUMBER`` | No |  |
+| `aviso_precancelacion_dia` | `int` | No |  |
+| `canal` | `string` | No |  |
+| `enlace` | `string` | No |  |
+| `entidad` | `string` | No |  |
+| `id` | `string` | No |  |
+| `logo` | `string` | No |  |
+| `modalidad` | `string` | No |  |
+| `moneda` | `string` | No |  |
+| `monto_maximo` | `float` | No |  |
+| `monto_minimo` | `float` | No |  |
+| `plazo_max_dia` | `int` | No |  |
+| `plazo_min_dia` | `int` | No |  |
+| `plazo_precancelacion_dia` | `int` | No |  |
+| `tea` | `float` | No |  |
+| `tea_precancelacion` | `float` | No |  |
+| `tna` | `float` | No |  |
+| `tna_precancelacion` | `float` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->ProveedorPlazoFijoPrecancelable()->list([]);
+$results = $client->ProveedorPlazoFijoPrecancelable()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -1335,7 +1335,7 @@ Set the entity match criteria.
 Create a new `ProveedorPlazoFijoPrecancelableEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -1352,36 +1352,36 @@ $proveedor_plazo_fijo_uva_pago_periodico = $client->ProveedorPlazoFijoUvaPagoPer
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `logo` | ``$STRING`` | No |  |
-| `tasa` | ``$ARRAY`` | No |  |
+| `entidad` | `string` | No |  |
+| `id` | `string` | No |  |
+| `logo` | `string` | No |  |
+| `tasa` | `array` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->ProveedorPlazoFijoUvaPagoPeriodico()->list([]);
+$results = $client->ProveedorPlazoFijoUvaPagoPeriodico()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -1390,7 +1390,7 @@ Set the entity match criteria.
 Create a new `ProveedorPlazoFijoUvaPagoPeriodicoEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -1407,56 +1407,56 @@ $rem = $client->Rem();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `desvio` | ``$NUMBER`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `fuente` | ``$STRING`` | No |  |
-| `indicador` | ``$STRING`` | No |  |
-| `informe` | ``$STRING`` | No |  |
-| `maximo` | ``$NUMBER`` | No |  |
-| `mediana` | ``$NUMBER`` | No |  |
-| `minimo` | ``$NUMBER`` | No |  |
-| `muestra` | ``$STRING`` | No |  |
-| `participante` | ``$INTEGER`` | No |  |
-| `percentil10` | ``$NUMBER`` | No |  |
-| `percentil25` | ``$NUMBER`` | No |  |
-| `percentil75` | ``$NUMBER`` | No |  |
-| `percentil90` | ``$NUMBER`` | No |  |
-| `periodo` | ``$STRING`` | No |  |
-| `periodo_desde` | ``$STRING`` | No |  |
-| `periodo_hasta` | ``$STRING`` | No |  |
-| `periodo_tipo` | ``$STRING`` | No |  |
-| `promedio` | ``$NUMBER`` | No |  |
-| `publicacion_url` | ``$STRING`` | No |  |
-| `referencia` | ``$STRING`` | No |  |
-| `referencia_fecha` | ``$STRING`` | No |  |
-| `unidad` | ``$STRING`` | No |  |
-| `xlsx_url` | ``$STRING`` | No |  |
+| `desvio` | `float` | No |  |
+| `fecha` | `string` | No |  |
+| `fuente` | `string` | No |  |
+| `indicador` | `string` | No |  |
+| `informe` | `string` | No |  |
+| `maximo` | `float` | No |  |
+| `mediana` | `float` | No |  |
+| `minimo` | `float` | No |  |
+| `muestra` | `string` | No |  |
+| `participante` | `int` | No |  |
+| `percentil10` | `float` | No |  |
+| `percentil25` | `float` | No |  |
+| `percentil75` | `float` | No |  |
+| `percentil90` | `float` | No |  |
+| `periodo` | `string` | No |  |
+| `periodo_desde` | `string` | No |  |
+| `periodo_hasta` | `string` | No |  |
+| `periodo_tipo` | `string` | No |  |
+| `promedio` | `float` | No |  |
+| `publicacion_url` | `string` | No |  |
+| `referencia` | `string` | No |  |
+| `referencia_fecha` | `string` | No |  |
+| `unidad` | `string` | No |  |
+| `xlsx_url` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Rem()->list([]);
+$results = $client->Rem()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -1465,7 +1465,7 @@ Set the entity match criteria.
 Create a new `RemEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -1482,56 +1482,56 @@ $rem_expectativa = $client->RemExpectativa();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `desvio` | ``$NUMBER`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `fuente` | ``$STRING`` | No |  |
-| `indicador` | ``$STRING`` | No |  |
-| `informe` | ``$STRING`` | No |  |
-| `maximo` | ``$NUMBER`` | No |  |
-| `mediana` | ``$NUMBER`` | No |  |
-| `minimo` | ``$NUMBER`` | No |  |
-| `muestra` | ``$STRING`` | No |  |
-| `participante` | ``$INTEGER`` | No |  |
-| `percentil10` | ``$NUMBER`` | No |  |
-| `percentil25` | ``$NUMBER`` | No |  |
-| `percentil75` | ``$NUMBER`` | No |  |
-| `percentil90` | ``$NUMBER`` | No |  |
-| `periodo` | ``$STRING`` | No |  |
-| `periodo_desde` | ``$STRING`` | No |  |
-| `periodo_hasta` | ``$STRING`` | No |  |
-| `periodo_tipo` | ``$STRING`` | No |  |
-| `promedio` | ``$NUMBER`` | No |  |
-| `publicacion_url` | ``$STRING`` | No |  |
-| `referencia` | ``$STRING`` | No |  |
-| `referencia_fecha` | ``$STRING`` | No |  |
-| `unidad` | ``$STRING`` | No |  |
-| `xlsx_url` | ``$STRING`` | No |  |
+| `desvio` | `float` | No |  |
+| `fecha` | `string` | No |  |
+| `fuente` | `string` | No |  |
+| `indicador` | `string` | No |  |
+| `informe` | `string` | No |  |
+| `maximo` | `float` | No |  |
+| `mediana` | `float` | No |  |
+| `minimo` | `float` | No |  |
+| `muestra` | `string` | No |  |
+| `participante` | `int` | No |  |
+| `percentil10` | `float` | No |  |
+| `percentil25` | `float` | No |  |
+| `percentil75` | `float` | No |  |
+| `percentil90` | `float` | No |  |
+| `periodo` | `string` | No |  |
+| `periodo_desde` | `string` | No |  |
+| `periodo_hasta` | `string` | No |  |
+| `periodo_tipo` | `string` | No |  |
+| `promedio` | `float` | No |  |
+| `publicacion_url` | `string` | No |  |
+| `referencia` | `string` | No |  |
+| `referencia_fecha` | `string` | No |  |
+| `unidad` | `string` | No |  |
+| `xlsx_url` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->RemExpectativa()->list([]);
+$results = $client->RemExpectativa()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -1540,7 +1540,7 @@ Set the entity match criteria.
 Create a new `RemExpectativaEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -1557,9 +1557,9 @@ $rendimiento = $client->Rendimiento();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `apy` | ``$NUMBER`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `moneda` | ``$STRING`` | No |  |
+| `apy` | `float` | No |  |
+| `fecha` | `string` | No |  |
+| `moneda` | `string` | No |  |
 
 ### Operations
 
@@ -1573,19 +1573,19 @@ $result = $client->Rendimiento()->load(["id" => "rendimiento_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -1594,7 +1594,7 @@ Set the entity match criteria.
 Create a new `RendimientoEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -1611,17 +1611,17 @@ $riesgo_pai = $client->RiesgoPai();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `valor` | ``$NUMBER`` | No |  |
+| `fecha` | `string` | No |  |
+| `valor` | `float` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->RiesgoPai()->list([]);
+$results = $client->RiesgoPai()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -1629,24 +1629,24 @@ $results = $client->RiesgoPai()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->RiesgoPai()->load(["id" => "riesgo_pai_id"]);
+$result = $client->RiesgoPai()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -1655,7 +1655,7 @@ Set the entity match criteria.
 Create a new `RiesgoPaiEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -1672,44 +1672,44 @@ $senador = $client->Senador();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | ``$STRING`` | No |  |
-| `foto` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `nombre` | ``$STRING`` | No |  |
-| `observacione` | ``$STRING`` | No |  |
-| `partido` | ``$STRING`` | No |  |
-| `periodo_legal` | ``$OBJECT`` | No |  |
-| `periodo_real` | ``$OBJECT`` | No |  |
-| `provincia` | ``$STRING`` | No |  |
-| `rede` | ``$ARRAY`` | No |  |
-| `reemplazo` | ``$STRING`` | No |  |
-| `telefono` | ``$STRING`` | No |  |
+| `email` | `string` | No |  |
+| `foto` | `string` | No |  |
+| `id` | `string` | No |  |
+| `nombre` | `string` | No |  |
+| `observacione` | `string` | No |  |
+| `partido` | `string` | No |  |
+| `periodo_legal` | `array` | No |  |
+| `periodo_real` | `array` | No |  |
+| `provincia` | `string` | No |  |
+| `rede` | `array` | No |  |
+| `reemplazo` | `string` | No |  |
+| `telefono` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Senador()->list([]);
+$results = $client->Senador()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -1718,7 +1718,7 @@ Set the entity match criteria.
 Create a new `SenadorEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -1735,34 +1735,34 @@ $tasa_intere = $client->TasaIntere();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `valor` | ``$NUMBER`` | No |  |
+| `fecha` | `string` | No |  |
+| `valor` | `float` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->TasaIntere()->list([]);
+$results = $client->TasaIntere()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -1771,7 +1771,7 @@ Set the entity match criteria.
 Create a new `TasaIntereEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -1788,36 +1788,36 @@ $tasa_plazo_fijo = $client->TasaPlazoFijo();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `logo` | ``$STRING`` | No |  |
-| `tna_cliente` | ``$NUMBER`` | No |  |
-| `tna_no_cliente` | ``$NUMBER`` | No |  |
+| `entidad` | `string` | No |  |
+| `logo` | `string` | No |  |
+| `tna_cliente` | `float` | No |  |
+| `tna_no_cliente` | `float` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->TasaPlazoFijo()->list([]);
+$results = $client->TasaPlazoFijo()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -1826,7 +1826,7 @@ Set the entity match criteria.
 Create a new `TasaPlazoFijoEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

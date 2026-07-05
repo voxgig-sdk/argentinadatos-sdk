@@ -37,7 +37,33 @@ export interface ActaLoadMatch {
   id: number
 }
 
-export type ActaListMatch = Partial<Acta>
+export interface ActaListMatch {
+  abstencione?: number
+  acta?: string
+  acta_id?: number
+  afirmativo?: number
+  amn?: number
+  ausente?: number
+  descripcion?: string
+  fecha?: string
+  id?: string
+  mayoria?: string
+  miembro?: number
+  negativo?: number
+  numero_acta?: string
+  observacione?: any[]
+  periodo?: string
+  presente?: number
+  presidente?: string
+  proyecto?: string
+  quorum_tipo?: string
+  resultado?: string
+  reunion?: string
+  titulo?: string
+  voto?: any[]
+  votos_afirmativo?: number
+  votos_negativo?: number
+}
 
 export interface BonosCer {
   fecha_vencimiento: string
@@ -47,7 +73,13 @@ export interface BonosCer {
   voluman?: number
 }
 
-export type BonosCerListMatch = Partial<BonosCer>
+export interface BonosCerListMatch {
+  fecha_vencimiento?: string
+  precio_ar?: number
+  ticker?: string
+  tir_porcentaje?: number
+  voluman?: number
+}
 
 export interface Cotizacion {
   casa?: string
@@ -62,7 +94,13 @@ export interface CotizacionLoadMatch {
   fecha: string
 }
 
-export type CotizacionListMatch = Partial<Cotizacion>
+export interface CotizacionListMatch {
+  casa?: string
+  compra?: number
+  fecha?: string
+  moneda?: string
+  venta?: number
+}
 
 export interface Criptopeso {
   entidad?: string
@@ -70,7 +108,11 @@ export interface Criptopeso {
   token?: string
 }
 
-export type CriptopesoListMatch = Partial<Criptopeso>
+export interface CriptopesoListMatch {
+  entidad?: string
+  tna?: number
+  token?: string
+}
 
 export interface CuentaRemuneradaUsd {
   entidad?: string
@@ -78,7 +120,11 @@ export interface CuentaRemuneradaUsd {
   tope?: number
 }
 
-export type CuentaRemuneradaUsdListMatch = Partial<CuentaRemuneradaUsd>
+export interface CuentaRemuneradaUsdListMatch {
+  entidad?: string
+  tasa?: number
+  tope?: number
+}
 
 export interface Diputado {
   apellido?: string
@@ -94,21 +140,39 @@ export interface Diputado {
   provincia?: string
 }
 
-export type DiputadoListMatch = Partial<Diputado>
+export interface DiputadoListMatch {
+  apellido?: string
+  bloque?: string
+  cese_fecha?: string
+  foto?: string
+  genero?: string
+  id?: string
+  juramento_fecha?: string
+  nombre?: string
+  periodo_bloque?: Record<string, any>
+  periodo_mandato?: Record<string, any>
+  provincia?: string
+}
 
 export interface EntidadRendimiento {
   entidad?: string
   rendimiento?: any[]
 }
 
-export type EntidadRendimientoListMatch = Partial<EntidadRendimiento>
+export interface EntidadRendimientoListMatch {
+  entidad?: string
+  rendimiento?: any[]
+}
 
 export interface Estado {
   aleatorio?: number
   estado?: string
 }
 
-export type EstadoLoadMatch = Partial<Estado>
+export interface EstadoLoadMatch {
+  aleatorio?: number
+  estado?: string
+}
 
 export interface EventoPresidencial {
   evento?: string
@@ -116,7 +180,11 @@ export interface EventoPresidencial {
   tipo?: string
 }
 
-export type EventoPresidencialListMatch = Partial<EventoPresidencial>
+export interface EventoPresidencialListMatch {
+  evento?: string
+  fecha?: string
+  tipo?: string
+}
 
 export interface Feriado {
   fecha?: string
@@ -131,7 +199,8 @@ export interface FeriadoLoadMatch {
 export interface Finanza {
 }
 
-export type FinanzaListMatch = Partial<Finanza>
+export interface FinanzaListMatch {
+}
 
 export interface FondoComunInversion {
   ccp?: number
@@ -182,21 +251,32 @@ export interface HipotecarioUvaTna {
   tna?: number
 }
 
-export type HipotecarioUvaTnaListMatch = Partial<HipotecarioUvaTna>
+export interface HipotecarioUvaTnaListMatch {
+  entidad?: string
+  metadata?: Record<string, any>
+  nombre_comercial?: string
+  tna?: number
+}
 
 export interface IndiceInflacion {
   fecha?: string
   valor?: number
 }
 
-export type IndiceInflacionListMatch = Partial<IndiceInflacion>
+export interface IndiceInflacionListMatch {
+  fecha?: string
+  valor?: number
+}
 
 export interface IndiceUva {
   fecha?: string
   valor?: number
 }
 
-export type IndiceUvaListMatch = Partial<IndiceUva>
+export interface IndiceUvaListMatch {
+  fecha?: string
+  valor?: number
+}
 
 export interface Letra {
   fecha_emision?: string
@@ -206,7 +286,13 @@ export interface Letra {
   vpv?: number
 }
 
-export type LetraListMatch = Partial<Letra>
+export interface LetraListMatch {
+  fecha_emision?: string
+  fecha_vencimiento?: string
+  tem?: number
+  ticker?: string
+  vpv?: number
+}
 
 export interface Presidente {
   fin?: string
@@ -219,7 +305,16 @@ export interface Presidente {
   vicepresidente?: string
 }
 
-export type PresidenteListMatch = Partial<Presidente>
+export interface PresidenteListMatch {
+  fin?: string
+  imagen?: string
+  inicio?: string
+  nombre?: string
+  partido?: string
+  partido_imagen?: string
+  periodo_presidencial?: string
+  vicepresidente?: string
+}
 
 export interface ProveedorPlazoFijoPrecancelable {
   aviso_precancelacion_dia?: number
@@ -241,7 +336,25 @@ export interface ProveedorPlazoFijoPrecancelable {
   tna_precancelacion?: number
 }
 
-export type ProveedorPlazoFijoPrecancelableListMatch = Partial<ProveedorPlazoFijoPrecancelable>
+export interface ProveedorPlazoFijoPrecancelableListMatch {
+  aviso_precancelacion_dia?: number
+  canal?: string
+  enlace?: string
+  entidad?: string
+  id?: string
+  logo?: string
+  modalidad?: string
+  moneda?: string
+  monto_maximo?: number
+  monto_minimo?: number
+  plazo_max_dia?: number
+  plazo_min_dia?: number
+  plazo_precancelacion_dia?: number
+  tea?: number
+  tea_precancelacion?: number
+  tna?: number
+  tna_precancelacion?: number
+}
 
 export interface ProveedorPlazoFijoUvaPagoPeriodico {
   entidad?: string
@@ -250,7 +363,12 @@ export interface ProveedorPlazoFijoUvaPagoPeriodico {
   tasa?: any[]
 }
 
-export type ProveedorPlazoFijoUvaPagoPeriodicoListMatch = Partial<ProveedorPlazoFijoUvaPagoPeriodico>
+export interface ProveedorPlazoFijoUvaPagoPeriodicoListMatch {
+  entidad?: string
+  id?: string
+  logo?: string
+  tasa?: any[]
+}
 
 export interface Rem {
   desvio?: number
@@ -311,7 +429,32 @@ export interface RemExpectativa {
   xlsx_url?: string
 }
 
-export type RemExpectativaListMatch = Partial<RemExpectativa>
+export interface RemExpectativaListMatch {
+  desvio?: number
+  fecha?: string
+  fuente?: string
+  indicador?: string
+  informe?: string
+  maximo?: number
+  mediana?: number
+  minimo?: number
+  muestra?: string
+  participante?: number
+  percentil10?: number
+  percentil25?: number
+  percentil75?: number
+  percentil90?: number
+  periodo?: string
+  periodo_desde?: string
+  periodo_hasta?: string
+  periodo_tipo?: string
+  promedio?: number
+  publicacion_url?: string
+  referencia?: string
+  referencia_fecha?: string
+  unidad?: string
+  xlsx_url?: string
+}
 
 export interface Rendimiento {
   apy?: number
@@ -328,9 +471,15 @@ export interface RiesgoPai {
   valor?: number
 }
 
-export type RiesgoPaiLoadMatch = Partial<RiesgoPai>
+export interface RiesgoPaiLoadMatch {
+  fecha?: string
+  valor?: number
+}
 
-export type RiesgoPaiListMatch = Partial<RiesgoPai>
+export interface RiesgoPaiListMatch {
+  fecha?: string
+  valor?: number
+}
 
 export interface Senador {
   email?: string
@@ -347,14 +496,30 @@ export interface Senador {
   telefono?: string
 }
 
-export type SenadorListMatch = Partial<Senador>
+export interface SenadorListMatch {
+  email?: string
+  foto?: string
+  id?: string
+  nombre?: string
+  observacione?: string
+  partido?: string
+  periodo_legal?: Record<string, any>
+  periodo_real?: Record<string, any>
+  provincia?: string
+  rede?: any[]
+  reemplazo?: string
+  telefono?: string
+}
 
 export interface TasaIntere {
   fecha?: string
   valor?: number
 }
 
-export type TasaIntereListMatch = Partial<TasaIntere>
+export interface TasaIntereListMatch {
+  fecha?: string
+  valor?: number
+}
 
 export interface TasaPlazoFijo {
   entidad?: string
@@ -363,5 +528,10 @@ export interface TasaPlazoFijo {
   tna_no_cliente?: number
 }
 
-export type TasaPlazoFijoListMatch = Partial<TasaPlazoFijo>
+export interface TasaPlazoFijoListMatch {
+  entidad?: string
+  logo?: string
+  tna_cliente?: number
+  tna_no_cliente?: number
+}
 

@@ -66,8 +66,12 @@ class EntidadRendimientoEntity:
     
 
     
-    def list(self, reqmatch: EntidadRendimientoListMatch, ctrl=None) -> list[EntidadRendimiento]:
+    def list(self, reqmatch=None, ctrl=None) -> list[EntidadRendimiento]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.EntidadRendimiento().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,

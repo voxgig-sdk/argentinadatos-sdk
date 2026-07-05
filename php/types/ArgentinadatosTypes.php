@@ -48,7 +48,7 @@ class ActaLoadMatch
     public int $id;
 }
 
-/** Match filter for Acta#list (any subset of Acta fields). */
+/** Request payload for Acta#list. */
 class ActaListMatch
 {
     public ?int $abstencione = null;
@@ -88,7 +88,7 @@ class BonosCer
     public ?float $voluman = null;
 }
 
-/** Match filter for BonosCer#list (any subset of BonosCer fields). */
+/** Request payload for BonosCer#list. */
 class BonosCerListMatch
 {
     public ?string $fecha_vencimiento = null;
@@ -115,7 +115,7 @@ class CotizacionLoadMatch
     public string $fecha;
 }
 
-/** Match filter for Cotizacion#list (any subset of Cotizacion fields). */
+/** Request payload for Cotizacion#list. */
 class CotizacionListMatch
 {
     public ?string $casa = null;
@@ -133,7 +133,7 @@ class Criptopeso
     public ?string $token = null;
 }
 
-/** Match filter for Criptopeso#list (any subset of Criptopeso fields). */
+/** Request payload for Criptopeso#list. */
 class CriptopesoListMatch
 {
     public ?string $entidad = null;
@@ -149,7 +149,7 @@ class CuentaRemuneradaUsd
     public ?float $tope = null;
 }
 
-/** Match filter for CuentaRemuneradaUsd#list (any subset of CuentaRemuneradaUsd fields). */
+/** Request payload for CuentaRemuneradaUsd#list. */
 class CuentaRemuneradaUsdListMatch
 {
     public ?string $entidad = null;
@@ -173,7 +173,7 @@ class Diputado
     public ?string $provincia = null;
 }
 
-/** Match filter for Diputado#list (any subset of Diputado fields). */
+/** Request payload for Diputado#list. */
 class DiputadoListMatch
 {
     public ?string $apellido = null;
@@ -196,7 +196,7 @@ class EntidadRendimiento
     public ?array $rendimiento = null;
 }
 
-/** Match filter for EntidadRendimiento#list (any subset of EntidadRendimiento fields). */
+/** Request payload for EntidadRendimiento#list. */
 class EntidadRendimientoListMatch
 {
     public ?string $entidad = null;
@@ -210,7 +210,7 @@ class Estado
     public ?string $estado = null;
 }
 
-/** Match filter for Estado#load (any subset of Estado fields). */
+/** Request payload for Estado#load. */
 class EstadoLoadMatch
 {
     public ?int $aleatorio = null;
@@ -225,7 +225,7 @@ class EventoPresidencial
     public ?string $tipo = null;
 }
 
-/** Match filter for EventoPresidencial#list (any subset of EventoPresidencial fields). */
+/** Request payload for EventoPresidencial#list. */
 class EventoPresidencialListMatch
 {
     public ?string $evento = null;
@@ -252,7 +252,7 @@ class Finanza
 {
 }
 
-/** Match filter for Finanza#list (any subset of Finanza fields). */
+/** Request payload for Finanza#list. */
 class FinanzaListMatch
 {
 }
@@ -320,7 +320,7 @@ class HipotecarioUvaTna
     public ?float $tna = null;
 }
 
-/** Match filter for HipotecarioUvaTna#list (any subset of HipotecarioUvaTna fields). */
+/** Request payload for HipotecarioUvaTna#list. */
 class HipotecarioUvaTnaListMatch
 {
     public ?string $entidad = null;
@@ -336,7 +336,7 @@ class IndiceInflacion
     public ?float $valor = null;
 }
 
-/** Match filter for IndiceInflacion#list (any subset of IndiceInflacion fields). */
+/** Request payload for IndiceInflacion#list. */
 class IndiceInflacionListMatch
 {
     public ?string $fecha = null;
@@ -350,7 +350,7 @@ class IndiceUva
     public ?float $valor = null;
 }
 
-/** Match filter for IndiceUva#list (any subset of IndiceUva fields). */
+/** Request payload for IndiceUva#list. */
 class IndiceUvaListMatch
 {
     public ?string $fecha = null;
@@ -367,7 +367,7 @@ class Letra
     public ?float $vpv = null;
 }
 
-/** Match filter for Letra#list (any subset of Letra fields). */
+/** Request payload for Letra#list. */
 class LetraListMatch
 {
     public ?string $fecha_emision = null;
@@ -390,7 +390,7 @@ class Presidente
     public ?string $vicepresidente = null;
 }
 
-/** Match filter for Presidente#list (any subset of Presidente fields). */
+/** Request payload for Presidente#list. */
 class PresidenteListMatch
 {
     public ?string $fin = null;
@@ -425,7 +425,7 @@ class ProveedorPlazoFijoPrecancelable
     public ?float $tna_precancelacion = null;
 }
 
-/** Match filter for ProveedorPlazoFijoPrecancelable#list (any subset of ProveedorPlazoFijoPrecancelable fields). */
+/** Request payload for ProveedorPlazoFijoPrecancelable#list. */
 class ProveedorPlazoFijoPrecancelableListMatch
 {
     public ?int $aviso_precancelacion_dia = null;
@@ -456,7 +456,7 @@ class ProveedorPlazoFijoUvaPagoPeriodico
     public ?array $tasa = null;
 }
 
-/** Match filter for ProveedorPlazoFijoUvaPagoPeriodico#list (any subset of ProveedorPlazoFijoUvaPagoPeriodico fields). */
+/** Request payload for ProveedorPlazoFijoUvaPagoPeriodico#list. */
 class ProveedorPlazoFijoUvaPagoPeriodicoListMatch
 {
     public ?string $entidad = null;
@@ -530,7 +530,7 @@ class RemExpectativa
     public ?string $xlsx_url = null;
 }
 
-/** Match filter for RemExpectativa#list (any subset of RemExpectativa fields). */
+/** Request payload for RemExpectativa#list. */
 class RemExpectativaListMatch
 {
     public ?float $desvio = null;
@@ -580,14 +580,14 @@ class RiesgoPai
     public ?float $valor = null;
 }
 
-/** Match filter for RiesgoPai#load (any subset of RiesgoPai fields). */
+/** Request payload for RiesgoPai#load. */
 class RiesgoPaiLoadMatch
 {
     public ?string $fecha = null;
     public ?float $valor = null;
 }
 
-/** Match filter for RiesgoPai#list (any subset of RiesgoPai fields). */
+/** Request payload for RiesgoPai#list. */
 class RiesgoPaiListMatch
 {
     public ?string $fecha = null;
@@ -611,7 +611,7 @@ class Senador
     public ?string $telefono = null;
 }
 
-/** Match filter for Senador#list (any subset of Senador fields). */
+/** Request payload for Senador#list. */
 class SenadorListMatch
 {
     public ?string $email = null;
@@ -635,7 +635,7 @@ class TasaIntere
     public ?float $valor = null;
 }
 
-/** Match filter for TasaIntere#list (any subset of TasaIntere fields). */
+/** Request payload for TasaIntere#list. */
 class TasaIntereListMatch
 {
     public ?string $fecha = null;
@@ -651,7 +651,7 @@ class TasaPlazoFijo
     public ?float $tna_no_cliente = null;
 }
 
-/** Match filter for TasaPlazoFijo#list (any subset of TasaPlazoFijo fields). */
+/** Request payload for TasaPlazoFijo#list. */
 class TasaPlazoFijoListMatch
 {
     public ?string $entidad = null;

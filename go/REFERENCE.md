@@ -205,31 +205,31 @@ acta := client.Acta(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abstencione` | ``$INTEGER`` | No |  |
-| `acta` | ``$STRING`` | No |  |
-| `acta_id` | ``$INTEGER`` | No |  |
-| `afirmativo` | ``$INTEGER`` | No |  |
-| `amn` | ``$INTEGER`` | No |  |
-| `ausente` | ``$INTEGER`` | No |  |
-| `descripcion` | ``$STRING`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `mayoria` | ``$STRING`` | No |  |
-| `miembro` | ``$INTEGER`` | No |  |
-| `negativo` | ``$INTEGER`` | No |  |
-| `numero_acta` | ``$STRING`` | No |  |
-| `observacione` | ``$ARRAY`` | No |  |
-| `periodo` | ``$STRING`` | No |  |
-| `presente` | ``$INTEGER`` | No |  |
-| `presidente` | ``$STRING`` | No |  |
-| `proyecto` | ``$STRING`` | No |  |
-| `quorum_tipo` | ``$STRING`` | No |  |
-| `resultado` | ``$STRING`` | No |  |
-| `reunion` | ``$STRING`` | No |  |
-| `titulo` | ``$STRING`` | No |  |
-| `voto` | ``$ARRAY`` | No |  |
-| `votos_afirmativo` | ``$INTEGER`` | No |  |
-| `votos_negativo` | ``$INTEGER`` | No |  |
+| `abstencione` | `int` | No |  |
+| `acta` | `string` | No |  |
+| `acta_id` | `int` | No |  |
+| `afirmativo` | `int` | No |  |
+| `amn` | `int` | No |  |
+| `ausente` | `int` | No |  |
+| `descripcion` | `string` | No |  |
+| `fecha` | `string` | No |  |
+| `id` | `string` | No |  |
+| `mayoria` | `string` | No |  |
+| `miembro` | `int` | No |  |
+| `negativo` | `int` | No |  |
+| `numero_acta` | `string` | No |  |
+| `observacione` | `[]any` | No |  |
+| `periodo` | `string` | No |  |
+| `presente` | `int` | No |  |
+| `presidente` | `string` | No |  |
+| `proyecto` | `string` | No |  |
+| `quorum_tipo` | `string` | No |  |
+| `resultado` | `string` | No |  |
+| `reunion` | `string` | No |  |
+| `titulo` | `string` | No |  |
+| `voto` | `[]any` | No |  |
+| `votos_afirmativo` | `int` | No |  |
+| `votos_negativo` | `int` | No |  |
 
 ### Operations
 
@@ -283,11 +283,11 @@ bonos_cer := client.BonosCer(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha_vencimiento` | ``$STRING`` | Yes |  |
-| `precio_ar` | ``$NUMBER`` | Yes |  |
-| `ticker` | ``$STRING`` | Yes |  |
-| `tir_porcentaje` | ``$NUMBER`` | Yes |  |
-| `voluman` | ``$NUMBER`` | No |  |
+| `fecha_vencimiento` | `string` | Yes |  |
+| `precio_ar` | `float64` | Yes |  |
+| `ticker` | `string` | Yes |  |
+| `tir_porcentaje` | `float64` | Yes |  |
+| `voluman` | `float64` | No |  |
 
 ### Operations
 
@@ -333,11 +333,11 @@ cotizacion := client.Cotizacion(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `casa` | ``$STRING`` | No |  |
-| `compra` | ``$NUMBER`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `moneda` | ``$STRING`` | No |  |
-| `venta` | ``$NUMBER`` | No |  |
+| `casa` | `string` | No |  |
+| `compra` | `float64` | No |  |
+| `fecha` | `string` | No |  |
+| `moneda` | `string` | No |  |
+| `venta` | `float64` | No |  |
 
 ### Operations
 
@@ -354,7 +354,7 @@ results, err := client.Cotizacion(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Cotizacion(nil).Load(map[string]any{"id": "cotizacion_id"}, nil)
+result, err := client.Cotizacion(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -391,9 +391,9 @@ criptopeso := client.Criptopeso(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `tna` | ``$NUMBER`` | No |  |
-| `token` | ``$STRING`` | No |  |
+| `entidad` | `string` | No |  |
+| `tna` | `float64` | No |  |
+| `token` | `string` | No |  |
 
 ### Operations
 
@@ -439,9 +439,9 @@ cuenta_remunerada_usd := client.CuentaRemuneradaUsd(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `tasa` | ``$NUMBER`` | No |  |
-| `tope` | ``$NUMBER`` | No |  |
+| `entidad` | `string` | No |  |
+| `tasa` | `float64` | No |  |
+| `tope` | `float64` | No |  |
 
 ### Operations
 
@@ -487,17 +487,17 @@ diputado := client.Diputado(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `apellido` | ``$STRING`` | No |  |
-| `bloque` | ``$STRING`` | No |  |
-| `cese_fecha` | ``$STRING`` | No |  |
-| `foto` | ``$STRING`` | No |  |
-| `genero` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `juramento_fecha` | ``$STRING`` | No |  |
-| `nombre` | ``$STRING`` | No |  |
-| `periodo_bloque` | ``$OBJECT`` | No |  |
-| `periodo_mandato` | ``$OBJECT`` | No |  |
-| `provincia` | ``$STRING`` | No |  |
+| `apellido` | `string` | No |  |
+| `bloque` | `string` | No |  |
+| `cese_fecha` | `string` | No |  |
+| `foto` | `string` | No |  |
+| `genero` | `string` | No |  |
+| `id` | `string` | No |  |
+| `juramento_fecha` | `string` | No |  |
+| `nombre` | `string` | No |  |
+| `periodo_bloque` | `map[string]any` | No |  |
+| `periodo_mandato` | `map[string]any` | No |  |
+| `provincia` | `string` | No |  |
 
 ### Operations
 
@@ -543,8 +543,8 @@ entidad_rendimiento := client.EntidadRendimiento(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `rendimiento` | ``$ARRAY`` | No |  |
+| `entidad` | `string` | No |  |
+| `rendimiento` | `[]any` | No |  |
 
 ### Operations
 
@@ -590,8 +590,8 @@ estado := client.Estado(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aleatorio` | ``$INTEGER`` | No |  |
-| `estado` | ``$STRING`` | No |  |
+| `aleatorio` | `int` | No |  |
+| `estado` | `string` | No |  |
 
 ### Operations
 
@@ -600,7 +600,7 @@ estado := client.Estado(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Estado(nil).Load(map[string]any{"id": "estado_id"}, nil)
+result, err := client.Estado(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -637,9 +637,9 @@ evento_presidencial := client.EventoPresidencial(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `evento` | ``$STRING`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `tipo` | ``$STRING`` | No |  |
+| `evento` | `string` | No |  |
+| `fecha` | `string` | No |  |
+| `tipo` | `string` | No |  |
 
 ### Operations
 
@@ -685,9 +685,9 @@ feriado := client.Feriado(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `nombre` | ``$STRING`` | No |  |
-| `tipo` | ``$STRING`` | No |  |
+| `fecha` | `string` | No |  |
+| `nombre` | `string` | No |  |
+| `tipo` | `string` | No |  |
 
 ### Operations
 
@@ -773,13 +773,13 @@ fondo_comun_inversion := client.FondoComunInversion(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ccp` | ``$NUMBER`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `fondo` | ``$STRING`` | No |  |
-| `horizonte` | ``$STRING`` | No |  |
-| `patrimonio` | ``$NUMBER`` | No |  |
-| `tipo` | ``$STRING`` | No |  |
-| `vcp` | ``$NUMBER`` | No |  |
+| `ccp` | `float64` | No |  |
+| `fecha` | `string` | No |  |
+| `fondo` | `string` | No |  |
+| `horizonte` | `string` | No |  |
+| `patrimonio` | `float64` | No |  |
+| `tipo` | `string` | No |  |
+| `vcp` | `float64` | No |  |
 
 ### Operations
 
@@ -788,7 +788,7 @@ fondo_comun_inversion := client.FondoComunInversion(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.FondoComunInversion(nil).Load(map[string]any{"id": "fondo_comun_inversion_id"}, nil)
+result, err := client.FondoComunInversion(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -825,11 +825,11 @@ fondo_comun_inversion_otro := client.FondoComunInversionOtro(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `fondo` | ``$STRING`` | No |  |
-| `tea` | ``$NUMBER`` | No |  |
-| `tna` | ``$NUMBER`` | No |  |
-| `tope` | ``$NUMBER`` | No |  |
+| `fecha` | `string` | No |  |
+| `fondo` | `string` | No |  |
+| `tea` | `float64` | No |  |
+| `tna` | `float64` | No |  |
+| `tope` | `float64` | No |  |
 
 ### Operations
 
@@ -875,15 +875,15 @@ fondo_comun_inversion_variable := client.FondoComunInversionVariable(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `condicione` | ``$STRING`` | No |  |
-| `condiciones_corto` | ``$STRING`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `fondo` | ``$STRING`` | No |  |
-| `nombre` | ``$STRING`` | No |  |
-| `tea` | ``$NUMBER`` | No |  |
-| `tipo` | ``$STRING`` | No |  |
-| `tna` | ``$NUMBER`` | No |  |
-| `tope` | ``$NUMBER`` | No |  |
+| `condicione` | `string` | No |  |
+| `condiciones_corto` | `string` | No |  |
+| `fecha` | `string` | No |  |
+| `fondo` | `string` | No |  |
+| `nombre` | `string` | No |  |
+| `tea` | `float64` | No |  |
+| `tipo` | `string` | No |  |
+| `tna` | `float64` | No |  |
+| `tope` | `float64` | No |  |
 
 ### Operations
 
@@ -929,10 +929,10 @@ hipotecario_uva_tna := client.HipotecarioUvaTna(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `metadata` | ``$OBJECT`` | No |  |
-| `nombre_comercial` | ``$STRING`` | No |  |
-| `tna` | ``$NUMBER`` | No |  |
+| `entidad` | `string` | No |  |
+| `metadata` | `map[string]any` | No |  |
+| `nombre_comercial` | `string` | No |  |
+| `tna` | `float64` | No |  |
 
 ### Operations
 
@@ -978,8 +978,8 @@ indice_inflacion := client.IndiceInflacion(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `valor` | ``$NUMBER`` | No |  |
+| `fecha` | `string` | No |  |
+| `valor` | `float64` | No |  |
 
 ### Operations
 
@@ -1025,8 +1025,8 @@ indice_uva := client.IndiceUva(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `valor` | ``$NUMBER`` | No |  |
+| `fecha` | `string` | No |  |
+| `valor` | `float64` | No |  |
 
 ### Operations
 
@@ -1072,11 +1072,11 @@ letra := client.Letra(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha_emision` | ``$STRING`` | No |  |
-| `fecha_vencimiento` | ``$STRING`` | No |  |
-| `tem` | ``$NUMBER`` | No |  |
-| `ticker` | ``$STRING`` | No |  |
-| `vpv` | ``$NUMBER`` | No |  |
+| `fecha_emision` | `string` | No |  |
+| `fecha_vencimiento` | `string` | No |  |
+| `tem` | `float64` | No |  |
+| `ticker` | `string` | No |  |
+| `vpv` | `float64` | No |  |
 
 ### Operations
 
@@ -1122,14 +1122,14 @@ presidente := client.Presidente(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fin` | ``$STRING`` | No |  |
-| `imagen` | ``$STRING`` | No |  |
-| `inicio` | ``$STRING`` | No |  |
-| `nombre` | ``$STRING`` | No |  |
-| `partido` | ``$STRING`` | No |  |
-| `partido_imagen` | ``$STRING`` | No |  |
-| `periodo_presidencial` | ``$STRING`` | No |  |
-| `vicepresidente` | ``$STRING`` | No |  |
+| `fin` | `string` | No |  |
+| `imagen` | `string` | No |  |
+| `inicio` | `string` | No |  |
+| `nombre` | `string` | No |  |
+| `partido` | `string` | No |  |
+| `partido_imagen` | `string` | No |  |
+| `periodo_presidencial` | `string` | No |  |
+| `vicepresidente` | `string` | No |  |
 
 ### Operations
 
@@ -1175,23 +1175,23 @@ proveedor_plazo_fijo_precancelable := client.ProveedorPlazoFijoPrecancelable(nil
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aviso_precancelacion_dia` | ``$INTEGER`` | No |  |
-| `canal` | ``$STRING`` | No |  |
-| `enlace` | ``$STRING`` | No |  |
-| `entidad` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `logo` | ``$STRING`` | No |  |
-| `modalidad` | ``$STRING`` | No |  |
-| `moneda` | ``$STRING`` | No |  |
-| `monto_maximo` | ``$NUMBER`` | No |  |
-| `monto_minimo` | ``$NUMBER`` | No |  |
-| `plazo_max_dia` | ``$INTEGER`` | No |  |
-| `plazo_min_dia` | ``$INTEGER`` | No |  |
-| `plazo_precancelacion_dia` | ``$INTEGER`` | No |  |
-| `tea` | ``$NUMBER`` | No |  |
-| `tea_precancelacion` | ``$NUMBER`` | No |  |
-| `tna` | ``$NUMBER`` | No |  |
-| `tna_precancelacion` | ``$NUMBER`` | No |  |
+| `aviso_precancelacion_dia` | `int` | No |  |
+| `canal` | `string` | No |  |
+| `enlace` | `string` | No |  |
+| `entidad` | `string` | No |  |
+| `id` | `string` | No |  |
+| `logo` | `string` | No |  |
+| `modalidad` | `string` | No |  |
+| `moneda` | `string` | No |  |
+| `monto_maximo` | `float64` | No |  |
+| `monto_minimo` | `float64` | No |  |
+| `plazo_max_dia` | `int` | No |  |
+| `plazo_min_dia` | `int` | No |  |
+| `plazo_precancelacion_dia` | `int` | No |  |
+| `tea` | `float64` | No |  |
+| `tea_precancelacion` | `float64` | No |  |
+| `tna` | `float64` | No |  |
+| `tna_precancelacion` | `float64` | No |  |
 
 ### Operations
 
@@ -1237,10 +1237,10 @@ proveedor_plazo_fijo_uva_pago_periodico := client.ProveedorPlazoFijoUvaPagoPerio
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `logo` | ``$STRING`` | No |  |
-| `tasa` | ``$ARRAY`` | No |  |
+| `entidad` | `string` | No |  |
+| `id` | `string` | No |  |
+| `logo` | `string` | No |  |
+| `tasa` | `[]any` | No |  |
 
 ### Operations
 
@@ -1286,30 +1286,30 @@ rem := client.Rem(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `desvio` | ``$NUMBER`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `fuente` | ``$STRING`` | No |  |
-| `indicador` | ``$STRING`` | No |  |
-| `informe` | ``$STRING`` | No |  |
-| `maximo` | ``$NUMBER`` | No |  |
-| `mediana` | ``$NUMBER`` | No |  |
-| `minimo` | ``$NUMBER`` | No |  |
-| `muestra` | ``$STRING`` | No |  |
-| `participante` | ``$INTEGER`` | No |  |
-| `percentil10` | ``$NUMBER`` | No |  |
-| `percentil25` | ``$NUMBER`` | No |  |
-| `percentil75` | ``$NUMBER`` | No |  |
-| `percentil90` | ``$NUMBER`` | No |  |
-| `periodo` | ``$STRING`` | No |  |
-| `periodo_desde` | ``$STRING`` | No |  |
-| `periodo_hasta` | ``$STRING`` | No |  |
-| `periodo_tipo` | ``$STRING`` | No |  |
-| `promedio` | ``$NUMBER`` | No |  |
-| `publicacion_url` | ``$STRING`` | No |  |
-| `referencia` | ``$STRING`` | No |  |
-| `referencia_fecha` | ``$STRING`` | No |  |
-| `unidad` | ``$STRING`` | No |  |
-| `xlsx_url` | ``$STRING`` | No |  |
+| `desvio` | `float64` | No |  |
+| `fecha` | `string` | No |  |
+| `fuente` | `string` | No |  |
+| `indicador` | `string` | No |  |
+| `informe` | `string` | No |  |
+| `maximo` | `float64` | No |  |
+| `mediana` | `float64` | No |  |
+| `minimo` | `float64` | No |  |
+| `muestra` | `string` | No |  |
+| `participante` | `int` | No |  |
+| `percentil10` | `float64` | No |  |
+| `percentil25` | `float64` | No |  |
+| `percentil75` | `float64` | No |  |
+| `percentil90` | `float64` | No |  |
+| `periodo` | `string` | No |  |
+| `periodo_desde` | `string` | No |  |
+| `periodo_hasta` | `string` | No |  |
+| `periodo_tipo` | `string` | No |  |
+| `promedio` | `float64` | No |  |
+| `publicacion_url` | `string` | No |  |
+| `referencia` | `string` | No |  |
+| `referencia_fecha` | `string` | No |  |
+| `unidad` | `string` | No |  |
+| `xlsx_url` | `string` | No |  |
 
 ### Operations
 
@@ -1355,30 +1355,30 @@ rem_expectativa := client.RemExpectativa(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `desvio` | ``$NUMBER`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `fuente` | ``$STRING`` | No |  |
-| `indicador` | ``$STRING`` | No |  |
-| `informe` | ``$STRING`` | No |  |
-| `maximo` | ``$NUMBER`` | No |  |
-| `mediana` | ``$NUMBER`` | No |  |
-| `minimo` | ``$NUMBER`` | No |  |
-| `muestra` | ``$STRING`` | No |  |
-| `participante` | ``$INTEGER`` | No |  |
-| `percentil10` | ``$NUMBER`` | No |  |
-| `percentil25` | ``$NUMBER`` | No |  |
-| `percentil75` | ``$NUMBER`` | No |  |
-| `percentil90` | ``$NUMBER`` | No |  |
-| `periodo` | ``$STRING`` | No |  |
-| `periodo_desde` | ``$STRING`` | No |  |
-| `periodo_hasta` | ``$STRING`` | No |  |
-| `periodo_tipo` | ``$STRING`` | No |  |
-| `promedio` | ``$NUMBER`` | No |  |
-| `publicacion_url` | ``$STRING`` | No |  |
-| `referencia` | ``$STRING`` | No |  |
-| `referencia_fecha` | ``$STRING`` | No |  |
-| `unidad` | ``$STRING`` | No |  |
-| `xlsx_url` | ``$STRING`` | No |  |
+| `desvio` | `float64` | No |  |
+| `fecha` | `string` | No |  |
+| `fuente` | `string` | No |  |
+| `indicador` | `string` | No |  |
+| `informe` | `string` | No |  |
+| `maximo` | `float64` | No |  |
+| `mediana` | `float64` | No |  |
+| `minimo` | `float64` | No |  |
+| `muestra` | `string` | No |  |
+| `participante` | `int` | No |  |
+| `percentil10` | `float64` | No |  |
+| `percentil25` | `float64` | No |  |
+| `percentil75` | `float64` | No |  |
+| `percentil90` | `float64` | No |  |
+| `periodo` | `string` | No |  |
+| `periodo_desde` | `string` | No |  |
+| `periodo_hasta` | `string` | No |  |
+| `periodo_tipo` | `string` | No |  |
+| `promedio` | `float64` | No |  |
+| `publicacion_url` | `string` | No |  |
+| `referencia` | `string` | No |  |
+| `referencia_fecha` | `string` | No |  |
+| `unidad` | `string` | No |  |
+| `xlsx_url` | `string` | No |  |
 
 ### Operations
 
@@ -1424,9 +1424,9 @@ rendimiento := client.Rendimiento(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `apy` | ``$NUMBER`` | No |  |
-| `fecha` | ``$STRING`` | No |  |
-| `moneda` | ``$STRING`` | No |  |
+| `apy` | `float64` | No |  |
+| `fecha` | `string` | No |  |
+| `moneda` | `string` | No |  |
 
 ### Operations
 
@@ -1472,8 +1472,8 @@ riesgo_pai := client.RiesgoPai(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `valor` | ``$NUMBER`` | No |  |
+| `fecha` | `string` | No |  |
+| `valor` | `float64` | No |  |
 
 ### Operations
 
@@ -1490,7 +1490,7 @@ results, err := client.RiesgoPai(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.RiesgoPai(nil).Load(map[string]any{"id": "riesgo_pai_id"}, nil)
+result, err := client.RiesgoPai(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -1527,18 +1527,18 @@ senador := client.Senador(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | ``$STRING`` | No |  |
-| `foto` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `nombre` | ``$STRING`` | No |  |
-| `observacione` | ``$STRING`` | No |  |
-| `partido` | ``$STRING`` | No |  |
-| `periodo_legal` | ``$OBJECT`` | No |  |
-| `periodo_real` | ``$OBJECT`` | No |  |
-| `provincia` | ``$STRING`` | No |  |
-| `rede` | ``$ARRAY`` | No |  |
-| `reemplazo` | ``$STRING`` | No |  |
-| `telefono` | ``$STRING`` | No |  |
+| `email` | `string` | No |  |
+| `foto` | `string` | No |  |
+| `id` | `string` | No |  |
+| `nombre` | `string` | No |  |
+| `observacione` | `string` | No |  |
+| `partido` | `string` | No |  |
+| `periodo_legal` | `map[string]any` | No |  |
+| `periodo_real` | `map[string]any` | No |  |
+| `provincia` | `string` | No |  |
+| `rede` | `[]any` | No |  |
+| `reemplazo` | `string` | No |  |
+| `telefono` | `string` | No |  |
 
 ### Operations
 
@@ -1584,8 +1584,8 @@ tasa_intere := client.TasaIntere(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha` | ``$STRING`` | No |  |
-| `valor` | ``$NUMBER`` | No |  |
+| `fecha` | `string` | No |  |
+| `valor` | `float64` | No |  |
 
 ### Operations
 
@@ -1631,10 +1631,10 @@ tasa_plazo_fijo := client.TasaPlazoFijo(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | ``$STRING`` | No |  |
-| `logo` | ``$STRING`` | No |  |
-| `tna_cliente` | ``$NUMBER`` | No |  |
-| `tna_no_cliente` | ``$NUMBER`` | No |  |
+| `entidad` | `string` | No |  |
+| `logo` | `string` | No |  |
+| `tna_cliente` | `float64` | No |  |
+| `tna_no_cliente` | `float64` | No |  |
 
 ### Operations
 

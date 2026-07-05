@@ -4,6 +4,8 @@
 
 The PHP SDK for the Argentinadatos API — an entity-oriented client using PHP conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `$client->Acta()` — with named operations (`list`/`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -36,7 +38,7 @@ try {
     // list() returns an array of Acta records — iterate directly.
     $actas = $client->Acta()->list();
     foreach ($actas as $item) {
-        echo $item["id"] . " " . $item["name"] . "\n";
+        echo $item["id"] . " " . $item["abstencione"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -52,6 +54,37 @@ try {
     print_r($acta);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
+}
+```
+
+
+## Error handling
+
+Entity operations throw a `\Throwable` on failure, so wrap them in
+`try` / `catch`:
+
+```php
+try {
+    $actas = $client->Acta()->list();
+} catch (\Throwable $err) {
+    echo "Error: " . $err->getMessage();
+}
+```
+
+`direct()` does **not** throw — it returns the result array. Branch on
+`ok`; on failure `status` holds the HTTP status (for error responses) and
+`err` holds a transport error, so read both defensively:
+
+```php
+$result = $client->direct([
+    "path" => "/api/resource/{id}",
+    "method" => "GET",
+    "params" => ["id" => "example_id"],
+]);
+
+if (! $result["ok"]) {
+    $err = $result["err"] ?? null;
+    echo "request failed: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -75,7 +108,10 @@ if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
 } else {
-    echo "Error: " . $result["err"]->getMessage();
+    // On an HTTP error status there is no err (only a transport failure sets
+    // it), so fall back to the status code.
+    $err = $result["err"] ?? null;
+    echo "Error: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -104,8 +140,8 @@ $client = ArgentinadatosSDK::test([
     "entity" => ["acta" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// load() returns the bare mock record (throws on error).
-$acta = $client->Acta()->load(["id" => "test01"]);
+// Entity ops return the bare mock record (throws on error).
+$acta = $client->Acta()->list();
 print_r($acta);
 ```
 
@@ -221,10 +257,7 @@ All entities share the same interface.
 | Method | Signature | Description |
 | --- | --- | --- |
 | `load` | `($reqmatch, $ctrl): array` | Load a single entity by match criteria. |
-| `list` | `($reqmatch, $ctrl): array` | List entities matching the criteria. |
-| `create` | `($reqdata, $ctrl): array` | Create a new entity. |
-| `update` | `($reqdata, $ctrl): array` | Update an existing entity. |
-| `remove` | `($reqmatch, $ctrl): array` | Remove an entity. |
+| `list` | `(?array $reqmatch = null, $ctrl): array` | List entities matching the criteria (call with no argument to list all). |
 | `data_get` | `(): array` | Get entity data. |
 | `data_set` | `($data): void` | Set entity data. |
 | `match_get` | `(): array` | Get entity match criteria. |
@@ -720,31 +753,31 @@ Create an instance: `$acta = $client->Acta();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `abstencione` | ``$INTEGER`` |  |
-| `acta` | ``$STRING`` |  |
-| `acta_id` | ``$INTEGER`` |  |
-| `afirmativo` | ``$INTEGER`` |  |
-| `amn` | ``$INTEGER`` |  |
-| `ausente` | ``$INTEGER`` |  |
-| `descripcion` | ``$STRING`` |  |
-| `fecha` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `mayoria` | ``$STRING`` |  |
-| `miembro` | ``$INTEGER`` |  |
-| `negativo` | ``$INTEGER`` |  |
-| `numero_acta` | ``$STRING`` |  |
-| `observacione` | ``$ARRAY`` |  |
-| `periodo` | ``$STRING`` |  |
-| `presente` | ``$INTEGER`` |  |
-| `presidente` | ``$STRING`` |  |
-| `proyecto` | ``$STRING`` |  |
-| `quorum_tipo` | ``$STRING`` |  |
-| `resultado` | ``$STRING`` |  |
-| `reunion` | ``$STRING`` |  |
-| `titulo` | ``$STRING`` |  |
-| `voto` | ``$ARRAY`` |  |
-| `votos_afirmativo` | ``$INTEGER`` |  |
-| `votos_negativo` | ``$INTEGER`` |  |
+| `abstencione` | `int` |  |
+| `acta` | `string` |  |
+| `acta_id` | `int` |  |
+| `afirmativo` | `int` |  |
+| `amn` | `int` |  |
+| `ausente` | `int` |  |
+| `descripcion` | `string` |  |
+| `fecha` | `string` |  |
+| `id` | `string` |  |
+| `mayoria` | `string` |  |
+| `miembro` | `int` |  |
+| `negativo` | `int` |  |
+| `numero_acta` | `string` |  |
+| `observacione` | `array` |  |
+| `periodo` | `string` |  |
+| `presente` | `int` |  |
+| `presidente` | `string` |  |
+| `proyecto` | `string` |  |
+| `quorum_tipo` | `string` |  |
+| `resultado` | `string` |  |
+| `reunion` | `string` |  |
+| `titulo` | `string` |  |
+| `voto` | `array` |  |
+| `votos_afirmativo` | `int` |  |
+| `votos_negativo` | `int` |  |
 
 #### Example: Load
 
@@ -775,11 +808,11 @@ Create an instance: `$bonos_cer = $client->BonosCer();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha_vencimiento` | ``$STRING`` |  |
-| `precio_ar` | ``$NUMBER`` |  |
-| `ticker` | ``$STRING`` |  |
-| `tir_porcentaje` | ``$NUMBER`` |  |
-| `voluman` | ``$NUMBER`` |  |
+| `fecha_vencimiento` | `string` |  |
+| `precio_ar` | `float` |  |
+| `ticker` | `string` |  |
+| `tir_porcentaje` | `float` |  |
+| `voluman` | `float` |  |
 
 #### Example: List
 
@@ -804,17 +837,17 @@ Create an instance: `$cotizacion = $client->Cotizacion();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `casa` | ``$STRING`` |  |
-| `compra` | ``$NUMBER`` |  |
-| `fecha` | ``$STRING`` |  |
-| `moneda` | ``$STRING`` |  |
-| `venta` | ``$NUMBER`` |  |
+| `casa` | `string` |  |
+| `compra` | `float` |  |
+| `fecha` | `string` |  |
+| `moneda` | `string` |  |
+| `venta` | `float` |  |
 
 #### Example: Load
 
 ```php
 // load() returns the bare Cotizacion record (throws on error).
-$cotizacion = $client->Cotizacion()->load(["id" => "cotizacion_id"]);
+$cotizacion = $client->Cotizacion()->load();
 ```
 
 #### Example: List
@@ -839,9 +872,9 @@ Create an instance: `$criptopeso = $client->Criptopeso();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `tna` | ``$NUMBER`` |  |
-| `token` | ``$STRING`` |  |
+| `entidad` | `string` |  |
+| `tna` | `float` |  |
+| `token` | `string` |  |
 
 #### Example: List
 
@@ -865,9 +898,9 @@ Create an instance: `$cuenta_remunerada_usd = $client->CuentaRemuneradaUsd();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `tasa` | ``$NUMBER`` |  |
-| `tope` | ``$NUMBER`` |  |
+| `entidad` | `string` |  |
+| `tasa` | `float` |  |
+| `tope` | `float` |  |
 
 #### Example: List
 
@@ -891,17 +924,17 @@ Create an instance: `$diputado = $client->Diputado();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `apellido` | ``$STRING`` |  |
-| `bloque` | ``$STRING`` |  |
-| `cese_fecha` | ``$STRING`` |  |
-| `foto` | ``$STRING`` |  |
-| `genero` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `juramento_fecha` | ``$STRING`` |  |
-| `nombre` | ``$STRING`` |  |
-| `periodo_bloque` | ``$OBJECT`` |  |
-| `periodo_mandato` | ``$OBJECT`` |  |
-| `provincia` | ``$STRING`` |  |
+| `apellido` | `string` |  |
+| `bloque` | `string` |  |
+| `cese_fecha` | `string` |  |
+| `foto` | `string` |  |
+| `genero` | `string` |  |
+| `id` | `string` |  |
+| `juramento_fecha` | `string` |  |
+| `nombre` | `string` |  |
+| `periodo_bloque` | `array` |  |
+| `periodo_mandato` | `array` |  |
+| `provincia` | `string` |  |
 
 #### Example: List
 
@@ -925,8 +958,8 @@ Create an instance: `$entidad_rendimiento = $client->EntidadRendimiento();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `rendimiento` | ``$ARRAY`` |  |
+| `entidad` | `string` |  |
+| `rendimiento` | `array` |  |
 
 #### Example: List
 
@@ -950,14 +983,14 @@ Create an instance: `$estado = $client->Estado();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aleatorio` | ``$INTEGER`` |  |
-| `estado` | ``$STRING`` |  |
+| `aleatorio` | `int` |  |
+| `estado` | `string` |  |
 
 #### Example: Load
 
 ```php
 // load() returns the bare Estado record (throws on error).
-$estado = $client->Estado()->load(["id" => "estado_id"]);
+$estado = $client->Estado()->load();
 ```
 
 
@@ -975,9 +1008,9 @@ Create an instance: `$evento_presidencial = $client->EventoPresidencial();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `evento` | ``$STRING`` |  |
-| `fecha` | ``$STRING`` |  |
-| `tipo` | ``$STRING`` |  |
+| `evento` | `string` |  |
+| `fecha` | `string` |  |
+| `tipo` | `string` |  |
 
 #### Example: List
 
@@ -1001,9 +1034,9 @@ Create an instance: `$feriado = $client->Feriado();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `nombre` | ``$STRING`` |  |
-| `tipo` | ``$STRING`` |  |
+| `fecha` | `string` |  |
+| `nombre` | `string` |  |
+| `tipo` | `string` |  |
 
 #### Example: Load
 
@@ -1045,19 +1078,19 @@ Create an instance: `$fondo_comun_inversion = $client->FondoComunInversion();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ccp` | ``$NUMBER`` |  |
-| `fecha` | ``$STRING`` |  |
-| `fondo` | ``$STRING`` |  |
-| `horizonte` | ``$STRING`` |  |
-| `patrimonio` | ``$NUMBER`` |  |
-| `tipo` | ``$STRING`` |  |
-| `vcp` | ``$NUMBER`` |  |
+| `ccp` | `float` |  |
+| `fecha` | `string` |  |
+| `fondo` | `string` |  |
+| `horizonte` | `string` |  |
+| `patrimonio` | `float` |  |
+| `tipo` | `string` |  |
+| `vcp` | `float` |  |
 
 #### Example: Load
 
 ```php
 // load() returns the bare FondoComunInversion record (throws on error).
-$fondo_comun_inversion = $client->FondoComunInversion()->load(["id" => "fondo_comun_inversion_id"]);
+$fondo_comun_inversion = $client->FondoComunInversion()->load();
 ```
 
 
@@ -1075,11 +1108,11 @@ Create an instance: `$fondo_comun_inversion_otro = $client->FondoComunInversionO
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `fondo` | ``$STRING`` |  |
-| `tea` | ``$NUMBER`` |  |
-| `tna` | ``$NUMBER`` |  |
-| `tope` | ``$NUMBER`` |  |
+| `fecha` | `string` |  |
+| `fondo` | `string` |  |
+| `tea` | `float` |  |
+| `tna` | `float` |  |
+| `tope` | `float` |  |
 
 #### Example: Load
 
@@ -1103,15 +1136,15 @@ Create an instance: `$fondo_comun_inversion_variable = $client->FondoComunInvers
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `condicione` | ``$STRING`` |  |
-| `condiciones_corto` | ``$STRING`` |  |
-| `fecha` | ``$STRING`` |  |
-| `fondo` | ``$STRING`` |  |
-| `nombre` | ``$STRING`` |  |
-| `tea` | ``$NUMBER`` |  |
-| `tipo` | ``$STRING`` |  |
-| `tna` | ``$NUMBER`` |  |
-| `tope` | ``$NUMBER`` |  |
+| `condicione` | `string` |  |
+| `condiciones_corto` | `string` |  |
+| `fecha` | `string` |  |
+| `fondo` | `string` |  |
+| `nombre` | `string` |  |
+| `tea` | `float` |  |
+| `tipo` | `string` |  |
+| `tna` | `float` |  |
+| `tope` | `float` |  |
 
 #### Example: Load
 
@@ -1135,10 +1168,10 @@ Create an instance: `$hipotecario_uva_tna = $client->HipotecarioUvaTna();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `metadata` | ``$OBJECT`` |  |
-| `nombre_comercial` | ``$STRING`` |  |
-| `tna` | ``$NUMBER`` |  |
+| `entidad` | `string` |  |
+| `metadata` | `array` |  |
+| `nombre_comercial` | `string` |  |
+| `tna` | `float` |  |
 
 #### Example: List
 
@@ -1162,8 +1195,8 @@ Create an instance: `$indice_inflacion = $client->IndiceInflacion();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `valor` | ``$NUMBER`` |  |
+| `fecha` | `string` |  |
+| `valor` | `float` |  |
 
 #### Example: List
 
@@ -1187,8 +1220,8 @@ Create an instance: `$indice_uva = $client->IndiceUva();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `valor` | ``$NUMBER`` |  |
+| `fecha` | `string` |  |
+| `valor` | `float` |  |
 
 #### Example: List
 
@@ -1212,11 +1245,11 @@ Create an instance: `$letra = $client->Letra();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha_emision` | ``$STRING`` |  |
-| `fecha_vencimiento` | ``$STRING`` |  |
-| `tem` | ``$NUMBER`` |  |
-| `ticker` | ``$STRING`` |  |
-| `vpv` | ``$NUMBER`` |  |
+| `fecha_emision` | `string` |  |
+| `fecha_vencimiento` | `string` |  |
+| `tem` | `float` |  |
+| `ticker` | `string` |  |
+| `vpv` | `float` |  |
 
 #### Example: List
 
@@ -1240,14 +1273,14 @@ Create an instance: `$presidente = $client->Presidente();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fin` | ``$STRING`` |  |
-| `imagen` | ``$STRING`` |  |
-| `inicio` | ``$STRING`` |  |
-| `nombre` | ``$STRING`` |  |
-| `partido` | ``$STRING`` |  |
-| `partido_imagen` | ``$STRING`` |  |
-| `periodo_presidencial` | ``$STRING`` |  |
-| `vicepresidente` | ``$STRING`` |  |
+| `fin` | `string` |  |
+| `imagen` | `string` |  |
+| `inicio` | `string` |  |
+| `nombre` | `string` |  |
+| `partido` | `string` |  |
+| `partido_imagen` | `string` |  |
+| `periodo_presidencial` | `string` |  |
+| `vicepresidente` | `string` |  |
 
 #### Example: List
 
@@ -1271,23 +1304,23 @@ Create an instance: `$proveedor_plazo_fijo_precancelable = $client->ProveedorPla
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aviso_precancelacion_dia` | ``$INTEGER`` |  |
-| `canal` | ``$STRING`` |  |
-| `enlace` | ``$STRING`` |  |
-| `entidad` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `logo` | ``$STRING`` |  |
-| `modalidad` | ``$STRING`` |  |
-| `moneda` | ``$STRING`` |  |
-| `monto_maximo` | ``$NUMBER`` |  |
-| `monto_minimo` | ``$NUMBER`` |  |
-| `plazo_max_dia` | ``$INTEGER`` |  |
-| `plazo_min_dia` | ``$INTEGER`` |  |
-| `plazo_precancelacion_dia` | ``$INTEGER`` |  |
-| `tea` | ``$NUMBER`` |  |
-| `tea_precancelacion` | ``$NUMBER`` |  |
-| `tna` | ``$NUMBER`` |  |
-| `tna_precancelacion` | ``$NUMBER`` |  |
+| `aviso_precancelacion_dia` | `int` |  |
+| `canal` | `string` |  |
+| `enlace` | `string` |  |
+| `entidad` | `string` |  |
+| `id` | `string` |  |
+| `logo` | `string` |  |
+| `modalidad` | `string` |  |
+| `moneda` | `string` |  |
+| `monto_maximo` | `float` |  |
+| `monto_minimo` | `float` |  |
+| `plazo_max_dia` | `int` |  |
+| `plazo_min_dia` | `int` |  |
+| `plazo_precancelacion_dia` | `int` |  |
+| `tea` | `float` |  |
+| `tea_precancelacion` | `float` |  |
+| `tna` | `float` |  |
+| `tna_precancelacion` | `float` |  |
 
 #### Example: List
 
@@ -1311,10 +1344,10 @@ Create an instance: `$proveedor_plazo_fijo_uva_pago_periodico = $client->Proveed
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `logo` | ``$STRING`` |  |
-| `tasa` | ``$ARRAY`` |  |
+| `entidad` | `string` |  |
+| `id` | `string` |  |
+| `logo` | `string` |  |
+| `tasa` | `array` |  |
 
 #### Example: List
 
@@ -1338,30 +1371,30 @@ Create an instance: `$rem = $client->Rem();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `desvio` | ``$NUMBER`` |  |
-| `fecha` | ``$STRING`` |  |
-| `fuente` | ``$STRING`` |  |
-| `indicador` | ``$STRING`` |  |
-| `informe` | ``$STRING`` |  |
-| `maximo` | ``$NUMBER`` |  |
-| `mediana` | ``$NUMBER`` |  |
-| `minimo` | ``$NUMBER`` |  |
-| `muestra` | ``$STRING`` |  |
-| `participante` | ``$INTEGER`` |  |
-| `percentil10` | ``$NUMBER`` |  |
-| `percentil25` | ``$NUMBER`` |  |
-| `percentil75` | ``$NUMBER`` |  |
-| `percentil90` | ``$NUMBER`` |  |
-| `periodo` | ``$STRING`` |  |
-| `periodo_desde` | ``$STRING`` |  |
-| `periodo_hasta` | ``$STRING`` |  |
-| `periodo_tipo` | ``$STRING`` |  |
-| `promedio` | ``$NUMBER`` |  |
-| `publicacion_url` | ``$STRING`` |  |
-| `referencia` | ``$STRING`` |  |
-| `referencia_fecha` | ``$STRING`` |  |
-| `unidad` | ``$STRING`` |  |
-| `xlsx_url` | ``$STRING`` |  |
+| `desvio` | `float` |  |
+| `fecha` | `string` |  |
+| `fuente` | `string` |  |
+| `indicador` | `string` |  |
+| `informe` | `string` |  |
+| `maximo` | `float` |  |
+| `mediana` | `float` |  |
+| `minimo` | `float` |  |
+| `muestra` | `string` |  |
+| `participante` | `int` |  |
+| `percentil10` | `float` |  |
+| `percentil25` | `float` |  |
+| `percentil75` | `float` |  |
+| `percentil90` | `float` |  |
+| `periodo` | `string` |  |
+| `periodo_desde` | `string` |  |
+| `periodo_hasta` | `string` |  |
+| `periodo_tipo` | `string` |  |
+| `promedio` | `float` |  |
+| `publicacion_url` | `string` |  |
+| `referencia` | `string` |  |
+| `referencia_fecha` | `string` |  |
+| `unidad` | `string` |  |
+| `xlsx_url` | `string` |  |
 
 #### Example: List
 
@@ -1385,30 +1418,30 @@ Create an instance: `$rem_expectativa = $client->RemExpectativa();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `desvio` | ``$NUMBER`` |  |
-| `fecha` | ``$STRING`` |  |
-| `fuente` | ``$STRING`` |  |
-| `indicador` | ``$STRING`` |  |
-| `informe` | ``$STRING`` |  |
-| `maximo` | ``$NUMBER`` |  |
-| `mediana` | ``$NUMBER`` |  |
-| `minimo` | ``$NUMBER`` |  |
-| `muestra` | ``$STRING`` |  |
-| `participante` | ``$INTEGER`` |  |
-| `percentil10` | ``$NUMBER`` |  |
-| `percentil25` | ``$NUMBER`` |  |
-| `percentil75` | ``$NUMBER`` |  |
-| `percentil90` | ``$NUMBER`` |  |
-| `periodo` | ``$STRING`` |  |
-| `periodo_desde` | ``$STRING`` |  |
-| `periodo_hasta` | ``$STRING`` |  |
-| `periodo_tipo` | ``$STRING`` |  |
-| `promedio` | ``$NUMBER`` |  |
-| `publicacion_url` | ``$STRING`` |  |
-| `referencia` | ``$STRING`` |  |
-| `referencia_fecha` | ``$STRING`` |  |
-| `unidad` | ``$STRING`` |  |
-| `xlsx_url` | ``$STRING`` |  |
+| `desvio` | `float` |  |
+| `fecha` | `string` |  |
+| `fuente` | `string` |  |
+| `indicador` | `string` |  |
+| `informe` | `string` |  |
+| `maximo` | `float` |  |
+| `mediana` | `float` |  |
+| `minimo` | `float` |  |
+| `muestra` | `string` |  |
+| `participante` | `int` |  |
+| `percentil10` | `float` |  |
+| `percentil25` | `float` |  |
+| `percentil75` | `float` |  |
+| `percentil90` | `float` |  |
+| `periodo` | `string` |  |
+| `periodo_desde` | `string` |  |
+| `periodo_hasta` | `string` |  |
+| `periodo_tipo` | `string` |  |
+| `promedio` | `float` |  |
+| `publicacion_url` | `string` |  |
+| `referencia` | `string` |  |
+| `referencia_fecha` | `string` |  |
+| `unidad` | `string` |  |
+| `xlsx_url` | `string` |  |
 
 #### Example: List
 
@@ -1432,9 +1465,9 @@ Create an instance: `$rendimiento = $client->Rendimiento();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `apy` | ``$NUMBER`` |  |
-| `fecha` | ``$STRING`` |  |
-| `moneda` | ``$STRING`` |  |
+| `apy` | `float` |  |
+| `fecha` | `string` |  |
+| `moneda` | `string` |  |
 
 #### Example: Load
 
@@ -1459,14 +1492,14 @@ Create an instance: `$riesgo_pai = $client->RiesgoPai();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `valor` | ``$NUMBER`` |  |
+| `fecha` | `string` |  |
+| `valor` | `float` |  |
 
 #### Example: Load
 
 ```php
 // load() returns the bare RiesgoPai record (throws on error).
-$riesgo_pai = $client->RiesgoPai()->load(["id" => "riesgo_pai_id"]);
+$riesgo_pai = $client->RiesgoPai()->load();
 ```
 
 #### Example: List
@@ -1491,18 +1524,18 @@ Create an instance: `$senador = $client->Senador();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `email` | ``$STRING`` |  |
-| `foto` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `nombre` | ``$STRING`` |  |
-| `observacione` | ``$STRING`` |  |
-| `partido` | ``$STRING`` |  |
-| `periodo_legal` | ``$OBJECT`` |  |
-| `periodo_real` | ``$OBJECT`` |  |
-| `provincia` | ``$STRING`` |  |
-| `rede` | ``$ARRAY`` |  |
-| `reemplazo` | ``$STRING`` |  |
-| `telefono` | ``$STRING`` |  |
+| `email` | `string` |  |
+| `foto` | `string` |  |
+| `id` | `string` |  |
+| `nombre` | `string` |  |
+| `observacione` | `string` |  |
+| `partido` | `string` |  |
+| `periodo_legal` | `array` |  |
+| `periodo_real` | `array` |  |
+| `provincia` | `string` |  |
+| `rede` | `array` |  |
+| `reemplazo` | `string` |  |
+| `telefono` | `string` |  |
 
 #### Example: List
 
@@ -1526,8 +1559,8 @@ Create an instance: `$tasa_intere = $client->TasaIntere();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha` | ``$STRING`` |  |
-| `valor` | ``$NUMBER`` |  |
+| `fecha` | `string` |  |
+| `valor` | `float` |  |
 
 #### Example: List
 
@@ -1551,10 +1584,10 @@ Create an instance: `$tasa_plazo_fijo = $client->TasaPlazoFijo();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | ``$STRING`` |  |
-| `logo` | ``$STRING`` |  |
-| `tna_cliente` | ``$NUMBER`` |  |
-| `tna_no_cliente` | ``$NUMBER`` |  |
+| `entidad` | `string` |  |
+| `logo` | `string` |  |
+| `tna_cliente` | `float` |  |
+| `tna_no_cliente` | `float` |  |
 
 #### Example: List
 
@@ -1564,12 +1597,16 @@ $tasa_plazo_fijos = $client->TasaPlazoFijo()->list();
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -1586,8 +1623,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return array.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -1631,15 +1669,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
 $acta = $client->Acta();
-$acta->load(["id" => "example_id"]);
+$acta->list();
 
-// $acta->dataGet() now returns the loaded acta data
-// $acta->matchGet() returns the last match criteria
+// $acta->data_get() now returns the acta data from the last list
+// $acta->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration
