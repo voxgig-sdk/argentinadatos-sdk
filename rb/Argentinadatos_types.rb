@@ -308,7 +308,7 @@ Cotizacion = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] fecha
-#   @return [String]
+#   @return [String, nil]
 CotizacionLoadMatch = Struct.new(
   :casa,
   :fecha,

@@ -45,14 +45,17 @@ for (const acta of actas) {
 }
 ```
 
-### 3. Load an acta
+### 3. Load a cotizacion
 
+Cotizacion is nested under casa, so provide the `casa`.
 `load()` returns the entity directly and throws on failure:
 
 ```ts
 try {
-  const acta = await client.Acta().load({ id: 1 })
-  console.log(acta)
+  const cotizacion = await client.Cotizacion().load({
+    casa: 'example_casa',
+  })
+  console.log(cotizacion)
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -880,7 +883,7 @@ Create an instance: `const cotizacion = client.Cotizacion()`
 #### Example: Load
 
 ```ts
-const cotizacion = await client.Cotizacion().load()
+const cotizacion = await client.Cotizacion().load({ casa: 'casa' })
 ```
 
 #### Example: List
@@ -1113,7 +1116,7 @@ Create an instance: `const fondo_comun_inversion = client.FondoComunInversion()`
 #### Example: Load
 
 ```ts
-const fondo_comun_inversion = await client.FondoComunInversion().load()
+const fondo_comun_inversion = await client.FondoComunInversion().load({ fecha: 'fecha' })
 ```
 
 

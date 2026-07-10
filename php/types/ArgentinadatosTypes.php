@@ -112,7 +112,7 @@ class Cotizacion
 class CotizacionLoadMatch
 {
     public string $casa;
-    public string $fecha;
+    public ?string $fecha = null;
 }
 
 /** Request payload for Cotizacion#list. */

@@ -50,14 +50,15 @@ except Exception as err:
     print(f"list failed: {err}")
 ```
 
-### 3. Load an acta
+### 3. Load a cotizacion
 
+Cotizacion is nested under casa, so provide the `casa`.
 `load()` returns the bare record (a `dict`) and raises on error.
 
 ```python
 try:
-    acta = client.Acta().load({"id": "example_id"})
-    print(acta)
+    cotizacion = client.Cotizacion().load({"casa": "example_casa"})
+    print(cotizacion)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -775,7 +776,7 @@ Create an instance: `acta = client.Acta()`
 #### Example: Load
 
 ```python
-acta = client.Acta().load({"id": "acta_id"})
+acta = client.Acta().load({"id": 1})
 ```
 
 #### Example: List
@@ -836,7 +837,7 @@ Create an instance: `cotizacion = client.Cotizacion()`
 #### Example: Load
 
 ```python
-cotizacion = client.Cotizacion().load()
+cotizacion = client.Cotizacion().load({"casa": "casa"})
 ```
 
 #### Example: List
@@ -1023,7 +1024,7 @@ Create an instance: `feriado = client.Feriado()`
 #### Example: Load
 
 ```python
-feriado = client.Feriado().load({"id": "feriado_id"})
+feriado = client.Feriado().load({"id": 1})
 ```
 
 
@@ -1069,7 +1070,7 @@ Create an instance: `fondo_comun_inversion = client.FondoComunInversion()`
 #### Example: Load
 
 ```python
-fondo_comun_inversion = client.FondoComunInversion().load()
+fondo_comun_inversion = client.FondoComunInversion().load({"fecha": "fecha"})
 ```
 
 

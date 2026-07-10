@@ -45,13 +45,15 @@ try {
 }
 ```
 
-### 3. Load an acta
+### 3. Load a cotizacion
+
+Cotizacion is nested under casa, so provide the `casa`.
 
 ```php
 try {
-    // load() returns the bare Acta record (throws on error).
-    $acta = $client->Acta()->load(["id" => "example_id"]);
-    print_r($acta);
+    // load() returns the bare Cotizacion record (throws on error).
+    $cotizacion = $client->Cotizacion()->load(["casa" => "example_casa"]);
+    print_r($cotizacion);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -783,7 +785,7 @@ Create an instance: `$acta = $client->Acta();`
 
 ```php
 // load() returns the bare Acta record (throws on error).
-$acta = $client->Acta()->load(["id" => "acta_id"]);
+$acta = $client->Acta()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -847,7 +849,7 @@ Create an instance: `$cotizacion = $client->Cotizacion();`
 
 ```php
 // load() returns the bare Cotizacion record (throws on error).
-$cotizacion = $client->Cotizacion()->load();
+$cotizacion = $client->Cotizacion()->load(["casa" => "casa"]);
 ```
 
 #### Example: List
@@ -1042,7 +1044,7 @@ Create an instance: `$feriado = $client->Feriado();`
 
 ```php
 // load() returns the bare Feriado record (throws on error).
-$feriado = $client->Feriado()->load(["id" => "feriado_id"]);
+$feriado = $client->Feriado()->load(["id" => 1]);
 ```
 
 
@@ -1090,7 +1092,7 @@ Create an instance: `$fondo_comun_inversion = $client->FondoComunInversion();`
 
 ```php
 // load() returns the bare FondoComunInversion record (throws on error).
-$fondo_comun_inversion = $client->FondoComunInversion()->load();
+$fondo_comun_inversion = $client->FondoComunInversion()->load(["fecha" => "fecha"]);
 ```
 
 

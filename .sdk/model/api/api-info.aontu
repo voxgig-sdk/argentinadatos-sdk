@@ -14,9 +14,9 @@ main: {
           url: "https://api.argentinadatos.com"
         }
       ]
+      summary: "API pública, **no oficial**, desarrollada en [EsJS](https://es.js.org?ref=argentinadatos.com) que brinda información actualizada sobre diferentes datos de Argentina."
       title: "ArgentinaDatos API"
       version: "1.0.0"
+      website: "https://argentinadatos.com"
     }
   }
-}
-

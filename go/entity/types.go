@@ -101,7 +101,7 @@ type Cotizacion struct {
 // CotizacionLoadMatch is the typed request payload for Cotizacion.LoadTyped.
 type CotizacionLoadMatch struct {
 	Casa string `json:"casa"`
-	Fecha string `json:"fecha"`
+	Fecha *string `json:"fecha,omitempty"`
 }
 
 // CotizacionListMatch is the typed request payload for Cotizacion.ListTyped.

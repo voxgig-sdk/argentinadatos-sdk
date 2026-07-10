@@ -238,7 +238,7 @@ for acta in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Acta().load({"id": "acta_id"})
+result = client.Acta().load({"id": 1})
 ```
 
 ### Common Methods
@@ -360,7 +360,7 @@ for cotizacion in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Cotizacion().load()
+result = client.Cotizacion().load({"casa": "casa"})
 ```
 
 ### Common Methods
@@ -747,7 +747,7 @@ feriado = client.Feriado()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Feriado().load({"id": "feriado_id"})
+result = client.Feriado().load({"id": 1})
 ```
 
 ### Common Methods
@@ -851,7 +851,7 @@ fondo_comun_inversion = client.FondoComunInversion()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.FondoComunInversion().load()
+result = client.FondoComunInversion().load({"fecha": "fecha"})
 ```
 
 ### Common Methods

@@ -103,8 +103,11 @@ class Cotizacion(TypedDict, total=False):
     venta: float
 
 
-class CotizacionLoadMatch(TypedDict):
+class CotizacionLoadMatchRequired(TypedDict):
     casa: str
+
+
+class CotizacionLoadMatch(CotizacionLoadMatchRequired, total=False):
     fecha: str
 
 

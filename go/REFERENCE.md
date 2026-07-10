@@ -199,6 +199,7 @@ same parameters as `Direct()`.
 
 ```go
 acta := client.Acta(nil)
+fmt.Println(acta.GetName()) // "acta"
 ```
 
 ### Fields
@@ -239,6 +240,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Acta(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -246,7 +251,11 @@ results, err := client.Acta(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Acta(nil).Load(map[string]any{"id": "acta_id"}, nil)
+result, err := client.Acta(nil).Load(map[string]any{"id": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -276,7 +285,8 @@ Return the entity name.
 ## BonosCerEntity
 
 ```go
-bonos_cer := client.BonosCer(nil)
+bonosCer := client.BonosCer(nil)
+fmt.Println(bonosCer.GetName()) // "bonos_cer"
 ```
 
 ### Fields
@@ -297,6 +307,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.BonosCer(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -327,6 +341,7 @@ Return the entity name.
 
 ```go
 cotizacion := client.Cotizacion(nil)
+fmt.Println(cotizacion.GetName()) // "cotizacion"
 ```
 
 ### Fields
@@ -347,6 +362,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Cotizacion(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -354,7 +373,11 @@ results, err := client.Cotizacion(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Cotizacion(nil).Load(nil, nil)
+result, err := client.Cotizacion(nil).Load(map[string]any{"casa": "casa"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -385,6 +408,7 @@ Return the entity name.
 
 ```go
 criptopeso := client.Criptopeso(nil)
+fmt.Println(criptopeso.GetName()) // "criptopeso"
 ```
 
 ### Fields
@@ -403,6 +427,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Criptopeso(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -432,7 +460,8 @@ Return the entity name.
 ## CuentaRemuneradaUsdEntity
 
 ```go
-cuenta_remunerada_usd := client.CuentaRemuneradaUsd(nil)
+cuentaRemuneradaUsd := client.CuentaRemuneradaUsd(nil)
+fmt.Println(cuentaRemuneradaUsd.GetName()) // "cuenta_remunerada_usd"
 ```
 
 ### Fields
@@ -451,6 +480,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.CuentaRemuneradaUsd(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -481,6 +514,7 @@ Return the entity name.
 
 ```go
 diputado := client.Diputado(nil)
+fmt.Println(diputado.GetName()) // "diputado"
 ```
 
 ### Fields
@@ -507,6 +541,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Diputado(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -536,7 +574,8 @@ Return the entity name.
 ## EntidadRendimientoEntity
 
 ```go
-entidad_rendimiento := client.EntidadRendimiento(nil)
+entidadRendimiento := client.EntidadRendimiento(nil)
+fmt.Println(entidadRendimiento.GetName()) // "entidad_rendimiento"
 ```
 
 ### Fields
@@ -554,6 +593,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.EntidadRendimiento(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -584,6 +627,7 @@ Return the entity name.
 
 ```go
 estado := client.Estado(nil)
+fmt.Println(estado.GetName()) // "estado"
 ```
 
 ### Fields
@@ -601,6 +645,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Estado(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -630,7 +678,8 @@ Return the entity name.
 ## EventoPresidencialEntity
 
 ```go
-evento_presidencial := client.EventoPresidencial(nil)
+eventoPresidencial := client.EventoPresidencial(nil)
+fmt.Println(eventoPresidencial.GetName()) // "evento_presidencial"
 ```
 
 ### Fields
@@ -649,6 +698,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.EventoPresidencial(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -679,6 +732,7 @@ Return the entity name.
 
 ```go
 feriado := client.Feriado(nil)
+fmt.Println(feriado.GetName()) // "feriado"
 ```
 
 ### Fields
@@ -696,7 +750,11 @@ feriado := client.Feriado(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Feriado(nil).Load(map[string]any{"id": "feriado_id"}, nil)
+result, err := client.Feriado(nil).Load(map[string]any{"id": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -727,6 +785,7 @@ Return the entity name.
 
 ```go
 finanza := client.Finanza(nil)
+fmt.Println(finanza.GetName()) // "finanza"
 ```
 
 ### Operations
@@ -737,6 +796,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Finanza(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -766,7 +829,8 @@ Return the entity name.
 ## FondoComunInversionEntity
 
 ```go
-fondo_comun_inversion := client.FondoComunInversion(nil)
+fondoComunInversion := client.FondoComunInversion(nil)
+fmt.Println(fondoComunInversion.GetName()) // "fondo_comun_inversion"
 ```
 
 ### Fields
@@ -788,7 +852,11 @@ fondo_comun_inversion := client.FondoComunInversion(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.FondoComunInversion(nil).Load(nil, nil)
+result, err := client.FondoComunInversion(nil).Load(map[string]any{"fecha": "fecha"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -818,7 +886,8 @@ Return the entity name.
 ## FondoComunInversionOtroEntity
 
 ```go
-fondo_comun_inversion_otro := client.FondoComunInversionOtro(nil)
+fondoComunInversionOtro := client.FondoComunInversionOtro(nil)
+fmt.Println(fondoComunInversionOtro.GetName()) // "fondo_comun_inversion_otro"
 ```
 
 ### Fields
@@ -839,6 +908,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.FondoComunInversionOtro(nil).Load(map[string]any{"id": "fondo_comun_inversion_otro_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -868,7 +941,8 @@ Return the entity name.
 ## FondoComunInversionVariableEntity
 
 ```go
-fondo_comun_inversion_variable := client.FondoComunInversionVariable(nil)
+fondoComunInversionVariable := client.FondoComunInversionVariable(nil)
+fmt.Println(fondoComunInversionVariable.GetName()) // "fondo_comun_inversion_variable"
 ```
 
 ### Fields
@@ -893,6 +967,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.FondoComunInversionVariable(nil).Load(map[string]any{"id": "fondo_comun_inversion_variable_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -922,7 +1000,8 @@ Return the entity name.
 ## HipotecarioUvaTnaEntity
 
 ```go
-hipotecario_uva_tna := client.HipotecarioUvaTna(nil)
+hipotecarioUvaTna := client.HipotecarioUvaTna(nil)
+fmt.Println(hipotecarioUvaTna.GetName()) // "hipotecario_uva_tna"
 ```
 
 ### Fields
@@ -942,6 +1021,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.HipotecarioUvaTna(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -971,7 +1054,8 @@ Return the entity name.
 ## IndiceInflacionEntity
 
 ```go
-indice_inflacion := client.IndiceInflacion(nil)
+indiceInflacion := client.IndiceInflacion(nil)
+fmt.Println(indiceInflacion.GetName()) // "indice_inflacion"
 ```
 
 ### Fields
@@ -989,6 +1073,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.IndiceInflacion(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -1018,7 +1106,8 @@ Return the entity name.
 ## IndiceUvaEntity
 
 ```go
-indice_uva := client.IndiceUva(nil)
+indiceUva := client.IndiceUva(nil)
+fmt.Println(indiceUva.GetName()) // "indice_uva"
 ```
 
 ### Fields
@@ -1036,6 +1125,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.IndiceUva(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -1066,6 +1159,7 @@ Return the entity name.
 
 ```go
 letra := client.Letra(nil)
+fmt.Println(letra.GetName()) // "letra"
 ```
 
 ### Fields
@@ -1086,6 +1180,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Letra(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -1116,6 +1214,7 @@ Return the entity name.
 
 ```go
 presidente := client.Presidente(nil)
+fmt.Println(presidente.GetName()) // "presidente"
 ```
 
 ### Fields
@@ -1139,6 +1238,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Presidente(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -1168,7 +1271,8 @@ Return the entity name.
 ## ProveedorPlazoFijoPrecancelableEntity
 
 ```go
-proveedor_plazo_fijo_precancelable := client.ProveedorPlazoFijoPrecancelable(nil)
+proveedorPlazoFijoPrecancelable := client.ProveedorPlazoFijoPrecancelable(nil)
+fmt.Println(proveedorPlazoFijoPrecancelable.GetName()) // "proveedor_plazo_fijo_precancelable"
 ```
 
 ### Fields
@@ -1201,6 +1305,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.ProveedorPlazoFijoPrecancelable(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -1230,7 +1338,8 @@ Return the entity name.
 ## ProveedorPlazoFijoUvaPagoPeriodicoEntity
 
 ```go
-proveedor_plazo_fijo_uva_pago_periodico := client.ProveedorPlazoFijoUvaPagoPeriodico(nil)
+proveedorPlazoFijoUvaPagoPeriodico := client.ProveedorPlazoFijoUvaPagoPeriodico(nil)
+fmt.Println(proveedorPlazoFijoUvaPagoPeriodico.GetName()) // "proveedor_plazo_fijo_uva_pago_periodico"
 ```
 
 ### Fields
@@ -1250,6 +1359,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.ProveedorPlazoFijoUvaPagoPeriodico(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -1280,6 +1393,7 @@ Return the entity name.
 
 ```go
 rem := client.Rem(nil)
+fmt.Println(rem.GetName()) // "rem"
 ```
 
 ### Fields
@@ -1319,6 +1433,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Rem(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -1348,7 +1466,8 @@ Return the entity name.
 ## RemExpectativaEntity
 
 ```go
-rem_expectativa := client.RemExpectativa(nil)
+remExpectativa := client.RemExpectativa(nil)
+fmt.Println(remExpectativa.GetName()) // "rem_expectativa"
 ```
 
 ### Fields
@@ -1388,6 +1507,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.RemExpectativa(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -1418,6 +1541,7 @@ Return the entity name.
 
 ```go
 rendimiento := client.Rendimiento(nil)
+fmt.Println(rendimiento.GetName()) // "rendimiento"
 ```
 
 ### Fields
@@ -1436,6 +1560,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Rendimiento(nil).Load(map[string]any{"id": "rendimiento_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -1465,7 +1593,8 @@ Return the entity name.
 ## RiesgoPaiEntity
 
 ```go
-riesgo_pai := client.RiesgoPai(nil)
+riesgoPai := client.RiesgoPai(nil)
+fmt.Println(riesgoPai.GetName()) // "riesgo_pai"
 ```
 
 ### Fields
@@ -1483,6 +1612,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.RiesgoPai(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -1491,6 +1624,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.RiesgoPai(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -1521,6 +1658,7 @@ Return the entity name.
 
 ```go
 senador := client.Senador(nil)
+fmt.Println(senador.GetName()) // "senador"
 ```
 
 ### Fields
@@ -1548,6 +1686,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Senador(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -1577,7 +1719,8 @@ Return the entity name.
 ## TasaIntereEntity
 
 ```go
-tasa_intere := client.TasaIntere(nil)
+tasaIntere := client.TasaIntere(nil)
+fmt.Println(tasaIntere.GetName()) // "tasa_intere"
 ```
 
 ### Fields
@@ -1595,6 +1738,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.TasaIntere(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -1624,7 +1771,8 @@ Return the entity name.
 ## TasaPlazoFijoEntity
 
 ```go
-tasa_plazo_fijo := client.TasaPlazoFijo(nil)
+tasaPlazoFijo := client.TasaPlazoFijo(nil)
+fmt.Println(tasaPlazoFijo.GetName()) // "tasa_plazo_fijo"
 ```
 
 ### Fields
@@ -1644,6 +1792,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.TasaPlazoFijo(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods

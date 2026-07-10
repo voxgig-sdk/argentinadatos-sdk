@@ -44,13 +44,15 @@ rescue => err
 end
 ```
 
-### 3. Load an acta
+### 3. Load a cotizacion
+
+Cotizacion is nested under casa, so provide the `casa`.
 
 ```ruby
 begin
-  # load returns the bare Acta record (raises on error).
-  acta = client.Acta.load({ "id" => "example_id" })
-  puts acta
+  # load returns the bare Cotizacion record (raises on error).
+  cotizacion = client.Cotizacion.load({ "casa" => "example_casa" })
+  puts cotizacion
 rescue => err
   warn "load failed: #{err}"
 end
@@ -773,7 +775,7 @@ Create an instance: `acta = client.Acta`
 
 ```ruby
 # load returns the bare Acta record (raises on error).
-acta = client.Acta.load({ "id" => "acta_id" })
+acta = client.Acta.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -837,7 +839,7 @@ Create an instance: `cotizacion = client.Cotizacion`
 
 ```ruby
 # load returns the bare Cotizacion record (raises on error).
-cotizacion = client.Cotizacion.load()
+cotizacion = client.Cotizacion.load({ "casa" => "casa" })
 ```
 
 #### Example: List
@@ -1032,7 +1034,7 @@ Create an instance: `feriado = client.Feriado`
 
 ```ruby
 # load returns the bare Feriado record (raises on error).
-feriado = client.Feriado.load({ "id" => "feriado_id" })
+feriado = client.Feriado.load({ "id" => 1 })
 ```
 
 
@@ -1080,7 +1082,7 @@ Create an instance: `fondo_comun_inversion = client.FondoComunInversion`
 
 ```ruby
 # load returns the bare FondoComunInversion record (raises on error).
-fondo_comun_inversion = client.FondoComunInversion.load()
+fondo_comun_inversion = client.FondoComunInversion.load({ "fecha" => "fecha" })
 ```
 
 

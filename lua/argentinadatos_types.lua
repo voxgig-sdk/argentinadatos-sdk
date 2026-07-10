@@ -86,7 +86,7 @@
 
 ---@class CotizacionLoadMatch
 ---@field casa string
----@field fecha string
+---@field fecha? string
 
 ---@class CotizacionListMatch
 ---@field casa? string

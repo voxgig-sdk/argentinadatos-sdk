@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -3676,14 +3673,17 @@
       "info": {
         "auth": false,
         "description": "API pública, **no oficial**, desarrollada en [EsJS](https://es.js.org?ref=argentinadatos.com) que brinda información actualizada sobre diferentes datos de Argentina.\n\n<br/>¿Encontraste útil esta API? **¡Dejá tu ⭐ en [GitHub](https://github.com/enzonotario/esjs-argentina-datos-api)!**",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Servidor principal",
             "url": "https://api.argentinadatos.com"
           }
         ],
+        "summary": "API pública, **no oficial**, desarrollada en [EsJS](https://es.js.org?ref=argentinadatos.com) que brinda información actualizada sobre diferentes datos de Argentina.",
         "title": "ArgentinaDatos API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://argentinadatos.com"
       },
       "option": {},
       "target": {
@@ -3736,6 +3736,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -3786,6 +3789,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

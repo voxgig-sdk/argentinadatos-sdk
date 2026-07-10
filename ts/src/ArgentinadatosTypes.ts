@@ -91,7 +91,7 @@ export interface Cotizacion {
 
 export interface CotizacionLoadMatch {
   casa: string
-  fecha: string
+  fecha?: string
 }
 
 export interface CotizacionListMatch {

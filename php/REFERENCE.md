@@ -241,7 +241,7 @@ $results = $client->Acta()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Acta()->load(["id" => "acta_id"]);
+$result = $client->Acta()->load(["id" => 1]);
 ```
 
 ### Common Methods
@@ -361,7 +361,7 @@ $results = $client->Cotizacion()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Cotizacion()->load();
+$result = $client->Cotizacion()->load(["casa" => "casa"]);
 ```
 
 ### Common Methods
@@ -745,7 +745,7 @@ $feriado = $client->Feriado();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Feriado()->load(["id" => "feriado_id"]);
+$result = $client->Feriado()->load(["id" => 1]);
 ```
 
 ### Common Methods
@@ -849,7 +849,7 @@ $fondo_comun_inversion = $client->FondoComunInversion();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->FondoComunInversion()->load();
+$result = $client->FondoComunInversion()->load(["fecha" => "fecha"]);
 ```
 
 ### Common Methods

@@ -47,12 +47,14 @@ for _, item in ipairs(actas) do
 end
 ```
 
-### 3. Load an acta
+### 3. Load a cotizacion
+
+Cotizacion is nested under casa, so provide the `casa`.
 
 ```lua
-local acta, err = client:Acta():load({ id = "example_id" })
+local cotizacion, err = client:Cotizacion():load({ casa = "example_casa" })
 if err then error(err) end
-print(acta)
+print(cotizacion)
 ```
 
 
@@ -761,7 +763,7 @@ Create an instance: `local acta = client:Acta(nil)`
 #### Example: Load
 
 ```lua
-local acta, err = client:Acta():load({ id = "acta_id" })
+local acta, err = client:Acta():load({ id = 1 })
 ```
 
 #### Example: List
@@ -822,7 +824,7 @@ Create an instance: `local cotizacion = client:Cotizacion(nil)`
 #### Example: Load
 
 ```lua
-local cotizacion, err = client:Cotizacion():load()
+local cotizacion, err = client:Cotizacion():load({ casa = "casa" })
 ```
 
 #### Example: List
@@ -1009,7 +1011,7 @@ Create an instance: `local feriado = client:Feriado(nil)`
 #### Example: Load
 
 ```lua
-local feriado, err = client:Feriado():load({ id = "feriado_id" })
+local feriado, err = client:Feriado():load({ id = 1 })
 ```
 
 
@@ -1055,7 +1057,7 @@ Create an instance: `local fondo_comun_inversion = client:FondoComunInversion(ni
 #### Example: Load
 
 ```lua
-local fondo_comun_inversion, err = client:FondoComunInversion():load()
+local fondo_comun_inversion, err = client:FondoComunInversion():load({ fecha = "fecha" })
 ```
 
 

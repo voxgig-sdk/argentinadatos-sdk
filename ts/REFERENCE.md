@@ -597,7 +597,7 @@ const results = await client.Cotizacion().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Cotizacion().load()
+const result = await client.Cotizacion().load({ casa: 'casa' })
 ```
 
 ### Common Methods
@@ -1067,7 +1067,7 @@ const fondo_comun_inversion = client.FondoComunInversion()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.FondoComunInversion().load()
+const result = await client.FondoComunInversion().load({ fecha: 'fecha' })
 ```
 
 ### Common Methods

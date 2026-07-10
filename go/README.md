@@ -789,7 +789,7 @@ Create an instance: `acta := client.Acta(nil)`
 #### Example: Load
 
 ```go
-acta, err := client.Acta(nil).Load(map[string]any{"id": "acta_id"}, nil)
+acta, err := client.Acta(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -809,7 +809,7 @@ fmt.Println(actas) // the array of records
 
 ### BonosCer
 
-Create an instance: `bonos_cer := client.BonosCer(nil)`
+Create an instance: `bonosCer := client.BonosCer(nil)`
 
 #### Operations
 
@@ -830,11 +830,11 @@ Create an instance: `bonos_cer := client.BonosCer(nil)`
 #### Example: List
 
 ```go
-bonos_cers, err := client.BonosCer(nil).List(nil, nil)
+bonosCers, err := client.BonosCer(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(bonos_cers) // the array of records
+fmt.Println(bonosCers) // the array of records
 ```
 
 
@@ -862,7 +862,7 @@ Create an instance: `cotizacion := client.Cotizacion(nil)`
 #### Example: Load
 
 ```go
-cotizacion, err := client.Cotizacion(nil).Load(nil, nil)
+cotizacion, err := client.Cotizacion(nil).Load(map[string]any{"casa": "casa"}, nil)
 if err != nil {
     panic(err)
 }
@@ -911,7 +911,7 @@ fmt.Println(criptopesos) // the array of records
 
 ### CuentaRemuneradaUsd
 
-Create an instance: `cuenta_remunerada_usd := client.CuentaRemuneradaUsd(nil)`
+Create an instance: `cuentaRemuneradaUsd := client.CuentaRemuneradaUsd(nil)`
 
 #### Operations
 
@@ -930,11 +930,11 @@ Create an instance: `cuenta_remunerada_usd := client.CuentaRemuneradaUsd(nil)`
 #### Example: List
 
 ```go
-cuenta_remunerada_usds, err := client.CuentaRemuneradaUsd(nil).List(nil, nil)
+cuentaRemuneradaUsds, err := client.CuentaRemuneradaUsd(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(cuenta_remunerada_usds) // the array of records
+fmt.Println(cuentaRemuneradaUsds) // the array of records
 ```
 
 
@@ -977,7 +977,7 @@ fmt.Println(diputados) // the array of records
 
 ### EntidadRendimiento
 
-Create an instance: `entidad_rendimiento := client.EntidadRendimiento(nil)`
+Create an instance: `entidadRendimiento := client.EntidadRendimiento(nil)`
 
 #### Operations
 
@@ -995,11 +995,11 @@ Create an instance: `entidad_rendimiento := client.EntidadRendimiento(nil)`
 #### Example: List
 
 ```go
-entidad_rendimientos, err := client.EntidadRendimiento(nil).List(nil, nil)
+entidadRendimientos, err := client.EntidadRendimiento(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(entidad_rendimientos) // the array of records
+fmt.Println(entidadRendimientos) // the array of records
 ```
 
 
@@ -1033,7 +1033,7 @@ fmt.Println(estado) // the loaded record
 
 ### EventoPresidencial
 
-Create an instance: `evento_presidencial := client.EventoPresidencial(nil)`
+Create an instance: `eventoPresidencial := client.EventoPresidencial(nil)`
 
 #### Operations
 
@@ -1052,11 +1052,11 @@ Create an instance: `evento_presidencial := client.EventoPresidencial(nil)`
 #### Example: List
 
 ```go
-evento_presidencials, err := client.EventoPresidencial(nil).List(nil, nil)
+eventoPresidencials, err := client.EventoPresidencial(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(evento_presidencials) // the array of records
+fmt.Println(eventoPresidencials) // the array of records
 ```
 
 
@@ -1081,7 +1081,7 @@ Create an instance: `feriado := client.Feriado(nil)`
 #### Example: Load
 
 ```go
-feriado, err := client.Feriado(nil).Load(map[string]any{"id": "feriado_id"}, nil)
+feriado, err := client.Feriado(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -1112,7 +1112,7 @@ fmt.Println(finanzas) // the array of records
 
 ### FondoComunInversion
 
-Create an instance: `fondo_comun_inversion := client.FondoComunInversion(nil)`
+Create an instance: `fondoComunInversion := client.FondoComunInversion(nil)`
 
 #### Operations
 
@@ -1135,17 +1135,17 @@ Create an instance: `fondo_comun_inversion := client.FondoComunInversion(nil)`
 #### Example: Load
 
 ```go
-fondo_comun_inversion, err := client.FondoComunInversion(nil).Load(nil, nil)
+fondoComunInversion, err := client.FondoComunInversion(nil).Load(map[string]any{"fecha": "fecha"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(fondo_comun_inversion) // the loaded record
+fmt.Println(fondoComunInversion) // the loaded record
 ```
 
 
 ### FondoComunInversionOtro
 
-Create an instance: `fondo_comun_inversion_otro := client.FondoComunInversionOtro(nil)`
+Create an instance: `fondoComunInversionOtro := client.FondoComunInversionOtro(nil)`
 
 #### Operations
 
@@ -1166,17 +1166,17 @@ Create an instance: `fondo_comun_inversion_otro := client.FondoComunInversionOtr
 #### Example: Load
 
 ```go
-fondo_comun_inversion_otro, err := client.FondoComunInversionOtro(nil).Load(map[string]any{"id": "fondo_comun_inversion_otro_id"}, nil)
+fondoComunInversionOtro, err := client.FondoComunInversionOtro(nil).Load(map[string]any{"id": "fondo_comun_inversion_otro_id"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(fondo_comun_inversion_otro) // the loaded record
+fmt.Println(fondoComunInversionOtro) // the loaded record
 ```
 
 
 ### FondoComunInversionVariable
 
-Create an instance: `fondo_comun_inversion_variable := client.FondoComunInversionVariable(nil)`
+Create an instance: `fondoComunInversionVariable := client.FondoComunInversionVariable(nil)`
 
 #### Operations
 
@@ -1201,17 +1201,17 @@ Create an instance: `fondo_comun_inversion_variable := client.FondoComunInversio
 #### Example: Load
 
 ```go
-fondo_comun_inversion_variable, err := client.FondoComunInversionVariable(nil).Load(map[string]any{"id": "fondo_comun_inversion_variable_id"}, nil)
+fondoComunInversionVariable, err := client.FondoComunInversionVariable(nil).Load(map[string]any{"id": "fondo_comun_inversion_variable_id"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(fondo_comun_inversion_variable) // the loaded record
+fmt.Println(fondoComunInversionVariable) // the loaded record
 ```
 
 
 ### HipotecarioUvaTna
 
-Create an instance: `hipotecario_uva_tna := client.HipotecarioUvaTna(nil)`
+Create an instance: `hipotecarioUvaTna := client.HipotecarioUvaTna(nil)`
 
 #### Operations
 
@@ -1231,17 +1231,17 @@ Create an instance: `hipotecario_uva_tna := client.HipotecarioUvaTna(nil)`
 #### Example: List
 
 ```go
-hipotecario_uva_tnas, err := client.HipotecarioUvaTna(nil).List(nil, nil)
+hipotecarioUvaTnas, err := client.HipotecarioUvaTna(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(hipotecario_uva_tnas) // the array of records
+fmt.Println(hipotecarioUvaTnas) // the array of records
 ```
 
 
 ### IndiceInflacion
 
-Create an instance: `indice_inflacion := client.IndiceInflacion(nil)`
+Create an instance: `indiceInflacion := client.IndiceInflacion(nil)`
 
 #### Operations
 
@@ -1259,17 +1259,17 @@ Create an instance: `indice_inflacion := client.IndiceInflacion(nil)`
 #### Example: List
 
 ```go
-indice_inflacions, err := client.IndiceInflacion(nil).List(nil, nil)
+indiceInflacions, err := client.IndiceInflacion(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(indice_inflacions) // the array of records
+fmt.Println(indiceInflacions) // the array of records
 ```
 
 
 ### IndiceUva
 
-Create an instance: `indice_uva := client.IndiceUva(nil)`
+Create an instance: `indiceUva := client.IndiceUva(nil)`
 
 #### Operations
 
@@ -1287,11 +1287,11 @@ Create an instance: `indice_uva := client.IndiceUva(nil)`
 #### Example: List
 
 ```go
-indice_uvas, err := client.IndiceUva(nil).List(nil, nil)
+indiceUvas, err := client.IndiceUva(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(indice_uvas) // the array of records
+fmt.Println(indiceUvas) // the array of records
 ```
 
 
@@ -1362,7 +1362,7 @@ fmt.Println(presidentes) // the array of records
 
 ### ProveedorPlazoFijoPrecancelable
 
-Create an instance: `proveedor_plazo_fijo_precancelable := client.ProveedorPlazoFijoPrecancelable(nil)`
+Create an instance: `proveedorPlazoFijoPrecancelable := client.ProveedorPlazoFijoPrecancelable(nil)`
 
 #### Operations
 
@@ -1395,17 +1395,17 @@ Create an instance: `proveedor_plazo_fijo_precancelable := client.ProveedorPlazo
 #### Example: List
 
 ```go
-proveedor_plazo_fijo_precancelables, err := client.ProveedorPlazoFijoPrecancelable(nil).List(nil, nil)
+proveedorPlazoFijoPrecancelables, err := client.ProveedorPlazoFijoPrecancelable(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(proveedor_plazo_fijo_precancelables) // the array of records
+fmt.Println(proveedorPlazoFijoPrecancelables) // the array of records
 ```
 
 
 ### ProveedorPlazoFijoUvaPagoPeriodico
 
-Create an instance: `proveedor_plazo_fijo_uva_pago_periodico := client.ProveedorPlazoFijoUvaPagoPeriodico(nil)`
+Create an instance: `proveedorPlazoFijoUvaPagoPeriodico := client.ProveedorPlazoFijoUvaPagoPeriodico(nil)`
 
 #### Operations
 
@@ -1425,11 +1425,11 @@ Create an instance: `proveedor_plazo_fijo_uva_pago_periodico := client.Proveedor
 #### Example: List
 
 ```go
-proveedor_plazo_fijo_uva_pago_periodicos, err := client.ProveedorPlazoFijoUvaPagoPeriodico(nil).List(nil, nil)
+proveedorPlazoFijoUvaPagoPeriodicos, err := client.ProveedorPlazoFijoUvaPagoPeriodico(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(proveedor_plazo_fijo_uva_pago_periodicos) // the array of records
+fmt.Println(proveedorPlazoFijoUvaPagoPeriodicos) // the array of records
 ```
 
 
@@ -1485,7 +1485,7 @@ fmt.Println(rems) // the array of records
 
 ### RemExpectativa
 
-Create an instance: `rem_expectativa := client.RemExpectativa(nil)`
+Create an instance: `remExpectativa := client.RemExpectativa(nil)`
 
 #### Operations
 
@@ -1525,11 +1525,11 @@ Create an instance: `rem_expectativa := client.RemExpectativa(nil)`
 #### Example: List
 
 ```go
-rem_expectativas, err := client.RemExpectativa(nil).List(nil, nil)
+remExpectativas, err := client.RemExpectativa(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(rem_expectativas) // the array of records
+fmt.Println(remExpectativas) // the array of records
 ```
 
 
@@ -1564,7 +1564,7 @@ fmt.Println(rendimiento) // the loaded record
 
 ### RiesgoPai
 
-Create an instance: `riesgo_pai := client.RiesgoPai(nil)`
+Create an instance: `riesgoPai := client.RiesgoPai(nil)`
 
 #### Operations
 
@@ -1583,21 +1583,21 @@ Create an instance: `riesgo_pai := client.RiesgoPai(nil)`
 #### Example: Load
 
 ```go
-riesgo_pai, err := client.RiesgoPai(nil).Load(nil, nil)
+riesgoPai, err := client.RiesgoPai(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(riesgo_pai) // the loaded record
+fmt.Println(riesgoPai) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-riesgo_pais, err := client.RiesgoPai(nil).List(nil, nil)
+riesgoPais, err := client.RiesgoPai(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(riesgo_pais) // the array of records
+fmt.Println(riesgoPais) // the array of records
 ```
 
 
@@ -1641,7 +1641,7 @@ fmt.Println(senadors) // the array of records
 
 ### TasaIntere
 
-Create an instance: `tasa_intere := client.TasaIntere(nil)`
+Create an instance: `tasaIntere := client.TasaIntere(nil)`
 
 #### Operations
 
@@ -1659,17 +1659,17 @@ Create an instance: `tasa_intere := client.TasaIntere(nil)`
 #### Example: List
 
 ```go
-tasa_interes, err := client.TasaIntere(nil).List(nil, nil)
+tasaInteres, err := client.TasaIntere(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(tasa_interes) // the array of records
+fmt.Println(tasaInteres) // the array of records
 ```
 
 
 ### TasaPlazoFijo
 
-Create an instance: `tasa_plazo_fijo := client.TasaPlazoFijo(nil)`
+Create an instance: `tasaPlazoFijo := client.TasaPlazoFijo(nil)`
 
 #### Operations
 
@@ -1689,11 +1689,11 @@ Create an instance: `tasa_plazo_fijo := client.TasaPlazoFijo(nil)`
 #### Example: List
 
 ```go
-tasa_plazo_fijos, err := client.TasaPlazoFijo(nil).List(nil, nil)
+tasaPlazoFijos, err := client.TasaPlazoFijo(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(tasa_plazo_fijos) // the array of records
+fmt.Println(tasaPlazoFijos) // the array of records
 ```
 
 

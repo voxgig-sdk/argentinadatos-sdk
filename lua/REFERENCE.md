@@ -239,7 +239,7 @@ local results, err = client:Acta():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Acta():load({ id = "acta_id" })
+local result, err = client:Acta():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -359,7 +359,7 @@ local results, err = client:Cotizacion():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Cotizacion():load()
+local result, err = client:Cotizacion():load({ casa = "casa" })
 ```
 
 ### Common Methods
@@ -743,7 +743,7 @@ local feriado = client:Feriado(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Feriado():load({ id = "feriado_id" })
+local result, err = client:Feriado():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -847,7 +847,7 @@ local fondo_comun_inversion = client:FondoComunInversion(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:FondoComunInversion():load()
+local result, err = client:FondoComunInversion():load({ fecha = "fecha" })
 ```
 
 ### Common Methods
