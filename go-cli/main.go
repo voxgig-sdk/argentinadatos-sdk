@@ -19,14 +19,36 @@ import (
 // prompt is the REPL prompt prefix (matches the SDK slug).
 const prompt = "argentinadatos"
 
-// entitiesHelp is the space-separated entity list shown by :help.
+// entitiesHelp is the space-separated entity list shown by /help.
 const entitiesHelp = "acta bonos_cer cotizacion criptopeso cuenta_remunerada_usd diputado entidad_rendimiento estado evento_presidencial feriado finanza fondo_comun_inversion fondo_comun_inversion_otro fondo_comun_inversion_variable hipotecario_uva_tna indice_inflacion indice_uva letra presidente proveedor_plazo_fijo_precancelable proveedor_plazo_fijo_uva_pago_periodico rem rem_expectativa rendimiento riesgo_pai senador tasa_intere tasa_plazo_fijo"
 
 func main() {
 	os.Exit(run(os.Args[1:], os.Stdin, os.Stdout, os.Stderr))
 }
 
+// usage prints the CLI help (for --help / -h). No client or network setup.
+func usage(out io.Writer) {
+	fmt.Fprintf(out, "%s-cli — AQL-driven CLI + REPL for the %s SDK\n\n", prompt, prompt)
+	fmt.Fprintln(out, "Usage:")
+	fmt.Fprintf(out, "  %s-cli [--help] [<AQL expression>]\n\n", prompt)
+	fmt.Fprintln(out, "With arguments, they are joined into a single AQL expression and")
+	fmt.Fprintln(out, "evaluated against the API. With no arguments, starts an interactive REPL.")
+	fmt.Fprintln(out)
+	fmt.Fprintln(out, "Words:    list / load / update <query?> <entity>")
+	fmt.Fprintln(out, "Entities:", entitiesHelp)
+	fmt.Fprintln(out, "Env:      ARGENTINADATOS_APIKEY (api key), ARGENTINADATOS_BASE (base url override)")
+	fmt.Fprintln(out, "REPL:     /help  /quit")
+}
+
 func run(args []string, in io.Reader, out, errOut io.Writer) int {
+	// --help / -h: print usage and exit before any config or network setup.
+	for _, a := range args {
+		if a == "--help" || a == "-h" {
+			usage(out)
+			return 0
+		}
+	}
+
 	// Configure from the environment: ARGENTINADATOS_APIKEY carries the API key and
 	// ARGENTINADATOS_BASE optionally overrides the API base URL (e.g. production).
 	// Both injectable by a secrets vault. Unset -> nil config defaults.
@@ -94,12 +116,12 @@ func repl(r *eng.Registry, in io.Reader, out io.Writer) {
 			continue
 		}
 		switch line {
-		case ":quit", ":q", ":exit":
+		case "/quit", "/q", "/exit":
 			return
-		case ":help", ":h", ":?":
-			fmt.Fprintln(out, "commands: list / load / update <query?> <entity>")
+		case "/help", "/h", "/?":
+			fmt.Fprintln(out, "words:    list / load / update <query?> <entity>")
 			fmt.Fprintln(out, "entities:", entitiesHelp)
-			fmt.Fprintln(out, "meta:     :quit :help")
+			fmt.Fprintln(out, "meta:     /help  /quit")
 			continue
 		}
 		values, err := parser.Parse(line)
