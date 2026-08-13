@@ -2,8 +2,8 @@
   "existing": {
     "fondo_comun_inversion_variable": {
       "FONDO_COMUN_INVERSION_VARIABLE00": {
-        "condicione": "s5a",
-        "condiciones_corto": "s5b",
+        "condiciones": "s5a",
+        "condicionesCorto": "s5b",
         "fecha": "s5c",
         "fondo": "s5d",
         "nombre": "s5e",
@@ -14,8 +14,8 @@
         "id": "FONDO_COMUN_INVERSION_VARIABLE00"
       },
       "FONDO_COMUN_INVERSION_VARIABLE01": {
-        "condicione": "sb4",
-        "condiciones_corto": "sb5",
+        "condiciones": "sb4",
+        "condicionesCorto": "sb5",
         "fecha": "sb6",
         "fondo": "sb7",
         "nombre": "sb8",
@@ -26,8 +26,8 @@
         "id": "FONDO_COMUN_INVERSION_VARIABLE01"
       },
       "FONDO_COMUN_INVERSION_VARIABLE02": {
-        "condicione": "s10e",
-        "condiciones_corto": "s10f",
+        "condiciones": "s10e",
+        "condicionesCorto": "s10f",
         "fecha": "s110",
         "fondo": "s111",
         "nombre": "s112",
@@ -42,8 +42,8 @@
   "new": {
     "fondo_comun_inversion_variable": {
       "fondo_comun_inversion_variable_ref01": {
-        "condicione": "s168",
-        "condiciones_corto": "s169",
+        "condiciones": "s168",
+        "condicionesCorto": "s169",
         "fecha": "s16a",
         "fondo": "s16b",
         "nombre": "s16c",

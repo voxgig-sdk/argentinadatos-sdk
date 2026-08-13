@@ -21,7 +21,7 @@ main: kit: entity: proveedor_plazo_fijo_uva_pago_periodico: {
       type: "`$STRING`"
     }
     {
-      name: "tasa"
+      name: "tasas"
       req: false
       type: "`$ARRAY`"
     }

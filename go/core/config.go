@@ -53,7 +53,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "abstencione",
+						"name": "abstenciones",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 0,
@@ -67,14 +67,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "acta_id",
+						"name": "actaId",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 2,
 					},
 					map[string]any{
 						"active": true,
-						"name": "afirmativo",
+						"name": "afirmativos",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 3,
@@ -88,7 +88,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "ausente",
+						"name": "ausentes",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 5,
@@ -123,28 +123,28 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "miembro",
+						"name": "miembros",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 10,
 					},
 					map[string]any{
 						"active": true,
-						"name": "negativo",
+						"name": "negativos",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 11,
 					},
 					map[string]any{
 						"active": true,
-						"name": "numero_acta",
+						"name": "numeroActa",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 12,
 					},
 					map[string]any{
 						"active": true,
-						"name": "observacione",
+						"name": "observaciones",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 13,
@@ -158,7 +158,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "presente",
+						"name": "presentes",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 15,
@@ -179,7 +179,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "quorum_tipo",
+						"name": "quorumTipo",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 18,
@@ -207,21 +207,21 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "voto",
+						"name": "votos",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 22,
 					},
 					map[string]any{
 						"active": true,
-						"name": "votos_afirmativo",
+						"name": "votosAfirmativos",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 23,
 					},
 					map[string]any{
 						"active": true,
-						"name": "votos_negativo",
+						"name": "votosNegativos",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 24,
@@ -236,6 +236,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/diputados/actas",
 								"parts": []any{
@@ -253,6 +254,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/senado/actas",
 								"parts": []any{
@@ -268,7 +270,6 @@ func MakeConfig() map[string]any {
 								"index$": 1,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -290,6 +291,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/diputados/actas/{año}",
 								"parts": []any{
@@ -330,6 +332,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/senado/actas/{año}",
 								"parts": []any{
@@ -355,7 +358,6 @@ func MakeConfig() map[string]any {
 								"index$": 1,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -366,14 +368,14 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "fecha_vencimiento",
+						"name": "fechaVencimiento",
 						"req": true,
 						"type": "`$STRING`",
 						"index$": 0,
 					},
 					map[string]any{
 						"active": true,
-						"name": "precio_ar",
+						"name": "precioArs",
 						"req": true,
 						"type": "`$NUMBER`",
 						"index$": 1,
@@ -387,14 +389,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "tir_porcentaje",
+						"name": "tirPorcentaje",
 						"req": true,
 						"type": "`$NUMBER`",
 						"index$": 3,
 					},
 					map[string]any{
 						"active": true,
-						"name": "voluman",
+						"name": "volumen",
 						"req": false,
 						"type": "`$NUMBER`",
 						"index$": 4,
@@ -409,6 +411,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/bonos-cer",
 								"parts": []any{
@@ -419,12 +422,11 @@ func MakeConfig() map[string]any {
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.bonos`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -478,6 +480,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/cotizaciones/dolares",
 								"parts": []any{
@@ -493,7 +496,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -525,6 +527,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/cotizaciones/dolares/{casa}/{fecha}",
 								"parts": []any{
@@ -562,6 +565,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/cotizaciones/dolares/{casa}",
 								"parts": []any{
@@ -582,7 +586,6 @@ func MakeConfig() map[string]any {
 								"index$": 1,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -626,6 +629,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/criptopesos",
 								"parts": []any{
@@ -641,7 +645,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -681,6 +684,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/cuentas-remuneradas-usd",
 								"parts": []any{
@@ -696,7 +700,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -721,7 +724,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "cese_fecha",
+						"name": "ceseFecha",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 2,
@@ -749,7 +752,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "juramento_fecha",
+						"name": "juramentoFecha",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 6,
@@ -763,14 +766,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "periodo_bloque",
+						"name": "periodoBloque",
 						"req": false,
 						"type": "`$OBJECT`",
 						"index$": 8,
 					},
 					map[string]any{
 						"active": true,
-						"name": "periodo_mandato",
+						"name": "periodoMandato",
 						"req": false,
 						"type": "`$OBJECT`",
 						"index$": 9,
@@ -792,6 +795,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/diputados/diputados",
 								"parts": []any{
@@ -807,7 +811,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -825,7 +828,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "rendimiento",
+						"name": "rendimientos",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 1,
@@ -840,6 +843,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/rendimientos",
 								"parts": []any{
@@ -855,7 +859,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -888,6 +891,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/estado",
 								"parts": []any{
@@ -902,7 +906,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -942,6 +945,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/eventos/presidenciales",
 								"parts": []any{
@@ -957,7 +961,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -1010,6 +1013,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/feriados/{año}",
 								"parts": []any{
@@ -1034,7 +1038,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -1052,6 +1055,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/rems",
 								"parts": []any{
@@ -1066,7 +1070,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -1147,6 +1150,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/fci/mercadoDinero/{fecha}",
 								"parts": []any{
@@ -1183,6 +1187,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/fci/rentaFija/{fecha}",
 								"parts": []any{
@@ -1219,6 +1224,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/fci/rentaMixta/{fecha}",
 								"parts": []any{
@@ -1255,6 +1261,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/fci/rentaVariable/{fecha}",
 								"parts": []any{
@@ -1291,6 +1298,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/fci/retornoTotal/{fecha}",
 								"parts": []any{
@@ -1312,7 +1320,6 @@ func MakeConfig() map[string]any {
 								"index$": 4,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -1395,6 +1402,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/fci/otros/{fecha}",
 								"parts": []any{
@@ -1421,7 +1429,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -1432,14 +1439,14 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "condicione",
+						"name": "condiciones",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 0,
 					},
 					map[string]any{
 						"active": true,
-						"name": "condiciones_corto",
+						"name": "condicionesCorto",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 1,
@@ -1516,6 +1523,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/fci/variables/{fecha}",
 								"parts": []any{
@@ -1542,7 +1550,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -1567,7 +1574,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "nombre_comercial",
+						"name": "nombreComercial",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 2,
@@ -1589,6 +1596,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/creditos/hipotecariosUva",
 								"parts": []any{
@@ -1605,7 +1613,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -1638,6 +1645,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/indices/inflacion",
 								"parts": []any{
@@ -1656,6 +1664,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/indices/inflacionInteranual",
 								"parts": []any{
@@ -1672,7 +1681,6 @@ func MakeConfig() map[string]any {
 								"index$": 1,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -1705,6 +1713,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/indices/uva",
 								"parts": []any{
@@ -1721,7 +1730,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -1732,14 +1740,14 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "fecha_emision",
+						"name": "fechaEmision",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 0,
 					},
 					map[string]any{
 						"active": true,
-						"name": "fecha_vencimiento",
+						"name": "fechaVencimiento",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 1,
@@ -1775,6 +1783,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/letras",
 								"parts": []any{
@@ -1790,7 +1799,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -1836,14 +1844,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "partido_imagen",
+						"name": "partidoImagen",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 5,
 					},
 					map[string]any{
 						"active": true,
-						"name": "periodo_presidencial",
+						"name": "periodoPresidencial",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 6,
@@ -1865,6 +1873,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/presidentes",
 								"parts": []any{
@@ -1879,7 +1888,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -1890,7 +1898,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "aviso_precancelacion_dia",
+						"name": "avisoPrecancelacionDias",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 0,
@@ -1946,35 +1954,35 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "monto_maximo",
+						"name": "montoMaximo",
 						"req": false,
 						"type": "`$NUMBER`",
 						"index$": 8,
 					},
 					map[string]any{
 						"active": true,
-						"name": "monto_minimo",
+						"name": "montoMinimo",
 						"req": false,
 						"type": "`$NUMBER`",
 						"index$": 9,
 					},
 					map[string]any{
 						"active": true,
-						"name": "plazo_max_dia",
+						"name": "plazoMaxDias",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 10,
 					},
 					map[string]any{
 						"active": true,
-						"name": "plazo_min_dia",
+						"name": "plazoMinDias",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 11,
 					},
 					map[string]any{
 						"active": true,
-						"name": "plazo_precancelacion_dia",
+						"name": "plazoPrecancelacionDias",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 12,
@@ -1988,7 +1996,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "tea_precancelacion",
+						"name": "teaPrecancelacion",
 						"req": false,
 						"type": "`$NUMBER`",
 						"index$": 14,
@@ -2002,7 +2010,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "tna_precancelacion",
+						"name": "tnaPrecancelacion",
 						"req": false,
 						"type": "`$NUMBER`",
 						"index$": 16,
@@ -2017,6 +2025,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/tasas/plazoFijoPrecancelable",
 								"parts": []any{
@@ -2033,7 +2042,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -2065,7 +2073,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "tasa",
+						"name": "tasas",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 3,
@@ -2080,6 +2088,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/tasas/plazoFijoUvaPagoPeriodico",
 								"parts": []any{
@@ -2096,7 +2105,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -2170,7 +2178,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "participante",
+						"name": "participantes",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 9,
@@ -2212,21 +2220,21 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "periodo_desde",
+						"name": "periodoDesde",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 15,
 					},
 					map[string]any{
 						"active": true,
-						"name": "periodo_hasta",
+						"name": "periodoHasta",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 16,
 					},
 					map[string]any{
 						"active": true,
-						"name": "periodo_tipo",
+						"name": "periodoTipo",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 17,
@@ -2240,7 +2248,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "publicacion_url",
+						"name": "publicacionUrl",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 19,
@@ -2254,7 +2262,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "referencia_fecha",
+						"name": "referenciaFecha",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 21,
@@ -2268,7 +2276,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "xlsx_url",
+						"name": "xlsxUrl",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 23,
@@ -2306,6 +2314,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/rems/{año}/{mes}",
 								"parts": []any{
@@ -2327,7 +2336,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -2405,7 +2413,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "participante",
+						"name": "participantes",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 9,
@@ -2447,21 +2455,21 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "periodo_desde",
+						"name": "periodoDesde",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 15,
 					},
 					map[string]any{
 						"active": true,
-						"name": "periodo_hasta",
+						"name": "periodoHasta",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 16,
 					},
 					map[string]any{
 						"active": true,
-						"name": "periodo_tipo",
+						"name": "periodoTipo",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 17,
@@ -2475,7 +2483,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "publicacion_url",
+						"name": "publicacionUrl",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 19,
@@ -2489,7 +2497,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "referencia_fecha",
+						"name": "referenciaFecha",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 21,
@@ -2503,7 +2511,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "xlsx_url",
+						"name": "xlsxUrl",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 23,
@@ -2518,6 +2526,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/rems/ultimo",
 								"parts": []any{
@@ -2533,7 +2542,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -2586,6 +2594,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/rendimientos/{entidad}",
 								"parts": []any{
@@ -2611,7 +2620,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -2644,6 +2652,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/indices/riesgo-pais",
 								"parts": []any{
@@ -2660,7 +2669,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -2669,6 +2677,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/indices/riesgo-pais/ultimo",
 								"parts": []any{
@@ -2688,7 +2697,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -2727,7 +2735,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "observacione",
+						"name": "observaciones",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 4,
@@ -2741,14 +2749,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "periodo_legal",
+						"name": "periodoLegal",
 						"req": false,
 						"type": "`$OBJECT`",
 						"index$": 6,
 					},
 					map[string]any{
 						"active": true,
-						"name": "periodo_real",
+						"name": "periodoReal",
 						"req": false,
 						"type": "`$OBJECT`",
 						"index$": 7,
@@ -2762,7 +2770,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "rede",
+						"name": "redes",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 9,
@@ -2791,6 +2799,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/senado/senadores",
 								"parts": []any{
@@ -2806,7 +2815,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -2839,6 +2847,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/tasas/depositos30Dias",
 								"parts": []any{
@@ -2855,7 +2864,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -2880,14 +2888,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "tna_cliente",
+						"name": "tnaClientes",
 						"req": false,
 						"type": "`$NUMBER`",
 						"index$": 2,
 					},
 					map[string]any{
 						"active": true,
-						"name": "tna_no_cliente",
+						"name": "tnaNoClientes",
 						"req": false,
 						"type": "`$NUMBER`",
 						"index$": 3,
@@ -2902,6 +2910,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/tasas/plazoFijo",
 								"parts": []any{
@@ -2918,7 +2927,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{

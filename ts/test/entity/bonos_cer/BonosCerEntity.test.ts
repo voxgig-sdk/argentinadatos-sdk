@@ -63,7 +63,7 @@ describe('BonosCerEntity', async () => {
     const bonos_cer_ref01_ent = client.BonosCer()
     const bonos_cer_ref01_match: any = {}
 
-    const bonos_cer_ref01_list = await bonos_cer_ref01_ent.list(bonos_cer_ref01_match)
+    const bonos_cer_ref01_list = (await bonos_cer_ref01_ent.list(bonos_cer_ref01_match)).map((e: any) => e.data())
 
 
   })

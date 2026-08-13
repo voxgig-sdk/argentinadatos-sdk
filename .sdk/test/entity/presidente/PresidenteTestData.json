@@ -7,8 +7,8 @@
         "inicio": "s52",
         "nombre": "s53",
         "partido": "s54",
-        "partido_imagen": "s55",
-        "periodo_presidencial": "s56",
+        "partidoImagen": "s55",
+        "periodoPresidencial": "s56",
         "vicepresidente": "s57"
       },
       "PRESIDENTE01": {
@@ -17,8 +17,8 @@
         "inicio": "sa2",
         "nombre": "sa3",
         "partido": "sa4",
-        "partido_imagen": "sa5",
-        "periodo_presidencial": "sa6",
+        "partidoImagen": "sa5",
+        "periodoPresidencial": "sa6",
         "vicepresidente": "sa7"
       },
       "PRESIDENTE02": {
@@ -27,8 +27,8 @@
         "inicio": "sf2",
         "nombre": "sf3",
         "partido": "sf4",
-        "partido_imagen": "sf5",
-        "periodo_presidencial": "sf6",
+        "partidoImagen": "sf5",
+        "periodoPresidencial": "sf6",
         "vicepresidente": "sf7"
       }
     }
@@ -41,8 +41,8 @@
         "inicio": "s142",
         "nombre": "s143",
         "partido": "s144",
-        "partido_imagen": "s145",
-        "periodo_presidencial": "s146",
+        "partidoImagen": "s145",
+        "periodoPresidencial": "s146",
         "vicepresidente": "s147"
       }
     }

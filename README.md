@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = ArgentinadatosSDK.test()
-const actas = await client.Acta().list()
-// actas is an array of bare Acta records populated with mock data
-console.log(actas)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = ArgentinadatosSDK.test({
+  entity: {
+    cotizacion: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const cotizacions = await client.Cotizacion().list()
+// cotizacions is an array of Cotizacion entities, populated with mock data
+// — call cotizacions[0].data() for the record itself
+console.log(cotizacions)
 ```
 
 ### Python
 
 ```python
 client = ArgentinadatosSDK.test()
-actas = client.Acta().list()
-print(actas)
+cotizacions = client.Cotizacion().list()
+print(cotizacions)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(actas)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = ArgentinadatosSDK::test([
-    "entity" => ["acta" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["cotizacion" => ["test01" => []]],
 ]);
-$actas = $client->Acta()->list();
+$cotizacions = $client->Cotizacion()->list();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Acta(nil).List(
+result, err := client.Cotizacion(nil).List(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.Acta(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = ArgentinadatosSDK.test({
-  "entity" => { "acta" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "cotizacion" => { "test01" => {} } },
 })
-actas = client.Acta.list()
+cotizacions = client.Cotizacion.list()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:Acta():list()
+local results, err = client:Cotizacion():list()
 ```
 
 ## Packages
@@ -110,7 +119,7 @@ import { ArgentinadatosSDK } from '@voxgig-sdk/argentinadatos'
 
 const client = new ArgentinadatosSDK()
 
-// List all actas (returns Acta[])
+// List all actas (returns ActaEntity[] — .data() for the record)
 const actas = await client.Acta().list()
 for (const acta of actas) {
   console.log(acta)
@@ -224,7 +233,7 @@ $client = new ArgentinadatosSDK();
 $actas = $client->Acta()->list();
 print_r($actas);
 
-// Load a specific acta (returns the bare record; throws on error)
+// Load a specific acta (returns the ENTITY; call data_get() for the record; throws on error)
 $acta = $client->Acta()->load(["id" => 1]);
 print_r($acta);
 ```
@@ -264,7 +273,7 @@ client = ArgentinadatosSDK.new
 actas = client.Acta.list
 puts actas
 
-# Load a specific acta (returns the bare record; raises on error)
+# Load a specific acta (returns the ENTITY; call data_get for the record)
 acta = client.Acta.load({ "id" => 1 })
 puts acta
 ```
@@ -401,6 +410,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://api.argentinadatos.com](https://api.argentinadatos.com)
 

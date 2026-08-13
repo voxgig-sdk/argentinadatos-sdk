@@ -37,7 +37,7 @@ class TasaIntereEntity extends ArgentinadatosEntityBase<TasaIntere> {
 
 
 
-  async list(this: any, reqmatch?: TasaIntereListMatch, ctrl?: Control): Promise<TasaIntere[]> {
+  async list(this: any, reqmatch?: TasaIntereListMatch, ctrl?: Control): Promise<TasaIntereEntity[]> {
 
     const utility = this._utility
 

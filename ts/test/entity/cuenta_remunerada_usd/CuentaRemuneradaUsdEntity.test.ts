@@ -63,7 +63,7 @@ describe('CuentaRemuneradaUsdEntity', async () => {
     const cuenta_remunerada_usd_ref01_ent = client.CuentaRemuneradaUsd()
     const cuenta_remunerada_usd_ref01_match: any = {}
 
-    const cuenta_remunerada_usd_ref01_list = await cuenta_remunerada_usd_ref01_ent.list(cuenta_remunerada_usd_ref01_match)
+    const cuenta_remunerada_usd_ref01_list = (await cuenta_remunerada_usd_ref01_ent.list(cuenta_remunerada_usd_ref01_match)).map((e: any) => e.data())
 
 
   })

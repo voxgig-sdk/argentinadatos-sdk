@@ -206,31 +206,31 @@ fmt.Println(acta.GetName()) // "acta"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abstencione` | `int` | No |  |
+| `abstenciones` | `int` | No |  |
 | `acta` | `string` | No |  |
-| `acta_id` | `int` | No |  |
-| `afirmativo` | `int` | No |  |
+| `actaId` | `int` | No |  |
+| `afirmativos` | `int` | No |  |
 | `amn` | `int` | No |  |
-| `ausente` | `int` | No |  |
+| `ausentes` | `int` | No |  |
 | `descripcion` | `string` | No |  |
 | `fecha` | `string` | No |  |
 | `id` | `string` | No |  |
 | `mayoria` | `string` | No |  |
-| `miembro` | `int` | No |  |
-| `negativo` | `int` | No |  |
-| `numero_acta` | `string` | No |  |
-| `observacione` | `[]any` | No |  |
+| `miembros` | `int` | No |  |
+| `negativos` | `int` | No |  |
+| `numeroActa` | `string` | No |  |
+| `observaciones` | `[]any` | No |  |
 | `periodo` | `string` | No |  |
-| `presente` | `int` | No |  |
+| `presentes` | `int` | No |  |
 | `presidente` | `string` | No |  |
 | `proyecto` | `string` | No |  |
-| `quorum_tipo` | `string` | No |  |
+| `quorumTipo` | `string` | No |  |
 | `resultado` | `string` | No |  |
 | `reunion` | `string` | No |  |
 | `titulo` | `string` | No |  |
-| `voto` | `[]any` | No |  |
-| `votos_afirmativo` | `int` | No |  |
-| `votos_negativo` | `int` | No |  |
+| `votos` | `[]any` | No |  |
+| `votosAfirmativos` | `int` | No |  |
+| `votosNegativos` | `int` | No |  |
 
 ### Operations
 
@@ -293,11 +293,11 @@ fmt.Println(bonosCer.GetName()) // "bonos_cer"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha_vencimiento` | `string` | Yes |  |
-| `precio_ar` | `float64` | Yes |  |
+| `fechaVencimiento` | `string` | Yes |  |
+| `precioArs` | `float64` | Yes |  |
 | `ticker` | `string` | Yes |  |
-| `tir_porcentaje` | `float64` | Yes |  |
-| `voluman` | `float64` | No |  |
+| `tirPorcentaje` | `float64` | Yes |  |
+| `volumen` | `float64` | No |  |
 
 ### Operations
 
@@ -523,14 +523,14 @@ fmt.Println(diputado.GetName()) // "diputado"
 | --- | --- | --- | --- |
 | `apellido` | `string` | No |  |
 | `bloque` | `string` | No |  |
-| `cese_fecha` | `string` | No |  |
+| `ceseFecha` | `string` | No |  |
 | `foto` | `string` | No |  |
 | `genero` | `string` | No |  |
 | `id` | `string` | No |  |
-| `juramento_fecha` | `string` | No |  |
+| `juramentoFecha` | `string` | No |  |
 | `nombre` | `string` | No |  |
-| `periodo_bloque` | `map[string]any` | No |  |
-| `periodo_mandato` | `map[string]any` | No |  |
+| `periodoBloque` | `map[string]any` | No |  |
+| `periodoMandato` | `map[string]any` | No |  |
 | `provincia` | `string` | No |  |
 
 ### Operations
@@ -583,7 +583,7 @@ fmt.Println(entidadRendimiento.GetName()) // "entidad_rendimiento"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `entidad` | `string` | No |  |
-| `rendimiento` | `[]any` | No |  |
+| `rendimientos` | `[]any` | No |  |
 
 ### Operations
 
@@ -949,8 +949,8 @@ fmt.Println(fondoComunInversionVariable.GetName()) // "fondo_comun_inversion_var
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `condicione` | `string` | No |  |
-| `condiciones_corto` | `string` | No |  |
+| `condiciones` | `string` | No |  |
+| `condicionesCorto` | `string` | No |  |
 | `fecha` | `string` | No |  |
 | `fondo` | `string` | No |  |
 | `nombre` | `string` | No |  |
@@ -1010,7 +1010,7 @@ fmt.Println(hipotecarioUvaTna.GetName()) // "hipotecario_uva_tna"
 | --- | --- | --- | --- |
 | `entidad` | `string` | No |  |
 | `metadata` | `map[string]any` | No |  |
-| `nombre_comercial` | `string` | No |  |
+| `nombreComercial` | `string` | No |  |
 | `tna` | `float64` | No |  |
 
 ### Operations
@@ -1166,8 +1166,8 @@ fmt.Println(letra.GetName()) // "letra"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha_emision` | `string` | No |  |
-| `fecha_vencimiento` | `string` | No |  |
+| `fechaEmision` | `string` | No |  |
+| `fechaVencimiento` | `string` | No |  |
 | `tem` | `float64` | No |  |
 | `ticker` | `string` | No |  |
 | `vpv` | `float64` | No |  |
@@ -1226,8 +1226,8 @@ fmt.Println(presidente.GetName()) // "presidente"
 | `inicio` | `string` | No |  |
 | `nombre` | `string` | No |  |
 | `partido` | `string` | No |  |
-| `partido_imagen` | `string` | No |  |
-| `periodo_presidencial` | `string` | No |  |
+| `partidoImagen` | `string` | No |  |
+| `periodoPresidencial` | `string` | No |  |
 | `vicepresidente` | `string` | No |  |
 
 ### Operations
@@ -1279,7 +1279,7 @@ fmt.Println(proveedorPlazoFijoPrecancelable.GetName()) // "proveedor_plazo_fijo_
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aviso_precancelacion_dia` | `int` | No |  |
+| `avisoPrecancelacionDias` | `int` | No |  |
 | `canal` | `string` | No |  |
 | `enlace` | `string` | No |  |
 | `entidad` | `string` | No |  |
@@ -1287,15 +1287,15 @@ fmt.Println(proveedorPlazoFijoPrecancelable.GetName()) // "proveedor_plazo_fijo_
 | `logo` | `string` | No |  |
 | `modalidad` | `string` | No |  |
 | `moneda` | `string` | No |  |
-| `monto_maximo` | `float64` | No |  |
-| `monto_minimo` | `float64` | No |  |
-| `plazo_max_dia` | `int` | No |  |
-| `plazo_min_dia` | `int` | No |  |
-| `plazo_precancelacion_dia` | `int` | No |  |
+| `montoMaximo` | `float64` | No |  |
+| `montoMinimo` | `float64` | No |  |
+| `plazoMaxDias` | `int` | No |  |
+| `plazoMinDias` | `int` | No |  |
+| `plazoPrecancelacionDias` | `int` | No |  |
 | `tea` | `float64` | No |  |
-| `tea_precancelacion` | `float64` | No |  |
+| `teaPrecancelacion` | `float64` | No |  |
 | `tna` | `float64` | No |  |
-| `tna_precancelacion` | `float64` | No |  |
+| `tnaPrecancelacion` | `float64` | No |  |
 
 ### Operations
 
@@ -1349,7 +1349,7 @@ fmt.Println(proveedorPlazoFijoUvaPagoPeriodico.GetName()) // "proveedor_plazo_fi
 | `entidad` | `string` | No |  |
 | `id` | `string` | No |  |
 | `logo` | `string` | No |  |
-| `tasa` | `[]any` | No |  |
+| `tasas` | `[]any` | No |  |
 
 ### Operations
 
@@ -1409,21 +1409,21 @@ fmt.Println(rem.GetName()) // "rem"
 | `mediana` | `float64` | No |  |
 | `minimo` | `float64` | No |  |
 | `muestra` | `string` | No |  |
-| `participante` | `int` | No |  |
+| `participantes` | `int` | No |  |
 | `percentil10` | `float64` | No |  |
 | `percentil25` | `float64` | No |  |
 | `percentil75` | `float64` | No |  |
 | `percentil90` | `float64` | No |  |
 | `periodo` | `string` | No |  |
-| `periodo_desde` | `string` | No |  |
-| `periodo_hasta` | `string` | No |  |
-| `periodo_tipo` | `string` | No |  |
+| `periodoDesde` | `string` | No |  |
+| `periodoHasta` | `string` | No |  |
+| `periodoTipo` | `string` | No |  |
 | `promedio` | `float64` | No |  |
-| `publicacion_url` | `string` | No |  |
+| `publicacionUrl` | `string` | No |  |
 | `referencia` | `string` | No |  |
-| `referencia_fecha` | `string` | No |  |
+| `referenciaFecha` | `string` | No |  |
 | `unidad` | `string` | No |  |
-| `xlsx_url` | `string` | No |  |
+| `xlsxUrl` | `string` | No |  |
 
 ### Operations
 
@@ -1483,21 +1483,21 @@ fmt.Println(remExpectativa.GetName()) // "rem_expectativa"
 | `mediana` | `float64` | No |  |
 | `minimo` | `float64` | No |  |
 | `muestra` | `string` | No |  |
-| `participante` | `int` | No |  |
+| `participantes` | `int` | No |  |
 | `percentil10` | `float64` | No |  |
 | `percentil25` | `float64` | No |  |
 | `percentil75` | `float64` | No |  |
 | `percentil90` | `float64` | No |  |
 | `periodo` | `string` | No |  |
-| `periodo_desde` | `string` | No |  |
-| `periodo_hasta` | `string` | No |  |
-| `periodo_tipo` | `string` | No |  |
+| `periodoDesde` | `string` | No |  |
+| `periodoHasta` | `string` | No |  |
+| `periodoTipo` | `string` | No |  |
 | `promedio` | `float64` | No |  |
-| `publicacion_url` | `string` | No |  |
+| `publicacionUrl` | `string` | No |  |
 | `referencia` | `string` | No |  |
-| `referencia_fecha` | `string` | No |  |
+| `referenciaFecha` | `string` | No |  |
 | `unidad` | `string` | No |  |
-| `xlsx_url` | `string` | No |  |
+| `xlsxUrl` | `string` | No |  |
 
 ### Operations
 
@@ -1669,12 +1669,12 @@ fmt.Println(senador.GetName()) // "senador"
 | `foto` | `string` | No |  |
 | `id` | `string` | No |  |
 | `nombre` | `string` | No |  |
-| `observacione` | `string` | No |  |
+| `observaciones` | `string` | No |  |
 | `partido` | `string` | No |  |
-| `periodo_legal` | `map[string]any` | No |  |
-| `periodo_real` | `map[string]any` | No |  |
+| `periodoLegal` | `map[string]any` | No |  |
+| `periodoReal` | `map[string]any` | No |  |
 | `provincia` | `string` | No |  |
-| `rede` | `[]any` | No |  |
+| `redes` | `[]any` | No |  |
 | `reemplazo` | `string` | No |  |
 | `telefono` | `string` | No |  |
 
@@ -1781,8 +1781,8 @@ fmt.Println(tasaPlazoFijo.GetName()) // "tasa_plazo_fijo"
 | --- | --- | --- | --- |
 | `entidad` | `string` | No |  |
 | `logo` | `string` | No |  |
-| `tna_cliente` | `float64` | No |  |
-| `tna_no_cliente` | `float64` | No |  |
+| `tnaClientes` | `float64` | No |  |
+| `tnaNoClientes` | `float64` | No |  |
 
 ### Operations
 

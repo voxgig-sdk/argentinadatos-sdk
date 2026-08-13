@@ -63,7 +63,7 @@ describe('LetraEntity', async () => {
     const letra_ref01_ent = client.Letra()
     const letra_ref01_match: any = {}
 
-    const letra_ref01_list = await letra_ref01_ent.list(letra_ref01_match)
+    const letra_ref01_list = (await letra_ref01_ent.list(letra_ref01_match)).map((e: any) => e.data())
 
 
   })

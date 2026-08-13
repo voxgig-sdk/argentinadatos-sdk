@@ -16,7 +16,7 @@ main: kit: entity: diputado: {
       type: "`$STRING`"
     }
     {
-      name: "cese_fecha"
+      name: "ceseFecha"
       req: false
       type: "`$STRING`"
     }
@@ -36,7 +36,7 @@ main: kit: entity: diputado: {
       type: "`$STRING`"
     }
     {
-      name: "juramento_fecha"
+      name: "juramentoFecha"
       req: false
       type: "`$STRING`"
     }
@@ -46,12 +46,12 @@ main: kit: entity: diputado: {
       type: "`$STRING`"
     }
     {
-      name: "periodo_bloque"
+      name: "periodoBloque"
       req: false
       type: "`$OBJECT`"
     }
     {
-      name: "periodo_mandato"
+      name: "periodoMandato"
       req: false
       type: "`$OBJECT`"
     }

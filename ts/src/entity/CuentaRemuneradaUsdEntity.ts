@@ -37,7 +37,7 @@ class CuentaRemuneradaUsdEntity extends ArgentinadatosEntityBase<CuentaRemunerad
 
 
 
-  async list(this: any, reqmatch?: CuentaRemuneradaUsdListMatch, ctrl?: Control): Promise<CuentaRemuneradaUsd[]> {
+  async list(this: any, reqmatch?: CuentaRemuneradaUsdListMatch, ctrl?: Control): Promise<CuentaRemuneradaUsdEntity[]> {
 
     const utility = this._utility
 

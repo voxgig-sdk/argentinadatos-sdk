@@ -2,22 +2,22 @@
   "existing": {
     "letra": {
       "LETRA00": {
-        "fecha_emision": "s32",
-        "fecha_vencimiento": "s33",
+        "fechaEmision": "s32",
+        "fechaVencimiento": "s33",
         "tem": 52,
         "ticker": "s35",
         "vpv": 54
       },
       "LETRA01": {
-        "fecha_emision": "s64",
-        "fecha_vencimiento": "s65",
+        "fechaEmision": "s64",
+        "fechaVencimiento": "s65",
         "tem": 102,
         "ticker": "s67",
         "vpv": 104
       },
       "LETRA02": {
-        "fecha_emision": "s96",
-        "fecha_vencimiento": "s97",
+        "fechaEmision": "s96",
+        "fechaVencimiento": "s97",
         "tem": 152,
         "ticker": "s99",
         "vpv": 154
@@ -27,8 +27,8 @@
   "new": {
     "letra": {
       "letra_ref01": {
-        "fecha_emision": "sc8",
-        "fecha_vencimiento": "sc9",
+        "fechaEmision": "sc8",
+        "fechaVencimiento": "sc9",
         "tem": 202,
         "ticker": "scb",
         "vpv": 204

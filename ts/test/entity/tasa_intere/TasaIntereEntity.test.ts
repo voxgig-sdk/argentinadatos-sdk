@@ -63,7 +63,7 @@ describe('TasaIntereEntity', async () => {
     const tasa_intere_ref01_ent = client.TasaIntere()
     const tasa_intere_ref01_match: any = {}
 
-    const tasa_intere_ref01_list = await tasa_intere_ref01_ent.list(tasa_intere_ref01_match)
+    const tasa_intere_ref01_list = (await tasa_intere_ref01_ent.list(tasa_intere_ref01_match)).map((e: any) => e.data())
 
 
   })

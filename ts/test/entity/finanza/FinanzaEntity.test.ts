@@ -63,7 +63,7 @@ describe('FinanzaEntity', async () => {
     const finanza_ref01_ent = client.Finanza()
     const finanza_ref01_match: any = {}
 
-    const finanza_ref01_list = await finanza_ref01_ent.list(finanza_ref01_match)
+    const finanza_ref01_list = (await finanza_ref01_ent.list(finanza_ref01_match)).map((e: any) => e.data())
 
 
   })

@@ -63,7 +63,7 @@ describe('IndiceInflacionEntity', async () => {
     const indice_inflacion_ref01_ent = client.IndiceInflacion()
     const indice_inflacion_ref01_match: any = {}
 
-    const indice_inflacion_ref01_list = await indice_inflacion_ref01_ent.list(indice_inflacion_ref01_match)
+    const indice_inflacion_ref01_list = (await indice_inflacion_ref01_ent.list(indice_inflacion_ref01_match)).map((e: any) => e.data())
 
 
   })

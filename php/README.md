@@ -38,7 +38,7 @@ try {
     // list() returns an array of Acta records — iterate directly.
     $actas = $client->Acta()->list();
     foreach ($actas as $item) {
-        echo $item["id"] . " " . $item["abstencione"] . "\n";
+        echo $item["id"] . " " . $item["abstenciones"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -51,7 +51,7 @@ Cotizacion is nested under casa, so provide the `casa`.
 
 ```php
 try {
-    // load() returns the bare Cotizacion record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Cotizacion record (throws on error).
     $cotizacion = $client->Cotizacion()->load(["casa" => "example_casa"]);
     print_r($cotizacion);
 } catch (\Throwable $err) {
@@ -67,7 +67,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $actas = $client->Acta()->list();
+    $cotizacions = $client->Cotizacion()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -134,17 +134,15 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required. Seed fixture
-data via the `entity` option so offline calls resolve without a live server:
+Create a mock client for unit testing — no server required:
 
 ```php
-$client = ArgentinadatosSDK::test([
-    "entity" => ["acta" => ["test01" => ["id" => "test01"]]],
-]);
+$client = ArgentinadatosSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$acta = $client->Acta()->list();
-print_r($acta);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$cotizacion = $client->Cotizacion()->list();
+print_r($cotizacion);
 ```
 
 ### Use a custom fetch function
@@ -269,7 +267,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -291,31 +289,31 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `abstencione` |  |
+| `abstenciones` |  |
 | `acta` |  |
-| `acta_id` |  |
-| `afirmativo` |  |
+| `actaId` |  |
+| `afirmativos` |  |
 | `amn` |  |
-| `ausente` |  |
+| `ausentes` |  |
 | `descripcion` |  |
 | `fecha` |  |
 | `id` |  |
 | `mayoria` |  |
-| `miembro` |  |
-| `negativo` |  |
-| `numero_acta` |  |
-| `observacione` |  |
+| `miembros` |  |
+| `negativos` |  |
+| `numeroActa` |  |
+| `observaciones` |  |
 | `periodo` |  |
-| `presente` |  |
+| `presentes` |  |
 | `presidente` |  |
 | `proyecto` |  |
-| `quorum_tipo` |  |
+| `quorumTipo` |  |
 | `resultado` |  |
 | `reunion` |  |
 | `titulo` |  |
-| `voto` |  |
-| `votos_afirmativo` |  |
-| `votos_negativo` |  |
+| `votos` |  |
+| `votosAfirmativos` |  |
+| `votosNegativos` |  |
 
 Operations: List, Load.
 
@@ -325,11 +323,11 @@ API path: `/v1/diputados/actas`
 
 | Field | Description |
 | --- | --- |
-| `fecha_vencimiento` |  |
-| `precio_ar` |  |
+| `fechaVencimiento` |  |
+| `precioArs` |  |
 | `ticker` |  |
-| `tir_porcentaje` |  |
-| `voluman` |  |
+| `tirPorcentaje` |  |
+| `volumen` |  |
 
 Operations: List.
 
@@ -379,14 +377,14 @@ API path: `/v1/finanzas/cuentas-remuneradas-usd`
 | --- | --- |
 | `apellido` |  |
 | `bloque` |  |
-| `cese_fecha` |  |
+| `ceseFecha` |  |
 | `foto` |  |
 | `genero` |  |
 | `id` |  |
-| `juramento_fecha` |  |
+| `juramentoFecha` |  |
 | `nombre` |  |
-| `periodo_bloque` |  |
-| `periodo_mandato` |  |
+| `periodoBloque` |  |
+| `periodoMandato` |  |
 | `provincia` |  |
 
 Operations: List.
@@ -398,7 +396,7 @@ API path: `/v1/diputados/diputados`
 | Field | Description |
 | --- | --- |
 | `entidad` |  |
-| `rendimiento` |  |
+| `rendimientos` |  |
 
 Operations: List.
 
@@ -482,8 +480,8 @@ API path: `/v1/finanzas/fci/otros/{fecha}`
 
 | Field | Description |
 | --- | --- |
-| `condicione` |  |
-| `condiciones_corto` |  |
+| `condiciones` |  |
+| `condicionesCorto` |  |
 | `fecha` |  |
 | `fondo` |  |
 | `nombre` |  |
@@ -502,7 +500,7 @@ API path: `/v1/finanzas/fci/variables/{fecha}`
 | --- | --- |
 | `entidad` |  |
 | `metadata` |  |
-| `nombre_comercial` |  |
+| `nombreComercial` |  |
 | `tna` |  |
 
 Operations: List.
@@ -535,8 +533,8 @@ API path: `/v1/finanzas/indices/uva`
 
 | Field | Description |
 | --- | --- |
-| `fecha_emision` |  |
-| `fecha_vencimiento` |  |
+| `fechaEmision` |  |
+| `fechaVencimiento` |  |
 | `tem` |  |
 | `ticker` |  |
 | `vpv` |  |
@@ -554,8 +552,8 @@ API path: `/v1/finanzas/letras`
 | `inicio` |  |
 | `nombre` |  |
 | `partido` |  |
-| `partido_imagen` |  |
-| `periodo_presidencial` |  |
+| `partidoImagen` |  |
+| `periodoPresidencial` |  |
 | `vicepresidente` |  |
 
 Operations: List.
@@ -566,7 +564,7 @@ API path: `/v1/presidentes`
 
 | Field | Description |
 | --- | --- |
-| `aviso_precancelacion_dia` |  |
+| `avisoPrecancelacionDias` |  |
 | `canal` |  |
 | `enlace` |  |
 | `entidad` |  |
@@ -574,15 +572,15 @@ API path: `/v1/presidentes`
 | `logo` |  |
 | `modalidad` |  |
 | `moneda` |  |
-| `monto_maximo` |  |
-| `monto_minimo` |  |
-| `plazo_max_dia` |  |
-| `plazo_min_dia` |  |
-| `plazo_precancelacion_dia` |  |
+| `montoMaximo` |  |
+| `montoMinimo` |  |
+| `plazoMaxDias` |  |
+| `plazoMinDias` |  |
+| `plazoPrecancelacionDias` |  |
 | `tea` |  |
-| `tea_precancelacion` |  |
+| `teaPrecancelacion` |  |
 | `tna` |  |
-| `tna_precancelacion` |  |
+| `tnaPrecancelacion` |  |
 
 Operations: List.
 
@@ -595,7 +593,7 @@ API path: `/v1/finanzas/tasas/plazoFijoPrecancelable`
 | `entidad` |  |
 | `id` |  |
 | `logo` |  |
-| `tasa` |  |
+| `tasas` |  |
 
 Operations: List.
 
@@ -614,21 +612,21 @@ API path: `/v1/finanzas/tasas/plazoFijoUvaPagoPeriodico`
 | `mediana` |  |
 | `minimo` |  |
 | `muestra` |  |
-| `participante` |  |
+| `participantes` |  |
 | `percentil10` |  |
 | `percentil25` |  |
 | `percentil75` |  |
 | `percentil90` |  |
 | `periodo` |  |
-| `periodo_desde` |  |
-| `periodo_hasta` |  |
-| `periodo_tipo` |  |
+| `periodoDesde` |  |
+| `periodoHasta` |  |
+| `periodoTipo` |  |
 | `promedio` |  |
-| `publicacion_url` |  |
+| `publicacionUrl` |  |
 | `referencia` |  |
-| `referencia_fecha` |  |
+| `referenciaFecha` |  |
 | `unidad` |  |
-| `xlsx_url` |  |
+| `xlsxUrl` |  |
 
 Operations: List.
 
@@ -647,21 +645,21 @@ API path: `/v1/rems/{año}/{mes}`
 | `mediana` |  |
 | `minimo` |  |
 | `muestra` |  |
-| `participante` |  |
+| `participantes` |  |
 | `percentil10` |  |
 | `percentil25` |  |
 | `percentil75` |  |
 | `percentil90` |  |
 | `periodo` |  |
-| `periodo_desde` |  |
-| `periodo_hasta` |  |
-| `periodo_tipo` |  |
+| `periodoDesde` |  |
+| `periodoHasta` |  |
+| `periodoTipo` |  |
 | `promedio` |  |
-| `publicacion_url` |  |
+| `publicacionUrl` |  |
 | `referencia` |  |
-| `referencia_fecha` |  |
+| `referenciaFecha` |  |
 | `unidad` |  |
-| `xlsx_url` |  |
+| `xlsxUrl` |  |
 
 Operations: List.
 
@@ -698,12 +696,12 @@ API path: `/v1/finanzas/indices/riesgo-pais`
 | `foto` |  |
 | `id` |  |
 | `nombre` |  |
-| `observacione` |  |
+| `observaciones` |  |
 | `partido` |  |
-| `periodo_legal` |  |
-| `periodo_real` |  |
+| `periodoLegal` |  |
+| `periodoReal` |  |
 | `provincia` |  |
-| `rede` |  |
+| `redes` |  |
 | `reemplazo` |  |
 | `telefono` |  |
 
@@ -728,8 +726,8 @@ API path: `/v1/finanzas/tasas/depositos30Dias`
 | --- | --- |
 | `entidad` |  |
 | `logo` |  |
-| `tna_cliente` |  |
-| `tna_no_cliente` |  |
+| `tnaClientes` |  |
+| `tnaNoClientes` |  |
 
 Operations: List.
 
@@ -755,36 +753,36 @@ Create an instance: `$acta = $client->Acta();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `abstencione` | `int` |  |
+| `abstenciones` | `int` |  |
 | `acta` | `string` |  |
-| `acta_id` | `int` |  |
-| `afirmativo` | `int` |  |
+| `actaId` | `int` |  |
+| `afirmativos` | `int` |  |
 | `amn` | `int` |  |
-| `ausente` | `int` |  |
+| `ausentes` | `int` |  |
 | `descripcion` | `string` |  |
 | `fecha` | `string` |  |
 | `id` | `string` |  |
 | `mayoria` | `string` |  |
-| `miembro` | `int` |  |
-| `negativo` | `int` |  |
-| `numero_acta` | `string` |  |
-| `observacione` | `array` |  |
+| `miembros` | `int` |  |
+| `negativos` | `int` |  |
+| `numeroActa` | `string` |  |
+| `observaciones` | `array` |  |
 | `periodo` | `string` |  |
-| `presente` | `int` |  |
+| `presentes` | `int` |  |
 | `presidente` | `string` |  |
 | `proyecto` | `string` |  |
-| `quorum_tipo` | `string` |  |
+| `quorumTipo` | `string` |  |
 | `resultado` | `string` |  |
 | `reunion` | `string` |  |
 | `titulo` | `string` |  |
-| `voto` | `array` |  |
-| `votos_afirmativo` | `int` |  |
-| `votos_negativo` | `int` |  |
+| `votos` | `array` |  |
+| `votosAfirmativos` | `int` |  |
+| `votosNegativos` | `int` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Acta record (throws on error).
+// load() returns the ENTITY — call data_get() for the Acta record (throws on error).
 $acta = $client->Acta()->load(["id" => 1]);
 ```
 
@@ -810,11 +808,11 @@ Create an instance: `$bonos_cer = $client->BonosCer();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha_vencimiento` | `string` |  |
-| `precio_ar` | `float` |  |
+| `fechaVencimiento` | `string` |  |
+| `precioArs` | `float` |  |
 | `ticker` | `string` |  |
-| `tir_porcentaje` | `float` |  |
-| `voluman` | `float` |  |
+| `tirPorcentaje` | `float` |  |
+| `volumen` | `float` |  |
 
 #### Example: List
 
@@ -848,7 +846,7 @@ Create an instance: `$cotizacion = $client->Cotizacion();`
 #### Example: Load
 
 ```php
-// load() returns the bare Cotizacion record (throws on error).
+// load() returns the ENTITY — call data_get() for the Cotizacion record (throws on error).
 $cotizacion = $client->Cotizacion()->load(["casa" => "casa"]);
 ```
 
@@ -928,14 +926,14 @@ Create an instance: `$diputado = $client->Diputado();`
 | --- | --- | --- |
 | `apellido` | `string` |  |
 | `bloque` | `string` |  |
-| `cese_fecha` | `string` |  |
+| `ceseFecha` | `string` |  |
 | `foto` | `string` |  |
 | `genero` | `string` |  |
 | `id` | `string` |  |
-| `juramento_fecha` | `string` |  |
+| `juramentoFecha` | `string` |  |
 | `nombre` | `string` |  |
-| `periodo_bloque` | `array` |  |
-| `periodo_mandato` | `array` |  |
+| `periodoBloque` | `array` |  |
+| `periodoMandato` | `array` |  |
 | `provincia` | `string` |  |
 
 #### Example: List
@@ -961,7 +959,7 @@ Create an instance: `$entidad_rendimiento = $client->EntidadRendimiento();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `entidad` | `string` |  |
-| `rendimiento` | `array` |  |
+| `rendimientos` | `array` |  |
 
 #### Example: List
 
@@ -991,7 +989,7 @@ Create an instance: `$estado = $client->Estado();`
 #### Example: Load
 
 ```php
-// load() returns the bare Estado record (throws on error).
+// load() returns the ENTITY — call data_get() for the Estado record (throws on error).
 $estado = $client->Estado()->load();
 ```
 
@@ -1043,7 +1041,7 @@ Create an instance: `$feriado = $client->Feriado();`
 #### Example: Load
 
 ```php
-// load() returns the bare Feriado record (throws on error).
+// load() returns the ENTITY — call data_get() for the Feriado record (throws on error).
 $feriado = $client->Feriado()->load(["id" => 1]);
 ```
 
@@ -1091,7 +1089,7 @@ Create an instance: `$fondo_comun_inversion = $client->FondoComunInversion();`
 #### Example: Load
 
 ```php
-// load() returns the bare FondoComunInversion record (throws on error).
+// load() returns the ENTITY — call data_get() for the FondoComunInversion record (throws on error).
 $fondo_comun_inversion = $client->FondoComunInversion()->load(["fecha" => "fecha"]);
 ```
 
@@ -1119,7 +1117,7 @@ Create an instance: `$fondo_comun_inversion_otro = $client->FondoComunInversionO
 #### Example: Load
 
 ```php
-// load() returns the bare FondoComunInversionOtro record (throws on error).
+// load() returns the ENTITY — call data_get() for the FondoComunInversionOtro record (throws on error).
 $fondo_comun_inversion_otro = $client->FondoComunInversionOtro()->load(["id" => "fondo_comun_inversion_otro_id"]);
 ```
 
@@ -1138,8 +1136,8 @@ Create an instance: `$fondo_comun_inversion_variable = $client->FondoComunInvers
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `condicione` | `string` |  |
-| `condiciones_corto` | `string` |  |
+| `condiciones` | `string` |  |
+| `condicionesCorto` | `string` |  |
 | `fecha` | `string` |  |
 | `fondo` | `string` |  |
 | `nombre` | `string` |  |
@@ -1151,7 +1149,7 @@ Create an instance: `$fondo_comun_inversion_variable = $client->FondoComunInvers
 #### Example: Load
 
 ```php
-// load() returns the bare FondoComunInversionVariable record (throws on error).
+// load() returns the ENTITY — call data_get() for the FondoComunInversionVariable record (throws on error).
 $fondo_comun_inversion_variable = $client->FondoComunInversionVariable()->load(["id" => "fondo_comun_inversion_variable_id"]);
 ```
 
@@ -1172,7 +1170,7 @@ Create an instance: `$hipotecario_uva_tna = $client->HipotecarioUvaTna();`
 | --- | --- | --- |
 | `entidad` | `string` |  |
 | `metadata` | `array` |  |
-| `nombre_comercial` | `string` |  |
+| `nombreComercial` | `string` |  |
 | `tna` | `float` |  |
 
 #### Example: List
@@ -1247,8 +1245,8 @@ Create an instance: `$letra = $client->Letra();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha_emision` | `string` |  |
-| `fecha_vencimiento` | `string` |  |
+| `fechaEmision` | `string` |  |
+| `fechaVencimiento` | `string` |  |
 | `tem` | `float` |  |
 | `ticker` | `string` |  |
 | `vpv` | `float` |  |
@@ -1280,8 +1278,8 @@ Create an instance: `$presidente = $client->Presidente();`
 | `inicio` | `string` |  |
 | `nombre` | `string` |  |
 | `partido` | `string` |  |
-| `partido_imagen` | `string` |  |
-| `periodo_presidencial` | `string` |  |
+| `partidoImagen` | `string` |  |
+| `periodoPresidencial` | `string` |  |
 | `vicepresidente` | `string` |  |
 
 #### Example: List
@@ -1306,7 +1304,7 @@ Create an instance: `$proveedor_plazo_fijo_precancelable = $client->ProveedorPla
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aviso_precancelacion_dia` | `int` |  |
+| `avisoPrecancelacionDias` | `int` |  |
 | `canal` | `string` |  |
 | `enlace` | `string` |  |
 | `entidad` | `string` |  |
@@ -1314,15 +1312,15 @@ Create an instance: `$proveedor_plazo_fijo_precancelable = $client->ProveedorPla
 | `logo` | `string` |  |
 | `modalidad` | `string` |  |
 | `moneda` | `string` |  |
-| `monto_maximo` | `float` |  |
-| `monto_minimo` | `float` |  |
-| `plazo_max_dia` | `int` |  |
-| `plazo_min_dia` | `int` |  |
-| `plazo_precancelacion_dia` | `int` |  |
+| `montoMaximo` | `float` |  |
+| `montoMinimo` | `float` |  |
+| `plazoMaxDias` | `int` |  |
+| `plazoMinDias` | `int` |  |
+| `plazoPrecancelacionDias` | `int` |  |
 | `tea` | `float` |  |
-| `tea_precancelacion` | `float` |  |
+| `teaPrecancelacion` | `float` |  |
 | `tna` | `float` |  |
-| `tna_precancelacion` | `float` |  |
+| `tnaPrecancelacion` | `float` |  |
 
 #### Example: List
 
@@ -1349,7 +1347,7 @@ Create an instance: `$proveedor_plazo_fijo_uva_pago_periodico = $client->Proveed
 | `entidad` | `string` |  |
 | `id` | `string` |  |
 | `logo` | `string` |  |
-| `tasa` | `array` |  |
+| `tasas` | `array` |  |
 
 #### Example: List
 
@@ -1382,21 +1380,21 @@ Create an instance: `$rem = $client->Rem();`
 | `mediana` | `float` |  |
 | `minimo` | `float` |  |
 | `muestra` | `string` |  |
-| `participante` | `int` |  |
+| `participantes` | `int` |  |
 | `percentil10` | `float` |  |
 | `percentil25` | `float` |  |
 | `percentil75` | `float` |  |
 | `percentil90` | `float` |  |
 | `periodo` | `string` |  |
-| `periodo_desde` | `string` |  |
-| `periodo_hasta` | `string` |  |
-| `periodo_tipo` | `string` |  |
+| `periodoDesde` | `string` |  |
+| `periodoHasta` | `string` |  |
+| `periodoTipo` | `string` |  |
 | `promedio` | `float` |  |
-| `publicacion_url` | `string` |  |
+| `publicacionUrl` | `string` |  |
 | `referencia` | `string` |  |
-| `referencia_fecha` | `string` |  |
+| `referenciaFecha` | `string` |  |
 | `unidad` | `string` |  |
-| `xlsx_url` | `string` |  |
+| `xlsxUrl` | `string` |  |
 
 #### Example: List
 
@@ -1429,21 +1427,21 @@ Create an instance: `$rem_expectativa = $client->RemExpectativa();`
 | `mediana` | `float` |  |
 | `minimo` | `float` |  |
 | `muestra` | `string` |  |
-| `participante` | `int` |  |
+| `participantes` | `int` |  |
 | `percentil10` | `float` |  |
 | `percentil25` | `float` |  |
 | `percentil75` | `float` |  |
 | `percentil90` | `float` |  |
 | `periodo` | `string` |  |
-| `periodo_desde` | `string` |  |
-| `periodo_hasta` | `string` |  |
-| `periodo_tipo` | `string` |  |
+| `periodoDesde` | `string` |  |
+| `periodoHasta` | `string` |  |
+| `periodoTipo` | `string` |  |
 | `promedio` | `float` |  |
-| `publicacion_url` | `string` |  |
+| `publicacionUrl` | `string` |  |
 | `referencia` | `string` |  |
-| `referencia_fecha` | `string` |  |
+| `referenciaFecha` | `string` |  |
 | `unidad` | `string` |  |
-| `xlsx_url` | `string` |  |
+| `xlsxUrl` | `string` |  |
 
 #### Example: List
 
@@ -1474,7 +1472,7 @@ Create an instance: `$rendimiento = $client->Rendimiento();`
 #### Example: Load
 
 ```php
-// load() returns the bare Rendimiento record (throws on error).
+// load() returns the ENTITY — call data_get() for the Rendimiento record (throws on error).
 $rendimiento = $client->Rendimiento()->load(["id" => "rendimiento_id"]);
 ```
 
@@ -1500,7 +1498,7 @@ Create an instance: `$riesgo_pai = $client->RiesgoPai();`
 #### Example: Load
 
 ```php
-// load() returns the bare RiesgoPai record (throws on error).
+// load() returns the ENTITY — call data_get() for the RiesgoPai record (throws on error).
 $riesgo_pai = $client->RiesgoPai()->load();
 ```
 
@@ -1530,12 +1528,12 @@ Create an instance: `$senador = $client->Senador();`
 | `foto` | `string` |  |
 | `id` | `string` |  |
 | `nombre` | `string` |  |
-| `observacione` | `string` |  |
+| `observaciones` | `string` |  |
 | `partido` | `string` |  |
-| `periodo_legal` | `array` |  |
-| `periodo_real` | `array` |  |
+| `periodoLegal` | `array` |  |
+| `periodoReal` | `array` |  |
 | `provincia` | `string` |  |
-| `rede` | `array` |  |
+| `redes` | `array` |  |
 | `reemplazo` | `string` |  |
 | `telefono` | `string` |  |
 
@@ -1588,8 +1586,8 @@ Create an instance: `$tasa_plazo_fijo = $client->TasaPlazoFijo();`
 | --- | --- | --- |
 | `entidad` | `string` |  |
 | `logo` | `string` |  |
-| `tna_cliente` | `float` |  |
-| `tna_no_cliente` | `float` |  |
+| `tnaClientes` | `float` |  |
+| `tnaNoClientes` | `float` |  |
 
 #### Example: List
 
@@ -1675,11 +1673,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$acta = $client->Acta();
-$acta->list();
+$cotizacion = $client->Cotizacion();
+$cotizacion->list();
 
-// $acta->data_get() now returns the acta data from the last list
-// $acta->match_get() returns the last match criteria
+// $cotizacion->data_get() now returns the cotizacion data from the last list
+// $cotizacion->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

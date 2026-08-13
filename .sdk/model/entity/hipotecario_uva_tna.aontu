@@ -16,7 +16,7 @@ main: kit: entity: hipotecario_uva_tna: {
       type: "`$OBJECT`"
     }
     {
-      name: "nombre_comercial"
+      name: "nombreComercial"
       req: false
       type: "`$STRING`"
     }

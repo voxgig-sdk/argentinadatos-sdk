@@ -195,31 +195,31 @@ acta = client.Acta()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abstencione` | `int` | No |  |
+| `abstenciones` | `int` | No |  |
 | `acta` | `str` | No |  |
-| `acta_id` | `int` | No |  |
-| `afirmativo` | `int` | No |  |
+| `actaId` | `int` | No |  |
+| `afirmativos` | `int` | No |  |
 | `amn` | `int` | No |  |
-| `ausente` | `int` | No |  |
+| `ausentes` | `int` | No |  |
 | `descripcion` | `str` | No |  |
 | `fecha` | `str` | No |  |
 | `id` | `str` | No |  |
 | `mayoria` | `str` | No |  |
-| `miembro` | `int` | No |  |
-| `negativo` | `int` | No |  |
-| `numero_acta` | `str` | No |  |
-| `observacione` | `list` | No |  |
+| `miembros` | `int` | No |  |
+| `negativos` | `int` | No |  |
+| `numeroActa` | `str` | No |  |
+| `observaciones` | `list` | No |  |
 | `periodo` | `str` | No |  |
-| `presente` | `int` | No |  |
+| `presentes` | `int` | No |  |
 | `presidente` | `str` | No |  |
 | `proyecto` | `str` | No |  |
-| `quorum_tipo` | `str` | No |  |
+| `quorumTipo` | `str` | No |  |
 | `resultado` | `str` | No |  |
 | `reunion` | `str` | No |  |
 | `titulo` | `str` | No |  |
-| `voto` | `list` | No |  |
-| `votos_afirmativo` | `int` | No |  |
-| `votos_negativo` | `int` | No |  |
+| `votos` | `list` | No |  |
+| `votosAfirmativos` | `int` | No |  |
+| `votosNegativos` | `int` | No |  |
 
 ### Operations
 
@@ -280,11 +280,11 @@ bonos_cer = client.BonosCer()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha_vencimiento` | `str` | Yes |  |
-| `precio_ar` | `float` | Yes |  |
+| `fechaVencimiento` | `str` | Yes |  |
+| `precioArs` | `float` | Yes |  |
 | `ticker` | `str` | Yes |  |
-| `tir_porcentaje` | `float` | Yes |  |
-| `voluman` | `float` | No |  |
+| `tirPorcentaje` | `float` | Yes |  |
+| `volumen` | `float` | No |  |
 
 ### Operations
 
@@ -514,14 +514,14 @@ diputado = client.Diputado()
 | --- | --- | --- | --- |
 | `apellido` | `str` | No |  |
 | `bloque` | `str` | No |  |
-| `cese_fecha` | `str` | No |  |
+| `ceseFecha` | `str` | No |  |
 | `foto` | `str` | No |  |
 | `genero` | `str` | No |  |
 | `id` | `str` | No |  |
-| `juramento_fecha` | `str` | No |  |
+| `juramentoFecha` | `str` | No |  |
 | `nombre` | `str` | No |  |
-| `periodo_bloque` | `dict` | No |  |
-| `periodo_mandato` | `dict` | No |  |
+| `periodoBloque` | `dict` | No |  |
+| `periodoMandato` | `dict` | No |  |
 | `provincia` | `str` | No |  |
 
 ### Operations
@@ -576,7 +576,7 @@ entidad_rendimiento = client.EntidadRendimiento()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `entidad` | `str` | No |  |
-| `rendimiento` | `list` | No |  |
+| `rendimientos` | `list` | No |  |
 
 ### Operations
 
@@ -948,8 +948,8 @@ fondo_comun_inversion_variable = client.FondoComunInversionVariable()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `condicione` | `str` | No |  |
-| `condiciones_corto` | `str` | No |  |
+| `condiciones` | `str` | No |  |
+| `condicionesCorto` | `str` | No |  |
 | `fecha` | `str` | No |  |
 | `fondo` | `str` | No |  |
 | `nombre` | `str` | No |  |
@@ -1009,7 +1009,7 @@ hipotecario_uva_tna = client.HipotecarioUvaTna()
 | --- | --- | --- | --- |
 | `entidad` | `str` | No |  |
 | `metadata` | `dict` | No |  |
-| `nombre_comercial` | `str` | No |  |
+| `nombreComercial` | `str` | No |  |
 | `tna` | `float` | No |  |
 
 ### Operations
@@ -1171,8 +1171,8 @@ letra = client.Letra()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha_emision` | `str` | No |  |
-| `fecha_vencimiento` | `str` | No |  |
+| `fechaEmision` | `str` | No |  |
+| `fechaVencimiento` | `str` | No |  |
 | `tem` | `float` | No |  |
 | `ticker` | `str` | No |  |
 | `vpv` | `float` | No |  |
@@ -1233,8 +1233,8 @@ presidente = client.Presidente()
 | `inicio` | `str` | No |  |
 | `nombre` | `str` | No |  |
 | `partido` | `str` | No |  |
-| `partido_imagen` | `str` | No |  |
-| `periodo_presidencial` | `str` | No |  |
+| `partidoImagen` | `str` | No |  |
+| `periodoPresidencial` | `str` | No |  |
 | `vicepresidente` | `str` | No |  |
 
 ### Operations
@@ -1288,7 +1288,7 @@ proveedor_plazo_fijo_precancelable = client.ProveedorPlazoFijoPrecancelable()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aviso_precancelacion_dia` | `int` | No |  |
+| `avisoPrecancelacionDias` | `int` | No |  |
 | `canal` | `str` | No |  |
 | `enlace` | `str` | No |  |
 | `entidad` | `str` | No |  |
@@ -1296,15 +1296,15 @@ proveedor_plazo_fijo_precancelable = client.ProveedorPlazoFijoPrecancelable()
 | `logo` | `str` | No |  |
 | `modalidad` | `str` | No |  |
 | `moneda` | `str` | No |  |
-| `monto_maximo` | `float` | No |  |
-| `monto_minimo` | `float` | No |  |
-| `plazo_max_dia` | `int` | No |  |
-| `plazo_min_dia` | `int` | No |  |
-| `plazo_precancelacion_dia` | `int` | No |  |
+| `montoMaximo` | `float` | No |  |
+| `montoMinimo` | `float` | No |  |
+| `plazoMaxDias` | `int` | No |  |
+| `plazoMinDias` | `int` | No |  |
+| `plazoPrecancelacionDias` | `int` | No |  |
 | `tea` | `float` | No |  |
-| `tea_precancelacion` | `float` | No |  |
+| `teaPrecancelacion` | `float` | No |  |
 | `tna` | `float` | No |  |
-| `tna_precancelacion` | `float` | No |  |
+| `tnaPrecancelacion` | `float` | No |  |
 
 ### Operations
 
@@ -1360,7 +1360,7 @@ proveedor_plazo_fijo_uva_pago_periodico = client.ProveedorPlazoFijoUvaPagoPeriod
 | `entidad` | `str` | No |  |
 | `id` | `str` | No |  |
 | `logo` | `str` | No |  |
-| `tasa` | `list` | No |  |
+| `tasas` | `list` | No |  |
 
 ### Operations
 
@@ -1422,21 +1422,21 @@ rem = client.Rem()
 | `mediana` | `float` | No |  |
 | `minimo` | `float` | No |  |
 | `muestra` | `str` | No |  |
-| `participante` | `int` | No |  |
+| `participantes` | `int` | No |  |
 | `percentil10` | `float` | No |  |
 | `percentil25` | `float` | No |  |
 | `percentil75` | `float` | No |  |
 | `percentil90` | `float` | No |  |
 | `periodo` | `str` | No |  |
-| `periodo_desde` | `str` | No |  |
-| `periodo_hasta` | `str` | No |  |
-| `periodo_tipo` | `str` | No |  |
+| `periodoDesde` | `str` | No |  |
+| `periodoHasta` | `str` | No |  |
+| `periodoTipo` | `str` | No |  |
 | `promedio` | `float` | No |  |
-| `publicacion_url` | `str` | No |  |
+| `publicacionUrl` | `str` | No |  |
 | `referencia` | `str` | No |  |
-| `referencia_fecha` | `str` | No |  |
+| `referenciaFecha` | `str` | No |  |
 | `unidad` | `str` | No |  |
-| `xlsx_url` | `str` | No |  |
+| `xlsxUrl` | `str` | No |  |
 
 ### Operations
 
@@ -1445,7 +1445,7 @@ rem = client.Rem()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Rem().list()
+results = client.Rem().list({"año": 1, "mes": "example"})
 for rem in results:
     print(rem)
 ```
@@ -1498,21 +1498,21 @@ rem_expectativa = client.RemExpectativa()
 | `mediana` | `float` | No |  |
 | `minimo` | `float` | No |  |
 | `muestra` | `str` | No |  |
-| `participante` | `int` | No |  |
+| `participantes` | `int` | No |  |
 | `percentil10` | `float` | No |  |
 | `percentil25` | `float` | No |  |
 | `percentil75` | `float` | No |  |
 | `percentil90` | `float` | No |  |
 | `periodo` | `str` | No |  |
-| `periodo_desde` | `str` | No |  |
-| `periodo_hasta` | `str` | No |  |
-| `periodo_tipo` | `str` | No |  |
+| `periodoDesde` | `str` | No |  |
+| `periodoHasta` | `str` | No |  |
+| `periodoTipo` | `str` | No |  |
 | `promedio` | `float` | No |  |
-| `publicacion_url` | `str` | No |  |
+| `publicacionUrl` | `str` | No |  |
 | `referencia` | `str` | No |  |
-| `referencia_fecha` | `str` | No |  |
+| `referenciaFecha` | `str` | No |  |
 | `unidad` | `str` | No |  |
-| `xlsx_url` | `str` | No |  |
+| `xlsxUrl` | `str` | No |  |
 
 ### Operations
 
@@ -1684,12 +1684,12 @@ senador = client.Senador()
 | `foto` | `str` | No |  |
 | `id` | `str` | No |  |
 | `nombre` | `str` | No |  |
-| `observacione` | `str` | No |  |
+| `observaciones` | `str` | No |  |
 | `partido` | `str` | No |  |
-| `periodo_legal` | `dict` | No |  |
-| `periodo_real` | `dict` | No |  |
+| `periodoLegal` | `dict` | No |  |
+| `periodoReal` | `dict` | No |  |
 | `provincia` | `str` | No |  |
-| `rede` | `list` | No |  |
+| `redes` | `list` | No |  |
 | `reemplazo` | `str` | No |  |
 | `telefono` | `str` | No |  |
 
@@ -1800,8 +1800,8 @@ tasa_plazo_fijo = client.TasaPlazoFijo()
 | --- | --- | --- | --- |
 | `entidad` | `str` | No |  |
 | `logo` | `str` | No |  |
-| `tna_cliente` | `float` | No |  |
-| `tna_no_cliente` | `float` | No |  |
+| `tnaClientes` | `float` | No |  |
+| `tnaNoClientes` | `float` | No |  |
 
 ### Operations
 

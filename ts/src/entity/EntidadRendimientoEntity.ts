@@ -37,7 +37,7 @@ class EntidadRendimientoEntity extends ArgentinadatosEntityBase<EntidadRendimien
 
 
 
-  async list(this: any, reqmatch?: EntidadRendimientoListMatch, ctrl?: Control): Promise<EntidadRendimiento[]> {
+  async list(this: any, reqmatch?: EntidadRendimientoListMatch, ctrl?: Control): Promise<EntidadRendimientoEntity[]> {
 
     const utility = this._utility
 

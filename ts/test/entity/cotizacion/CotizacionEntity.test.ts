@@ -63,7 +63,7 @@ describe('CotizacionEntity', async () => {
     const cotizacion_ref01_ent = client.Cotizacion()
     const cotizacion_ref01_match: any = {}
 
-    const cotizacion_ref01_list = await cotizacion_ref01_ent.list(cotizacion_ref01_match)
+    const cotizacion_ref01_list = (await cotizacion_ref01_ent.list(cotizacion_ref01_match)).map((e: any) => e.data())
 
 
 

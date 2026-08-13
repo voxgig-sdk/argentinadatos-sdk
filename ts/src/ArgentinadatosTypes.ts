@@ -6,31 +6,31 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface Acta {
-  abstencione?: number
+  abstenciones?: number
   acta?: string
-  acta_id?: number
-  afirmativo?: number
+  actaId?: number
+  afirmativos?: number
   amn?: number
-  ausente?: number
+  ausentes?: number
   descripcion?: string
   fecha?: string
   id?: string
   mayoria?: string
-  miembro?: number
-  negativo?: number
-  numero_acta?: string
-  observacione?: any[]
+  miembros?: number
+  negativos?: number
+  numeroActa?: string
+  observaciones?: any[]
   periodo?: string
-  presente?: number
+  presentes?: number
   presidente?: string
   proyecto?: string
-  quorum_tipo?: string
+  quorumTipo?: string
   resultado?: string
   reunion?: string
   titulo?: string
-  voto?: any[]
-  votos_afirmativo?: number
-  votos_negativo?: number
+  votos?: any[]
+  votosAfirmativos?: number
+  votosNegativos?: number
 }
 
 export interface ActaLoadMatch {
@@ -38,47 +38,47 @@ export interface ActaLoadMatch {
 }
 
 export interface ActaListMatch {
-  abstencione?: number
+  abstenciones?: number
   acta?: string
-  acta_id?: number
-  afirmativo?: number
+  actaId?: number
+  afirmativos?: number
   amn?: number
-  ausente?: number
+  ausentes?: number
   descripcion?: string
   fecha?: string
   id?: string
   mayoria?: string
-  miembro?: number
-  negativo?: number
-  numero_acta?: string
-  observacione?: any[]
+  miembros?: number
+  negativos?: number
+  numeroActa?: string
+  observaciones?: any[]
   periodo?: string
-  presente?: number
+  presentes?: number
   presidente?: string
   proyecto?: string
-  quorum_tipo?: string
+  quorumTipo?: string
   resultado?: string
   reunion?: string
   titulo?: string
-  voto?: any[]
-  votos_afirmativo?: number
-  votos_negativo?: number
+  votos?: any[]
+  votosAfirmativos?: number
+  votosNegativos?: number
 }
 
 export interface BonosCer {
-  fecha_vencimiento: string
-  precio_ar: number
+  fechaVencimiento: string
+  precioArs: number
   ticker: string
-  tir_porcentaje: number
-  voluman?: number
+  tirPorcentaje: number
+  volumen?: number
 }
 
 export interface BonosCerListMatch {
-  fecha_vencimiento?: string
-  precio_ar?: number
+  fechaVencimiento?: string
+  precioArs?: number
   ticker?: string
-  tir_porcentaje?: number
-  voluman?: number
+  tirPorcentaje?: number
+  volumen?: number
 }
 
 export interface Cotizacion {
@@ -129,39 +129,39 @@ export interface CuentaRemuneradaUsdListMatch {
 export interface Diputado {
   apellido?: string
   bloque?: string
-  cese_fecha?: string
+  ceseFecha?: string
   foto?: string
   genero?: string
   id?: string
-  juramento_fecha?: string
+  juramentoFecha?: string
   nombre?: string
-  periodo_bloque?: Record<string, any>
-  periodo_mandato?: Record<string, any>
+  periodoBloque?: Record<string, any>
+  periodoMandato?: Record<string, any>
   provincia?: string
 }
 
 export interface DiputadoListMatch {
   apellido?: string
   bloque?: string
-  cese_fecha?: string
+  ceseFecha?: string
   foto?: string
   genero?: string
   id?: string
-  juramento_fecha?: string
+  juramentoFecha?: string
   nombre?: string
-  periodo_bloque?: Record<string, any>
-  periodo_mandato?: Record<string, any>
+  periodoBloque?: Record<string, any>
+  periodoMandato?: Record<string, any>
   provincia?: string
 }
 
 export interface EntidadRendimiento {
   entidad?: string
-  rendimiento?: any[]
+  rendimientos?: any[]
 }
 
 export interface EntidadRendimientoListMatch {
   entidad?: string
-  rendimiento?: any[]
+  rendimientos?: any[]
 }
 
 export interface Estado {
@@ -229,8 +229,8 @@ export interface FondoComunInversionOtroLoadMatch {
 }
 
 export interface FondoComunInversionVariable {
-  condicione?: string
-  condiciones_corto?: string
+  condiciones?: string
+  condicionesCorto?: string
   fecha?: string
   fondo?: string
   nombre?: string
@@ -247,14 +247,14 @@ export interface FondoComunInversionVariableLoadMatch {
 export interface HipotecarioUvaTna {
   entidad?: string
   metadata?: Record<string, any>
-  nombre_comercial?: string
+  nombreComercial?: string
   tna?: number
 }
 
 export interface HipotecarioUvaTnaListMatch {
   entidad?: string
   metadata?: Record<string, any>
-  nombre_comercial?: string
+  nombreComercial?: string
   tna?: number
 }
 
@@ -279,16 +279,16 @@ export interface IndiceUvaListMatch {
 }
 
 export interface Letra {
-  fecha_emision?: string
-  fecha_vencimiento?: string
+  fechaEmision?: string
+  fechaVencimiento?: string
   tem?: number
   ticker?: string
   vpv?: number
 }
 
 export interface LetraListMatch {
-  fecha_emision?: string
-  fecha_vencimiento?: string
+  fechaEmision?: string
+  fechaVencimiento?: string
   tem?: number
   ticker?: string
   vpv?: number
@@ -300,8 +300,8 @@ export interface Presidente {
   inicio?: string
   nombre?: string
   partido?: string
-  partido_imagen?: string
-  periodo_presidencial?: string
+  partidoImagen?: string
+  periodoPresidencial?: string
   vicepresidente?: string
 }
 
@@ -311,13 +311,13 @@ export interface PresidenteListMatch {
   inicio?: string
   nombre?: string
   partido?: string
-  partido_imagen?: string
-  periodo_presidencial?: string
+  partidoImagen?: string
+  periodoPresidencial?: string
   vicepresidente?: string
 }
 
 export interface ProveedorPlazoFijoPrecancelable {
-  aviso_precancelacion_dia?: number
+  avisoPrecancelacionDias?: number
   canal?: string
   enlace?: string
   entidad?: string
@@ -325,19 +325,19 @@ export interface ProveedorPlazoFijoPrecancelable {
   logo?: string
   modalidad?: string
   moneda?: string
-  monto_maximo?: number
-  monto_minimo?: number
-  plazo_max_dia?: number
-  plazo_min_dia?: number
-  plazo_precancelacion_dia?: number
+  montoMaximo?: number
+  montoMinimo?: number
+  plazoMaxDias?: number
+  plazoMinDias?: number
+  plazoPrecancelacionDias?: number
   tea?: number
-  tea_precancelacion?: number
+  teaPrecancelacion?: number
   tna?: number
-  tna_precancelacion?: number
+  tnaPrecancelacion?: number
 }
 
 export interface ProveedorPlazoFijoPrecancelableListMatch {
-  aviso_precancelacion_dia?: number
+  avisoPrecancelacionDias?: number
   canal?: string
   enlace?: string
   entidad?: string
@@ -345,29 +345,29 @@ export interface ProveedorPlazoFijoPrecancelableListMatch {
   logo?: string
   modalidad?: string
   moneda?: string
-  monto_maximo?: number
-  monto_minimo?: number
-  plazo_max_dia?: number
-  plazo_min_dia?: number
-  plazo_precancelacion_dia?: number
+  montoMaximo?: number
+  montoMinimo?: number
+  plazoMaxDias?: number
+  plazoMinDias?: number
+  plazoPrecancelacionDias?: number
   tea?: number
-  tea_precancelacion?: number
+  teaPrecancelacion?: number
   tna?: number
-  tna_precancelacion?: number
+  tnaPrecancelacion?: number
 }
 
 export interface ProveedorPlazoFijoUvaPagoPeriodico {
   entidad?: string
   id?: string
   logo?: string
-  tasa?: any[]
+  tasas?: any[]
 }
 
 export interface ProveedorPlazoFijoUvaPagoPeriodicoListMatch {
   entidad?: string
   id?: string
   logo?: string
-  tasa?: any[]
+  tasas?: any[]
 }
 
 export interface Rem {
@@ -380,21 +380,21 @@ export interface Rem {
   mediana?: number
   minimo?: number
   muestra?: string
-  participante?: number
+  participantes?: number
   percentil10?: number
   percentil25?: number
   percentil75?: number
   percentil90?: number
   periodo?: string
-  periodo_desde?: string
-  periodo_hasta?: string
-  periodo_tipo?: string
+  periodoDesde?: string
+  periodoHasta?: string
+  periodoTipo?: string
   promedio?: number
-  publicacion_url?: string
+  publicacionUrl?: string
   referencia?: string
-  referencia_fecha?: string
+  referenciaFecha?: string
   unidad?: string
-  xlsx_url?: string
+  xlsxUrl?: string
 }
 
 export interface RemListMatch {
@@ -412,21 +412,21 @@ export interface RemExpectativa {
   mediana?: number
   minimo?: number
   muestra?: string
-  participante?: number
+  participantes?: number
   percentil10?: number
   percentil25?: number
   percentil75?: number
   percentil90?: number
   periodo?: string
-  periodo_desde?: string
-  periodo_hasta?: string
-  periodo_tipo?: string
+  periodoDesde?: string
+  periodoHasta?: string
+  periodoTipo?: string
   promedio?: number
-  publicacion_url?: string
+  publicacionUrl?: string
   referencia?: string
-  referencia_fecha?: string
+  referenciaFecha?: string
   unidad?: string
-  xlsx_url?: string
+  xlsxUrl?: string
 }
 
 export interface RemExpectativaListMatch {
@@ -439,21 +439,21 @@ export interface RemExpectativaListMatch {
   mediana?: number
   minimo?: number
   muestra?: string
-  participante?: number
+  participantes?: number
   percentil10?: number
   percentil25?: number
   percentil75?: number
   percentil90?: number
   periodo?: string
-  periodo_desde?: string
-  periodo_hasta?: string
-  periodo_tipo?: string
+  periodoDesde?: string
+  periodoHasta?: string
+  periodoTipo?: string
   promedio?: number
-  publicacion_url?: string
+  publicacionUrl?: string
   referencia?: string
-  referencia_fecha?: string
+  referenciaFecha?: string
   unidad?: string
-  xlsx_url?: string
+  xlsxUrl?: string
 }
 
 export interface Rendimiento {
@@ -474,6 +474,12 @@ export interface RiesgoPai {
 export interface RiesgoPaiLoadMatch {
   fecha?: string
   valor?: number
+
+  // Selects a custom action instead of the plain load:
+  //   'ultimo'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface RiesgoPaiListMatch {
@@ -486,12 +492,12 @@ export interface Senador {
   foto?: string
   id?: string
   nombre?: string
-  observacione?: string
+  observaciones?: string
   partido?: string
-  periodo_legal?: Record<string, any>
-  periodo_real?: Record<string, any>
+  periodoLegal?: Record<string, any>
+  periodoReal?: Record<string, any>
   provincia?: string
-  rede?: any[]
+  redes?: any[]
   reemplazo?: string
   telefono?: string
 }
@@ -501,12 +507,12 @@ export interface SenadorListMatch {
   foto?: string
   id?: string
   nombre?: string
-  observacione?: string
+  observaciones?: string
   partido?: string
-  periodo_legal?: Record<string, any>
-  periodo_real?: Record<string, any>
+  periodoLegal?: Record<string, any>
+  periodoReal?: Record<string, any>
   provincia?: string
-  rede?: any[]
+  redes?: any[]
   reemplazo?: string
   telefono?: string
 }
@@ -524,14 +530,14 @@ export interface TasaIntereListMatch {
 export interface TasaPlazoFijo {
   entidad?: string
   logo?: string
-  tna_cliente?: number
-  tna_no_cliente?: number
+  tnaClientes?: number
+  tnaNoClientes?: number
 }
 
 export interface TasaPlazoFijoListMatch {
   entidad?: string
   logo?: string
-  tna_cliente?: number
-  tna_no_cliente?: number
+  tnaClientes?: number
+  tnaNoClientes?: number
 }
 

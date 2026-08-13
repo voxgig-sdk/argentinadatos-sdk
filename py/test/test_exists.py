@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# Argentinadatos SDK exists test
 
 import pytest
 from argentinadatos_sdk import ArgentinadatosSDK

@@ -62,7 +62,7 @@ describe('EstadoEntity', async () => {
     // LOAD
     const estado_ref01_ent = client.Estado()
     const estado_ref01_match_dt0: any = {}
-    const estado_ref01_data_dt0 = await estado_ref01_ent.load(estado_ref01_match_dt0)
+    const estado_ref01_data_dt0 = (await estado_ref01_ent.load(estado_ref01_match_dt0)).data()
     assert(null != estado_ref01_data_dt0)
 
 

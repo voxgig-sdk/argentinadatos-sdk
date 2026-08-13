@@ -63,7 +63,7 @@ describe('HipotecarioUvaTnaEntity', async () => {
     const hipotecario_uva_tna_ref01_ent = client.HipotecarioUvaTna()
     const hipotecario_uva_tna_ref01_match: any = {}
 
-    const hipotecario_uva_tna_ref01_list = await hipotecario_uva_tna_ref01_ent.list(hipotecario_uva_tna_ref01_match)
+    const hipotecario_uva_tna_ref01_list = (await hipotecario_uva_tna_ref01_ent.list(hipotecario_uva_tna_ref01_match)).map((e: any) => e.data())
 
 
   })

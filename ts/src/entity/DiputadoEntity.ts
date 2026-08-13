@@ -37,7 +37,7 @@ class DiputadoEntity extends ArgentinadatosEntityBase<Diputado> {
 
 
 
-  async list(this: any, reqmatch?: DiputadoListMatch, ctrl?: Control): Promise<Diputado[]> {
+  async list(this: any, reqmatch?: DiputadoListMatch, ctrl?: Control): Promise<DiputadoEntity[]> {
 
     const utility = this._utility
 

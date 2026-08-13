@@ -10,22 +10,22 @@
 
 # Acta entity data model.
 #
-# @!attribute [rw] abstencione
+# @!attribute [rw] abstenciones
 #   @return [Integer, nil]
 #
 # @!attribute [rw] acta
 #   @return [String, nil]
 #
-# @!attribute [rw] acta_id
+# @!attribute [rw] actaId
 #   @return [Integer, nil]
 #
-# @!attribute [rw] afirmativo
+# @!attribute [rw] afirmativos
 #   @return [Integer, nil]
 #
 # @!attribute [rw] amn
 #   @return [Integer, nil]
 #
-# @!attribute [rw] ausente
+# @!attribute [rw] ausentes
 #   @return [Integer, nil]
 #
 # @!attribute [rw] descripcion
@@ -40,22 +40,22 @@
 # @!attribute [rw] mayoria
 #   @return [String, nil]
 #
-# @!attribute [rw] miembro
+# @!attribute [rw] miembros
 #   @return [Integer, nil]
 #
-# @!attribute [rw] negativo
+# @!attribute [rw] negativos
 #   @return [Integer, nil]
 #
-# @!attribute [rw] numero_acta
+# @!attribute [rw] numeroActa
 #   @return [String, nil]
 #
-# @!attribute [rw] observacione
+# @!attribute [rw] observaciones
 #   @return [Array, nil]
 #
 # @!attribute [rw] periodo
 #   @return [String, nil]
 #
-# @!attribute [rw] presente
+# @!attribute [rw] presentes
 #   @return [Integer, nil]
 #
 # @!attribute [rw] presidente
@@ -64,7 +64,7 @@
 # @!attribute [rw] proyecto
 #   @return [String, nil]
 #
-# @!attribute [rw] quorum_tipo
+# @!attribute [rw] quorumTipo
 #   @return [String, nil]
 #
 # @!attribute [rw] resultado
@@ -76,40 +76,40 @@
 # @!attribute [rw] titulo
 #   @return [String, nil]
 #
-# @!attribute [rw] voto
+# @!attribute [rw] votos
 #   @return [Array, nil]
 #
-# @!attribute [rw] votos_afirmativo
+# @!attribute [rw] votosAfirmativos
 #   @return [Integer, nil]
 #
-# @!attribute [rw] votos_negativo
+# @!attribute [rw] votosNegativos
 #   @return [Integer, nil]
 Acta = Struct.new(
-  :abstencione,
+  :abstenciones,
   :acta,
-  :acta_id,
-  :afirmativo,
+  :actaId,
+  :afirmativos,
   :amn,
-  :ausente,
+  :ausentes,
   :descripcion,
   :fecha,
   :id,
   :mayoria,
-  :miembro,
-  :negativo,
-  :numero_acta,
-  :observacione,
+  :miembros,
+  :negativos,
+  :numeroActa,
+  :observaciones,
   :periodo,
-  :presente,
+  :presentes,
   :presidente,
   :proyecto,
-  :quorum_tipo,
+  :quorumTipo,
   :resultado,
   :reunion,
   :titulo,
-  :voto,
-  :votos_afirmativo,
-  :votos_negativo,
+  :votos,
+  :votosAfirmativos,
+  :votosNegativos,
   keyword_init: true
 )
 
@@ -124,22 +124,22 @@ ActaLoadMatch = Struct.new(
 
 # Request payload for Acta#list.
 #
-# @!attribute [rw] abstencione
+# @!attribute [rw] abstenciones
 #   @return [Integer, nil]
 #
 # @!attribute [rw] acta
 #   @return [String, nil]
 #
-# @!attribute [rw] acta_id
+# @!attribute [rw] actaId
 #   @return [Integer, nil]
 #
-# @!attribute [rw] afirmativo
+# @!attribute [rw] afirmativos
 #   @return [Integer, nil]
 #
 # @!attribute [rw] amn
 #   @return [Integer, nil]
 #
-# @!attribute [rw] ausente
+# @!attribute [rw] ausentes
 #   @return [Integer, nil]
 #
 # @!attribute [rw] descripcion
@@ -154,22 +154,22 @@ ActaLoadMatch = Struct.new(
 # @!attribute [rw] mayoria
 #   @return [String, nil]
 #
-# @!attribute [rw] miembro
+# @!attribute [rw] miembros
 #   @return [Integer, nil]
 #
-# @!attribute [rw] negativo
+# @!attribute [rw] negativos
 #   @return [Integer, nil]
 #
-# @!attribute [rw] numero_acta
+# @!attribute [rw] numeroActa
 #   @return [String, nil]
 #
-# @!attribute [rw] observacione
+# @!attribute [rw] observaciones
 #   @return [Array, nil]
 #
 # @!attribute [rw] periodo
 #   @return [String, nil]
 #
-# @!attribute [rw] presente
+# @!attribute [rw] presentes
 #   @return [Integer, nil]
 #
 # @!attribute [rw] presidente
@@ -178,7 +178,7 @@ ActaLoadMatch = Struct.new(
 # @!attribute [rw] proyecto
 #   @return [String, nil]
 #
-# @!attribute [rw] quorum_tipo
+# @!attribute [rw] quorumTipo
 #   @return [String, nil]
 #
 # @!attribute [rw] resultado
@@ -190,90 +190,90 @@ ActaLoadMatch = Struct.new(
 # @!attribute [rw] titulo
 #   @return [String, nil]
 #
-# @!attribute [rw] voto
+# @!attribute [rw] votos
 #   @return [Array, nil]
 #
-# @!attribute [rw] votos_afirmativo
+# @!attribute [rw] votosAfirmativos
 #   @return [Integer, nil]
 #
-# @!attribute [rw] votos_negativo
+# @!attribute [rw] votosNegativos
 #   @return [Integer, nil]
 ActaListMatch = Struct.new(
-  :abstencione,
+  :abstenciones,
   :acta,
-  :acta_id,
-  :afirmativo,
+  :actaId,
+  :afirmativos,
   :amn,
-  :ausente,
+  :ausentes,
   :descripcion,
   :fecha,
   :id,
   :mayoria,
-  :miembro,
-  :negativo,
-  :numero_acta,
-  :observacione,
+  :miembros,
+  :negativos,
+  :numeroActa,
+  :observaciones,
   :periodo,
-  :presente,
+  :presentes,
   :presidente,
   :proyecto,
-  :quorum_tipo,
+  :quorumTipo,
   :resultado,
   :reunion,
   :titulo,
-  :voto,
-  :votos_afirmativo,
-  :votos_negativo,
+  :votos,
+  :votosAfirmativos,
+  :votosNegativos,
   keyword_init: true
 )
 
 # BonosCer entity data model.
 #
-# @!attribute [rw] fecha_vencimiento
+# @!attribute [rw] fechaVencimiento
 #   @return [String]
 #
-# @!attribute [rw] precio_ar
+# @!attribute [rw] precioArs
 #   @return [Float]
 #
 # @!attribute [rw] ticker
 #   @return [String]
 #
-# @!attribute [rw] tir_porcentaje
+# @!attribute [rw] tirPorcentaje
 #   @return [Float]
 #
-# @!attribute [rw] voluman
+# @!attribute [rw] volumen
 #   @return [Float, nil]
 BonosCer = Struct.new(
-  :fecha_vencimiento,
-  :precio_ar,
+  :fechaVencimiento,
+  :precioArs,
   :ticker,
-  :tir_porcentaje,
-  :voluman,
+  :tirPorcentaje,
+  :volumen,
   keyword_init: true
 )
 
 # Request payload for BonosCer#list.
 #
-# @!attribute [rw] fecha_vencimiento
+# @!attribute [rw] fechaVencimiento
 #   @return [String, nil]
 #
-# @!attribute [rw] precio_ar
+# @!attribute [rw] precioArs
 #   @return [Float, nil]
 #
 # @!attribute [rw] ticker
 #   @return [String, nil]
 #
-# @!attribute [rw] tir_porcentaje
+# @!attribute [rw] tirPorcentaje
 #   @return [Float, nil]
 #
-# @!attribute [rw] voluman
+# @!attribute [rw] volumen
 #   @return [Float, nil]
 BonosCerListMatch = Struct.new(
-  :fecha_vencimiento,
-  :precio_ar,
+  :fechaVencimiento,
+  :precioArs,
   :ticker,
-  :tir_porcentaje,
-  :voluman,
+  :tirPorcentaje,
+  :volumen,
   keyword_init: true
 )
 
@@ -416,7 +416,7 @@ CuentaRemuneradaUsdListMatch = Struct.new(
 # @!attribute [rw] bloque
 #   @return [String, nil]
 #
-# @!attribute [rw] cese_fecha
+# @!attribute [rw] ceseFecha
 #   @return [String, nil]
 #
 # @!attribute [rw] foto
@@ -428,16 +428,16 @@ CuentaRemuneradaUsdListMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [String, nil]
 #
-# @!attribute [rw] juramento_fecha
+# @!attribute [rw] juramentoFecha
 #   @return [String, nil]
 #
 # @!attribute [rw] nombre
 #   @return [String, nil]
 #
-# @!attribute [rw] periodo_bloque
+# @!attribute [rw] periodoBloque
 #   @return [Hash, nil]
 #
-# @!attribute [rw] periodo_mandato
+# @!attribute [rw] periodoMandato
 #   @return [Hash, nil]
 #
 # @!attribute [rw] provincia
@@ -445,14 +445,14 @@ CuentaRemuneradaUsdListMatch = Struct.new(
 Diputado = Struct.new(
   :apellido,
   :bloque,
-  :cese_fecha,
+  :ceseFecha,
   :foto,
   :genero,
   :id,
-  :juramento_fecha,
+  :juramentoFecha,
   :nombre,
-  :periodo_bloque,
-  :periodo_mandato,
+  :periodoBloque,
+  :periodoMandato,
   :provincia,
   keyword_init: true
 )
@@ -465,7 +465,7 @@ Diputado = Struct.new(
 # @!attribute [rw] bloque
 #   @return [String, nil]
 #
-# @!attribute [rw] cese_fecha
+# @!attribute [rw] ceseFecha
 #   @return [String, nil]
 #
 # @!attribute [rw] foto
@@ -477,16 +477,16 @@ Diputado = Struct.new(
 # @!attribute [rw] id
 #   @return [String, nil]
 #
-# @!attribute [rw] juramento_fecha
+# @!attribute [rw] juramentoFecha
 #   @return [String, nil]
 #
 # @!attribute [rw] nombre
 #   @return [String, nil]
 #
-# @!attribute [rw] periodo_bloque
+# @!attribute [rw] periodoBloque
 #   @return [Hash, nil]
 #
-# @!attribute [rw] periodo_mandato
+# @!attribute [rw] periodoMandato
 #   @return [Hash, nil]
 #
 # @!attribute [rw] provincia
@@ -494,14 +494,14 @@ Diputado = Struct.new(
 DiputadoListMatch = Struct.new(
   :apellido,
   :bloque,
-  :cese_fecha,
+  :ceseFecha,
   :foto,
   :genero,
   :id,
-  :juramento_fecha,
+  :juramentoFecha,
   :nombre,
-  :periodo_bloque,
-  :periodo_mandato,
+  :periodoBloque,
+  :periodoMandato,
   :provincia,
   keyword_init: true
 )
@@ -511,11 +511,11 @@ DiputadoListMatch = Struct.new(
 # @!attribute [rw] entidad
 #   @return [String, nil]
 #
-# @!attribute [rw] rendimiento
+# @!attribute [rw] rendimientos
 #   @return [Array, nil]
 EntidadRendimiento = Struct.new(
   :entidad,
-  :rendimiento,
+  :rendimientos,
   keyword_init: true
 )
 
@@ -524,11 +524,11 @@ EntidadRendimiento = Struct.new(
 # @!attribute [rw] entidad
 #   @return [String, nil]
 #
-# @!attribute [rw] rendimiento
+# @!attribute [rw] rendimientos
 #   @return [Array, nil]
 EntidadRendimientoListMatch = Struct.new(
   :entidad,
-  :rendimiento,
+  :rendimientos,
   keyword_init: true
 )
 
@@ -704,10 +704,10 @@ FondoComunInversionOtroLoadMatch = Struct.new(
 
 # FondoComunInversionVariable entity data model.
 #
-# @!attribute [rw] condicione
+# @!attribute [rw] condiciones
 #   @return [String, nil]
 #
-# @!attribute [rw] condiciones_corto
+# @!attribute [rw] condicionesCorto
 #   @return [String, nil]
 #
 # @!attribute [rw] fecha
@@ -731,8 +731,8 @@ FondoComunInversionOtroLoadMatch = Struct.new(
 # @!attribute [rw] tope
 #   @return [Float, nil]
 FondoComunInversionVariable = Struct.new(
-  :condicione,
-  :condiciones_corto,
+  :condiciones,
+  :condicionesCorto,
   :fecha,
   :fondo,
   :nombre,
@@ -760,7 +760,7 @@ FondoComunInversionVariableLoadMatch = Struct.new(
 # @!attribute [rw] metadata
 #   @return [Hash, nil]
 #
-# @!attribute [rw] nombre_comercial
+# @!attribute [rw] nombreComercial
 #   @return [String, nil]
 #
 # @!attribute [rw] tna
@@ -768,7 +768,7 @@ FondoComunInversionVariableLoadMatch = Struct.new(
 HipotecarioUvaTna = Struct.new(
   :entidad,
   :metadata,
-  :nombre_comercial,
+  :nombreComercial,
   :tna,
   keyword_init: true
 )
@@ -781,7 +781,7 @@ HipotecarioUvaTna = Struct.new(
 # @!attribute [rw] metadata
 #   @return [Hash, nil]
 #
-# @!attribute [rw] nombre_comercial
+# @!attribute [rw] nombreComercial
 #   @return [String, nil]
 #
 # @!attribute [rw] tna
@@ -789,7 +789,7 @@ HipotecarioUvaTna = Struct.new(
 HipotecarioUvaTnaListMatch = Struct.new(
   :entidad,
   :metadata,
-  :nombre_comercial,
+  :nombreComercial,
   :tna,
   keyword_init: true
 )
@@ -848,10 +848,10 @@ IndiceUvaListMatch = Struct.new(
 
 # Letra entity data model.
 #
-# @!attribute [rw] fecha_emision
+# @!attribute [rw] fechaEmision
 #   @return [String, nil]
 #
-# @!attribute [rw] fecha_vencimiento
+# @!attribute [rw] fechaVencimiento
 #   @return [String, nil]
 #
 # @!attribute [rw] tem
@@ -863,8 +863,8 @@ IndiceUvaListMatch = Struct.new(
 # @!attribute [rw] vpv
 #   @return [Float, nil]
 Letra = Struct.new(
-  :fecha_emision,
-  :fecha_vencimiento,
+  :fechaEmision,
+  :fechaVencimiento,
   :tem,
   :ticker,
   :vpv,
@@ -873,10 +873,10 @@ Letra = Struct.new(
 
 # Request payload for Letra#list.
 #
-# @!attribute [rw] fecha_emision
+# @!attribute [rw] fechaEmision
 #   @return [String, nil]
 #
-# @!attribute [rw] fecha_vencimiento
+# @!attribute [rw] fechaVencimiento
 #   @return [String, nil]
 #
 # @!attribute [rw] tem
@@ -888,8 +888,8 @@ Letra = Struct.new(
 # @!attribute [rw] vpv
 #   @return [Float, nil]
 LetraListMatch = Struct.new(
-  :fecha_emision,
-  :fecha_vencimiento,
+  :fechaEmision,
+  :fechaVencimiento,
   :tem,
   :ticker,
   :vpv,
@@ -913,10 +913,10 @@ LetraListMatch = Struct.new(
 # @!attribute [rw] partido
 #   @return [String, nil]
 #
-# @!attribute [rw] partido_imagen
+# @!attribute [rw] partidoImagen
 #   @return [String, nil]
 #
-# @!attribute [rw] periodo_presidencial
+# @!attribute [rw] periodoPresidencial
 #   @return [String, nil]
 #
 # @!attribute [rw] vicepresidente
@@ -927,8 +927,8 @@ Presidente = Struct.new(
   :inicio,
   :nombre,
   :partido,
-  :partido_imagen,
-  :periodo_presidencial,
+  :partidoImagen,
+  :periodoPresidencial,
   :vicepresidente,
   keyword_init: true
 )
@@ -950,10 +950,10 @@ Presidente = Struct.new(
 # @!attribute [rw] partido
 #   @return [String, nil]
 #
-# @!attribute [rw] partido_imagen
+# @!attribute [rw] partidoImagen
 #   @return [String, nil]
 #
-# @!attribute [rw] periodo_presidencial
+# @!attribute [rw] periodoPresidencial
 #   @return [String, nil]
 #
 # @!attribute [rw] vicepresidente
@@ -964,15 +964,15 @@ PresidenteListMatch = Struct.new(
   :inicio,
   :nombre,
   :partido,
-  :partido_imagen,
-  :periodo_presidencial,
+  :partidoImagen,
+  :periodoPresidencial,
   :vicepresidente,
   keyword_init: true
 )
 
 # ProveedorPlazoFijoPrecancelable entity data model.
 #
-# @!attribute [rw] aviso_precancelacion_dia
+# @!attribute [rw] avisoPrecancelacionDias
 #   @return [Integer, nil]
 #
 # @!attribute [rw] canal
@@ -996,34 +996,34 @@ PresidenteListMatch = Struct.new(
 # @!attribute [rw] moneda
 #   @return [String, nil]
 #
-# @!attribute [rw] monto_maximo
+# @!attribute [rw] montoMaximo
 #   @return [Float, nil]
 #
-# @!attribute [rw] monto_minimo
+# @!attribute [rw] montoMinimo
 #   @return [Float, nil]
 #
-# @!attribute [rw] plazo_max_dia
+# @!attribute [rw] plazoMaxDias
 #   @return [Integer, nil]
 #
-# @!attribute [rw] plazo_min_dia
+# @!attribute [rw] plazoMinDias
 #   @return [Integer, nil]
 #
-# @!attribute [rw] plazo_precancelacion_dia
+# @!attribute [rw] plazoPrecancelacionDias
 #   @return [Integer, nil]
 #
 # @!attribute [rw] tea
 #   @return [Float, nil]
 #
-# @!attribute [rw] tea_precancelacion
+# @!attribute [rw] teaPrecancelacion
 #   @return [Float, nil]
 #
 # @!attribute [rw] tna
 #   @return [Float, nil]
 #
-# @!attribute [rw] tna_precancelacion
+# @!attribute [rw] tnaPrecancelacion
 #   @return [Float, nil]
 ProveedorPlazoFijoPrecancelable = Struct.new(
-  :aviso_precancelacion_dia,
+  :avisoPrecancelacionDias,
   :canal,
   :enlace,
   :entidad,
@@ -1031,21 +1031,21 @@ ProveedorPlazoFijoPrecancelable = Struct.new(
   :logo,
   :modalidad,
   :moneda,
-  :monto_maximo,
-  :monto_minimo,
-  :plazo_max_dia,
-  :plazo_min_dia,
-  :plazo_precancelacion_dia,
+  :montoMaximo,
+  :montoMinimo,
+  :plazoMaxDias,
+  :plazoMinDias,
+  :plazoPrecancelacionDias,
   :tea,
-  :tea_precancelacion,
+  :teaPrecancelacion,
   :tna,
-  :tna_precancelacion,
+  :tnaPrecancelacion,
   keyword_init: true
 )
 
 # Request payload for ProveedorPlazoFijoPrecancelable#list.
 #
-# @!attribute [rw] aviso_precancelacion_dia
+# @!attribute [rw] avisoPrecancelacionDias
 #   @return [Integer, nil]
 #
 # @!attribute [rw] canal
@@ -1069,34 +1069,34 @@ ProveedorPlazoFijoPrecancelable = Struct.new(
 # @!attribute [rw] moneda
 #   @return [String, nil]
 #
-# @!attribute [rw] monto_maximo
+# @!attribute [rw] montoMaximo
 #   @return [Float, nil]
 #
-# @!attribute [rw] monto_minimo
+# @!attribute [rw] montoMinimo
 #   @return [Float, nil]
 #
-# @!attribute [rw] plazo_max_dia
+# @!attribute [rw] plazoMaxDias
 #   @return [Integer, nil]
 #
-# @!attribute [rw] plazo_min_dia
+# @!attribute [rw] plazoMinDias
 #   @return [Integer, nil]
 #
-# @!attribute [rw] plazo_precancelacion_dia
+# @!attribute [rw] plazoPrecancelacionDias
 #   @return [Integer, nil]
 #
 # @!attribute [rw] tea
 #   @return [Float, nil]
 #
-# @!attribute [rw] tea_precancelacion
+# @!attribute [rw] teaPrecancelacion
 #   @return [Float, nil]
 #
 # @!attribute [rw] tna
 #   @return [Float, nil]
 #
-# @!attribute [rw] tna_precancelacion
+# @!attribute [rw] tnaPrecancelacion
 #   @return [Float, nil]
 ProveedorPlazoFijoPrecancelableListMatch = Struct.new(
-  :aviso_precancelacion_dia,
+  :avisoPrecancelacionDias,
   :canal,
   :enlace,
   :entidad,
@@ -1104,15 +1104,15 @@ ProveedorPlazoFijoPrecancelableListMatch = Struct.new(
   :logo,
   :modalidad,
   :moneda,
-  :monto_maximo,
-  :monto_minimo,
-  :plazo_max_dia,
-  :plazo_min_dia,
-  :plazo_precancelacion_dia,
+  :montoMaximo,
+  :montoMinimo,
+  :plazoMaxDias,
+  :plazoMinDias,
+  :plazoPrecancelacionDias,
   :tea,
-  :tea_precancelacion,
+  :teaPrecancelacion,
   :tna,
-  :tna_precancelacion,
+  :tnaPrecancelacion,
   keyword_init: true
 )
 
@@ -1127,13 +1127,13 @@ ProveedorPlazoFijoPrecancelableListMatch = Struct.new(
 # @!attribute [rw] logo
 #   @return [String, nil]
 #
-# @!attribute [rw] tasa
+# @!attribute [rw] tasas
 #   @return [Array, nil]
 ProveedorPlazoFijoUvaPagoPeriodico = Struct.new(
   :entidad,
   :id,
   :logo,
-  :tasa,
+  :tasas,
   keyword_init: true
 )
 
@@ -1148,13 +1148,13 @@ ProveedorPlazoFijoUvaPagoPeriodico = Struct.new(
 # @!attribute [rw] logo
 #   @return [String, nil]
 #
-# @!attribute [rw] tasa
+# @!attribute [rw] tasas
 #   @return [Array, nil]
 ProveedorPlazoFijoUvaPagoPeriodicoListMatch = Struct.new(
   :entidad,
   :id,
   :logo,
-  :tasa,
+  :tasas,
   keyword_init: true
 )
 
@@ -1187,7 +1187,7 @@ ProveedorPlazoFijoUvaPagoPeriodicoListMatch = Struct.new(
 # @!attribute [rw] muestra
 #   @return [String, nil]
 #
-# @!attribute [rw] participante
+# @!attribute [rw] participantes
 #   @return [Integer, nil]
 #
 # @!attribute [rw] percentil10
@@ -1205,31 +1205,31 @@ ProveedorPlazoFijoUvaPagoPeriodicoListMatch = Struct.new(
 # @!attribute [rw] periodo
 #   @return [String, nil]
 #
-# @!attribute [rw] periodo_desde
+# @!attribute [rw] periodoDesde
 #   @return [String, nil]
 #
-# @!attribute [rw] periodo_hasta
+# @!attribute [rw] periodoHasta
 #   @return [String, nil]
 #
-# @!attribute [rw] periodo_tipo
+# @!attribute [rw] periodoTipo
 #   @return [String, nil]
 #
 # @!attribute [rw] promedio
 #   @return [Float, nil]
 #
-# @!attribute [rw] publicacion_url
+# @!attribute [rw] publicacionUrl
 #   @return [String, nil]
 #
 # @!attribute [rw] referencia
 #   @return [String, nil]
 #
-# @!attribute [rw] referencia_fecha
+# @!attribute [rw] referenciaFecha
 #   @return [String, nil]
 #
 # @!attribute [rw] unidad
 #   @return [String, nil]
 #
-# @!attribute [rw] xlsx_url
+# @!attribute [rw] xlsxUrl
 #   @return [String, nil]
 Rem = Struct.new(
   :desvio,
@@ -1241,21 +1241,21 @@ Rem = Struct.new(
   :mediana,
   :minimo,
   :muestra,
-  :participante,
+  :participantes,
   :percentil10,
   :percentil25,
   :percentil75,
   :percentil90,
   :periodo,
-  :periodo_desde,
-  :periodo_hasta,
-  :periodo_tipo,
+  :periodoDesde,
+  :periodoHasta,
+  :periodoTipo,
   :promedio,
-  :publicacion_url,
+  :publicacionUrl,
   :referencia,
-  :referencia_fecha,
+  :referenciaFecha,
   :unidad,
-  :xlsx_url,
+  :xlsxUrl,
   keyword_init: true
 )
 
@@ -1301,7 +1301,7 @@ RemListMatch = Struct.new(
 # @!attribute [rw] muestra
 #   @return [String, nil]
 #
-# @!attribute [rw] participante
+# @!attribute [rw] participantes
 #   @return [Integer, nil]
 #
 # @!attribute [rw] percentil10
@@ -1319,31 +1319,31 @@ RemListMatch = Struct.new(
 # @!attribute [rw] periodo
 #   @return [String, nil]
 #
-# @!attribute [rw] periodo_desde
+# @!attribute [rw] periodoDesde
 #   @return [String, nil]
 #
-# @!attribute [rw] periodo_hasta
+# @!attribute [rw] periodoHasta
 #   @return [String, nil]
 #
-# @!attribute [rw] periodo_tipo
+# @!attribute [rw] periodoTipo
 #   @return [String, nil]
 #
 # @!attribute [rw] promedio
 #   @return [Float, nil]
 #
-# @!attribute [rw] publicacion_url
+# @!attribute [rw] publicacionUrl
 #   @return [String, nil]
 #
 # @!attribute [rw] referencia
 #   @return [String, nil]
 #
-# @!attribute [rw] referencia_fecha
+# @!attribute [rw] referenciaFecha
 #   @return [String, nil]
 #
 # @!attribute [rw] unidad
 #   @return [String, nil]
 #
-# @!attribute [rw] xlsx_url
+# @!attribute [rw] xlsxUrl
 #   @return [String, nil]
 RemExpectativa = Struct.new(
   :desvio,
@@ -1355,21 +1355,21 @@ RemExpectativa = Struct.new(
   :mediana,
   :minimo,
   :muestra,
-  :participante,
+  :participantes,
   :percentil10,
   :percentil25,
   :percentil75,
   :percentil90,
   :periodo,
-  :periodo_desde,
-  :periodo_hasta,
-  :periodo_tipo,
+  :periodoDesde,
+  :periodoHasta,
+  :periodoTipo,
   :promedio,
-  :publicacion_url,
+  :publicacionUrl,
   :referencia,
-  :referencia_fecha,
+  :referenciaFecha,
   :unidad,
-  :xlsx_url,
+  :xlsxUrl,
   keyword_init: true
 )
 
@@ -1402,7 +1402,7 @@ RemExpectativa = Struct.new(
 # @!attribute [rw] muestra
 #   @return [String, nil]
 #
-# @!attribute [rw] participante
+# @!attribute [rw] participantes
 #   @return [Integer, nil]
 #
 # @!attribute [rw] percentil10
@@ -1420,31 +1420,31 @@ RemExpectativa = Struct.new(
 # @!attribute [rw] periodo
 #   @return [String, nil]
 #
-# @!attribute [rw] periodo_desde
+# @!attribute [rw] periodoDesde
 #   @return [String, nil]
 #
-# @!attribute [rw] periodo_hasta
+# @!attribute [rw] periodoHasta
 #   @return [String, nil]
 #
-# @!attribute [rw] periodo_tipo
+# @!attribute [rw] periodoTipo
 #   @return [String, nil]
 #
 # @!attribute [rw] promedio
 #   @return [Float, nil]
 #
-# @!attribute [rw] publicacion_url
+# @!attribute [rw] publicacionUrl
 #   @return [String, nil]
 #
 # @!attribute [rw] referencia
 #   @return [String, nil]
 #
-# @!attribute [rw] referencia_fecha
+# @!attribute [rw] referenciaFecha
 #   @return [String, nil]
 #
 # @!attribute [rw] unidad
 #   @return [String, nil]
 #
-# @!attribute [rw] xlsx_url
+# @!attribute [rw] xlsxUrl
 #   @return [String, nil]
 RemExpectativaListMatch = Struct.new(
   :desvio,
@@ -1456,21 +1456,21 @@ RemExpectativaListMatch = Struct.new(
   :mediana,
   :minimo,
   :muestra,
-  :participante,
+  :participantes,
   :percentil10,
   :percentil25,
   :percentil75,
   :percentil90,
   :periodo,
-  :periodo_desde,
-  :periodo_hasta,
-  :periodo_tipo,
+  :periodoDesde,
+  :periodoHasta,
+  :periodoTipo,
   :promedio,
-  :publicacion_url,
+  :publicacionUrl,
   :referencia,
-  :referencia_fecha,
+  :referenciaFecha,
   :unidad,
-  :xlsx_url,
+  :xlsxUrl,
   keyword_init: true
 )
 
@@ -1553,22 +1553,22 @@ RiesgoPaiListMatch = Struct.new(
 # @!attribute [rw] nombre
 #   @return [String, nil]
 #
-# @!attribute [rw] observacione
+# @!attribute [rw] observaciones
 #   @return [String, nil]
 #
 # @!attribute [rw] partido
 #   @return [String, nil]
 #
-# @!attribute [rw] periodo_legal
+# @!attribute [rw] periodoLegal
 #   @return [Hash, nil]
 #
-# @!attribute [rw] periodo_real
+# @!attribute [rw] periodoReal
 #   @return [Hash, nil]
 #
 # @!attribute [rw] provincia
 #   @return [String, nil]
 #
-# @!attribute [rw] rede
+# @!attribute [rw] redes
 #   @return [Array, nil]
 #
 # @!attribute [rw] reemplazo
@@ -1581,12 +1581,12 @@ Senador = Struct.new(
   :foto,
   :id,
   :nombre,
-  :observacione,
+  :observaciones,
   :partido,
-  :periodo_legal,
-  :periodo_real,
+  :periodoLegal,
+  :periodoReal,
   :provincia,
-  :rede,
+  :redes,
   :reemplazo,
   :telefono,
   keyword_init: true
@@ -1606,22 +1606,22 @@ Senador = Struct.new(
 # @!attribute [rw] nombre
 #   @return [String, nil]
 #
-# @!attribute [rw] observacione
+# @!attribute [rw] observaciones
 #   @return [String, nil]
 #
 # @!attribute [rw] partido
 #   @return [String, nil]
 #
-# @!attribute [rw] periodo_legal
+# @!attribute [rw] periodoLegal
 #   @return [Hash, nil]
 #
-# @!attribute [rw] periodo_real
+# @!attribute [rw] periodoReal
 #   @return [Hash, nil]
 #
 # @!attribute [rw] provincia
 #   @return [String, nil]
 #
-# @!attribute [rw] rede
+# @!attribute [rw] redes
 #   @return [Array, nil]
 #
 # @!attribute [rw] reemplazo
@@ -1634,12 +1634,12 @@ SenadorListMatch = Struct.new(
   :foto,
   :id,
   :nombre,
-  :observacione,
+  :observaciones,
   :partido,
-  :periodo_legal,
-  :periodo_real,
+  :periodoLegal,
+  :periodoReal,
   :provincia,
-  :rede,
+  :redes,
   :reemplazo,
   :telefono,
   keyword_init: true
@@ -1679,16 +1679,16 @@ TasaIntereListMatch = Struct.new(
 # @!attribute [rw] logo
 #   @return [String, nil]
 #
-# @!attribute [rw] tna_cliente
+# @!attribute [rw] tnaClientes
 #   @return [Float, nil]
 #
-# @!attribute [rw] tna_no_cliente
+# @!attribute [rw] tnaNoClientes
 #   @return [Float, nil]
 TasaPlazoFijo = Struct.new(
   :entidad,
   :logo,
-  :tna_cliente,
-  :tna_no_cliente,
+  :tnaClientes,
+  :tnaNoClientes,
   keyword_init: true
 )
 
@@ -1700,16 +1700,16 @@ TasaPlazoFijo = Struct.new(
 # @!attribute [rw] logo
 #   @return [String, nil]
 #
-# @!attribute [rw] tna_cliente
+# @!attribute [rw] tnaClientes
 #   @return [Float, nil]
 #
-# @!attribute [rw] tna_no_cliente
+# @!attribute [rw] tnaNoClientes
 #   @return [Float, nil]
 TasaPlazoFijoListMatch = Struct.new(
   :entidad,
   :logo,
-  :tna_cliente,
-  :tna_no_cliente,
+  :tnaClientes,
+  :tnaNoClientes,
   keyword_init: true
 )
 

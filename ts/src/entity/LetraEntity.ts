@@ -37,7 +37,7 @@ class LetraEntity extends ArgentinadatosEntityBase<Letra> {
 
 
 
-  async list(this: any, reqmatch?: LetraListMatch, ctrl?: Control): Promise<Letra[]> {
+  async list(this: any, reqmatch?: LetraListMatch, ctrl?: Control): Promise<LetraEntity[]> {
 
     const utility = this._utility
 

@@ -4,20 +4,20 @@
       "TASA_PLAZO_FIJO00": {
         "entidad": "s28",
         "logo": "s29",
-        "tna_cliente": 42,
-        "tna_no_cliente": 43
+        "tnaClientes": 42,
+        "tnaNoClientes": 43
       },
       "TASA_PLAZO_FIJO01": {
         "entidad": "s50",
         "logo": "s51",
-        "tna_cliente": 82,
-        "tna_no_cliente": 83
+        "tnaClientes": 82,
+        "tnaNoClientes": 83
       },
       "TASA_PLAZO_FIJO02": {
         "entidad": "s78",
         "logo": "s79",
-        "tna_cliente": 122,
-        "tna_no_cliente": 123
+        "tnaClientes": 122,
+        "tnaNoClientes": 123
       }
     }
   },
@@ -26,8 +26,8 @@
       "tasa_plazo_fijo_ref01": {
         "entidad": "sa0",
         "logo": "sa1",
-        "tna_cliente": 162,
-        "tna_no_cliente": 163
+        "tnaClientes": 162,
+        "tnaNoClientes": 163
       }
     }
   }

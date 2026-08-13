@@ -2,7 +2,7 @@
   "existing": {
     "proveedor_plazo_fijo_precancelable": {
       "PROVEEDOR_PLAZO_FIJO_PRECANCELABLE00": {
-        "aviso_precancelacion_dia": "saa",
+        "avisoPrecancelacionDias": "saa",
         "canal": "sab",
         "enlace": "sac",
         "entidad": "sad",
@@ -10,18 +10,18 @@
         "logo": "saf",
         "modalidad": "sb0",
         "moneda": "sb1",
-        "monto_maximo": 178,
-        "monto_minimo": 179,
-        "plazo_max_dia": "sb4",
-        "plazo_min_dia": "sb5",
-        "plazo_precancelacion_dia": "sb6",
+        "montoMaximo": 178,
+        "montoMinimo": 179,
+        "plazoMaxDias": "sb4",
+        "plazoMinDias": "sb5",
+        "plazoPrecancelacionDias": "sb6",
         "tea": 183,
-        "tea_precancelacion": 184,
+        "teaPrecancelacion": 184,
         "tna": 185,
-        "tna_precancelacion": 186
+        "tnaPrecancelacion": 186
       },
       "PROVEEDOR_PLAZO_FIJO_PRECANCELABLE01": {
-        "aviso_precancelacion_dia": "s154",
+        "avisoPrecancelacionDias": "s154",
         "canal": "s155",
         "enlace": "s156",
         "entidad": "s157",
@@ -29,18 +29,18 @@
         "logo": "s159",
         "modalidad": "s15a",
         "moneda": "s15b",
-        "monto_maximo": 348,
-        "monto_minimo": 349,
-        "plazo_max_dia": "s15e",
-        "plazo_min_dia": "s15f",
-        "plazo_precancelacion_dia": "s160",
+        "montoMaximo": 348,
+        "montoMinimo": 349,
+        "plazoMaxDias": "s15e",
+        "plazoMinDias": "s15f",
+        "plazoPrecancelacionDias": "s160",
         "tea": 353,
-        "tea_precancelacion": 354,
+        "teaPrecancelacion": 354,
         "tna": 355,
-        "tna_precancelacion": 356
+        "tnaPrecancelacion": 356
       },
       "PROVEEDOR_PLAZO_FIJO_PRECANCELABLE02": {
-        "aviso_precancelacion_dia": "s1fe",
+        "avisoPrecancelacionDias": "s1fe",
         "canal": "s1ff",
         "enlace": "s200",
         "entidad": "s201",
@@ -48,37 +48,37 @@
         "logo": "s203",
         "modalidad": "s204",
         "moneda": "s205",
-        "monto_maximo": 518,
-        "monto_minimo": 519,
-        "plazo_max_dia": "s208",
-        "plazo_min_dia": "s209",
-        "plazo_precancelacion_dia": "s20a",
+        "montoMaximo": 518,
+        "montoMinimo": 519,
+        "plazoMaxDias": "s208",
+        "plazoMinDias": "s209",
+        "plazoPrecancelacionDias": "s20a",
         "tea": 523,
-        "tea_precancelacion": 524,
+        "teaPrecancelacion": 524,
         "tna": 525,
-        "tna_precancelacion": 526
+        "tnaPrecancelacion": 526
       }
     }
   },
   "new": {
     "proveedor_plazo_fijo_precancelable": {
       "proveedor_plazo_fijo_precancelable_ref01": {
-        "aviso_precancelacion_dia": "s2a8",
+        "avisoPrecancelacionDias": "s2a8",
         "canal": "s2a9",
         "enlace": "s2aa",
         "entidad": "s2ab",
         "logo": "s2ad",
         "modalidad": "s2ae",
         "moneda": "s2af",
-        "monto_maximo": 688,
-        "monto_minimo": 689,
-        "plazo_max_dia": "s2b2",
-        "plazo_min_dia": "s2b3",
-        "plazo_precancelacion_dia": "s2b4",
+        "montoMaximo": 688,
+        "montoMinimo": 689,
+        "plazoMaxDias": "s2b2",
+        "plazoMinDias": "s2b3",
+        "plazoPrecancelacionDias": "s2b4",
         "tea": 693,
-        "tea_precancelacion": 694,
+        "teaPrecancelacion": 694,
         "tna": 695,
-        "tna_precancelacion": 696
+        "tnaPrecancelacion": 696
       }
     }
   }

@@ -63,13 +63,13 @@ describe('ActaEntity', async () => {
     const acta_ref01_ent = client.Acta()
     const acta_ref01_match: any = {}
 
-    const acta_ref01_list = await acta_ref01_ent.list(acta_ref01_match)
+    const acta_ref01_list = (await acta_ref01_ent.list(acta_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const acta_ref01_match_dt0: any = {}
     acta_ref01_match_dt0.id = acta_ref01_data.id
-    const acta_ref01_data_dt0 = await acta_ref01_ent.load(acta_ref01_match_dt0)
+    const acta_ref01_data_dt0 = (await acta_ref01_ent.load(acta_ref01_match_dt0)).data()
     assert(acta_ref01_data_dt0.id === acta_ref01_data.id)
 
 

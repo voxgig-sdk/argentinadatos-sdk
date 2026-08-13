@@ -54,7 +54,7 @@ module ArgentinadatosConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "abstencione",
+              "name" => "abstenciones",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 0,
@@ -68,14 +68,14 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "acta_id",
+              "name" => "actaId",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 2,
             },
             {
               "active" => true,
-              "name" => "afirmativo",
+              "name" => "afirmativos",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 3,
@@ -89,7 +89,7 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "ausente",
+              "name" => "ausentes",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 5,
@@ -124,28 +124,28 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "miembro",
+              "name" => "miembros",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 10,
             },
             {
               "active" => true,
-              "name" => "negativo",
+              "name" => "negativos",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 11,
             },
             {
               "active" => true,
-              "name" => "numero_acta",
+              "name" => "numeroActa",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 12,
             },
             {
               "active" => true,
-              "name" => "observacione",
+              "name" => "observaciones",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 13,
@@ -159,7 +159,7 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "presente",
+              "name" => "presentes",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 15,
@@ -180,7 +180,7 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "quorum_tipo",
+              "name" => "quorumTipo",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 18,
@@ -208,21 +208,21 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "voto",
+              "name" => "votos",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 22,
             },
             {
               "active" => true,
-              "name" => "votos_afirmativo",
+              "name" => "votosAfirmativos",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 23,
             },
             {
               "active" => true,
-              "name" => "votos_negativo",
+              "name" => "votosNegativos",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 24,
@@ -237,6 +237,7 @@ module ArgentinadatosConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/diputados/actas",
                   "parts" => [
@@ -254,6 +255,7 @@ module ArgentinadatosConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/senado/actas",
                   "parts" => [
@@ -291,6 +293,7 @@ module ArgentinadatosConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/diputados/actas/{año}",
                   "parts" => [
@@ -331,6 +334,7 @@ module ArgentinadatosConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/senado/actas/{año}",
                   "parts" => [
@@ -367,14 +371,14 @@ module ArgentinadatosConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "fecha_vencimiento",
+              "name" => "fechaVencimiento",
               "req" => true,
               "type" => "`$STRING`",
               "index$" => 0,
             },
             {
               "active" => true,
-              "name" => "precio_ar",
+              "name" => "precioArs",
               "req" => true,
               "type" => "`$NUMBER`",
               "index$" => 1,
@@ -388,14 +392,14 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "tir_porcentaje",
+              "name" => "tirPorcentaje",
               "req" => true,
               "type" => "`$NUMBER`",
               "index$" => 3,
             },
             {
               "active" => true,
-              "name" => "voluman",
+              "name" => "volumen",
               "req" => false,
               "type" => "`$NUMBER`",
               "index$" => 4,
@@ -410,6 +414,7 @@ module ArgentinadatosConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/bonos-cer",
                   "parts" => [
@@ -420,7 +425,7 @@ module ArgentinadatosConfig
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.bonos`",
                   },
                   "index$" => 0,
                 },
@@ -479,6 +484,7 @@ module ArgentinadatosConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/cotizaciones/dolares",
                   "parts" => [
@@ -526,6 +532,7 @@ module ArgentinadatosConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/cotizaciones/dolares/{casa}/{fecha}",
                   "parts" => [
@@ -563,6 +570,7 @@ module ArgentinadatosConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/cotizaciones/dolares/{casa}",
                   "parts" => [
@@ -627,6 +635,7 @@ module ArgentinadatosConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/criptopesos",
                   "parts" => [
@@ -682,6 +691,7 @@ module ArgentinadatosConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/cuentas-remuneradas-usd",
                   "parts" => [
@@ -722,7 +732,7 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "cese_fecha",
+              "name" => "ceseFecha",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 2,
@@ -750,7 +760,7 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "juramento_fecha",
+              "name" => "juramentoFecha",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 6,
@@ -764,14 +774,14 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "periodo_bloque",
+              "name" => "periodoBloque",
               "req" => false,
               "type" => "`$OBJECT`",
               "index$" => 8,
             },
             {
               "active" => true,
-              "name" => "periodo_mandato",
+              "name" => "periodoMandato",
               "req" => false,
               "type" => "`$OBJECT`",
               "index$" => 9,
@@ -793,6 +803,7 @@ module ArgentinadatosConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/diputados/diputados",
                   "parts" => [
@@ -826,7 +837,7 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "rendimiento",
+              "name" => "rendimientos",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 1,
@@ -841,6 +852,7 @@ module ArgentinadatosConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/rendimientos",
                   "parts" => [
@@ -889,6 +901,7 @@ module ArgentinadatosConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/estado",
                   "parts" => [
@@ -943,6 +956,7 @@ module ArgentinadatosConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/eventos/presidenciales",
                   "parts" => [
@@ -1011,6 +1025,7 @@ module ArgentinadatosConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/feriados/{año}",
                   "parts" => [
@@ -1053,6 +1068,7 @@ module ArgentinadatosConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/rems",
                   "parts" => [
@@ -1148,6 +1164,7 @@ module ArgentinadatosConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/fci/mercadoDinero/{fecha}",
                   "parts" => [
@@ -1184,6 +1201,7 @@ module ArgentinadatosConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/fci/rentaFija/{fecha}",
                   "parts" => [
@@ -1220,6 +1238,7 @@ module ArgentinadatosConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/fci/rentaMixta/{fecha}",
                   "parts" => [
@@ -1256,6 +1275,7 @@ module ArgentinadatosConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/fci/rentaVariable/{fecha}",
                   "parts" => [
@@ -1292,6 +1312,7 @@ module ArgentinadatosConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/fci/retornoTotal/{fecha}",
                   "parts" => [
@@ -1396,6 +1417,7 @@ module ArgentinadatosConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/fci/otros/{fecha}",
                   "parts" => [
@@ -1433,14 +1455,14 @@ module ArgentinadatosConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "condicione",
+              "name" => "condiciones",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 0,
             },
             {
               "active" => true,
-              "name" => "condiciones_corto",
+              "name" => "condicionesCorto",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 1,
@@ -1517,6 +1539,7 @@ module ArgentinadatosConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/fci/variables/{fecha}",
                   "parts" => [
@@ -1568,7 +1591,7 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "nombre_comercial",
+              "name" => "nombreComercial",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 2,
@@ -1590,6 +1613,7 @@ module ArgentinadatosConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/creditos/hipotecariosUva",
                   "parts" => [
@@ -1639,6 +1663,7 @@ module ArgentinadatosConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/indices/inflacion",
                   "parts" => [
@@ -1657,6 +1682,7 @@ module ArgentinadatosConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/indices/inflacionInteranual",
                   "parts" => [
@@ -1706,6 +1732,7 @@ module ArgentinadatosConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/indices/uva",
                   "parts" => [
@@ -1733,14 +1760,14 @@ module ArgentinadatosConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "fecha_emision",
+              "name" => "fechaEmision",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 0,
             },
             {
               "active" => true,
-              "name" => "fecha_vencimiento",
+              "name" => "fechaVencimiento",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 1,
@@ -1776,6 +1803,7 @@ module ArgentinadatosConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/letras",
                   "parts" => [
@@ -1837,14 +1865,14 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "partido_imagen",
+              "name" => "partidoImagen",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 5,
             },
             {
               "active" => true,
-              "name" => "periodo_presidencial",
+              "name" => "periodoPresidencial",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 6,
@@ -1866,6 +1894,7 @@ module ArgentinadatosConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/presidentes",
                   "parts" => [
@@ -1891,7 +1920,7 @@ module ArgentinadatosConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "aviso_precancelacion_dia",
+              "name" => "avisoPrecancelacionDias",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 0,
@@ -1947,35 +1976,35 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "monto_maximo",
+              "name" => "montoMaximo",
               "req" => false,
               "type" => "`$NUMBER`",
               "index$" => 8,
             },
             {
               "active" => true,
-              "name" => "monto_minimo",
+              "name" => "montoMinimo",
               "req" => false,
               "type" => "`$NUMBER`",
               "index$" => 9,
             },
             {
               "active" => true,
-              "name" => "plazo_max_dia",
+              "name" => "plazoMaxDias",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 10,
             },
             {
               "active" => true,
-              "name" => "plazo_min_dia",
+              "name" => "plazoMinDias",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 11,
             },
             {
               "active" => true,
-              "name" => "plazo_precancelacion_dia",
+              "name" => "plazoPrecancelacionDias",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 12,
@@ -1989,7 +2018,7 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "tea_precancelacion",
+              "name" => "teaPrecancelacion",
               "req" => false,
               "type" => "`$NUMBER`",
               "index$" => 14,
@@ -2003,7 +2032,7 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "tna_precancelacion",
+              "name" => "tnaPrecancelacion",
               "req" => false,
               "type" => "`$NUMBER`",
               "index$" => 16,
@@ -2018,6 +2047,7 @@ module ArgentinadatosConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/tasas/plazoFijoPrecancelable",
                   "parts" => [
@@ -2066,7 +2096,7 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "tasa",
+              "name" => "tasas",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 3,
@@ -2081,6 +2111,7 @@ module ArgentinadatosConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/tasas/plazoFijoUvaPagoPeriodico",
                   "parts" => [
@@ -2171,7 +2202,7 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "participante",
+              "name" => "participantes",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 9,
@@ -2213,21 +2244,21 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "periodo_desde",
+              "name" => "periodoDesde",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 15,
             },
             {
               "active" => true,
-              "name" => "periodo_hasta",
+              "name" => "periodoHasta",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 16,
             },
             {
               "active" => true,
-              "name" => "periodo_tipo",
+              "name" => "periodoTipo",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 17,
@@ -2241,7 +2272,7 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "publicacion_url",
+              "name" => "publicacionUrl",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 19,
@@ -2255,7 +2286,7 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "referencia_fecha",
+              "name" => "referenciaFecha",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 21,
@@ -2269,7 +2300,7 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "xlsx_url",
+              "name" => "xlsxUrl",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 23,
@@ -2307,6 +2338,7 @@ module ArgentinadatosConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/rems/{año}/{mes}",
                   "parts" => [
@@ -2406,7 +2438,7 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "participante",
+              "name" => "participantes",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 9,
@@ -2448,21 +2480,21 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "periodo_desde",
+              "name" => "periodoDesde",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 15,
             },
             {
               "active" => true,
-              "name" => "periodo_hasta",
+              "name" => "periodoHasta",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 16,
             },
             {
               "active" => true,
-              "name" => "periodo_tipo",
+              "name" => "periodoTipo",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 17,
@@ -2476,7 +2508,7 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "publicacion_url",
+              "name" => "publicacionUrl",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 19,
@@ -2490,7 +2522,7 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "referencia_fecha",
+              "name" => "referenciaFecha",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 21,
@@ -2504,7 +2536,7 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "xlsx_url",
+              "name" => "xlsxUrl",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 23,
@@ -2519,6 +2551,7 @@ module ArgentinadatosConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/rems/ultimo",
                   "parts" => [
@@ -2587,6 +2620,7 @@ module ArgentinadatosConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/rendimientos/{entidad}",
                   "parts" => [
@@ -2645,6 +2679,7 @@ module ArgentinadatosConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/indices/riesgo-pais",
                   "parts" => [
@@ -2670,6 +2705,7 @@ module ArgentinadatosConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/indices/riesgo-pais/ultimo",
                   "parts" => [
@@ -2728,7 +2764,7 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "observacione",
+              "name" => "observaciones",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 4,
@@ -2742,14 +2778,14 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "periodo_legal",
+              "name" => "periodoLegal",
               "req" => false,
               "type" => "`$OBJECT`",
               "index$" => 6,
             },
             {
               "active" => true,
-              "name" => "periodo_real",
+              "name" => "periodoReal",
               "req" => false,
               "type" => "`$OBJECT`",
               "index$" => 7,
@@ -2763,7 +2799,7 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "rede",
+              "name" => "redes",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 9,
@@ -2792,6 +2828,7 @@ module ArgentinadatosConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/senado/senadores",
                   "parts" => [
@@ -2840,6 +2877,7 @@ module ArgentinadatosConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/tasas/depositos30Dias",
                   "parts" => [
@@ -2881,14 +2919,14 @@ module ArgentinadatosConfig
             },
             {
               "active" => true,
-              "name" => "tna_cliente",
+              "name" => "tnaClientes",
               "req" => false,
               "type" => "`$NUMBER`",
               "index$" => 2,
             },
             {
               "active" => true,
-              "name" => "tna_no_cliente",
+              "name" => "tnaNoClientes",
               "req" => false,
               "type" => "`$NUMBER`",
               "index$" => 3,
@@ -2903,6 +2941,7 @@ module ArgentinadatosConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/tasas/plazoFijo",
                   "parts" => [

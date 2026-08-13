@@ -37,7 +37,7 @@ class FinanzaEntity extends ArgentinadatosEntityBase<Finanza> {
 
 
 
-  async list(this: any, reqmatch?: FinanzaListMatch, ctrl?: Control): Promise<Finanza[]> {
+  async list(this: any, reqmatch?: FinanzaListMatch, ctrl?: Control): Promise<FinanzaEntity[]> {
 
     const utility = this._utility
 

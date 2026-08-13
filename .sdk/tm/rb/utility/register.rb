@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ ArgentinadatosUtility.registrar = ->(u) {
   u.prepare_params = ArgentinadatosUtilities::PrepareParams
   u.prepare_path = ArgentinadatosUtilities::PreparePath
   u.prepare_query = ArgentinadatosUtilities::PrepareQuery
+  u.graphql_body = ArgentinadatosUtilities::GraphqlBody
+  u.graphql_errors = ArgentinadatosUtilities::GraphqlErrors
   u.result_basic = ArgentinadatosUtilities::ResultBasic
   u.result_body = ArgentinadatosUtilities::ResultBody
   u.result_headers = ArgentinadatosUtilities::ResultHeaders

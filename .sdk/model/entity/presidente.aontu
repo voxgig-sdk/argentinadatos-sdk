@@ -31,12 +31,12 @@ main: kit: entity: presidente: {
       type: "`$STRING`"
     }
     {
-      name: "partido_imagen"
+      name: "partidoImagen"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "periodo_presidencial"
+      name: "periodoPresidencial"
       req: false
       type: "`$STRING`"
     }

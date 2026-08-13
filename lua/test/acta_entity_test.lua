@@ -97,7 +97,7 @@ describe("ActaEntity", function()
     }
     local acta_ref01_data_dt0_loaded, err = acta_ref01_ent:load(acta_ref01_match_dt0, nil)
     assert.is_nil(err)
-    local acta_ref01_data_dt0_load_result = helpers.to_map(acta_ref01_data_dt0_loaded)
+    local acta_ref01_data_dt0_load_result = helpers.to_map(type(acta_ref01_data_dt0_loaded) == 'table' and acta_ref01_data_dt0_loaded.data_get and acta_ref01_data_dt0_loaded:data_get() or acta_ref01_data_dt0_loaded)
     assert.is_not_nil(acta_ref01_data_dt0_load_result)
     assert.are.equal(acta_ref01_data_dt0_load_result["id"], acta_ref01_data["id"])
 

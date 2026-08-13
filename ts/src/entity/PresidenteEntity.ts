@@ -37,7 +37,7 @@ class PresidenteEntity extends ArgentinadatosEntityBase<Presidente> {
 
 
 
-  async list(this: any, reqmatch?: PresidenteListMatch, ctrl?: Control): Promise<Presidente[]> {
+  async list(this: any, reqmatch?: PresidenteListMatch, ctrl?: Control): Promise<PresidenteEntity[]> {
 
     const utility = this._utility
 

@@ -51,7 +51,7 @@ main: kit: entity: rem: {
       type: "`$STRING`"
     }
     {
-      name: "participante"
+      name: "participantes"
       req: false
       type: "`$INTEGER`"
     }
@@ -81,17 +81,17 @@ main: kit: entity: rem: {
       type: "`$STRING`"
     }
     {
-      name: "periodo_desde"
+      name: "periodoDesde"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "periodo_hasta"
+      name: "periodoHasta"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "periodo_tipo"
+      name: "periodoTipo"
       req: false
       type: "`$STRING`"
     }
@@ -101,7 +101,7 @@ main: kit: entity: rem: {
       type: "`$NUMBER`"
     }
     {
-      name: "publicacion_url"
+      name: "publicacionUrl"
       req: false
       type: "`$STRING`"
     }
@@ -111,7 +111,7 @@ main: kit: entity: rem: {
       type: "`$STRING`"
     }
     {
-      name: "referencia_fecha"
+      name: "referenciaFecha"
       req: false
       type: "`$STRING`"
     }
@@ -121,7 +121,7 @@ main: kit: entity: rem: {
       type: "`$STRING`"
     }
     {
-      name: "xlsx_url"
+      name: "xlsxUrl"
       req: false
       type: "`$STRING`"
     }

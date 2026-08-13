@@ -16,12 +16,12 @@ main: kit: entity: tasa_plazo_fijo: {
       type: "`$STRING`"
     }
     {
-      name: "tna_cliente"
+      name: "tnaClientes"
       req: false
       type: "`$NUMBER`"
     }
     {
-      name: "tna_no_cliente"
+      name: "tnaNoClientes"
       req: false
       type: "`$NUMBER`"
     }

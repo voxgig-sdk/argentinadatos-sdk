@@ -6,7 +6,7 @@ main: kit: entity: proveedor_plazo_fijo_precancelable: {
 
   fields: [
     {
-      name: "aviso_precancelacion_dia"
+      name: "avisoPrecancelacionDias"
       req: false
       type: "`$INTEGER`"
     }
@@ -46,27 +46,27 @@ main: kit: entity: proveedor_plazo_fijo_precancelable: {
       type: "`$STRING`"
     }
     {
-      name: "monto_maximo"
+      name: "montoMaximo"
       req: false
       type: "`$NUMBER`"
     }
     {
-      name: "monto_minimo"
+      name: "montoMinimo"
       req: false
       type: "`$NUMBER`"
     }
     {
-      name: "plazo_max_dia"
+      name: "plazoMaxDias"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "plazo_min_dia"
+      name: "plazoMinDias"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "plazo_precancelacion_dia"
+      name: "plazoPrecancelacionDias"
       req: false
       type: "`$INTEGER`"
     }
@@ -76,7 +76,7 @@ main: kit: entity: proveedor_plazo_fijo_precancelable: {
       type: "`$NUMBER`"
     }
     {
-      name: "tea_precancelacion"
+      name: "teaPrecancelacion"
       req: false
       type: "`$NUMBER`"
     }
@@ -86,7 +86,7 @@ main: kit: entity: proveedor_plazo_fijo_precancelable: {
       type: "`$NUMBER`"
     }
     {
-      name: "tna_precancelacion"
+      name: "tnaPrecancelacion"
       req: false
       type: "`$NUMBER`"
     }

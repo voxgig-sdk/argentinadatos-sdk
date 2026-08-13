@@ -11,7 +11,7 @@ main: kit: entity: entidad_rendimiento: {
       type: "`$STRING`"
     }
     {
-      name: "rendimiento"
+      name: "rendimientos"
       req: false
       type: "`$ARRAY`"
     }

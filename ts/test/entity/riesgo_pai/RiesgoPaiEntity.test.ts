@@ -63,12 +63,12 @@ describe('RiesgoPaiEntity', async () => {
     const riesgo_pai_ref01_ent = client.RiesgoPai()
     const riesgo_pai_ref01_match: any = {}
 
-    const riesgo_pai_ref01_list = await riesgo_pai_ref01_ent.list(riesgo_pai_ref01_match)
+    const riesgo_pai_ref01_list = (await riesgo_pai_ref01_ent.list(riesgo_pai_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const riesgo_pai_ref01_match_dt0: any = {}
-    const riesgo_pai_ref01_data_dt0 = await riesgo_pai_ref01_ent.load(riesgo_pai_ref01_match_dt0)
+    const riesgo_pai_ref01_data_dt0 = (await riesgo_pai_ref01_ent.load(riesgo_pai_ref01_match_dt0)).data()
     assert(null != riesgo_pai_ref01_data_dt0)
 
 

@@ -16,11 +16,11 @@
 import pytest
 
 from argentinadatos_sdk import ArgentinadatosSDK
-from core.error import ArgentinadatosError
-from core.result import ArgentinadatosResult
-from core.response import ArgentinadatosResponse
-from core.spec import ArgentinadatosSpec
-from feature.base_feature import ArgentinadatosBaseFeature
+from argentinadatos_sdk.core.error import ArgentinadatosError
+from argentinadatos_sdk.core.result import ArgentinadatosResult
+from argentinadatos_sdk.core.response import ArgentinadatosResponse
+from argentinadatos_sdk.core.spec import ArgentinadatosSpec
+from argentinadatos_sdk.feature.base_feature import ArgentinadatosBaseFeature
 
 
 def _client():

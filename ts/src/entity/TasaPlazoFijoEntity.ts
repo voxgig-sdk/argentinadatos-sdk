@@ -37,7 +37,7 @@ class TasaPlazoFijoEntity extends ArgentinadatosEntityBase<TasaPlazoFijo> {
 
 
 
-  async list(this: any, reqmatch?: TasaPlazoFijoListMatch, ctrl?: Control): Promise<TasaPlazoFijo[]> {
+  async list(this: any, reqmatch?: TasaPlazoFijoListMatch, ctrl?: Control): Promise<TasaPlazoFijoEntity[]> {
 
     const utility = this._utility
 

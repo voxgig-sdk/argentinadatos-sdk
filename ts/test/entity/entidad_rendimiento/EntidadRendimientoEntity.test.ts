@@ -63,7 +63,7 @@ describe('EntidadRendimientoEntity', async () => {
     const entidad_rendimiento_ref01_ent = client.EntidadRendimiento()
     const entidad_rendimiento_ref01_match: any = {}
 
-    const entidad_rendimiento_ref01_list = await entidad_rendimiento_ref01_ent.list(entidad_rendimiento_ref01_match)
+    const entidad_rendimiento_ref01_list = (await entidad_rendimiento_ref01_ent.list(entidad_rendimiento_ref01_match)).map((e: any) => e.data())
 
 
   })

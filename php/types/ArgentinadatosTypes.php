@@ -15,31 +15,31 @@ declare(strict_types=1);
 /** Acta entity data model. */
 class Acta
 {
-    public ?int $abstencione = null;
+    public ?int $abstenciones = null;
     public ?string $acta = null;
-    public ?int $acta_id = null;
-    public ?int $afirmativo = null;
+    public ?int $actaId = null;
+    public ?int $afirmativos = null;
     public ?int $amn = null;
-    public ?int $ausente = null;
+    public ?int $ausentes = null;
     public ?string $descripcion = null;
     public ?string $fecha = null;
     public ?string $id = null;
     public ?string $mayoria = null;
-    public ?int $miembro = null;
-    public ?int $negativo = null;
-    public ?string $numero_acta = null;
-    public ?array $observacione = null;
+    public ?int $miembros = null;
+    public ?int $negativos = null;
+    public ?string $numeroActa = null;
+    public ?array $observaciones = null;
     public ?string $periodo = null;
-    public ?int $presente = null;
+    public ?int $presentes = null;
     public ?string $presidente = null;
     public ?string $proyecto = null;
-    public ?string $quorum_tipo = null;
+    public ?string $quorumTipo = null;
     public ?string $resultado = null;
     public ?string $reunion = null;
     public ?string $titulo = null;
-    public ?array $voto = null;
-    public ?int $votos_afirmativo = null;
-    public ?int $votos_negativo = null;
+    public ?array $votos = null;
+    public ?int $votosAfirmativos = null;
+    public ?int $votosNegativos = null;
 }
 
 /** Request payload for Acta#load. */
@@ -51,51 +51,51 @@ class ActaLoadMatch
 /** Request payload for Acta#list. */
 class ActaListMatch
 {
-    public ?int $abstencione = null;
+    public ?int $abstenciones = null;
     public ?string $acta = null;
-    public ?int $acta_id = null;
-    public ?int $afirmativo = null;
+    public ?int $actaId = null;
+    public ?int $afirmativos = null;
     public ?int $amn = null;
-    public ?int $ausente = null;
+    public ?int $ausentes = null;
     public ?string $descripcion = null;
     public ?string $fecha = null;
     public ?string $id = null;
     public ?string $mayoria = null;
-    public ?int $miembro = null;
-    public ?int $negativo = null;
-    public ?string $numero_acta = null;
-    public ?array $observacione = null;
+    public ?int $miembros = null;
+    public ?int $negativos = null;
+    public ?string $numeroActa = null;
+    public ?array $observaciones = null;
     public ?string $periodo = null;
-    public ?int $presente = null;
+    public ?int $presentes = null;
     public ?string $presidente = null;
     public ?string $proyecto = null;
-    public ?string $quorum_tipo = null;
+    public ?string $quorumTipo = null;
     public ?string $resultado = null;
     public ?string $reunion = null;
     public ?string $titulo = null;
-    public ?array $voto = null;
-    public ?int $votos_afirmativo = null;
-    public ?int $votos_negativo = null;
+    public ?array $votos = null;
+    public ?int $votosAfirmativos = null;
+    public ?int $votosNegativos = null;
 }
 
 /** BonosCer entity data model. */
 class BonosCer
 {
-    public string $fecha_vencimiento;
-    public float $precio_ar;
+    public string $fechaVencimiento;
+    public float $precioArs;
     public string $ticker;
-    public float $tir_porcentaje;
-    public ?float $voluman = null;
+    public float $tirPorcentaje;
+    public ?float $volumen = null;
 }
 
 /** Request payload for BonosCer#list. */
 class BonosCerListMatch
 {
-    public ?string $fecha_vencimiento = null;
-    public ?float $precio_ar = null;
+    public ?string $fechaVencimiento = null;
+    public ?float $precioArs = null;
     public ?string $ticker = null;
-    public ?float $tir_porcentaje = null;
-    public ?float $voluman = null;
+    public ?float $tirPorcentaje = null;
+    public ?float $volumen = null;
 }
 
 /** Cotizacion entity data model. */
@@ -162,14 +162,14 @@ class Diputado
 {
     public ?string $apellido = null;
     public ?string $bloque = null;
-    public ?string $cese_fecha = null;
+    public ?string $ceseFecha = null;
     public ?string $foto = null;
     public ?string $genero = null;
     public ?string $id = null;
-    public ?string $juramento_fecha = null;
+    public ?string $juramentoFecha = null;
     public ?string $nombre = null;
-    public ?array $periodo_bloque = null;
-    public ?array $periodo_mandato = null;
+    public ?array $periodoBloque = null;
+    public ?array $periodoMandato = null;
     public ?string $provincia = null;
 }
 
@@ -178,14 +178,14 @@ class DiputadoListMatch
 {
     public ?string $apellido = null;
     public ?string $bloque = null;
-    public ?string $cese_fecha = null;
+    public ?string $ceseFecha = null;
     public ?string $foto = null;
     public ?string $genero = null;
     public ?string $id = null;
-    public ?string $juramento_fecha = null;
+    public ?string $juramentoFecha = null;
     public ?string $nombre = null;
-    public ?array $periodo_bloque = null;
-    public ?array $periodo_mandato = null;
+    public ?array $periodoBloque = null;
+    public ?array $periodoMandato = null;
     public ?string $provincia = null;
 }
 
@@ -193,14 +193,14 @@ class DiputadoListMatch
 class EntidadRendimiento
 {
     public ?string $entidad = null;
-    public ?array $rendimiento = null;
+    public ?array $rendimientos = null;
 }
 
 /** Request payload for EntidadRendimiento#list. */
 class EntidadRendimientoListMatch
 {
     public ?string $entidad = null;
-    public ?array $rendimiento = null;
+    public ?array $rendimientos = null;
 }
 
 /** Estado entity data model. */
@@ -294,8 +294,8 @@ class FondoComunInversionOtroLoadMatch
 /** FondoComunInversionVariable entity data model. */
 class FondoComunInversionVariable
 {
-    public ?string $condicione = null;
-    public ?string $condiciones_corto = null;
+    public ?string $condiciones = null;
+    public ?string $condicionesCorto = null;
     public ?string $fecha = null;
     public ?string $fondo = null;
     public ?string $nombre = null;
@@ -316,7 +316,7 @@ class HipotecarioUvaTna
 {
     public ?string $entidad = null;
     public ?array $metadata = null;
-    public ?string $nombre_comercial = null;
+    public ?string $nombreComercial = null;
     public ?float $tna = null;
 }
 
@@ -325,7 +325,7 @@ class HipotecarioUvaTnaListMatch
 {
     public ?string $entidad = null;
     public ?array $metadata = null;
-    public ?string $nombre_comercial = null;
+    public ?string $nombreComercial = null;
     public ?float $tna = null;
 }
 
@@ -360,8 +360,8 @@ class IndiceUvaListMatch
 /** Letra entity data model. */
 class Letra
 {
-    public ?string $fecha_emision = null;
-    public ?string $fecha_vencimiento = null;
+    public ?string $fechaEmision = null;
+    public ?string $fechaVencimiento = null;
     public ?float $tem = null;
     public ?string $ticker = null;
     public ?float $vpv = null;
@@ -370,8 +370,8 @@ class Letra
 /** Request payload for Letra#list. */
 class LetraListMatch
 {
-    public ?string $fecha_emision = null;
-    public ?string $fecha_vencimiento = null;
+    public ?string $fechaEmision = null;
+    public ?string $fechaVencimiento = null;
     public ?float $tem = null;
     public ?string $ticker = null;
     public ?float $vpv = null;
@@ -385,8 +385,8 @@ class Presidente
     public ?string $inicio = null;
     public ?string $nombre = null;
     public ?string $partido = null;
-    public ?string $partido_imagen = null;
-    public ?string $periodo_presidencial = null;
+    public ?string $partidoImagen = null;
+    public ?string $periodoPresidencial = null;
     public ?string $vicepresidente = null;
 }
 
@@ -398,15 +398,15 @@ class PresidenteListMatch
     public ?string $inicio = null;
     public ?string $nombre = null;
     public ?string $partido = null;
-    public ?string $partido_imagen = null;
-    public ?string $periodo_presidencial = null;
+    public ?string $partidoImagen = null;
+    public ?string $periodoPresidencial = null;
     public ?string $vicepresidente = null;
 }
 
 /** ProveedorPlazoFijoPrecancelable entity data model. */
 class ProveedorPlazoFijoPrecancelable
 {
-    public ?int $aviso_precancelacion_dia = null;
+    public ?int $avisoPrecancelacionDias = null;
     public ?string $canal = null;
     public ?string $enlace = null;
     public ?string $entidad = null;
@@ -414,21 +414,21 @@ class ProveedorPlazoFijoPrecancelable
     public ?string $logo = null;
     public ?string $modalidad = null;
     public ?string $moneda = null;
-    public ?float $monto_maximo = null;
-    public ?float $monto_minimo = null;
-    public ?int $plazo_max_dia = null;
-    public ?int $plazo_min_dia = null;
-    public ?int $plazo_precancelacion_dia = null;
+    public ?float $montoMaximo = null;
+    public ?float $montoMinimo = null;
+    public ?int $plazoMaxDias = null;
+    public ?int $plazoMinDias = null;
+    public ?int $plazoPrecancelacionDias = null;
     public ?float $tea = null;
-    public ?float $tea_precancelacion = null;
+    public ?float $teaPrecancelacion = null;
     public ?float $tna = null;
-    public ?float $tna_precancelacion = null;
+    public ?float $tnaPrecancelacion = null;
 }
 
 /** Request payload for ProveedorPlazoFijoPrecancelable#list. */
 class ProveedorPlazoFijoPrecancelableListMatch
 {
-    public ?int $aviso_precancelacion_dia = null;
+    public ?int $avisoPrecancelacionDias = null;
     public ?string $canal = null;
     public ?string $enlace = null;
     public ?string $entidad = null;
@@ -436,15 +436,15 @@ class ProveedorPlazoFijoPrecancelableListMatch
     public ?string $logo = null;
     public ?string $modalidad = null;
     public ?string $moneda = null;
-    public ?float $monto_maximo = null;
-    public ?float $monto_minimo = null;
-    public ?int $plazo_max_dia = null;
-    public ?int $plazo_min_dia = null;
-    public ?int $plazo_precancelacion_dia = null;
+    public ?float $montoMaximo = null;
+    public ?float $montoMinimo = null;
+    public ?int $plazoMaxDias = null;
+    public ?int $plazoMinDias = null;
+    public ?int $plazoPrecancelacionDias = null;
     public ?float $tea = null;
-    public ?float $tea_precancelacion = null;
+    public ?float $teaPrecancelacion = null;
     public ?float $tna = null;
-    public ?float $tna_precancelacion = null;
+    public ?float $tnaPrecancelacion = null;
 }
 
 /** ProveedorPlazoFijoUvaPagoPeriodico entity data model. */
@@ -453,7 +453,7 @@ class ProveedorPlazoFijoUvaPagoPeriodico
     public ?string $entidad = null;
     public ?string $id = null;
     public ?string $logo = null;
-    public ?array $tasa = null;
+    public ?array $tasas = null;
 }
 
 /** Request payload for ProveedorPlazoFijoUvaPagoPeriodico#list. */
@@ -462,7 +462,7 @@ class ProveedorPlazoFijoUvaPagoPeriodicoListMatch
     public ?string $entidad = null;
     public ?string $id = null;
     public ?string $logo = null;
-    public ?array $tasa = null;
+    public ?array $tasas = null;
 }
 
 /** Rem entity data model. */
@@ -477,21 +477,21 @@ class Rem
     public ?float $mediana = null;
     public ?float $minimo = null;
     public ?string $muestra = null;
-    public ?int $participante = null;
+    public ?int $participantes = null;
     public ?float $percentil10 = null;
     public ?float $percentil25 = null;
     public ?float $percentil75 = null;
     public ?float $percentil90 = null;
     public ?string $periodo = null;
-    public ?string $periodo_desde = null;
-    public ?string $periodo_hasta = null;
-    public ?string $periodo_tipo = null;
+    public ?string $periodoDesde = null;
+    public ?string $periodoHasta = null;
+    public ?string $periodoTipo = null;
     public ?float $promedio = null;
-    public ?string $publicacion_url = null;
+    public ?string $publicacionUrl = null;
     public ?string $referencia = null;
-    public ?string $referencia_fecha = null;
+    public ?string $referenciaFecha = null;
     public ?string $unidad = null;
-    public ?string $xlsx_url = null;
+    public ?string $xlsxUrl = null;
 }
 
 /** Request payload for Rem#list. */
@@ -513,21 +513,21 @@ class RemExpectativa
     public ?float $mediana = null;
     public ?float $minimo = null;
     public ?string $muestra = null;
-    public ?int $participante = null;
+    public ?int $participantes = null;
     public ?float $percentil10 = null;
     public ?float $percentil25 = null;
     public ?float $percentil75 = null;
     public ?float $percentil90 = null;
     public ?string $periodo = null;
-    public ?string $periodo_desde = null;
-    public ?string $periodo_hasta = null;
-    public ?string $periodo_tipo = null;
+    public ?string $periodoDesde = null;
+    public ?string $periodoHasta = null;
+    public ?string $periodoTipo = null;
     public ?float $promedio = null;
-    public ?string $publicacion_url = null;
+    public ?string $publicacionUrl = null;
     public ?string $referencia = null;
-    public ?string $referencia_fecha = null;
+    public ?string $referenciaFecha = null;
     public ?string $unidad = null;
-    public ?string $xlsx_url = null;
+    public ?string $xlsxUrl = null;
 }
 
 /** Request payload for RemExpectativa#list. */
@@ -542,21 +542,21 @@ class RemExpectativaListMatch
     public ?float $mediana = null;
     public ?float $minimo = null;
     public ?string $muestra = null;
-    public ?int $participante = null;
+    public ?int $participantes = null;
     public ?float $percentil10 = null;
     public ?float $percentil25 = null;
     public ?float $percentil75 = null;
     public ?float $percentil90 = null;
     public ?string $periodo = null;
-    public ?string $periodo_desde = null;
-    public ?string $periodo_hasta = null;
-    public ?string $periodo_tipo = null;
+    public ?string $periodoDesde = null;
+    public ?string $periodoHasta = null;
+    public ?string $periodoTipo = null;
     public ?float $promedio = null;
-    public ?string $publicacion_url = null;
+    public ?string $publicacionUrl = null;
     public ?string $referencia = null;
-    public ?string $referencia_fecha = null;
+    public ?string $referenciaFecha = null;
     public ?string $unidad = null;
-    public ?string $xlsx_url = null;
+    public ?string $xlsxUrl = null;
 }
 
 /** Rendimiento entity data model. */
@@ -601,12 +601,12 @@ class Senador
     public ?string $foto = null;
     public ?string $id = null;
     public ?string $nombre = null;
-    public ?string $observacione = null;
+    public ?string $observaciones = null;
     public ?string $partido = null;
-    public ?array $periodo_legal = null;
-    public ?array $periodo_real = null;
+    public ?array $periodoLegal = null;
+    public ?array $periodoReal = null;
     public ?string $provincia = null;
-    public ?array $rede = null;
+    public ?array $redes = null;
     public ?string $reemplazo = null;
     public ?string $telefono = null;
 }
@@ -618,12 +618,12 @@ class SenadorListMatch
     public ?string $foto = null;
     public ?string $id = null;
     public ?string $nombre = null;
-    public ?string $observacione = null;
+    public ?string $observaciones = null;
     public ?string $partido = null;
-    public ?array $periodo_legal = null;
-    public ?array $periodo_real = null;
+    public ?array $periodoLegal = null;
+    public ?array $periodoReal = null;
     public ?string $provincia = null;
-    public ?array $rede = null;
+    public ?array $redes = null;
     public ?string $reemplazo = null;
     public ?string $telefono = null;
 }
@@ -647,8 +647,8 @@ class TasaPlazoFijo
 {
     public ?string $entidad = null;
     public ?string $logo = null;
-    public ?float $tna_cliente = null;
-    public ?float $tna_no_cliente = null;
+    public ?float $tnaClientes = null;
+    public ?float $tnaNoClientes = null;
 }
 
 /** Request payload for TasaPlazoFijo#list. */
@@ -656,7 +656,7 @@ class TasaPlazoFijoListMatch
 {
     public ?string $entidad = null;
     public ?string $logo = null;
-    public ?float $tna_cliente = null;
-    public ?float $tna_no_cliente = null;
+    public ?float $tnaClientes = null;
+    public ?float $tnaNoClientes = null;
 }
 

@@ -87,7 +87,7 @@ class ActaEntityTest < Minitest::Test
       "id" => acta_ref01_data["id"],
     }
     acta_ref01_data_dt0_loaded = acta_ref01_ent.load(acta_ref01_match_dt0, nil)
-    acta_ref01_data_dt0_load_result = Helpers.to_map(acta_ref01_data_dt0_loaded)
+    acta_ref01_data_dt0_load_result = Helpers.to_map(acta_ref01_data_dt0_loaded.respond_to?(:data_get) ? acta_ref01_data_dt0_loaded.data_get : acta_ref01_data_dt0_loaded)
     assert !acta_ref01_data_dt0_load_result.nil?
     assert_equal acta_ref01_data_dt0_load_result["id"], acta_ref01_data["id"]
 

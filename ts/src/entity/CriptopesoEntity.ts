@@ -37,7 +37,7 @@ class CriptopesoEntity extends ArgentinadatosEntityBase<Criptopeso> {
 
 
 
-  async list(this: any, reqmatch?: CriptopesoListMatch, ctrl?: Control): Promise<Criptopeso[]> {
+  async list(this: any, reqmatch?: CriptopesoListMatch, ctrl?: Control): Promise<CriptopesoEntity[]> {
 
     const utility = this._utility
 

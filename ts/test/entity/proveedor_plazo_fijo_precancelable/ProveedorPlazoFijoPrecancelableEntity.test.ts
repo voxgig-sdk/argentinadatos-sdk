@@ -63,7 +63,7 @@ describe('ProveedorPlazoFijoPrecancelableEntity', async () => {
     const proveedor_plazo_fijo_precancelable_ref01_ent = client.ProveedorPlazoFijoPrecancelable()
     const proveedor_plazo_fijo_precancelable_ref01_match: any = {}
 
-    const proveedor_plazo_fijo_precancelable_ref01_list = await proveedor_plazo_fijo_precancelable_ref01_ent.list(proveedor_plazo_fijo_precancelable_ref01_match)
+    const proveedor_plazo_fijo_precancelable_ref01_list = (await proveedor_plazo_fijo_precancelable_ref01_ent.list(proveedor_plazo_fijo_precancelable_ref01_match)).map((e: any) => e.data())
 
 
   })

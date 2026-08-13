@@ -6,35 +6,39 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/voxgig-sdk/argentinadatos-sdk/go/core"
+)
 
 // Acta is the typed data model for the acta entity.
 type Acta struct {
-	Abstencione *int `json:"abstencione,omitempty"`
+	Abstenciones *int `json:"abstenciones,omitempty"`
 	Acta *string `json:"acta,omitempty"`
-	ActaId *int `json:"acta_id,omitempty"`
-	Afirmativo *int `json:"afirmativo,omitempty"`
+	ActaId *int `json:"actaId,omitempty"`
+	Afirmativos *int `json:"afirmativos,omitempty"`
 	Amn *int `json:"amn,omitempty"`
-	Ausente *int `json:"ausente,omitempty"`
+	Ausentes *int `json:"ausentes,omitempty"`
 	Descripcion *string `json:"descripcion,omitempty"`
 	Fecha *string `json:"fecha,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Mayoria *string `json:"mayoria,omitempty"`
-	Miembro *int `json:"miembro,omitempty"`
-	Negativo *int `json:"negativo,omitempty"`
-	NumeroActa *string `json:"numero_acta,omitempty"`
-	Observacione *[]any `json:"observacione,omitempty"`
+	Miembros *int `json:"miembros,omitempty"`
+	Negativos *int `json:"negativos,omitempty"`
+	NumeroActa *string `json:"numeroActa,omitempty"`
+	Observaciones *[]any `json:"observaciones,omitempty"`
 	Periodo *string `json:"periodo,omitempty"`
-	Presente *int `json:"presente,omitempty"`
+	Presentes *int `json:"presentes,omitempty"`
 	Presidente *string `json:"presidente,omitempty"`
 	Proyecto *string `json:"proyecto,omitempty"`
-	QuorumTipo *string `json:"quorum_tipo,omitempty"`
+	QuorumTipo *string `json:"quorumTipo,omitempty"`
 	Resultado *string `json:"resultado,omitempty"`
 	Reunion *string `json:"reunion,omitempty"`
 	Titulo *string `json:"titulo,omitempty"`
-	Voto *[]any `json:"voto,omitempty"`
-	VotosAfirmativo *int `json:"votos_afirmativo,omitempty"`
-	VotosNegativo *int `json:"votos_negativo,omitempty"`
+	Votos *[]any `json:"votos,omitempty"`
+	VotosAfirmativos *int `json:"votosAfirmativos,omitempty"`
+	VotosNegativos *int `json:"votosNegativos,omitempty"`
 }
 
 // ActaLoadMatch is the typed request payload for Acta.LoadTyped.
@@ -44,49 +48,49 @@ type ActaLoadMatch struct {
 
 // ActaListMatch is the typed request payload for Acta.ListTyped.
 type ActaListMatch struct {
-	Abstencione *int `json:"abstencione,omitempty"`
+	Abstenciones *int `json:"abstenciones,omitempty"`
 	Acta *string `json:"acta,omitempty"`
-	ActaId *int `json:"acta_id,omitempty"`
-	Afirmativo *int `json:"afirmativo,omitempty"`
+	ActaId *int `json:"actaId,omitempty"`
+	Afirmativos *int `json:"afirmativos,omitempty"`
 	Amn *int `json:"amn,omitempty"`
-	Ausente *int `json:"ausente,omitempty"`
+	Ausentes *int `json:"ausentes,omitempty"`
 	Descripcion *string `json:"descripcion,omitempty"`
 	Fecha *string `json:"fecha,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Mayoria *string `json:"mayoria,omitempty"`
-	Miembro *int `json:"miembro,omitempty"`
-	Negativo *int `json:"negativo,omitempty"`
-	NumeroActa *string `json:"numero_acta,omitempty"`
-	Observacione *[]any `json:"observacione,omitempty"`
+	Miembros *int `json:"miembros,omitempty"`
+	Negativos *int `json:"negativos,omitempty"`
+	NumeroActa *string `json:"numeroActa,omitempty"`
+	Observaciones *[]any `json:"observaciones,omitempty"`
 	Periodo *string `json:"periodo,omitempty"`
-	Presente *int `json:"presente,omitempty"`
+	Presentes *int `json:"presentes,omitempty"`
 	Presidente *string `json:"presidente,omitempty"`
 	Proyecto *string `json:"proyecto,omitempty"`
-	QuorumTipo *string `json:"quorum_tipo,omitempty"`
+	QuorumTipo *string `json:"quorumTipo,omitempty"`
 	Resultado *string `json:"resultado,omitempty"`
 	Reunion *string `json:"reunion,omitempty"`
 	Titulo *string `json:"titulo,omitempty"`
-	Voto *[]any `json:"voto,omitempty"`
-	VotosAfirmativo *int `json:"votos_afirmativo,omitempty"`
-	VotosNegativo *int `json:"votos_negativo,omitempty"`
+	Votos *[]any `json:"votos,omitempty"`
+	VotosAfirmativos *int `json:"votosAfirmativos,omitempty"`
+	VotosNegativos *int `json:"votosNegativos,omitempty"`
 }
 
 // BonosCer is the typed data model for the bonos_cer entity.
 type BonosCer struct {
-	FechaVencimiento string `json:"fecha_vencimiento"`
-	PrecioAr float64 `json:"precio_ar"`
+	FechaVencimiento string `json:"fechaVencimiento"`
+	PrecioArs float64 `json:"precioArs"`
 	Ticker string `json:"ticker"`
-	TirPorcentaje float64 `json:"tir_porcentaje"`
-	Voluman *float64 `json:"voluman,omitempty"`
+	TirPorcentaje float64 `json:"tirPorcentaje"`
+	Volumen *float64 `json:"volumen,omitempty"`
 }
 
 // BonosCerListMatch is the typed request payload for BonosCer.ListTyped.
 type BonosCerListMatch struct {
-	FechaVencimiento *string `json:"fecha_vencimiento,omitempty"`
-	PrecioAr *float64 `json:"precio_ar,omitempty"`
+	FechaVencimiento *string `json:"fechaVencimiento,omitempty"`
+	PrecioArs *float64 `json:"precioArs,omitempty"`
 	Ticker *string `json:"ticker,omitempty"`
-	TirPorcentaje *float64 `json:"tir_porcentaje,omitempty"`
-	Voluman *float64 `json:"voluman,omitempty"`
+	TirPorcentaje *float64 `json:"tirPorcentaje,omitempty"`
+	Volumen *float64 `json:"volumen,omitempty"`
 }
 
 // Cotizacion is the typed data model for the cotizacion entity.
@@ -145,14 +149,14 @@ type CuentaRemuneradaUsdListMatch struct {
 type Diputado struct {
 	Apellido *string `json:"apellido,omitempty"`
 	Bloque *string `json:"bloque,omitempty"`
-	CeseFecha *string `json:"cese_fecha,omitempty"`
+	CeseFecha *string `json:"ceseFecha,omitempty"`
 	Foto *string `json:"foto,omitempty"`
 	Genero *string `json:"genero,omitempty"`
 	Id *string `json:"id,omitempty"`
-	JuramentoFecha *string `json:"juramento_fecha,omitempty"`
+	JuramentoFecha *string `json:"juramentoFecha,omitempty"`
 	Nombre *string `json:"nombre,omitempty"`
-	PeriodoBloque *map[string]any `json:"periodo_bloque,omitempty"`
-	PeriodoMandato *map[string]any `json:"periodo_mandato,omitempty"`
+	PeriodoBloque *map[string]any `json:"periodoBloque,omitempty"`
+	PeriodoMandato *map[string]any `json:"periodoMandato,omitempty"`
 	Provincia *string `json:"provincia,omitempty"`
 }
 
@@ -160,27 +164,27 @@ type Diputado struct {
 type DiputadoListMatch struct {
 	Apellido *string `json:"apellido,omitempty"`
 	Bloque *string `json:"bloque,omitempty"`
-	CeseFecha *string `json:"cese_fecha,omitempty"`
+	CeseFecha *string `json:"ceseFecha,omitempty"`
 	Foto *string `json:"foto,omitempty"`
 	Genero *string `json:"genero,omitempty"`
 	Id *string `json:"id,omitempty"`
-	JuramentoFecha *string `json:"juramento_fecha,omitempty"`
+	JuramentoFecha *string `json:"juramentoFecha,omitempty"`
 	Nombre *string `json:"nombre,omitempty"`
-	PeriodoBloque *map[string]any `json:"periodo_bloque,omitempty"`
-	PeriodoMandato *map[string]any `json:"periodo_mandato,omitempty"`
+	PeriodoBloque *map[string]any `json:"periodoBloque,omitempty"`
+	PeriodoMandato *map[string]any `json:"periodoMandato,omitempty"`
 	Provincia *string `json:"provincia,omitempty"`
 }
 
 // EntidadRendimiento is the typed data model for the entidad_rendimiento entity.
 type EntidadRendimiento struct {
 	Entidad *string `json:"entidad,omitempty"`
-	Rendimiento *[]any `json:"rendimiento,omitempty"`
+	Rendimientos *[]any `json:"rendimientos,omitempty"`
 }
 
 // EntidadRendimientoListMatch is the typed request payload for EntidadRendimiento.ListTyped.
 type EntidadRendimientoListMatch struct {
 	Entidad *string `json:"entidad,omitempty"`
-	Rendimiento *[]any `json:"rendimiento,omitempty"`
+	Rendimientos *[]any `json:"rendimientos,omitempty"`
 }
 
 // Estado is the typed data model for the estado entity.
@@ -261,8 +265,8 @@ type FondoComunInversionOtroLoadMatch struct {
 
 // FondoComunInversionVariable is the typed data model for the fondo_comun_inversion_variable entity.
 type FondoComunInversionVariable struct {
-	Condicione *string `json:"condicione,omitempty"`
-	CondicionesCorto *string `json:"condiciones_corto,omitempty"`
+	Condiciones *string `json:"condiciones,omitempty"`
+	CondicionesCorto *string `json:"condicionesCorto,omitempty"`
 	Fecha *string `json:"fecha,omitempty"`
 	Fondo *string `json:"fondo,omitempty"`
 	Nombre *string `json:"nombre,omitempty"`
@@ -281,7 +285,7 @@ type FondoComunInversionVariableLoadMatch struct {
 type HipotecarioUvaTna struct {
 	Entidad *string `json:"entidad,omitempty"`
 	Metadata *map[string]any `json:"metadata,omitempty"`
-	NombreComercial *string `json:"nombre_comercial,omitempty"`
+	NombreComercial *string `json:"nombreComercial,omitempty"`
 	Tna *float64 `json:"tna,omitempty"`
 }
 
@@ -289,7 +293,7 @@ type HipotecarioUvaTna struct {
 type HipotecarioUvaTnaListMatch struct {
 	Entidad *string `json:"entidad,omitempty"`
 	Metadata *map[string]any `json:"metadata,omitempty"`
-	NombreComercial *string `json:"nombre_comercial,omitempty"`
+	NombreComercial *string `json:"nombreComercial,omitempty"`
 	Tna *float64 `json:"tna,omitempty"`
 }
 
@@ -319,8 +323,8 @@ type IndiceUvaListMatch struct {
 
 // Letra is the typed data model for the letra entity.
 type Letra struct {
-	FechaEmision *string `json:"fecha_emision,omitempty"`
-	FechaVencimiento *string `json:"fecha_vencimiento,omitempty"`
+	FechaEmision *string `json:"fechaEmision,omitempty"`
+	FechaVencimiento *string `json:"fechaVencimiento,omitempty"`
 	Tem *float64 `json:"tem,omitempty"`
 	Ticker *string `json:"ticker,omitempty"`
 	Vpv *float64 `json:"vpv,omitempty"`
@@ -328,8 +332,8 @@ type Letra struct {
 
 // LetraListMatch is the typed request payload for Letra.ListTyped.
 type LetraListMatch struct {
-	FechaEmision *string `json:"fecha_emision,omitempty"`
-	FechaVencimiento *string `json:"fecha_vencimiento,omitempty"`
+	FechaEmision *string `json:"fechaEmision,omitempty"`
+	FechaVencimiento *string `json:"fechaVencimiento,omitempty"`
 	Tem *float64 `json:"tem,omitempty"`
 	Ticker *string `json:"ticker,omitempty"`
 	Vpv *float64 `json:"vpv,omitempty"`
@@ -342,8 +346,8 @@ type Presidente struct {
 	Inicio *string `json:"inicio,omitempty"`
 	Nombre *string `json:"nombre,omitempty"`
 	Partido *string `json:"partido,omitempty"`
-	PartidoImagen *string `json:"partido_imagen,omitempty"`
-	PeriodoPresidencial *string `json:"periodo_presidencial,omitempty"`
+	PartidoImagen *string `json:"partidoImagen,omitempty"`
+	PeriodoPresidencial *string `json:"periodoPresidencial,omitempty"`
 	Vicepresidente *string `json:"vicepresidente,omitempty"`
 }
 
@@ -354,14 +358,14 @@ type PresidenteListMatch struct {
 	Inicio *string `json:"inicio,omitempty"`
 	Nombre *string `json:"nombre,omitempty"`
 	Partido *string `json:"partido,omitempty"`
-	PartidoImagen *string `json:"partido_imagen,omitempty"`
-	PeriodoPresidencial *string `json:"periodo_presidencial,omitempty"`
+	PartidoImagen *string `json:"partidoImagen,omitempty"`
+	PeriodoPresidencial *string `json:"periodoPresidencial,omitempty"`
 	Vicepresidente *string `json:"vicepresidente,omitempty"`
 }
 
 // ProveedorPlazoFijoPrecancelable is the typed data model for the proveedor_plazo_fijo_precancelable entity.
 type ProveedorPlazoFijoPrecancelable struct {
-	AvisoPrecancelacionDia *int `json:"aviso_precancelacion_dia,omitempty"`
+	AvisoPrecancelacionDias *int `json:"avisoPrecancelacionDias,omitempty"`
 	Canal *string `json:"canal,omitempty"`
 	Enlace *string `json:"enlace,omitempty"`
 	Entidad *string `json:"entidad,omitempty"`
@@ -369,20 +373,20 @@ type ProveedorPlazoFijoPrecancelable struct {
 	Logo *string `json:"logo,omitempty"`
 	Modalidad *string `json:"modalidad,omitempty"`
 	Moneda *string `json:"moneda,omitempty"`
-	MontoMaximo *float64 `json:"monto_maximo,omitempty"`
-	MontoMinimo *float64 `json:"monto_minimo,omitempty"`
-	PlazoMaxDia *int `json:"plazo_max_dia,omitempty"`
-	PlazoMinDia *int `json:"plazo_min_dia,omitempty"`
-	PlazoPrecancelacionDia *int `json:"plazo_precancelacion_dia,omitempty"`
+	MontoMaximo *float64 `json:"montoMaximo,omitempty"`
+	MontoMinimo *float64 `json:"montoMinimo,omitempty"`
+	PlazoMaxDias *int `json:"plazoMaxDias,omitempty"`
+	PlazoMinDias *int `json:"plazoMinDias,omitempty"`
+	PlazoPrecancelacionDias *int `json:"plazoPrecancelacionDias,omitempty"`
 	Tea *float64 `json:"tea,omitempty"`
-	TeaPrecancelacion *float64 `json:"tea_precancelacion,omitempty"`
+	TeaPrecancelacion *float64 `json:"teaPrecancelacion,omitempty"`
 	Tna *float64 `json:"tna,omitempty"`
-	TnaPrecancelacion *float64 `json:"tna_precancelacion,omitempty"`
+	TnaPrecancelacion *float64 `json:"tnaPrecancelacion,omitempty"`
 }
 
 // ProveedorPlazoFijoPrecancelableListMatch is the typed request payload for ProveedorPlazoFijoPrecancelable.ListTyped.
 type ProveedorPlazoFijoPrecancelableListMatch struct {
-	AvisoPrecancelacionDia *int `json:"aviso_precancelacion_dia,omitempty"`
+	AvisoPrecancelacionDias *int `json:"avisoPrecancelacionDias,omitempty"`
 	Canal *string `json:"canal,omitempty"`
 	Enlace *string `json:"enlace,omitempty"`
 	Entidad *string `json:"entidad,omitempty"`
@@ -390,15 +394,15 @@ type ProveedorPlazoFijoPrecancelableListMatch struct {
 	Logo *string `json:"logo,omitempty"`
 	Modalidad *string `json:"modalidad,omitempty"`
 	Moneda *string `json:"moneda,omitempty"`
-	MontoMaximo *float64 `json:"monto_maximo,omitempty"`
-	MontoMinimo *float64 `json:"monto_minimo,omitempty"`
-	PlazoMaxDia *int `json:"plazo_max_dia,omitempty"`
-	PlazoMinDia *int `json:"plazo_min_dia,omitempty"`
-	PlazoPrecancelacionDia *int `json:"plazo_precancelacion_dia,omitempty"`
+	MontoMaximo *float64 `json:"montoMaximo,omitempty"`
+	MontoMinimo *float64 `json:"montoMinimo,omitempty"`
+	PlazoMaxDias *int `json:"plazoMaxDias,omitempty"`
+	PlazoMinDias *int `json:"plazoMinDias,omitempty"`
+	PlazoPrecancelacionDias *int `json:"plazoPrecancelacionDias,omitempty"`
 	Tea *float64 `json:"tea,omitempty"`
-	TeaPrecancelacion *float64 `json:"tea_precancelacion,omitempty"`
+	TeaPrecancelacion *float64 `json:"teaPrecancelacion,omitempty"`
 	Tna *float64 `json:"tna,omitempty"`
-	TnaPrecancelacion *float64 `json:"tna_precancelacion,omitempty"`
+	TnaPrecancelacion *float64 `json:"tnaPrecancelacion,omitempty"`
 }
 
 // ProveedorPlazoFijoUvaPagoPeriodico is the typed data model for the proveedor_plazo_fijo_uva_pago_periodico entity.
@@ -406,7 +410,7 @@ type ProveedorPlazoFijoUvaPagoPeriodico struct {
 	Entidad *string `json:"entidad,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Logo *string `json:"logo,omitempty"`
-	Tasa *[]any `json:"tasa,omitempty"`
+	Tasas *[]any `json:"tasas,omitempty"`
 }
 
 // ProveedorPlazoFijoUvaPagoPeriodicoListMatch is the typed request payload for ProveedorPlazoFijoUvaPagoPeriodico.ListTyped.
@@ -414,7 +418,7 @@ type ProveedorPlazoFijoUvaPagoPeriodicoListMatch struct {
 	Entidad *string `json:"entidad,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Logo *string `json:"logo,omitempty"`
-	Tasa *[]any `json:"tasa,omitempty"`
+	Tasas *[]any `json:"tasas,omitempty"`
 }
 
 // Rem is the typed data model for the rem entity.
@@ -428,21 +432,21 @@ type Rem struct {
 	Mediana *float64 `json:"mediana,omitempty"`
 	Minimo *float64 `json:"minimo,omitempty"`
 	Muestra *string `json:"muestra,omitempty"`
-	Participante *int `json:"participante,omitempty"`
+	Participantes *int `json:"participantes,omitempty"`
 	Percentil10 *float64 `json:"percentil10,omitempty"`
 	Percentil25 *float64 `json:"percentil25,omitempty"`
 	Percentil75 *float64 `json:"percentil75,omitempty"`
 	Percentil90 *float64 `json:"percentil90,omitempty"`
 	Periodo *string `json:"periodo,omitempty"`
-	PeriodoDesde *string `json:"periodo_desde,omitempty"`
-	PeriodoHasta *string `json:"periodo_hasta,omitempty"`
-	PeriodoTipo *string `json:"periodo_tipo,omitempty"`
+	PeriodoDesde *string `json:"periodoDesde,omitempty"`
+	PeriodoHasta *string `json:"periodoHasta,omitempty"`
+	PeriodoTipo *string `json:"periodoTipo,omitempty"`
 	Promedio *float64 `json:"promedio,omitempty"`
-	PublicacionUrl *string `json:"publicacion_url,omitempty"`
+	PublicacionUrl *string `json:"publicacionUrl,omitempty"`
 	Referencia *string `json:"referencia,omitempty"`
-	ReferenciaFecha *string `json:"referencia_fecha,omitempty"`
+	ReferenciaFecha *string `json:"referenciaFecha,omitempty"`
 	Unidad *string `json:"unidad,omitempty"`
-	XlsxUrl *string `json:"xlsx_url,omitempty"`
+	XlsxUrl *string `json:"xlsxUrl,omitempty"`
 }
 
 // RemListMatch is the typed request payload for Rem.ListTyped.
@@ -462,21 +466,21 @@ type RemExpectativa struct {
 	Mediana *float64 `json:"mediana,omitempty"`
 	Minimo *float64 `json:"minimo,omitempty"`
 	Muestra *string `json:"muestra,omitempty"`
-	Participante *int `json:"participante,omitempty"`
+	Participantes *int `json:"participantes,omitempty"`
 	Percentil10 *float64 `json:"percentil10,omitempty"`
 	Percentil25 *float64 `json:"percentil25,omitempty"`
 	Percentil75 *float64 `json:"percentil75,omitempty"`
 	Percentil90 *float64 `json:"percentil90,omitempty"`
 	Periodo *string `json:"periodo,omitempty"`
-	PeriodoDesde *string `json:"periodo_desde,omitempty"`
-	PeriodoHasta *string `json:"periodo_hasta,omitempty"`
-	PeriodoTipo *string `json:"periodo_tipo,omitempty"`
+	PeriodoDesde *string `json:"periodoDesde,omitempty"`
+	PeriodoHasta *string `json:"periodoHasta,omitempty"`
+	PeriodoTipo *string `json:"periodoTipo,omitempty"`
 	Promedio *float64 `json:"promedio,omitempty"`
-	PublicacionUrl *string `json:"publicacion_url,omitempty"`
+	PublicacionUrl *string `json:"publicacionUrl,omitempty"`
 	Referencia *string `json:"referencia,omitempty"`
-	ReferenciaFecha *string `json:"referencia_fecha,omitempty"`
+	ReferenciaFecha *string `json:"referenciaFecha,omitempty"`
 	Unidad *string `json:"unidad,omitempty"`
-	XlsxUrl *string `json:"xlsx_url,omitempty"`
+	XlsxUrl *string `json:"xlsxUrl,omitempty"`
 }
 
 // RemExpectativaListMatch is the typed request payload for RemExpectativa.ListTyped.
@@ -490,21 +494,21 @@ type RemExpectativaListMatch struct {
 	Mediana *float64 `json:"mediana,omitempty"`
 	Minimo *float64 `json:"minimo,omitempty"`
 	Muestra *string `json:"muestra,omitempty"`
-	Participante *int `json:"participante,omitempty"`
+	Participantes *int `json:"participantes,omitempty"`
 	Percentil10 *float64 `json:"percentil10,omitempty"`
 	Percentil25 *float64 `json:"percentil25,omitempty"`
 	Percentil75 *float64 `json:"percentil75,omitempty"`
 	Percentil90 *float64 `json:"percentil90,omitempty"`
 	Periodo *string `json:"periodo,omitempty"`
-	PeriodoDesde *string `json:"periodo_desde,omitempty"`
-	PeriodoHasta *string `json:"periodo_hasta,omitempty"`
-	PeriodoTipo *string `json:"periodo_tipo,omitempty"`
+	PeriodoDesde *string `json:"periodoDesde,omitempty"`
+	PeriodoHasta *string `json:"periodoHasta,omitempty"`
+	PeriodoTipo *string `json:"periodoTipo,omitempty"`
 	Promedio *float64 `json:"promedio,omitempty"`
-	PublicacionUrl *string `json:"publicacion_url,omitempty"`
+	PublicacionUrl *string `json:"publicacionUrl,omitempty"`
 	Referencia *string `json:"referencia,omitempty"`
-	ReferenciaFecha *string `json:"referencia_fecha,omitempty"`
+	ReferenciaFecha *string `json:"referenciaFecha,omitempty"`
 	Unidad *string `json:"unidad,omitempty"`
-	XlsxUrl *string `json:"xlsx_url,omitempty"`
+	XlsxUrl *string `json:"xlsxUrl,omitempty"`
 }
 
 // Rendimiento is the typed data model for the rendimiento entity.
@@ -543,12 +547,12 @@ type Senador struct {
 	Foto *string `json:"foto,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Nombre *string `json:"nombre,omitempty"`
-	Observacione *string `json:"observacione,omitempty"`
+	Observaciones *string `json:"observaciones,omitempty"`
 	Partido *string `json:"partido,omitempty"`
-	PeriodoLegal *map[string]any `json:"periodo_legal,omitempty"`
-	PeriodoReal *map[string]any `json:"periodo_real,omitempty"`
+	PeriodoLegal *map[string]any `json:"periodoLegal,omitempty"`
+	PeriodoReal *map[string]any `json:"periodoReal,omitempty"`
 	Provincia *string `json:"provincia,omitempty"`
-	Rede *[]any `json:"rede,omitempty"`
+	Redes *[]any `json:"redes,omitempty"`
 	Reemplazo *string `json:"reemplazo,omitempty"`
 	Telefono *string `json:"telefono,omitempty"`
 }
@@ -559,12 +563,12 @@ type SenadorListMatch struct {
 	Foto *string `json:"foto,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Nombre *string `json:"nombre,omitempty"`
-	Observacione *string `json:"observacione,omitempty"`
+	Observaciones *string `json:"observaciones,omitempty"`
 	Partido *string `json:"partido,omitempty"`
-	PeriodoLegal *map[string]any `json:"periodo_legal,omitempty"`
-	PeriodoReal *map[string]any `json:"periodo_real,omitempty"`
+	PeriodoLegal *map[string]any `json:"periodoLegal,omitempty"`
+	PeriodoReal *map[string]any `json:"periodoReal,omitempty"`
 	Provincia *string `json:"provincia,omitempty"`
-	Rede *[]any `json:"rede,omitempty"`
+	Redes *[]any `json:"redes,omitempty"`
 	Reemplazo *string `json:"reemplazo,omitempty"`
 	Telefono *string `json:"telefono,omitempty"`
 }
@@ -585,16 +589,16 @@ type TasaIntereListMatch struct {
 type TasaPlazoFijo struct {
 	Entidad *string `json:"entidad,omitempty"`
 	Logo *string `json:"logo,omitempty"`
-	TnaCliente *float64 `json:"tna_cliente,omitempty"`
-	TnaNoCliente *float64 `json:"tna_no_cliente,omitempty"`
+	TnaClientes *float64 `json:"tnaClientes,omitempty"`
+	TnaNoClientes *float64 `json:"tnaNoClientes,omitempty"`
 }
 
 // TasaPlazoFijoListMatch is the typed request payload for TasaPlazoFijo.ListTyped.
 type TasaPlazoFijoListMatch struct {
 	Entidad *string `json:"entidad,omitempty"`
 	Logo *string `json:"logo,omitempty"`
-	TnaCliente *float64 `json:"tna_cliente,omitempty"`
-	TnaNoCliente *float64 `json:"tna_no_cliente,omitempty"`
+	TnaClientes *float64 `json:"tnaClientes,omitempty"`
+	TnaNoClientes *float64 `json:"tnaNoClientes,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the
@@ -609,12 +613,26 @@ func asMap(v any) map[string]any {
 	return out
 }
 
-// typedFrom decodes a runtime value (a map[string]any produced by the op
-// pipeline) into a typed model T via a JSON round-trip. On any error it
-// returns the zero value of T; the op's own (value, error) tuple carries the
-// real error.
+// entityData unwraps an entity to its data map.
+//
+// Operations resolve to the ENTITY, not the raw data (see AGENTS.md), and an
+// entity's fields are UNEXPORTED — marshalling one directly yields `{}`, so
+// every typed accessor would silently hand back a zero-valued struct. The
+// typed boundary therefore takes the data hop first.
+func entityData(v any) any {
+	if ent, ok := v.(core.Entity); ok {
+		return ent.Data()
+	}
+	return v
+}
+
+// typedFrom decodes a runtime value (an entity, or the map[string]any the op
+// pipeline produced) into a typed model T via a JSON round-trip. On any error
+// it returns the zero value of T; the op's own (value, error) tuple carries
+// the real error.
 func typedFrom[T any](v any) T {
 	var out T
+	v = entityData(v)
 	if v == nil {
 		return out
 	}
@@ -626,12 +644,20 @@ func typedFrom[T any](v any) T {
 	return out
 }
 
-// typedSliceFrom decodes a runtime list value ([]any of maps) into a typed
-// slice []T via a JSON round-trip, for list ops.
+// typedSliceFrom decodes a runtime list value into a typed slice []T via a
+// JSON round-trip, for list ops. `list` resolves to a slice of ENTITY
+// instances, so each element takes the data hop.
 func typedSliceFrom[T any](v any) []T {
 	var out []T
 	if v == nil {
 		return out
+	}
+	if list, ok := v.([]any); ok {
+		unwrapped := make([]any, 0, len(list))
+		for _, item := range list {
+			unwrapped = append(unwrapped, entityData(item))
+		}
+		v = unwrapped
 	}
 	b, err := json.Marshal(v)
 	if err != nil {

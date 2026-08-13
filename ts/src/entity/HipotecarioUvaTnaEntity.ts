@@ -37,7 +37,7 @@ class HipotecarioUvaTnaEntity extends ArgentinadatosEntityBase<HipotecarioUvaTna
 
 
 
-  async list(this: any, reqmatch?: HipotecarioUvaTnaListMatch, ctrl?: Control): Promise<HipotecarioUvaTna[]> {
+  async list(this: any, reqmatch?: HipotecarioUvaTnaListMatch, ctrl?: Control): Promise<HipotecarioUvaTnaEntity[]> {
 
     const utility = this._utility
 

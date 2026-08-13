@@ -6,12 +6,12 @@ main: kit: entity: bonos_cer: {
 
   fields: [
     {
-      name: "fecha_vencimiento"
+      name: "fechaVencimiento"
       req: true
       type: "`$STRING`"
     }
     {
-      name: "precio_ar"
+      name: "precioArs"
       req: true
       type: "`$NUMBER`"
     }
@@ -21,12 +21,12 @@ main: kit: entity: bonos_cer: {
       type: "`$STRING`"
     }
     {
-      name: "tir_porcentaje"
+      name: "tirPorcentaje"
       req: true
       type: "`$NUMBER`"
     }
     {
-      name: "voluman"
+      name: "volumen"
       req: false
       type: "`$NUMBER`"
     }
@@ -47,7 +47,7 @@ main: kit: entity: bonos_cer: {
           ]
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.bonos`"
           }
         }
       ]

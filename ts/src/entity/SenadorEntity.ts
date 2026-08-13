@@ -37,7 +37,7 @@ class SenadorEntity extends ArgentinadatosEntityBase<Senador> {
 
 
 
-  async list(this: any, reqmatch?: SenadorListMatch, ctrl?: Control): Promise<Senador[]> {
+  async list(this: any, reqmatch?: SenadorListMatch, ctrl?: Control): Promise<SenadorEntity[]> {
 
     const utility = this._utility
 

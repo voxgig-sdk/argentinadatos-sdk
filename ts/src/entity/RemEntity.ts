@@ -37,7 +37,7 @@ class RemEntity extends ArgentinadatosEntityBase<Rem> {
 
 
 
-  async list(this: any, reqmatch?: RemListMatch, ctrl?: Control): Promise<Rem[]> {
+  async list(this: any, reqmatch?: RemListMatch, ctrl?: Control): Promise<RemEntity[]> {
 
     const utility = this._utility
 

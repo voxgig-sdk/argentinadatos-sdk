@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ ArgentinadatosUtility::setRegistrar(function (ArgentinadatosUtility $u): void {
     $u->prepare_params = [ArgentinadatosPrepareParams::class, 'call'];
     $u->prepare_path = [ArgentinadatosPreparePath::class, 'call'];
     $u->prepare_query = [ArgentinadatosPrepareQuery::class, 'call'];
+    $u->graphql_body = [ArgentinadatosGraphql::class, 'body'];
+    $u->graphql_errors = [ArgentinadatosGraphql::class, 'errors'];
     $u->result_basic = [ArgentinadatosResultBasic::class, 'call'];
     $u->result_body = [ArgentinadatosResultBody::class, 'call'];
     $u->result_headers = [ArgentinadatosResultHeaders::class, 'call'];

@@ -440,31 +440,31 @@ const acta = client.Acta()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abstencione` | `number` | No |  |
+| `abstenciones` | `number` | No |  |
 | `acta` | `string` | No |  |
-| `acta_id` | `number` | No |  |
-| `afirmativo` | `number` | No |  |
+| `actaId` | `number` | No |  |
+| `afirmativos` | `number` | No |  |
 | `amn` | `number` | No |  |
-| `ausente` | `number` | No |  |
+| `ausentes` | `number` | No |  |
 | `descripcion` | `string` | No |  |
 | `fecha` | `string` | No |  |
 | `id` | `string` | No |  |
 | `mayoria` | `string` | No |  |
-| `miembro` | `number` | No |  |
-| `negativo` | `number` | No |  |
-| `numero_acta` | `string` | No |  |
-| `observacione` | `any[]` | No |  |
+| `miembros` | `number` | No |  |
+| `negativos` | `number` | No |  |
+| `numeroActa` | `string` | No |  |
+| `observaciones` | `any[]` | No |  |
 | `periodo` | `string` | No |  |
-| `presente` | `number` | No |  |
+| `presentes` | `number` | No |  |
 | `presidente` | `string` | No |  |
 | `proyecto` | `string` | No |  |
-| `quorum_tipo` | `string` | No |  |
+| `quorumTipo` | `string` | No |  |
 | `resultado` | `string` | No |  |
 | `reunion` | `string` | No |  |
 | `titulo` | `string` | No |  |
-| `voto` | `any[]` | No |  |
-| `votos_afirmativo` | `number` | No |  |
-| `votos_negativo` | `number` | No |  |
+| `votos` | `any[]` | No |  |
+| `votosAfirmativos` | `number` | No |  |
+| `votosNegativos` | `number` | No |  |
 
 ### Operations
 
@@ -522,11 +522,11 @@ const bonos_cer = client.BonosCer()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha_vencimiento` | `string` | Yes |  |
-| `precio_ar` | `number` | Yes |  |
+| `fechaVencimiento` | `string` | Yes |  |
+| `precioArs` | `number` | Yes |  |
 | `ticker` | `string` | Yes |  |
-| `tir_porcentaje` | `number` | Yes |  |
-| `voluman` | `number` | No |  |
+| `tirPorcentaje` | `number` | Yes |  |
+| `volumen` | `number` | No |  |
 
 ### Operations
 
@@ -744,14 +744,14 @@ const diputado = client.Diputado()
 | --- | --- | --- | --- |
 | `apellido` | `string` | No |  |
 | `bloque` | `string` | No |  |
-| `cese_fecha` | `string` | No |  |
+| `ceseFecha` | `string` | No |  |
 | `foto` | `string` | No |  |
 | `genero` | `string` | No |  |
 | `id` | `string` | No |  |
-| `juramento_fecha` | `string` | No |  |
+| `juramentoFecha` | `string` | No |  |
 | `nombre` | `string` | No |  |
-| `periodo_bloque` | `Record<string, any>` | No |  |
-| `periodo_mandato` | `Record<string, any>` | No |  |
+| `periodoBloque` | `Record<string, any>` | No |  |
+| `periodoMandato` | `Record<string, any>` | No |  |
 | `provincia` | `string` | No |  |
 
 ### Operations
@@ -803,7 +803,7 @@ const entidad_rendimiento = client.EntidadRendimiento()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `entidad` | `string` | No |  |
-| `rendimiento` | `any[]` | No |  |
+| `rendimientos` | `any[]` | No |  |
 
 ### Operations
 
@@ -1162,8 +1162,8 @@ const fondo_comun_inversion_variable = client.FondoComunInversionVariable()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `condicione` | `string` | No |  |
-| `condiciones_corto` | `string` | No |  |
+| `condiciones` | `string` | No |  |
+| `condicionesCorto` | `string` | No |  |
 | `fecha` | `string` | No |  |
 | `fondo` | `string` | No |  |
 | `nombre` | `string` | No |  |
@@ -1222,7 +1222,7 @@ const hipotecario_uva_tna = client.HipotecarioUvaTna()
 | --- | --- | --- | --- |
 | `entidad` | `string` | No |  |
 | `metadata` | `Record<string, any>` | No |  |
-| `nombre_comercial` | `string` | No |  |
+| `nombreComercial` | `string` | No |  |
 | `tna` | `number` | No |  |
 
 ### Operations
@@ -1375,8 +1375,8 @@ const letra = client.Letra()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha_emision` | `string` | No |  |
-| `fecha_vencimiento` | `string` | No |  |
+| `fechaEmision` | `string` | No |  |
+| `fechaVencimiento` | `string` | No |  |
 | `tem` | `number` | No |  |
 | `ticker` | `string` | No |  |
 | `vpv` | `number` | No |  |
@@ -1434,8 +1434,8 @@ const presidente = client.Presidente()
 | `inicio` | `string` | No |  |
 | `nombre` | `string` | No |  |
 | `partido` | `string` | No |  |
-| `partido_imagen` | `string` | No |  |
-| `periodo_presidencial` | `string` | No |  |
+| `partidoImagen` | `string` | No |  |
+| `periodoPresidencial` | `string` | No |  |
 | `vicepresidente` | `string` | No |  |
 
 ### Operations
@@ -1486,7 +1486,7 @@ const proveedor_plazo_fijo_precancelable = client.ProveedorPlazoFijoPrecancelabl
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aviso_precancelacion_dia` | `number` | No |  |
+| `avisoPrecancelacionDias` | `number` | No |  |
 | `canal` | `string` | No |  |
 | `enlace` | `string` | No |  |
 | `entidad` | `string` | No |  |
@@ -1494,15 +1494,15 @@ const proveedor_plazo_fijo_precancelable = client.ProveedorPlazoFijoPrecancelabl
 | `logo` | `string` | No |  |
 | `modalidad` | `string` | No |  |
 | `moneda` | `string` | No |  |
-| `monto_maximo` | `number` | No |  |
-| `monto_minimo` | `number` | No |  |
-| `plazo_max_dia` | `number` | No |  |
-| `plazo_min_dia` | `number` | No |  |
-| `plazo_precancelacion_dia` | `number` | No |  |
+| `montoMaximo` | `number` | No |  |
+| `montoMinimo` | `number` | No |  |
+| `plazoMaxDias` | `number` | No |  |
+| `plazoMinDias` | `number` | No |  |
+| `plazoPrecancelacionDias` | `number` | No |  |
 | `tea` | `number` | No |  |
-| `tea_precancelacion` | `number` | No |  |
+| `teaPrecancelacion` | `number` | No |  |
 | `tna` | `number` | No |  |
-| `tna_precancelacion` | `number` | No |  |
+| `tnaPrecancelacion` | `number` | No |  |
 
 ### Operations
 
@@ -1555,7 +1555,7 @@ const proveedor_plazo_fijo_uva_pago_periodico = client.ProveedorPlazoFijoUvaPago
 | `entidad` | `string` | No |  |
 | `id` | `string` | No |  |
 | `logo` | `string` | No |  |
-| `tasa` | `any[]` | No |  |
+| `tasas` | `any[]` | No |  |
 
 ### Operations
 
@@ -1614,21 +1614,21 @@ const rem = client.Rem()
 | `mediana` | `number` | No |  |
 | `minimo` | `number` | No |  |
 | `muestra` | `string` | No |  |
-| `participante` | `number` | No |  |
+| `participantes` | `number` | No |  |
 | `percentil10` | `number` | No |  |
 | `percentil25` | `number` | No |  |
 | `percentil75` | `number` | No |  |
 | `percentil90` | `number` | No |  |
 | `periodo` | `string` | No |  |
-| `periodo_desde` | `string` | No |  |
-| `periodo_hasta` | `string` | No |  |
-| `periodo_tipo` | `string` | No |  |
+| `periodoDesde` | `string` | No |  |
+| `periodoHasta` | `string` | No |  |
+| `periodoTipo` | `string` | No |  |
 | `promedio` | `number` | No |  |
-| `publicacion_url` | `string` | No |  |
+| `publicacionUrl` | `string` | No |  |
 | `referencia` | `string` | No |  |
-| `referencia_fecha` | `string` | No |  |
+| `referenciaFecha` | `string` | No |  |
 | `unidad` | `string` | No |  |
-| `xlsx_url` | `string` | No |  |
+| `xlsxUrl` | `string` | No |  |
 
 ### Operations
 
@@ -1637,7 +1637,7 @@ const rem = client.Rem()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Rem().list()
+const results = await client.Rem().list({ 'año': 1, mes: "example" })
 ```
 
 ### Common Methods
@@ -1687,21 +1687,21 @@ const rem_expectativa = client.RemExpectativa()
 | `mediana` | `number` | No |  |
 | `minimo` | `number` | No |  |
 | `muestra` | `string` | No |  |
-| `participante` | `number` | No |  |
+| `participantes` | `number` | No |  |
 | `percentil10` | `number` | No |  |
 | `percentil25` | `number` | No |  |
 | `percentil75` | `number` | No |  |
 | `percentil90` | `number` | No |  |
 | `periodo` | `string` | No |  |
-| `periodo_desde` | `string` | No |  |
-| `periodo_hasta` | `string` | No |  |
-| `periodo_tipo` | `string` | No |  |
+| `periodoDesde` | `string` | No |  |
+| `periodoHasta` | `string` | No |  |
+| `periodoTipo` | `string` | No |  |
 | `promedio` | `number` | No |  |
-| `publicacion_url` | `string` | No |  |
+| `publicacionUrl` | `string` | No |  |
 | `referencia` | `string` | No |  |
-| `referencia_fecha` | `string` | No |  |
+| `referenciaFecha` | `string` | No |  |
 | `unidad` | `string` | No |  |
-| `xlsx_url` | `string` | No |  |
+| `xlsxUrl` | `string` | No |  |
 
 ### Operations
 
@@ -1806,6 +1806,26 @@ const riesgo_pai = client.RiesgoPai()
 | `fecha` | `string` | No |  |
 | `valor` | `number` | No |  |
 
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `ultimo` | `/v1/finanzas/indices/riesgo-pais/ultimo` | `client.RiesgoPai().load({ $action: 'ultimo', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+RiesgoPai record — check the API definition for its shape.
+
+```ts
+const result = await client.RiesgoPai().load({
+  $action: 'ultimo',
+  /* ...the action's own arguments */
+})
+```
+
 ### Operations
 
 #### `list(match: object, ctrl?: object)`
@@ -1866,12 +1886,12 @@ const senador = client.Senador()
 | `foto` | `string` | No |  |
 | `id` | `string` | No |  |
 | `nombre` | `string` | No |  |
-| `observacione` | `string` | No |  |
+| `observaciones` | `string` | No |  |
 | `partido` | `string` | No |  |
-| `periodo_legal` | `Record<string, any>` | No |  |
-| `periodo_real` | `Record<string, any>` | No |  |
+| `periodoLegal` | `Record<string, any>` | No |  |
+| `periodoReal` | `Record<string, any>` | No |  |
 | `provincia` | `string` | No |  |
-| `rede` | `any[]` | No |  |
+| `redes` | `any[]` | No |  |
 | `reemplazo` | `string` | No |  |
 | `telefono` | `string` | No |  |
 
@@ -1976,8 +1996,8 @@ const tasa_plazo_fijo = client.TasaPlazoFijo()
 | --- | --- | --- | --- |
 | `entidad` | `string` | No |  |
 | `logo` | `string` | No |  |
-| `tna_cliente` | `number` | No |  |
-| `tna_no_cliente` | `number` | No |  |
+| `tnaClientes` | `number` | No |  |
+| `tnaNoClientes` | `number` | No |  |
 
 ### Operations
 

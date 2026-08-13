@@ -37,7 +37,7 @@ class IndiceInflacionEntity extends ArgentinadatosEntityBase<IndiceInflacion> {
 
 
 
-  async list(this: any, reqmatch?: IndiceInflacionListMatch, ctrl?: Control): Promise<IndiceInflacion[]> {
+  async list(this: any, reqmatch?: IndiceInflacionListMatch, ctrl?: Control): Promise<IndiceInflacionEntity[]> {
 
     const utility = this._utility
 

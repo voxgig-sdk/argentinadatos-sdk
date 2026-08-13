@@ -63,7 +63,7 @@ describe('RemExpectativaEntity', async () => {
     const rem_expectativa_ref01_ent = client.RemExpectativa()
     const rem_expectativa_ref01_match: any = {}
 
-    const rem_expectativa_ref01_list = await rem_expectativa_ref01_ent.list(rem_expectativa_ref01_match)
+    const rem_expectativa_ref01_list = (await rem_expectativa_ref01_ent.list(rem_expectativa_ref01_match)).map((e: any) => e.data())
 
 
   })

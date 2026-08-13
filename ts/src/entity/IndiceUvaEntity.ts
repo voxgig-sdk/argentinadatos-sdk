@@ -37,7 +37,7 @@ class IndiceUvaEntity extends ArgentinadatosEntityBase<IndiceUva> {
 
 
 
-  async list(this: any, reqmatch?: IndiceUvaListMatch, ctrl?: Control): Promise<IndiceUva[]> {
+  async list(this: any, reqmatch?: IndiceUvaListMatch, ctrl?: Control): Promise<IndiceUvaEntity[]> {
 
     const utility = this._utility
 

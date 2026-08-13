@@ -24,6 +24,10 @@ describe('RemDirect', async () => {
 
   test('direct-exists', async () => {
     const sdk = new ArgentinadatosSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -40,10 +44,10 @@ describe('RemDirect', async () => {
     const params: any = {}
     const query: any = {}
     if (setup.live) {
-      params.año = setup.idmap['año01']
+      params["año"] = setup.idmap['año01']
       params.mes = setup.idmap['mes01']
     } else {
-      params.año = 'direct01'
+      params["año"] = 'direct01'
       params.mes = 'direct02'
     }
 

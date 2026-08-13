@@ -63,7 +63,7 @@ describe('EventoPresidencialEntity', async () => {
     const evento_presidencial_ref01_ent = client.EventoPresidencial()
     const evento_presidencial_ref01_match: any = {}
 
-    const evento_presidencial_ref01_list = await evento_presidencial_ref01_ent.list(evento_presidencial_ref01_match)
+    const evento_presidencial_ref01_list = (await evento_presidencial_ref01_ent.list(evento_presidencial_ref01_match)).map((e: any) => e.data())
 
 
   })

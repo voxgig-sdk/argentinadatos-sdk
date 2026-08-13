@@ -7,75 +7,75 @@
 -- edit by hand.
 
 ---@class Acta
----@field abstencione? number
+---@field abstenciones? number
 ---@field acta? string
----@field acta_id? number
----@field afirmativo? number
+---@field actaId? number
+---@field afirmativos? number
 ---@field amn? number
----@field ausente? number
+---@field ausentes? number
 ---@field descripcion? string
 ---@field fecha? string
 ---@field id? string
 ---@field mayoria? string
----@field miembro? number
----@field negativo? number
----@field numero_acta? string
----@field observacione? table
+---@field miembros? number
+---@field negativos? number
+---@field numeroActa? string
+---@field observaciones? table
 ---@field periodo? string
----@field presente? number
+---@field presentes? number
 ---@field presidente? string
 ---@field proyecto? string
----@field quorum_tipo? string
+---@field quorumTipo? string
 ---@field resultado? string
 ---@field reunion? string
 ---@field titulo? string
----@field voto? table
----@field votos_afirmativo? number
----@field votos_negativo? number
+---@field votos? table
+---@field votosAfirmativos? number
+---@field votosNegativos? number
 
 ---@class ActaLoadMatch
 ---@field id number
 
 ---@class ActaListMatch
----@field abstencione? number
+---@field abstenciones? number
 ---@field acta? string
----@field acta_id? number
----@field afirmativo? number
+---@field actaId? number
+---@field afirmativos? number
 ---@field amn? number
----@field ausente? number
+---@field ausentes? number
 ---@field descripcion? string
 ---@field fecha? string
 ---@field id? string
 ---@field mayoria? string
----@field miembro? number
----@field negativo? number
----@field numero_acta? string
----@field observacione? table
+---@field miembros? number
+---@field negativos? number
+---@field numeroActa? string
+---@field observaciones? table
 ---@field periodo? string
----@field presente? number
+---@field presentes? number
 ---@field presidente? string
 ---@field proyecto? string
----@field quorum_tipo? string
+---@field quorumTipo? string
 ---@field resultado? string
 ---@field reunion? string
 ---@field titulo? string
----@field voto? table
----@field votos_afirmativo? number
----@field votos_negativo? number
+---@field votos? table
+---@field votosAfirmativos? number
+---@field votosNegativos? number
 
 ---@class BonosCer
----@field fecha_vencimiento string
----@field precio_ar number
+---@field fechaVencimiento string
+---@field precioArs number
 ---@field ticker string
----@field tir_porcentaje number
----@field voluman? number
+---@field tirPorcentaje number
+---@field volumen? number
 
 ---@class BonosCerListMatch
----@field fecha_vencimiento? string
----@field precio_ar? number
+---@field fechaVencimiento? string
+---@field precioArs? number
 ---@field ticker? string
----@field tir_porcentaje? number
----@field voluman? number
+---@field tirPorcentaje? number
+---@field volumen? number
 
 ---@class Cotizacion
 ---@field casa? string
@@ -118,36 +118,36 @@
 ---@class Diputado
 ---@field apellido? string
 ---@field bloque? string
----@field cese_fecha? string
+---@field ceseFecha? string
 ---@field foto? string
 ---@field genero? string
 ---@field id? string
----@field juramento_fecha? string
+---@field juramentoFecha? string
 ---@field nombre? string
----@field periodo_bloque? table
----@field periodo_mandato? table
+---@field periodoBloque? table
+---@field periodoMandato? table
 ---@field provincia? string
 
 ---@class DiputadoListMatch
 ---@field apellido? string
 ---@field bloque? string
----@field cese_fecha? string
+---@field ceseFecha? string
 ---@field foto? string
 ---@field genero? string
 ---@field id? string
----@field juramento_fecha? string
+---@field juramentoFecha? string
 ---@field nombre? string
----@field periodo_bloque? table
----@field periodo_mandato? table
+---@field periodoBloque? table
+---@field periodoMandato? table
 ---@field provincia? string
 
 ---@class EntidadRendimiento
 ---@field entidad? string
----@field rendimiento? table
+---@field rendimientos? table
 
 ---@class EntidadRendimientoListMatch
 ---@field entidad? string
----@field rendimiento? table
+---@field rendimientos? table
 
 ---@class Estado
 ---@field aleatorio? number
@@ -202,8 +202,8 @@
 ---@field id string
 
 ---@class FondoComunInversionVariable
----@field condicione? string
----@field condiciones_corto? string
+---@field condiciones? string
+---@field condicionesCorto? string
 ---@field fecha? string
 ---@field fondo? string
 ---@field nombre? string
@@ -218,13 +218,13 @@
 ---@class HipotecarioUvaTna
 ---@field entidad? string
 ---@field metadata? table
----@field nombre_comercial? string
+---@field nombreComercial? string
 ---@field tna? number
 
 ---@class HipotecarioUvaTnaListMatch
 ---@field entidad? string
 ---@field metadata? table
----@field nombre_comercial? string
+---@field nombreComercial? string
 ---@field tna? number
 
 ---@class IndiceInflacion
@@ -244,15 +244,15 @@
 ---@field valor? number
 
 ---@class Letra
----@field fecha_emision? string
----@field fecha_vencimiento? string
+---@field fechaEmision? string
+---@field fechaVencimiento? string
 ---@field tem? number
 ---@field ticker? string
 ---@field vpv? number
 
 ---@class LetraListMatch
----@field fecha_emision? string
----@field fecha_vencimiento? string
+---@field fechaEmision? string
+---@field fechaVencimiento? string
 ---@field tem? number
 ---@field ticker? string
 ---@field vpv? number
@@ -263,8 +263,8 @@
 ---@field inicio? string
 ---@field nombre? string
 ---@field partido? string
----@field partido_imagen? string
----@field periodo_presidencial? string
+---@field partidoImagen? string
+---@field periodoPresidencial? string
 ---@field vicepresidente? string
 
 ---@class PresidenteListMatch
@@ -273,12 +273,12 @@
 ---@field inicio? string
 ---@field nombre? string
 ---@field partido? string
----@field partido_imagen? string
----@field periodo_presidencial? string
+---@field partidoImagen? string
+---@field periodoPresidencial? string
 ---@field vicepresidente? string
 
 ---@class ProveedorPlazoFijoPrecancelable
----@field aviso_precancelacion_dia? number
+---@field avisoPrecancelacionDias? number
 ---@field canal? string
 ---@field enlace? string
 ---@field entidad? string
@@ -286,18 +286,18 @@
 ---@field logo? string
 ---@field modalidad? string
 ---@field moneda? string
----@field monto_maximo? number
----@field monto_minimo? number
----@field plazo_max_dia? number
----@field plazo_min_dia? number
----@field plazo_precancelacion_dia? number
+---@field montoMaximo? number
+---@field montoMinimo? number
+---@field plazoMaxDias? number
+---@field plazoMinDias? number
+---@field plazoPrecancelacionDias? number
 ---@field tea? number
----@field tea_precancelacion? number
+---@field teaPrecancelacion? number
 ---@field tna? number
----@field tna_precancelacion? number
+---@field tnaPrecancelacion? number
 
 ---@class ProveedorPlazoFijoPrecancelableListMatch
----@field aviso_precancelacion_dia? number
+---@field avisoPrecancelacionDias? number
 ---@field canal? string
 ---@field enlace? string
 ---@field entidad? string
@@ -305,27 +305,27 @@
 ---@field logo? string
 ---@field modalidad? string
 ---@field moneda? string
----@field monto_maximo? number
----@field monto_minimo? number
----@field plazo_max_dia? number
----@field plazo_min_dia? number
----@field plazo_precancelacion_dia? number
+---@field montoMaximo? number
+---@field montoMinimo? number
+---@field plazoMaxDias? number
+---@field plazoMinDias? number
+---@field plazoPrecancelacionDias? number
 ---@field tea? number
----@field tea_precancelacion? number
+---@field teaPrecancelacion? number
 ---@field tna? number
----@field tna_precancelacion? number
+---@field tnaPrecancelacion? number
 
 ---@class ProveedorPlazoFijoUvaPagoPeriodico
 ---@field entidad? string
 ---@field id? string
 ---@field logo? string
----@field tasa? table
+---@field tasas? table
 
 ---@class ProveedorPlazoFijoUvaPagoPeriodicoListMatch
 ---@field entidad? string
 ---@field id? string
 ---@field logo? string
----@field tasa? table
+---@field tasas? table
 
 ---@class Rem
 ---@field desvio? number
@@ -337,21 +337,21 @@
 ---@field mediana? number
 ---@field minimo? number
 ---@field muestra? string
----@field participante? number
+---@field participantes? number
 ---@field percentil10? number
 ---@field percentil25? number
 ---@field percentil75? number
 ---@field percentil90? number
 ---@field periodo? string
----@field periodo_desde? string
----@field periodo_hasta? string
----@field periodo_tipo? string
+---@field periodoDesde? string
+---@field periodoHasta? string
+---@field periodoTipo? string
 ---@field promedio? number
----@field publicacion_url? string
+---@field publicacionUrl? string
 ---@field referencia? string
----@field referencia_fecha? string
+---@field referenciaFecha? string
 ---@field unidad? string
----@field xlsx_url? string
+---@field xlsxUrl? string
 
 ---@class RemListMatch
 ---@field ["año"] number
@@ -367,21 +367,21 @@
 ---@field mediana? number
 ---@field minimo? number
 ---@field muestra? string
----@field participante? number
+---@field participantes? number
 ---@field percentil10? number
 ---@field percentil25? number
 ---@field percentil75? number
 ---@field percentil90? number
 ---@field periodo? string
----@field periodo_desde? string
----@field periodo_hasta? string
----@field periodo_tipo? string
+---@field periodoDesde? string
+---@field periodoHasta? string
+---@field periodoTipo? string
 ---@field promedio? number
----@field publicacion_url? string
+---@field publicacionUrl? string
 ---@field referencia? string
----@field referencia_fecha? string
+---@field referenciaFecha? string
 ---@field unidad? string
----@field xlsx_url? string
+---@field xlsxUrl? string
 
 ---@class RemExpectativaListMatch
 ---@field desvio? number
@@ -393,21 +393,21 @@
 ---@field mediana? number
 ---@field minimo? number
 ---@field muestra? string
----@field participante? number
+---@field participantes? number
 ---@field percentil10? number
 ---@field percentil25? number
 ---@field percentil75? number
 ---@field percentil90? number
 ---@field periodo? string
----@field periodo_desde? string
----@field periodo_hasta? string
----@field periodo_tipo? string
+---@field periodoDesde? string
+---@field periodoHasta? string
+---@field periodoTipo? string
 ---@field promedio? number
----@field publicacion_url? string
+---@field publicacionUrl? string
 ---@field referencia? string
----@field referencia_fecha? string
+---@field referenciaFecha? string
 ---@field unidad? string
----@field xlsx_url? string
+---@field xlsxUrl? string
 
 ---@class Rendimiento
 ---@field apy? number
@@ -434,12 +434,12 @@
 ---@field foto? string
 ---@field id? string
 ---@field nombre? string
----@field observacione? string
+---@field observaciones? string
 ---@field partido? string
----@field periodo_legal? table
----@field periodo_real? table
+---@field periodoLegal? table
+---@field periodoReal? table
 ---@field provincia? string
----@field rede? table
+---@field redes? table
 ---@field reemplazo? string
 ---@field telefono? string
 
@@ -448,12 +448,12 @@
 ---@field foto? string
 ---@field id? string
 ---@field nombre? string
----@field observacione? string
+---@field observaciones? string
 ---@field partido? string
----@field periodo_legal? table
----@field periodo_real? table
+---@field periodoLegal? table
+---@field periodoReal? table
 ---@field provincia? string
----@field rede? table
+---@field redes? table
 ---@field reemplazo? string
 ---@field telefono? string
 
@@ -468,14 +468,14 @@
 ---@class TasaPlazoFijo
 ---@field entidad? string
 ---@field logo? string
----@field tna_cliente? number
----@field tna_no_cliente? number
+---@field tnaClientes? number
+---@field tnaNoClientes? number
 
 ---@class TasaPlazoFijoListMatch
 ---@field entidad? string
 ---@field logo? string
----@field tna_cliente? number
----@field tna_no_cliente? number
+---@field tnaClientes? number
+---@field tnaNoClientes? number
 
 local M = {}
 

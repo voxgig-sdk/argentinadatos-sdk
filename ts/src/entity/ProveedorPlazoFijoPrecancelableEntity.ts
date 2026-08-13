@@ -37,7 +37,7 @@ class ProveedorPlazoFijoPrecancelableEntity extends ArgentinadatosEntityBase<Pro
 
 
 
-  async list(this: any, reqmatch?: ProveedorPlazoFijoPrecancelableListMatch, ctrl?: Control): Promise<ProveedorPlazoFijoPrecancelable[]> {
+  async list(this: any, reqmatch?: ProveedorPlazoFijoPrecancelableListMatch, ctrl?: Control): Promise<ProveedorPlazoFijoPrecancelableEntity[]> {
 
     const utility = this._utility
 

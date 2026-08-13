@@ -63,7 +63,7 @@ describe('CriptopesoEntity', async () => {
     const criptopeso_ref01_ent = client.Criptopeso()
     const criptopeso_ref01_match: any = {}
 
-    const criptopeso_ref01_list = await criptopeso_ref01_ent.list(criptopeso_ref01_match)
+    const criptopeso_ref01_list = (await criptopeso_ref01_ent.list(criptopeso_ref01_match)).map((e: any) => e.data())
 
 
   })

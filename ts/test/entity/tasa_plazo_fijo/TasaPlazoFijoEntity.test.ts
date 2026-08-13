@@ -63,7 +63,7 @@ describe('TasaPlazoFijoEntity', async () => {
     const tasa_plazo_fijo_ref01_ent = client.TasaPlazoFijo()
     const tasa_plazo_fijo_ref01_match: any = {}
 
-    const tasa_plazo_fijo_ref01_list = await tasa_plazo_fijo_ref01_ent.list(tasa_plazo_fijo_ref01_match)
+    const tasa_plazo_fijo_ref01_list = (await tasa_plazo_fijo_ref01_ent.list(tasa_plazo_fijo_ref01_match)).map((e: any) => e.data())
 
 
   })

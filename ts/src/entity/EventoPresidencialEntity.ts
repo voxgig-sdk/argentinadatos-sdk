@@ -37,7 +37,7 @@ class EventoPresidencialEntity extends ArgentinadatosEntityBase<EventoPresidenci
 
 
 
-  async list(this: any, reqmatch?: EventoPresidencialListMatch, ctrl?: Control): Promise<EventoPresidencial[]> {
+  async list(this: any, reqmatch?: EventoPresidencialListMatch, ctrl?: Control): Promise<EventoPresidencialEntity[]> {
 
     const utility = this._utility
 

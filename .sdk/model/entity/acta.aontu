@@ -6,7 +6,7 @@ main: kit: entity: acta: {
 
   fields: [
     {
-      name: "abstencione"
+      name: "abstenciones"
       req: false
       type: "`$INTEGER`"
     }
@@ -16,12 +16,12 @@ main: kit: entity: acta: {
       type: "`$STRING`"
     }
     {
-      name: "acta_id"
+      name: "actaId"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "afirmativo"
+      name: "afirmativos"
       req: false
       type: "`$INTEGER`"
     }
@@ -31,7 +31,7 @@ main: kit: entity: acta: {
       type: "`$INTEGER`"
     }
     {
-      name: "ausente"
+      name: "ausentes"
       req: false
       type: "`$INTEGER`"
     }
@@ -56,22 +56,22 @@ main: kit: entity: acta: {
       type: "`$STRING`"
     }
     {
-      name: "miembro"
+      name: "miembros"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "negativo"
+      name: "negativos"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "numero_acta"
+      name: "numeroActa"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "observacione"
+      name: "observaciones"
       req: false
       type: "`$ARRAY`"
     }
@@ -81,7 +81,7 @@ main: kit: entity: acta: {
       type: "`$STRING`"
     }
     {
-      name: "presente"
+      name: "presentes"
       req: false
       type: "`$INTEGER`"
     }
@@ -96,7 +96,7 @@ main: kit: entity: acta: {
       type: "`$STRING`"
     }
     {
-      name: "quorum_tipo"
+      name: "quorumTipo"
       req: false
       type: "`$STRING`"
     }
@@ -116,17 +116,17 @@ main: kit: entity: acta: {
       type: "`$STRING`"
     }
     {
-      name: "voto"
+      name: "votos"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "votos_afirmativo"
+      name: "votosAfirmativos"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "votos_negativo"
+      name: "votosNegativos"
       req: false
       type: "`$INTEGER`"
     }

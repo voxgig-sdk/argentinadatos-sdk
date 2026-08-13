@@ -35,7 +35,9 @@ const client = new ArgentinadatosSDK()
 
 ### 2. List acta records
 
-`list()` resolves to an array of Acta objects — iterate it directly:
+`list()` resolves to an array of Acta ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const actas = await client.Acta().list()
@@ -68,8 +70,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const actas = await client.Acta().list()
-  console.log(actas)
+  const cotizacions = await client.Cotizacion().list()
+  console.log(cotizacions)
 } catch (err) {
   console.error('list failed:', err)
 }
@@ -135,9 +137,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = ArgentinadatosSDK.test()
 
-const acta = await client.Acta().list()
-// acta is a bare entity populated with mock response data
-console.log(acta)
+const cotizacion = await client.Cotizacion().list()
+// cotizacion is the entity, populated with mock response data
+// — call cotizacion.data() for the record itself
+console.log(cotizacion)
 ```
 
 You can also use the instance method:
@@ -152,14 +155,14 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Acta()
+const entity = client.Cotizacion()
 
 // First call runs the operation and stores its result
 await entity.list()
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data.id)
+console.log(data)
 ```
 
 ### Add custom middleware
@@ -329,31 +332,31 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `abstencione` |  |
+| `abstenciones` |  |
 | `acta` |  |
-| `acta_id` |  |
-| `afirmativo` |  |
+| `actaId` |  |
+| `afirmativos` |  |
 | `amn` |  |
-| `ausente` |  |
+| `ausentes` |  |
 | `descripcion` |  |
 | `fecha` |  |
 | `id` |  |
 | `mayoria` |  |
-| `miembro` |  |
-| `negativo` |  |
-| `numero_acta` |  |
-| `observacione` |  |
+| `miembros` |  |
+| `negativos` |  |
+| `numeroActa` |  |
+| `observaciones` |  |
 | `periodo` |  |
-| `presente` |  |
+| `presentes` |  |
 | `presidente` |  |
 | `proyecto` |  |
-| `quorum_tipo` |  |
+| `quorumTipo` |  |
 | `resultado` |  |
 | `reunion` |  |
 | `titulo` |  |
-| `voto` |  |
-| `votos_afirmativo` |  |
-| `votos_negativo` |  |
+| `votos` |  |
+| `votosAfirmativos` |  |
+| `votosNegativos` |  |
 
 Operations: list, load.
 
@@ -363,11 +366,11 @@ API path: `/v1/diputados/actas`
 
 | Field | Description |
 | --- | --- |
-| `fecha_vencimiento` |  |
-| `precio_ar` |  |
+| `fechaVencimiento` |  |
+| `precioArs` |  |
 | `ticker` |  |
-| `tir_porcentaje` |  |
-| `voluman` |  |
+| `tirPorcentaje` |  |
+| `volumen` |  |
 
 Operations: list.
 
@@ -417,14 +420,14 @@ API path: `/v1/finanzas/cuentas-remuneradas-usd`
 | --- | --- |
 | `apellido` |  |
 | `bloque` |  |
-| `cese_fecha` |  |
+| `ceseFecha` |  |
 | `foto` |  |
 | `genero` |  |
 | `id` |  |
-| `juramento_fecha` |  |
+| `juramentoFecha` |  |
 | `nombre` |  |
-| `periodo_bloque` |  |
-| `periodo_mandato` |  |
+| `periodoBloque` |  |
+| `periodoMandato` |  |
 | `provincia` |  |
 
 Operations: list.
@@ -436,7 +439,7 @@ API path: `/v1/diputados/diputados`
 | Field | Description |
 | --- | --- |
 | `entidad` |  |
-| `rendimiento` |  |
+| `rendimientos` |  |
 
 Operations: list.
 
@@ -520,8 +523,8 @@ API path: `/v1/finanzas/fci/otros/{fecha}`
 
 | Field | Description |
 | --- | --- |
-| `condicione` |  |
-| `condiciones_corto` |  |
+| `condiciones` |  |
+| `condicionesCorto` |  |
 | `fecha` |  |
 | `fondo` |  |
 | `nombre` |  |
@@ -540,7 +543,7 @@ API path: `/v1/finanzas/fci/variables/{fecha}`
 | --- | --- |
 | `entidad` |  |
 | `metadata` |  |
-| `nombre_comercial` |  |
+| `nombreComercial` |  |
 | `tna` |  |
 
 Operations: list.
@@ -573,8 +576,8 @@ API path: `/v1/finanzas/indices/uva`
 
 | Field | Description |
 | --- | --- |
-| `fecha_emision` |  |
-| `fecha_vencimiento` |  |
+| `fechaEmision` |  |
+| `fechaVencimiento` |  |
 | `tem` |  |
 | `ticker` |  |
 | `vpv` |  |
@@ -592,8 +595,8 @@ API path: `/v1/finanzas/letras`
 | `inicio` |  |
 | `nombre` |  |
 | `partido` |  |
-| `partido_imagen` |  |
-| `periodo_presidencial` |  |
+| `partidoImagen` |  |
+| `periodoPresidencial` |  |
 | `vicepresidente` |  |
 
 Operations: list.
@@ -604,7 +607,7 @@ API path: `/v1/presidentes`
 
 | Field | Description |
 | --- | --- |
-| `aviso_precancelacion_dia` |  |
+| `avisoPrecancelacionDias` |  |
 | `canal` |  |
 | `enlace` |  |
 | `entidad` |  |
@@ -612,15 +615,15 @@ API path: `/v1/presidentes`
 | `logo` |  |
 | `modalidad` |  |
 | `moneda` |  |
-| `monto_maximo` |  |
-| `monto_minimo` |  |
-| `plazo_max_dia` |  |
-| `plazo_min_dia` |  |
-| `plazo_precancelacion_dia` |  |
+| `montoMaximo` |  |
+| `montoMinimo` |  |
+| `plazoMaxDias` |  |
+| `plazoMinDias` |  |
+| `plazoPrecancelacionDias` |  |
 | `tea` |  |
-| `tea_precancelacion` |  |
+| `teaPrecancelacion` |  |
 | `tna` |  |
-| `tna_precancelacion` |  |
+| `tnaPrecancelacion` |  |
 
 Operations: list.
 
@@ -633,7 +636,7 @@ API path: `/v1/finanzas/tasas/plazoFijoPrecancelable`
 | `entidad` |  |
 | `id` |  |
 | `logo` |  |
-| `tasa` |  |
+| `tasas` |  |
 
 Operations: list.
 
@@ -652,21 +655,21 @@ API path: `/v1/finanzas/tasas/plazoFijoUvaPagoPeriodico`
 | `mediana` |  |
 | `minimo` |  |
 | `muestra` |  |
-| `participante` |  |
+| `participantes` |  |
 | `percentil10` |  |
 | `percentil25` |  |
 | `percentil75` |  |
 | `percentil90` |  |
 | `periodo` |  |
-| `periodo_desde` |  |
-| `periodo_hasta` |  |
-| `periodo_tipo` |  |
+| `periodoDesde` |  |
+| `periodoHasta` |  |
+| `periodoTipo` |  |
 | `promedio` |  |
-| `publicacion_url` |  |
+| `publicacionUrl` |  |
 | `referencia` |  |
-| `referencia_fecha` |  |
+| `referenciaFecha` |  |
 | `unidad` |  |
-| `xlsx_url` |  |
+| `xlsxUrl` |  |
 
 Operations: list.
 
@@ -685,21 +688,21 @@ API path: `/v1/rems/{año}/{mes}`
 | `mediana` |  |
 | `minimo` |  |
 | `muestra` |  |
-| `participante` |  |
+| `participantes` |  |
 | `percentil10` |  |
 | `percentil25` |  |
 | `percentil75` |  |
 | `percentil90` |  |
 | `periodo` |  |
-| `periodo_desde` |  |
-| `periodo_hasta` |  |
-| `periodo_tipo` |  |
+| `periodoDesde` |  |
+| `periodoHasta` |  |
+| `periodoTipo` |  |
 | `promedio` |  |
-| `publicacion_url` |  |
+| `publicacionUrl` |  |
 | `referencia` |  |
-| `referencia_fecha` |  |
+| `referenciaFecha` |  |
 | `unidad` |  |
-| `xlsx_url` |  |
+| `xlsxUrl` |  |
 
 Operations: list.
 
@@ -736,12 +739,12 @@ API path: `/v1/finanzas/indices/riesgo-pais`
 | `foto` |  |
 | `id` |  |
 | `nombre` |  |
-| `observacione` |  |
+| `observaciones` |  |
 | `partido` |  |
-| `periodo_legal` |  |
-| `periodo_real` |  |
+| `periodoLegal` |  |
+| `periodoReal` |  |
 | `provincia` |  |
-| `rede` |  |
+| `redes` |  |
 | `reemplazo` |  |
 | `telefono` |  |
 
@@ -766,8 +769,8 @@ API path: `/v1/finanzas/tasas/depositos30Dias`
 | --- | --- |
 | `entidad` |  |
 | `logo` |  |
-| `tna_cliente` |  |
-| `tna_no_cliente` |  |
+| `tnaClientes` |  |
+| `tnaNoClientes` |  |
 
 Operations: list.
 
@@ -793,31 +796,31 @@ Create an instance: `const acta = client.Acta()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `abstencione` | `number` |  |
+| `abstenciones` | `number` |  |
 | `acta` | `string` |  |
-| `acta_id` | `number` |  |
-| `afirmativo` | `number` |  |
+| `actaId` | `number` |  |
+| `afirmativos` | `number` |  |
 | `amn` | `number` |  |
-| `ausente` | `number` |  |
+| `ausentes` | `number` |  |
 | `descripcion` | `string` |  |
 | `fecha` | `string` |  |
 | `id` | `string` |  |
 | `mayoria` | `string` |  |
-| `miembro` | `number` |  |
-| `negativo` | `number` |  |
-| `numero_acta` | `string` |  |
-| `observacione` | `any[]` |  |
+| `miembros` | `number` |  |
+| `negativos` | `number` |  |
+| `numeroActa` | `string` |  |
+| `observaciones` | `any[]` |  |
 | `periodo` | `string` |  |
-| `presente` | `number` |  |
+| `presentes` | `number` |  |
 | `presidente` | `string` |  |
 | `proyecto` | `string` |  |
-| `quorum_tipo` | `string` |  |
+| `quorumTipo` | `string` |  |
 | `resultado` | `string` |  |
 | `reunion` | `string` |  |
 | `titulo` | `string` |  |
-| `voto` | `any[]` |  |
-| `votos_afirmativo` | `number` |  |
-| `votos_negativo` | `number` |  |
+| `votos` | `any[]` |  |
+| `votosAfirmativos` | `number` |  |
+| `votosNegativos` | `number` |  |
 
 #### Example: Load
 
@@ -846,11 +849,11 @@ Create an instance: `const bonos_cer = client.BonosCer()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha_vencimiento` | `string` |  |
-| `precio_ar` | `number` |  |
+| `fechaVencimiento` | `string` |  |
+| `precioArs` | `number` |  |
 | `ticker` | `string` |  |
-| `tir_porcentaje` | `number` |  |
-| `voluman` | `number` |  |
+| `tirPorcentaje` | `number` |  |
+| `volumen` | `number` |  |
 
 #### Example: List
 
@@ -959,14 +962,14 @@ Create an instance: `const diputado = client.Diputado()`
 | --- | --- | --- |
 | `apellido` | `string` |  |
 | `bloque` | `string` |  |
-| `cese_fecha` | `string` |  |
+| `ceseFecha` | `string` |  |
 | `foto` | `string` |  |
 | `genero` | `string` |  |
 | `id` | `string` |  |
-| `juramento_fecha` | `string` |  |
+| `juramentoFecha` | `string` |  |
 | `nombre` | `string` |  |
-| `periodo_bloque` | `Record<string, any>` |  |
-| `periodo_mandato` | `Record<string, any>` |  |
+| `periodoBloque` | `Record<string, any>` |  |
+| `periodoMandato` | `Record<string, any>` |  |
 | `provincia` | `string` |  |
 
 #### Example: List
@@ -991,7 +994,7 @@ Create an instance: `const entidad_rendimiento = client.EntidadRendimiento()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `entidad` | `string` |  |
-| `rendimiento` | `any[]` |  |
+| `rendimientos` | `any[]` |  |
 
 #### Example: List
 
@@ -1161,8 +1164,8 @@ Create an instance: `const fondo_comun_inversion_variable = client.FondoComunInv
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `condicione` | `string` |  |
-| `condiciones_corto` | `string` |  |
+| `condiciones` | `string` |  |
+| `condicionesCorto` | `string` |  |
 | `fecha` | `string` |  |
 | `fondo` | `string` |  |
 | `nombre` | `string` |  |
@@ -1194,7 +1197,7 @@ Create an instance: `const hipotecario_uva_tna = client.HipotecarioUvaTna()`
 | --- | --- | --- |
 | `entidad` | `string` |  |
 | `metadata` | `Record<string, any>` |  |
-| `nombre_comercial` | `string` |  |
+| `nombreComercial` | `string` |  |
 | `tna` | `number` |  |
 
 #### Example: List
@@ -1266,8 +1269,8 @@ Create an instance: `const letra = client.Letra()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha_emision` | `string` |  |
-| `fecha_vencimiento` | `string` |  |
+| `fechaEmision` | `string` |  |
+| `fechaVencimiento` | `string` |  |
 | `tem` | `number` |  |
 | `ticker` | `string` |  |
 | `vpv` | `number` |  |
@@ -1298,8 +1301,8 @@ Create an instance: `const presidente = client.Presidente()`
 | `inicio` | `string` |  |
 | `nombre` | `string` |  |
 | `partido` | `string` |  |
-| `partido_imagen` | `string` |  |
-| `periodo_presidencial` | `string` |  |
+| `partidoImagen` | `string` |  |
+| `periodoPresidencial` | `string` |  |
 | `vicepresidente` | `string` |  |
 
 #### Example: List
@@ -1323,7 +1326,7 @@ Create an instance: `const proveedor_plazo_fijo_precancelable = client.Proveedor
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aviso_precancelacion_dia` | `number` |  |
+| `avisoPrecancelacionDias` | `number` |  |
 | `canal` | `string` |  |
 | `enlace` | `string` |  |
 | `entidad` | `string` |  |
@@ -1331,15 +1334,15 @@ Create an instance: `const proveedor_plazo_fijo_precancelable = client.Proveedor
 | `logo` | `string` |  |
 | `modalidad` | `string` |  |
 | `moneda` | `string` |  |
-| `monto_maximo` | `number` |  |
-| `monto_minimo` | `number` |  |
-| `plazo_max_dia` | `number` |  |
-| `plazo_min_dia` | `number` |  |
-| `plazo_precancelacion_dia` | `number` |  |
+| `montoMaximo` | `number` |  |
+| `montoMinimo` | `number` |  |
+| `plazoMaxDias` | `number` |  |
+| `plazoMinDias` | `number` |  |
+| `plazoPrecancelacionDias` | `number` |  |
 | `tea` | `number` |  |
-| `tea_precancelacion` | `number` |  |
+| `teaPrecancelacion` | `number` |  |
 | `tna` | `number` |  |
-| `tna_precancelacion` | `number` |  |
+| `tnaPrecancelacion` | `number` |  |
 
 #### Example: List
 
@@ -1365,7 +1368,7 @@ Create an instance: `const proveedor_plazo_fijo_uva_pago_periodico = client.Prov
 | `entidad` | `string` |  |
 | `id` | `string` |  |
 | `logo` | `string` |  |
-| `tasa` | `any[]` |  |
+| `tasas` | `any[]` |  |
 
 #### Example: List
 
@@ -1397,26 +1400,26 @@ Create an instance: `const rem = client.Rem()`
 | `mediana` | `number` |  |
 | `minimo` | `number` |  |
 | `muestra` | `string` |  |
-| `participante` | `number` |  |
+| `participantes` | `number` |  |
 | `percentil10` | `number` |  |
 | `percentil25` | `number` |  |
 | `percentil75` | `number` |  |
 | `percentil90` | `number` |  |
 | `periodo` | `string` |  |
-| `periodo_desde` | `string` |  |
-| `periodo_hasta` | `string` |  |
-| `periodo_tipo` | `string` |  |
+| `periodoDesde` | `string` |  |
+| `periodoHasta` | `string` |  |
+| `periodoTipo` | `string` |  |
 | `promedio` | `number` |  |
-| `publicacion_url` | `string` |  |
+| `publicacionUrl` | `string` |  |
 | `referencia` | `string` |  |
-| `referencia_fecha` | `string` |  |
+| `referenciaFecha` | `string` |  |
 | `unidad` | `string` |  |
-| `xlsx_url` | `string` |  |
+| `xlsxUrl` | `string` |  |
 
 #### Example: List
 
 ```ts
-const rems = await client.Rem().list()
+const rems = await client.Rem().list({ 'año': 1, mes: "example" })
 ```
 
 
@@ -1443,21 +1446,21 @@ Create an instance: `const rem_expectativa = client.RemExpectativa()`
 | `mediana` | `number` |  |
 | `minimo` | `number` |  |
 | `muestra` | `string` |  |
-| `participante` | `number` |  |
+| `participantes` | `number` |  |
 | `percentil10` | `number` |  |
 | `percentil25` | `number` |  |
 | `percentil75` | `number` |  |
 | `percentil90` | `number` |  |
 | `periodo` | `string` |  |
-| `periodo_desde` | `string` |  |
-| `periodo_hasta` | `string` |  |
-| `periodo_tipo` | `string` |  |
+| `periodoDesde` | `string` |  |
+| `periodoHasta` | `string` |  |
+| `periodoTipo` | `string` |  |
 | `promedio` | `number` |  |
-| `publicacion_url` | `string` |  |
+| `publicacionUrl` | `string` |  |
 | `referencia` | `string` |  |
-| `referencia_fecha` | `string` |  |
+| `referenciaFecha` | `string` |  |
 | `unidad` | `string` |  |
-| `xlsx_url` | `string` |  |
+| `xlsxUrl` | `string` |  |
 
 #### Example: List
 
@@ -1540,12 +1543,12 @@ Create an instance: `const senador = client.Senador()`
 | `foto` | `string` |  |
 | `id` | `string` |  |
 | `nombre` | `string` |  |
-| `observacione` | `string` |  |
+| `observaciones` | `string` |  |
 | `partido` | `string` |  |
-| `periodo_legal` | `Record<string, any>` |  |
-| `periodo_real` | `Record<string, any>` |  |
+| `periodoLegal` | `Record<string, any>` |  |
+| `periodoReal` | `Record<string, any>` |  |
 | `provincia` | `string` |  |
-| `rede` | `any[]` |  |
+| `redes` | `any[]` |  |
 | `reemplazo` | `string` |  |
 | `telefono` | `string` |  |
 
@@ -1596,8 +1599,8 @@ Create an instance: `const tasa_plazo_fijo = client.TasaPlazoFijo()`
 | --- | --- | --- |
 | `entidad` | `string` |  |
 | `logo` | `string` |  |
-| `tna_cliente` | `number` |  |
-| `tna_no_cliente` | `number` |  |
+| `tnaClientes` | `number` |  |
+| `tnaNoClientes` | `number` |  |
 
 #### Example: List
 
@@ -1675,11 +1678,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const acta = client.Acta()
-await acta.list()
+const cotizacion = client.Cotizacion()
+await cotizacion.list()
 
-// acta.data() now returns the acta data from the last `list`
-// acta.match() returns the last match criteria
+// cotizacion.data() now returns the cotizacion data from the last `list`
+// cotizacion.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

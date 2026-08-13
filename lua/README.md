@@ -64,7 +64,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local actas, err = client:Acta():list()
+local cotizacions, err = client:Cotizacion():list()
 if err then error(err) end
 ```
 
@@ -122,7 +122,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Acta():list()
+local result, err = client:Cotizacion():list()
 -- result is the returned data; err is set on failure
 ```
 
@@ -270,31 +270,31 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `abstencione` |  |
+| `abstenciones` |  |
 | `acta` |  |
-| `acta_id` |  |
-| `afirmativo` |  |
+| `actaId` |  |
+| `afirmativos` |  |
 | `amn` |  |
-| `ausente` |  |
+| `ausentes` |  |
 | `descripcion` |  |
 | `fecha` |  |
 | `id` |  |
 | `mayoria` |  |
-| `miembro` |  |
-| `negativo` |  |
-| `numero_acta` |  |
-| `observacione` |  |
+| `miembros` |  |
+| `negativos` |  |
+| `numeroActa` |  |
+| `observaciones` |  |
 | `periodo` |  |
-| `presente` |  |
+| `presentes` |  |
 | `presidente` |  |
 | `proyecto` |  |
-| `quorum_tipo` |  |
+| `quorumTipo` |  |
 | `resultado` |  |
 | `reunion` |  |
 | `titulo` |  |
-| `voto` |  |
-| `votos_afirmativo` |  |
-| `votos_negativo` |  |
+| `votos` |  |
+| `votosAfirmativos` |  |
+| `votosNegativos` |  |
 
 Operations: List, Load.
 
@@ -304,11 +304,11 @@ API path: `/v1/diputados/actas`
 
 | Field | Description |
 | --- | --- |
-| `fecha_vencimiento` |  |
-| `precio_ar` |  |
+| `fechaVencimiento` |  |
+| `precioArs` |  |
 | `ticker` |  |
-| `tir_porcentaje` |  |
-| `voluman` |  |
+| `tirPorcentaje` |  |
+| `volumen` |  |
 
 Operations: List.
 
@@ -358,14 +358,14 @@ API path: `/v1/finanzas/cuentas-remuneradas-usd`
 | --- | --- |
 | `apellido` |  |
 | `bloque` |  |
-| `cese_fecha` |  |
+| `ceseFecha` |  |
 | `foto` |  |
 | `genero` |  |
 | `id` |  |
-| `juramento_fecha` |  |
+| `juramentoFecha` |  |
 | `nombre` |  |
-| `periodo_bloque` |  |
-| `periodo_mandato` |  |
+| `periodoBloque` |  |
+| `periodoMandato` |  |
 | `provincia` |  |
 
 Operations: List.
@@ -377,7 +377,7 @@ API path: `/v1/diputados/diputados`
 | Field | Description |
 | --- | --- |
 | `entidad` |  |
-| `rendimiento` |  |
+| `rendimientos` |  |
 
 Operations: List.
 
@@ -461,8 +461,8 @@ API path: `/v1/finanzas/fci/otros/{fecha}`
 
 | Field | Description |
 | --- | --- |
-| `condicione` |  |
-| `condiciones_corto` |  |
+| `condiciones` |  |
+| `condicionesCorto` |  |
 | `fecha` |  |
 | `fondo` |  |
 | `nombre` |  |
@@ -481,7 +481,7 @@ API path: `/v1/finanzas/fci/variables/{fecha}`
 | --- | --- |
 | `entidad` |  |
 | `metadata` |  |
-| `nombre_comercial` |  |
+| `nombreComercial` |  |
 | `tna` |  |
 
 Operations: List.
@@ -514,8 +514,8 @@ API path: `/v1/finanzas/indices/uva`
 
 | Field | Description |
 | --- | --- |
-| `fecha_emision` |  |
-| `fecha_vencimiento` |  |
+| `fechaEmision` |  |
+| `fechaVencimiento` |  |
 | `tem` |  |
 | `ticker` |  |
 | `vpv` |  |
@@ -533,8 +533,8 @@ API path: `/v1/finanzas/letras`
 | `inicio` |  |
 | `nombre` |  |
 | `partido` |  |
-| `partido_imagen` |  |
-| `periodo_presidencial` |  |
+| `partidoImagen` |  |
+| `periodoPresidencial` |  |
 | `vicepresidente` |  |
 
 Operations: List.
@@ -545,7 +545,7 @@ API path: `/v1/presidentes`
 
 | Field | Description |
 | --- | --- |
-| `aviso_precancelacion_dia` |  |
+| `avisoPrecancelacionDias` |  |
 | `canal` |  |
 | `enlace` |  |
 | `entidad` |  |
@@ -553,15 +553,15 @@ API path: `/v1/presidentes`
 | `logo` |  |
 | `modalidad` |  |
 | `moneda` |  |
-| `monto_maximo` |  |
-| `monto_minimo` |  |
-| `plazo_max_dia` |  |
-| `plazo_min_dia` |  |
-| `plazo_precancelacion_dia` |  |
+| `montoMaximo` |  |
+| `montoMinimo` |  |
+| `plazoMaxDias` |  |
+| `plazoMinDias` |  |
+| `plazoPrecancelacionDias` |  |
 | `tea` |  |
-| `tea_precancelacion` |  |
+| `teaPrecancelacion` |  |
 | `tna` |  |
-| `tna_precancelacion` |  |
+| `tnaPrecancelacion` |  |
 
 Operations: List.
 
@@ -574,7 +574,7 @@ API path: `/v1/finanzas/tasas/plazoFijoPrecancelable`
 | `entidad` |  |
 | `id` |  |
 | `logo` |  |
-| `tasa` |  |
+| `tasas` |  |
 
 Operations: List.
 
@@ -593,21 +593,21 @@ API path: `/v1/finanzas/tasas/plazoFijoUvaPagoPeriodico`
 | `mediana` |  |
 | `minimo` |  |
 | `muestra` |  |
-| `participante` |  |
+| `participantes` |  |
 | `percentil10` |  |
 | `percentil25` |  |
 | `percentil75` |  |
 | `percentil90` |  |
 | `periodo` |  |
-| `periodo_desde` |  |
-| `periodo_hasta` |  |
-| `periodo_tipo` |  |
+| `periodoDesde` |  |
+| `periodoHasta` |  |
+| `periodoTipo` |  |
 | `promedio` |  |
-| `publicacion_url` |  |
+| `publicacionUrl` |  |
 | `referencia` |  |
-| `referencia_fecha` |  |
+| `referenciaFecha` |  |
 | `unidad` |  |
-| `xlsx_url` |  |
+| `xlsxUrl` |  |
 
 Operations: List.
 
@@ -626,21 +626,21 @@ API path: `/v1/rems/{año}/{mes}`
 | `mediana` |  |
 | `minimo` |  |
 | `muestra` |  |
-| `participante` |  |
+| `participantes` |  |
 | `percentil10` |  |
 | `percentil25` |  |
 | `percentil75` |  |
 | `percentil90` |  |
 | `periodo` |  |
-| `periodo_desde` |  |
-| `periodo_hasta` |  |
-| `periodo_tipo` |  |
+| `periodoDesde` |  |
+| `periodoHasta` |  |
+| `periodoTipo` |  |
 | `promedio` |  |
-| `publicacion_url` |  |
+| `publicacionUrl` |  |
 | `referencia` |  |
-| `referencia_fecha` |  |
+| `referenciaFecha` |  |
 | `unidad` |  |
-| `xlsx_url` |  |
+| `xlsxUrl` |  |
 
 Operations: List.
 
@@ -677,12 +677,12 @@ API path: `/v1/finanzas/indices/riesgo-pais`
 | `foto` |  |
 | `id` |  |
 | `nombre` |  |
-| `observacione` |  |
+| `observaciones` |  |
 | `partido` |  |
-| `periodo_legal` |  |
-| `periodo_real` |  |
+| `periodoLegal` |  |
+| `periodoReal` |  |
 | `provincia` |  |
-| `rede` |  |
+| `redes` |  |
 | `reemplazo` |  |
 | `telefono` |  |
 
@@ -707,8 +707,8 @@ API path: `/v1/finanzas/tasas/depositos30Dias`
 | --- | --- |
 | `entidad` |  |
 | `logo` |  |
-| `tna_cliente` |  |
-| `tna_no_cliente` |  |
+| `tnaClientes` |  |
+| `tnaNoClientes` |  |
 
 Operations: List.
 
@@ -734,31 +734,31 @@ Create an instance: `local acta = client:Acta(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `abstencione` | `number` |  |
+| `abstenciones` | `number` |  |
 | `acta` | `string` |  |
-| `acta_id` | `number` |  |
-| `afirmativo` | `number` |  |
+| `actaId` | `number` |  |
+| `afirmativos` | `number` |  |
 | `amn` | `number` |  |
-| `ausente` | `number` |  |
+| `ausentes` | `number` |  |
 | `descripcion` | `string` |  |
 | `fecha` | `string` |  |
 | `id` | `string` |  |
 | `mayoria` | `string` |  |
-| `miembro` | `number` |  |
-| `negativo` | `number` |  |
-| `numero_acta` | `string` |  |
-| `observacione` | `table` |  |
+| `miembros` | `number` |  |
+| `negativos` | `number` |  |
+| `numeroActa` | `string` |  |
+| `observaciones` | `table` |  |
 | `periodo` | `string` |  |
-| `presente` | `number` |  |
+| `presentes` | `number` |  |
 | `presidente` | `string` |  |
 | `proyecto` | `string` |  |
-| `quorum_tipo` | `string` |  |
+| `quorumTipo` | `string` |  |
 | `resultado` | `string` |  |
 | `reunion` | `string` |  |
 | `titulo` | `string` |  |
-| `voto` | `table` |  |
-| `votos_afirmativo` | `number` |  |
-| `votos_negativo` | `number` |  |
+| `votos` | `table` |  |
+| `votosAfirmativos` | `number` |  |
+| `votosNegativos` | `number` |  |
 
 #### Example: Load
 
@@ -787,11 +787,11 @@ Create an instance: `local bonos_cer = client:BonosCer(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha_vencimiento` | `string` |  |
-| `precio_ar` | `number` |  |
+| `fechaVencimiento` | `string` |  |
+| `precioArs` | `number` |  |
 | `ticker` | `string` |  |
-| `tir_porcentaje` | `number` |  |
-| `voluman` | `number` |  |
+| `tirPorcentaje` | `number` |  |
+| `volumen` | `number` |  |
 
 #### Example: List
 
@@ -900,14 +900,14 @@ Create an instance: `local diputado = client:Diputado(nil)`
 | --- | --- | --- |
 | `apellido` | `string` |  |
 | `bloque` | `string` |  |
-| `cese_fecha` | `string` |  |
+| `ceseFecha` | `string` |  |
 | `foto` | `string` |  |
 | `genero` | `string` |  |
 | `id` | `string` |  |
-| `juramento_fecha` | `string` |  |
+| `juramentoFecha` | `string` |  |
 | `nombre` | `string` |  |
-| `periodo_bloque` | `table` |  |
-| `periodo_mandato` | `table` |  |
+| `periodoBloque` | `table` |  |
+| `periodoMandato` | `table` |  |
 | `provincia` | `string` |  |
 
 #### Example: List
@@ -932,7 +932,7 @@ Create an instance: `local entidad_rendimiento = client:EntidadRendimiento(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `entidad` | `string` |  |
-| `rendimiento` | `table` |  |
+| `rendimientos` | `table` |  |
 
 #### Example: List
 
@@ -1102,8 +1102,8 @@ Create an instance: `local fondo_comun_inversion_variable = client:FondoComunInv
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `condicione` | `string` |  |
-| `condiciones_corto` | `string` |  |
+| `condiciones` | `string` |  |
+| `condicionesCorto` | `string` |  |
 | `fecha` | `string` |  |
 | `fondo` | `string` |  |
 | `nombre` | `string` |  |
@@ -1135,7 +1135,7 @@ Create an instance: `local hipotecario_uva_tna = client:HipotecarioUvaTna(nil)`
 | --- | --- | --- |
 | `entidad` | `string` |  |
 | `metadata` | `table` |  |
-| `nombre_comercial` | `string` |  |
+| `nombreComercial` | `string` |  |
 | `tna` | `number` |  |
 
 #### Example: List
@@ -1207,8 +1207,8 @@ Create an instance: `local letra = client:Letra(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fecha_emision` | `string` |  |
-| `fecha_vencimiento` | `string` |  |
+| `fechaEmision` | `string` |  |
+| `fechaVencimiento` | `string` |  |
 | `tem` | `number` |  |
 | `ticker` | `string` |  |
 | `vpv` | `number` |  |
@@ -1239,8 +1239,8 @@ Create an instance: `local presidente = client:Presidente(nil)`
 | `inicio` | `string` |  |
 | `nombre` | `string` |  |
 | `partido` | `string` |  |
-| `partido_imagen` | `string` |  |
-| `periodo_presidencial` | `string` |  |
+| `partidoImagen` | `string` |  |
+| `periodoPresidencial` | `string` |  |
 | `vicepresidente` | `string` |  |
 
 #### Example: List
@@ -1264,7 +1264,7 @@ Create an instance: `local proveedor_plazo_fijo_precancelable = client:Proveedor
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `aviso_precancelacion_dia` | `number` |  |
+| `avisoPrecancelacionDias` | `number` |  |
 | `canal` | `string` |  |
 | `enlace` | `string` |  |
 | `entidad` | `string` |  |
@@ -1272,15 +1272,15 @@ Create an instance: `local proveedor_plazo_fijo_precancelable = client:Proveedor
 | `logo` | `string` |  |
 | `modalidad` | `string` |  |
 | `moneda` | `string` |  |
-| `monto_maximo` | `number` |  |
-| `monto_minimo` | `number` |  |
-| `plazo_max_dia` | `number` |  |
-| `plazo_min_dia` | `number` |  |
-| `plazo_precancelacion_dia` | `number` |  |
+| `montoMaximo` | `number` |  |
+| `montoMinimo` | `number` |  |
+| `plazoMaxDias` | `number` |  |
+| `plazoMinDias` | `number` |  |
+| `plazoPrecancelacionDias` | `number` |  |
 | `tea` | `number` |  |
-| `tea_precancelacion` | `number` |  |
+| `teaPrecancelacion` | `number` |  |
 | `tna` | `number` |  |
-| `tna_precancelacion` | `number` |  |
+| `tnaPrecancelacion` | `number` |  |
 
 #### Example: List
 
@@ -1306,7 +1306,7 @@ Create an instance: `local proveedor_plazo_fijo_uva_pago_periodico = client:Prov
 | `entidad` | `string` |  |
 | `id` | `string` |  |
 | `logo` | `string` |  |
-| `tasa` | `table` |  |
+| `tasas` | `table` |  |
 
 #### Example: List
 
@@ -1338,21 +1338,21 @@ Create an instance: `local rem = client:Rem(nil)`
 | `mediana` | `number` |  |
 | `minimo` | `number` |  |
 | `muestra` | `string` |  |
-| `participante` | `number` |  |
+| `participantes` | `number` |  |
 | `percentil10` | `number` |  |
 | `percentil25` | `number` |  |
 | `percentil75` | `number` |  |
 | `percentil90` | `number` |  |
 | `periodo` | `string` |  |
-| `periodo_desde` | `string` |  |
-| `periodo_hasta` | `string` |  |
-| `periodo_tipo` | `string` |  |
+| `periodoDesde` | `string` |  |
+| `periodoHasta` | `string` |  |
+| `periodoTipo` | `string` |  |
 | `promedio` | `number` |  |
-| `publicacion_url` | `string` |  |
+| `publicacionUrl` | `string` |  |
 | `referencia` | `string` |  |
-| `referencia_fecha` | `string` |  |
+| `referenciaFecha` | `string` |  |
 | `unidad` | `string` |  |
-| `xlsx_url` | `string` |  |
+| `xlsxUrl` | `string` |  |
 
 #### Example: List
 
@@ -1384,21 +1384,21 @@ Create an instance: `local rem_expectativa = client:RemExpectativa(nil)`
 | `mediana` | `number` |  |
 | `minimo` | `number` |  |
 | `muestra` | `string` |  |
-| `participante` | `number` |  |
+| `participantes` | `number` |  |
 | `percentil10` | `number` |  |
 | `percentil25` | `number` |  |
 | `percentil75` | `number` |  |
 | `percentil90` | `number` |  |
 | `periodo` | `string` |  |
-| `periodo_desde` | `string` |  |
-| `periodo_hasta` | `string` |  |
-| `periodo_tipo` | `string` |  |
+| `periodoDesde` | `string` |  |
+| `periodoHasta` | `string` |  |
+| `periodoTipo` | `string` |  |
 | `promedio` | `number` |  |
-| `publicacion_url` | `string` |  |
+| `publicacionUrl` | `string` |  |
 | `referencia` | `string` |  |
-| `referencia_fecha` | `string` |  |
+| `referenciaFecha` | `string` |  |
 | `unidad` | `string` |  |
-| `xlsx_url` | `string` |  |
+| `xlsxUrl` | `string` |  |
 
 #### Example: List
 
@@ -1481,12 +1481,12 @@ Create an instance: `local senador = client:Senador(nil)`
 | `foto` | `string` |  |
 | `id` | `string` |  |
 | `nombre` | `string` |  |
-| `observacione` | `string` |  |
+| `observaciones` | `string` |  |
 | `partido` | `string` |  |
-| `periodo_legal` | `table` |  |
-| `periodo_real` | `table` |  |
+| `periodoLegal` | `table` |  |
+| `periodoReal` | `table` |  |
 | `provincia` | `string` |  |
-| `rede` | `table` |  |
+| `redes` | `table` |  |
 | `reemplazo` | `string` |  |
 | `telefono` | `string` |  |
 
@@ -1537,8 +1537,8 @@ Create an instance: `local tasa_plazo_fijo = client:TasaPlazoFijo(nil)`
 | --- | --- | --- |
 | `entidad` | `string` |  |
 | `logo` | `string` |  |
-| `tna_cliente` | `number` |  |
-| `tna_no_cliente` | `number` |  |
+| `tnaClientes` | `number` |  |
+| `tnaNoClientes` | `number` |  |
 
 #### Example: List
 
@@ -1623,11 +1623,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local acta = client:Acta()
-acta:list()
+local cotizacion = client:Cotizacion()
+cotizacion:list()
 
--- acta:data_get() now returns the acta data from the last list
--- acta:match_get() returns the last match criteria
+-- cotizacion:data_get() now returns the cotizacion data from the last list
+-- cotizacion:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -200,31 +200,31 @@ $acta = $client->Acta();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abstencione` | `int` | No |  |
+| `abstenciones` | `int` | No |  |
 | `acta` | `string` | No |  |
-| `acta_id` | `int` | No |  |
-| `afirmativo` | `int` | No |  |
+| `actaId` | `int` | No |  |
+| `afirmativos` | `int` | No |  |
 | `amn` | `int` | No |  |
-| `ausente` | `int` | No |  |
+| `ausentes` | `int` | No |  |
 | `descripcion` | `string` | No |  |
 | `fecha` | `string` | No |  |
 | `id` | `string` | No |  |
 | `mayoria` | `string` | No |  |
-| `miembro` | `int` | No |  |
-| `negativo` | `int` | No |  |
-| `numero_acta` | `string` | No |  |
-| `observacione` | `array` | No |  |
+| `miembros` | `int` | No |  |
+| `negativos` | `int` | No |  |
+| `numeroActa` | `string` | No |  |
+| `observaciones` | `array` | No |  |
 | `periodo` | `string` | No |  |
-| `presente` | `int` | No |  |
+| `presentes` | `int` | No |  |
 | `presidente` | `string` | No |  |
 | `proyecto` | `string` | No |  |
-| `quorum_tipo` | `string` | No |  |
+| `quorumTipo` | `string` | No |  |
 | `resultado` | `string` | No |  |
 | `reunion` | `string` | No |  |
 | `titulo` | `string` | No |  |
-| `voto` | `array` | No |  |
-| `votos_afirmativo` | `int` | No |  |
-| `votos_negativo` | `int` | No |  |
+| `votos` | `array` | No |  |
+| `votosAfirmativos` | `int` | No |  |
+| `votosNegativos` | `int` | No |  |
 
 ### Operations
 
@@ -284,11 +284,11 @@ $bonos_cer = $client->BonosCer();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha_vencimiento` | `string` | Yes |  |
-| `precio_ar` | `float` | Yes |  |
+| `fechaVencimiento` | `string` | Yes |  |
+| `precioArs` | `float` | Yes |  |
 | `ticker` | `string` | Yes |  |
-| `tir_porcentaje` | `float` | Yes |  |
-| `voluman` | `float` | No |  |
+| `tirPorcentaje` | `float` | Yes |  |
+| `volumen` | `float` | No |  |
 
 ### Operations
 
@@ -514,14 +514,14 @@ $diputado = $client->Diputado();
 | --- | --- | --- | --- |
 | `apellido` | `string` | No |  |
 | `bloque` | `string` | No |  |
-| `cese_fecha` | `string` | No |  |
+| `ceseFecha` | `string` | No |  |
 | `foto` | `string` | No |  |
 | `genero` | `string` | No |  |
 | `id` | `string` | No |  |
-| `juramento_fecha` | `string` | No |  |
+| `juramentoFecha` | `string` | No |  |
 | `nombre` | `string` | No |  |
-| `periodo_bloque` | `array` | No |  |
-| `periodo_mandato` | `array` | No |  |
+| `periodoBloque` | `array` | No |  |
+| `periodoMandato` | `array` | No |  |
 | `provincia` | `string` | No |  |
 
 ### Operations
@@ -575,7 +575,7 @@ $entidad_rendimiento = $client->EntidadRendimiento();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `entidad` | `string` | No |  |
-| `rendimiento` | `array` | No |  |
+| `rendimientos` | `array` | No |  |
 
 ### Operations
 
@@ -948,8 +948,8 @@ $fondo_comun_inversion_variable = $client->FondoComunInversionVariable();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `condicione` | `string` | No |  |
-| `condiciones_corto` | `string` | No |  |
+| `condiciones` | `string` | No |  |
+| `condicionesCorto` | `string` | No |  |
 | `fecha` | `string` | No |  |
 | `fondo` | `string` | No |  |
 | `nombre` | `string` | No |  |
@@ -1010,7 +1010,7 @@ $hipotecario_uva_tna = $client->HipotecarioUvaTna();
 | --- | --- | --- | --- |
 | `entidad` | `string` | No |  |
 | `metadata` | `array` | No |  |
-| `nombre_comercial` | `string` | No |  |
+| `nombreComercial` | `string` | No |  |
 | `tna` | `float` | No |  |
 
 ### Operations
@@ -1169,8 +1169,8 @@ $letra = $client->Letra();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha_emision` | `string` | No |  |
-| `fecha_vencimiento` | `string` | No |  |
+| `fechaEmision` | `string` | No |  |
+| `fechaVencimiento` | `string` | No |  |
 | `tem` | `float` | No |  |
 | `ticker` | `string` | No |  |
 | `vpv` | `float` | No |  |
@@ -1230,8 +1230,8 @@ $presidente = $client->Presidente();
 | `inicio` | `string` | No |  |
 | `nombre` | `string` | No |  |
 | `partido` | `string` | No |  |
-| `partido_imagen` | `string` | No |  |
-| `periodo_presidencial` | `string` | No |  |
+| `partidoImagen` | `string` | No |  |
+| `periodoPresidencial` | `string` | No |  |
 | `vicepresidente` | `string` | No |  |
 
 ### Operations
@@ -1284,7 +1284,7 @@ $proveedor_plazo_fijo_precancelable = $client->ProveedorPlazoFijoPrecancelable()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aviso_precancelacion_dia` | `int` | No |  |
+| `avisoPrecancelacionDias` | `int` | No |  |
 | `canal` | `string` | No |  |
 | `enlace` | `string` | No |  |
 | `entidad` | `string` | No |  |
@@ -1292,15 +1292,15 @@ $proveedor_plazo_fijo_precancelable = $client->ProveedorPlazoFijoPrecancelable()
 | `logo` | `string` | No |  |
 | `modalidad` | `string` | No |  |
 | `moneda` | `string` | No |  |
-| `monto_maximo` | `float` | No |  |
-| `monto_minimo` | `float` | No |  |
-| `plazo_max_dia` | `int` | No |  |
-| `plazo_min_dia` | `int` | No |  |
-| `plazo_precancelacion_dia` | `int` | No |  |
+| `montoMaximo` | `float` | No |  |
+| `montoMinimo` | `float` | No |  |
+| `plazoMaxDias` | `int` | No |  |
+| `plazoMinDias` | `int` | No |  |
+| `plazoPrecancelacionDias` | `int` | No |  |
 | `tea` | `float` | No |  |
-| `tea_precancelacion` | `float` | No |  |
+| `teaPrecancelacion` | `float` | No |  |
 | `tna` | `float` | No |  |
-| `tna_precancelacion` | `float` | No |  |
+| `tnaPrecancelacion` | `float` | No |  |
 
 ### Operations
 
@@ -1355,7 +1355,7 @@ $proveedor_plazo_fijo_uva_pago_periodico = $client->ProveedorPlazoFijoUvaPagoPer
 | `entidad` | `string` | No |  |
 | `id` | `string` | No |  |
 | `logo` | `string` | No |  |
-| `tasa` | `array` | No |  |
+| `tasas` | `array` | No |  |
 
 ### Operations
 
@@ -1416,21 +1416,21 @@ $rem = $client->Rem();
 | `mediana` | `float` | No |  |
 | `minimo` | `float` | No |  |
 | `muestra` | `string` | No |  |
-| `participante` | `int` | No |  |
+| `participantes` | `int` | No |  |
 | `percentil10` | `float` | No |  |
 | `percentil25` | `float` | No |  |
 | `percentil75` | `float` | No |  |
 | `percentil90` | `float` | No |  |
 | `periodo` | `string` | No |  |
-| `periodo_desde` | `string` | No |  |
-| `periodo_hasta` | `string` | No |  |
-| `periodo_tipo` | `string` | No |  |
+| `periodoDesde` | `string` | No |  |
+| `periodoHasta` | `string` | No |  |
+| `periodoTipo` | `string` | No |  |
 | `promedio` | `float` | No |  |
-| `publicacion_url` | `string` | No |  |
+| `publicacionUrl` | `string` | No |  |
 | `referencia` | `string` | No |  |
-| `referencia_fecha` | `string` | No |  |
+| `referenciaFecha` | `string` | No |  |
 | `unidad` | `string` | No |  |
-| `xlsx_url` | `string` | No |  |
+| `xlsxUrl` | `string` | No |  |
 
 ### Operations
 
@@ -1491,21 +1491,21 @@ $rem_expectativa = $client->RemExpectativa();
 | `mediana` | `float` | No |  |
 | `minimo` | `float` | No |  |
 | `muestra` | `string` | No |  |
-| `participante` | `int` | No |  |
+| `participantes` | `int` | No |  |
 | `percentil10` | `float` | No |  |
 | `percentil25` | `float` | No |  |
 | `percentil75` | `float` | No |  |
 | `percentil90` | `float` | No |  |
 | `periodo` | `string` | No |  |
-| `periodo_desde` | `string` | No |  |
-| `periodo_hasta` | `string` | No |  |
-| `periodo_tipo` | `string` | No |  |
+| `periodoDesde` | `string` | No |  |
+| `periodoHasta` | `string` | No |  |
+| `periodoTipo` | `string` | No |  |
 | `promedio` | `float` | No |  |
-| `publicacion_url` | `string` | No |  |
+| `publicacionUrl` | `string` | No |  |
 | `referencia` | `string` | No |  |
-| `referencia_fecha` | `string` | No |  |
+| `referenciaFecha` | `string` | No |  |
 | `unidad` | `string` | No |  |
-| `xlsx_url` | `string` | No |  |
+| `xlsxUrl` | `string` | No |  |
 
 ### Operations
 
@@ -1676,12 +1676,12 @@ $senador = $client->Senador();
 | `foto` | `string` | No |  |
 | `id` | `string` | No |  |
 | `nombre` | `string` | No |  |
-| `observacione` | `string` | No |  |
+| `observaciones` | `string` | No |  |
 | `partido` | `string` | No |  |
-| `periodo_legal` | `array` | No |  |
-| `periodo_real` | `array` | No |  |
+| `periodoLegal` | `array` | No |  |
+| `periodoReal` | `array` | No |  |
 | `provincia` | `string` | No |  |
-| `rede` | `array` | No |  |
+| `redes` | `array` | No |  |
 | `reemplazo` | `string` | No |  |
 | `telefono` | `string` | No |  |
 
@@ -1790,8 +1790,8 @@ $tasa_plazo_fijo = $client->TasaPlazoFijo();
 | --- | --- | --- | --- |
 | `entidad` | `string` | No |  |
 | `logo` | `string` | No |  |
-| `tna_cliente` | `float` | No |  |
-| `tna_no_cliente` | `float` | No |  |
+| `tnaClientes` | `float` | No |  |
+| `tnaNoClientes` | `float` | No |  |
 
 ### Operations
 

@@ -63,7 +63,7 @@ describe('DiputadoEntity', async () => {
     const diputado_ref01_ent = client.Diputado()
     const diputado_ref01_match: any = {}
 
-    const diputado_ref01_list = await diputado_ref01_ent.list(diputado_ref01_match)
+    const diputado_ref01_list = (await diputado_ref01_ent.list(diputado_ref01_match)).map((e: any) => e.data())
 
 
   })

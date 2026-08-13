@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from argentinadatos_sdk.utility.voxgig_struct import voxgig_struct as vs
 from argentinadatos_sdk import ArgentinadatosSDK
-from core import helpers
+from argentinadatos_sdk.core import helpers
 from test import runner
 
 

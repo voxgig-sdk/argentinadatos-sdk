@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from argentinadatos_sdk.utility.voxgig_struct import voxgig_struct as vs
 from argentinadatos_sdk import ArgentinadatosSDK
-from core import helpers
+from argentinadatos_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -42,7 +42,7 @@ class TestActaEntity:
         assert len(seen) == 3
 
         # Inbound: streaming active -> yields each item from the feature.
-        from config import make_config
+        from argentinadatos_sdk.config import make_config
         cfg = make_config()
         if isinstance(cfg.get("feature"), dict) and "streaming" in cfg["feature"]:
             sdk = ArgentinadatosSDK.test(
@@ -92,7 +92,7 @@ class TestActaEntity:
             "id": acta_ref01_data["id"],
         }
         acta_ref01_data_dt0_loaded = acta_ref01_ent.load(acta_ref01_match_dt0, None)
-        acta_ref01_data_dt0_load_result = helpers.to_map(acta_ref01_data_dt0_loaded)
+        acta_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(acta_ref01_data_dt0_loaded))
         assert acta_ref01_data_dt0_load_result is not None
         assert acta_ref01_data_dt0_load_result["id"] == acta_ref01_data["id"]
 

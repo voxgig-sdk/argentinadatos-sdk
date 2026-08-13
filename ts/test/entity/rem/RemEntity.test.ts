@@ -65,7 +65,7 @@ describe('RemEntity', async () => {
     rem_ref01_match['año'] = setup.idmap['año01']
     rem_ref01_match['mes'] = setup.idmap['mes01']
 
-    const rem_ref01_list = await rem_ref01_ent.list(rem_ref01_match)
+    const rem_ref01_list = (await rem_ref01_ent.list(rem_ref01_match)).map((e: any) => e.data())
 
 
   })

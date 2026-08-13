@@ -63,7 +63,7 @@ describe('IndiceUvaEntity', async () => {
     const indice_uva_ref01_ent = client.IndiceUva()
     const indice_uva_ref01_match: any = {}
 
-    const indice_uva_ref01_list = await indice_uva_ref01_ent.list(indice_uva_ref01_match)
+    const indice_uva_ref01_list = (await indice_uva_ref01_ent.list(indice_uva_ref01_match)).map((e: any) => e.data())
 
 
   })

@@ -37,7 +37,7 @@ class BonosCerEntity extends ArgentinadatosEntityBase<BonosCer> {
 
 
 
-  async list(this: any, reqmatch?: BonosCerListMatch, ctrl?: Control): Promise<BonosCer[]> {
+  async list(this: any, reqmatch?: BonosCerListMatch, ctrl?: Control): Promise<BonosCerEntity[]> {
 
     const utility = this._utility
 

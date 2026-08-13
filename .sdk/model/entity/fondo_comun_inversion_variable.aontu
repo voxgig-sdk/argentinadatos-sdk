@@ -6,12 +6,12 @@ main: kit: entity: fondo_comun_inversion_variable: {
 
   fields: [
     {
-      name: "condicione"
+      name: "condiciones"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "condiciones_corto"
+      name: "condicionesCorto"
       req: false
       type: "`$STRING`"
     }

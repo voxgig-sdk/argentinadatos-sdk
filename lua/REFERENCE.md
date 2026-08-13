@@ -198,31 +198,31 @@ local acta = client:Acta(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abstencione` | `number` | No |  |
+| `abstenciones` | `number` | No |  |
 | `acta` | `string` | No |  |
-| `acta_id` | `number` | No |  |
-| `afirmativo` | `number` | No |  |
+| `actaId` | `number` | No |  |
+| `afirmativos` | `number` | No |  |
 | `amn` | `number` | No |  |
-| `ausente` | `number` | No |  |
+| `ausentes` | `number` | No |  |
 | `descripcion` | `string` | No |  |
 | `fecha` | `string` | No |  |
 | `id` | `string` | No |  |
 | `mayoria` | `string` | No |  |
-| `miembro` | `number` | No |  |
-| `negativo` | `number` | No |  |
-| `numero_acta` | `string` | No |  |
-| `observacione` | `table` | No |  |
+| `miembros` | `number` | No |  |
+| `negativos` | `number` | No |  |
+| `numeroActa` | `string` | No |  |
+| `observaciones` | `table` | No |  |
 | `periodo` | `string` | No |  |
-| `presente` | `number` | No |  |
+| `presentes` | `number` | No |  |
 | `presidente` | `string` | No |  |
 | `proyecto` | `string` | No |  |
-| `quorum_tipo` | `string` | No |  |
+| `quorumTipo` | `string` | No |  |
 | `resultado` | `string` | No |  |
 | `reunion` | `string` | No |  |
 | `titulo` | `string` | No |  |
-| `voto` | `table` | No |  |
-| `votos_afirmativo` | `number` | No |  |
-| `votos_negativo` | `number` | No |  |
+| `votos` | `table` | No |  |
+| `votosAfirmativos` | `number` | No |  |
+| `votosNegativos` | `number` | No |  |
 
 ### Operations
 
@@ -282,11 +282,11 @@ local bonos_cer = client:BonosCer(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha_vencimiento` | `string` | Yes |  |
-| `precio_ar` | `number` | Yes |  |
+| `fechaVencimiento` | `string` | Yes |  |
+| `precioArs` | `number` | Yes |  |
 | `ticker` | `string` | Yes |  |
-| `tir_porcentaje` | `number` | Yes |  |
-| `voluman` | `number` | No |  |
+| `tirPorcentaje` | `number` | Yes |  |
+| `volumen` | `number` | No |  |
 
 ### Operations
 
@@ -512,14 +512,14 @@ local diputado = client:Diputado(nil)
 | --- | --- | --- | --- |
 | `apellido` | `string` | No |  |
 | `bloque` | `string` | No |  |
-| `cese_fecha` | `string` | No |  |
+| `ceseFecha` | `string` | No |  |
 | `foto` | `string` | No |  |
 | `genero` | `string` | No |  |
 | `id` | `string` | No |  |
-| `juramento_fecha` | `string` | No |  |
+| `juramentoFecha` | `string` | No |  |
 | `nombre` | `string` | No |  |
-| `periodo_bloque` | `table` | No |  |
-| `periodo_mandato` | `table` | No |  |
+| `periodoBloque` | `table` | No |  |
+| `periodoMandato` | `table` | No |  |
 | `provincia` | `string` | No |  |
 
 ### Operations
@@ -573,7 +573,7 @@ local entidad_rendimiento = client:EntidadRendimiento(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `entidad` | `string` | No |  |
-| `rendimiento` | `table` | No |  |
+| `rendimientos` | `table` | No |  |
 
 ### Operations
 
@@ -946,8 +946,8 @@ local fondo_comun_inversion_variable = client:FondoComunInversionVariable(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `condicione` | `string` | No |  |
-| `condiciones_corto` | `string` | No |  |
+| `condiciones` | `string` | No |  |
+| `condicionesCorto` | `string` | No |  |
 | `fecha` | `string` | No |  |
 | `fondo` | `string` | No |  |
 | `nombre` | `string` | No |  |
@@ -1008,7 +1008,7 @@ local hipotecario_uva_tna = client:HipotecarioUvaTna(nil)
 | --- | --- | --- | --- |
 | `entidad` | `string` | No |  |
 | `metadata` | `table` | No |  |
-| `nombre_comercial` | `string` | No |  |
+| `nombreComercial` | `string` | No |  |
 | `tna` | `number` | No |  |
 
 ### Operations
@@ -1167,8 +1167,8 @@ local letra = client:Letra(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fecha_emision` | `string` | No |  |
-| `fecha_vencimiento` | `string` | No |  |
+| `fechaEmision` | `string` | No |  |
+| `fechaVencimiento` | `string` | No |  |
 | `tem` | `number` | No |  |
 | `ticker` | `string` | No |  |
 | `vpv` | `number` | No |  |
@@ -1228,8 +1228,8 @@ local presidente = client:Presidente(nil)
 | `inicio` | `string` | No |  |
 | `nombre` | `string` | No |  |
 | `partido` | `string` | No |  |
-| `partido_imagen` | `string` | No |  |
-| `periodo_presidencial` | `string` | No |  |
+| `partidoImagen` | `string` | No |  |
+| `periodoPresidencial` | `string` | No |  |
 | `vicepresidente` | `string` | No |  |
 
 ### Operations
@@ -1282,7 +1282,7 @@ local proveedor_plazo_fijo_precancelable = client:ProveedorPlazoFijoPrecancelabl
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `aviso_precancelacion_dia` | `number` | No |  |
+| `avisoPrecancelacionDias` | `number` | No |  |
 | `canal` | `string` | No |  |
 | `enlace` | `string` | No |  |
 | `entidad` | `string` | No |  |
@@ -1290,15 +1290,15 @@ local proveedor_plazo_fijo_precancelable = client:ProveedorPlazoFijoPrecancelabl
 | `logo` | `string` | No |  |
 | `modalidad` | `string` | No |  |
 | `moneda` | `string` | No |  |
-| `monto_maximo` | `number` | No |  |
-| `monto_minimo` | `number` | No |  |
-| `plazo_max_dia` | `number` | No |  |
-| `plazo_min_dia` | `number` | No |  |
-| `plazo_precancelacion_dia` | `number` | No |  |
+| `montoMaximo` | `number` | No |  |
+| `montoMinimo` | `number` | No |  |
+| `plazoMaxDias` | `number` | No |  |
+| `plazoMinDias` | `number` | No |  |
+| `plazoPrecancelacionDias` | `number` | No |  |
 | `tea` | `number` | No |  |
-| `tea_precancelacion` | `number` | No |  |
+| `teaPrecancelacion` | `number` | No |  |
 | `tna` | `number` | No |  |
-| `tna_precancelacion` | `number` | No |  |
+| `tnaPrecancelacion` | `number` | No |  |
 
 ### Operations
 
@@ -1353,7 +1353,7 @@ local proveedor_plazo_fijo_uva_pago_periodico = client:ProveedorPlazoFijoUvaPago
 | `entidad` | `string` | No |  |
 | `id` | `string` | No |  |
 | `logo` | `string` | No |  |
-| `tasa` | `table` | No |  |
+| `tasas` | `table` | No |  |
 
 ### Operations
 
@@ -1414,21 +1414,21 @@ local rem = client:Rem(nil)
 | `mediana` | `number` | No |  |
 | `minimo` | `number` | No |  |
 | `muestra` | `string` | No |  |
-| `participante` | `number` | No |  |
+| `participantes` | `number` | No |  |
 | `percentil10` | `number` | No |  |
 | `percentil25` | `number` | No |  |
 | `percentil75` | `number` | No |  |
 | `percentil90` | `number` | No |  |
 | `periodo` | `string` | No |  |
-| `periodo_desde` | `string` | No |  |
-| `periodo_hasta` | `string` | No |  |
-| `periodo_tipo` | `string` | No |  |
+| `periodoDesde` | `string` | No |  |
+| `periodoHasta` | `string` | No |  |
+| `periodoTipo` | `string` | No |  |
 | `promedio` | `number` | No |  |
-| `publicacion_url` | `string` | No |  |
+| `publicacionUrl` | `string` | No |  |
 | `referencia` | `string` | No |  |
-| `referencia_fecha` | `string` | No |  |
+| `referenciaFecha` | `string` | No |  |
 | `unidad` | `string` | No |  |
-| `xlsx_url` | `string` | No |  |
+| `xlsxUrl` | `string` | No |  |
 
 ### Operations
 
@@ -1489,21 +1489,21 @@ local rem_expectativa = client:RemExpectativa(nil)
 | `mediana` | `number` | No |  |
 | `minimo` | `number` | No |  |
 | `muestra` | `string` | No |  |
-| `participante` | `number` | No |  |
+| `participantes` | `number` | No |  |
 | `percentil10` | `number` | No |  |
 | `percentil25` | `number` | No |  |
 | `percentil75` | `number` | No |  |
 | `percentil90` | `number` | No |  |
 | `periodo` | `string` | No |  |
-| `periodo_desde` | `string` | No |  |
-| `periodo_hasta` | `string` | No |  |
-| `periodo_tipo` | `string` | No |  |
+| `periodoDesde` | `string` | No |  |
+| `periodoHasta` | `string` | No |  |
+| `periodoTipo` | `string` | No |  |
 | `promedio` | `number` | No |  |
-| `publicacion_url` | `string` | No |  |
+| `publicacionUrl` | `string` | No |  |
 | `referencia` | `string` | No |  |
-| `referencia_fecha` | `string` | No |  |
+| `referenciaFecha` | `string` | No |  |
 | `unidad` | `string` | No |  |
-| `xlsx_url` | `string` | No |  |
+| `xlsxUrl` | `string` | No |  |
 
 ### Operations
 
@@ -1674,12 +1674,12 @@ local senador = client:Senador(nil)
 | `foto` | `string` | No |  |
 | `id` | `string` | No |  |
 | `nombre` | `string` | No |  |
-| `observacione` | `string` | No |  |
+| `observaciones` | `string` | No |  |
 | `partido` | `string` | No |  |
-| `periodo_legal` | `table` | No |  |
-| `periodo_real` | `table` | No |  |
+| `periodoLegal` | `table` | No |  |
+| `periodoReal` | `table` | No |  |
 | `provincia` | `string` | No |  |
-| `rede` | `table` | No |  |
+| `redes` | `table` | No |  |
 | `reemplazo` | `string` | No |  |
 | `telefono` | `string` | No |  |
 
@@ -1788,8 +1788,8 @@ local tasa_plazo_fijo = client:TasaPlazoFijo(nil)
 | --- | --- | --- | --- |
 | `entidad` | `string` | No |  |
 | `logo` | `string` | No |  |
-| `tna_cliente` | `number` | No |  |
-| `tna_no_cliente` | `number` | No |  |
+| `tnaClientes` | `number` | No |  |
+| `tnaNoClientes` | `number` | No |  |
 
 ### Operations
 

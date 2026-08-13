@@ -6,12 +6,12 @@ main: kit: entity: letra: {
 
   fields: [
     {
-      name: "fecha_emision"
+      name: "fechaEmision"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "fecha_vencimiento"
+      name: "fechaVencimiento"
       req: false
       type: "`$STRING`"
     }

@@ -37,7 +37,7 @@ class RemExpectativaEntity extends ArgentinadatosEntityBase<RemExpectativa> {
 
 
 
-  async list(this: any, reqmatch?: RemExpectativaListMatch, ctrl?: Control): Promise<RemExpectativa[]> {
+  async list(this: any, reqmatch?: RemExpectativaListMatch, ctrl?: Control): Promise<RemExpectativaEntity[]> {
 
     const utility = this._utility
 

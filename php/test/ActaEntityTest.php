@@ -97,7 +97,7 @@ class ActaEntityTest extends TestCase
             "id" => $acta_ref01_data["id"],
         ];
         $acta_ref01_data_dt0_loaded = $acta_ref01_ent->load($acta_ref01_match_dt0, null);
-        $acta_ref01_data_dt0_load_result = Helpers::to_map($acta_ref01_data_dt0_loaded);
+        $acta_ref01_data_dt0_load_result = Helpers::to_map(is_object($acta_ref01_data_dt0_loaded) && method_exists($acta_ref01_data_dt0_loaded, 'data_get') ? $acta_ref01_data_dt0_loaded->data_get() : $acta_ref01_data_dt0_loaded);
         $this->assertNotNull($acta_ref01_data_dt0_load_result);
         $this->assertEquals($acta_ref01_data_dt0_load_result["id"], $acta_ref01_data["id"]);
 

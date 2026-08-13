@@ -37,7 +37,7 @@ class ProveedorPlazoFijoUvaPagoPeriodicoEntity extends ArgentinadatosEntityBase<
 
 
 
-  async list(this: any, reqmatch?: ProveedorPlazoFijoUvaPagoPeriodicoListMatch, ctrl?: Control): Promise<ProveedorPlazoFijoUvaPagoPeriodico[]> {
+  async list(this: any, reqmatch?: ProveedorPlazoFijoUvaPagoPeriodicoListMatch, ctrl?: Control): Promise<ProveedorPlazoFijoUvaPagoPeriodicoEntity[]> {
 
     const utility = this._utility
 
