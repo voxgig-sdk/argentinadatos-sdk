@@ -28,7 +28,7 @@ class ArgentinadatosSDK
     utility = ArgentinadatosUtility.new
     @_utility = utility
 
-    config = ArgentinadatosConfig.make_config
+    config = ArgentinadatosConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

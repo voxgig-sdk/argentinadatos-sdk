@@ -40,7 +40,7 @@ class ArgentinadatosSDK
         $utility = new ArgentinadatosUtility();
         $this->_utility = $utility;
 
-        $config = ArgentinadatosConfig::make_config();
+        $config = ArgentinadatosConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

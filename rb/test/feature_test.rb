@@ -15,7 +15,7 @@ require_relative "../Argentinadatos_sdk"
 module ArgentinadatosFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = ArgentinadatosConfig.make_config["feature"]
+    f = ArgentinadatosConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 
