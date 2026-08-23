@@ -1,0 +1,64 @@
+# Entity: proveedor_plazo_fijo_uva_pago_periodico
+
+main: kit: entity: proveedor_plazo_fijo_uva_pago_periodico: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "entidad"
+      req: false
+      short: "Nombre de la entidad"
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "Identificador estable del proveedor (p."
+      type: "`$STRING`"
+    }
+    {
+      name: "logo"
+      req: false
+      short: "URL del logo de la entidad"
+      type: "`$STRING`"
+    }
+    {
+      name: "tasas"
+      req: false
+      short: "Tasas por rango de plazo"
+      type: "`$ARRAY`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "proveedor_plazo_fijo_uva_pago_periodico"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/v1/finanzas/tasas/plazoFijoUvaPagoPeriodico"
+          parts: [
+            "v1"
+            "finanzas"
+            "tasas"
+            "plazoFijoUvaPagoPeriodico"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

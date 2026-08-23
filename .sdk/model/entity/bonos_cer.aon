@@ -1,0 +1,64 @@
+# Entity: bonos_cer
+
+main: kit: entity: bonos_cer: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "fechaVencimiento"
+      req: true
+      short: "Fecha de vencimiento (ISO 8601, solo fecha: yyyy-MM-dd)"
+      type: "`$STRING`"
+    }
+    {
+      name: "precioArs"
+      req: true
+      short: "Precio de cotización en pesos argentinos"
+      type: "`$NUMBER`"
+    }
+    {
+      name: "ticker"
+      req: true
+      short: "Código del bono (ej."
+      type: "`$STRING`"
+    }
+    {
+      name: "tirPorcentaje"
+      req: true
+      short: "Tasa interna de retorno (TIR) en porcentaje"
+      type: "`$NUMBER`"
+    }
+    {
+      name: "volumen"
+      req: false
+      short: "Volumen nominal negociado, si la fuente lo publica"
+      type: "`$NUMBER`"
+    }
+  ]
+
+  name: "bonos_cer"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/v1/finanzas/bonos-cer"
+          parts: [
+            "v1"
+            "finanzas"
+            "bonos-cer"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body.bonos`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

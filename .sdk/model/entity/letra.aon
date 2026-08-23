@@ -1,0 +1,64 @@
+# Entity: letra
+
+main: kit: entity: letra: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "fechaEmision"
+      req: false
+      short: "Fecha de emisión original (ISO 8601)"
+      type: "`$STRING`"
+    }
+    {
+      name: "fechaVencimiento"
+      req: false
+      short: "Fecha de vencimiento (ISO 8601)"
+      type: "`$STRING`"
+    }
+    {
+      name: "tem"
+      req: false
+      short: "Tasa Efectiva Mensual (%)"
+      type: "`$NUMBER`"
+    }
+    {
+      name: "ticker"
+      req: false
+      short: "Código del instrumento (ej: S31G5, T17O5)"
+      type: "`$STRING`"
+    }
+    {
+      name: "vpv"
+      req: false
+      short: "Valor de Pago al Vencimiento por cada $100 de valor nominal"
+      type: "`$NUMBER`"
+    }
+  ]
+
+  name: "letra"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/v1/finanzas/letras"
+          parts: [
+            "v1"
+            "finanzas"
+            "letras"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

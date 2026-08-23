@@ -1,0 +1,79 @@
+# Entity: presidente
+
+main: kit: entity: presidente: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "fin"
+      req: false
+      short: "Fecha de fin del mandato (formato yyyy-MM-dd)."
+      type: "`$STRING`"
+    }
+    {
+      name: "imagen"
+      req: false
+      short: "URL de la imagen del presidente"
+      type: "`$STRING`"
+    }
+    {
+      name: "inicio"
+      req: false
+      short: "Fecha de inicio del mandato (formato yyyy-MM-dd)"
+      type: "`$STRING`"
+    }
+    {
+      name: "nombre"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "partido"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "partidoImagen"
+      req: false
+      short: "URL de la imagen del logo del partido político"
+      type: "`$STRING`"
+    }
+    {
+      name: "periodoPresidencial"
+      req: false
+      short: "Rango de años del período presidencial (ej: '2019-2023')"
+      type: "`$STRING`"
+    }
+    {
+      name: "vicepresidente"
+      req: false
+      short: "Nombre del vicepresidente."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "presidente"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/v1/presidentes"
+          parts: [
+            "v1"
+            "presidentes"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

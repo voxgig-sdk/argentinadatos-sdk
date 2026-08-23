@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "Argentinadatos",
+			"slug": "argentinadatos",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -289,25 +292,30 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "fechaVencimiento",
 						"req": true,
+						"short": "Fecha de vencimiento (ISO 8601, solo fecha: yyyy-MM-dd)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "precioArs",
 						"req": true,
+						"short": "Precio de cotización en pesos argentinos",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "ticker",
 						"req": true,
+						"short": "Código del bono (ej.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tirPorcentaje",
 						"req": true,
+						"short": "Tasa interna de retorno (TIR) en porcentaje",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "volumen",
+						"short": "Volumen nominal negociado, si la fuente lo publica",
 						"type": "`$NUMBER`",
 					},
 				},
@@ -480,14 +488,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "entidad",
+						"short": "Nombre de la entidad que ofrece el criptopeso",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tna",
+						"short": "Tasa Nominal Anual en porcentaje",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "token",
+						"short": "Token del criptopeso (ej: ARGt, wARS)",
 						"type": "`$STRING`",
 					},
 				},
@@ -524,14 +535,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "entidad",
+						"short": "Identificador de la entidad (p.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tasa",
+						"short": "Tasa de rendimiento anual en formato decimal (p.",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "tope",
+						"short": "Monto máximo en USD remunerado a esa tasa, o null si no hay tope o no se informó",
 						"type": "`$NUMBER`",
 					},
 				},
@@ -1172,10 +1186,12 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "fondo",
+						"short": "Nombre del fondo común de inversión (clase o denominación oficial).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "nombre",
+						"short": "Identificador de la fuente en Argentina Datos (por ejemplo el proveedor o el canal).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -1184,6 +1200,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "tipo",
+						"short": "Clasificación del instrumento.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -1250,18 +1267,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "entidad",
+						"short": "Nombre del banco u oferente del crédito hipotecario UVA",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "metadata",
+						"short": "Detalle de condiciones",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "nombreComercial",
+						"short": "Nombre comercial",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tna",
+						"short": "Tasa Nominal Anual",
 						"type": "`$NUMBER`",
 					},
 				},
@@ -1398,22 +1419,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "fechaEmision",
+						"short": "Fecha de emisión original (ISO 8601)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "fechaVencimiento",
+						"short": "Fecha de vencimiento (ISO 8601)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tem",
+						"short": "Tasa Efectiva Mensual (%)",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "ticker",
+						"short": "Código del instrumento (ej: S31G5, T17O5)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "vpv",
+						"short": "Valor de Pago al Vencimiento por cada $100 de valor nominal",
 						"type": "`$NUMBER`",
 					},
 				},
@@ -1450,14 +1476,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "fin",
+						"short": "Fecha de fin del mandato (formato yyyy-MM-dd).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "imagen",
+						"short": "URL de la imagen del presidente",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "inicio",
+						"short": "Fecha de inicio del mandato (formato yyyy-MM-dd)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -1470,14 +1499,17 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "partidoImagen",
+						"short": "URL de la imagen del logo del partido político",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "periodoPresidencial",
+						"short": "Rango de años del período presidencial (ej: '2019-2023')",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "vicepresidente",
+						"short": "Nombre del vicepresidente.",
 						"type": "`$STRING`",
 					},
 				},
@@ -1513,70 +1545,87 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "avisoPrecancelacionDias",
+						"short": "Días hábiles de aviso previo para precancelar",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "canal",
+						"short": "Canales publicados para constituir el plazo fijo",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "enlace",
+						"short": "URL de la fuente",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "entidad",
+						"short": "Nombre de la entidad",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Identificador estable del proveedor",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "logo",
+						"short": "URL del logo de la entidad",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "modalidad",
+						"short": "Modalidad publicada por la entidad",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "moneda",
+						"short": "Moneda de constitución",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "montoMaximo",
+						"short": "Monto máximo de constitución",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "montoMinimo",
+						"short": "Monto mínimo de constitución",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "plazoMaxDias",
+						"short": "Plazo máximo en días",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "plazoMinDias",
+						"short": "Plazo mínimo en días",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "plazoPrecancelacionDias",
+						"short": "Días mínimos para ejercer la precancelación",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "tea",
+						"short": "Tasa Efectiva Anual",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "teaPrecancelacion",
+						"short": "Tasa Efectiva Anual aplicada ante precancelación",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "tna",
+						"short": "Tasa Nominal Anual",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "tnaPrecancelacion",
+						"short": "Tasa Nominal Anual aplicada ante precancelación",
 						"type": "`$NUMBER`",
 					},
 				},
@@ -1614,18 +1663,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "entidad",
+						"short": "Nombre de la entidad",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Identificador estable del proveedor (p.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "logo",
+						"short": "URL del logo de la entidad",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tasas",
+						"short": "Tasas por rango de plazo",
 						"type": "`$ARRAY`",
 					},
 				},
@@ -1667,6 +1720,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "fecha",
+						"short": "Fecha ISO del primer día del mes del informe",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -1675,10 +1729,12 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "indicador",
+						"short": "Indicador relevado",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "informe",
+						"short": "Informe REM en formato YYYY-MM",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -1695,6 +1751,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "muestra",
+						"short": "Muestra de participantes: todos o TOP 10",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -1719,18 +1776,22 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "periodo",
+						"short": "Período original informado por el BCRA",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "periodoDesde",
+						"short": "Fecha de inicio del período normalizado",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "periodoHasta",
+						"short": "Fecha de fin del período normalizado",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "periodoTipo",
+						"short": "Tipo de período normalizado",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -1743,14 +1804,17 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "referencia",
+						"short": "Referencia original de la tabla",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "referenciaFecha",
+						"short": "Fecha detectada en la referencia, si corresponde",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "unidad",
+						"short": "Unidad inferida desde la referencia",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -1824,6 +1888,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "fecha",
+						"short": "Fecha ISO del primer día del mes del informe",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -1832,10 +1897,12 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "indicador",
+						"short": "Indicador relevado",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "informe",
+						"short": "Informe REM en formato YYYY-MM",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -1852,6 +1919,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "muestra",
+						"short": "Muestra de participantes: todos o TOP 10",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -1876,18 +1944,22 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "periodo",
+						"short": "Período original informado por el BCRA",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "periodoDesde",
+						"short": "Fecha de inicio del período normalizado",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "periodoHasta",
+						"short": "Fecha de fin del período normalizado",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "periodoTipo",
+						"short": "Tipo de período normalizado",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -1900,14 +1972,17 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "referencia",
+						"short": "Referencia original de la tabla",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "referenciaFecha",
+						"short": "Fecha detectada en la referencia, si corresponde",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "unidad",
+						"short": "Unidad inferida desde la referencia",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -2205,14 +2280,17 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "logo",
+						"short": "URL del logo de la entidad",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tnaClientes",
+						"short": "Tasa Nominal Anual para clientes, en porcentaje",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "tnaNoClientes",
+						"short": "Tasa Nominal Anual para no clientes, en porcentaje",
 						"type": "`$NUMBER`",
 					},
 				},

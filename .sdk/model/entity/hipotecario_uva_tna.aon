@@ -1,0 +1,59 @@
+# Entity: hipotecario_uva_tna
+
+main: kit: entity: hipotecario_uva_tna: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "entidad"
+      req: false
+      short: "Nombre del banco u oferente del crédito hipotecario UVA"
+      type: "`$STRING`"
+    }
+    {
+      name: "metadata"
+      req: false
+      short: "Detalle de condiciones"
+      type: "`$OBJECT`"
+    }
+    {
+      name: "nombreComercial"
+      req: false
+      short: "Nombre comercial"
+      type: "`$STRING`"
+    }
+    {
+      name: "tna"
+      req: false
+      short: "Tasa Nominal Anual"
+      type: "`$NUMBER`"
+    }
+  ]
+
+  name: "hipotecario_uva_tna"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/v1/finanzas/creditos/hipotecariosUva"
+          parts: [
+            "v1"
+            "finanzas"
+            "creditos"
+            "hipotecariosUva"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

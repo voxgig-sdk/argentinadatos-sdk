@@ -280,11 +280,11 @@ bonos_cer = client.BonosCer()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fechaVencimiento` | `str` | Yes |  |
-| `precioArs` | `float` | Yes |  |
-| `ticker` | `str` | Yes |  |
-| `tirPorcentaje` | `float` | Yes |  |
-| `volumen` | `float` | No |  |
+| `fechaVencimiento` | `str` | Yes | Fecha de vencimiento (ISO 8601, solo fecha: yyyy-MM-dd) |
+| `precioArs` | `float` | Yes | Precio de cotización en pesos argentinos |
+| `ticker` | `str` | Yes | Código del bono (ej. |
+| `tirPorcentaje` | `float` | Yes | Tasa interna de retorno (TIR) en porcentaje |
+| `volumen` | `float` | No | Volumen nominal negociado, si la fuente lo publica |
 
 ### Operations
 
@@ -402,9 +402,9 @@ criptopeso = client.Criptopeso()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | `str` | No |  |
-| `tna` | `float` | No |  |
-| `token` | `str` | No |  |
+| `entidad` | `str` | No | Nombre de la entidad que ofrece el criptopeso |
+| `tna` | `float` | No | Tasa Nominal Anual en porcentaje |
+| `token` | `str` | No | Token del criptopeso (ej: ARGt, wARS) |
 
 ### Operations
 
@@ -457,9 +457,9 @@ cuenta_remunerada_usd = client.CuentaRemuneradaUsd()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | `str` | No |  |
-| `tasa` | `float` | No |  |
-| `tope` | `float` | No |  |
+| `entidad` | `str` | No | Identificador de la entidad (p. |
+| `tasa` | `float` | No | Tasa de rendimiento anual en formato decimal (p. |
+| `tope` | `float` | No | Monto máximo en USD remunerado a esa tasa, o null si no hay tope o no se informó |
 
 ### Operations
 
@@ -951,10 +951,10 @@ fondo_comun_inversion_variable = client.FondoComunInversionVariable()
 | `condiciones` | `str` | No |  |
 | `condicionesCorto` | `str` | No |  |
 | `fecha` | `str` | No |  |
-| `fondo` | `str` | No |  |
-| `nombre` | `str` | No |  |
+| `fondo` | `str` | No | Nombre del fondo común de inversión (clase o denominación oficial). |
+| `nombre` | `str` | No | Identificador de la fuente en Argentina Datos (por ejemplo el proveedor o el canal). |
 | `tea` | `float` | No |  |
-| `tipo` | `str` | No |  |
+| `tipo` | `str` | No | Clasificación del instrumento. |
 | `tna` | `float` | No |  |
 | `tope` | `float` | No |  |
 
@@ -1007,10 +1007,10 @@ hipotecario_uva_tna = client.HipotecarioUvaTna()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | `str` | No |  |
-| `metadata` | `dict` | No |  |
-| `nombreComercial` | `str` | No |  |
-| `tna` | `float` | No |  |
+| `entidad` | `str` | No | Nombre del banco u oferente del crédito hipotecario UVA |
+| `metadata` | `dict` | No | Detalle de condiciones |
+| `nombreComercial` | `str` | No | Nombre comercial |
+| `tna` | `float` | No | Tasa Nominal Anual |
 
 ### Operations
 
@@ -1171,11 +1171,11 @@ letra = client.Letra()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fechaEmision` | `str` | No |  |
-| `fechaVencimiento` | `str` | No |  |
-| `tem` | `float` | No |  |
-| `ticker` | `str` | No |  |
-| `vpv` | `float` | No |  |
+| `fechaEmision` | `str` | No | Fecha de emisión original (ISO 8601) |
+| `fechaVencimiento` | `str` | No | Fecha de vencimiento (ISO 8601) |
+| `tem` | `float` | No | Tasa Efectiva Mensual (%) |
+| `ticker` | `str` | No | Código del instrumento (ej: S31G5, T17O5) |
+| `vpv` | `float` | No | Valor de Pago al Vencimiento por cada $100 de valor nominal |
 
 ### Operations
 
@@ -1228,14 +1228,14 @@ presidente = client.Presidente()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fin` | `str` | No |  |
-| `imagen` | `str` | No |  |
-| `inicio` | `str` | No |  |
+| `fin` | `str` | No | Fecha de fin del mandato (formato yyyy-MM-dd). |
+| `imagen` | `str` | No | URL de la imagen del presidente |
+| `inicio` | `str` | No | Fecha de inicio del mandato (formato yyyy-MM-dd) |
 | `nombre` | `str` | No |  |
 | `partido` | `str` | No |  |
-| `partidoImagen` | `str` | No |  |
-| `periodoPresidencial` | `str` | No |  |
-| `vicepresidente` | `str` | No |  |
+| `partidoImagen` | `str` | No | URL de la imagen del logo del partido político |
+| `periodoPresidencial` | `str` | No | Rango de años del período presidencial (ej: '2019-2023') |
+| `vicepresidente` | `str` | No | Nombre del vicepresidente. |
 
 ### Operations
 
@@ -1288,23 +1288,23 @@ proveedor_plazo_fijo_precancelable = client.ProveedorPlazoFijoPrecancelable()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avisoPrecancelacionDias` | `int` | No |  |
-| `canal` | `str` | No |  |
-| `enlace` | `str` | No |  |
-| `entidad` | `str` | No |  |
-| `id` | `str` | No |  |
-| `logo` | `str` | No |  |
-| `modalidad` | `str` | No |  |
-| `moneda` | `str` | No |  |
-| `montoMaximo` | `float` | No |  |
-| `montoMinimo` | `float` | No |  |
-| `plazoMaxDias` | `int` | No |  |
-| `plazoMinDias` | `int` | No |  |
-| `plazoPrecancelacionDias` | `int` | No |  |
-| `tea` | `float` | No |  |
-| `teaPrecancelacion` | `float` | No |  |
-| `tna` | `float` | No |  |
-| `tnaPrecancelacion` | `float` | No |  |
+| `avisoPrecancelacionDias` | `int` | No | Días hábiles de aviso previo para precancelar |
+| `canal` | `str` | No | Canales publicados para constituir el plazo fijo |
+| `enlace` | `str` | No | URL de la fuente |
+| `entidad` | `str` | No | Nombre de la entidad |
+| `id` | `str` | No | Identificador estable del proveedor |
+| `logo` | `str` | No | URL del logo de la entidad |
+| `modalidad` | `str` | No | Modalidad publicada por la entidad |
+| `moneda` | `str` | No | Moneda de constitución |
+| `montoMaximo` | `float` | No | Monto máximo de constitución |
+| `montoMinimo` | `float` | No | Monto mínimo de constitución |
+| `plazoMaxDias` | `int` | No | Plazo máximo en días |
+| `plazoMinDias` | `int` | No | Plazo mínimo en días |
+| `plazoPrecancelacionDias` | `int` | No | Días mínimos para ejercer la precancelación |
+| `tea` | `float` | No | Tasa Efectiva Anual |
+| `teaPrecancelacion` | `float` | No | Tasa Efectiva Anual aplicada ante precancelación |
+| `tna` | `float` | No | Tasa Nominal Anual |
+| `tnaPrecancelacion` | `float` | No | Tasa Nominal Anual aplicada ante precancelación |
 
 ### Operations
 
@@ -1357,10 +1357,10 @@ proveedor_plazo_fijo_uva_pago_periodico = client.ProveedorPlazoFijoUvaPagoPeriod
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | `str` | No |  |
-| `id` | `str` | No |  |
-| `logo` | `str` | No |  |
-| `tasas` | `list` | No |  |
+| `entidad` | `str` | No | Nombre de la entidad |
+| `id` | `str` | No | Identificador estable del proveedor (p. |
+| `logo` | `str` | No | URL del logo de la entidad |
+| `tasas` | `list` | No | Tasas por rango de plazo |
 
 ### Operations
 
@@ -1414,28 +1414,28 @@ rem = client.Rem()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `desvio` | `float` | No |  |
-| `fecha` | `str` | No |  |
+| `fecha` | `str` | No | Fecha ISO del primer día del mes del informe |
 | `fuente` | `str` | No |  |
-| `indicador` | `str` | No |  |
-| `informe` | `str` | No |  |
+| `indicador` | `str` | No | Indicador relevado |
+| `informe` | `str` | No | Informe REM en formato YYYY-MM |
 | `maximo` | `float` | No |  |
 | `mediana` | `float` | No |  |
 | `minimo` | `float` | No |  |
-| `muestra` | `str` | No |  |
+| `muestra` | `str` | No | Muestra de participantes: todos o TOP 10 |
 | `participantes` | `int` | No |  |
 | `percentil10` | `float` | No |  |
 | `percentil25` | `float` | No |  |
 | `percentil75` | `float` | No |  |
 | `percentil90` | `float` | No |  |
-| `periodo` | `str` | No |  |
-| `periodoDesde` | `str` | No |  |
-| `periodoHasta` | `str` | No |  |
-| `periodoTipo` | `str` | No |  |
+| `periodo` | `str` | No | Período original informado por el BCRA |
+| `periodoDesde` | `str` | No | Fecha de inicio del período normalizado |
+| `periodoHasta` | `str` | No | Fecha de fin del período normalizado |
+| `periodoTipo` | `str` | No | Tipo de período normalizado |
 | `promedio` | `float` | No |  |
 | `publicacionUrl` | `str` | No |  |
-| `referencia` | `str` | No |  |
-| `referenciaFecha` | `str` | No |  |
-| `unidad` | `str` | No |  |
+| `referencia` | `str` | No | Referencia original de la tabla |
+| `referenciaFecha` | `str` | No | Fecha detectada en la referencia, si corresponde |
+| `unidad` | `str` | No | Unidad inferida desde la referencia |
 | `xlsxUrl` | `str` | No |  |
 
 ### Operations
@@ -1490,28 +1490,28 @@ rem_expectativa = client.RemExpectativa()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `desvio` | `float` | No |  |
-| `fecha` | `str` | No |  |
+| `fecha` | `str` | No | Fecha ISO del primer día del mes del informe |
 | `fuente` | `str` | No |  |
-| `indicador` | `str` | No |  |
-| `informe` | `str` | No |  |
+| `indicador` | `str` | No | Indicador relevado |
+| `informe` | `str` | No | Informe REM en formato YYYY-MM |
 | `maximo` | `float` | No |  |
 | `mediana` | `float` | No |  |
 | `minimo` | `float` | No |  |
-| `muestra` | `str` | No |  |
+| `muestra` | `str` | No | Muestra de participantes: todos o TOP 10 |
 | `participantes` | `int` | No |  |
 | `percentil10` | `float` | No |  |
 | `percentil25` | `float` | No |  |
 | `percentil75` | `float` | No |  |
 | `percentil90` | `float` | No |  |
-| `periodo` | `str` | No |  |
-| `periodoDesde` | `str` | No |  |
-| `periodoHasta` | `str` | No |  |
-| `periodoTipo` | `str` | No |  |
+| `periodo` | `str` | No | Período original informado por el BCRA |
+| `periodoDesde` | `str` | No | Fecha de inicio del período normalizado |
+| `periodoHasta` | `str` | No | Fecha de fin del período normalizado |
+| `periodoTipo` | `str` | No | Tipo de período normalizado |
 | `promedio` | `float` | No |  |
 | `publicacionUrl` | `str` | No |  |
-| `referencia` | `str` | No |  |
-| `referenciaFecha` | `str` | No |  |
-| `unidad` | `str` | No |  |
+| `referencia` | `str` | No | Referencia original de la tabla |
+| `referenciaFecha` | `str` | No | Fecha detectada en la referencia, si corresponde |
+| `unidad` | `str` | No | Unidad inferida desde la referencia |
 | `xlsxUrl` | `str` | No |  |
 
 ### Operations
@@ -1799,9 +1799,9 @@ tasa_plazo_fijo = client.TasaPlazoFijo()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `entidad` | `str` | No |  |
-| `logo` | `str` | No |  |
-| `tnaClientes` | `float` | No |  |
-| `tnaNoClientes` | `float` | No |  |
+| `logo` | `str` | No | URL del logo de la entidad |
+| `tnaClientes` | `float` | No | Tasa Nominal Anual para clientes, en porcentaje |
+| `tnaNoClientes` | `float` | No | Tasa Nominal Anual para no clientes, en porcentaje |
 
 ### Operations
 

@@ -1,0 +1,58 @@
+# Entity: tasa_plazo_fijo
+
+main: kit: entity: tasa_plazo_fijo: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "entidad"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "logo"
+      req: false
+      short: "URL del logo de la entidad"
+      type: "`$STRING`"
+    }
+    {
+      name: "tnaClientes"
+      req: false
+      short: "Tasa Nominal Anual para clientes, en porcentaje"
+      type: "`$NUMBER`"
+    }
+    {
+      name: "tnaNoClientes"
+      req: false
+      short: "Tasa Nominal Anual para no clientes, en porcentaje"
+      type: "`$NUMBER`"
+    }
+  ]
+
+  name: "tasa_plazo_fijo"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/v1/finanzas/tasas/plazoFijo"
+          parts: [
+            "v1"
+            "finanzas"
+            "tasas"
+            "plazoFijo"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

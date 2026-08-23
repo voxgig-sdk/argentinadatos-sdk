@@ -293,11 +293,11 @@ fmt.Println(bonosCer.GetName()) // "bonos_cer"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fechaVencimiento` | `string` | Yes |  |
-| `precioArs` | `float64` | Yes |  |
-| `ticker` | `string` | Yes |  |
-| `tirPorcentaje` | `float64` | Yes |  |
-| `volumen` | `float64` | No |  |
+| `fechaVencimiento` | `string` | Yes | Fecha de vencimiento (ISO 8601, solo fecha: yyyy-MM-dd) |
+| `precioArs` | `float64` | Yes | Precio de cotización en pesos argentinos |
+| `ticker` | `string` | Yes | Código del bono (ej. |
+| `tirPorcentaje` | `float64` | Yes | Tasa interna de retorno (TIR) en porcentaje |
+| `volumen` | `float64` | No | Volumen nominal negociado, si la fuente lo publica |
 
 ### Operations
 
@@ -415,9 +415,9 @@ fmt.Println(criptopeso.GetName()) // "criptopeso"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | `string` | No |  |
-| `tna` | `float64` | No |  |
-| `token` | `string` | No |  |
+| `entidad` | `string` | No | Nombre de la entidad que ofrece el criptopeso |
+| `tna` | `float64` | No | Tasa Nominal Anual en porcentaje |
+| `token` | `string` | No | Token del criptopeso (ej: ARGt, wARS) |
 
 ### Operations
 
@@ -468,9 +468,9 @@ fmt.Println(cuentaRemuneradaUsd.GetName()) // "cuenta_remunerada_usd"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | `string` | No |  |
-| `tasa` | `float64` | No |  |
-| `tope` | `float64` | No |  |
+| `entidad` | `string` | No | Identificador de la entidad (p. |
+| `tasa` | `float64` | No | Tasa de rendimiento anual en formato decimal (p. |
+| `tope` | `float64` | No | Monto máximo en USD remunerado a esa tasa, o null si no hay tope o no se informó |
 
 ### Operations
 
@@ -952,10 +952,10 @@ fmt.Println(fondoComunInversionVariable.GetName()) // "fondo_comun_inversion_var
 | `condiciones` | `string` | No |  |
 | `condicionesCorto` | `string` | No |  |
 | `fecha` | `string` | No |  |
-| `fondo` | `string` | No |  |
-| `nombre` | `string` | No |  |
+| `fondo` | `string` | No | Nombre del fondo común de inversión (clase o denominación oficial). |
+| `nombre` | `string` | No | Identificador de la fuente en Argentina Datos (por ejemplo el proveedor o el canal). |
 | `tea` | `float64` | No |  |
-| `tipo` | `string` | No |  |
+| `tipo` | `string` | No | Clasificación del instrumento. |
 | `tna` | `float64` | No |  |
 | `tope` | `float64` | No |  |
 
@@ -1008,10 +1008,10 @@ fmt.Println(hipotecarioUvaTna.GetName()) // "hipotecario_uva_tna"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | `string` | No |  |
-| `metadata` | `map[string]any` | No |  |
-| `nombreComercial` | `string` | No |  |
-| `tna` | `float64` | No |  |
+| `entidad` | `string` | No | Nombre del banco u oferente del crédito hipotecario UVA |
+| `metadata` | `map[string]any` | No | Detalle de condiciones |
+| `nombreComercial` | `string` | No | Nombre comercial |
+| `tna` | `float64` | No | Tasa Nominal Anual |
 
 ### Operations
 
@@ -1166,11 +1166,11 @@ fmt.Println(letra.GetName()) // "letra"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fechaEmision` | `string` | No |  |
-| `fechaVencimiento` | `string` | No |  |
-| `tem` | `float64` | No |  |
-| `ticker` | `string` | No |  |
-| `vpv` | `float64` | No |  |
+| `fechaEmision` | `string` | No | Fecha de emisión original (ISO 8601) |
+| `fechaVencimiento` | `string` | No | Fecha de vencimiento (ISO 8601) |
+| `tem` | `float64` | No | Tasa Efectiva Mensual (%) |
+| `ticker` | `string` | No | Código del instrumento (ej: S31G5, T17O5) |
+| `vpv` | `float64` | No | Valor de Pago al Vencimiento por cada $100 de valor nominal |
 
 ### Operations
 
@@ -1221,14 +1221,14 @@ fmt.Println(presidente.GetName()) // "presidente"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fin` | `string` | No |  |
-| `imagen` | `string` | No |  |
-| `inicio` | `string` | No |  |
+| `fin` | `string` | No | Fecha de fin del mandato (formato yyyy-MM-dd). |
+| `imagen` | `string` | No | URL de la imagen del presidente |
+| `inicio` | `string` | No | Fecha de inicio del mandato (formato yyyy-MM-dd) |
 | `nombre` | `string` | No |  |
 | `partido` | `string` | No |  |
-| `partidoImagen` | `string` | No |  |
-| `periodoPresidencial` | `string` | No |  |
-| `vicepresidente` | `string` | No |  |
+| `partidoImagen` | `string` | No | URL de la imagen del logo del partido político |
+| `periodoPresidencial` | `string` | No | Rango de años del período presidencial (ej: '2019-2023') |
+| `vicepresidente` | `string` | No | Nombre del vicepresidente. |
 
 ### Operations
 
@@ -1279,23 +1279,23 @@ fmt.Println(proveedorPlazoFijoPrecancelable.GetName()) // "proveedor_plazo_fijo_
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avisoPrecancelacionDias` | `int` | No |  |
-| `canal` | `string` | No |  |
-| `enlace` | `string` | No |  |
-| `entidad` | `string` | No |  |
-| `id` | `string` | No |  |
-| `logo` | `string` | No |  |
-| `modalidad` | `string` | No |  |
-| `moneda` | `string` | No |  |
-| `montoMaximo` | `float64` | No |  |
-| `montoMinimo` | `float64` | No |  |
-| `plazoMaxDias` | `int` | No |  |
-| `plazoMinDias` | `int` | No |  |
-| `plazoPrecancelacionDias` | `int` | No |  |
-| `tea` | `float64` | No |  |
-| `teaPrecancelacion` | `float64` | No |  |
-| `tna` | `float64` | No |  |
-| `tnaPrecancelacion` | `float64` | No |  |
+| `avisoPrecancelacionDias` | `int` | No | Días hábiles de aviso previo para precancelar |
+| `canal` | `string` | No | Canales publicados para constituir el plazo fijo |
+| `enlace` | `string` | No | URL de la fuente |
+| `entidad` | `string` | No | Nombre de la entidad |
+| `id` | `string` | No | Identificador estable del proveedor |
+| `logo` | `string` | No | URL del logo de la entidad |
+| `modalidad` | `string` | No | Modalidad publicada por la entidad |
+| `moneda` | `string` | No | Moneda de constitución |
+| `montoMaximo` | `float64` | No | Monto máximo de constitución |
+| `montoMinimo` | `float64` | No | Monto mínimo de constitución |
+| `plazoMaxDias` | `int` | No | Plazo máximo en días |
+| `plazoMinDias` | `int` | No | Plazo mínimo en días |
+| `plazoPrecancelacionDias` | `int` | No | Días mínimos para ejercer la precancelación |
+| `tea` | `float64` | No | Tasa Efectiva Anual |
+| `teaPrecancelacion` | `float64` | No | Tasa Efectiva Anual aplicada ante precancelación |
+| `tna` | `float64` | No | Tasa Nominal Anual |
+| `tnaPrecancelacion` | `float64` | No | Tasa Nominal Anual aplicada ante precancelación |
 
 ### Operations
 
@@ -1346,10 +1346,10 @@ fmt.Println(proveedorPlazoFijoUvaPagoPeriodico.GetName()) // "proveedor_plazo_fi
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | `string` | No |  |
-| `id` | `string` | No |  |
-| `logo` | `string` | No |  |
-| `tasas` | `[]any` | No |  |
+| `entidad` | `string` | No | Nombre de la entidad |
+| `id` | `string` | No | Identificador estable del proveedor (p. |
+| `logo` | `string` | No | URL del logo de la entidad |
+| `tasas` | `[]any` | No | Tasas por rango de plazo |
 
 ### Operations
 
@@ -1401,28 +1401,28 @@ fmt.Println(rem.GetName()) // "rem"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `desvio` | `float64` | No |  |
-| `fecha` | `string` | No |  |
+| `fecha` | `string` | No | Fecha ISO del primer día del mes del informe |
 | `fuente` | `string` | No |  |
-| `indicador` | `string` | No |  |
-| `informe` | `string` | No |  |
+| `indicador` | `string` | No | Indicador relevado |
+| `informe` | `string` | No | Informe REM en formato YYYY-MM |
 | `maximo` | `float64` | No |  |
 | `mediana` | `float64` | No |  |
 | `minimo` | `float64` | No |  |
-| `muestra` | `string` | No |  |
+| `muestra` | `string` | No | Muestra de participantes: todos o TOP 10 |
 | `participantes` | `int` | No |  |
 | `percentil10` | `float64` | No |  |
 | `percentil25` | `float64` | No |  |
 | `percentil75` | `float64` | No |  |
 | `percentil90` | `float64` | No |  |
-| `periodo` | `string` | No |  |
-| `periodoDesde` | `string` | No |  |
-| `periodoHasta` | `string` | No |  |
-| `periodoTipo` | `string` | No |  |
+| `periodo` | `string` | No | Período original informado por el BCRA |
+| `periodoDesde` | `string` | No | Fecha de inicio del período normalizado |
+| `periodoHasta` | `string` | No | Fecha de fin del período normalizado |
+| `periodoTipo` | `string` | No | Tipo de período normalizado |
 | `promedio` | `float64` | No |  |
 | `publicacionUrl` | `string` | No |  |
-| `referencia` | `string` | No |  |
-| `referenciaFecha` | `string` | No |  |
-| `unidad` | `string` | No |  |
+| `referencia` | `string` | No | Referencia original de la tabla |
+| `referenciaFecha` | `string` | No | Fecha detectada en la referencia, si corresponde |
+| `unidad` | `string` | No | Unidad inferida desde la referencia |
 | `xlsxUrl` | `string` | No |  |
 
 ### Operations
@@ -1475,28 +1475,28 @@ fmt.Println(remExpectativa.GetName()) // "rem_expectativa"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `desvio` | `float64` | No |  |
-| `fecha` | `string` | No |  |
+| `fecha` | `string` | No | Fecha ISO del primer día del mes del informe |
 | `fuente` | `string` | No |  |
-| `indicador` | `string` | No |  |
-| `informe` | `string` | No |  |
+| `indicador` | `string` | No | Indicador relevado |
+| `informe` | `string` | No | Informe REM en formato YYYY-MM |
 | `maximo` | `float64` | No |  |
 | `mediana` | `float64` | No |  |
 | `minimo` | `float64` | No |  |
-| `muestra` | `string` | No |  |
+| `muestra` | `string` | No | Muestra de participantes: todos o TOP 10 |
 | `participantes` | `int` | No |  |
 | `percentil10` | `float64` | No |  |
 | `percentil25` | `float64` | No |  |
 | `percentil75` | `float64` | No |  |
 | `percentil90` | `float64` | No |  |
-| `periodo` | `string` | No |  |
-| `periodoDesde` | `string` | No |  |
-| `periodoHasta` | `string` | No |  |
-| `periodoTipo` | `string` | No |  |
+| `periodo` | `string` | No | Período original informado por el BCRA |
+| `periodoDesde` | `string` | No | Fecha de inicio del período normalizado |
+| `periodoHasta` | `string` | No | Fecha de fin del período normalizado |
+| `periodoTipo` | `string` | No | Tipo de período normalizado |
 | `promedio` | `float64` | No |  |
 | `publicacionUrl` | `string` | No |  |
-| `referencia` | `string` | No |  |
-| `referenciaFecha` | `string` | No |  |
-| `unidad` | `string` | No |  |
+| `referencia` | `string` | No | Referencia original de la tabla |
+| `referenciaFecha` | `string` | No | Fecha detectada en la referencia, si corresponde |
+| `unidad` | `string` | No | Unidad inferida desde la referencia |
 | `xlsxUrl` | `string` | No |  |
 
 ### Operations
@@ -1780,9 +1780,9 @@ fmt.Println(tasaPlazoFijo.GetName()) // "tasa_plazo_fijo"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `entidad` | `string` | No |  |
-| `logo` | `string` | No |  |
-| `tnaClientes` | `float64` | No |  |
-| `tnaNoClientes` | `float64` | No |  |
+| `logo` | `string` | No | URL del logo de la entidad |
+| `tnaClientes` | `float64` | No | Tasa Nominal Anual para clientes, en porcentaje |
+| `tnaNoClientes` | `float64` | No | Tasa Nominal Anual para no clientes, en porcentaje |
 
 ### Operations
 

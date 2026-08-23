@@ -6,7 +6,7 @@ The Golang SDK for the Argentinadatos API — an entity-oriented client using st
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Acta(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -330,11 +330,11 @@ API path: `/v1/diputados/actas`
 
 | Field | Description |
 | --- | --- |
-| `"fechaVencimiento"` |  |
-| `"precioArs"` |  |
-| `"ticker"` |  |
-| `"tirPorcentaje"` |  |
-| `"volumen"` |  |
+| `"fechaVencimiento"` | Fecha de vencimiento (ISO 8601, solo fecha: yyyy-MM-dd) |
+| `"precioArs"` | Precio de cotización en pesos argentinos |
+| `"ticker"` | Código del bono (ej. |
+| `"tirPorcentaje"` | Tasa interna de retorno (TIR) en porcentaje |
+| `"volumen"` | Volumen nominal negociado, si la fuente lo publica |
 
 Operations: List.
 
@@ -358,9 +358,9 @@ API path: `/v1/cotizaciones/dolares`
 
 | Field | Description |
 | --- | --- |
-| `"entidad"` |  |
-| `"tna"` |  |
-| `"token"` |  |
+| `"entidad"` | Nombre de la entidad que ofrece el criptopeso |
+| `"tna"` | Tasa Nominal Anual en porcentaje |
+| `"token"` | Token del criptopeso (ej: ARGt, wARS) |
 
 Operations: List.
 
@@ -370,9 +370,9 @@ API path: `/v1/finanzas/criptopesos`
 
 | Field | Description |
 | --- | --- |
-| `"entidad"` |  |
-| `"tasa"` |  |
-| `"tope"` |  |
+| `"entidad"` | Identificador de la entidad (p. |
+| `"tasa"` | Tasa de rendimiento anual en formato decimal (p. |
+| `"tope"` | Monto máximo en USD remunerado a esa tasa, o null si no hay tope o no se informó |
 
 Operations: List.
 
@@ -490,10 +490,10 @@ API path: `/v1/finanzas/fci/otros/{fecha}`
 | `"condiciones"` |  |
 | `"condicionesCorto"` |  |
 | `"fecha"` |  |
-| `"fondo"` |  |
-| `"nombre"` |  |
+| `"fondo"` | Nombre del fondo común de inversión (clase o denominación oficial). |
+| `"nombre"` | Identificador de la fuente en Argentina Datos (por ejemplo el proveedor o el canal). |
 | `"tea"` |  |
-| `"tipo"` |  |
+| `"tipo"` | Clasificación del instrumento. |
 | `"tna"` |  |
 | `"tope"` |  |
 
@@ -505,10 +505,10 @@ API path: `/v1/finanzas/fci/variables/{fecha}`
 
 | Field | Description |
 | --- | --- |
-| `"entidad"` |  |
-| `"metadata"` |  |
-| `"nombreComercial"` |  |
-| `"tna"` |  |
+| `"entidad"` | Nombre del banco u oferente del crédito hipotecario UVA |
+| `"metadata"` | Detalle de condiciones |
+| `"nombreComercial"` | Nombre comercial |
+| `"tna"` | Tasa Nominal Anual |
 
 Operations: List.
 
@@ -540,11 +540,11 @@ API path: `/v1/finanzas/indices/uva`
 
 | Field | Description |
 | --- | --- |
-| `"fechaEmision"` |  |
-| `"fechaVencimiento"` |  |
-| `"tem"` |  |
-| `"ticker"` |  |
-| `"vpv"` |  |
+| `"fechaEmision"` | Fecha de emisión original (ISO 8601) |
+| `"fechaVencimiento"` | Fecha de vencimiento (ISO 8601) |
+| `"tem"` | Tasa Efectiva Mensual (%) |
+| `"ticker"` | Código del instrumento (ej: S31G5, T17O5) |
+| `"vpv"` | Valor de Pago al Vencimiento por cada $100 de valor nominal |
 
 Operations: List.
 
@@ -554,14 +554,14 @@ API path: `/v1/finanzas/letras`
 
 | Field | Description |
 | --- | --- |
-| `"fin"` |  |
-| `"imagen"` |  |
-| `"inicio"` |  |
+| `"fin"` | Fecha de fin del mandato (formato yyyy-MM-dd). |
+| `"imagen"` | URL de la imagen del presidente |
+| `"inicio"` | Fecha de inicio del mandato (formato yyyy-MM-dd) |
 | `"nombre"` |  |
 | `"partido"` |  |
-| `"partidoImagen"` |  |
-| `"periodoPresidencial"` |  |
-| `"vicepresidente"` |  |
+| `"partidoImagen"` | URL de la imagen del logo del partido político |
+| `"periodoPresidencial"` | Rango de años del período presidencial (ej: '2019-2023') |
+| `"vicepresidente"` | Nombre del vicepresidente. |
 
 Operations: List.
 
@@ -571,23 +571,23 @@ API path: `/v1/presidentes`
 
 | Field | Description |
 | --- | --- |
-| `"avisoPrecancelacionDias"` |  |
-| `"canal"` |  |
-| `"enlace"` |  |
-| `"entidad"` |  |
-| `"id"` |  |
-| `"logo"` |  |
-| `"modalidad"` |  |
-| `"moneda"` |  |
-| `"montoMaximo"` |  |
-| `"montoMinimo"` |  |
-| `"plazoMaxDias"` |  |
-| `"plazoMinDias"` |  |
-| `"plazoPrecancelacionDias"` |  |
-| `"tea"` |  |
-| `"teaPrecancelacion"` |  |
-| `"tna"` |  |
-| `"tnaPrecancelacion"` |  |
+| `"avisoPrecancelacionDias"` | Días hábiles de aviso previo para precancelar |
+| `"canal"` | Canales publicados para constituir el plazo fijo |
+| `"enlace"` | URL de la fuente |
+| `"entidad"` | Nombre de la entidad |
+| `"id"` | Identificador estable del proveedor |
+| `"logo"` | URL del logo de la entidad |
+| `"modalidad"` | Modalidad publicada por la entidad |
+| `"moneda"` | Moneda de constitución |
+| `"montoMaximo"` | Monto máximo de constitución |
+| `"montoMinimo"` | Monto mínimo de constitución |
+| `"plazoMaxDias"` | Plazo máximo en días |
+| `"plazoMinDias"` | Plazo mínimo en días |
+| `"plazoPrecancelacionDias"` | Días mínimos para ejercer la precancelación |
+| `"tea"` | Tasa Efectiva Anual |
+| `"teaPrecancelacion"` | Tasa Efectiva Anual aplicada ante precancelación |
+| `"tna"` | Tasa Nominal Anual |
+| `"tnaPrecancelacion"` | Tasa Nominal Anual aplicada ante precancelación |
 
 Operations: List.
 
@@ -597,10 +597,10 @@ API path: `/v1/finanzas/tasas/plazoFijoPrecancelable`
 
 | Field | Description |
 | --- | --- |
-| `"entidad"` |  |
-| `"id"` |  |
-| `"logo"` |  |
-| `"tasas"` |  |
+| `"entidad"` | Nombre de la entidad |
+| `"id"` | Identificador estable del proveedor (p. |
+| `"logo"` | URL del logo de la entidad |
+| `"tasas"` | Tasas por rango de plazo |
 
 Operations: List.
 
@@ -611,28 +611,28 @@ API path: `/v1/finanzas/tasas/plazoFijoUvaPagoPeriodico`
 | Field | Description |
 | --- | --- |
 | `"desvio"` |  |
-| `"fecha"` |  |
+| `"fecha"` | Fecha ISO del primer día del mes del informe |
 | `"fuente"` |  |
-| `"indicador"` |  |
-| `"informe"` |  |
+| `"indicador"` | Indicador relevado |
+| `"informe"` | Informe REM en formato YYYY-MM |
 | `"maximo"` |  |
 | `"mediana"` |  |
 | `"minimo"` |  |
-| `"muestra"` |  |
+| `"muestra"` | Muestra de participantes: todos o TOP 10 |
 | `"participantes"` |  |
 | `"percentil10"` |  |
 | `"percentil25"` |  |
 | `"percentil75"` |  |
 | `"percentil90"` |  |
-| `"periodo"` |  |
-| `"periodoDesde"` |  |
-| `"periodoHasta"` |  |
-| `"periodoTipo"` |  |
+| `"periodo"` | Período original informado por el BCRA |
+| `"periodoDesde"` | Fecha de inicio del período normalizado |
+| `"periodoHasta"` | Fecha de fin del período normalizado |
+| `"periodoTipo"` | Tipo de período normalizado |
 | `"promedio"` |  |
 | `"publicacionUrl"` |  |
-| `"referencia"` |  |
-| `"referenciaFecha"` |  |
-| `"unidad"` |  |
+| `"referencia"` | Referencia original de la tabla |
+| `"referenciaFecha"` | Fecha detectada en la referencia, si corresponde |
+| `"unidad"` | Unidad inferida desde la referencia |
 | `"xlsxUrl"` |  |
 
 Operations: List.
@@ -644,28 +644,28 @@ API path: `/v1/rems/{año}/{mes}`
 | Field | Description |
 | --- | --- |
 | `"desvio"` |  |
-| `"fecha"` |  |
+| `"fecha"` | Fecha ISO del primer día del mes del informe |
 | `"fuente"` |  |
-| `"indicador"` |  |
-| `"informe"` |  |
+| `"indicador"` | Indicador relevado |
+| `"informe"` | Informe REM en formato YYYY-MM |
 | `"maximo"` |  |
 | `"mediana"` |  |
 | `"minimo"` |  |
-| `"muestra"` |  |
+| `"muestra"` | Muestra de participantes: todos o TOP 10 |
 | `"participantes"` |  |
 | `"percentil10"` |  |
 | `"percentil25"` |  |
 | `"percentil75"` |  |
 | `"percentil90"` |  |
-| `"periodo"` |  |
-| `"periodoDesde"` |  |
-| `"periodoHasta"` |  |
-| `"periodoTipo"` |  |
+| `"periodo"` | Período original informado por el BCRA |
+| `"periodoDesde"` | Fecha de inicio del período normalizado |
+| `"periodoHasta"` | Fecha de fin del período normalizado |
+| `"periodoTipo"` | Tipo de período normalizado |
 | `"promedio"` |  |
 | `"publicacionUrl"` |  |
-| `"referencia"` |  |
-| `"referenciaFecha"` |  |
-| `"unidad"` |  |
+| `"referencia"` | Referencia original de la tabla |
+| `"referenciaFecha"` | Fecha detectada en la referencia, si corresponde |
+| `"unidad"` | Unidad inferida desde la referencia |
 | `"xlsxUrl"` |  |
 
 Operations: List.
@@ -732,9 +732,9 @@ API path: `/v1/finanzas/tasas/depositos30Dias`
 | Field | Description |
 | --- | --- |
 | `"entidad"` |  |
-| `"logo"` |  |
-| `"tnaClientes"` |  |
-| `"tnaNoClientes"` |  |
+| `"logo"` | URL del logo de la entidad |
+| `"tnaClientes"` | Tasa Nominal Anual para clientes, en porcentaje |
+| `"tnaNoClientes"` | Tasa Nominal Anual para no clientes, en porcentaje |
 
 Operations: List.
 
@@ -821,11 +821,11 @@ Create an instance: `bonosCer := client.BonosCer(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fechaVencimiento` | `string` |  |
-| `precioArs` | `float64` |  |
-| `ticker` | `string` |  |
-| `tirPorcentaje` | `float64` |  |
-| `volumen` | `float64` |  |
+| `fechaVencimiento` | `string` | Fecha de vencimiento (ISO 8601, solo fecha: yyyy-MM-dd) |
+| `precioArs` | `float64` | Precio de cotización en pesos argentinos |
+| `ticker` | `string` | Código del bono (ej. |
+| `tirPorcentaje` | `float64` | Tasa interna de retorno (TIR) en porcentaje |
+| `volumen` | `float64` | Volumen nominal negociado, si la fuente lo publica |
 
 #### Example: List
 
@@ -894,9 +894,9 @@ Create an instance: `criptopeso := client.Criptopeso(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | `string` |  |
-| `tna` | `float64` |  |
-| `token` | `string` |  |
+| `entidad` | `string` | Nombre de la entidad que ofrece el criptopeso |
+| `tna` | `float64` | Tasa Nominal Anual en porcentaje |
+| `token` | `string` | Token del criptopeso (ej: ARGt, wARS) |
 
 #### Example: List
 
@@ -923,9 +923,9 @@ Create an instance: `cuentaRemuneradaUsd := client.CuentaRemuneradaUsd(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | `string` |  |
-| `tasa` | `float64` |  |
-| `tope` | `float64` |  |
+| `entidad` | `string` | Identificador de la entidad (p. |
+| `tasa` | `float64` | Tasa de rendimiento anual en formato decimal (p. |
+| `tope` | `float64` | Monto máximo en USD remunerado a esa tasa, o null si no hay tope o no se informó |
 
 #### Example: List
 
@@ -1191,10 +1191,10 @@ Create an instance: `fondoComunInversionVariable := client.FondoComunInversionVa
 | `condiciones` | `string` |  |
 | `condicionesCorto` | `string` |  |
 | `fecha` | `string` |  |
-| `fondo` | `string` |  |
-| `nombre` | `string` |  |
+| `fondo` | `string` | Nombre del fondo común de inversión (clase o denominación oficial). |
+| `nombre` | `string` | Identificador de la fuente en Argentina Datos (por ejemplo el proveedor o el canal). |
 | `tea` | `float64` |  |
-| `tipo` | `string` |  |
+| `tipo` | `string` | Clasificación del instrumento. |
 | `tna` | `float64` |  |
 | `tope` | `float64` |  |
 
@@ -1223,10 +1223,10 @@ Create an instance: `hipotecarioUvaTna := client.HipotecarioUvaTna(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | `string` |  |
-| `metadata` | `map[string]any` |  |
-| `nombreComercial` | `string` |  |
-| `tna` | `float64` |  |
+| `entidad` | `string` | Nombre del banco u oferente del crédito hipotecario UVA |
+| `metadata` | `map[string]any` | Detalle de condiciones |
+| `nombreComercial` | `string` | Nombre comercial |
+| `tna` | `float64` | Tasa Nominal Anual |
 
 #### Example: List
 
@@ -1309,11 +1309,11 @@ Create an instance: `letra := client.Letra(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fechaEmision` | `string` |  |
-| `fechaVencimiento` | `string` |  |
-| `tem` | `float64` |  |
-| `ticker` | `string` |  |
-| `vpv` | `float64` |  |
+| `fechaEmision` | `string` | Fecha de emisión original (ISO 8601) |
+| `fechaVencimiento` | `string` | Fecha de vencimiento (ISO 8601) |
+| `tem` | `float64` | Tasa Efectiva Mensual (%) |
+| `ticker` | `string` | Código del instrumento (ej: S31G5, T17O5) |
+| `vpv` | `float64` | Valor de Pago al Vencimiento por cada $100 de valor nominal |
 
 #### Example: List
 
@@ -1340,14 +1340,14 @@ Create an instance: `presidente := client.Presidente(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fin` | `string` |  |
-| `imagen` | `string` |  |
-| `inicio` | `string` |  |
+| `fin` | `string` | Fecha de fin del mandato (formato yyyy-MM-dd). |
+| `imagen` | `string` | URL de la imagen del presidente |
+| `inicio` | `string` | Fecha de inicio del mandato (formato yyyy-MM-dd) |
 | `nombre` | `string` |  |
 | `partido` | `string` |  |
-| `partidoImagen` | `string` |  |
-| `periodoPresidencial` | `string` |  |
-| `vicepresidente` | `string` |  |
+| `partidoImagen` | `string` | URL de la imagen del logo del partido político |
+| `periodoPresidencial` | `string` | Rango de años del período presidencial (ej: '2019-2023') |
+| `vicepresidente` | `string` | Nombre del vicepresidente. |
 
 #### Example: List
 
@@ -1374,23 +1374,23 @@ Create an instance: `proveedorPlazoFijoPrecancelable := client.ProveedorPlazoFij
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `avisoPrecancelacionDias` | `int` |  |
-| `canal` | `string` |  |
-| `enlace` | `string` |  |
-| `entidad` | `string` |  |
-| `id` | `string` |  |
-| `logo` | `string` |  |
-| `modalidad` | `string` |  |
-| `moneda` | `string` |  |
-| `montoMaximo` | `float64` |  |
-| `montoMinimo` | `float64` |  |
-| `plazoMaxDias` | `int` |  |
-| `plazoMinDias` | `int` |  |
-| `plazoPrecancelacionDias` | `int` |  |
-| `tea` | `float64` |  |
-| `teaPrecancelacion` | `float64` |  |
-| `tna` | `float64` |  |
-| `tnaPrecancelacion` | `float64` |  |
+| `avisoPrecancelacionDias` | `int` | Días hábiles de aviso previo para precancelar |
+| `canal` | `string` | Canales publicados para constituir el plazo fijo |
+| `enlace` | `string` | URL de la fuente |
+| `entidad` | `string` | Nombre de la entidad |
+| `id` | `string` | Identificador estable del proveedor |
+| `logo` | `string` | URL del logo de la entidad |
+| `modalidad` | `string` | Modalidad publicada por la entidad |
+| `moneda` | `string` | Moneda de constitución |
+| `montoMaximo` | `float64` | Monto máximo de constitución |
+| `montoMinimo` | `float64` | Monto mínimo de constitución |
+| `plazoMaxDias` | `int` | Plazo máximo en días |
+| `plazoMinDias` | `int` | Plazo mínimo en días |
+| `plazoPrecancelacionDias` | `int` | Días mínimos para ejercer la precancelación |
+| `tea` | `float64` | Tasa Efectiva Anual |
+| `teaPrecancelacion` | `float64` | Tasa Efectiva Anual aplicada ante precancelación |
+| `tna` | `float64` | Tasa Nominal Anual |
+| `tnaPrecancelacion` | `float64` | Tasa Nominal Anual aplicada ante precancelación |
 
 #### Example: List
 
@@ -1417,10 +1417,10 @@ Create an instance: `proveedorPlazoFijoUvaPagoPeriodico := client.ProveedorPlazo
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entidad` | `string` |  |
-| `id` | `string` |  |
-| `logo` | `string` |  |
-| `tasas` | `[]any` |  |
+| `entidad` | `string` | Nombre de la entidad |
+| `id` | `string` | Identificador estable del proveedor (p. |
+| `logo` | `string` | URL del logo de la entidad |
+| `tasas` | `[]any` | Tasas por rango de plazo |
 
 #### Example: List
 
@@ -1448,28 +1448,28 @@ Create an instance: `rem := client.Rem(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `desvio` | `float64` |  |
-| `fecha` | `string` |  |
+| `fecha` | `string` | Fecha ISO del primer día del mes del informe |
 | `fuente` | `string` |  |
-| `indicador` | `string` |  |
-| `informe` | `string` |  |
+| `indicador` | `string` | Indicador relevado |
+| `informe` | `string` | Informe REM en formato YYYY-MM |
 | `maximo` | `float64` |  |
 | `mediana` | `float64` |  |
 | `minimo` | `float64` |  |
-| `muestra` | `string` |  |
+| `muestra` | `string` | Muestra de participantes: todos o TOP 10 |
 | `participantes` | `int` |  |
 | `percentil10` | `float64` |  |
 | `percentil25` | `float64` |  |
 | `percentil75` | `float64` |  |
 | `percentil90` | `float64` |  |
-| `periodo` | `string` |  |
-| `periodoDesde` | `string` |  |
-| `periodoHasta` | `string` |  |
-| `periodoTipo` | `string` |  |
+| `periodo` | `string` | Período original informado por el BCRA |
+| `periodoDesde` | `string` | Fecha de inicio del período normalizado |
+| `periodoHasta` | `string` | Fecha de fin del período normalizado |
+| `periodoTipo` | `string` | Tipo de período normalizado |
 | `promedio` | `float64` |  |
 | `publicacionUrl` | `string` |  |
-| `referencia` | `string` |  |
-| `referenciaFecha` | `string` |  |
-| `unidad` | `string` |  |
+| `referencia` | `string` | Referencia original de la tabla |
+| `referenciaFecha` | `string` | Fecha detectada en la referencia, si corresponde |
+| `unidad` | `string` | Unidad inferida desde la referencia |
 | `xlsxUrl` | `string` |  |
 
 #### Example: List
@@ -1498,28 +1498,28 @@ Create an instance: `remExpectativa := client.RemExpectativa(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `desvio` | `float64` |  |
-| `fecha` | `string` |  |
+| `fecha` | `string` | Fecha ISO del primer día del mes del informe |
 | `fuente` | `string` |  |
-| `indicador` | `string` |  |
-| `informe` | `string` |  |
+| `indicador` | `string` | Indicador relevado |
+| `informe` | `string` | Informe REM en formato YYYY-MM |
 | `maximo` | `float64` |  |
 | `mediana` | `float64` |  |
 | `minimo` | `float64` |  |
-| `muestra` | `string` |  |
+| `muestra` | `string` | Muestra de participantes: todos o TOP 10 |
 | `participantes` | `int` |  |
 | `percentil10` | `float64` |  |
 | `percentil25` | `float64` |  |
 | `percentil75` | `float64` |  |
 | `percentil90` | `float64` |  |
-| `periodo` | `string` |  |
-| `periodoDesde` | `string` |  |
-| `periodoHasta` | `string` |  |
-| `periodoTipo` | `string` |  |
+| `periodo` | `string` | Período original informado por el BCRA |
+| `periodoDesde` | `string` | Fecha de inicio del período normalizado |
+| `periodoHasta` | `string` | Fecha de fin del período normalizado |
+| `periodoTipo` | `string` | Tipo de período normalizado |
 | `promedio` | `float64` |  |
 | `publicacionUrl` | `string` |  |
-| `referencia` | `string` |  |
-| `referenciaFecha` | `string` |  |
-| `unidad` | `string` |  |
+| `referencia` | `string` | Referencia original de la tabla |
+| `referenciaFecha` | `string` | Fecha detectada en la referencia, si corresponde |
+| `unidad` | `string` | Unidad inferida desde la referencia |
 | `xlsxUrl` | `string` |  |
 
 #### Example: List
@@ -1682,9 +1682,9 @@ Create an instance: `tasaPlazoFijo := client.TasaPlazoFijo(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `entidad` | `string` |  |
-| `logo` | `string` |  |
-| `tnaClientes` | `float64` |  |
-| `tnaNoClientes` | `float64` |  |
+| `logo` | `string` | URL del logo de la entidad |
+| `tnaClientes` | `float64` | Tasa Nominal Anual para clientes, en porcentaje |
+| `tnaNoClientes` | `float64` | Tasa Nominal Anual para no clientes, en porcentaje |
 
 #### Example: List
 

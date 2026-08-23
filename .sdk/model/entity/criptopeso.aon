@@ -1,0 +1,52 @@
+# Entity: criptopeso
+
+main: kit: entity: criptopeso: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "entidad"
+      req: false
+      short: "Nombre de la entidad que ofrece el criptopeso"
+      type: "`$STRING`"
+    }
+    {
+      name: "tna"
+      req: false
+      short: "Tasa Nominal Anual en porcentaje"
+      type: "`$NUMBER`"
+    }
+    {
+      name: "token"
+      req: false
+      short: "Token del criptopeso (ej: ARGt, wARS)"
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "criptopeso"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/v1/finanzas/criptopesos"
+          parts: [
+            "v1"
+            "finanzas"
+            "criptopesos"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

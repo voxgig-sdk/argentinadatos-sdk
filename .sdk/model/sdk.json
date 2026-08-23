@@ -328,30 +328,35 @@
               "active": true,
               "name": "fechaVencimiento",
               "req": true,
+              "short": "Fecha de vencimiento (ISO 8601, solo fecha: yyyy-MM-dd)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "precioArs",
               "req": true,
+              "short": "Precio de cotización en pesos argentinos",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "ticker",
               "req": true,
+              "short": "Código del bono (ej.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tirPorcentaje",
               "req": true,
+              "short": "Tasa interna de retorno (TIR) en porcentaje",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "volumen",
               "req": false,
+              "short": "Volumen nominal negociado, si la fuente lo publica",
               "type": "`$NUMBER`"
             }
           ],
@@ -551,18 +556,21 @@
               "active": true,
               "name": "entidad",
               "req": false,
+              "short": "Nombre de la entidad que ofrece el criptopeso",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tna",
               "req": false,
+              "short": "Tasa Nominal Anual en porcentaje",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "token",
               "req": false,
+              "short": "Token del criptopeso (ej: ARGt, wARS)",
               "type": "`$STRING`"
             }
           ],
@@ -606,18 +614,21 @@
               "active": true,
               "name": "entidad",
               "req": false,
+              "short": "Identificador de la entidad (p.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tasa",
               "req": false,
+              "short": "Tasa de rendimiento anual en formato decimal (p.",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "tope",
               "req": false,
+              "short": "Monto máximo en USD remunerado a esa tasa, o null si no hay tope o no se informó",
               "type": "`$NUMBER`"
             }
           ],
@@ -1392,12 +1403,14 @@
               "active": true,
               "name": "fondo",
               "req": false,
+              "short": "Nombre del fondo común de inversión (clase o denominación oficial).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "nombre",
               "req": false,
+              "short": "Identificador de la fuente en Argentina Datos (por ejemplo el proveedor o el canal).",
               "type": "`$STRING`"
             },
             {
@@ -1410,6 +1423,7 @@
               "active": true,
               "name": "tipo",
               "req": false,
+              "short": "Clasificación del instrumento.",
               "type": "`$STRING`"
             },
             {
@@ -1488,24 +1502,28 @@
               "active": true,
               "name": "entidad",
               "req": false,
+              "short": "Nombre del banco u oferente del crédito hipotecario UVA",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "metadata",
               "req": false,
+              "short": "Detalle de condiciones",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "nombreComercial",
               "req": false,
+              "short": "Nombre comercial",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tna",
               "req": false,
+              "short": "Tasa Nominal Anual",
               "type": "`$NUMBER`"
             }
           ],
@@ -1668,30 +1686,35 @@
               "active": true,
               "name": "fechaEmision",
               "req": false,
+              "short": "Fecha de emisión original (ISO 8601)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "fechaVencimiento",
               "req": false,
+              "short": "Fecha de vencimiento (ISO 8601)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tem",
               "req": false,
+              "short": "Tasa Efectiva Mensual (%)",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "ticker",
               "req": false,
+              "short": "Código del instrumento (ej: S31G5, T17O5)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "vpv",
               "req": false,
+              "short": "Valor de Pago al Vencimiento por cada $100 de valor nominal",
               "type": "`$NUMBER`"
             }
           ],
@@ -1735,18 +1758,21 @@
               "active": true,
               "name": "fin",
               "req": false,
+              "short": "Fecha de fin del mandato (formato yyyy-MM-dd).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "imagen",
               "req": false,
+              "short": "URL de la imagen del presidente",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "inicio",
               "req": false,
+              "short": "Fecha de inicio del mandato (formato yyyy-MM-dd)",
               "type": "`$STRING`"
             },
             {
@@ -1765,18 +1791,21 @@
               "active": true,
               "name": "partidoImagen",
               "req": false,
+              "short": "URL de la imagen del logo del partido político",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "periodoPresidencial",
               "req": false,
+              "short": "Rango de años del período presidencial (ej: '2019-2023')",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "vicepresidente",
               "req": false,
+              "short": "Nombre del vicepresidente.",
               "type": "`$STRING`"
             }
           ],
@@ -1819,102 +1848,119 @@
               "active": true,
               "name": "avisoPrecancelacionDias",
               "req": false,
+              "short": "Días hábiles de aviso previo para precancelar",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "canal",
               "req": false,
+              "short": "Canales publicados para constituir el plazo fijo",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "enlace",
               "req": false,
+              "short": "URL de la fuente",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "entidad",
               "req": false,
+              "short": "Nombre de la entidad",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Identificador estable del proveedor",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "logo",
               "req": false,
+              "short": "URL del logo de la entidad",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "modalidad",
               "req": false,
+              "short": "Modalidad publicada por la entidad",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "moneda",
               "req": false,
+              "short": "Moneda de constitución",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "montoMaximo",
               "req": false,
+              "short": "Monto máximo de constitución",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "montoMinimo",
               "req": false,
+              "short": "Monto mínimo de constitución",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "plazoMaxDias",
               "req": false,
+              "short": "Plazo máximo en días",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "plazoMinDias",
               "req": false,
+              "short": "Plazo mínimo en días",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "plazoPrecancelacionDias",
               "req": false,
+              "short": "Días mínimos para ejercer la precancelación",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "tea",
               "req": false,
+              "short": "Tasa Efectiva Anual",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "teaPrecancelacion",
               "req": false,
+              "short": "Tasa Efectiva Anual aplicada ante precancelación",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "tna",
               "req": false,
+              "short": "Tasa Nominal Anual",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "tnaPrecancelacion",
               "req": false,
+              "short": "Tasa Nominal Anual aplicada ante precancelación",
               "type": "`$NUMBER`"
             }
           ],
@@ -1963,24 +2009,28 @@
               "active": true,
               "name": "entidad",
               "req": false,
+              "short": "Nombre de la entidad",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Identificador estable del proveedor (p.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "logo",
               "req": false,
+              "short": "URL del logo de la entidad",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tasas",
               "req": false,
+              "short": "Tasas por rango de plazo",
               "type": "`$ARRAY`"
             }
           ],
@@ -2035,6 +2085,7 @@
               "active": true,
               "name": "fecha",
               "req": false,
+              "short": "Fecha ISO del primer día del mes del informe",
               "type": "`$STRING`"
             },
             {
@@ -2047,12 +2098,14 @@
               "active": true,
               "name": "indicador",
               "req": false,
+              "short": "Indicador relevado",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "informe",
               "req": false,
+              "short": "Informe REM en formato YYYY-MM",
               "type": "`$STRING`"
             },
             {
@@ -2077,6 +2130,7 @@
               "active": true,
               "name": "muestra",
               "req": false,
+              "short": "Muestra de participantes: todos o TOP 10",
               "type": "`$STRING`"
             },
             {
@@ -2113,24 +2167,28 @@
               "active": true,
               "name": "periodo",
               "req": false,
+              "short": "Período original informado por el BCRA",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "periodoDesde",
               "req": false,
+              "short": "Fecha de inicio del período normalizado",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "periodoHasta",
               "req": false,
+              "short": "Fecha de fin del período normalizado",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "periodoTipo",
               "req": false,
+              "short": "Tipo de período normalizado",
               "type": "`$STRING`"
             },
             {
@@ -2149,18 +2207,21 @@
               "active": true,
               "name": "referencia",
               "req": false,
+              "short": "Referencia original de la tabla",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "referenciaFecha",
               "req": false,
+              "short": "Fecha detectada en la referencia, si corresponde",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "unidad",
               "req": false,
+              "short": "Unidad inferida desde la referencia",
               "type": "`$STRING`"
             },
             {
@@ -2247,6 +2308,7 @@
               "active": true,
               "name": "fecha",
               "req": false,
+              "short": "Fecha ISO del primer día del mes del informe",
               "type": "`$STRING`"
             },
             {
@@ -2259,12 +2321,14 @@
               "active": true,
               "name": "indicador",
               "req": false,
+              "short": "Indicador relevado",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "informe",
               "req": false,
+              "short": "Informe REM en formato YYYY-MM",
               "type": "`$STRING`"
             },
             {
@@ -2289,6 +2353,7 @@
               "active": true,
               "name": "muestra",
               "req": false,
+              "short": "Muestra de participantes: todos o TOP 10",
               "type": "`$STRING`"
             },
             {
@@ -2325,24 +2390,28 @@
               "active": true,
               "name": "periodo",
               "req": false,
+              "short": "Período original informado por el BCRA",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "periodoDesde",
               "req": false,
+              "short": "Fecha de inicio del período normalizado",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "periodoHasta",
               "req": false,
+              "short": "Fecha de fin del período normalizado",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "periodoTipo",
               "req": false,
+              "short": "Tipo de período normalizado",
               "type": "`$STRING`"
             },
             {
@@ -2361,18 +2430,21 @@
               "active": true,
               "name": "referencia",
               "req": false,
+              "short": "Referencia original de la tabla",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "referenciaFecha",
               "req": false,
+              "short": "Fecha detectada en la referencia, si corresponde",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "unidad",
               "req": false,
+              "short": "Unidad inferida desde la referencia",
               "type": "`$STRING`"
             },
             {
@@ -2745,18 +2817,21 @@
               "active": true,
               "name": "logo",
               "req": false,
+              "short": "URL del logo de la entidad",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tnaClientes",
               "req": false,
+              "short": "Tasa Nominal Anual para clientes, en porcentaje",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "tnaNoClientes",
               "req": false,
+              "short": "Tasa Nominal Anual para no clientes, en porcentaje",
               "type": "`$NUMBER`"
             }
           ],

@@ -284,11 +284,11 @@ $bonos_cer = $client->BonosCer();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fechaVencimiento` | `string` | Yes |  |
-| `precioArs` | `float` | Yes |  |
-| `ticker` | `string` | Yes |  |
-| `tirPorcentaje` | `float` | Yes |  |
-| `volumen` | `float` | No |  |
+| `fechaVencimiento` | `string` | Yes | Fecha de vencimiento (ISO 8601, solo fecha: yyyy-MM-dd) |
+| `precioArs` | `float` | Yes | Precio de cotización en pesos argentinos |
+| `ticker` | `string` | Yes | Código del bono (ej. |
+| `tirPorcentaje` | `float` | Yes | Tasa interna de retorno (TIR) en porcentaje |
+| `volumen` | `float` | No | Volumen nominal negociado, si la fuente lo publica |
 
 ### Operations
 
@@ -404,9 +404,9 @@ $criptopeso = $client->Criptopeso();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | `string` | No |  |
-| `tna` | `float` | No |  |
-| `token` | `string` | No |  |
+| `entidad` | `string` | No | Nombre de la entidad que ofrece el criptopeso |
+| `tna` | `float` | No | Tasa Nominal Anual en porcentaje |
+| `token` | `string` | No | Token del criptopeso (ej: ARGt, wARS) |
 
 ### Operations
 
@@ -458,9 +458,9 @@ $cuenta_remunerada_usd = $client->CuentaRemuneradaUsd();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | `string` | No |  |
-| `tasa` | `float` | No |  |
-| `tope` | `float` | No |  |
+| `entidad` | `string` | No | Identificador de la entidad (p. |
+| `tasa` | `float` | No | Tasa de rendimiento anual en formato decimal (p. |
+| `tope` | `float` | No | Monto máximo en USD remunerado a esa tasa, o null si no hay tope o no se informó |
 
 ### Operations
 
@@ -951,10 +951,10 @@ $fondo_comun_inversion_variable = $client->FondoComunInversionVariable();
 | `condiciones` | `string` | No |  |
 | `condicionesCorto` | `string` | No |  |
 | `fecha` | `string` | No |  |
-| `fondo` | `string` | No |  |
-| `nombre` | `string` | No |  |
+| `fondo` | `string` | No | Nombre del fondo común de inversión (clase o denominación oficial). |
+| `nombre` | `string` | No | Identificador de la fuente en Argentina Datos (por ejemplo el proveedor o el canal). |
 | `tea` | `float` | No |  |
-| `tipo` | `string` | No |  |
+| `tipo` | `string` | No | Clasificación del instrumento. |
 | `tna` | `float` | No |  |
 | `tope` | `float` | No |  |
 
@@ -1008,10 +1008,10 @@ $hipotecario_uva_tna = $client->HipotecarioUvaTna();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | `string` | No |  |
-| `metadata` | `array` | No |  |
-| `nombreComercial` | `string` | No |  |
-| `tna` | `float` | No |  |
+| `entidad` | `string` | No | Nombre del banco u oferente del crédito hipotecario UVA |
+| `metadata` | `array` | No | Detalle de condiciones |
+| `nombreComercial` | `string` | No | Nombre comercial |
+| `tna` | `float` | No | Tasa Nominal Anual |
 
 ### Operations
 
@@ -1169,11 +1169,11 @@ $letra = $client->Letra();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fechaEmision` | `string` | No |  |
-| `fechaVencimiento` | `string` | No |  |
-| `tem` | `float` | No |  |
-| `ticker` | `string` | No |  |
-| `vpv` | `float` | No |  |
+| `fechaEmision` | `string` | No | Fecha de emisión original (ISO 8601) |
+| `fechaVencimiento` | `string` | No | Fecha de vencimiento (ISO 8601) |
+| `tem` | `float` | No | Tasa Efectiva Mensual (%) |
+| `ticker` | `string` | No | Código del instrumento (ej: S31G5, T17O5) |
+| `vpv` | `float` | No | Valor de Pago al Vencimiento por cada $100 de valor nominal |
 
 ### Operations
 
@@ -1225,14 +1225,14 @@ $presidente = $client->Presidente();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fin` | `string` | No |  |
-| `imagen` | `string` | No |  |
-| `inicio` | `string` | No |  |
+| `fin` | `string` | No | Fecha de fin del mandato (formato yyyy-MM-dd). |
+| `imagen` | `string` | No | URL de la imagen del presidente |
+| `inicio` | `string` | No | Fecha de inicio del mandato (formato yyyy-MM-dd) |
 | `nombre` | `string` | No |  |
 | `partido` | `string` | No |  |
-| `partidoImagen` | `string` | No |  |
-| `periodoPresidencial` | `string` | No |  |
-| `vicepresidente` | `string` | No |  |
+| `partidoImagen` | `string` | No | URL de la imagen del logo del partido político |
+| `periodoPresidencial` | `string` | No | Rango de años del período presidencial (ej: '2019-2023') |
+| `vicepresidente` | `string` | No | Nombre del vicepresidente. |
 
 ### Operations
 
@@ -1284,23 +1284,23 @@ $proveedor_plazo_fijo_precancelable = $client->ProveedorPlazoFijoPrecancelable()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avisoPrecancelacionDias` | `int` | No |  |
-| `canal` | `string` | No |  |
-| `enlace` | `string` | No |  |
-| `entidad` | `string` | No |  |
-| `id` | `string` | No |  |
-| `logo` | `string` | No |  |
-| `modalidad` | `string` | No |  |
-| `moneda` | `string` | No |  |
-| `montoMaximo` | `float` | No |  |
-| `montoMinimo` | `float` | No |  |
-| `plazoMaxDias` | `int` | No |  |
-| `plazoMinDias` | `int` | No |  |
-| `plazoPrecancelacionDias` | `int` | No |  |
-| `tea` | `float` | No |  |
-| `teaPrecancelacion` | `float` | No |  |
-| `tna` | `float` | No |  |
-| `tnaPrecancelacion` | `float` | No |  |
+| `avisoPrecancelacionDias` | `int` | No | Días hábiles de aviso previo para precancelar |
+| `canal` | `string` | No | Canales publicados para constituir el plazo fijo |
+| `enlace` | `string` | No | URL de la fuente |
+| `entidad` | `string` | No | Nombre de la entidad |
+| `id` | `string` | No | Identificador estable del proveedor |
+| `logo` | `string` | No | URL del logo de la entidad |
+| `modalidad` | `string` | No | Modalidad publicada por la entidad |
+| `moneda` | `string` | No | Moneda de constitución |
+| `montoMaximo` | `float` | No | Monto máximo de constitución |
+| `montoMinimo` | `float` | No | Monto mínimo de constitución |
+| `plazoMaxDias` | `int` | No | Plazo máximo en días |
+| `plazoMinDias` | `int` | No | Plazo mínimo en días |
+| `plazoPrecancelacionDias` | `int` | No | Días mínimos para ejercer la precancelación |
+| `tea` | `float` | No | Tasa Efectiva Anual |
+| `teaPrecancelacion` | `float` | No | Tasa Efectiva Anual aplicada ante precancelación |
+| `tna` | `float` | No | Tasa Nominal Anual |
+| `tnaPrecancelacion` | `float` | No | Tasa Nominal Anual aplicada ante precancelación |
 
 ### Operations
 
@@ -1352,10 +1352,10 @@ $proveedor_plazo_fijo_uva_pago_periodico = $client->ProveedorPlazoFijoUvaPagoPer
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entidad` | `string` | No |  |
-| `id` | `string` | No |  |
-| `logo` | `string` | No |  |
-| `tasas` | `array` | No |  |
+| `entidad` | `string` | No | Nombre de la entidad |
+| `id` | `string` | No | Identificador estable del proveedor (p. |
+| `logo` | `string` | No | URL del logo de la entidad |
+| `tasas` | `array` | No | Tasas por rango de plazo |
 
 ### Operations
 
@@ -1408,28 +1408,28 @@ $rem = $client->Rem();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `desvio` | `float` | No |  |
-| `fecha` | `string` | No |  |
+| `fecha` | `string` | No | Fecha ISO del primer día del mes del informe |
 | `fuente` | `string` | No |  |
-| `indicador` | `string` | No |  |
-| `informe` | `string` | No |  |
+| `indicador` | `string` | No | Indicador relevado |
+| `informe` | `string` | No | Informe REM en formato YYYY-MM |
 | `maximo` | `float` | No |  |
 | `mediana` | `float` | No |  |
 | `minimo` | `float` | No |  |
-| `muestra` | `string` | No |  |
+| `muestra` | `string` | No | Muestra de participantes: todos o TOP 10 |
 | `participantes` | `int` | No |  |
 | `percentil10` | `float` | No |  |
 | `percentil25` | `float` | No |  |
 | `percentil75` | `float` | No |  |
 | `percentil90` | `float` | No |  |
-| `periodo` | `string` | No |  |
-| `periodoDesde` | `string` | No |  |
-| `periodoHasta` | `string` | No |  |
-| `periodoTipo` | `string` | No |  |
+| `periodo` | `string` | No | Período original informado por el BCRA |
+| `periodoDesde` | `string` | No | Fecha de inicio del período normalizado |
+| `periodoHasta` | `string` | No | Fecha de fin del período normalizado |
+| `periodoTipo` | `string` | No | Tipo de período normalizado |
 | `promedio` | `float` | No |  |
 | `publicacionUrl` | `string` | No |  |
-| `referencia` | `string` | No |  |
-| `referenciaFecha` | `string` | No |  |
-| `unidad` | `string` | No |  |
+| `referencia` | `string` | No | Referencia original de la tabla |
+| `referenciaFecha` | `string` | No | Fecha detectada en la referencia, si corresponde |
+| `unidad` | `string` | No | Unidad inferida desde la referencia |
 | `xlsxUrl` | `string` | No |  |
 
 ### Operations
@@ -1483,28 +1483,28 @@ $rem_expectativa = $client->RemExpectativa();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `desvio` | `float` | No |  |
-| `fecha` | `string` | No |  |
+| `fecha` | `string` | No | Fecha ISO del primer día del mes del informe |
 | `fuente` | `string` | No |  |
-| `indicador` | `string` | No |  |
-| `informe` | `string` | No |  |
+| `indicador` | `string` | No | Indicador relevado |
+| `informe` | `string` | No | Informe REM en formato YYYY-MM |
 | `maximo` | `float` | No |  |
 | `mediana` | `float` | No |  |
 | `minimo` | `float` | No |  |
-| `muestra` | `string` | No |  |
+| `muestra` | `string` | No | Muestra de participantes: todos o TOP 10 |
 | `participantes` | `int` | No |  |
 | `percentil10` | `float` | No |  |
 | `percentil25` | `float` | No |  |
 | `percentil75` | `float` | No |  |
 | `percentil90` | `float` | No |  |
-| `periodo` | `string` | No |  |
-| `periodoDesde` | `string` | No |  |
-| `periodoHasta` | `string` | No |  |
-| `periodoTipo` | `string` | No |  |
+| `periodo` | `string` | No | Período original informado por el BCRA |
+| `periodoDesde` | `string` | No | Fecha de inicio del período normalizado |
+| `periodoHasta` | `string` | No | Fecha de fin del período normalizado |
+| `periodoTipo` | `string` | No | Tipo de período normalizado |
 | `promedio` | `float` | No |  |
 | `publicacionUrl` | `string` | No |  |
-| `referencia` | `string` | No |  |
-| `referenciaFecha` | `string` | No |  |
-| `unidad` | `string` | No |  |
+| `referencia` | `string` | No | Referencia original de la tabla |
+| `referenciaFecha` | `string` | No | Fecha detectada en la referencia, si corresponde |
+| `unidad` | `string` | No | Unidad inferida desde la referencia |
 | `xlsxUrl` | `string` | No |  |
 
 ### Operations
@@ -1789,9 +1789,9 @@ $tasa_plazo_fijo = $client->TasaPlazoFijo();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `entidad` | `string` | No |  |
-| `logo` | `string` | No |  |
-| `tnaClientes` | `float` | No |  |
-| `tnaNoClientes` | `float` | No |  |
+| `logo` | `string` | No | URL del logo de la entidad |
+| `tnaClientes` | `float` | No | Tasa Nominal Anual para clientes, en porcentaje |
+| `tnaNoClientes` | `float` | No | Tasa Nominal Anual para no clientes, en porcentaje |
 
 ### Operations
 

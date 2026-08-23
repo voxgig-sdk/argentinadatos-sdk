@@ -1,0 +1,165 @@
+# Entity: rem_expectativa
+
+main: kit: entity: rem_expectativa: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "desvio"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "fecha"
+      req: false
+      short: "Fecha ISO del primer día del mes del informe"
+      type: "`$STRING`"
+    }
+    {
+      name: "fuente"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "indicador"
+      req: false
+      short: "Indicador relevado"
+      type: "`$STRING`"
+    }
+    {
+      name: "informe"
+      req: false
+      short: "Informe REM en formato YYYY-MM"
+      type: "`$STRING`"
+    }
+    {
+      name: "maximo"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "mediana"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "minimo"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "muestra"
+      req: false
+      short: "Muestra de participantes: todos o TOP 10"
+      type: "`$STRING`"
+    }
+    {
+      name: "participantes"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "percentil10"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "percentil25"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "percentil75"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "percentil90"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "periodo"
+      req: false
+      short: "Período original informado por el BCRA"
+      type: "`$STRING`"
+    }
+    {
+      name: "periodoDesde"
+      req: false
+      short: "Fecha de inicio del período normalizado"
+      type: "`$STRING`"
+    }
+    {
+      name: "periodoHasta"
+      req: false
+      short: "Fecha de fin del período normalizado"
+      type: "`$STRING`"
+    }
+    {
+      name: "periodoTipo"
+      req: false
+      short: "Tipo de período normalizado"
+      type: "`$STRING`"
+    }
+    {
+      name: "promedio"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "publicacionUrl"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "referencia"
+      req: false
+      short: "Referencia original de la tabla"
+      type: "`$STRING`"
+    }
+    {
+      name: "referenciaFecha"
+      req: false
+      short: "Fecha detectada en la referencia, si corresponde"
+      type: "`$STRING`"
+    }
+    {
+      name: "unidad"
+      req: false
+      short: "Unidad inferida desde la referencia"
+      type: "`$STRING`"
+    }
+    {
+      name: "xlsxUrl"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "rem_expectativa"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/v1/rems/ultimo"
+          parts: [
+            "v1"
+            "rems"
+            "ultimo"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

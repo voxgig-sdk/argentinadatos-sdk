@@ -1,0 +1,142 @@
+# Entity: proveedor_plazo_fijo_precancelable
+
+main: kit: entity: proveedor_plazo_fijo_precancelable: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "avisoPrecancelacionDias"
+      req: false
+      short: "Días hábiles de aviso previo para precancelar"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "canal"
+      req: false
+      short: "Canales publicados para constituir el plazo fijo"
+      type: "`$STRING`"
+    }
+    {
+      name: "enlace"
+      req: false
+      short: "URL de la fuente"
+      type: "`$STRING`"
+    }
+    {
+      name: "entidad"
+      req: false
+      short: "Nombre de la entidad"
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "Identificador estable del proveedor"
+      type: "`$STRING`"
+    }
+    {
+      name: "logo"
+      req: false
+      short: "URL del logo de la entidad"
+      type: "`$STRING`"
+    }
+    {
+      name: "modalidad"
+      req: false
+      short: "Modalidad publicada por la entidad"
+      type: "`$STRING`"
+    }
+    {
+      name: "moneda"
+      req: false
+      short: "Moneda de constitución"
+      type: "`$STRING`"
+    }
+    {
+      name: "montoMaximo"
+      req: false
+      short: "Monto máximo de constitución"
+      type: "`$NUMBER`"
+    }
+    {
+      name: "montoMinimo"
+      req: false
+      short: "Monto mínimo de constitución"
+      type: "`$NUMBER`"
+    }
+    {
+      name: "plazoMaxDias"
+      req: false
+      short: "Plazo máximo en días"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "plazoMinDias"
+      req: false
+      short: "Plazo mínimo en días"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "plazoPrecancelacionDias"
+      req: false
+      short: "Días mínimos para ejercer la precancelación"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "tea"
+      req: false
+      short: "Tasa Efectiva Anual"
+      type: "`$NUMBER`"
+    }
+    {
+      name: "teaPrecancelacion"
+      req: false
+      short: "Tasa Efectiva Anual aplicada ante precancelación"
+      type: "`$NUMBER`"
+    }
+    {
+      name: "tna"
+      req: false
+      short: "Tasa Nominal Anual"
+      type: "`$NUMBER`"
+    }
+    {
+      name: "tnaPrecancelacion"
+      req: false
+      short: "Tasa Nominal Anual aplicada ante precancelación"
+      type: "`$NUMBER`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "proveedor_plazo_fijo_precancelable"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/v1/finanzas/tasas/plazoFijoPrecancelable"
+          parts: [
+            "v1"
+            "finanzas"
+            "tasas"
+            "plazoFijoPrecancelable"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

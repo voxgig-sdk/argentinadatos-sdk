@@ -19,6 +19,9 @@ module ArgentinadatosConfig
     {
       "main" => {
         "name" => "Argentinadatos",
+        "slug" => "argentinadatos",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -297,25 +300,30 @@ module ArgentinadatosConfig
             {
               "name" => "fechaVencimiento",
               "req" => true,
+              "short" => "Fecha de vencimiento (ISO 8601, solo fecha: yyyy-MM-dd)",
               "type" => "`$STRING`",
             },
             {
               "name" => "precioArs",
               "req" => true,
+              "short" => "Precio de cotización en pesos argentinos",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "ticker",
               "req" => true,
+              "short" => "Código del bono (ej.",
               "type" => "`$STRING`",
             },
             {
               "name" => "tirPorcentaje",
               "req" => true,
+              "short" => "Tasa interna de retorno (TIR) en porcentaje",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "volumen",
+              "short" => "Volumen nominal negociado, si la fuente lo publica",
               "type" => "`$NUMBER`",
             },
           ],
@@ -488,14 +496,17 @@ module ArgentinadatosConfig
           "fields" => [
             {
               "name" => "entidad",
+              "short" => "Nombre de la entidad que ofrece el criptopeso",
               "type" => "`$STRING`",
             },
             {
               "name" => "tna",
+              "short" => "Tasa Nominal Anual en porcentaje",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "token",
+              "short" => "Token del criptopeso (ej: ARGt, wARS)",
               "type" => "`$STRING`",
             },
           ],
@@ -532,14 +543,17 @@ module ArgentinadatosConfig
           "fields" => [
             {
               "name" => "entidad",
+              "short" => "Identificador de la entidad (p.",
               "type" => "`$STRING`",
             },
             {
               "name" => "tasa",
+              "short" => "Tasa de rendimiento anual en formato decimal (p.",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "tope",
+              "short" => "Monto máximo en USD remunerado a esa tasa, o null si no hay tope o no se informó",
               "type" => "`$NUMBER`",
             },
           ],
@@ -1180,10 +1194,12 @@ module ArgentinadatosConfig
             },
             {
               "name" => "fondo",
+              "short" => "Nombre del fondo común de inversión (clase o denominación oficial).",
               "type" => "`$STRING`",
             },
             {
               "name" => "nombre",
+              "short" => "Identificador de la fuente en Argentina Datos (por ejemplo el proveedor o el canal).",
               "type" => "`$STRING`",
             },
             {
@@ -1192,6 +1208,7 @@ module ArgentinadatosConfig
             },
             {
               "name" => "tipo",
+              "short" => "Clasificación del instrumento.",
               "type" => "`$STRING`",
             },
             {
@@ -1258,18 +1275,22 @@ module ArgentinadatosConfig
           "fields" => [
             {
               "name" => "entidad",
+              "short" => "Nombre del banco u oferente del crédito hipotecario UVA",
               "type" => "`$STRING`",
             },
             {
               "name" => "metadata",
+              "short" => "Detalle de condiciones",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "nombreComercial",
+              "short" => "Nombre comercial",
               "type" => "`$STRING`",
             },
             {
               "name" => "tna",
+              "short" => "Tasa Nominal Anual",
               "type" => "`$NUMBER`",
             },
           ],
@@ -1406,22 +1427,27 @@ module ArgentinadatosConfig
           "fields" => [
             {
               "name" => "fechaEmision",
+              "short" => "Fecha de emisión original (ISO 8601)",
               "type" => "`$STRING`",
             },
             {
               "name" => "fechaVencimiento",
+              "short" => "Fecha de vencimiento (ISO 8601)",
               "type" => "`$STRING`",
             },
             {
               "name" => "tem",
+              "short" => "Tasa Efectiva Mensual (%)",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "ticker",
+              "short" => "Código del instrumento (ej: S31G5, T17O5)",
               "type" => "`$STRING`",
             },
             {
               "name" => "vpv",
+              "short" => "Valor de Pago al Vencimiento por cada $100 de valor nominal",
               "type" => "`$NUMBER`",
             },
           ],
@@ -1458,14 +1484,17 @@ module ArgentinadatosConfig
           "fields" => [
             {
               "name" => "fin",
+              "short" => "Fecha de fin del mandato (formato yyyy-MM-dd).",
               "type" => "`$STRING`",
             },
             {
               "name" => "imagen",
+              "short" => "URL de la imagen del presidente",
               "type" => "`$STRING`",
             },
             {
               "name" => "inicio",
+              "short" => "Fecha de inicio del mandato (formato yyyy-MM-dd)",
               "type" => "`$STRING`",
             },
             {
@@ -1478,14 +1507,17 @@ module ArgentinadatosConfig
             },
             {
               "name" => "partidoImagen",
+              "short" => "URL de la imagen del logo del partido político",
               "type" => "`$STRING`",
             },
             {
               "name" => "periodoPresidencial",
+              "short" => "Rango de años del período presidencial (ej: '2019-2023')",
               "type" => "`$STRING`",
             },
             {
               "name" => "vicepresidente",
+              "short" => "Nombre del vicepresidente.",
               "type" => "`$STRING`",
             },
           ],
@@ -1521,70 +1553,87 @@ module ArgentinadatosConfig
           "fields" => [
             {
               "name" => "avisoPrecancelacionDias",
+              "short" => "Días hábiles de aviso previo para precancelar",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "canal",
+              "short" => "Canales publicados para constituir el plazo fijo",
               "type" => "`$STRING`",
             },
             {
               "name" => "enlace",
+              "short" => "URL de la fuente",
               "type" => "`$STRING`",
             },
             {
               "name" => "entidad",
+              "short" => "Nombre de la entidad",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Identificador estable del proveedor",
               "type" => "`$STRING`",
             },
             {
               "name" => "logo",
+              "short" => "URL del logo de la entidad",
               "type" => "`$STRING`",
             },
             {
               "name" => "modalidad",
+              "short" => "Modalidad publicada por la entidad",
               "type" => "`$STRING`",
             },
             {
               "name" => "moneda",
+              "short" => "Moneda de constitución",
               "type" => "`$STRING`",
             },
             {
               "name" => "montoMaximo",
+              "short" => "Monto máximo de constitución",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "montoMinimo",
+              "short" => "Monto mínimo de constitución",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "plazoMaxDias",
+              "short" => "Plazo máximo en días",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "plazoMinDias",
+              "short" => "Plazo mínimo en días",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "plazoPrecancelacionDias",
+              "short" => "Días mínimos para ejercer la precancelación",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "tea",
+              "short" => "Tasa Efectiva Anual",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "teaPrecancelacion",
+              "short" => "Tasa Efectiva Anual aplicada ante precancelación",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "tna",
+              "short" => "Tasa Nominal Anual",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "tnaPrecancelacion",
+              "short" => "Tasa Nominal Anual aplicada ante precancelación",
               "type" => "`$NUMBER`",
             },
           ],
@@ -1622,18 +1671,22 @@ module ArgentinadatosConfig
           "fields" => [
             {
               "name" => "entidad",
+              "short" => "Nombre de la entidad",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Identificador estable del proveedor (p.",
               "type" => "`$STRING`",
             },
             {
               "name" => "logo",
+              "short" => "URL del logo de la entidad",
               "type" => "`$STRING`",
             },
             {
               "name" => "tasas",
+              "short" => "Tasas por rango de plazo",
               "type" => "`$ARRAY`",
             },
           ],
@@ -1675,6 +1728,7 @@ module ArgentinadatosConfig
             },
             {
               "name" => "fecha",
+              "short" => "Fecha ISO del primer día del mes del informe",
               "type" => "`$STRING`",
             },
             {
@@ -1683,10 +1737,12 @@ module ArgentinadatosConfig
             },
             {
               "name" => "indicador",
+              "short" => "Indicador relevado",
               "type" => "`$STRING`",
             },
             {
               "name" => "informe",
+              "short" => "Informe REM en formato YYYY-MM",
               "type" => "`$STRING`",
             },
             {
@@ -1703,6 +1759,7 @@ module ArgentinadatosConfig
             },
             {
               "name" => "muestra",
+              "short" => "Muestra de participantes: todos o TOP 10",
               "type" => "`$STRING`",
             },
             {
@@ -1727,18 +1784,22 @@ module ArgentinadatosConfig
             },
             {
               "name" => "periodo",
+              "short" => "Período original informado por el BCRA",
               "type" => "`$STRING`",
             },
             {
               "name" => "periodoDesde",
+              "short" => "Fecha de inicio del período normalizado",
               "type" => "`$STRING`",
             },
             {
               "name" => "periodoHasta",
+              "short" => "Fecha de fin del período normalizado",
               "type" => "`$STRING`",
             },
             {
               "name" => "periodoTipo",
+              "short" => "Tipo de período normalizado",
               "type" => "`$STRING`",
             },
             {
@@ -1751,14 +1812,17 @@ module ArgentinadatosConfig
             },
             {
               "name" => "referencia",
+              "short" => "Referencia original de la tabla",
               "type" => "`$STRING`",
             },
             {
               "name" => "referenciaFecha",
+              "short" => "Fecha detectada en la referencia, si corresponde",
               "type" => "`$STRING`",
             },
             {
               "name" => "unidad",
+              "short" => "Unidad inferida desde la referencia",
               "type" => "`$STRING`",
             },
             {
@@ -1832,6 +1896,7 @@ module ArgentinadatosConfig
             },
             {
               "name" => "fecha",
+              "short" => "Fecha ISO del primer día del mes del informe",
               "type" => "`$STRING`",
             },
             {
@@ -1840,10 +1905,12 @@ module ArgentinadatosConfig
             },
             {
               "name" => "indicador",
+              "short" => "Indicador relevado",
               "type" => "`$STRING`",
             },
             {
               "name" => "informe",
+              "short" => "Informe REM en formato YYYY-MM",
               "type" => "`$STRING`",
             },
             {
@@ -1860,6 +1927,7 @@ module ArgentinadatosConfig
             },
             {
               "name" => "muestra",
+              "short" => "Muestra de participantes: todos o TOP 10",
               "type" => "`$STRING`",
             },
             {
@@ -1884,18 +1952,22 @@ module ArgentinadatosConfig
             },
             {
               "name" => "periodo",
+              "short" => "Período original informado por el BCRA",
               "type" => "`$STRING`",
             },
             {
               "name" => "periodoDesde",
+              "short" => "Fecha de inicio del período normalizado",
               "type" => "`$STRING`",
             },
             {
               "name" => "periodoHasta",
+              "short" => "Fecha de fin del período normalizado",
               "type" => "`$STRING`",
             },
             {
               "name" => "periodoTipo",
+              "short" => "Tipo de período normalizado",
               "type" => "`$STRING`",
             },
             {
@@ -1908,14 +1980,17 @@ module ArgentinadatosConfig
             },
             {
               "name" => "referencia",
+              "short" => "Referencia original de la tabla",
               "type" => "`$STRING`",
             },
             {
               "name" => "referenciaFecha",
+              "short" => "Fecha detectada en la referencia, si corresponde",
               "type" => "`$STRING`",
             },
             {
               "name" => "unidad",
+              "short" => "Unidad inferida desde la referencia",
               "type" => "`$STRING`",
             },
             {
@@ -2213,14 +2288,17 @@ module ArgentinadatosConfig
             },
             {
               "name" => "logo",
+              "short" => "URL del logo de la entidad",
               "type" => "`$STRING`",
             },
             {
               "name" => "tnaClientes",
+              "short" => "Tasa Nominal Anual para clientes, en porcentaje",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "tnaNoClientes",
+              "short" => "Tasa Nominal Anual para no clientes, en porcentaje",
               "type" => "`$NUMBER`",
             },
           ],
