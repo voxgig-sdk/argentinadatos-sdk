@@ -935,6 +935,12 @@
             },
             {
               "active": true,
+              "name": "id",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
               "name": "nombre",
               "req": false,
               "type": "`$STRING`"
@@ -946,6 +952,10 @@
               "type": "`$STRING`"
             }
           ],
+          "id": {
+            "field": "id",
+            "name": "id"
+          },
           "name": "feriado",
           "op": {
             "load": {
@@ -1305,6 +1315,12 @@
             },
             {
               "active": true,
+              "name": "id",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
               "name": "tea",
               "req": false,
               "type": "`$NUMBER`"
@@ -1322,6 +1338,10 @@
               "type": "`$NUMBER`"
             }
           ],
+          "id": {
+            "field": "id",
+            "name": "id"
+          },
           "name": "fondo_comun_inversion_otro",
           "op": {
             "load": {
@@ -1408,6 +1428,12 @@
             },
             {
               "active": true,
+              "name": "id",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
               "name": "nombre",
               "req": false,
               "short": "Identificador de la fuente en Argentina Datos (por ejemplo el proveedor o el canal).",
@@ -1439,6 +1465,10 @@
               "type": "`$NUMBER`"
             }
           ],
+          "id": {
+            "field": "id",
+            "name": "id"
+          },
           "name": "fondo_comun_inversion_variable",
           "op": {
             "load": {
@@ -2504,11 +2534,21 @@
             },
             {
               "active": true,
+              "name": "id",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
               "name": "moneda",
               "req": false,
               "type": "`$STRING`"
             }
           ],
+          "id": {
+            "field": "id",
+            "name": "id"
+          },
           "name": "rendimiento",
           "op": {
             "load": {
@@ -2960,6 +3000,7 @@
             }
           },
           "title": "In-memory mock transport for testing without a live server",
+          "transport": "base",
           "version": "0.0.1"
         }
       },
@@ -3843,6 +3884,7 @@
           "origname": "",
           "output": {
             "adopt": false,
+            "create": true,
             "path": "",
             "repo": "",
             "sdkrel": ""
@@ -3901,6 +3943,7 @@
           "origname": "",
           "output": {
             "adopt": false,
+            "create": true,
             "path": "",
             "repo": "",
             "sdkrel": ""
@@ -3975,6 +4018,7 @@
           "origname": "",
           "output": {
             "adopt": false,
+            "create": true,
             "path": "",
             "repo": "",
             "sdkrel": ""
@@ -4055,6 +4099,7 @@
           "origname": "",
           "output": {
             "adopt": false,
+            "create": true,
             "path": "",
             "repo": "",
             "sdkrel": ""
@@ -4113,6 +4158,7 @@
           "origname": "",
           "output": {
             "adopt": false,
+            "create": true,
             "path": "",
             "repo": "",
             "sdkrel": ""
@@ -4177,6 +4223,7 @@
           "origname": "",
           "output": {
             "adopt": false,
+            "create": true,
             "path": "",
             "repo": "",
             "sdkrel": ""
@@ -4246,6 +4293,7 @@
           "origname": "",
           "output": {
             "adopt": false,
+            "create": true,
             "path": "",
             "repo": "",
             "sdkrel": ""
@@ -4320,6 +4368,7 @@
           "origname": "",
           "output": {
             "adopt": false,
+            "create": true,
             "path": "",
             "repo": "",
             "sdkrel": ""

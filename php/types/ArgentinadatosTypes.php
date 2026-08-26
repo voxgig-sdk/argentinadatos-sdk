@@ -237,6 +237,7 @@ class EventoPresidencialListMatch
 class Feriado
 {
     public ?string $fecha = null;
+    public ?string $id = null;
     public ?string $nombre = null;
     public ?string $tipo = null;
 }
@@ -280,6 +281,7 @@ class FondoComunInversionOtro
 {
     public ?string $fecha = null;
     public ?string $fondo = null;
+    public ?string $id = null;
     public ?float $tea = null;
     public ?float $tna = null;
     public ?float $tope = null;
@@ -298,6 +300,7 @@ class FondoComunInversionVariable
     public ?string $condicionesCorto = null;
     public ?string $fecha = null;
     public ?string $fondo = null;
+    public ?string $id = null;
     public ?string $nombre = null;
     public ?float $tea = null;
     public ?string $tipo = null;
@@ -564,6 +567,7 @@ class Rendimiento
 {
     public ?float $apy = null;
     public ?string $fecha = null;
+    public ?string $id = null;
     public ?string $moneda = null;
 }
 

@@ -65,9 +65,9 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  cotizacions = client.Cotizacion.list()
+  rendimiento = client.Rendimiento.load({ "id" => "example_id" })
 rescue => err
-  warn "list failed: #{err}"
+  warn "load failed: #{err}"
 end
 ```
 
@@ -128,15 +128,18 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = ArgentinadatosSDK.test
+client = ArgentinadatosSDK.test({
+  "entity" => { "rendimiento" => { "test01" => { "id" => "test01" } } },
+})
 
 # Entity ops return the ENTITY (raises on error);
 # call data_get for the mock record.
-cotizacion = client.Cotizacion.list()
-puts cotizacion
+rendimiento = client.Rendimiento.load({ "id" => "test01" })
+puts rendimiento
 ```
 
 ### Use a custom fetch function
@@ -420,6 +423,7 @@ API path: `/v1/eventos/presidenciales`
 | Field | Description |
 | --- | --- |
 | `fecha` |  |
+| `id` |  |
 | `nombre` |  |
 | `tipo` |  |
 
@@ -458,6 +462,7 @@ API path: `/v1/finanzas/fci/mercadoDinero/{fecha}`
 | --- | --- |
 | `fecha` |  |
 | `fondo` |  |
+| `id` |  |
 | `tea` |  |
 | `tna` |  |
 | `tope` |  |
@@ -474,6 +479,7 @@ API path: `/v1/finanzas/fci/otros/{fecha}`
 | `condicionesCorto` |  |
 | `fecha` |  |
 | `fondo` | Nombre del fondo común de inversión (clase o denominación oficial). |
+| `id` |  |
 | `nombre` | Identificador de la fuente en Argentina Datos (por ejemplo el proveedor o el canal). |
 | `tea` |  |
 | `tipo` | Clasificación del instrumento. |
@@ -661,6 +667,7 @@ API path: `/v1/rems/ultimo`
 | --- | --- |
 | `apy` |  |
 | `fecha` |  |
+| `id` |  |
 | `moneda` |  |
 
 Operations: Load.
@@ -1025,6 +1032,7 @@ Create an instance: `feriado = client.Feriado`
 | Field | Type | Description |
 | --- | --- | --- |
 | `fecha` | `String` |  |
+| `id` | `String` |  |
 | `nombre` | `String` |  |
 | `tipo` | `String` |  |
 
@@ -1100,6 +1108,7 @@ Create an instance: `fondo_comun_inversion_otro = client.FondoComunInversionOtro
 | --- | --- | --- |
 | `fecha` | `String` |  |
 | `fondo` | `String` |  |
+| `id` | `String` |  |
 | `tea` | `Float` |  |
 | `tna` | `Float` |  |
 | `tope` | `Float` |  |
@@ -1130,6 +1139,7 @@ Create an instance: `fondo_comun_inversion_variable = client.FondoComunInversion
 | `condicionesCorto` | `String` |  |
 | `fecha` | `String` |  |
 | `fondo` | `String` | Nombre del fondo común de inversión (clase o denominación oficial). |
+| `id` | `String` |  |
 | `nombre` | `String` | Identificador de la fuente en Argentina Datos (por ejemplo el proveedor o el canal). |
 | `tea` | `Float` |  |
 | `tipo` | `String` | Clasificación del instrumento. |
@@ -1457,6 +1467,7 @@ Create an instance: `rendimiento = client.Rendimiento`
 | --- | --- | --- |
 | `apy` | `Float` |  |
 | `fecha` | `String` |  |
+| `id` | `String` |  |
 | `moneda` | `String` |  |
 
 #### Example: Load
@@ -1659,15 +1670,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `list`, the entity
+Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-cotizacion = client.Cotizacion
-cotizacion.list()
+rendimiento = client.Rendimiento
+rendimiento.load({ "id" => "example_id" })
 
-# cotizacion.data_get now returns the cotizacion data from the last list
-# cotizacion.match_get returns the last match criteria
+# rendimiento.data_get now returns the rendimiento data from the last load
+# rendimiento.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

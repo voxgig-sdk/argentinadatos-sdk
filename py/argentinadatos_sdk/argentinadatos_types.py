@@ -205,6 +205,7 @@ class EventoPresidencialListMatch(TypedDict, total=False):
 
 class Feriado(TypedDict, total=False):
     fecha: str
+    id: str
     nombre: str
     tipo: str
 
@@ -238,6 +239,7 @@ class FondoComunInversionLoadMatch(TypedDict):
 class FondoComunInversionOtro(TypedDict, total=False):
     fecha: str
     fondo: str
+    id: str
     tea: float
     tna: float
     tope: float
@@ -252,6 +254,7 @@ class FondoComunInversionVariable(TypedDict, total=False):
     condicionesCorto: str
     fecha: str
     fondo: str
+    id: str
     nombre: str
     tea: float
     tipo: str
@@ -477,6 +480,7 @@ class RemExpectativaListMatch(TypedDict, total=False):
 class Rendimiento(TypedDict, total=False):
     apy: float
     fecha: str
+    id: str
     moneda: str
 
 

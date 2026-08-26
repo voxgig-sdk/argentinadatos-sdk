@@ -48,9 +48,13 @@ class FeriadoEntityTest extends TestCase
 
         // LOAD
         $feriado_ref01_ent = $client->Feriado(null);
-        $feriado_ref01_match_dt0 = [];
+        $feriado_ref01_match_dt0 = [
+            "id" => $feriado_ref01_data["id"],
+        ];
         $feriado_ref01_data_dt0_loaded = $feriado_ref01_ent->load($feriado_ref01_match_dt0, null);
-        $this->assertNotNull($feriado_ref01_data_dt0_loaded);
+        $feriado_ref01_data_dt0_load_result = Helpers::to_map(is_object($feriado_ref01_data_dt0_loaded) && method_exists($feriado_ref01_data_dt0_loaded, 'data_get') ? $feriado_ref01_data_dt0_loaded->data_get() : $feriado_ref01_data_dt0_loaded);
+        $this->assertNotNull($feriado_ref01_data_dt0_load_result);
+        $this->assertEquals($feriado_ref01_data_dt0_load_result["id"], $feriado_ref01_data["id"]);
 
     }
 }

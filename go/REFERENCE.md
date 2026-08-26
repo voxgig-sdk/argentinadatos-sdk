@@ -740,6 +740,7 @@ fmt.Println(feriado.GetName()) // "feriado"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `fecha` | `string` | No |  |
+| `id` | `string` | No |  |
 | `nombre` | `string` | No |  |
 | `tipo` | `string` | No |  |
 
@@ -896,6 +897,7 @@ fmt.Println(fondoComunInversionOtro.GetName()) // "fondo_comun_inversion_otro"
 | --- | --- | --- | --- |
 | `fecha` | `string` | No |  |
 | `fondo` | `string` | No |  |
+| `id` | `string` | No |  |
 | `tea` | `float64` | No |  |
 | `tna` | `float64` | No |  |
 | `tope` | `float64` | No |  |
@@ -953,6 +955,7 @@ fmt.Println(fondoComunInversionVariable.GetName()) // "fondo_comun_inversion_var
 | `condicionesCorto` | `string` | No |  |
 | `fecha` | `string` | No |  |
 | `fondo` | `string` | No | Nombre del fondo común de inversión (clase o denominación oficial). |
+| `id` | `string` | No |  |
 | `nombre` | `string` | No | Identificador de la fuente en Argentina Datos (por ejemplo el proveedor o el canal). |
 | `tea` | `float64` | No |  |
 | `tipo` | `string` | No | Clasificación del instrumento. |
@@ -1550,6 +1553,7 @@ fmt.Println(rendimiento.GetName()) // "rendimiento"
 | --- | --- | --- | --- |
 | `apy` | `float64` | No |  |
 | `fecha` | `string` | No |  |
+| `id` | `string` | No |  |
 | `moneda` | `string` | No |  |
 
 ### Operations

@@ -44,10 +44,14 @@ describe("FondoComunInversionOtroEntity", function()
 
     -- LOAD
     local fondo_comun_inversion_otro_ref01_ent = client:FondoComunInversionOtro(nil)
-    local fondo_comun_inversion_otro_ref01_match_dt0 = {}
+    local fondo_comun_inversion_otro_ref01_match_dt0 = {
+      id = fondo_comun_inversion_otro_ref01_data["id"],
+    }
     local fondo_comun_inversion_otro_ref01_data_dt0_loaded, err = fondo_comun_inversion_otro_ref01_ent:load(fondo_comun_inversion_otro_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(fondo_comun_inversion_otro_ref01_data_dt0_loaded)
+    local fondo_comun_inversion_otro_ref01_data_dt0_load_result = helpers.to_map(type(fondo_comun_inversion_otro_ref01_data_dt0_loaded) == 'table' and fondo_comun_inversion_otro_ref01_data_dt0_loaded.data_get and fondo_comun_inversion_otro_ref01_data_dt0_loaded:data_get() or fondo_comun_inversion_otro_ref01_data_dt0_loaded)
+    assert.is_not_nil(fondo_comun_inversion_otro_ref01_data_dt0_load_result)
+    assert.are.equal(fondo_comun_inversion_otro_ref01_data_dt0_load_result["id"], fondo_comun_inversion_otro_ref01_data["id"])
 
   end)
 end)

@@ -11,6 +11,11 @@ main: kit: entity: feriado: {
       type: "`$STRING`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "nombre"
       req: false
       type: "`$STRING`"
@@ -21,6 +26,11 @@ main: kit: entity: feriado: {
       type: "`$STRING`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "feriado"
   op: {

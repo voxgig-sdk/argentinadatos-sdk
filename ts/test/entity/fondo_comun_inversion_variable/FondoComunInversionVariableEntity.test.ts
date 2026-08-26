@@ -59,9 +59,12 @@ describe('FondoComunInversionVariableEntity', async () => {
 
     let fondo_comun_inversion_variable_ref01_data = Object.values(setup.data.existing.fondo_comun_inversion_variable)[0] as any
 
-    // LOAD: skipped — no entity id field and load requires path params.
-    // Entity-var is declared here so later flow steps still compile.
+    // LOAD
     const fondo_comun_inversion_variable_ref01_ent = client.FondoComunInversionVariable()
+    const fondo_comun_inversion_variable_ref01_match_dt0: any = {}
+    fondo_comun_inversion_variable_ref01_match_dt0.id = fondo_comun_inversion_variable_ref01_data.id
+    const fondo_comun_inversion_variable_ref01_data_dt0 = (await fondo_comun_inversion_variable_ref01_ent.load(fondo_comun_inversion_variable_ref01_match_dt0)).data()
+    assert(fondo_comun_inversion_variable_ref01_data_dt0.id === fondo_comun_inversion_variable_ref01_data.id)
 
 
   })

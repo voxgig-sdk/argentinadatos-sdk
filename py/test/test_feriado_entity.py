@@ -48,9 +48,13 @@ class TestFeriadoEntity:
 
         # LOAD
         feriado_ref01_ent = client.Feriado(None)
-        feriado_ref01_match_dt0 = {}
+        feriado_ref01_match_dt0 = {
+            "id": feriado_ref01_data["id"],
+        }
         feriado_ref01_data_dt0_loaded = feriado_ref01_ent.load(feriado_ref01_match_dt0, None)
-        assert feriado_ref01_data_dt0_loaded is not None
+        feriado_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(feriado_ref01_data_dt0_loaded))
+        assert feriado_ref01_data_dt0_load_result is not None
+        assert feriado_ref01_data_dt0_load_result["id"] == feriado_ref01_data["id"]
 
 
 

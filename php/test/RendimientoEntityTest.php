@@ -48,9 +48,13 @@ class RendimientoEntityTest extends TestCase
 
         // LOAD
         $rendimiento_ref01_ent = $client->Rendimiento(null);
-        $rendimiento_ref01_match_dt0 = [];
+        $rendimiento_ref01_match_dt0 = [
+            "id" => $rendimiento_ref01_data["id"],
+        ];
         $rendimiento_ref01_data_dt0_loaded = $rendimiento_ref01_ent->load($rendimiento_ref01_match_dt0, null);
-        $this->assertNotNull($rendimiento_ref01_data_dt0_loaded);
+        $rendimiento_ref01_data_dt0_load_result = Helpers::to_map(is_object($rendimiento_ref01_data_dt0_loaded) && method_exists($rendimiento_ref01_data_dt0_loaded, 'data_get') ? $rendimiento_ref01_data_dt0_loaded->data_get() : $rendimiento_ref01_data_dt0_loaded);
+        $this->assertNotNull($rendimiento_ref01_data_dt0_load_result);
+        $this->assertEquals($rendimiento_ref01_data_dt0_load_result["id"], $rendimiento_ref01_data["id"]);
 
     }
 }

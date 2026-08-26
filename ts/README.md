@@ -70,10 +70,10 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const cotizacions = await client.Cotizacion().list()
-  console.log(cotizacions)
+  const rendimiento = await client.Rendimiento().load({ id: "example_id" })
+  console.log(rendimiento)
 } catch (err) {
-  console.error('list failed:', err)
+  console.error('load failed:', err)
 }
 ```
 
@@ -137,10 +137,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = ArgentinadatosSDK.test()
 
-const cotizacion = await client.Cotizacion().list()
-// cotizacion is the entity, populated with mock response data
-// — call cotizacion.data() for the record itself
-console.log(cotizacion)
+const rendimiento = await client.Rendimiento().load({ id: 'test01' })
+// rendimiento is the entity, populated with mock response data
+// — call rendimiento.data() for the record itself
+console.log(rendimiento)
 ```
 
 You can also use the instance method:
@@ -155,14 +155,14 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Cotizacion()
+const entity = client.Rendimiento()
 
 // First call runs the operation and stores its result
-await entity.list()
+await entity.load({ id: 'example' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data)
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -473,6 +473,7 @@ API path: `/v1/eventos/presidenciales`
 | Field | Description |
 | --- | --- |
 | `fecha` |  |
+| `id` |  |
 | `nombre` |  |
 | `tipo` |  |
 
@@ -511,6 +512,7 @@ API path: `/v1/finanzas/fci/mercadoDinero/{fecha}`
 | --- | --- |
 | `fecha` |  |
 | `fondo` |  |
+| `id` |  |
 | `tea` |  |
 | `tna` |  |
 | `tope` |  |
@@ -527,6 +529,7 @@ API path: `/v1/finanzas/fci/otros/{fecha}`
 | `condicionesCorto` |  |
 | `fecha` |  |
 | `fondo` | Nombre del fondo común de inversión (clase o denominación oficial). |
+| `id` |  |
 | `nombre` | Identificador de la fuente en Argentina Datos (por ejemplo el proveedor o el canal). |
 | `tea` |  |
 | `tipo` | Clasificación del instrumento. |
@@ -714,6 +717,7 @@ API path: `/v1/rems/ultimo`
 | --- | --- |
 | `apy` |  |
 | `fecha` |  |
+| `id` |  |
 | `moneda` |  |
 
 Operations: load.
@@ -1067,6 +1071,7 @@ Create an instance: `const feriado = client.Feriado()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `fecha` | `string` |  |
+| `id` | `string` |  |
 | `nombre` | `string` |  |
 | `tipo` | `string` |  |
 
@@ -1139,6 +1144,7 @@ Create an instance: `const fondo_comun_inversion_otro = client.FondoComunInversi
 | --- | --- | --- |
 | `fecha` | `string` |  |
 | `fondo` | `string` |  |
+| `id` | `string` |  |
 | `tea` | `number` |  |
 | `tna` | `number` |  |
 | `tope` | `number` |  |
@@ -1168,6 +1174,7 @@ Create an instance: `const fondo_comun_inversion_variable = client.FondoComunInv
 | `condicionesCorto` | `string` |  |
 | `fecha` | `string` |  |
 | `fondo` | `string` | Nombre del fondo común de inversión (clase o denominación oficial). |
+| `id` | `string` |  |
 | `nombre` | `string` | Identificador de la fuente en Argentina Datos (por ejemplo el proveedor o el canal). |
 | `tea` | `number` |  |
 | `tipo` | `string` | Clasificación del instrumento. |
@@ -1485,6 +1492,7 @@ Create an instance: `const rendimiento = client.Rendimiento()`
 | --- | --- | --- |
 | `apy` | `number` |  |
 | `fecha` | `string` |  |
+| `id` | `string` |  |
 | `moneda` | `string` |  |
 
 #### Example: Load
@@ -1673,16 +1681,16 @@ import { ArgentinadatosSDK } from '@voxgig-sdk/argentinadatos'
 
 ### Entity state
 
-Entity instances are stateful. After a successful `list`, the entity
+Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const cotizacion = client.Cotizacion()
-await cotizacion.list()
+const rendimiento = client.Rendimiento()
+await rendimiento.load({ id: "example_id" })
 
-// cotizacion.data() now returns the cotizacion data from the last `list`
-// cotizacion.match() returns the last match criteria
+// rendimiento.data() now returns the rendimiento data from the last `load`
+// rendimiento.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

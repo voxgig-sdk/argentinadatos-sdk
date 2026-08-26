@@ -737,6 +737,7 @@ feriado = client.Feriado()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `fecha` | `str` | No |  |
+| `id` | `str` | No |  |
 | `nombre` | `str` | No |  |
 | `tipo` | `str` | No |  |
 
@@ -895,6 +896,7 @@ fondo_comun_inversion_otro = client.FondoComunInversionOtro()
 | --- | --- | --- | --- |
 | `fecha` | `str` | No |  |
 | `fondo` | `str` | No |  |
+| `id` | `str` | No |  |
 | `tea` | `float` | No |  |
 | `tna` | `float` | No |  |
 | `tope` | `float` | No |  |
@@ -952,6 +954,7 @@ fondo_comun_inversion_variable = client.FondoComunInversionVariable()
 | `condicionesCorto` | `str` | No |  |
 | `fecha` | `str` | No |  |
 | `fondo` | `str` | No | Nombre del fondo común de inversión (clase o denominación oficial). |
+| `id` | `str` | No |  |
 | `nombre` | `str` | No | Identificador de la fuente en Argentina Datos (por ejemplo el proveedor o el canal). |
 | `tea` | `float` | No |  |
 | `tipo` | `str` | No | Clasificación del instrumento. |
@@ -1567,6 +1570,7 @@ rendimiento = client.Rendimiento()
 | --- | --- | --- | --- |
 | `apy` | `float` | No |  |
 | `fecha` | `str` | No |  |
+| `id` | `str` | No |  |
 | `moneda` | `str` | No |  |
 
 ### Operations

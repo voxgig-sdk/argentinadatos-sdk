@@ -64,7 +64,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local cotizacions, err = client:Cotizacion():list()
+local rendimiento, err = client:Rendimiento():load({ id = "example_id" })
 if err then error(err) end
 ```
 
@@ -122,7 +122,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Cotizacion():list()
+local result, err = client:Rendimiento():load({ id = "test01" })
 -- result is the returned data; err is set on failure
 ```
 
@@ -411,6 +411,7 @@ API path: `/v1/eventos/presidenciales`
 | Field | Description |
 | --- | --- |
 | `fecha` |  |
+| `id` |  |
 | `nombre` |  |
 | `tipo` |  |
 
@@ -449,6 +450,7 @@ API path: `/v1/finanzas/fci/mercadoDinero/{fecha}`
 | --- | --- |
 | `fecha` |  |
 | `fondo` |  |
+| `id` |  |
 | `tea` |  |
 | `tna` |  |
 | `tope` |  |
@@ -465,6 +467,7 @@ API path: `/v1/finanzas/fci/otros/{fecha}`
 | `condicionesCorto` |  |
 | `fecha` |  |
 | `fondo` | Nombre del fondo común de inversión (clase o denominación oficial). |
+| `id` |  |
 | `nombre` | Identificador de la fuente en Argentina Datos (por ejemplo el proveedor o el canal). |
 | `tea` |  |
 | `tipo` | Clasificación del instrumento. |
@@ -652,6 +655,7 @@ API path: `/v1/rems/ultimo`
 | --- | --- |
 | `apy` |  |
 | `fecha` |  |
+| `id` |  |
 | `moneda` |  |
 
 Operations: Load.
@@ -1005,6 +1009,7 @@ Create an instance: `local feriado = client:Feriado(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `fecha` | `string` |  |
+| `id` | `string` |  |
 | `nombre` | `string` |  |
 | `tipo` | `string` |  |
 
@@ -1077,6 +1082,7 @@ Create an instance: `local fondo_comun_inversion_otro = client:FondoComunInversi
 | --- | --- | --- |
 | `fecha` | `string` |  |
 | `fondo` | `string` |  |
+| `id` | `string` |  |
 | `tea` | `number` |  |
 | `tna` | `number` |  |
 | `tope` | `number` |  |
@@ -1106,6 +1112,7 @@ Create an instance: `local fondo_comun_inversion_variable = client:FondoComunInv
 | `condicionesCorto` | `string` |  |
 | `fecha` | `string` |  |
 | `fondo` | `string` | Nombre del fondo común de inversión (clase o denominación oficial). |
+| `id` | `string` |  |
 | `nombre` | `string` | Identificador de la fuente en Argentina Datos (por ejemplo el proveedor o el canal). |
 | `tea` | `number` |  |
 | `tipo` | `string` | Clasificación del instrumento. |
@@ -1423,6 +1430,7 @@ Create an instance: `local rendimiento = client:Rendimiento(nil)`
 | --- | --- | --- |
 | `apy` | `number` |  |
 | `fecha` | `string` |  |
+| `id` | `string` |  |
 | `moneda` | `string` |  |
 
 #### Example: Load
@@ -1619,15 +1627,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `list`, the entity
+Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local cotizacion = client:Cotizacion()
-cotizacion:list()
+local rendimiento = client:Rendimiento()
+rendimiento:load({ id = "example_id" })
 
--- cotizacion:data_get() now returns the cotizacion data from the last list
--- cotizacion:match_get() returns the last match criteria
+-- rendimiento:data_get() now returns the rendimiento data from the last load
+-- rendimiento:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

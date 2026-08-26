@@ -70,10 +70,10 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    cotizacions = client.Cotizacion().list()
-    print(cotizacions)
+    rendimiento = client.Rendimiento().load({"id": "example_id"})
+    print(rendimiento)
 except Exception as err:
-    print(f"list failed: {err}")
+    print(f"load failed: {err}")
 ```
 
 `direct()` does **not** raise — it returns the result envelope. Branch
@@ -139,8 +139,8 @@ client = ArgentinadatosSDK.test()
 
 # Entity ops return the ENTITY and raises on error;
 # call data_get() for the record.
-cotizacion = client.Cotizacion().list()
-# cotizacion contains the mock response record
+rendimiento = client.Rendimiento().load({"id": "test01"})
+# rendimiento contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -425,6 +425,7 @@ API path: `/v1/eventos/presidenciales`
 | Field | Description |
 | --- | --- |
 | `fecha` |  |
+| `id` |  |
 | `nombre` |  |
 | `tipo` |  |
 
@@ -463,6 +464,7 @@ API path: `/v1/finanzas/fci/mercadoDinero/{fecha}`
 | --- | --- |
 | `fecha` |  |
 | `fondo` |  |
+| `id` |  |
 | `tea` |  |
 | `tna` |  |
 | `tope` |  |
@@ -479,6 +481,7 @@ API path: `/v1/finanzas/fci/otros/{fecha}`
 | `condicionesCorto` |  |
 | `fecha` |  |
 | `fondo` | Nombre del fondo común de inversión (clase o denominación oficial). |
+| `id` |  |
 | `nombre` | Identificador de la fuente en Argentina Datos (por ejemplo el proveedor o el canal). |
 | `tea` |  |
 | `tipo` | Clasificación del instrumento. |
@@ -666,6 +669,7 @@ API path: `/v1/rems/ultimo`
 | --- | --- |
 | `apy` |  |
 | `fecha` |  |
+| `id` |  |
 | `moneda` |  |
 
 Operations: Load.
@@ -1019,6 +1023,7 @@ Create an instance: `feriado = client.Feriado()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `fecha` | `str` |  |
+| `id` | `str` |  |
 | `nombre` | `str` |  |
 | `tipo` | `str` |  |
 
@@ -1091,6 +1096,7 @@ Create an instance: `fondo_comun_inversion_otro = client.FondoComunInversionOtro
 | --- | --- | --- |
 | `fecha` | `str` |  |
 | `fondo` | `str` |  |
+| `id` | `str` |  |
 | `tea` | `float` |  |
 | `tna` | `float` |  |
 | `tope` | `float` |  |
@@ -1120,6 +1126,7 @@ Create an instance: `fondo_comun_inversion_variable = client.FondoComunInversion
 | `condicionesCorto` | `str` |  |
 | `fecha` | `str` |  |
 | `fondo` | `str` | Nombre del fondo común de inversión (clase o denominación oficial). |
+| `id` | `str` |  |
 | `nombre` | `str` | Identificador de la fuente en Argentina Datos (por ejemplo el proveedor o el canal). |
 | `tea` | `float` |  |
 | `tipo` | `str` | Clasificación del instrumento. |
@@ -1437,6 +1444,7 @@ Create an instance: `rendimiento = client.Rendimiento()`
 | --- | --- | --- |
 | `apy` | `float` |  |
 | `fecha` | `str` |  |
+| `id` | `str` |  |
 | `moneda` | `str` |  |
 
 #### Example: Load
@@ -1632,15 +1640,15 @@ Import entity or utility modules directly only when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `list`, the entity
+Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-cotizacion = client.Cotizacion()
-cotizacion.list()
+rendimiento = client.Rendimiento()
+rendimiento.load({"id": "example_id"})
 
-# cotizacion.data_get() now returns the cotizacion data from the last list
-# cotizacion.match_get() returns the last match criteria
+# rendimiento.data_get() now returns the rendimiento data from the last load
+# rendimiento.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

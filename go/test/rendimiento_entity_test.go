@@ -61,13 +61,19 @@ func TestRendimientoEntity(t *testing.T) {
 
 		// LOAD
 		rendimientoRef01Ent := client.Rendimiento(nil)
-		rendimientoRef01MatchDt0 := map[string]any{}
+		rendimientoRef01MatchDt0 := map[string]any{
+			"id": rendimientoRef01Data["id"],
+		}
 		rendimientoRef01DataDt0Loaded, err := rendimientoRef01Ent.Load(rendimientoRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if rendimientoRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		rendimientoRef01DataDt0LoadResult := core.ToMapAny(entityData(rendimientoRef01DataDt0Loaded))
+		if rendimientoRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if rendimientoRef01DataDt0LoadResult["id"] != rendimientoRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

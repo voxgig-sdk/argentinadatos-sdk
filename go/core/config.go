@@ -20,6 +20,7 @@ func MakeConfig() map[string]any {
 				"options": map[string]any{
 					"active": false,
 				},
+				"transport": "base",
 			},
 		},
 		"options": map[string]any{
@@ -784,6 +785,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+					map[string]any{
 						"name": "nombre",
 						"type": "`$STRING`",
 					},
@@ -1107,6 +1112,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+					map[string]any{
 						"name": "tea",
 						"type": "`$NUMBER`",
 					},
@@ -1187,6 +1196,10 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "fondo",
 						"short": "Nombre del fondo común de inversión (clase o denominación oficial).",
+						"type": "`$STRING`",
+					},
+					map[string]any{
+						"name": "id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -2027,6 +2040,10 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "fecha",
+						"type": "`$STRING`",
+					},
+					map[string]any{
+						"name": "id",
 						"type": "`$STRING`",
 					},
 					map[string]any{

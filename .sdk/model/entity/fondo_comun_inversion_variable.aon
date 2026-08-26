@@ -27,6 +27,11 @@ main: kit: entity: fondo_comun_inversion_variable: {
       type: "`$STRING`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "nombre"
       req: false
       short: "Identificador de la fuente en Argentina Datos (por ejemplo el proveedor o el canal)."
@@ -54,6 +59,11 @@ main: kit: entity: fondo_comun_inversion_variable: {
       type: "`$NUMBER`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "fondo_comun_inversion_variable"
   op: {

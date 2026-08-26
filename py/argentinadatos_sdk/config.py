@@ -37,6 +37,7 @@ def make_config():
         "options": {
           "active": False,
         },
+        "transport": "base",
       },
         },
         "options": {
@@ -801,6 +802,10 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+          {
             "name": "nombre",
             "type": "`$STRING`",
           },
@@ -1124,6 +1129,10 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+          {
             "name": "tea",
             "type": "`$NUMBER`",
           },
@@ -1204,6 +1213,10 @@ def make_config():
           {
             "name": "fondo",
             "short": "Nombre del fondo común de inversión (clase o denominación oficial).",
+            "type": "`$STRING`",
+          },
+          {
+            "name": "id",
             "type": "`$STRING`",
           },
           {
@@ -2044,6 +2057,10 @@ def make_config():
           },
           {
             "name": "fecha",
+            "type": "`$STRING`",
+          },
+          {
+            "name": "id",
             "type": "`$STRING`",
           },
           {

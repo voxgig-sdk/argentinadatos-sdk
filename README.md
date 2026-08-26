@@ -42,23 +42,23 @@ network, and no credentials:
 // Shape: { entity: { <entity-name>: { <id>: <record> } } }
 const client = ArgentinadatosSDK.test({
   entity: {
-    cotizacion: {
+    rendimiento: {
       test01: { id: 'test01' },
     },
   },
 })
-const cotizacions = await client.Cotizacion().list()
-// cotizacions is an array of Cotizacion entities, populated with mock data
-// — call cotizacions[0].data() for the record itself
-console.log(cotizacions)
+const rendimiento = await client.Rendimiento().load({ id: 'test01' })
+// rendimiento is the Rendimiento entity, populated with mock data
+// — call rendimiento.data() for the record itself
+console.log(rendimiento)
 ```
 
 ### Python
 
 ```python
 client = ArgentinadatosSDK.test()
-cotizacions = client.Cotizacion().list()
-print(cotizacions)
+rendimiento = client.Rendimiento().load({"id": "test01"})
+print(rendimiento)
 ```
 
 ### PHP
@@ -66,17 +66,17 @@ print(cotizacions)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = ArgentinadatosSDK::test([
-    "entity" => ["cotizacion" => ["test01" => []]],
+    "entity" => ["rendimiento" => ["test01" => ["id" => "test01"]]],
 ]);
-$cotizacions = $client->Cotizacion()->list();
+$rendimiento = $client->Rendimiento()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Cotizacion(nil).List(
-    nil, nil,
+result, err := client.Rendimiento(nil).Load(
+    map[string]any{"id": "test01"}, nil,
 )
 ```
 
@@ -85,16 +85,16 @@ result, err := client.Cotizacion(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = ArgentinadatosSDK.test({
-  "entity" => { "cotizacion" => { "test01" => {} } },
+  "entity" => { "rendimiento" => { "test01" => { "id" => "test01" } } },
 })
-cotizacions = client.Cotizacion.list()
+rendimiento = client.Rendimiento.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:Cotizacion():list()
+local result, err = client:Rendimiento():load({ id = "test01" })
 ```
 
 ## Packages

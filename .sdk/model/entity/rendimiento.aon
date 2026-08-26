@@ -16,11 +16,21 @@ main: kit: entity: rendimiento: {
       type: "`$STRING`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "moneda"
       req: false
       type: "`$STRING`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "rendimiento"
   op: {

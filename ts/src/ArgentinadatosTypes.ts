@@ -188,6 +188,7 @@ export interface EventoPresidencialListMatch {
 
 export interface Feriado {
   fecha?: string
+  id?: string
   nombre?: string
   tipo?: string
 }
@@ -219,6 +220,7 @@ export interface FondoComunInversionLoadMatch {
 export interface FondoComunInversionOtro {
   fecha?: string
   fondo?: string
+  id?: string
   tea?: number
   tna?: number
   tope?: number
@@ -233,6 +235,7 @@ export interface FondoComunInversionVariable {
   condicionesCorto?: string
   fecha?: string
   fondo?: string
+  id?: string
   nombre?: string
   tea?: number
   tipo?: string
@@ -459,6 +462,7 @@ export interface RemExpectativaListMatch {
 export interface Rendimiento {
   apy?: number
   fecha?: string
+  id?: string
   moneda?: string
 }
 

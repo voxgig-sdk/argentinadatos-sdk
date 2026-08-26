@@ -216,6 +216,7 @@ type EventoPresidencialListMatch struct {
 // Feriado is the typed data model for the feriado entity.
 type Feriado struct {
 	Fecha *string `json:"fecha,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Nombre *string `json:"nombre,omitempty"`
 	Tipo *string `json:"tipo,omitempty"`
 }
@@ -253,6 +254,7 @@ type FondoComunInversionLoadMatch struct {
 type FondoComunInversionOtro struct {
 	Fecha *string `json:"fecha,omitempty"`
 	Fondo *string `json:"fondo,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Tea *float64 `json:"tea,omitempty"`
 	Tna *float64 `json:"tna,omitempty"`
 	Tope *float64 `json:"tope,omitempty"`
@@ -269,6 +271,7 @@ type FondoComunInversionVariable struct {
 	CondicionesCorto *string `json:"condicionesCorto,omitempty"`
 	Fecha *string `json:"fecha,omitempty"`
 	Fondo *string `json:"fondo,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Nombre *string `json:"nombre,omitempty"`
 	Tea *float64 `json:"tea,omitempty"`
 	Tipo *string `json:"tipo,omitempty"`
@@ -515,6 +518,7 @@ type RemExpectativaListMatch struct {
 type Rendimiento struct {
 	Apy *float64 `json:"apy,omitempty"`
 	Fecha *string `json:"fecha,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Moneda *string `json:"moneda,omitempty"`
 }
 

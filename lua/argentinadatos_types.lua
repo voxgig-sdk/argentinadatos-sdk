@@ -169,6 +169,7 @@
 
 ---@class Feriado
 ---@field fecha? string
+---@field id? string
 ---@field nombre? string
 ---@field tipo? string
 
@@ -194,6 +195,7 @@
 ---@class FondoComunInversionOtro
 ---@field fecha? string
 ---@field fondo? string
+---@field id? string
 ---@field tea? number
 ---@field tna? number
 ---@field tope? number
@@ -206,6 +208,7 @@
 ---@field condicionesCorto? string
 ---@field fecha? string
 ---@field fondo? string
+---@field id? string
 ---@field nombre? string
 ---@field tea? number
 ---@field tipo? string
@@ -412,6 +415,7 @@
 ---@class Rendimiento
 ---@field apy? number
 ---@field fecha? string
+---@field id? string
 ---@field moneda? string
 
 ---@class RendimientoLoadMatch

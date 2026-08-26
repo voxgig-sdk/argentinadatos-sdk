@@ -48,9 +48,13 @@ class TestRendimientoEntity:
 
         # LOAD
         rendimiento_ref01_ent = client.Rendimiento(None)
-        rendimiento_ref01_match_dt0 = {}
+        rendimiento_ref01_match_dt0 = {
+            "id": rendimiento_ref01_data["id"],
+        }
         rendimiento_ref01_data_dt0_loaded = rendimiento_ref01_ent.load(rendimiento_ref01_match_dt0, None)
-        assert rendimiento_ref01_data_dt0_loaded is not None
+        rendimiento_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(rendimiento_ref01_data_dt0_loaded))
+        assert rendimiento_ref01_data_dt0_load_result is not None
+        assert rendimiento_ref01_data_dt0_load_result["id"] == rendimiento_ref01_data["id"]
 
 
 

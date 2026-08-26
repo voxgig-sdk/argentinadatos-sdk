@@ -16,6 +16,7 @@ local function make_config()
         ["options"] = {
           ["active"] = false,
         },
+        ["transport"] = "base",
       },
     },
     options = {
@@ -780,6 +781,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
+          },
+          {
             ["name"] = "nombre",
             ["type"] = "`$STRING`",
           },
@@ -1103,6 +1108,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
+          },
+          {
             ["name"] = "tea",
             ["type"] = "`$NUMBER`",
           },
@@ -1183,6 +1192,10 @@ local function make_config()
           {
             ["name"] = "fondo",
             ["short"] = "Nombre del fondo común de inversión (clase o denominación oficial).",
+            ["type"] = "`$STRING`",
+          },
+          {
+            ["name"] = "id",
             ["type"] = "`$STRING`",
           },
           {
@@ -2023,6 +2036,10 @@ local function make_config()
           },
           {
             ["name"] = "fecha",
+            ["type"] = "`$STRING`",
+          },
+          {
+            ["name"] = "id",
             ["type"] = "`$STRING`",
           },
           {

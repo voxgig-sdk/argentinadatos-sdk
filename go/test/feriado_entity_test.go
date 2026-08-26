@@ -61,13 +61,19 @@ func TestFeriadoEntity(t *testing.T) {
 
 		// LOAD
 		feriadoRef01Ent := client.Feriado(nil)
-		feriadoRef01MatchDt0 := map[string]any{}
+		feriadoRef01MatchDt0 := map[string]any{
+			"id": feriadoRef01Data["id"],
+		}
 		feriadoRef01DataDt0Loaded, err := feriadoRef01Ent.Load(feriadoRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if feriadoRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		feriadoRef01DataDt0LoadResult := core.ToMapAny(entityData(feriadoRef01DataDt0Loaded))
+		if feriadoRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if feriadoRef01DataDt0LoadResult["id"] != feriadoRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

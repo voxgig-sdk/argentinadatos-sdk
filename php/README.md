@@ -67,7 +67,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $cotizacions = $client->Cotizacion()->list();
+    $rendimiento = $client->Rendimiento()->load(["id" => "example_id"]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -134,15 +134,18 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = ArgentinadatosSDK::test();
+$client = ArgentinadatosSDK::test([
+    "entity" => ["rendimiento" => ["test01" => ["id" => "test01"]]],
+]);
 
 // Entity ops return the ENTITY (throws on error);
 // call data_get() for the mock record.
-$cotizacion = $client->Cotizacion()->list();
-print_r($cotizacion);
+$rendimiento = $client->Rendimiento()->load(["id" => "test01"]);
+print_r($rendimiento);
 ```
 
 ### Use a custom fetch function
@@ -430,6 +433,7 @@ API path: `/v1/eventos/presidenciales`
 | Field | Description |
 | --- | --- |
 | `fecha` |  |
+| `id` |  |
 | `nombre` |  |
 | `tipo` |  |
 
@@ -468,6 +472,7 @@ API path: `/v1/finanzas/fci/mercadoDinero/{fecha}`
 | --- | --- |
 | `fecha` |  |
 | `fondo` |  |
+| `id` |  |
 | `tea` |  |
 | `tna` |  |
 | `tope` |  |
@@ -484,6 +489,7 @@ API path: `/v1/finanzas/fci/otros/{fecha}`
 | `condicionesCorto` |  |
 | `fecha` |  |
 | `fondo` | Nombre del fondo común de inversión (clase o denominación oficial). |
+| `id` |  |
 | `nombre` | Identificador de la fuente en Argentina Datos (por ejemplo el proveedor o el canal). |
 | `tea` |  |
 | `tipo` | Clasificación del instrumento. |
@@ -671,6 +677,7 @@ API path: `/v1/rems/ultimo`
 | --- | --- |
 | `apy` |  |
 | `fecha` |  |
+| `id` |  |
 | `moneda` |  |
 
 Operations: Load.
@@ -1035,6 +1042,7 @@ Create an instance: `$feriado = $client->Feriado();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `fecha` | `string` |  |
+| `id` | `string` |  |
 | `nombre` | `string` |  |
 | `tipo` | `string` |  |
 
@@ -1110,6 +1118,7 @@ Create an instance: `$fondo_comun_inversion_otro = $client->FondoComunInversionO
 | --- | --- | --- |
 | `fecha` | `string` |  |
 | `fondo` | `string` |  |
+| `id` | `string` |  |
 | `tea` | `float` |  |
 | `tna` | `float` |  |
 | `tope` | `float` |  |
@@ -1140,6 +1149,7 @@ Create an instance: `$fondo_comun_inversion_variable = $client->FondoComunInvers
 | `condicionesCorto` | `string` |  |
 | `fecha` | `string` |  |
 | `fondo` | `string` | Nombre del fondo común de inversión (clase o denominación oficial). |
+| `id` | `string` |  |
 | `nombre` | `string` | Identificador de la fuente en Argentina Datos (por ejemplo el proveedor o el canal). |
 | `tea` | `float` |  |
 | `tipo` | `string` | Clasificación del instrumento. |
@@ -1467,6 +1477,7 @@ Create an instance: `$rendimiento = $client->Rendimiento();`
 | --- | --- | --- |
 | `apy` | `float` |  |
 | `fecha` | `string` |  |
+| `id` | `string` |  |
 | `moneda` | `string` |  |
 
 #### Example: Load
@@ -1669,15 +1680,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `list`, the entity
+Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$cotizacion = $client->Cotizacion();
-$cotizacion->list();
+$rendimiento = $client->Rendimiento();
+$rendimiento->load(["id" => "example_id"]);
 
-// $cotizacion->data_get() now returns the cotizacion data from the last list
-// $cotizacion->match_get() returns the last match criteria
+// $rendimiento->data_get() now returns the rendimiento data from the last load
+// $rendimiento->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

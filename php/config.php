@@ -42,6 +42,7 @@ class ArgentinadatosConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
@@ -806,6 +807,10 @@ class ArgentinadatosConfig
               'type' => '`$STRING`',
             ],
             [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+            [
               'name' => 'nombre',
               'type' => '`$STRING`',
             ],
@@ -1129,6 +1134,10 @@ class ArgentinadatosConfig
               'type' => '`$STRING`',
             ],
             [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+            [
               'name' => 'tea',
               'type' => '`$NUMBER`',
             ],
@@ -1209,6 +1218,10 @@ class ArgentinadatosConfig
             [
               'name' => 'fondo',
               'short' => 'Nombre del fondo común de inversión (clase o denominación oficial).',
+              'type' => '`$STRING`',
+            ],
+            [
+              'name' => 'id',
               'type' => '`$STRING`',
             ],
             [
@@ -2049,6 +2062,10 @@ class ArgentinadatosConfig
             ],
             [
               'name' => 'fecha',
+              'type' => '`$STRING`',
+            ],
+            [
+              'name' => 'id',
               'type' => '`$STRING`',
             ],
             [

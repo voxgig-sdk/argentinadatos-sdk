@@ -44,10 +44,14 @@ describe("FeriadoEntity", function()
 
     -- LOAD
     local feriado_ref01_ent = client:Feriado(nil)
-    local feriado_ref01_match_dt0 = {}
+    local feriado_ref01_match_dt0 = {
+      id = feriado_ref01_data["id"],
+    }
     local feriado_ref01_data_dt0_loaded, err = feriado_ref01_ent:load(feriado_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(feriado_ref01_data_dt0_loaded)
+    local feriado_ref01_data_dt0_load_result = helpers.to_map(type(feriado_ref01_data_dt0_loaded) == 'table' and feriado_ref01_data_dt0_loaded.data_get and feriado_ref01_data_dt0_loaded:data_get() or feriado_ref01_data_dt0_loaded)
+    assert.is_not_nil(feriado_ref01_data_dt0_load_result)
+    assert.are.equal(feriado_ref01_data_dt0_load_result["id"], feriado_ref01_data["id"])
 
   end)
 end)

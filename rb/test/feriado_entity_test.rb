@@ -41,9 +41,13 @@ class FeriadoEntityTest < Minitest::Test
 
     # LOAD
     feriado_ref01_ent = client.Feriado(nil)
-    feriado_ref01_match_dt0 = {}
+    feriado_ref01_match_dt0 = {
+      "id" => feriado_ref01_data["id"],
+    }
     feriado_ref01_data_dt0_loaded = feriado_ref01_ent.load(feriado_ref01_match_dt0, nil)
-    assert !feriado_ref01_data_dt0_loaded.nil?
+    feriado_ref01_data_dt0_load_result = Helpers.to_map(feriado_ref01_data_dt0_loaded.respond_to?(:data_get) ? feriado_ref01_data_dt0_loaded.data_get : feriado_ref01_data_dt0_loaded)
+    assert !feriado_ref01_data_dt0_load_result.nil?
+    assert_equal feriado_ref01_data_dt0_load_result["id"], feriado_ref01_data["id"]
 
   end
 end

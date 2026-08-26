@@ -75,12 +75,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-cotizacions, err := client.Cotizacion(nil).List(nil, nil)
+rendimiento, err := client.Rendimiento(nil).Load(map[string]any{"id": "example_id"}, nil)
 if err != nil {
     // handle err
     return
 }
-_ = cotizacions
+_ = rendimiento
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -144,13 +144,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-cotizacion, err := client.Cotizacion(nil).List(
-    nil, nil,
+rendimiento, err := client.Rendimiento(nil).Load(
+    map[string]any{"id": "test01"}, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(cotizacion) // the returned mock data
+fmt.Println(rendimiento) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -437,6 +437,7 @@ API path: `/v1/eventos/presidenciales`
 | Field | Description |
 | --- | --- |
 | `"fecha"` |  |
+| `"id"` |  |
 | `"nombre"` |  |
 | `"tipo"` |  |
 
@@ -475,6 +476,7 @@ API path: `/v1/finanzas/fci/mercadoDinero/{fecha}`
 | --- | --- |
 | `"fecha"` |  |
 | `"fondo"` |  |
+| `"id"` |  |
 | `"tea"` |  |
 | `"tna"` |  |
 | `"tope"` |  |
@@ -491,6 +493,7 @@ API path: `/v1/finanzas/fci/otros/{fecha}`
 | `"condicionesCorto"` |  |
 | `"fecha"` |  |
 | `"fondo"` | Nombre del fondo común de inversión (clase o denominación oficial). |
+| `"id"` |  |
 | `"nombre"` | Identificador de la fuente en Argentina Datos (por ejemplo el proveedor o el canal). |
 | `"tea"` |  |
 | `"tipo"` | Clasificación del instrumento. |
@@ -678,6 +681,7 @@ API path: `/v1/rems/ultimo`
 | --- | --- |
 | `"apy"` |  |
 | `"fecha"` |  |
+| `"id"` |  |
 | `"moneda"` |  |
 
 Operations: Load.
@@ -1075,6 +1079,7 @@ Create an instance: `feriado := client.Feriado(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `fecha` | `string` |  |
+| `id` | `string` |  |
 | `nombre` | `string` |  |
 | `tipo` | `string` |  |
 
@@ -1159,6 +1164,7 @@ Create an instance: `fondoComunInversionOtro := client.FondoComunInversionOtro(n
 | --- | --- | --- |
 | `fecha` | `string` |  |
 | `fondo` | `string` |  |
+| `id` | `string` |  |
 | `tea` | `float64` |  |
 | `tna` | `float64` |  |
 | `tope` | `float64` |  |
@@ -1192,6 +1198,7 @@ Create an instance: `fondoComunInversionVariable := client.FondoComunInversionVa
 | `condicionesCorto` | `string` |  |
 | `fecha` | `string` |  |
 | `fondo` | `string` | Nombre del fondo común de inversión (clase o denominación oficial). |
+| `id` | `string` |  |
 | `nombre` | `string` | Identificador de la fuente en Argentina Datos (por ejemplo el proveedor o el canal). |
 | `tea` | `float64` |  |
 | `tipo` | `string` | Clasificación del instrumento. |
@@ -1549,6 +1556,7 @@ Create an instance: `rendimiento := client.Rendimiento(nil)`
 | --- | --- | --- |
 | `apy` | `float64` |  |
 | `fecha` | `string` |  |
+| `id` | `string` |  |
 | `moneda` | `string` |  |
 
 #### Example: Load
@@ -1766,15 +1774,15 @@ like `core.ToMapAny`.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `List`, the entity
+Entity instances are stateful. After a successful `Load`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-cotizacion := client.Cotizacion(nil)
-cotizacion.List(nil, nil)
+rendimiento := client.Rendimiento(nil)
+rendimiento.Load(map[string]any{"id": "example_id"}, nil)
 
-// cotizacion.Data() now returns the cotizacion data from the last list
-// cotizacion.Match() returns the last match criteria
+// rendimiento.Data() now returns the rendimiento data from the last load
+// rendimiento.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

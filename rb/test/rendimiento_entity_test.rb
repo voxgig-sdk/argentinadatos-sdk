@@ -41,9 +41,13 @@ class RendimientoEntityTest < Minitest::Test
 
     # LOAD
     rendimiento_ref01_ent = client.Rendimiento(nil)
-    rendimiento_ref01_match_dt0 = {}
+    rendimiento_ref01_match_dt0 = {
+      "id" => rendimiento_ref01_data["id"],
+    }
     rendimiento_ref01_data_dt0_loaded = rendimiento_ref01_ent.load(rendimiento_ref01_match_dt0, nil)
-    assert !rendimiento_ref01_data_dt0_loaded.nil?
+    rendimiento_ref01_data_dt0_load_result = Helpers.to_map(rendimiento_ref01_data_dt0_loaded.respond_to?(:data_get) ? rendimiento_ref01_data_dt0_loaded.data_get : rendimiento_ref01_data_dt0_loaded)
+    assert !rendimiento_ref01_data_dt0_load_result.nil?
+    assert_equal rendimiento_ref01_data_dt0_load_result["id"], rendimiento_ref01_data["id"]
 
   end
 end

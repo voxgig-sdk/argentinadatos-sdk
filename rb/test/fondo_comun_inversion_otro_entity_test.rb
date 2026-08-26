@@ -41,9 +41,13 @@ class FondoComunInversionOtroEntityTest < Minitest::Test
 
     # LOAD
     fondo_comun_inversion_otro_ref01_ent = client.FondoComunInversionOtro(nil)
-    fondo_comun_inversion_otro_ref01_match_dt0 = {}
+    fondo_comun_inversion_otro_ref01_match_dt0 = {
+      "id" => fondo_comun_inversion_otro_ref01_data["id"],
+    }
     fondo_comun_inversion_otro_ref01_data_dt0_loaded = fondo_comun_inversion_otro_ref01_ent.load(fondo_comun_inversion_otro_ref01_match_dt0, nil)
-    assert !fondo_comun_inversion_otro_ref01_data_dt0_loaded.nil?
+    fondo_comun_inversion_otro_ref01_data_dt0_load_result = Helpers.to_map(fondo_comun_inversion_otro_ref01_data_dt0_loaded.respond_to?(:data_get) ? fondo_comun_inversion_otro_ref01_data_dt0_loaded.data_get : fondo_comun_inversion_otro_ref01_data_dt0_loaded)
+    assert !fondo_comun_inversion_otro_ref01_data_dt0_load_result.nil?
+    assert_equal fondo_comun_inversion_otro_ref01_data_dt0_load_result["id"], fondo_comun_inversion_otro_ref01_data["id"]
 
   end
 end

@@ -597,6 +597,9 @@ EventoPresidencialListMatch = Struct.new(
 # @!attribute [rw] fecha
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] nombre
 #   @return [String, nil]
 #
@@ -604,6 +607,7 @@ EventoPresidencialListMatch = Struct.new(
 #   @return [String, nil]
 Feriado = Struct.new(
   :fecha,
+  :id,
   :nombre,
   :tipo,
   keyword_init: true
@@ -676,6 +680,9 @@ FondoComunInversionLoadMatch = Struct.new(
 # @!attribute [rw] fondo
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] tea
 #   @return [Float, nil]
 #
@@ -687,6 +694,7 @@ FondoComunInversionLoadMatch = Struct.new(
 FondoComunInversionOtro = Struct.new(
   :fecha,
   :fondo,
+  :id,
   :tea,
   :tna,
   :tope,
@@ -716,6 +724,9 @@ FondoComunInversionOtroLoadMatch = Struct.new(
 # @!attribute [rw] fondo
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] nombre
 #   @return [String, nil]
 #
@@ -735,6 +746,7 @@ FondoComunInversionVariable = Struct.new(
   :condicionesCorto,
   :fecha,
   :fondo,
+  :id,
   :nombre,
   :tea,
   :tipo,
@@ -1482,11 +1494,15 @@ RemExpectativaListMatch = Struct.new(
 # @!attribute [rw] fecha
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] moneda
 #   @return [String, nil]
 Rendimiento = Struct.new(
   :apy,
   :fecha,
+  :id,
   :moneda,
   keyword_init: true
 )

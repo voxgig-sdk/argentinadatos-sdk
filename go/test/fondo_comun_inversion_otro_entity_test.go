@@ -61,13 +61,19 @@ func TestFondoComunInversionOtroEntity(t *testing.T) {
 
 		// LOAD
 		fondoComunInversionOtroRef01Ent := client.FondoComunInversionOtro(nil)
-		fondoComunInversionOtroRef01MatchDt0 := map[string]any{}
+		fondoComunInversionOtroRef01MatchDt0 := map[string]any{
+			"id": fondoComunInversionOtroRef01Data["id"],
+		}
 		fondoComunInversionOtroRef01DataDt0Loaded, err := fondoComunInversionOtroRef01Ent.Load(fondoComunInversionOtroRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if fondoComunInversionOtroRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		fondoComunInversionOtroRef01DataDt0LoadResult := core.ToMapAny(entityData(fondoComunInversionOtroRef01DataDt0Loaded))
+		if fondoComunInversionOtroRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if fondoComunInversionOtroRef01DataDt0LoadResult["id"] != fondoComunInversionOtroRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

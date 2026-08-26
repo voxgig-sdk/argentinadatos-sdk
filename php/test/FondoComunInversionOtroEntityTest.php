@@ -48,9 +48,13 @@ class FondoComunInversionOtroEntityTest extends TestCase
 
         // LOAD
         $fondo_comun_inversion_otro_ref01_ent = $client->FondoComunInversionOtro(null);
-        $fondo_comun_inversion_otro_ref01_match_dt0 = [];
+        $fondo_comun_inversion_otro_ref01_match_dt0 = [
+            "id" => $fondo_comun_inversion_otro_ref01_data["id"],
+        ];
         $fondo_comun_inversion_otro_ref01_data_dt0_loaded = $fondo_comun_inversion_otro_ref01_ent->load($fondo_comun_inversion_otro_ref01_match_dt0, null);
-        $this->assertNotNull($fondo_comun_inversion_otro_ref01_data_dt0_loaded);
+        $fondo_comun_inversion_otro_ref01_data_dt0_load_result = Helpers::to_map(is_object($fondo_comun_inversion_otro_ref01_data_dt0_loaded) && method_exists($fondo_comun_inversion_otro_ref01_data_dt0_loaded, 'data_get') ? $fondo_comun_inversion_otro_ref01_data_dt0_loaded->data_get() : $fondo_comun_inversion_otro_ref01_data_dt0_loaded);
+        $this->assertNotNull($fondo_comun_inversion_otro_ref01_data_dt0_load_result);
+        $this->assertEquals($fondo_comun_inversion_otro_ref01_data_dt0_load_result["id"], $fondo_comun_inversion_otro_ref01_data["id"]);
 
     }
 }

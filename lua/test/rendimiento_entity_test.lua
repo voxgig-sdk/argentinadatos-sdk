@@ -44,10 +44,14 @@ describe("RendimientoEntity", function()
 
     -- LOAD
     local rendimiento_ref01_ent = client:Rendimiento(nil)
-    local rendimiento_ref01_match_dt0 = {}
+    local rendimiento_ref01_match_dt0 = {
+      id = rendimiento_ref01_data["id"],
+    }
     local rendimiento_ref01_data_dt0_loaded, err = rendimiento_ref01_ent:load(rendimiento_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(rendimiento_ref01_data_dt0_loaded)
+    local rendimiento_ref01_data_dt0_load_result = helpers.to_map(type(rendimiento_ref01_data_dt0_loaded) == 'table' and rendimiento_ref01_data_dt0_loaded.data_get and rendimiento_ref01_data_dt0_loaded:data_get() or rendimiento_ref01_data_dt0_loaded)
+    assert.is_not_nil(rendimiento_ref01_data_dt0_load_result)
+    assert.are.equal(rendimiento_ref01_data_dt0_load_result["id"], rendimiento_ref01_data["id"])
 
   end)
 end)

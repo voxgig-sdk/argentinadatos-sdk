@@ -2,31 +2,31 @@
   "existing": {
     "feriado": {
       "FERIADO00": {
-        "fecha": "s1e",
-        "nombre": "s1f",
-        "tipo": "s20",
-        "id": "FERIADO00"
+        "fecha": "s28",
+        "id": "FERIADO00",
+        "nombre": "s2a",
+        "tipo": "s2b"
       },
       "FERIADO01": {
-        "fecha": "s3c",
-        "nombre": "s3d",
-        "tipo": "s3e",
-        "id": "FERIADO01"
+        "fecha": "s50",
+        "id": "FERIADO01",
+        "nombre": "s52",
+        "tipo": "s53"
       },
       "FERIADO02": {
-        "fecha": "s5a",
-        "nombre": "s5b",
-        "tipo": "s5c",
-        "id": "FERIADO02"
+        "fecha": "s78",
+        "id": "FERIADO02",
+        "nombre": "s7a",
+        "tipo": "s7b"
       }
     }
   },
   "new": {
     "feriado": {
       "feriado_ref01": {
-        "fecha": "s78",
-        "nombre": "s79",
-        "tipo": "s7a"
+        "fecha": "sa0",
+        "nombre": "sa2",
+        "tipo": "sa3"
       }
     }
   }

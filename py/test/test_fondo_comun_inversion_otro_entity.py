@@ -48,9 +48,13 @@ class TestFondoComunInversionOtroEntity:
 
         # LOAD
         fondo_comun_inversion_otro_ref01_ent = client.FondoComunInversionOtro(None)
-        fondo_comun_inversion_otro_ref01_match_dt0 = {}
+        fondo_comun_inversion_otro_ref01_match_dt0 = {
+            "id": fondo_comun_inversion_otro_ref01_data["id"],
+        }
         fondo_comun_inversion_otro_ref01_data_dt0_loaded = fondo_comun_inversion_otro_ref01_ent.load(fondo_comun_inversion_otro_ref01_match_dt0, None)
-        assert fondo_comun_inversion_otro_ref01_data_dt0_loaded is not None
+        fondo_comun_inversion_otro_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(fondo_comun_inversion_otro_ref01_data_dt0_loaded))
+        assert fondo_comun_inversion_otro_ref01_data_dt0_load_result is not None
+        assert fondo_comun_inversion_otro_ref01_data_dt0_load_result["id"] == fondo_comun_inversion_otro_ref01_data["id"]
 
 
 
