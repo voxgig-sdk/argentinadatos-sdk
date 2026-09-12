@@ -98,7 +98,7 @@ func TestProveedorPlazoFijoPrecancelableEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		proveedorPlazoFijoPrecancelableRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.proveedor_plazo_fijo_precancelable", setup.data)))
+		proveedorPlazoFijoPrecancelableRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.proveedor_plazo_fijo_precancelable")))
 		var proveedorPlazoFijoPrecancelableRef01Data map[string]any
 		if len(proveedorPlazoFijoPrecancelableRef01DataRaw) > 0 {
 			proveedorPlazoFijoPrecancelableRef01Data = core.ToMapAny(proveedorPlazoFijoPrecancelableRef01DataRaw[0][1])
@@ -147,7 +147,7 @@ func proveedor_plazo_fijo_precancelableBasicSetup(extra map[string]any) *entityT
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"proveedor_plazo_fijo_precancelable01", "proveedor_plazo_fijo_precancelable02", "proveedor_plazo_fijo_precancelable03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -175,10 +175,22 @@ func proveedor_plazo_fijo_precancelableBasicSetup(extra map[string]any) *entityT
 	}
 
 	if env["ARGENTINADATOS_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewArgentinadatosSDK(core.ToMapAny(mergedOpts))
 	}

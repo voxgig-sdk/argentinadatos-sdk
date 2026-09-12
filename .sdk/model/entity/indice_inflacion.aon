@@ -25,11 +25,19 @@ main: kit: entity: indice_inflacion: {
         {
           method: "GET"
           orig: "/v1/finanzas/indices/inflacion"
-          parts: [
-            "v1"
-            "finanzas"
-            "indices"
-            "inflacion"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "finanzas"
+            }
+            {
+              lit: "indices"
+            }
+            {
+              lit: "inflacion"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -39,11 +47,19 @@ main: kit: entity: indice_inflacion: {
         {
           method: "GET"
           orig: "/v1/finanzas/indices/inflacionInteranual"
-          parts: [
-            "v1"
-            "finanzas"
-            "indices"
-            "inflacionInteranual"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "finanzas"
+            }
+            {
+              lit: "indices"
+            }
+            {
+              lit: "inflacionInteranual"
+            }
           ]
           transform: {
             req: "`reqdata`"

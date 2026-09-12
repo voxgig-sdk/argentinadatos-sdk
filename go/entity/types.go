@@ -98,6 +98,7 @@ type Cotizacion struct {
 	Casa *string `json:"casa,omitempty"`
 	Compra *float64 `json:"compra,omitempty"`
 	Fecha *string `json:"fecha,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Moneda *string `json:"moneda,omitempty"`
 	Venta *float64 `json:"venta,omitempty"`
 }
@@ -113,6 +114,7 @@ type CotizacionListMatch struct {
 	Casa *string `json:"casa,omitempty"`
 	Compra *float64 `json:"compra,omitempty"`
 	Fecha *string `json:"fecha,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Moneda *string `json:"moneda,omitempty"`
 	Venta *float64 `json:"venta,omitempty"`
 }

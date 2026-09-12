@@ -98,7 +98,7 @@ func TestIndiceInflacionEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		indiceInflacionRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.indice_inflacion", setup.data)))
+		indiceInflacionRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.indice_inflacion")))
 		var indiceInflacionRef01Data map[string]any
 		if len(indiceInflacionRef01DataRaw) > 0 {
 			indiceInflacionRef01Data = core.ToMapAny(indiceInflacionRef01DataRaw[0][1])
@@ -147,7 +147,7 @@ func indice_inflacionBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"indice_inflacion01", "indice_inflacion02", "indice_inflacion03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -175,10 +175,22 @@ func indice_inflacionBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["ARGENTINADATOS_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewArgentinadatosSDK(core.ToMapAny(mergedOpts))
 	}

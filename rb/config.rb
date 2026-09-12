@@ -99,6 +99,7 @@ module ArgentinadatosConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "fecha",
               "type" => "`$STRING`",
             },
@@ -171,6 +172,10 @@ module ArgentinadatosConfig
               "type" => "`$INTEGER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "acta",
           "op" => {
             "list" => {
@@ -182,32 +187,54 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/diputados/actas",
-                  "parts" => [
-                    "v1",
-                    "diputados",
-                    "actas",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "diputados",
+                    },
+                    {
+                      "lit" => "actas",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "diputados",
+                    "actas",
+                  ],
                 },
                 {
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/senado/actas",
-                  "parts" => [
-                    "v1",
-                    "senado",
-                    "actas",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "senado",
+                    },
+                    {
+                      "lit" => "actas",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "senado",
+                    "actas",
+                  ],
                 },
               ],
             },
@@ -231,17 +258,25 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/diputados/actas/{año}",
-                  "parts" => [
-                    "v1",
-                    "diputados",
-                    "actas",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "año" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "diputados",
+                    },
+                    {
+                      "lit" => "actas",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -251,6 +286,12 @@ module ArgentinadatosConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "diputados",
+                    "actas",
+                    "{id}",
+                  ],
                 },
                 {
                   "args" => {
@@ -268,17 +309,25 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/senado/actas/{año}",
-                  "parts" => [
-                    "v1",
-                    "senado",
-                    "actas",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "año" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "senado",
+                    },
+                    {
+                      "lit" => "actas",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -288,6 +337,12 @@ module ArgentinadatosConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "senado",
+                    "actas",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -299,6 +354,7 @@ module ArgentinadatosConfig
         "bonos_cer" => {
           "fields" => [
             {
+              "format" => "date",
               "name" => "fechaVencimiento",
               "req" => true,
               "short" => "Fecha de vencimiento (ISO 8601, solo fecha: yyyy-MM-dd)",
@@ -339,16 +395,27 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/bonos-cer",
-                  "parts" => [
-                    "v1",
-                    "finanzas",
-                    "bonos-cer",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "finanzas",
+                    },
+                    {
+                      "lit" => "bonos-cer",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body.bonos`",
                   },
+                  "parts" => [
+                    "v1",
+                    "finanzas",
+                    "bonos-cer",
+                  ],
                 },
               ],
             },
@@ -372,6 +439,10 @@ module ArgentinadatosConfig
               "type" => "`$STRING`",
             },
             {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+            {
               "name" => "moneda",
               "type" => "`$STRING`",
             },
@@ -380,6 +451,19 @@ module ArgentinadatosConfig
               "type" => "`$NUMBER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "from" => {
+              "casa" => "casa",
+              "fecha" => "fecha",
+            },
+            "name" => "id",
+            "parts" => [
+              "casa",
+              "fecha",
+            ],
+            "sep" => "/",
+          },
           "name" => "cotizacion",
           "op" => {
             "list" => {
@@ -391,16 +475,27 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/cotizaciones/dolares",
-                  "parts" => [
-                    "v1",
-                    "cotizaciones",
-                    "dolares",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "cotizaciones",
+                    },
+                    {
+                      "lit" => "dolares",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "cotizaciones",
+                    "dolares",
+                  ],
                 },
               ],
             },
@@ -432,12 +527,22 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/cotizaciones/dolares/{casa}/{fecha}",
-                  "parts" => [
-                    "v1",
-                    "cotizaciones",
-                    "dolares",
-                    "{casa}",
-                    "{fecha}",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "cotizaciones",
+                    },
+                    {
+                      "lit" => "dolares",
+                    },
+                    {
+                      "var" => "casa",
+                    },
+                    {
+                      "var" => "fecha",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -449,6 +554,13 @@ module ArgentinadatosConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "cotizaciones",
+                    "dolares",
+                    "{casa}",
+                    "{fecha}",
+                  ],
                 },
                 {
                   "args" => {
@@ -466,11 +578,19 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/cotizaciones/dolares/{casa}",
-                  "parts" => [
-                    "v1",
-                    "cotizaciones",
-                    "dolares",
-                    "{casa}",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "cotizaciones",
+                    },
+                    {
+                      "lit" => "dolares",
+                    },
+                    {
+                      "var" => "casa",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -481,6 +601,12 @@ module ArgentinadatosConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "cotizaciones",
+                    "dolares",
+                    "{casa}",
+                  ],
                 },
               ],
             },
@@ -501,6 +627,7 @@ module ArgentinadatosConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "float",
               "name" => "tna",
               "short" => "Tasa Nominal Anual en porcentaje",
               "type" => "`$NUMBER`",
@@ -522,16 +649,27 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/criptopesos",
-                  "parts" => [
-                    "v1",
-                    "finanzas",
-                    "criptopesos",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "finanzas",
+                    },
+                    {
+                      "lit" => "criptopesos",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "finanzas",
+                    "criptopesos",
+                  ],
                 },
               ],
             },
@@ -548,11 +686,13 @@ module ArgentinadatosConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "float",
               "name" => "tasa",
               "short" => "Tasa de rendimiento anual en formato decimal (p.",
               "type" => "`$NUMBER`",
             },
             {
+              "format" => "float",
               "name" => "tope",
               "short" => "Monto máximo en USD remunerado a esa tasa, o null si no hay tope o no se informó",
               "type" => "`$NUMBER`",
@@ -569,16 +709,27 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/cuentas-remuneradas-usd",
-                  "parts" => [
-                    "v1",
-                    "finanzas",
-                    "cuentas-remuneradas-usd",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "finanzas",
+                    },
+                    {
+                      "lit" => "cuentas-remuneradas-usd",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "finanzas",
+                    "cuentas-remuneradas-usd",
+                  ],
                 },
               ],
             },
@@ -598,10 +749,12 @@ module ArgentinadatosConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "ceseFecha",
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "foto",
               "type" => "`$STRING`",
             },
@@ -614,6 +767,7 @@ module ArgentinadatosConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "juramentoFecha",
               "type" => "`$STRING`",
             },
@@ -634,6 +788,10 @@ module ArgentinadatosConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "diputado",
           "op" => {
             "list" => {
@@ -645,16 +803,27 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/diputados/diputados",
-                  "parts" => [
-                    "v1",
-                    "diputados",
-                    "diputados",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "diputados",
+                    },
+                    {
+                      "lit" => "diputados",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "diputados",
+                    "diputados",
+                  ],
                 },
               ],
             },
@@ -685,16 +854,27 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/rendimientos",
-                  "parts" => [
-                    "v1",
-                    "finanzas",
-                    "rendimientos",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "finanzas",
+                    },
+                    {
+                      "lit" => "rendimientos",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "finanzas",
+                    "rendimientos",
+                  ],
                 },
               ],
             },
@@ -725,15 +905,23 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/estado",
-                  "parts" => [
-                    "v1",
-                    "estado",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "estado",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "estado",
+                  ],
                 },
               ],
             },
@@ -768,16 +956,27 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/eventos/presidenciales",
-                  "parts" => [
-                    "v1",
-                    "eventos",
-                    "presidenciales",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "eventos",
+                    },
+                    {
+                      "lit" => "presidenciales",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "eventos",
+                    "presidenciales",
+                  ],
                 },
               ],
             },
@@ -805,6 +1004,10 @@ module ArgentinadatosConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "feriado",
           "op" => {
             "load" => {
@@ -827,16 +1030,22 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/feriados/{año}",
-                  "parts" => [
-                    "v1",
-                    "feriados",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "año" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "feriados",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -846,6 +1055,11 @@ module ArgentinadatosConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "feriados",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -867,15 +1081,23 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/rems",
-                  "parts" => [
-                    "v1",
-                    "rems",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "rems",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "rems",
+                  ],
                 },
               ],
             },
@@ -937,12 +1159,22 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/fci/mercadoDinero/{fecha}",
-                  "parts" => [
-                    "v1",
-                    "finanzas",
-                    "fci",
-                    "mercadoDinero",
-                    "{fecha}",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "finanzas",
+                    },
+                    {
+                      "lit" => "fci",
+                    },
+                    {
+                      "lit" => "mercadoDinero",
+                    },
+                    {
+                      "var" => "fecha",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -953,6 +1185,13 @@ module ArgentinadatosConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "finanzas",
+                    "fci",
+                    "mercadoDinero",
+                    "{fecha}",
+                  ],
                 },
                 {
                   "args" => {
@@ -970,12 +1209,22 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/fci/rentaFija/{fecha}",
-                  "parts" => [
-                    "v1",
-                    "finanzas",
-                    "fci",
-                    "rentaFija",
-                    "{fecha}",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "finanzas",
+                    },
+                    {
+                      "lit" => "fci",
+                    },
+                    {
+                      "lit" => "rentaFija",
+                    },
+                    {
+                      "var" => "fecha",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -986,6 +1235,13 @@ module ArgentinadatosConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "finanzas",
+                    "fci",
+                    "rentaFija",
+                    "{fecha}",
+                  ],
                 },
                 {
                   "args" => {
@@ -1003,12 +1259,22 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/fci/rentaMixta/{fecha}",
-                  "parts" => [
-                    "v1",
-                    "finanzas",
-                    "fci",
-                    "rentaMixta",
-                    "{fecha}",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "finanzas",
+                    },
+                    {
+                      "lit" => "fci",
+                    },
+                    {
+                      "lit" => "rentaMixta",
+                    },
+                    {
+                      "var" => "fecha",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1019,6 +1285,13 @@ module ArgentinadatosConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "finanzas",
+                    "fci",
+                    "rentaMixta",
+                    "{fecha}",
+                  ],
                 },
                 {
                   "args" => {
@@ -1036,12 +1309,22 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/fci/rentaVariable/{fecha}",
-                  "parts" => [
-                    "v1",
-                    "finanzas",
-                    "fci",
-                    "rentaVariable",
-                    "{fecha}",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "finanzas",
+                    },
+                    {
+                      "lit" => "fci",
+                    },
+                    {
+                      "lit" => "rentaVariable",
+                    },
+                    {
+                      "var" => "fecha",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1052,6 +1335,13 @@ module ArgentinadatosConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "finanzas",
+                    "fci",
+                    "rentaVariable",
+                    "{fecha}",
+                  ],
                 },
                 {
                   "args" => {
@@ -1069,12 +1359,22 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/fci/retornoTotal/{fecha}",
-                  "parts" => [
-                    "v1",
-                    "finanzas",
-                    "fci",
-                    "retornoTotal",
-                    "{fecha}",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "finanzas",
+                    },
+                    {
+                      "lit" => "fci",
+                    },
+                    {
+                      "lit" => "retornoTotal",
+                    },
+                    {
+                      "var" => "fecha",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1085,6 +1385,13 @@ module ArgentinadatosConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "finanzas",
+                    "fci",
+                    "retornoTotal",
+                    "{fecha}",
+                  ],
                 },
               ],
             },
@@ -1136,6 +1443,10 @@ module ArgentinadatosConfig
               "type" => "`$NUMBER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "fondo_comun_inversion_otro",
           "op" => {
             "load" => {
@@ -1158,18 +1469,28 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/fci/otros/{fecha}",
-                  "parts" => [
-                    "v1",
-                    "finanzas",
-                    "fci",
-                    "otros",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "fecha" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "finanzas",
+                    },
+                    {
+                      "lit" => "fci",
+                    },
+                    {
+                      "lit" => "otros",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -1179,6 +1500,13 @@ module ArgentinadatosConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "finanzas",
+                    "fci",
+                    "otros",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -1233,6 +1561,10 @@ module ArgentinadatosConfig
               "type" => "`$NUMBER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "fondo_comun_inversion_variable",
           "op" => {
             "load" => {
@@ -1255,18 +1587,28 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/fci/variables/{fecha}",
-                  "parts" => [
-                    "v1",
-                    "finanzas",
-                    "fci",
-                    "variables",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "fecha" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "finanzas",
+                    },
+                    {
+                      "lit" => "fci",
+                    },
+                    {
+                      "lit" => "variables",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -1276,6 +1618,13 @@ module ArgentinadatosConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "finanzas",
+                    "fci",
+                    "variables",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -1302,6 +1651,7 @@ module ArgentinadatosConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "float",
               "name" => "tna",
               "short" => "Tasa Nominal Anual",
               "type" => "`$NUMBER`",
@@ -1318,17 +1668,31 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/creditos/hipotecariosUva",
-                  "parts" => [
-                    "v1",
-                    "finanzas",
-                    "creditos",
-                    "hipotecariosUva",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "finanzas",
+                    },
+                    {
+                      "lit" => "creditos",
+                    },
+                    {
+                      "lit" => "hipotecariosUva",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "finanzas",
+                    "creditos",
+                    "hipotecariosUva",
+                  ],
                 },
               ],
             },
@@ -1359,34 +1723,62 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/indices/inflacion",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "finanzas",
+                    },
+                    {
+                      "lit" => "indices",
+                    },
+                    {
+                      "lit" => "inflacion",
+                    },
+                  ],
+                  "select" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
                   "parts" => [
                     "v1",
                     "finanzas",
                     "indices",
                     "inflacion",
                   ],
-                  "select" => {},
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                 },
                 {
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/indices/inflacionInteranual",
-                  "parts" => [
-                    "v1",
-                    "finanzas",
-                    "indices",
-                    "inflacionInteranual",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "finanzas",
+                    },
+                    {
+                      "lit" => "indices",
+                    },
+                    {
+                      "lit" => "inflacionInteranual",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "finanzas",
+                    "indices",
+                    "inflacionInteranual",
+                  ],
                 },
               ],
             },
@@ -1417,17 +1809,31 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/indices/uva",
-                  "parts" => [
-                    "v1",
-                    "finanzas",
-                    "indices",
-                    "uva",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "finanzas",
+                    },
+                    {
+                      "lit" => "indices",
+                    },
+                    {
+                      "lit" => "uva",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "finanzas",
+                    "indices",
+                    "uva",
+                  ],
                 },
               ],
             },
@@ -1475,16 +1881,27 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/letras",
-                  "parts" => [
-                    "v1",
-                    "finanzas",
-                    "letras",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "finanzas",
+                    },
+                    {
+                      "lit" => "letras",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "finanzas",
+                    "letras",
+                  ],
                 },
               ],
             },
@@ -1501,6 +1918,7 @@ module ArgentinadatosConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "imagen",
               "short" => "URL de la imagen del presidente",
               "type" => "`$STRING`",
@@ -1519,6 +1937,7 @@ module ArgentinadatosConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "partidoImagen",
               "short" => "URL de la imagen del logo del partido político",
               "type" => "`$STRING`",
@@ -1545,15 +1964,23 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/presidentes",
-                  "parts" => [
-                    "v1",
-                    "presidentes",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "presidentes",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "presidentes",
+                  ],
                 },
               ],
             },
@@ -1575,6 +2002,7 @@ module ArgentinadatosConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "enlace",
               "short" => "URL de la fuente",
               "type" => "`$STRING`",
@@ -1590,6 +2018,7 @@ module ArgentinadatosConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "logo",
               "short" => "URL del logo de la entidad",
               "type" => "`$STRING`",
@@ -1630,26 +2059,34 @@ module ArgentinadatosConfig
               "type" => "`$INTEGER`",
             },
             {
+              "format" => "float",
               "name" => "tea",
               "short" => "Tasa Efectiva Anual",
               "type" => "`$NUMBER`",
             },
             {
+              "format" => "float",
               "name" => "teaPrecancelacion",
               "short" => "Tasa Efectiva Anual aplicada ante precancelación",
               "type" => "`$NUMBER`",
             },
             {
+              "format" => "float",
               "name" => "tna",
               "short" => "Tasa Nominal Anual",
               "type" => "`$NUMBER`",
             },
             {
+              "format" => "float",
               "name" => "tnaPrecancelacion",
               "short" => "Tasa Nominal Anual aplicada ante precancelación",
               "type" => "`$NUMBER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "proveedor_plazo_fijo_precancelable",
           "op" => {
             "list" => {
@@ -1661,17 +2098,31 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/tasas/plazoFijoPrecancelable",
-                  "parts" => [
-                    "v1",
-                    "finanzas",
-                    "tasas",
-                    "plazoFijoPrecancelable",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "finanzas",
+                    },
+                    {
+                      "lit" => "tasas",
+                    },
+                    {
+                      "lit" => "plazoFijoPrecancelable",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "finanzas",
+                    "tasas",
+                    "plazoFijoPrecancelable",
+                  ],
                 },
               ],
             },
@@ -1693,6 +2144,7 @@ module ArgentinadatosConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "logo",
               "short" => "URL del logo de la entidad",
               "type" => "`$STRING`",
@@ -1703,6 +2155,10 @@ module ArgentinadatosConfig
               "type" => "`$ARRAY`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "proveedor_plazo_fijo_uva_pago_periodico",
           "op" => {
             "list" => {
@@ -1714,17 +2170,31 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/tasas/plazoFijoUvaPagoPeriodico",
-                  "parts" => [
-                    "v1",
-                    "finanzas",
-                    "tasas",
-                    "plazoFijoUvaPagoPeriodico",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "finanzas",
+                    },
+                    {
+                      "lit" => "tasas",
+                    },
+                    {
+                      "lit" => "plazoFijoUvaPagoPeriodico",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "finanzas",
+                    "tasas",
+                    "plazoFijoUvaPagoPeriodico",
+                  ],
                 },
               ],
             },
@@ -1740,6 +2210,7 @@ module ArgentinadatosConfig
               "type" => "`$NUMBER`",
             },
             {
+              "format" => "date",
               "name" => "fecha",
               "short" => "Fecha ISO del primer día del mes del informe",
               "type" => "`$STRING`",
@@ -1801,11 +2272,13 @@ module ArgentinadatosConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date",
               "name" => "periodoDesde",
               "short" => "Fecha de inicio del período normalizado",
               "type" => "`$STRING`",
             },
             {
+              "format" => "date",
               "name" => "periodoHasta",
               "short" => "Fecha de fin del período normalizado",
               "type" => "`$STRING`",
@@ -1829,6 +2302,7 @@ module ArgentinadatosConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date",
               "name" => "referenciaFecha",
               "short" => "Fecha detectada en la referencia, si corresponde",
               "type" => "`$STRING`",
@@ -1873,11 +2347,19 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/rems/{año}/{mes}",
-                  "parts" => [
-                    "v1",
-                    "rems",
-                    "{año}",
-                    "{mes}",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "rems",
+                    },
+                    {
+                      "var" => "año",
+                    },
+                    {
+                      "var" => "mes",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1889,6 +2371,12 @@ module ArgentinadatosConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "rems",
+                    "{año}",
+                    "{mes}",
+                  ],
                 },
               ],
             },
@@ -1908,6 +2396,7 @@ module ArgentinadatosConfig
               "type" => "`$NUMBER`",
             },
             {
+              "format" => "date",
               "name" => "fecha",
               "short" => "Fecha ISO del primer día del mes del informe",
               "type" => "`$STRING`",
@@ -1969,11 +2458,13 @@ module ArgentinadatosConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date",
               "name" => "periodoDesde",
               "short" => "Fecha de inicio del período normalizado",
               "type" => "`$STRING`",
             },
             {
+              "format" => "date",
               "name" => "periodoHasta",
               "short" => "Fecha de fin del período normalizado",
               "type" => "`$STRING`",
@@ -1997,6 +2488,7 @@ module ArgentinadatosConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date",
               "name" => "referenciaFecha",
               "short" => "Fecha detectada en la referencia, si corresponde",
               "type" => "`$STRING`",
@@ -2022,16 +2514,27 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/rems/ultimo",
-                  "parts" => [
-                    "v1",
-                    "rems",
-                    "ultimo",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "rems",
+                    },
+                    {
+                      "lit" => "ultimo",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "rems",
+                    "ultimo",
+                  ],
                 },
               ],
             },
@@ -2059,6 +2562,10 @@ module ArgentinadatosConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "rendimiento",
           "op" => {
             "load" => {
@@ -2081,17 +2588,25 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/rendimientos/{entidad}",
-                  "parts" => [
-                    "v1",
-                    "finanzas",
-                    "rendimientos",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "entidad" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "finanzas",
+                    },
+                    {
+                      "lit" => "rendimientos",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -2101,6 +2616,12 @@ module ArgentinadatosConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "finanzas",
+                    "rendimientos",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -2131,17 +2652,31 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/indices/riesgo-pais",
-                  "parts" => [
-                    "v1",
-                    "finanzas",
-                    "indices",
-                    "riesgo-pais",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "finanzas",
+                    },
+                    {
+                      "lit" => "indices",
+                    },
+                    {
+                      "lit" => "riesgo-pais",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "finanzas",
+                    "indices",
+                    "riesgo-pais",
+                  ],
                 },
               ],
             },
@@ -2154,12 +2689,22 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/indices/riesgo-pais/ultimo",
-                  "parts" => [
-                    "v1",
-                    "finanzas",
-                    "indices",
-                    "riesgo-pais",
-                    "ultimo",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "finanzas",
+                    },
+                    {
+                      "lit" => "indices",
+                    },
+                    {
+                      "lit" => "riesgo-pais",
+                    },
+                    {
+                      "lit" => "ultimo",
+                    },
                   ],
                   "select" => {
                     "$action" => "ultimo",
@@ -2168,6 +2713,13 @@ module ArgentinadatosConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "finanzas",
+                    "indices",
+                    "riesgo-pais",
+                    "ultimo",
+                  ],
                 },
               ],
             },
@@ -2179,10 +2731,12 @@ module ArgentinadatosConfig
         "senador" => {
           "fields" => [
             {
+              "format" => "email",
               "name" => "email",
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "foto",
               "type" => "`$STRING`",
             },
@@ -2227,6 +2781,10 @@ module ArgentinadatosConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "senador",
           "op" => {
             "list" => {
@@ -2238,16 +2796,27 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/senado/senadores",
-                  "parts" => [
-                    "v1",
-                    "senado",
-                    "senadores",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "senado",
+                    },
+                    {
+                      "lit" => "senadores",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "senado",
+                    "senadores",
+                  ],
                 },
               ],
             },
@@ -2278,17 +2847,31 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/tasas/depositos30Dias",
-                  "parts" => [
-                    "v1",
-                    "finanzas",
-                    "tasas",
-                    "depositos30Dias",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "finanzas",
+                    },
+                    {
+                      "lit" => "tasas",
+                    },
+                    {
+                      "lit" => "depositos30Dias",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "finanzas",
+                    "tasas",
+                    "depositos30Dias",
+                  ],
                 },
               ],
             },
@@ -2304,16 +2887,19 @@ module ArgentinadatosConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "logo",
               "short" => "URL del logo de la entidad",
               "type" => "`$STRING`",
             },
             {
+              "format" => "float",
               "name" => "tnaClientes",
               "short" => "Tasa Nominal Anual para clientes, en porcentaje",
               "type" => "`$NUMBER`",
             },
             {
+              "format" => "float",
               "name" => "tnaNoClientes",
               "short" => "Tasa Nominal Anual para no clientes, en porcentaje",
               "type" => "`$NUMBER`",
@@ -2330,17 +2916,31 @@ module ArgentinadatosConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/finanzas/tasas/plazoFijo",
-                  "parts" => [
-                    "v1",
-                    "finanzas",
-                    "tasas",
-                    "plazoFijo",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "finanzas",
+                    },
+                    {
+                      "lit" => "tasas",
+                    },
+                    {
+                      "lit" => "plazoFijo",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "finanzas",
+                    "tasas",
+                    "plazoFijo",
+                  ],
                 },
               ],
             },

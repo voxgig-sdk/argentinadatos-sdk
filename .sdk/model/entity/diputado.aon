@@ -16,11 +16,13 @@ main: kit: entity: diputado: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "ceseFecha"
       req: false
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "foto"
       req: false
       type: "`$STRING`"
@@ -36,6 +38,7 @@ main: kit: entity: diputado: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "juramentoFecha"
       req: false
       type: "`$STRING`"
@@ -75,10 +78,16 @@ main: kit: entity: diputado: {
         {
           method: "GET"
           orig: "/v1/diputados/diputados"
-          parts: [
-            "v1"
-            "diputados"
-            "diputados"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "diputados"
+            }
+            {
+              lit: "diputados"
+            }
           ]
           transform: {
             req: "`reqdata`"

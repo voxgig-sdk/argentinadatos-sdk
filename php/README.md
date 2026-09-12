@@ -343,6 +343,7 @@ API path: `/v1/finanzas/bonos-cer`
 | `casa` |  |
 | `compra` |  |
 | `fecha` |  |
+| `id` |  |
 | `moneda` |  |
 | `venta` |  |
 
@@ -847,6 +848,7 @@ Create an instance: `$cotizacion = $client->Cotizacion();`
 | `casa` | `string` |  |
 | `compra` | `float` |  |
 | `fecha` | `string` |  |
+| `id` | `string` |  |
 | `moneda` | `string` |  |
 | `venta` | `float` |  |
 

@@ -91,6 +91,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "date-time",
 						"name": "fecha",
 						"type": "`$STRING`",
 					},
@@ -163,6 +164,10 @@ func MakeConfig() map[string]any {
 						"type": "`$INTEGER`",
 					},
 				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
 				"name": "acta",
 				"op": map[string]any{
 					"list": map[string]any{
@@ -174,15 +179,26 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/diputados/actas",
-								"parts": []any{
-									"v1",
-									"diputados",
-									"actas",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "diputados",
+									},
+									map[string]any{
+										"lit": "actas",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"diputados",
+									"actas",
 								},
 							},
 							map[string]any{
@@ -190,15 +206,26 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/senado/actas",
-								"parts": []any{
-									"v1",
-									"senado",
-									"actas",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "senado",
+									},
+									map[string]any{
+										"lit": "actas",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"senado",
+									"actas",
 								},
 							},
 						},
@@ -223,15 +250,23 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/diputados/actas/{año}",
-								"parts": []any{
-									"v1",
-									"diputados",
-									"actas",
-									"{id}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"año": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "diputados",
+									},
+									map[string]any{
+										"lit": "actas",
+									},
+									map[string]any{
+										"var": "id",
 									},
 								},
 								"select": map[string]any{
@@ -242,6 +277,12 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"diputados",
+									"actas",
+									"{id}",
 								},
 							},
 							map[string]any{
@@ -260,15 +301,23 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/senado/actas/{año}",
-								"parts": []any{
-									"v1",
-									"senado",
-									"actas",
-									"{id}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"año": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "senado",
+									},
+									map[string]any{
+										"lit": "actas",
+									},
+									map[string]any{
+										"var": "id",
 									},
 								},
 								"select": map[string]any{
@@ -279,6 +328,12 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"senado",
+									"actas",
+									"{id}",
 								},
 							},
 						},
@@ -291,6 +346,7 @@ func MakeConfig() map[string]any {
 			"bonos_cer": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"format": "date",
 						"name": "fechaVencimiento",
 						"req": true,
 						"short": "Fecha de vencimiento (ISO 8601, solo fecha: yyyy-MM-dd)",
@@ -331,15 +387,26 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/bonos-cer",
-								"parts": []any{
-									"v1",
-									"finanzas",
-									"bonos-cer",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "finanzas",
+									},
+									map[string]any{
+										"lit": "bonos-cer",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.bonos`",
+								},
+								"parts": []any{
+									"v1",
+									"finanzas",
+									"bonos-cer",
 								},
 							},
 						},
@@ -364,6 +431,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+					map[string]any{
 						"name": "moneda",
 						"type": "`$STRING`",
 					},
@@ -371,6 +442,19 @@ func MakeConfig() map[string]any {
 						"name": "venta",
 						"type": "`$NUMBER`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"from": map[string]any{
+						"casa": "casa",
+						"fecha": "fecha",
+					},
+					"name": "id",
+					"parts": []any{
+						"casa",
+						"fecha",
+					},
+					"sep": "/",
 				},
 				"name": "cotizacion",
 				"op": map[string]any{
@@ -383,15 +467,26 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/cotizaciones/dolares",
-								"parts": []any{
-									"v1",
-									"cotizaciones",
-									"dolares",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "cotizaciones",
+									},
+									map[string]any{
+										"lit": "dolares",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"cotizaciones",
+									"dolares",
 								},
 							},
 						},
@@ -424,12 +519,22 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/cotizaciones/dolares/{casa}/{fecha}",
-								"parts": []any{
-									"v1",
-									"cotizaciones",
-									"dolares",
-									"{casa}",
-									"{fecha}",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "cotizaciones",
+									},
+									map[string]any{
+										"lit": "dolares",
+									},
+									map[string]any{
+										"var": "casa",
+									},
+									map[string]any{
+										"var": "fecha",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -440,6 +545,13 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"cotizaciones",
+									"dolares",
+									"{casa}",
+									"{fecha}",
 								},
 							},
 							map[string]any{
@@ -458,11 +570,19 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/cotizaciones/dolares/{casa}",
-								"parts": []any{
-									"v1",
-									"cotizaciones",
-									"dolares",
-									"{casa}",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "cotizaciones",
+									},
+									map[string]any{
+										"lit": "dolares",
+									},
+									map[string]any{
+										"var": "casa",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -472,6 +592,12 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"cotizaciones",
+									"dolares",
+									"{casa}",
 								},
 							},
 						},
@@ -493,6 +619,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "tna",
 						"short": "Tasa Nominal Anual en porcentaje",
 						"type": "`$NUMBER`",
@@ -514,15 +641,26 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/criptopesos",
-								"parts": []any{
-									"v1",
-									"finanzas",
-									"criptopesos",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "finanzas",
+									},
+									map[string]any{
+										"lit": "criptopesos",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"finanzas",
+									"criptopesos",
 								},
 							},
 						},
@@ -540,11 +678,13 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "tasa",
 						"short": "Tasa de rendimiento anual en formato decimal (p.",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "tope",
 						"short": "Monto máximo en USD remunerado a esa tasa, o null si no hay tope o no se informó",
 						"type": "`$NUMBER`",
@@ -561,15 +701,26 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/cuentas-remuneradas-usd",
-								"parts": []any{
-									"v1",
-									"finanzas",
-									"cuentas-remuneradas-usd",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "finanzas",
+									},
+									map[string]any{
+										"lit": "cuentas-remuneradas-usd",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"finanzas",
+									"cuentas-remuneradas-usd",
 								},
 							},
 						},
@@ -590,10 +741,12 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "date-time",
 						"name": "ceseFecha",
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "foto",
 						"type": "`$STRING`",
 					},
@@ -606,6 +759,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "date-time",
 						"name": "juramentoFecha",
 						"type": "`$STRING`",
 					},
@@ -626,6 +780,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
 				"name": "diputado",
 				"op": map[string]any{
 					"list": map[string]any{
@@ -637,15 +795,26 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/diputados/diputados",
-								"parts": []any{
-									"v1",
-									"diputados",
-									"diputados",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "diputados",
+									},
+									map[string]any{
+										"lit": "diputados",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"diputados",
+									"diputados",
 								},
 							},
 						},
@@ -677,15 +846,26 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/rendimientos",
-								"parts": []any{
-									"v1",
-									"finanzas",
-									"rendimientos",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "finanzas",
+									},
+									map[string]any{
+										"lit": "rendimientos",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"finanzas",
+									"rendimientos",
 								},
 							},
 						},
@@ -717,14 +897,22 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/estado",
-								"parts": []any{
-									"v1",
-									"estado",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "estado",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"estado",
 								},
 							},
 						},
@@ -760,15 +948,26 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/eventos/presidenciales",
-								"parts": []any{
-									"v1",
-									"eventos",
-									"presidenciales",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "eventos",
+									},
+									map[string]any{
+										"lit": "presidenciales",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"eventos",
+									"presidenciales",
 								},
 							},
 						},
@@ -797,6 +996,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
 				"name": "feriado",
 				"op": map[string]any{
 					"load": map[string]any{
@@ -819,14 +1022,20 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/feriados/{año}",
-								"parts": []any{
-									"v1",
-									"feriados",
-									"{id}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"año": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "feriados",
+									},
+									map[string]any{
+										"var": "id",
 									},
 								},
 								"select": map[string]any{
@@ -837,6 +1046,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"feriados",
+									"{id}",
 								},
 							},
 						},
@@ -859,14 +1073,22 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/rems",
-								"parts": []any{
-									"v1",
-									"rems",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "rems",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"rems",
 								},
 							},
 						},
@@ -929,12 +1151,22 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/fci/mercadoDinero/{fecha}",
-								"parts": []any{
-									"v1",
-									"finanzas",
-									"fci",
-									"mercadoDinero",
-									"{fecha}",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "finanzas",
+									},
+									map[string]any{
+										"lit": "fci",
+									},
+									map[string]any{
+										"lit": "mercadoDinero",
+									},
+									map[string]any{
+										"var": "fecha",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -944,6 +1176,13 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"finanzas",
+									"fci",
+									"mercadoDinero",
+									"{fecha}",
 								},
 							},
 							map[string]any{
@@ -962,12 +1201,22 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/fci/rentaFija/{fecha}",
-								"parts": []any{
-									"v1",
-									"finanzas",
-									"fci",
-									"rentaFija",
-									"{fecha}",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "finanzas",
+									},
+									map[string]any{
+										"lit": "fci",
+									},
+									map[string]any{
+										"lit": "rentaFija",
+									},
+									map[string]any{
+										"var": "fecha",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -977,6 +1226,13 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"finanzas",
+									"fci",
+									"rentaFija",
+									"{fecha}",
 								},
 							},
 							map[string]any{
@@ -995,12 +1251,22 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/fci/rentaMixta/{fecha}",
-								"parts": []any{
-									"v1",
-									"finanzas",
-									"fci",
-									"rentaMixta",
-									"{fecha}",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "finanzas",
+									},
+									map[string]any{
+										"lit": "fci",
+									},
+									map[string]any{
+										"lit": "rentaMixta",
+									},
+									map[string]any{
+										"var": "fecha",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -1010,6 +1276,13 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"finanzas",
+									"fci",
+									"rentaMixta",
+									"{fecha}",
 								},
 							},
 							map[string]any{
@@ -1028,12 +1301,22 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/fci/rentaVariable/{fecha}",
-								"parts": []any{
-									"v1",
-									"finanzas",
-									"fci",
-									"rentaVariable",
-									"{fecha}",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "finanzas",
+									},
+									map[string]any{
+										"lit": "fci",
+									},
+									map[string]any{
+										"lit": "rentaVariable",
+									},
+									map[string]any{
+										"var": "fecha",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -1043,6 +1326,13 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"finanzas",
+									"fci",
+									"rentaVariable",
+									"{fecha}",
 								},
 							},
 							map[string]any{
@@ -1061,12 +1351,22 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/fci/retornoTotal/{fecha}",
-								"parts": []any{
-									"v1",
-									"finanzas",
-									"fci",
-									"retornoTotal",
-									"{fecha}",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "finanzas",
+									},
+									map[string]any{
+										"lit": "fci",
+									},
+									map[string]any{
+										"lit": "retornoTotal",
+									},
+									map[string]any{
+										"var": "fecha",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -1076,6 +1376,13 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"finanzas",
+									"fci",
+									"retornoTotal",
+									"{fecha}",
 								},
 							},
 						},
@@ -1128,6 +1435,10 @@ func MakeConfig() map[string]any {
 						"type": "`$NUMBER`",
 					},
 				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
 				"name": "fondo_comun_inversion_otro",
 				"op": map[string]any{
 					"load": map[string]any{
@@ -1150,16 +1461,26 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/fci/otros/{fecha}",
-								"parts": []any{
-									"v1",
-									"finanzas",
-									"fci",
-									"otros",
-									"{id}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"fecha": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "finanzas",
+									},
+									map[string]any{
+										"lit": "fci",
+									},
+									map[string]any{
+										"lit": "otros",
+									},
+									map[string]any{
+										"var": "id",
 									},
 								},
 								"select": map[string]any{
@@ -1170,6 +1491,13 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"finanzas",
+									"fci",
+									"otros",
+									"{id}",
 								},
 							},
 						},
@@ -1225,6 +1553,10 @@ func MakeConfig() map[string]any {
 						"type": "`$NUMBER`",
 					},
 				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
 				"name": "fondo_comun_inversion_variable",
 				"op": map[string]any{
 					"load": map[string]any{
@@ -1247,16 +1579,26 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/fci/variables/{fecha}",
-								"parts": []any{
-									"v1",
-									"finanzas",
-									"fci",
-									"variables",
-									"{id}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"fecha": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "finanzas",
+									},
+									map[string]any{
+										"lit": "fci",
+									},
+									map[string]any{
+										"lit": "variables",
+									},
+									map[string]any{
+										"var": "id",
 									},
 								},
 								"select": map[string]any{
@@ -1267,6 +1609,13 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"finanzas",
+									"fci",
+									"variables",
+									"{id}",
 								},
 							},
 						},
@@ -1294,6 +1643,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "tna",
 						"short": "Tasa Nominal Anual",
 						"type": "`$NUMBER`",
@@ -1310,16 +1660,30 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/creditos/hipotecariosUva",
-								"parts": []any{
-									"v1",
-									"finanzas",
-									"creditos",
-									"hipotecariosUva",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "finanzas",
+									},
+									map[string]any{
+										"lit": "creditos",
+									},
+									map[string]any{
+										"lit": "hipotecariosUva",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"finanzas",
+									"creditos",
+									"hipotecariosUva",
 								},
 							},
 						},
@@ -1351,16 +1715,30 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/indices/inflacion",
-								"parts": []any{
-									"v1",
-									"finanzas",
-									"indices",
-									"inflacion",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "finanzas",
+									},
+									map[string]any{
+										"lit": "indices",
+									},
+									map[string]any{
+										"lit": "inflacion",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"finanzas",
+									"indices",
+									"inflacion",
 								},
 							},
 							map[string]any{
@@ -1368,16 +1746,30 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/indices/inflacionInteranual",
-								"parts": []any{
-									"v1",
-									"finanzas",
-									"indices",
-									"inflacionInteranual",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "finanzas",
+									},
+									map[string]any{
+										"lit": "indices",
+									},
+									map[string]any{
+										"lit": "inflacionInteranual",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"finanzas",
+									"indices",
+									"inflacionInteranual",
 								},
 							},
 						},
@@ -1409,16 +1801,30 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/indices/uva",
-								"parts": []any{
-									"v1",
-									"finanzas",
-									"indices",
-									"uva",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "finanzas",
+									},
+									map[string]any{
+										"lit": "indices",
+									},
+									map[string]any{
+										"lit": "uva",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"finanzas",
+									"indices",
+									"uva",
 								},
 							},
 						},
@@ -1467,15 +1873,26 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/letras",
-								"parts": []any{
-									"v1",
-									"finanzas",
-									"letras",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "finanzas",
+									},
+									map[string]any{
+										"lit": "letras",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"finanzas",
+									"letras",
 								},
 							},
 						},
@@ -1493,6 +1910,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "imagen",
 						"short": "URL de la imagen del presidente",
 						"type": "`$STRING`",
@@ -1511,6 +1929,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "partidoImagen",
 						"short": "URL de la imagen del logo del partido político",
 						"type": "`$STRING`",
@@ -1537,14 +1956,22 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/presidentes",
-								"parts": []any{
-									"v1",
-									"presidentes",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "presidentes",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"presidentes",
 								},
 							},
 						},
@@ -1567,6 +1994,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "enlace",
 						"short": "URL de la fuente",
 						"type": "`$STRING`",
@@ -1582,6 +2010,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "logo",
 						"short": "URL del logo de la entidad",
 						"type": "`$STRING`",
@@ -1622,25 +2051,33 @@ func MakeConfig() map[string]any {
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "tea",
 						"short": "Tasa Efectiva Anual",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "teaPrecancelacion",
 						"short": "Tasa Efectiva Anual aplicada ante precancelación",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "tna",
 						"short": "Tasa Nominal Anual",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "tnaPrecancelacion",
 						"short": "Tasa Nominal Anual aplicada ante precancelación",
 						"type": "`$NUMBER`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "proveedor_plazo_fijo_precancelable",
 				"op": map[string]any{
@@ -1653,16 +2090,30 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/tasas/plazoFijoPrecancelable",
-								"parts": []any{
-									"v1",
-									"finanzas",
-									"tasas",
-									"plazoFijoPrecancelable",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "finanzas",
+									},
+									map[string]any{
+										"lit": "tasas",
+									},
+									map[string]any{
+										"lit": "plazoFijoPrecancelable",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"finanzas",
+									"tasas",
+									"plazoFijoPrecancelable",
 								},
 							},
 						},
@@ -1685,6 +2136,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "logo",
 						"short": "URL del logo de la entidad",
 						"type": "`$STRING`",
@@ -1694,6 +2146,10 @@ func MakeConfig() map[string]any {
 						"short": "Tasas por rango de plazo",
 						"type": "`$ARRAY`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "proveedor_plazo_fijo_uva_pago_periodico",
 				"op": map[string]any{
@@ -1706,16 +2162,30 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/tasas/plazoFijoUvaPagoPeriodico",
-								"parts": []any{
-									"v1",
-									"finanzas",
-									"tasas",
-									"plazoFijoUvaPagoPeriodico",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "finanzas",
+									},
+									map[string]any{
+										"lit": "tasas",
+									},
+									map[string]any{
+										"lit": "plazoFijoUvaPagoPeriodico",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"finanzas",
+									"tasas",
+									"plazoFijoUvaPagoPeriodico",
 								},
 							},
 						},
@@ -1732,6 +2202,7 @@ func MakeConfig() map[string]any {
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
+						"format": "date",
 						"name": "fecha",
 						"short": "Fecha ISO del primer día del mes del informe",
 						"type": "`$STRING`",
@@ -1793,11 +2264,13 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "date",
 						"name": "periodoDesde",
 						"short": "Fecha de inicio del período normalizado",
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "date",
 						"name": "periodoHasta",
 						"short": "Fecha de fin del período normalizado",
 						"type": "`$STRING`",
@@ -1821,6 +2294,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "date",
 						"name": "referenciaFecha",
 						"short": "Fecha detectada en la referencia, si corresponde",
 						"type": "`$STRING`",
@@ -1865,11 +2339,19 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/rems/{año}/{mes}",
-								"parts": []any{
-									"v1",
-									"rems",
-									"{año}",
-									"{mes}",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "rems",
+									},
+									map[string]any{
+										"var": "año",
+									},
+									map[string]any{
+										"var": "mes",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -1880,6 +2362,12 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"rems",
+									"{año}",
+									"{mes}",
 								},
 							},
 						},
@@ -1900,6 +2388,7 @@ func MakeConfig() map[string]any {
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
+						"format": "date",
 						"name": "fecha",
 						"short": "Fecha ISO del primer día del mes del informe",
 						"type": "`$STRING`",
@@ -1961,11 +2450,13 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "date",
 						"name": "periodoDesde",
 						"short": "Fecha de inicio del período normalizado",
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "date",
 						"name": "periodoHasta",
 						"short": "Fecha de fin del período normalizado",
 						"type": "`$STRING`",
@@ -1989,6 +2480,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "date",
 						"name": "referenciaFecha",
 						"short": "Fecha detectada en la referencia, si corresponde",
 						"type": "`$STRING`",
@@ -2014,15 +2506,26 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/rems/ultimo",
-								"parts": []any{
-									"v1",
-									"rems",
-									"ultimo",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "rems",
+									},
+									map[string]any{
+										"lit": "ultimo",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"rems",
+									"ultimo",
 								},
 							},
 						},
@@ -2051,6 +2554,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
 				"name": "rendimiento",
 				"op": map[string]any{
 					"load": map[string]any{
@@ -2073,15 +2580,23 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/rendimientos/{entidad}",
-								"parts": []any{
-									"v1",
-									"finanzas",
-									"rendimientos",
-									"{id}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"entidad": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "finanzas",
+									},
+									map[string]any{
+										"lit": "rendimientos",
+									},
+									map[string]any{
+										"var": "id",
 									},
 								},
 								"select": map[string]any{
@@ -2092,6 +2607,12 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"finanzas",
+									"rendimientos",
+									"{id}",
 								},
 							},
 						},
@@ -2123,16 +2644,30 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/indices/riesgo-pais",
-								"parts": []any{
-									"v1",
-									"finanzas",
-									"indices",
-									"riesgo-pais",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "finanzas",
+									},
+									map[string]any{
+										"lit": "indices",
+									},
+									map[string]any{
+										"lit": "riesgo-pais",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"finanzas",
+									"indices",
+									"riesgo-pais",
 								},
 							},
 						},
@@ -2146,12 +2681,22 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/indices/riesgo-pais/ultimo",
-								"parts": []any{
-									"v1",
-									"finanzas",
-									"indices",
-									"riesgo-pais",
-									"ultimo",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "finanzas",
+									},
+									map[string]any{
+										"lit": "indices",
+									},
+									map[string]any{
+										"lit": "riesgo-pais",
+									},
+									map[string]any{
+										"lit": "ultimo",
+									},
 								},
 								"select": map[string]any{
 									"$action": "ultimo",
@@ -2159,6 +2704,13 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"finanzas",
+									"indices",
+									"riesgo-pais",
+									"ultimo",
 								},
 							},
 						},
@@ -2171,10 +2723,12 @@ func MakeConfig() map[string]any {
 			"senador": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"format": "email",
 						"name": "email",
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "foto",
 						"type": "`$STRING`",
 					},
@@ -2219,6 +2773,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
 				"name": "senador",
 				"op": map[string]any{
 					"list": map[string]any{
@@ -2230,15 +2788,26 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/senado/senadores",
-								"parts": []any{
-									"v1",
-									"senado",
-									"senadores",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "senado",
+									},
+									map[string]any{
+										"lit": "senadores",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"senado",
+									"senadores",
 								},
 							},
 						},
@@ -2270,16 +2839,30 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/tasas/depositos30Dias",
-								"parts": []any{
-									"v1",
-									"finanzas",
-									"tasas",
-									"depositos30Dias",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "finanzas",
+									},
+									map[string]any{
+										"lit": "tasas",
+									},
+									map[string]any{
+										"lit": "depositos30Dias",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"finanzas",
+									"tasas",
+									"depositos30Dias",
 								},
 							},
 						},
@@ -2296,16 +2879,19 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "logo",
 						"short": "URL del logo de la entidad",
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "tnaClientes",
 						"short": "Tasa Nominal Anual para clientes, en porcentaje",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "tnaNoClientes",
 						"short": "Tasa Nominal Anual para no clientes, en porcentaje",
 						"type": "`$NUMBER`",
@@ -2322,16 +2908,30 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/finanzas/tasas/plazoFijo",
-								"parts": []any{
-									"v1",
-									"finanzas",
-									"tasas",
-									"plazoFijo",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "finanzas",
+									},
+									map[string]any{
+										"lit": "tasas",
+									},
+									map[string]any{
+										"lit": "plazoFijo",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"finanzas",
+									"tasas",
+									"plazoFijo",
 								},
 							},
 						},
@@ -2343,6 +2943,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

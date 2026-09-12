@@ -1,0 +1,479 @@
+export interface Acta {
+    abstenciones?: number;
+    acta?: string;
+    actaId?: number;
+    afirmativos?: number;
+    amn?: number;
+    ausentes?: number;
+    descripcion?: string;
+    fecha?: string;
+    id?: string;
+    mayoria?: string;
+    miembros?: number;
+    negativos?: number;
+    numeroActa?: string;
+    observaciones?: any[];
+    periodo?: string;
+    presentes?: number;
+    presidente?: string;
+    proyecto?: string;
+    quorumTipo?: string;
+    resultado?: string;
+    reunion?: string;
+    titulo?: string;
+    votos?: any[];
+    votosAfirmativos?: number;
+    votosNegativos?: number;
+}
+export interface ActaLoadMatch {
+    id: number;
+}
+export interface ActaListMatch {
+    abstenciones?: number;
+    acta?: string;
+    actaId?: number;
+    afirmativos?: number;
+    amn?: number;
+    ausentes?: number;
+    descripcion?: string;
+    fecha?: string;
+    id?: string;
+    mayoria?: string;
+    miembros?: number;
+    negativos?: number;
+    numeroActa?: string;
+    observaciones?: any[];
+    periodo?: string;
+    presentes?: number;
+    presidente?: string;
+    proyecto?: string;
+    quorumTipo?: string;
+    resultado?: string;
+    reunion?: string;
+    titulo?: string;
+    votos?: any[];
+    votosAfirmativos?: number;
+    votosNegativos?: number;
+}
+export interface BonosCer {
+    fechaVencimiento: string;
+    precioArs: number;
+    ticker: string;
+    tirPorcentaje: number;
+    volumen?: number;
+}
+export interface BonosCerListMatch {
+    fechaVencimiento?: string;
+    precioArs?: number;
+    ticker?: string;
+    tirPorcentaje?: number;
+    volumen?: number;
+}
+export interface Cotizacion {
+    casa?: string;
+    compra?: number;
+    fecha?: string;
+    id?: string;
+    moneda?: string;
+    venta?: number;
+}
+export interface CotizacionLoadMatch {
+    casa: string;
+    fecha?: string;
+}
+export interface CotizacionListMatch {
+    casa?: string;
+    compra?: number;
+    fecha?: string;
+    id?: string;
+    moneda?: string;
+    venta?: number;
+}
+export interface Criptopeso {
+    entidad?: string;
+    tna?: number;
+    token?: string;
+}
+export interface CriptopesoListMatch {
+    entidad?: string;
+    tna?: number;
+    token?: string;
+}
+export interface CuentaRemuneradaUsd {
+    entidad?: string;
+    tasa?: number;
+    tope?: number;
+}
+export interface CuentaRemuneradaUsdListMatch {
+    entidad?: string;
+    tasa?: number;
+    tope?: number;
+}
+export interface Diputado {
+    apellido?: string;
+    bloque?: string;
+    ceseFecha?: string;
+    foto?: string;
+    genero?: string;
+    id?: string;
+    juramentoFecha?: string;
+    nombre?: string;
+    periodoBloque?: Record<string, any>;
+    periodoMandato?: Record<string, any>;
+    provincia?: string;
+}
+export interface DiputadoListMatch {
+    apellido?: string;
+    bloque?: string;
+    ceseFecha?: string;
+    foto?: string;
+    genero?: string;
+    id?: string;
+    juramentoFecha?: string;
+    nombre?: string;
+    periodoBloque?: Record<string, any>;
+    periodoMandato?: Record<string, any>;
+    provincia?: string;
+}
+export interface EntidadRendimiento {
+    entidad?: string;
+    rendimientos?: any[];
+}
+export interface EntidadRendimientoListMatch {
+    entidad?: string;
+    rendimientos?: any[];
+}
+export interface Estado {
+    aleatorio?: number;
+    estado?: string;
+}
+export interface EstadoLoadMatch {
+    aleatorio?: number;
+    estado?: string;
+}
+export interface EventoPresidencial {
+    evento?: string;
+    fecha?: string;
+    tipo?: string;
+}
+export interface EventoPresidencialListMatch {
+    evento?: string;
+    fecha?: string;
+    tipo?: string;
+}
+export interface Feriado {
+    fecha?: string;
+    id?: string;
+    nombre?: string;
+    tipo?: string;
+}
+export interface FeriadoLoadMatch {
+    id: number;
+}
+export interface Finanza {
+}
+export interface FinanzaListMatch {
+}
+export interface FondoComunInversion {
+    ccp?: number;
+    fecha?: string;
+    fondo?: string;
+    horizonte?: string;
+    patrimonio?: number;
+    tipo?: string;
+    vcp?: number;
+}
+export interface FondoComunInversionLoadMatch {
+    fecha: string;
+}
+export interface FondoComunInversionOtro {
+    fecha?: string;
+    fondo?: string;
+    id?: string;
+    tea?: number;
+    tna?: number;
+    tope?: number;
+}
+export interface FondoComunInversionOtroLoadMatch {
+    id: string;
+}
+export interface FondoComunInversionVariable {
+    condiciones?: string;
+    condicionesCorto?: string;
+    fecha?: string;
+    fondo?: string;
+    id?: string;
+    nombre?: string;
+    tea?: number;
+    tipo?: string;
+    tna?: number;
+    tope?: number;
+}
+export interface FondoComunInversionVariableLoadMatch {
+    id: string;
+}
+export interface HipotecarioUvaTna {
+    entidad?: string;
+    metadata?: Record<string, any>;
+    nombreComercial?: string;
+    tna?: number;
+}
+export interface HipotecarioUvaTnaListMatch {
+    entidad?: string;
+    metadata?: Record<string, any>;
+    nombreComercial?: string;
+    tna?: number;
+}
+export interface IndiceInflacion {
+    fecha?: string;
+    valor?: number;
+}
+export interface IndiceInflacionListMatch {
+    fecha?: string;
+    valor?: number;
+}
+export interface IndiceUva {
+    fecha?: string;
+    valor?: number;
+}
+export interface IndiceUvaListMatch {
+    fecha?: string;
+    valor?: number;
+}
+export interface Letra {
+    fechaEmision?: string;
+    fechaVencimiento?: string;
+    tem?: number;
+    ticker?: string;
+    vpv?: number;
+}
+export interface LetraListMatch {
+    fechaEmision?: string;
+    fechaVencimiento?: string;
+    tem?: number;
+    ticker?: string;
+    vpv?: number;
+}
+export interface Presidente {
+    fin?: string;
+    imagen?: string;
+    inicio?: string;
+    nombre?: string;
+    partido?: string;
+    partidoImagen?: string;
+    periodoPresidencial?: string;
+    vicepresidente?: string;
+}
+export interface PresidenteListMatch {
+    fin?: string;
+    imagen?: string;
+    inicio?: string;
+    nombre?: string;
+    partido?: string;
+    partidoImagen?: string;
+    periodoPresidencial?: string;
+    vicepresidente?: string;
+}
+export interface ProveedorPlazoFijoPrecancelable {
+    avisoPrecancelacionDias?: number;
+    canal?: string;
+    enlace?: string;
+    entidad?: string;
+    id?: string;
+    logo?: string;
+    modalidad?: string;
+    moneda?: string;
+    montoMaximo?: number;
+    montoMinimo?: number;
+    plazoMaxDias?: number;
+    plazoMinDias?: number;
+    plazoPrecancelacionDias?: number;
+    tea?: number;
+    teaPrecancelacion?: number;
+    tna?: number;
+    tnaPrecancelacion?: number;
+}
+export interface ProveedorPlazoFijoPrecancelableListMatch {
+    avisoPrecancelacionDias?: number;
+    canal?: string;
+    enlace?: string;
+    entidad?: string;
+    id?: string;
+    logo?: string;
+    modalidad?: string;
+    moneda?: string;
+    montoMaximo?: number;
+    montoMinimo?: number;
+    plazoMaxDias?: number;
+    plazoMinDias?: number;
+    plazoPrecancelacionDias?: number;
+    tea?: number;
+    teaPrecancelacion?: number;
+    tna?: number;
+    tnaPrecancelacion?: number;
+}
+export interface ProveedorPlazoFijoUvaPagoPeriodico {
+    entidad?: string;
+    id?: string;
+    logo?: string;
+    tasas?: any[];
+}
+export interface ProveedorPlazoFijoUvaPagoPeriodicoListMatch {
+    entidad?: string;
+    id?: string;
+    logo?: string;
+    tasas?: any[];
+}
+export interface Rem {
+    desvio?: number;
+    fecha?: string;
+    fuente?: string;
+    indicador?: string;
+    informe?: string;
+    maximo?: number;
+    mediana?: number;
+    minimo?: number;
+    muestra?: string;
+    participantes?: number;
+    percentil10?: number;
+    percentil25?: number;
+    percentil75?: number;
+    percentil90?: number;
+    periodo?: string;
+    periodoDesde?: string;
+    periodoHasta?: string;
+    periodoTipo?: string;
+    promedio?: number;
+    publicacionUrl?: string;
+    referencia?: string;
+    referenciaFecha?: string;
+    unidad?: string;
+    xlsxUrl?: string;
+}
+export interface RemListMatch {
+    "año": number;
+    mes: string;
+}
+export interface RemExpectativa {
+    desvio?: number;
+    fecha?: string;
+    fuente?: string;
+    indicador?: string;
+    informe?: string;
+    maximo?: number;
+    mediana?: number;
+    minimo?: number;
+    muestra?: string;
+    participantes?: number;
+    percentil10?: number;
+    percentil25?: number;
+    percentil75?: number;
+    percentil90?: number;
+    periodo?: string;
+    periodoDesde?: string;
+    periodoHasta?: string;
+    periodoTipo?: string;
+    promedio?: number;
+    publicacionUrl?: string;
+    referencia?: string;
+    referenciaFecha?: string;
+    unidad?: string;
+    xlsxUrl?: string;
+}
+export interface RemExpectativaListMatch {
+    desvio?: number;
+    fecha?: string;
+    fuente?: string;
+    indicador?: string;
+    informe?: string;
+    maximo?: number;
+    mediana?: number;
+    minimo?: number;
+    muestra?: string;
+    participantes?: number;
+    percentil10?: number;
+    percentil25?: number;
+    percentil75?: number;
+    percentil90?: number;
+    periodo?: string;
+    periodoDesde?: string;
+    periodoHasta?: string;
+    periodoTipo?: string;
+    promedio?: number;
+    publicacionUrl?: string;
+    referencia?: string;
+    referenciaFecha?: string;
+    unidad?: string;
+    xlsxUrl?: string;
+}
+export interface Rendimiento {
+    apy?: number;
+    fecha?: string;
+    id?: string;
+    moneda?: string;
+}
+export interface RendimientoLoadMatch {
+    id: string;
+}
+export interface RiesgoPai {
+    fecha?: string;
+    valor?: number;
+}
+export interface RiesgoPaiLoadMatch {
+    fecha?: string;
+    valor?: number;
+    $action?: string;
+    [action: string]: any;
+}
+export interface RiesgoPaiListMatch {
+    fecha?: string;
+    valor?: number;
+}
+export interface Senador {
+    email?: string;
+    foto?: string;
+    id?: string;
+    nombre?: string;
+    observaciones?: string;
+    partido?: string;
+    periodoLegal?: Record<string, any>;
+    periodoReal?: Record<string, any>;
+    provincia?: string;
+    redes?: any[];
+    reemplazo?: string;
+    telefono?: string;
+}
+export interface SenadorListMatch {
+    email?: string;
+    foto?: string;
+    id?: string;
+    nombre?: string;
+    observaciones?: string;
+    partido?: string;
+    periodoLegal?: Record<string, any>;
+    periodoReal?: Record<string, any>;
+    provincia?: string;
+    redes?: any[];
+    reemplazo?: string;
+    telefono?: string;
+}
+export interface TasaIntere {
+    fecha?: string;
+    valor?: number;
+}
+export interface TasaIntereListMatch {
+    fecha?: string;
+    valor?: number;
+}
+export interface TasaPlazoFijo {
+    entidad?: string;
+    logo?: string;
+    tnaClientes?: number;
+    tnaNoClientes?: number;
+}
+export interface TasaPlazoFijoListMatch {
+    entidad?: string;
+    logo?: string;
+    tnaClientes?: number;
+    tnaNoClientes?: number;
+}

@@ -85,6 +85,7 @@ export interface Cotizacion {
   casa?: string
   compra?: number
   fecha?: string
+  id?: string
   moneda?: string
   venta?: number
 }
@@ -98,6 +99,7 @@ export interface CotizacionListMatch {
   casa?: string
   compra?: number
   fecha?: string
+  id?: string
   moneda?: string
   venta?: number
 }

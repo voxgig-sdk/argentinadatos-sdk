@@ -12,6 +12,7 @@ main: kit: entity: criptopeso: {
       type: "`$STRING`"
     }
     {
+      format: "float"
       name: "tna"
       req: false
       short: "Tasa Nominal Anual en porcentaje"
@@ -33,10 +34,16 @@ main: kit: entity: criptopeso: {
         {
           method: "GET"
           orig: "/v1/finanzas/criptopesos"
-          parts: [
-            "v1"
-            "finanzas"
-            "criptopesos"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "finanzas"
+            }
+            {
+              lit: "criptopesos"
+            }
           ]
           transform: {
             req: "`reqdata`"

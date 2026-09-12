@@ -18,6 +18,7 @@ main: kit: entity: proveedor_plazo_fijo_uva_pago_periodico: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "logo"
       req: false
       short: "URL del logo de la entidad"
@@ -44,11 +45,19 @@ main: kit: entity: proveedor_plazo_fijo_uva_pago_periodico: {
         {
           method: "GET"
           orig: "/v1/finanzas/tasas/plazoFijoUvaPagoPeriodico"
-          parts: [
-            "v1"
-            "finanzas"
-            "tasas"
-            "plazoFijoUvaPagoPeriodico"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "finanzas"
+            }
+            {
+              lit: "tasas"
+            }
+            {
+              lit: "plazoFijoUvaPagoPeriodico"
+            }
           ]
           transform: {
             req: "`reqdata`"

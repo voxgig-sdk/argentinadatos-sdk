@@ -41,6 +41,7 @@ main: kit: entity: acta: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "fecha"
       req: false
       type: "`$STRING`"
@@ -145,10 +146,16 @@ main: kit: entity: acta: {
         {
           method: "GET"
           orig: "/v1/diputados/actas"
-          parts: [
-            "v1"
-            "diputados"
-            "actas"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "diputados"
+            }
+            {
+              lit: "actas"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -158,10 +165,16 @@ main: kit: entity: acta: {
         {
           method: "GET"
           orig: "/v1/senado/actas"
-          parts: [
-            "v1"
-            "senado"
-            "actas"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "senado"
+            }
+            {
+              lit: "actas"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -188,17 +201,25 @@ main: kit: entity: acta: {
           }
           method: "GET"
           orig: "/v1/diputados/actas/{año}"
-          parts: [
-            "v1"
-            "diputados"
-            "actas"
-            "{id}"
-          ]
           rename: {
             param: {
               "año": "id"
             }
           }
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "diputados"
+            }
+            {
+              lit: "actas"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"
@@ -224,17 +245,25 @@ main: kit: entity: acta: {
           }
           method: "GET"
           orig: "/v1/senado/actas/{año}"
-          parts: [
-            "v1"
-            "senado"
-            "actas"
-            "{id}"
-          ]
           rename: {
             param: {
               "año": "id"
             }
           }
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "senado"
+            }
+            {
+              lit: "actas"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

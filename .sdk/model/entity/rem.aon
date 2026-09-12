@@ -11,6 +11,7 @@ main: kit: entity: rem: {
       type: "`$NUMBER`"
     }
     {
+      format: "date"
       name: "fecha"
       req: false
       short: "Fecha ISO del primer día del mes del informe"
@@ -86,12 +87,14 @@ main: kit: entity: rem: {
       type: "`$STRING`"
     }
     {
+      format: "date"
       name: "periodoDesde"
       req: false
       short: "Fecha de inicio del período normalizado"
       type: "`$STRING`"
     }
     {
+      format: "date"
       name: "periodoHasta"
       req: false
       short: "Fecha de fin del período normalizado"
@@ -120,6 +123,7 @@ main: kit: entity: rem: {
       type: "`$STRING`"
     }
     {
+      format: "date"
       name: "referenciaFecha"
       req: false
       short: "Fecha detectada en la referencia, si corresponde"
@@ -166,11 +170,19 @@ main: kit: entity: rem: {
           }
           method: "GET"
           orig: "/v1/rems/{año}/{mes}"
-          parts: [
-            "v1"
-            "rems"
-            "{año}"
-            "{mes}"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "rems"
+            }
+            {
+              var: "año"
+            }
+            {
+              var: "mes"
+            }
           ]
           select: {
             exist: [

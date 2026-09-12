@@ -85,18 +85,28 @@ main: kit: entity: fondo_comun_inversion_variable: {
           }
           method: "GET"
           orig: "/v1/finanzas/fci/variables/{fecha}"
-          parts: [
-            "v1"
-            "finanzas"
-            "fci"
-            "variables"
-            "{id}"
-          ]
           rename: {
             param: {
               fecha: "id"
             }
           }
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "finanzas"
+            }
+            {
+              lit: "fci"
+            }
+            {
+              lit: "variables"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

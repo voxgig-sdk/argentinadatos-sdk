@@ -6,11 +6,13 @@ main: kit: entity: senador: {
 
   fields: [
     {
+      format: "email"
       name: "email"
       req: false
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "foto"
       req: false
       type: "`$STRING`"
@@ -80,10 +82,16 @@ main: kit: entity: senador: {
         {
           method: "GET"
           orig: "/v1/senado/senadores"
-          parts: [
-            "v1"
-            "senado"
-            "senadores"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "senado"
+            }
+            {
+              lit: "senadores"
+            }
           ]
           transform: {
             req: "`reqdata`"

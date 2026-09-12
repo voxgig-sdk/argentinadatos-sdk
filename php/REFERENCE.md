@@ -343,6 +343,7 @@ $cotizacion = $client->Cotizacion();
 | `casa` | `string` | No |  |
 | `compra` | `float` | No |  |
 | `fecha` | `string` | No |  |
+| `id` | `string` | No |  |
 | `moneda` | `string` | No |  |
 | `venta` | `float` | No |  |
 

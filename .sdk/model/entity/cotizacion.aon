@@ -21,6 +21,11 @@ main: kit: entity: cotizacion: {
       type: "`$STRING`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "moneda"
       req: false
       type: "`$STRING`"
@@ -32,6 +37,20 @@ main: kit: entity: cotizacion: {
     }
   ]
 
+  id: {
+    field: "id"
+    from: {
+      casa: "casa"
+      fecha: "fecha"
+    }
+    name: "id"
+    parts: [
+      "casa"
+      "fecha"
+    ]
+    sep: "/"
+  }
+
   name: "cotizacion"
   op: {
     list: {
@@ -40,10 +59,16 @@ main: kit: entity: cotizacion: {
         {
           method: "GET"
           orig: "/v1/cotizaciones/dolares"
-          parts: [
-            "v1"
-            "cotizaciones"
-            "dolares"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "cotizaciones"
+            }
+            {
+              lit: "dolares"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -78,12 +103,22 @@ main: kit: entity: cotizacion: {
           }
           method: "GET"
           orig: "/v1/cotizaciones/dolares/{casa}/{fecha}"
-          parts: [
-            "v1"
-            "cotizaciones"
-            "dolares"
-            "{casa}"
-            "{fecha}"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "cotizaciones"
+            }
+            {
+              lit: "dolares"
+            }
+            {
+              var: "casa"
+            }
+            {
+              var: "fecha"
+            }
           ]
           select: {
             exist: [
@@ -111,11 +146,19 @@ main: kit: entity: cotizacion: {
           }
           method: "GET"
           orig: "/v1/cotizaciones/dolares/{casa}"
-          parts: [
-            "v1"
-            "cotizaciones"
-            "dolares"
-            "{casa}"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "cotizaciones"
+            }
+            {
+              lit: "dolares"
+            }
+            {
+              var: "casa"
+            }
           ]
           select: {
             exist: [

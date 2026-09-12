@@ -25,11 +25,19 @@ main: kit: entity: indice_uva: {
         {
           method: "GET"
           orig: "/v1/finanzas/indices/uva"
-          parts: [
-            "v1"
-            "finanzas"
-            "indices"
-            "uva"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "finanzas"
+            }
+            {
+              lit: "indices"
+            }
+            {
+              lit: "uva"
+            }
           ]
           transform: {
             req: "`reqdata`"

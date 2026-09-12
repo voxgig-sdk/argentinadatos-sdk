@@ -25,9 +25,13 @@ main: kit: entity: estado: {
         {
           method: "GET"
           orig: "/v1/estado"
-          parts: [
-            "v1"
-            "estado"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "estado"
+            }
           ]
           transform: {
             req: "`reqdata`"

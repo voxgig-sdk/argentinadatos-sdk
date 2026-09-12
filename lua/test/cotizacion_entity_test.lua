@@ -92,10 +92,14 @@ describe("CotizacionEntity", function()
     assert.is_table(cotizacion_ref01_list_result)
 
     -- LOAD
-    local cotizacion_ref01_match_dt0 = {}
+    local cotizacion_ref01_match_dt0 = {
+      id = cotizacion_ref01_data["id"],
+    }
     local cotizacion_ref01_data_dt0_loaded, err = cotizacion_ref01_ent:load(cotizacion_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(cotizacion_ref01_data_dt0_loaded)
+    local cotizacion_ref01_data_dt0_load_result = helpers.to_map(type(cotizacion_ref01_data_dt0_loaded) == 'table' and cotizacion_ref01_data_dt0_loaded.data_get and cotizacion_ref01_data_dt0_loaded:data_get() or cotizacion_ref01_data_dt0_loaded)
+    assert.is_not_nil(cotizacion_ref01_data_dt0_load_result)
+    assert.are.equal(cotizacion_ref01_data_dt0_load_result["id"], cotizacion_ref01_data["id"])
 
   end)
 end)
@@ -149,6 +153,9 @@ function cotizacion_basic_setup(extra)
 
   if env["ARGENTINADATOS_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
+      -- FIRST, so the generated fields below win: sdk-test-control.json's
+      -- test.client.options adds to the live client, it does not redirect it.
+      runner.live_client_options(),
       {
       },
       extra or {},

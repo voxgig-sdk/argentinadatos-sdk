@@ -99,6 +99,7 @@ class Cotizacion(TypedDict, total=False):
     casa: str
     compra: float
     fecha: str
+    id: str
     moneda: str
     venta: float
 
@@ -115,6 +116,7 @@ class CotizacionListMatch(TypedDict, total=False):
     casa: str
     compra: float
     fecha: str
+    id: str
     moneda: str
     venta: float
 

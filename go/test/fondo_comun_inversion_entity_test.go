@@ -50,7 +50,7 @@ func TestFondoComunInversionEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		fondoComunInversionRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.fondo_comun_inversion", setup.data)))
+		fondoComunInversionRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.fondo_comun_inversion")))
 		var fondoComunInversionRef01Data map[string]any
 		if len(fondoComunInversionRef01DataRaw) > 0 {
 			fondoComunInversionRef01Data = core.ToMapAny(fondoComunInversionRef01DataRaw[0][1])
@@ -97,7 +97,7 @@ func fondo_comun_inversionBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"fondo_comun_inversion01", "fondo_comun_inversion02", "fondo_comun_inversion03", "mercado_dinero01", "mercado_dinero02", "mercado_dinero03", "renta_fija01", "renta_fija02", "renta_fija03", "renta_mixta01", "renta_mixta02", "renta_mixta03", "renta_variable01", "renta_variable02", "renta_variable03", "retorno_total01", "retorno_total02", "retorno_total03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -125,10 +125,22 @@ func fondo_comun_inversionBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["ARGENTINADATOS_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewArgentinadatosSDK(core.ToMapAny(mergedOpts))
 	}

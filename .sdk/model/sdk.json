@@ -76,6 +76,7 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "fecha",
               "req": false,
               "type": "`$STRING`"
@@ -199,10 +200,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/diputados/actas",
-                  "parts": [
-                    "v1",
-                    "diputados",
-                    "actas"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "diputados"
+                    },
+                    {
+                      "lit": "actas"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -216,10 +223,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/senado/actas",
-                  "parts": [
-                    "v1",
-                    "senado",
-                    "actas"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "senado"
+                    },
+                    {
+                      "lit": "actas"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -251,17 +264,25 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/diputados/actas/{año}",
-                  "parts": [
-                    "v1",
-                    "diputados",
-                    "actas",
-                    "{id}"
-                  ],
                   "rename": {
                     "param": {
                       "año": "id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "diputados"
+                    },
+                    {
+                      "lit": "actas"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "id"
@@ -290,17 +311,25 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/senado/actas/{año}",
-                  "parts": [
-                    "v1",
-                    "senado",
-                    "actas",
-                    "{id}"
-                  ],
                   "rename": {
                     "param": {
                       "año": "id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "senado"
+                    },
+                    {
+                      "lit": "actas"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "id"
@@ -326,6 +355,7 @@
           "fields": [
             {
               "active": true,
+              "format": "date",
               "name": "fechaVencimiento",
               "req": true,
               "short": "Fecha de vencimiento (ISO 8601, solo fecha: yyyy-MM-dd)",
@@ -372,10 +402,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/bonos-cer",
-                  "parts": [
-                    "v1",
-                    "finanzas",
-                    "bonos-cer"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "finanzas"
+                    },
+                    {
+                      "lit": "bonos-cer"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -416,6 +452,12 @@
             },
             {
               "active": true,
+              "name": "id",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
               "name": "moneda",
               "req": false,
               "type": "`$STRING`"
@@ -427,6 +469,19 @@
               "type": "`$NUMBER`"
             }
           ],
+          "id": {
+            "field": "id",
+            "from": {
+              "casa": "casa",
+              "fecha": "fecha"
+            },
+            "name": "id",
+            "parts": [
+              "casa",
+              "fecha"
+            ],
+            "sep": "/"
+          },
           "name": "cotizacion",
           "op": {
             "list": {
@@ -439,10 +494,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/cotizaciones/dolares",
-                  "parts": [
-                    "v1",
-                    "cotizaciones",
-                    "dolares"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cotizaciones"
+                    },
+                    {
+                      "lit": "dolares"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -483,12 +544,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/cotizaciones/dolares/{casa}/{fecha}",
-                  "parts": [
-                    "v1",
-                    "cotizaciones",
-                    "dolares",
-                    "{casa}",
-                    "{fecha}"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cotizaciones"
+                    },
+                    {
+                      "lit": "dolares"
+                    },
+                    {
+                      "var": "casa"
+                    },
+                    {
+                      "var": "fecha"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -519,11 +590,19 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/cotizaciones/dolares/{casa}",
-                  "parts": [
-                    "v1",
-                    "cotizaciones",
-                    "dolares",
-                    "{casa}"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "cotizaciones"
+                    },
+                    {
+                      "lit": "dolares"
+                    },
+                    {
+                      "var": "casa"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -561,6 +640,7 @@
             },
             {
               "active": true,
+              "format": "float",
               "name": "tna",
               "req": false,
               "short": "Tasa Nominal Anual en porcentaje",
@@ -586,10 +666,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/criptopesos",
-                  "parts": [
-                    "v1",
-                    "finanzas",
-                    "criptopesos"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "finanzas"
+                    },
+                    {
+                      "lit": "criptopesos"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -619,6 +705,7 @@
             },
             {
               "active": true,
+              "format": "float",
               "name": "tasa",
               "req": false,
               "short": "Tasa de rendimiento anual en formato decimal (p.",
@@ -626,6 +713,7 @@
             },
             {
               "active": true,
+              "format": "float",
               "name": "tope",
               "req": false,
               "short": "Monto máximo en USD remunerado a esa tasa, o null si no hay tope o no se informó",
@@ -644,10 +732,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/cuentas-remuneradas-usd",
-                  "parts": [
-                    "v1",
-                    "finanzas",
-                    "cuentas-remuneradas-usd"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "finanzas"
+                    },
+                    {
+                      "lit": "cuentas-remuneradas-usd"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -682,12 +776,14 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "ceseFecha",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
+              "format": "uri",
               "name": "foto",
               "req": false,
               "type": "`$STRING`"
@@ -706,6 +802,7 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "juramentoFecha",
               "req": false,
               "type": "`$STRING`"
@@ -751,10 +848,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/diputados/diputados",
-                  "parts": [
-                    "v1",
-                    "diputados",
-                    "diputados"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "diputados"
+                    },
+                    {
+                      "lit": "diputados"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -800,10 +903,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/rendimientos",
-                  "parts": [
-                    "v1",
-                    "finanzas",
-                    "rendimientos"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "finanzas"
+                    },
+                    {
+                      "lit": "rendimientos"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -849,9 +958,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/estado",
-                  "parts": [
-                    "v1",
-                    "estado"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "estado"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -903,10 +1016,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/eventos/presidenciales",
-                  "parts": [
-                    "v1",
-                    "eventos",
-                    "presidenciales"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "eventos"
+                    },
+                    {
+                      "lit": "presidenciales"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -980,16 +1099,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/feriados/{año}",
-                  "parts": [
-                    "v1",
-                    "feriados",
-                    "{id}"
-                  ],
                   "rename": {
                     "param": {
                       "año": "id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "feriados"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "id"
@@ -1025,9 +1150,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/rems",
-                  "parts": [
-                    "v1",
-                    "rems"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "rems"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -1115,12 +1244,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/fci/mercadoDinero/{fecha}",
-                  "parts": [
-                    "v1",
-                    "finanzas",
-                    "fci",
-                    "mercadoDinero",
-                    "{fecha}"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "finanzas"
+                    },
+                    {
+                      "lit": "fci"
+                    },
+                    {
+                      "lit": "mercadoDinero"
+                    },
+                    {
+                      "var": "fecha"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1150,12 +1289,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/fci/rentaFija/{fecha}",
-                  "parts": [
-                    "v1",
-                    "finanzas",
-                    "fci",
-                    "rentaFija",
-                    "{fecha}"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "finanzas"
+                    },
+                    {
+                      "lit": "fci"
+                    },
+                    {
+                      "lit": "rentaFija"
+                    },
+                    {
+                      "var": "fecha"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1185,12 +1334,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/fci/rentaMixta/{fecha}",
-                  "parts": [
-                    "v1",
-                    "finanzas",
-                    "fci",
-                    "rentaMixta",
-                    "{fecha}"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "finanzas"
+                    },
+                    {
+                      "lit": "fci"
+                    },
+                    {
+                      "lit": "rentaMixta"
+                    },
+                    {
+                      "var": "fecha"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1220,12 +1379,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/fci/rentaVariable/{fecha}",
-                  "parts": [
-                    "v1",
-                    "finanzas",
-                    "fci",
-                    "rentaVariable",
-                    "{fecha}"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "finanzas"
+                    },
+                    {
+                      "lit": "fci"
+                    },
+                    {
+                      "lit": "rentaVariable"
+                    },
+                    {
+                      "var": "fecha"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1255,12 +1424,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/fci/retornoTotal/{fecha}",
-                  "parts": [
-                    "v1",
-                    "finanzas",
-                    "fci",
-                    "retornoTotal",
-                    "{fecha}"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "finanzas"
+                    },
+                    {
+                      "lit": "fci"
+                    },
+                    {
+                      "lit": "retornoTotal"
+                    },
+                    {
+                      "var": "fecha"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1366,18 +1545,28 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/fci/otros/{fecha}",
-                  "parts": [
-                    "v1",
-                    "finanzas",
-                    "fci",
-                    "otros",
-                    "{id}"
-                  ],
                   "rename": {
                     "param": {
                       "fecha": "id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "finanzas"
+                    },
+                    {
+                      "lit": "fci"
+                    },
+                    {
+                      "lit": "otros"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "id"
@@ -1493,18 +1682,28 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/fci/variables/{fecha}",
-                  "parts": [
-                    "v1",
-                    "finanzas",
-                    "fci",
-                    "variables",
-                    "{id}"
-                  ],
                   "rename": {
                     "param": {
                       "fecha": "id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "finanzas"
+                    },
+                    {
+                      "lit": "fci"
+                    },
+                    {
+                      "lit": "variables"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "id"
@@ -1551,6 +1750,7 @@
             },
             {
               "active": true,
+              "format": "float",
               "name": "tna",
               "req": false,
               "short": "Tasa Nominal Anual",
@@ -1569,11 +1769,19 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/creditos/hipotecariosUva",
-                  "parts": [
-                    "v1",
-                    "finanzas",
-                    "creditos",
-                    "hipotecariosUva"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "finanzas"
+                    },
+                    {
+                      "lit": "creditos"
+                    },
+                    {
+                      "lit": "hipotecariosUva"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -1619,11 +1827,19 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/indices/inflacion",
-                  "parts": [
-                    "v1",
-                    "finanzas",
-                    "indices",
-                    "inflacion"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "finanzas"
+                    },
+                    {
+                      "lit": "indices"
+                    },
+                    {
+                      "lit": "inflacion"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -1637,11 +1853,19 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/indices/inflacionInteranual",
-                  "parts": [
-                    "v1",
-                    "finanzas",
-                    "indices",
-                    "inflacionInteranual"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "finanzas"
+                    },
+                    {
+                      "lit": "indices"
+                    },
+                    {
+                      "lit": "inflacionInteranual"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -1687,11 +1911,19 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/indices/uva",
-                  "parts": [
-                    "v1",
-                    "finanzas",
-                    "indices",
-                    "uva"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "finanzas"
+                    },
+                    {
+                      "lit": "indices"
+                    },
+                    {
+                      "lit": "uva"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -1760,10 +1992,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/letras",
-                  "parts": [
-                    "v1",
-                    "finanzas",
-                    "letras"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "finanzas"
+                    },
+                    {
+                      "lit": "letras"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -1793,6 +2031,7 @@
             },
             {
               "active": true,
+              "format": "uri",
               "name": "imagen",
               "req": false,
               "short": "URL de la imagen del presidente",
@@ -1819,6 +2058,7 @@
             },
             {
               "active": true,
+              "format": "uri",
               "name": "partidoImagen",
               "req": false,
               "short": "URL de la imagen del logo del partido político",
@@ -1851,9 +2091,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/presidentes",
-                  "parts": [
-                    "v1",
-                    "presidentes"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "presidentes"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -1890,6 +2134,7 @@
             },
             {
               "active": true,
+              "format": "uri",
               "name": "enlace",
               "req": false,
               "short": "URL de la fuente",
@@ -1911,6 +2156,7 @@
             },
             {
               "active": true,
+              "format": "uri",
               "name": "logo",
               "req": false,
               "short": "URL del logo de la entidad",
@@ -1967,6 +2213,7 @@
             },
             {
               "active": true,
+              "format": "float",
               "name": "tea",
               "req": false,
               "short": "Tasa Efectiva Anual",
@@ -1974,6 +2221,7 @@
             },
             {
               "active": true,
+              "format": "float",
               "name": "teaPrecancelacion",
               "req": false,
               "short": "Tasa Efectiva Anual aplicada ante precancelación",
@@ -1981,6 +2229,7 @@
             },
             {
               "active": true,
+              "format": "float",
               "name": "tna",
               "req": false,
               "short": "Tasa Nominal Anual",
@@ -1988,6 +2237,7 @@
             },
             {
               "active": true,
+              "format": "float",
               "name": "tnaPrecancelacion",
               "req": false,
               "short": "Tasa Nominal Anual aplicada ante precancelación",
@@ -2010,11 +2260,19 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/tasas/plazoFijoPrecancelable",
-                  "parts": [
-                    "v1",
-                    "finanzas",
-                    "tasas",
-                    "plazoFijoPrecancelable"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "finanzas"
+                    },
+                    {
+                      "lit": "tasas"
+                    },
+                    {
+                      "lit": "plazoFijoPrecancelable"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -2051,6 +2309,7 @@
             },
             {
               "active": true,
+              "format": "uri",
               "name": "logo",
               "req": false,
               "short": "URL del logo de la entidad",
@@ -2080,11 +2339,19 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/tasas/plazoFijoUvaPagoPeriodico",
-                  "parts": [
-                    "v1",
-                    "finanzas",
-                    "tasas",
-                    "plazoFijoUvaPagoPeriodico"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "finanzas"
+                    },
+                    {
+                      "lit": "tasas"
+                    },
+                    {
+                      "lit": "plazoFijoUvaPagoPeriodico"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -2113,6 +2380,7 @@
             },
             {
               "active": true,
+              "format": "date",
               "name": "fecha",
               "req": false,
               "short": "Fecha ISO del primer día del mes del informe",
@@ -2202,6 +2470,7 @@
             },
             {
               "active": true,
+              "format": "date",
               "name": "periodoDesde",
               "req": false,
               "short": "Fecha de inicio del período normalizado",
@@ -2209,6 +2478,7 @@
             },
             {
               "active": true,
+              "format": "date",
               "name": "periodoHasta",
               "req": false,
               "short": "Fecha de fin del período normalizado",
@@ -2242,6 +2512,7 @@
             },
             {
               "active": true,
+              "format": "date",
               "name": "referenciaFecha",
               "req": false,
               "short": "Fecha detectada en la referencia, si corresponde",
@@ -2294,11 +2565,19 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/rems/{año}/{mes}",
-                  "parts": [
-                    "v1",
-                    "rems",
-                    "{año}",
-                    "{mes}"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "rems"
+                    },
+                    {
+                      "var": "año"
+                    },
+                    {
+                      "var": "mes"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -2336,6 +2615,7 @@
             },
             {
               "active": true,
+              "format": "date",
               "name": "fecha",
               "req": false,
               "short": "Fecha ISO del primer día del mes del informe",
@@ -2425,6 +2705,7 @@
             },
             {
               "active": true,
+              "format": "date",
               "name": "periodoDesde",
               "req": false,
               "short": "Fecha de inicio del período normalizado",
@@ -2432,6 +2713,7 @@
             },
             {
               "active": true,
+              "format": "date",
               "name": "periodoHasta",
               "req": false,
               "short": "Fecha de fin del período normalizado",
@@ -2465,6 +2747,7 @@
             },
             {
               "active": true,
+              "format": "date",
               "name": "referenciaFecha",
               "req": false,
               "short": "Fecha detectada en la referencia, si corresponde",
@@ -2496,10 +2779,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/rems/ultimo",
-                  "parts": [
-                    "v1",
-                    "rems",
-                    "ultimo"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "rems"
+                    },
+                    {
+                      "lit": "ultimo"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -2573,17 +2862,25 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/rendimientos/{entidad}",
-                  "parts": [
-                    "v1",
-                    "finanzas",
-                    "rendimientos",
-                    "{id}"
-                  ],
                   "rename": {
                     "param": {
                       "entidad": "id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "finanzas"
+                    },
+                    {
+                      "lit": "rendimientos"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "id"
@@ -2632,11 +2929,19 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/indices/riesgo-pais",
-                  "parts": [
-                    "v1",
-                    "finanzas",
-                    "indices",
-                    "riesgo-pais"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "finanzas"
+                    },
+                    {
+                      "lit": "indices"
+                    },
+                    {
+                      "lit": "riesgo-pais"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -2656,12 +2961,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/indices/riesgo-pais/ultimo",
-                  "parts": [
-                    "v1",
-                    "finanzas",
-                    "indices",
-                    "riesgo-pais",
-                    "ultimo"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "finanzas"
+                    },
+                    {
+                      "lit": "indices"
+                    },
+                    {
+                      "lit": "riesgo-pais"
+                    },
+                    {
+                      "lit": "ultimo"
+                    }
                   ],
                   "select": {
                     "$action": "ultimo"
@@ -2686,12 +3001,14 @@
           "fields": [
             {
               "active": true,
+              "format": "email",
               "name": "email",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
+              "format": "uri",
               "name": "foto",
               "req": false,
               "type": "`$STRING`"
@@ -2773,10 +3090,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/senado/senadores",
-                  "parts": [
-                    "v1",
-                    "senado",
-                    "senadores"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "senado"
+                    },
+                    {
+                      "lit": "senadores"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -2822,11 +3145,19 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/tasas/depositos30Dias",
-                  "parts": [
-                    "v1",
-                    "finanzas",
-                    "tasas",
-                    "depositos30Dias"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "finanzas"
+                    },
+                    {
+                      "lit": "tasas"
+                    },
+                    {
+                      "lit": "depositos30Dias"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -2855,6 +3186,7 @@
             },
             {
               "active": true,
+              "format": "uri",
               "name": "logo",
               "req": false,
               "short": "URL del logo de la entidad",
@@ -2862,6 +3194,7 @@
             },
             {
               "active": true,
+              "format": "float",
               "name": "tnaClientes",
               "req": false,
               "short": "Tasa Nominal Anual para clientes, en porcentaje",
@@ -2869,6 +3202,7 @@
             },
             {
               "active": true,
+              "format": "float",
               "name": "tnaNoClientes",
               "req": false,
               "short": "Tasa Nominal Anual para no clientes, en porcentaje",
@@ -2887,11 +3221,19 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/tasas/plazoFijo",
-                  "parts": [
-                    "v1",
-                    "finanzas",
-                    "tasas",
-                    "plazoFijo"
+                  "segments": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "finanzas"
+                    },
+                    {
+                      "lit": "tasas"
+                    },
+                    {
+                      "lit": "plazoFijo"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -2971,8 +3313,11 @@
             }
           },
           "name": "test",
+          "needs": {},
           "origname": "",
           "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
           "target": {
             "go": {
               "deps": {}
@@ -3890,6 +4235,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -3915,6 +4263,10 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/runner_test.go",
+            "test/struct_runner_test.go"
+          ],
           "title": "Golang"
         },
         "go-cli": {
@@ -3966,6 +4318,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -3990,6 +4343,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go CLI"
         },
         "go-mcp": {
@@ -4041,6 +4395,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -4065,6 +4420,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go MCP server"
         },
         "lua": {
@@ -4105,6 +4461,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -4130,6 +4489,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.lua"
+          ],
           "title": "Lua"
         },
         "php": {
@@ -4164,6 +4526,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -4189,6 +4554,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/StructRunner.php"
+          ],
           "title": "PHP"
         },
         "py": {
@@ -4229,6 +4597,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -4254,6 +4625,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.py"
+          ],
           "title": "Python"
         },
         "rb": {
@@ -4299,6 +4673,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -4324,6 +4701,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.rb"
+          ],
           "title": "Ruby"
         },
         "ts": {
@@ -4341,11 +4721,6 @@
               "active": true,
               "kind": "dev",
               "version": "^25.6.0"
-            },
-            "dotenv": {
-              "active": true,
-              "kind": "dev",
-              "version": "^17.4.2"
             },
             "typescript": {
               "active": true,
@@ -4374,6 +4749,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -4398,6 +4776,14 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [
+            "test/runner.ts",
+            "test/vendor/omni/compat.ts",
+            "src/feature/secrets/sekreto/Providers.ts",
+            "src/feature/secrets/sekreto/Sigv4.ts",
+            "src/feature/secrets/sekreto/provider/Registry.ts",
+            "src/feature/secrets/sekreto/provider/http.ts"
+          ],
           "title": "TypeScript"
         }
       },

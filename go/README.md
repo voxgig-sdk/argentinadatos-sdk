@@ -347,6 +347,7 @@ API path: `/v1/finanzas/bonos-cer`
 | `"casa"` |  |
 | `"compra"` |  |
 | `"fecha"` |  |
+| `"id"` |  |
 | `"moneda"` |  |
 | `"venta"` |  |
 
@@ -860,6 +861,7 @@ Create an instance: `cotizacion := client.Cotizacion(nil)`
 | `casa` | `string` |  |
 | `compra` | `float64` |  |
 | `fecha` | `string` |  |
+| `id` | `string` |  |
 | `moneda` | `string` |  |
 | `venta` | `float64` |  |
 

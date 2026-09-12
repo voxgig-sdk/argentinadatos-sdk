@@ -25,11 +25,19 @@ main: kit: entity: riesgo_pai: {
         {
           method: "GET"
           orig: "/v1/finanzas/indices/riesgo-pais"
-          parts: [
-            "v1"
-            "finanzas"
-            "indices"
-            "riesgo-pais"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "finanzas"
+            }
+            {
+              lit: "indices"
+            }
+            {
+              lit: "riesgo-pais"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -44,12 +52,22 @@ main: kit: entity: riesgo_pai: {
         {
           method: "GET"
           orig: "/v1/finanzas/indices/riesgo-pais/ultimo"
-          parts: [
-            "v1"
-            "finanzas"
-            "indices"
-            "riesgo-pais"
-            "ultimo"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "finanzas"
+            }
+            {
+              lit: "indices"
+            }
+            {
+              lit: "riesgo-pais"
+            }
+            {
+              lit: "ultimo"
+            }
           ]
           select: {
             "$action": "ultimo"

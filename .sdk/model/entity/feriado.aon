@@ -52,16 +52,22 @@ main: kit: entity: feriado: {
           }
           method: "GET"
           orig: "/v1/feriados/{año}"
-          parts: [
-            "v1"
-            "feriados"
-            "{id}"
-          ]
           rename: {
             param: {
               "año": "id"
             }
           }
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "feriados"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

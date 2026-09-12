@@ -62,12 +62,22 @@ main: kit: entity: fondo_comun_inversion: {
           }
           method: "GET"
           orig: "/v1/finanzas/fci/mercadoDinero/{fecha}"
-          parts: [
-            "v1"
-            "finanzas"
-            "fci"
-            "mercadoDinero"
-            "{fecha}"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "finanzas"
+            }
+            {
+              lit: "fci"
+            }
+            {
+              lit: "mercadoDinero"
+            }
+            {
+              var: "fecha"
+            }
           ]
           select: {
             exist: [
@@ -94,12 +104,22 @@ main: kit: entity: fondo_comun_inversion: {
           }
           method: "GET"
           orig: "/v1/finanzas/fci/rentaFija/{fecha}"
-          parts: [
-            "v1"
-            "finanzas"
-            "fci"
-            "rentaFija"
-            "{fecha}"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "finanzas"
+            }
+            {
+              lit: "fci"
+            }
+            {
+              lit: "rentaFija"
+            }
+            {
+              var: "fecha"
+            }
           ]
           select: {
             exist: [
@@ -126,12 +146,22 @@ main: kit: entity: fondo_comun_inversion: {
           }
           method: "GET"
           orig: "/v1/finanzas/fci/rentaMixta/{fecha}"
-          parts: [
-            "v1"
-            "finanzas"
-            "fci"
-            "rentaMixta"
-            "{fecha}"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "finanzas"
+            }
+            {
+              lit: "fci"
+            }
+            {
+              lit: "rentaMixta"
+            }
+            {
+              var: "fecha"
+            }
           ]
           select: {
             exist: [
@@ -158,12 +188,22 @@ main: kit: entity: fondo_comun_inversion: {
           }
           method: "GET"
           orig: "/v1/finanzas/fci/rentaVariable/{fecha}"
-          parts: [
-            "v1"
-            "finanzas"
-            "fci"
-            "rentaVariable"
-            "{fecha}"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "finanzas"
+            }
+            {
+              lit: "fci"
+            }
+            {
+              lit: "rentaVariable"
+            }
+            {
+              var: "fecha"
+            }
           ]
           select: {
             exist: [
@@ -190,12 +230,22 @@ main: kit: entity: fondo_comun_inversion: {
           }
           method: "GET"
           orig: "/v1/finanzas/fci/retornoTotal/{fecha}"
-          parts: [
-            "v1"
-            "finanzas"
-            "fci"
-            "retornoTotal"
-            "{fecha}"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "finanzas"
+            }
+            {
+              lit: "fci"
+            }
+            {
+              lit: "retornoTotal"
+            }
+            {
+              var: "fecha"
+            }
           ]
           select: {
             exist: [

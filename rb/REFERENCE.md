@@ -344,6 +344,7 @@ cotizacion = client.Cotizacion
 | `casa` | `String` | No |  |
 | `compra` | `Float` | No |  |
 | `fecha` | `String` | No |  |
+| `id` | `String` | No |  |
 | `moneda` | `String` | No |  |
 | `venta` | `Float` | No |  |
 

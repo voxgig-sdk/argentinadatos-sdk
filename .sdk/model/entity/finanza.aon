@@ -12,9 +12,13 @@ main: kit: entity: finanza: {
         {
           method: "GET"
           orig: "/v1/rems"
-          parts: [
-            "v1"
-            "rems"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "rems"
+            }
           ]
           transform: {
             req: "`reqdata`"

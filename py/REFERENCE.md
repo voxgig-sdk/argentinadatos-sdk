@@ -340,6 +340,7 @@ cotizacion = client.Cotizacion()
 | `casa` | `str` | No |  |
 | `compra` | `float` | No |  |
 | `fecha` | `str` | No |  |
+| `id` | `str` | No |  |
 | `moneda` | `str` | No |  |
 | `venta` | `float` | No |  |
 

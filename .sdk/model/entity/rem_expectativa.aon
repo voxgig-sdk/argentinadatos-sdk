@@ -11,6 +11,7 @@ main: kit: entity: rem_expectativa: {
       type: "`$NUMBER`"
     }
     {
+      format: "date"
       name: "fecha"
       req: false
       short: "Fecha ISO del primer día del mes del informe"
@@ -86,12 +87,14 @@ main: kit: entity: rem_expectativa: {
       type: "`$STRING`"
     }
     {
+      format: "date"
       name: "periodoDesde"
       req: false
       short: "Fecha de inicio del período normalizado"
       type: "`$STRING`"
     }
     {
+      format: "date"
       name: "periodoHasta"
       req: false
       short: "Fecha de fin del período normalizado"
@@ -120,6 +123,7 @@ main: kit: entity: rem_expectativa: {
       type: "`$STRING`"
     }
     {
+      format: "date"
       name: "referenciaFecha"
       req: false
       short: "Fecha detectada en la referencia, si corresponde"
@@ -146,10 +150,16 @@ main: kit: entity: rem_expectativa: {
         {
           method: "GET"
           orig: "/v1/rems/ultimo"
-          parts: [
-            "v1"
-            "rems"
-            "ultimo"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "rems"
+            }
+            {
+              lit: "ultimo"
+            }
           ]
           transform: {
             req: "`reqdata`"

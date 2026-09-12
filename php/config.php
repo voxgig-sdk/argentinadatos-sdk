@@ -113,6 +113,7 @@ class ArgentinadatosConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'fecha',
               'type' => '`$STRING`',
             ],
@@ -185,6 +186,10 @@ class ArgentinadatosConfig
               'type' => '`$INTEGER`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'acta',
           'op' => [
             'list' => [
@@ -196,15 +201,26 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/diputados/actas',
-                  'parts' => [
-                    'v1',
-                    'diputados',
-                    'actas',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'diputados',
+                    ],
+                    [
+                      'lit' => 'actas',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'diputados',
+                    'actas',
                   ],
                 ],
                 [
@@ -212,15 +228,26 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/senado/actas',
-                  'parts' => [
-                    'v1',
-                    'senado',
-                    'actas',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'senado',
+                    ],
+                    [
+                      'lit' => 'actas',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'senado',
+                    'actas',
                   ],
                 ],
               ],
@@ -245,15 +272,23 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/diputados/actas/{año}',
-                  'parts' => [
-                    'v1',
-                    'diputados',
-                    'actas',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'año' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'diputados',
+                    ],
+                    [
+                      'lit' => 'actas',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -264,6 +299,12 @@ class ArgentinadatosConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'diputados',
+                    'actas',
+                    '{id}',
                   ],
                 ],
                 [
@@ -282,15 +323,23 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/senado/actas/{año}',
-                  'parts' => [
-                    'v1',
-                    'senado',
-                    'actas',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'año' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'senado',
+                    ],
+                    [
+                      'lit' => 'actas',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -301,6 +350,12 @@ class ArgentinadatosConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'senado',
+                    'actas',
+                    '{id}',
                   ],
                 ],
               ],
@@ -313,6 +368,7 @@ class ArgentinadatosConfig
         'bonos_cer' => [
           'fields' => [
             [
+              'format' => 'date',
               'name' => 'fechaVencimiento',
               'req' => true,
               'short' => 'Fecha de vencimiento (ISO 8601, solo fecha: yyyy-MM-dd)',
@@ -353,15 +409,26 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/finanzas/bonos-cer',
-                  'parts' => [
-                    'v1',
-                    'finanzas',
-                    'bonos-cer',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'finanzas',
+                    ],
+                    [
+                      'lit' => 'bonos-cer',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.bonos`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'finanzas',
+                    'bonos-cer',
                   ],
                 ],
               ],
@@ -386,6 +453,10 @@ class ArgentinadatosConfig
               'type' => '`$STRING`',
             ],
             [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+            [
               'name' => 'moneda',
               'type' => '`$STRING`',
             ],
@@ -393,6 +464,19 @@ class ArgentinadatosConfig
               'name' => 'venta',
               'type' => '`$NUMBER`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'from' => [
+              'casa' => 'casa',
+              'fecha' => 'fecha',
+            ],
+            'name' => 'id',
+            'parts' => [
+              'casa',
+              'fecha',
+            ],
+            'sep' => '/',
           ],
           'name' => 'cotizacion',
           'op' => [
@@ -405,15 +489,26 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/cotizaciones/dolares',
-                  'parts' => [
-                    'v1',
-                    'cotizaciones',
-                    'dolares',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'cotizaciones',
+                    ],
+                    [
+                      'lit' => 'dolares',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'cotizaciones',
+                    'dolares',
                   ],
                 ],
               ],
@@ -446,12 +541,22 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/cotizaciones/dolares/{casa}/{fecha}',
-                  'parts' => [
-                    'v1',
-                    'cotizaciones',
-                    'dolares',
-                    '{casa}',
-                    '{fecha}',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'cotizaciones',
+                    ],
+                    [
+                      'lit' => 'dolares',
+                    ],
+                    [
+                      'var' => 'casa',
+                    ],
+                    [
+                      'var' => 'fecha',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -462,6 +567,13 @@ class ArgentinadatosConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'cotizaciones',
+                    'dolares',
+                    '{casa}',
+                    '{fecha}',
                   ],
                 ],
                 [
@@ -480,11 +592,19 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/cotizaciones/dolares/{casa}',
-                  'parts' => [
-                    'v1',
-                    'cotizaciones',
-                    'dolares',
-                    '{casa}',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'cotizaciones',
+                    ],
+                    [
+                      'lit' => 'dolares',
+                    ],
+                    [
+                      'var' => 'casa',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -494,6 +614,12 @@ class ArgentinadatosConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'cotizaciones',
+                    'dolares',
+                    '{casa}',
                   ],
                 ],
               ],
@@ -515,6 +641,7 @@ class ArgentinadatosConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'float',
               'name' => 'tna',
               'short' => 'Tasa Nominal Anual en porcentaje',
               'type' => '`$NUMBER`',
@@ -536,15 +663,26 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/finanzas/criptopesos',
-                  'parts' => [
-                    'v1',
-                    'finanzas',
-                    'criptopesos',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'finanzas',
+                    ],
+                    [
+                      'lit' => 'criptopesos',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'finanzas',
+                    'criptopesos',
                   ],
                 ],
               ],
@@ -562,11 +700,13 @@ class ArgentinadatosConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'float',
               'name' => 'tasa',
               'short' => 'Tasa de rendimiento anual en formato decimal (p.',
               'type' => '`$NUMBER`',
             ],
             [
+              'format' => 'float',
               'name' => 'tope',
               'short' => 'Monto máximo en USD remunerado a esa tasa, o null si no hay tope o no se informó',
               'type' => '`$NUMBER`',
@@ -583,15 +723,26 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/finanzas/cuentas-remuneradas-usd',
-                  'parts' => [
-                    'v1',
-                    'finanzas',
-                    'cuentas-remuneradas-usd',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'finanzas',
+                    ],
+                    [
+                      'lit' => 'cuentas-remuneradas-usd',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'finanzas',
+                    'cuentas-remuneradas-usd',
                   ],
                 ],
               ],
@@ -612,10 +763,12 @@ class ArgentinadatosConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'ceseFecha',
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'uri',
               'name' => 'foto',
               'type' => '`$STRING`',
             ],
@@ -628,6 +781,7 @@ class ArgentinadatosConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'juramentoFecha',
               'type' => '`$STRING`',
             ],
@@ -648,6 +802,10 @@ class ArgentinadatosConfig
               'type' => '`$STRING`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'diputado',
           'op' => [
             'list' => [
@@ -659,15 +817,26 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/diputados/diputados',
-                  'parts' => [
-                    'v1',
-                    'diputados',
-                    'diputados',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'diputados',
+                    ],
+                    [
+                      'lit' => 'diputados',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'diputados',
+                    'diputados',
                   ],
                 ],
               ],
@@ -699,15 +868,26 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/finanzas/rendimientos',
-                  'parts' => [
-                    'v1',
-                    'finanzas',
-                    'rendimientos',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'finanzas',
+                    ],
+                    [
+                      'lit' => 'rendimientos',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'finanzas',
+                    'rendimientos',
                   ],
                 ],
               ],
@@ -739,14 +919,22 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/estado',
-                  'parts' => [
-                    'v1',
-                    'estado',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'estado',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'estado',
                   ],
                 ],
               ],
@@ -782,15 +970,26 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/eventos/presidenciales',
-                  'parts' => [
-                    'v1',
-                    'eventos',
-                    'presidenciales',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'eventos',
+                    ],
+                    [
+                      'lit' => 'presidenciales',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'eventos',
+                    'presidenciales',
                   ],
                 ],
               ],
@@ -819,6 +1018,10 @@ class ArgentinadatosConfig
               'type' => '`$STRING`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'feriado',
           'op' => [
             'load' => [
@@ -841,14 +1044,20 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/feriados/{año}',
-                  'parts' => [
-                    'v1',
-                    'feriados',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'año' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'feriados',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -859,6 +1068,11 @@ class ArgentinadatosConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'feriados',
+                    '{id}',
                   ],
                 ],
               ],
@@ -881,14 +1095,22 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/rems',
-                  'parts' => [
-                    'v1',
-                    'rems',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'rems',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'rems',
                   ],
                 ],
               ],
@@ -951,12 +1173,22 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/finanzas/fci/mercadoDinero/{fecha}',
-                  'parts' => [
-                    'v1',
-                    'finanzas',
-                    'fci',
-                    'mercadoDinero',
-                    '{fecha}',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'finanzas',
+                    ],
+                    [
+                      'lit' => 'fci',
+                    ],
+                    [
+                      'lit' => 'mercadoDinero',
+                    ],
+                    [
+                      'var' => 'fecha',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -966,6 +1198,13 @@ class ArgentinadatosConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'finanzas',
+                    'fci',
+                    'mercadoDinero',
+                    '{fecha}',
                   ],
                 ],
                 [
@@ -984,12 +1223,22 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/finanzas/fci/rentaFija/{fecha}',
-                  'parts' => [
-                    'v1',
-                    'finanzas',
-                    'fci',
-                    'rentaFija',
-                    '{fecha}',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'finanzas',
+                    ],
+                    [
+                      'lit' => 'fci',
+                    ],
+                    [
+                      'lit' => 'rentaFija',
+                    ],
+                    [
+                      'var' => 'fecha',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -999,6 +1248,13 @@ class ArgentinadatosConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'finanzas',
+                    'fci',
+                    'rentaFija',
+                    '{fecha}',
                   ],
                 ],
                 [
@@ -1017,12 +1273,22 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/finanzas/fci/rentaMixta/{fecha}',
-                  'parts' => [
-                    'v1',
-                    'finanzas',
-                    'fci',
-                    'rentaMixta',
-                    '{fecha}',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'finanzas',
+                    ],
+                    [
+                      'lit' => 'fci',
+                    ],
+                    [
+                      'lit' => 'rentaMixta',
+                    ],
+                    [
+                      'var' => 'fecha',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -1032,6 +1298,13 @@ class ArgentinadatosConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'finanzas',
+                    'fci',
+                    'rentaMixta',
+                    '{fecha}',
                   ],
                 ],
                 [
@@ -1050,12 +1323,22 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/finanzas/fci/rentaVariable/{fecha}',
-                  'parts' => [
-                    'v1',
-                    'finanzas',
-                    'fci',
-                    'rentaVariable',
-                    '{fecha}',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'finanzas',
+                    ],
+                    [
+                      'lit' => 'fci',
+                    ],
+                    [
+                      'lit' => 'rentaVariable',
+                    ],
+                    [
+                      'var' => 'fecha',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -1065,6 +1348,13 @@ class ArgentinadatosConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'finanzas',
+                    'fci',
+                    'rentaVariable',
+                    '{fecha}',
                   ],
                 ],
                 [
@@ -1083,12 +1373,22 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/finanzas/fci/retornoTotal/{fecha}',
-                  'parts' => [
-                    'v1',
-                    'finanzas',
-                    'fci',
-                    'retornoTotal',
-                    '{fecha}',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'finanzas',
+                    ],
+                    [
+                      'lit' => 'fci',
+                    ],
+                    [
+                      'lit' => 'retornoTotal',
+                    ],
+                    [
+                      'var' => 'fecha',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -1098,6 +1398,13 @@ class ArgentinadatosConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'finanzas',
+                    'fci',
+                    'retornoTotal',
+                    '{fecha}',
                   ],
                 ],
               ],
@@ -1150,6 +1457,10 @@ class ArgentinadatosConfig
               'type' => '`$NUMBER`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'fondo_comun_inversion_otro',
           'op' => [
             'load' => [
@@ -1172,16 +1483,26 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/finanzas/fci/otros/{fecha}',
-                  'parts' => [
-                    'v1',
-                    'finanzas',
-                    'fci',
-                    'otros',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'fecha' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'finanzas',
+                    ],
+                    [
+                      'lit' => 'fci',
+                    ],
+                    [
+                      'lit' => 'otros',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -1192,6 +1513,13 @@ class ArgentinadatosConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'finanzas',
+                    'fci',
+                    'otros',
+                    '{id}',
                   ],
                 ],
               ],
@@ -1247,6 +1575,10 @@ class ArgentinadatosConfig
               'type' => '`$NUMBER`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'fondo_comun_inversion_variable',
           'op' => [
             'load' => [
@@ -1269,16 +1601,26 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/finanzas/fci/variables/{fecha}',
-                  'parts' => [
-                    'v1',
-                    'finanzas',
-                    'fci',
-                    'variables',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'fecha' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'finanzas',
+                    ],
+                    [
+                      'lit' => 'fci',
+                    ],
+                    [
+                      'lit' => 'variables',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -1289,6 +1631,13 @@ class ArgentinadatosConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'finanzas',
+                    'fci',
+                    'variables',
+                    '{id}',
                   ],
                 ],
               ],
@@ -1316,6 +1665,7 @@ class ArgentinadatosConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'float',
               'name' => 'tna',
               'short' => 'Tasa Nominal Anual',
               'type' => '`$NUMBER`',
@@ -1332,16 +1682,30 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/finanzas/creditos/hipotecariosUva',
-                  'parts' => [
-                    'v1',
-                    'finanzas',
-                    'creditos',
-                    'hipotecariosUva',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'finanzas',
+                    ],
+                    [
+                      'lit' => 'creditos',
+                    ],
+                    [
+                      'lit' => 'hipotecariosUva',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'finanzas',
+                    'creditos',
+                    'hipotecariosUva',
                   ],
                 ],
               ],
@@ -1373,16 +1737,30 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/finanzas/indices/inflacion',
-                  'parts' => [
-                    'v1',
-                    'finanzas',
-                    'indices',
-                    'inflacion',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'finanzas',
+                    ],
+                    [
+                      'lit' => 'indices',
+                    ],
+                    [
+                      'lit' => 'inflacion',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'finanzas',
+                    'indices',
+                    'inflacion',
                   ],
                 ],
                 [
@@ -1390,16 +1768,30 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/finanzas/indices/inflacionInteranual',
-                  'parts' => [
-                    'v1',
-                    'finanzas',
-                    'indices',
-                    'inflacionInteranual',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'finanzas',
+                    ],
+                    [
+                      'lit' => 'indices',
+                    ],
+                    [
+                      'lit' => 'inflacionInteranual',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'finanzas',
+                    'indices',
+                    'inflacionInteranual',
                   ],
                 ],
               ],
@@ -1431,16 +1823,30 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/finanzas/indices/uva',
-                  'parts' => [
-                    'v1',
-                    'finanzas',
-                    'indices',
-                    'uva',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'finanzas',
+                    ],
+                    [
+                      'lit' => 'indices',
+                    ],
+                    [
+                      'lit' => 'uva',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'finanzas',
+                    'indices',
+                    'uva',
                   ],
                 ],
               ],
@@ -1489,15 +1895,26 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/finanzas/letras',
-                  'parts' => [
-                    'v1',
-                    'finanzas',
-                    'letras',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'finanzas',
+                    ],
+                    [
+                      'lit' => 'letras',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'finanzas',
+                    'letras',
                   ],
                 ],
               ],
@@ -1515,6 +1932,7 @@ class ArgentinadatosConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'uri',
               'name' => 'imagen',
               'short' => 'URL de la imagen del presidente',
               'type' => '`$STRING`',
@@ -1533,6 +1951,7 @@ class ArgentinadatosConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'uri',
               'name' => 'partidoImagen',
               'short' => 'URL de la imagen del logo del partido político',
               'type' => '`$STRING`',
@@ -1559,14 +1978,22 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/presidentes',
-                  'parts' => [
-                    'v1',
-                    'presidentes',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'presidentes',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'presidentes',
                   ],
                 ],
               ],
@@ -1589,6 +2016,7 @@ class ArgentinadatosConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'uri',
               'name' => 'enlace',
               'short' => 'URL de la fuente',
               'type' => '`$STRING`',
@@ -1604,6 +2032,7 @@ class ArgentinadatosConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'uri',
               'name' => 'logo',
               'short' => 'URL del logo de la entidad',
               'type' => '`$STRING`',
@@ -1644,25 +2073,33 @@ class ArgentinadatosConfig
               'type' => '`$INTEGER`',
             ],
             [
+              'format' => 'float',
               'name' => 'tea',
               'short' => 'Tasa Efectiva Anual',
               'type' => '`$NUMBER`',
             ],
             [
+              'format' => 'float',
               'name' => 'teaPrecancelacion',
               'short' => 'Tasa Efectiva Anual aplicada ante precancelación',
               'type' => '`$NUMBER`',
             ],
             [
+              'format' => 'float',
               'name' => 'tna',
               'short' => 'Tasa Nominal Anual',
               'type' => '`$NUMBER`',
             ],
             [
+              'format' => 'float',
               'name' => 'tnaPrecancelacion',
               'short' => 'Tasa Nominal Anual aplicada ante precancelación',
               'type' => '`$NUMBER`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'proveedor_plazo_fijo_precancelable',
           'op' => [
@@ -1675,16 +2112,30 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/finanzas/tasas/plazoFijoPrecancelable',
-                  'parts' => [
-                    'v1',
-                    'finanzas',
-                    'tasas',
-                    'plazoFijoPrecancelable',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'finanzas',
+                    ],
+                    [
+                      'lit' => 'tasas',
+                    ],
+                    [
+                      'lit' => 'plazoFijoPrecancelable',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'finanzas',
+                    'tasas',
+                    'plazoFijoPrecancelable',
                   ],
                 ],
               ],
@@ -1707,6 +2158,7 @@ class ArgentinadatosConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'uri',
               'name' => 'logo',
               'short' => 'URL del logo de la entidad',
               'type' => '`$STRING`',
@@ -1716,6 +2168,10 @@ class ArgentinadatosConfig
               'short' => 'Tasas por rango de plazo',
               'type' => '`$ARRAY`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'proveedor_plazo_fijo_uva_pago_periodico',
           'op' => [
@@ -1728,16 +2184,30 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/finanzas/tasas/plazoFijoUvaPagoPeriodico',
-                  'parts' => [
-                    'v1',
-                    'finanzas',
-                    'tasas',
-                    'plazoFijoUvaPagoPeriodico',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'finanzas',
+                    ],
+                    [
+                      'lit' => 'tasas',
+                    ],
+                    [
+                      'lit' => 'plazoFijoUvaPagoPeriodico',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'finanzas',
+                    'tasas',
+                    'plazoFijoUvaPagoPeriodico',
                   ],
                 ],
               ],
@@ -1754,6 +2224,7 @@ class ArgentinadatosConfig
               'type' => '`$NUMBER`',
             ],
             [
+              'format' => 'date',
               'name' => 'fecha',
               'short' => 'Fecha ISO del primer día del mes del informe',
               'type' => '`$STRING`',
@@ -1815,11 +2286,13 @@ class ArgentinadatosConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date',
               'name' => 'periodoDesde',
               'short' => 'Fecha de inicio del período normalizado',
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date',
               'name' => 'periodoHasta',
               'short' => 'Fecha de fin del período normalizado',
               'type' => '`$STRING`',
@@ -1843,6 +2316,7 @@ class ArgentinadatosConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date',
               'name' => 'referenciaFecha',
               'short' => 'Fecha detectada en la referencia, si corresponde',
               'type' => '`$STRING`',
@@ -1887,11 +2361,19 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/rems/{año}/{mes}',
-                  'parts' => [
-                    'v1',
-                    'rems',
-                    '{año}',
-                    '{mes}',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'rems',
+                    ],
+                    [
+                      'var' => 'año',
+                    ],
+                    [
+                      'var' => 'mes',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -1902,6 +2384,12 @@ class ArgentinadatosConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'rems',
+                    '{año}',
+                    '{mes}',
                   ],
                 ],
               ],
@@ -1922,6 +2410,7 @@ class ArgentinadatosConfig
               'type' => '`$NUMBER`',
             ],
             [
+              'format' => 'date',
               'name' => 'fecha',
               'short' => 'Fecha ISO del primer día del mes del informe',
               'type' => '`$STRING`',
@@ -1983,11 +2472,13 @@ class ArgentinadatosConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date',
               'name' => 'periodoDesde',
               'short' => 'Fecha de inicio del período normalizado',
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date',
               'name' => 'periodoHasta',
               'short' => 'Fecha de fin del período normalizado',
               'type' => '`$STRING`',
@@ -2011,6 +2502,7 @@ class ArgentinadatosConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date',
               'name' => 'referenciaFecha',
               'short' => 'Fecha detectada en la referencia, si corresponde',
               'type' => '`$STRING`',
@@ -2036,15 +2528,26 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/rems/ultimo',
-                  'parts' => [
-                    'v1',
-                    'rems',
-                    'ultimo',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'rems',
+                    ],
+                    [
+                      'lit' => 'ultimo',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'rems',
+                    'ultimo',
                   ],
                 ],
               ],
@@ -2073,6 +2576,10 @@ class ArgentinadatosConfig
               'type' => '`$STRING`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'rendimiento',
           'op' => [
             'load' => [
@@ -2095,15 +2602,23 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/finanzas/rendimientos/{entidad}',
-                  'parts' => [
-                    'v1',
-                    'finanzas',
-                    'rendimientos',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'entidad' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'finanzas',
+                    ],
+                    [
+                      'lit' => 'rendimientos',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -2114,6 +2629,12 @@ class ArgentinadatosConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'finanzas',
+                    'rendimientos',
+                    '{id}',
                   ],
                 ],
               ],
@@ -2145,16 +2666,30 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/finanzas/indices/riesgo-pais',
-                  'parts' => [
-                    'v1',
-                    'finanzas',
-                    'indices',
-                    'riesgo-pais',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'finanzas',
+                    ],
+                    [
+                      'lit' => 'indices',
+                    ],
+                    [
+                      'lit' => 'riesgo-pais',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'finanzas',
+                    'indices',
+                    'riesgo-pais',
                   ],
                 ],
               ],
@@ -2168,12 +2703,22 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/finanzas/indices/riesgo-pais/ultimo',
-                  'parts' => [
-                    'v1',
-                    'finanzas',
-                    'indices',
-                    'riesgo-pais',
-                    'ultimo',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'finanzas',
+                    ],
+                    [
+                      'lit' => 'indices',
+                    ],
+                    [
+                      'lit' => 'riesgo-pais',
+                    ],
+                    [
+                      'lit' => 'ultimo',
+                    ],
                   ],
                   'select' => [
                     '$action' => 'ultimo',
@@ -2181,6 +2726,13 @@ class ArgentinadatosConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'finanzas',
+                    'indices',
+                    'riesgo-pais',
+                    'ultimo',
                   ],
                 ],
               ],
@@ -2193,10 +2745,12 @@ class ArgentinadatosConfig
         'senador' => [
           'fields' => [
             [
+              'format' => 'email',
               'name' => 'email',
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'uri',
               'name' => 'foto',
               'type' => '`$STRING`',
             ],
@@ -2241,6 +2795,10 @@ class ArgentinadatosConfig
               'type' => '`$STRING`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'senador',
           'op' => [
             'list' => [
@@ -2252,15 +2810,26 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/senado/senadores',
-                  'parts' => [
-                    'v1',
-                    'senado',
-                    'senadores',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'senado',
+                    ],
+                    [
+                      'lit' => 'senadores',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'senado',
+                    'senadores',
                   ],
                 ],
               ],
@@ -2292,16 +2861,30 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/finanzas/tasas/depositos30Dias',
-                  'parts' => [
-                    'v1',
-                    'finanzas',
-                    'tasas',
-                    'depositos30Dias',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'finanzas',
+                    ],
+                    [
+                      'lit' => 'tasas',
+                    ],
+                    [
+                      'lit' => 'depositos30Dias',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'finanzas',
+                    'tasas',
+                    'depositos30Dias',
                   ],
                 ],
               ],
@@ -2318,16 +2901,19 @@ class ArgentinadatosConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'uri',
               'name' => 'logo',
               'short' => 'URL del logo de la entidad',
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'float',
               'name' => 'tnaClientes',
               'short' => 'Tasa Nominal Anual para clientes, en porcentaje',
               'type' => '`$NUMBER`',
             ],
             [
+              'format' => 'float',
               'name' => 'tnaNoClientes',
               'short' => 'Tasa Nominal Anual para no clientes, en porcentaje',
               'type' => '`$NUMBER`',
@@ -2344,16 +2930,30 @@ class ArgentinadatosConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/finanzas/tasas/plazoFijo',
-                  'parts' => [
-                    'v1',
-                    'finanzas',
-                    'tasas',
-                    'plazoFijo',
+                  'segments' => [
+                    [
+                      'lit' => 'v1',
+                    ],
+                    [
+                      'lit' => 'finanzas',
+                    ],
+                    [
+                      'lit' => 'tasas',
+                    ],
+                    [
+                      'lit' => 'plazoFijo',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'v1',
+                    'finanzas',
+                    'tasas',
+                    'plazoFijo',
                   ],
                 ],
               ],

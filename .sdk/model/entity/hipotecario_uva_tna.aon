@@ -24,6 +24,7 @@ main: kit: entity: hipotecario_uva_tna: {
       type: "`$STRING`"
     }
     {
+      format: "float"
       name: "tna"
       req: false
       short: "Tasa Nominal Anual"
@@ -39,11 +40,19 @@ main: kit: entity: hipotecario_uva_tna: {
         {
           method: "GET"
           orig: "/v1/finanzas/creditos/hipotecariosUva"
-          parts: [
-            "v1"
-            "finanzas"
-            "creditos"
-            "hipotecariosUva"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "finanzas"
+            }
+            {
+              lit: "creditos"
+            }
+            {
+              lit: "hipotecariosUva"
+            }
           ]
           transform: {
             req: "`reqdata`"

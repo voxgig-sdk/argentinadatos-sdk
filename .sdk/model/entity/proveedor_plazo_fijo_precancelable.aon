@@ -18,6 +18,7 @@ main: kit: entity: proveedor_plazo_fijo_precancelable: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "enlace"
       req: false
       short: "URL de la fuente"
@@ -36,6 +37,7 @@ main: kit: entity: proveedor_plazo_fijo_precancelable: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "logo"
       req: false
       short: "URL del logo de la entidad"
@@ -84,24 +86,28 @@ main: kit: entity: proveedor_plazo_fijo_precancelable: {
       type: "`$INTEGER`"
     }
     {
+      format: "float"
       name: "tea"
       req: false
       short: "Tasa Efectiva Anual"
       type: "`$NUMBER`"
     }
     {
+      format: "float"
       name: "teaPrecancelacion"
       req: false
       short: "Tasa Efectiva Anual aplicada ante precancelación"
       type: "`$NUMBER`"
     }
     {
+      format: "float"
       name: "tna"
       req: false
       short: "Tasa Nominal Anual"
       type: "`$NUMBER`"
     }
     {
+      format: "float"
       name: "tnaPrecancelacion"
       req: false
       short: "Tasa Nominal Anual aplicada ante precancelación"
@@ -122,11 +128,19 @@ main: kit: entity: proveedor_plazo_fijo_precancelable: {
         {
           method: "GET"
           orig: "/v1/finanzas/tasas/plazoFijoPrecancelable"
-          parts: [
-            "v1"
-            "finanzas"
-            "tasas"
-            "plazoFijoPrecancelable"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "finanzas"
+            }
+            {
+              lit: "tasas"
+            }
+            {
+              lit: "plazoFijoPrecancelable"
+            }
           ]
           transform: {
             req: "`reqdata`"

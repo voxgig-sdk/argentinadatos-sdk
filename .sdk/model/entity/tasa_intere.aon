@@ -25,11 +25,19 @@ main: kit: entity: tasa_intere: {
         {
           method: "GET"
           orig: "/v1/finanzas/tasas/depositos30Dias"
-          parts: [
-            "v1"
-            "finanzas"
-            "tasas"
-            "depositos30Dias"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "finanzas"
+            }
+            {
+              lit: "tasas"
+            }
+            {
+              lit: "depositos30Dias"
+            }
           ]
           transform: {
             req: "`reqdata`"

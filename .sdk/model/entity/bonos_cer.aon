@@ -6,6 +6,7 @@ main: kit: entity: bonos_cer: {
 
   fields: [
     {
+      format: "date"
       name: "fechaVencimiento"
       req: true
       short: "Fecha de vencimiento (ISO 8601, solo fecha: yyyy-MM-dd)"
@@ -45,10 +46,16 @@ main: kit: entity: bonos_cer: {
         {
           method: "GET"
           orig: "/v1/finanzas/bonos-cer"
-          parts: [
-            "v1"
-            "finanzas"
-            "bonos-cer"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "finanzas"
+            }
+            {
+              lit: "bonos-cer"
+            }
           ]
           transform: {
             req: "`reqdata`"

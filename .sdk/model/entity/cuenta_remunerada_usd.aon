@@ -12,12 +12,14 @@ main: kit: entity: cuenta_remunerada_usd: {
       type: "`$STRING`"
     }
     {
+      format: "float"
       name: "tasa"
       req: false
       short: "Tasa de rendimiento anual en formato decimal (p."
       type: "`$NUMBER`"
     }
     {
+      format: "float"
       name: "tope"
       req: false
       short: "Monto máximo en USD remunerado a esa tasa, o null si no hay tope o no se informó"
@@ -33,10 +35,16 @@ main: kit: entity: cuenta_remunerada_usd: {
         {
           method: "GET"
           orig: "/v1/finanzas/cuentas-remuneradas-usd"
-          parts: [
-            "v1"
-            "finanzas"
-            "cuentas-remuneradas-usd"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "finanzas"
+            }
+            {
+              lit: "cuentas-remuneradas-usd"
+            }
           ]
           transform: {
             req: "`reqdata`"

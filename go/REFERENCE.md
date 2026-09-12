@@ -351,6 +351,7 @@ fmt.Println(cotizacion.GetName()) // "cotizacion"
 | `casa` | `string` | No |  |
 | `compra` | `float64` | No |  |
 | `fecha` | `string` | No |  |
+| `id` | `string` | No |  |
 | `moneda` | `string` | No |  |
 | `venta` | `float64` | No |  |
 

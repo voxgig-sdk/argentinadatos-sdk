@@ -11,18 +11,21 @@ main: kit: entity: tasa_plazo_fijo: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "logo"
       req: false
       short: "URL del logo de la entidad"
       type: "`$STRING`"
     }
     {
+      format: "float"
       name: "tnaClientes"
       req: false
       short: "Tasa Nominal Anual para clientes, en porcentaje"
       type: "`$NUMBER`"
     }
     {
+      format: "float"
       name: "tnaNoClientes"
       req: false
       short: "Tasa Nominal Anual para no clientes, en porcentaje"
@@ -38,11 +41,19 @@ main: kit: entity: tasa_plazo_fijo: {
         {
           method: "GET"
           orig: "/v1/finanzas/tasas/plazoFijo"
-          parts: [
-            "v1"
-            "finanzas"
-            "tasas"
-            "plazoFijo"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "finanzas"
+            }
+            {
+              lit: "tasas"
+            }
+            {
+              lit: "plazoFijo"
+            }
           ]
           transform: {
             req: "`reqdata`"

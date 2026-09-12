@@ -579,6 +579,7 @@ const cotizacion = client.Cotizacion()
 | `casa` | `string` | No |  |
 | `compra` | `number` | No |  |
 | `fecha` | `string` | No |  |
+| `id` | `string` | No |  |
 | `moneda` | `string` | No |  |
 | `venta` | `number` | No |  |
 

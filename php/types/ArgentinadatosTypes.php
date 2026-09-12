@@ -104,6 +104,7 @@ class Cotizacion
     public ?string $casa = null;
     public ?float $compra = null;
     public ?string $fecha = null;
+    public ?string $id = null;
     public ?string $moneda = null;
     public ?float $venta = null;
 }
@@ -121,6 +122,7 @@ class CotizacionListMatch
     public ?string $casa = null;
     public ?float $compra = null;
     public ?string $fecha = null;
+    public ?string $id = null;
     public ?string $moneda = null;
     public ?float $venta = null;
 }

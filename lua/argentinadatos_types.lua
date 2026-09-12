@@ -81,6 +81,7 @@
 ---@field casa? string
 ---@field compra? number
 ---@field fecha? string
+---@field id? string
 ---@field moneda? string
 ---@field venta? number
 
@@ -92,6 +93,7 @@
 ---@field casa? string
 ---@field compra? number
 ---@field fecha? string
+---@field id? string
 ---@field moneda? string
 ---@field venta? number
 

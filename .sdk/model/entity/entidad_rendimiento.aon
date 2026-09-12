@@ -25,10 +25,16 @@ main: kit: entity: entidad_rendimiento: {
         {
           method: "GET"
           orig: "/v1/finanzas/rendimientos"
-          parts: [
-            "v1"
-            "finanzas"
-            "rendimientos"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "finanzas"
+            }
+            {
+              lit: "rendimientos"
+            }
           ]
           transform: {
             req: "`reqdata`"

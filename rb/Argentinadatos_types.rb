@@ -288,6 +288,9 @@ BonosCerListMatch = Struct.new(
 # @!attribute [rw] fecha
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] moneda
 #   @return [String, nil]
 #
@@ -297,6 +300,7 @@ Cotizacion = Struct.new(
   :casa,
   :compra,
   :fecha,
+  :id,
   :moneda,
   :venta,
   keyword_init: true
@@ -326,6 +330,9 @@ CotizacionLoadMatch = Struct.new(
 # @!attribute [rw] fecha
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] moneda
 #   @return [String, nil]
 #
@@ -335,6 +342,7 @@ CotizacionListMatch = Struct.new(
   :casa,
   :compra,
   :fecha,
+  :id,
   :moneda,
   :venta,
   keyword_init: true

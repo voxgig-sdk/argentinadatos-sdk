@@ -52,17 +52,25 @@ main: kit: entity: rendimiento: {
           }
           method: "GET"
           orig: "/v1/finanzas/rendimientos/{entidad}"
-          parts: [
-            "v1"
-            "finanzas"
-            "rendimientos"
-            "{id}"
-          ]
           rename: {
             param: {
               entidad: "id"
             }
           }
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "finanzas"
+            }
+            {
+              lit: "rendimientos"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

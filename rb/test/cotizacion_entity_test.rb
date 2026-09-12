@@ -83,9 +83,13 @@ class CotizacionEntityTest < Minitest::Test
     assert cotizacion_ref01_list_result.is_a?(Array)
 
     # LOAD
-    cotizacion_ref01_match_dt0 = {}
+    cotizacion_ref01_match_dt0 = {
+      "id" => cotizacion_ref01_data["id"],
+    }
     cotizacion_ref01_data_dt0_loaded = cotizacion_ref01_ent.load(cotizacion_ref01_match_dt0, nil)
-    assert !cotizacion_ref01_data_dt0_loaded.nil?
+    cotizacion_ref01_data_dt0_load_result = Helpers.to_map(cotizacion_ref01_data_dt0_loaded.respond_to?(:data_get) ? cotizacion_ref01_data_dt0_loaded.data_get : cotizacion_ref01_data_dt0_loaded)
+    assert !cotizacion_ref01_data_dt0_load_result.nil?
+    assert_equal cotizacion_ref01_data_dt0_load_result["id"], cotizacion_ref01_data["id"]
 
   end
 end
@@ -133,6 +137,9 @@ def cotizacion_basic_setup(extra)
 
   if env["ARGENTINADATOS_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
+      # FIRST, so the generated fields below win: sdk-test-control.json's
+      # test.client.options adds to the live client, it does not redirect it.
+      Runner.live_client_options,
       {
       },
       extra || {},

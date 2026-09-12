@@ -62,18 +62,28 @@ main: kit: entity: fondo_comun_inversion_otro: {
           }
           method: "GET"
           orig: "/v1/finanzas/fci/otros/{fecha}"
-          parts: [
-            "v1"
-            "finanzas"
-            "fci"
-            "otros"
-            "{id}"
-          ]
           rename: {
             param: {
               fecha: "id"
             }
           }
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "finanzas"
+            }
+            {
+              lit: "fci"
+            }
+            {
+              lit: "otros"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

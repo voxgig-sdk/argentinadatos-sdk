@@ -45,10 +45,16 @@ main: kit: entity: letra: {
         {
           method: "GET"
           orig: "/v1/finanzas/letras"
-          parts: [
-            "v1"
-            "finanzas"
-            "letras"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "finanzas"
+            }
+            {
+              lit: "letras"
+            }
           ]
           transform: {
             req: "`reqdata`"
