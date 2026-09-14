@@ -105,7 +105,7 @@ local result, err = client:Rendimiento():load({ id = "test01" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/argentinadatos` | publish pending — [install from git tag](https://github.com/voxgig-sdk/argentinadatos-sdk/releases) |
+| TypeScript | `@voxgig-sdk/argentinadatos-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/argentinadatos-sdk/releases) |
 | Python | `voxgig-sdk-argentinadatos` | publish pending — [install from git tag](https://github.com/voxgig-sdk/argentinadatos-sdk/releases) |
 | PHP | `voxgig-sdk/argentinadatos` | publish pending — [install from git tag](https://github.com/voxgig-sdk/argentinadatos-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/argentinadatos-sdk/go` | `go get github.com/voxgig-sdk/argentinadatos-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:Rendimiento():load({ id = "test01" })
 ### TypeScript
 
 ```ts
-import { ArgentinadatosSDK } from '@voxgig-sdk/argentinadatos'
+import { ArgentinadatosSDK } from '@voxgig-sdk/argentinadatos-sdk'
 
 const client = new ArgentinadatosSDK()
 

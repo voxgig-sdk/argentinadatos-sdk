@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { ArgentinadatosSDK } from '@voxgig-sdk/argentinadatos'
+import { ArgentinadatosSDK } from '@voxgig-sdk/argentinadatos-sdk'
 
 const client = new ArgentinadatosSDK()
 ```
@@ -1701,7 +1701,7 @@ argentinadatos/
 Import the SDK from the package root:
 
 ```ts
-import { ArgentinadatosSDK } from '@voxgig-sdk/argentinadatos'
+import { ArgentinadatosSDK } from '@voxgig-sdk/argentinadatos-sdk'
 ```
 
 ### Entity state
