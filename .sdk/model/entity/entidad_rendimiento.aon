@@ -23,6 +23,12 @@ main: kit: entity: entidad_rendimiento: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /v1/finanzas/rendimientos"
+            json: "{\"operationId\":\"get-finanzas-rendimientos\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"entidad\":{\"type\":\"string\"},\"rendimientos\":{\"items\":{\"properties\":{\"apy\":{\"type\":\"number\"},\"fecha\":{\"type\":\"string\"},\"moneda\":{\"type\":\"string\"}},\"title\":\"Rendimiento\",\"type\":\"object\"},\"type\":\"array\"}},\"title\":\"EntidadRendimiento\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de rendimientos\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/v1/finanzas/rendimientos"
           segments: [

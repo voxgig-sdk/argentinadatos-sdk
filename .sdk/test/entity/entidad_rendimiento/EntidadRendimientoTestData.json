@@ -22,5 +22,55 @@
         "rendimientos": []
       }
     }
+  },
+  "requests": {
+    "GET /v1/finanzas/rendimientos": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-finanzas-rendimientos",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "entidad": {
+                        "type": "string"
+                      },
+                      "rendimientos": {
+                        "items": {
+                          "properties": {
+                            "apy": {
+                              "type": "number"
+                            },
+                            "fecha": {
+                              "type": "string"
+                            },
+                            "moneda": {
+                              "type": "string"
+                            }
+                          },
+                          "title": "Rendimiento",
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "title": "EntidadRendimiento",
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Devuelve una lista de rendimientos"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

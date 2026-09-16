@@ -45,5 +45,332 @@
         "vcp": 286
       }
     }
+  },
+  "requests": {
+    "GET /v1/finanzas/fci/mercadoDinero/{fecha}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-finanzas-fci-mercado-dinero-fecha",
+        "parameters": [
+          {
+            "description": "Fecha de consulta",
+            "example": "ultimo",
+            "in": "path",
+            "name": "fecha",
+            "required": true,
+            "schema": {
+              "format": "date",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "ccp": {
+                        "type": "number"
+                      },
+                      "fecha": {
+                        "type": "string"
+                      },
+                      "fondo": {
+                        "type": "string"
+                      },
+                      "horizonte": {
+                        "enum": [
+                          "corto",
+                          "medio",
+                          "largo"
+                        ],
+                        "type": "string"
+                      },
+                      "patrimonio": {
+                        "type": "number"
+                      },
+                      "tipo": {
+                        "type": "string"
+                      },
+                      "vcp": {
+                        "type": "number"
+                      }
+                    },
+                    "title": "FondoComunInversion",
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Devuelve una lista de Fondos Comunes de Inversión"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /v1/finanzas/fci/rentaFija/{fecha}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-finanzas-fci-renta-fija-fecha",
+        "parameters": [
+          {
+            "description": "Fecha de consulta",
+            "example": "ultimo",
+            "in": "path",
+            "name": "fecha",
+            "required": true,
+            "schema": {
+              "format": "date",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "ccp": {
+                        "type": "number"
+                      },
+                      "fecha": {
+                        "type": "string"
+                      },
+                      "fondo": {
+                        "type": "string"
+                      },
+                      "horizonte": {
+                        "enum": [
+                          "corto",
+                          "medio",
+                          "largo"
+                        ],
+                        "type": "string"
+                      },
+                      "patrimonio": {
+                        "type": "number"
+                      },
+                      "tipo": {
+                        "type": "string"
+                      },
+                      "vcp": {
+                        "type": "number"
+                      }
+                    },
+                    "title": "FondoComunInversion",
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Devuelve una lista de Fondos Comunes de Inversión"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /v1/finanzas/fci/rentaMixta/{fecha}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-finanzas-fci-renta-mixta-fecha",
+        "parameters": [
+          {
+            "description": "Fecha de consulta",
+            "example": "ultimo",
+            "in": "path",
+            "name": "fecha",
+            "required": true,
+            "schema": {
+              "format": "date",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "ccp": {
+                        "type": "number"
+                      },
+                      "fecha": {
+                        "type": "string"
+                      },
+                      "fondo": {
+                        "type": "string"
+                      },
+                      "horizonte": {
+                        "enum": [
+                          "corto",
+                          "medio",
+                          "largo"
+                        ],
+                        "type": "string"
+                      },
+                      "patrimonio": {
+                        "type": "number"
+                      },
+                      "tipo": {
+                        "type": "string"
+                      },
+                      "vcp": {
+                        "type": "number"
+                      }
+                    },
+                    "title": "FondoComunInversion",
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Devuelve una lista de Fondos Comunes de Inversión"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /v1/finanzas/fci/rentaVariable/{fecha}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-finanzas-fci-renta-variable-fecha",
+        "parameters": [
+          {
+            "description": "Fecha de consulta",
+            "example": "ultimo",
+            "in": "path",
+            "name": "fecha",
+            "required": true,
+            "schema": {
+              "format": "date",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "ccp": {
+                        "type": "number"
+                      },
+                      "fecha": {
+                        "type": "string"
+                      },
+                      "fondo": {
+                        "type": "string"
+                      },
+                      "horizonte": {
+                        "enum": [
+                          "corto",
+                          "medio",
+                          "largo"
+                        ],
+                        "type": "string"
+                      },
+                      "patrimonio": {
+                        "type": "number"
+                      },
+                      "tipo": {
+                        "type": "string"
+                      },
+                      "vcp": {
+                        "type": "number"
+                      }
+                    },
+                    "title": "FondoComunInversion",
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Devuelve una lista de Fondos Comunes de Inversión"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /v1/finanzas/fci/retornoTotal/{fecha}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-finanzas-fci-retorno-total-fecha",
+        "parameters": [
+          {
+            "description": "Fecha de consulta",
+            "example": "ultimo",
+            "in": "path",
+            "name": "fecha",
+            "required": true,
+            "schema": {
+              "format": "date",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "ccp": {
+                        "type": "number"
+                      },
+                      "fecha": {
+                        "type": "string"
+                      },
+                      "fondo": {
+                        "type": "string"
+                      },
+                      "horizonte": {
+                        "enum": [
+                          "corto",
+                          "medio",
+                          "largo"
+                        ],
+                        "type": "string"
+                      },
+                      "patrimonio": {
+                        "type": "number"
+                      },
+                      "tipo": {
+                        "type": "string"
+                      },
+                      "vcp": {
+                        "type": "number"
+                      }
+                    },
+                    "title": "FondoComunInversion",
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Devuelve una lista de Fondos Comunes de Inversión"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

@@ -23,6 +23,12 @@ main: kit: entity: riesgo_pai: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /v1/finanzas/indices/riesgo-pais"
+            json: "{\"operationId\":\"get-finanzas-indices-riesgo-pais\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"fecha\":{\"type\":\"string\"},\"valor\":{\"type\":\"number\"}},\"title\":\"RiesgoPais\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de riesgo país\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/v1/finanzas/indices/riesgo-pais"
           segments: [
@@ -50,6 +56,12 @@ main: kit: entity: riesgo_pai: {
       name: "load"
       points: [
         {
+          contract: {
+            id: "GET /v1/finanzas/indices/riesgo-pais/ultimo"
+            json: "{\"operationId\":\"get-finanzas-indices-riesgo-pais-ultimo\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"fecha\":{\"type\":\"string\"},\"valor\":{\"type\":\"number\"}},\"title\":\"RiesgoPais\",\"type\":\"object\"}}},\"description\":\"Devuelve el último valor de riesgo país\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/v1/finanzas/indices/riesgo-pais/ultimo"
           segments: [

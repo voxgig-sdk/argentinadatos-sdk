@@ -2,17 +2,17 @@
   "existing": {
     "estado": {
       "ESTADO00": {
-        "aleatorio": "s14",
+        "aleatorio": 20,
         "estado": "s15",
         "id": "ESTADO00"
       },
       "ESTADO01": {
-        "aleatorio": "s28",
+        "aleatorio": 40,
         "estado": "s29",
         "id": "ESTADO01"
       },
       "ESTADO02": {
-        "aleatorio": "s3c",
+        "aleatorio": 60,
         "estado": "s3d",
         "id": "ESTADO02"
       }
@@ -21,8 +21,40 @@
   "new": {
     "estado": {
       "estado_ref01": {
-        "aleatorio": "s50",
+        "aleatorio": 80,
         "estado": "s51"
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/estado": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-estado",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "aleatorio": {
+                      "type": "integer"
+                    },
+                    "estado": {
+                      "type": "string"
+                    }
+                  },
+                  "title": "Estado",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Devuelve el estado de la API"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

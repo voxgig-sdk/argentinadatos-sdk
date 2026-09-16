@@ -23,6 +23,12 @@ main: kit: entity: indice_inflacion: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /v1/finanzas/indices/inflacion"
+            json: "{\"operationId\":\"get-finanzas-indices-inflacion\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"fecha\":{\"type\":\"string\"},\"valor\":{\"type\":\"number\"}},\"title\":\"IndiceInflacion\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de índices de inflación\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/v1/finanzas/indices/inflacion"
           segments: [
@@ -45,6 +51,12 @@ main: kit: entity: indice_inflacion: {
           }
         }
         {
+          contract: {
+            id: "GET /v1/finanzas/indices/inflacionInteranual"
+            json: "{\"operationId\":\"get-finanzas-indices-inflacion-interanual\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"fecha\":{\"type\":\"string\"},\"valor\":{\"type\":\"number\"}},\"title\":\"IndiceInflacion\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de índices de inflación\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/v1/finanzas/indices/inflacionInteranual"
           segments: [

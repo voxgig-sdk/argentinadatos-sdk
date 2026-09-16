@@ -144,6 +144,12 @@ main: kit: entity: acta: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /v1/diputados/actas"
+            json: "{\"operationId\":\"get-diputados-actas\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"abstenciones\":{\"type\":\"integer\"},\"ausentes\":{\"type\":\"integer\"},\"fecha\":{\"format\":\"date-time\",\"type\":\"string\"},\"id\":{\"type\":\"string\"},\"numeroActa\":{\"type\":\"string\"},\"periodo\":{\"type\":\"string\"},\"presidente\":{\"type\":\"string\"},\"resultado\":{\"type\":\"string\"},\"reunion\":{\"type\":\"string\"},\"titulo\":{\"type\":\"string\"},\"votos\":{\"items\":{\"properties\":{\"diputado\":{\"type\":\"string\"},\"imagen\":{\"type\":\"string\"},\"tipoVoto\":{\"enum\":[\"afirmativo\",\"negativo\",\"abstencion\",\"ausente\",\"presidente\"],\"type\":\"string\"},\"videoDiscurso\":{\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"votosAfirmativos\":{\"type\":\"integer\"},\"votosNegativos\":{\"type\":\"integer\"}},\"title\":\"ActaDiputados\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de actas de Diputados\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/v1/diputados/actas"
           segments: [
@@ -163,6 +169,12 @@ main: kit: entity: acta: {
           }
         }
         {
+          contract: {
+            id: "GET /v1/senado/actas"
+            json: "{\"operationId\":\"get-senado-actas\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"abstenciones\":{\"type\":\"integer\"},\"acta\":{\"type\":\"string\"},\"actaId\":{\"nullable\":true,\"type\":\"integer\"},\"afirmativos\":{\"type\":\"integer\"},\"amn\":{\"type\":\"integer\"},\"ausentes\":{\"type\":\"integer\"},\"descripcion\":{\"type\":\"string\"},\"fecha\":{\"format\":\"date\",\"type\":\"string\"},\"mayoria\":{\"type\":\"string\"},\"miembros\":{\"type\":\"integer\"},\"negativos\":{\"type\":\"integer\"},\"observaciones\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"presentes\":{\"type\":\"integer\"},\"proyecto\":{\"type\":\"string\"},\"quorumTipo\":{\"type\":\"string\"},\"resultado\":{\"enum\":[\"afirmativa\",\"negativa\",\"cancelada lev.vot.\"],\"type\":\"string\"},\"titulo\":{\"nullable\":true,\"type\":\"string\"},\"votos\":{\"items\":{\"properties\":{\"banca\":{\"type\":\"string\"},\"nombre\":{\"type\":\"string\"},\"voto\":{\"enum\":[\"si\",\"no\",\"ausente\",\"abstencion\",\"no emite\",\"desconocido\"],\"type\":\"string\"}},\"title\":\"VotoData\",\"type\":\"object\"},\"type\":\"array\"}},\"title\":\"ActaSenado\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de actas del Senado\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/v1/senado/actas"
           segments: [
@@ -198,6 +210,12 @@ main: kit: entity: acta: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /v1/diputados/actas/{año}"
+            json: "{\"operationId\":\"get-diputados-actas-año\",\"parameters\":[{\"description\":\"Año de consulta\",\"example\":2026,\"in\":\"path\",\"name\":\"año\",\"required\":true,\"schema\":{\"maximum\":2026,\"minimum\":2016,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"abstenciones\":{\"type\":\"integer\"},\"ausentes\":{\"type\":\"integer\"},\"fecha\":{\"format\":\"date-time\",\"type\":\"string\"},\"id\":{\"type\":\"string\"},\"numeroActa\":{\"type\":\"string\"},\"periodo\":{\"type\":\"string\"},\"presidente\":{\"type\":\"string\"},\"resultado\":{\"type\":\"string\"},\"reunion\":{\"type\":\"string\"},\"titulo\":{\"type\":\"string\"},\"votos\":{\"items\":{\"properties\":{\"diputado\":{\"type\":\"string\"},\"imagen\":{\"type\":\"string\"},\"tipoVoto\":{\"enum\":[\"afirmativo\",\"negativo\",\"abstencion\",\"ausente\",\"presidente\"],\"type\":\"string\"},\"videoDiscurso\":{\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"votosAfirmativos\":{\"type\":\"integer\"},\"votosNegativos\":{\"type\":\"integer\"}},\"title\":\"ActaDiputados\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de actas de Diputados\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/v1/diputados/actas/{año}"
@@ -242,6 +260,12 @@ main: kit: entity: acta: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /v1/senado/actas/{año}"
+            json: "{\"operationId\":\"get-senado-actas-año\",\"parameters\":[{\"description\":\"Año de consulta\",\"example\":2026,\"in\":\"path\",\"name\":\"año\",\"required\":true,\"schema\":{\"maximum\":2026,\"minimum\":2016,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"abstenciones\":{\"type\":\"integer\"},\"acta\":{\"type\":\"string\"},\"actaId\":{\"nullable\":true,\"type\":\"integer\"},\"afirmativos\":{\"type\":\"integer\"},\"amn\":{\"type\":\"integer\"},\"ausentes\":{\"type\":\"integer\"},\"descripcion\":{\"type\":\"string\"},\"fecha\":{\"format\":\"date\",\"type\":\"string\"},\"mayoria\":{\"type\":\"string\"},\"miembros\":{\"type\":\"integer\"},\"negativos\":{\"type\":\"integer\"},\"observaciones\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"presentes\":{\"type\":\"integer\"},\"proyecto\":{\"type\":\"string\"},\"quorumTipo\":{\"type\":\"string\"},\"resultado\":{\"enum\":[\"afirmativa\",\"negativa\",\"cancelada lev.vot.\"],\"type\":\"string\"},\"titulo\":{\"nullable\":true,\"type\":\"string\"},\"votos\":{\"items\":{\"properties\":{\"banca\":{\"type\":\"string\"},\"nombre\":{\"type\":\"string\"},\"voto\":{\"enum\":[\"si\",\"no\",\"ausente\",\"abstencion\",\"no emite\",\"desconocido\"],\"type\":\"string\"}},\"title\":\"VotoData\",\"type\":\"object\"},\"type\":\"array\"}},\"title\":\"ActaSenado\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de actas del Senado\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/v1/senado/actas/{año}"

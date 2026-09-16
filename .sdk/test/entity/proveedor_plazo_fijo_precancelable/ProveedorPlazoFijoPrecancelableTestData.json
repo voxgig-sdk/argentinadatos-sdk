@@ -2,7 +2,7 @@
   "existing": {
     "proveedor_plazo_fijo_precancelable": {
       "PROVEEDOR_PLAZO_FIJO_PRECANCELABLE00": {
-        "avisoPrecancelacionDias": "saa",
+        "avisoPrecancelacionDias": 170,
         "canal": "sab",
         "enlace": "sac",
         "entidad": "sad",
@@ -12,16 +12,16 @@
         "moneda": "sb1",
         "montoMaximo": 178,
         "montoMinimo": 179,
-        "plazoMaxDias": "sb4",
-        "plazoMinDias": "sb5",
-        "plazoPrecancelacionDias": "sb6",
+        "plazoMaxDias": 180,
+        "plazoMinDias": 181,
+        "plazoPrecancelacionDias": 182,
         "tea": 183,
         "teaPrecancelacion": 184,
         "tna": 185,
         "tnaPrecancelacion": 186
       },
       "PROVEEDOR_PLAZO_FIJO_PRECANCELABLE01": {
-        "avisoPrecancelacionDias": "s154",
+        "avisoPrecancelacionDias": 340,
         "canal": "s155",
         "enlace": "s156",
         "entidad": "s157",
@@ -31,16 +31,16 @@
         "moneda": "s15b",
         "montoMaximo": 348,
         "montoMinimo": 349,
-        "plazoMaxDias": "s15e",
-        "plazoMinDias": "s15f",
-        "plazoPrecancelacionDias": "s160",
+        "plazoMaxDias": 350,
+        "plazoMinDias": 351,
+        "plazoPrecancelacionDias": 352,
         "tea": 353,
         "teaPrecancelacion": 354,
         "tna": 355,
         "tnaPrecancelacion": 356
       },
       "PROVEEDOR_PLAZO_FIJO_PRECANCELABLE02": {
-        "avisoPrecancelacionDias": "s1fe",
+        "avisoPrecancelacionDias": 510,
         "canal": "s1ff",
         "enlace": "s200",
         "entidad": "s201",
@@ -50,9 +50,9 @@
         "moneda": "s205",
         "montoMaximo": 518,
         "montoMinimo": 519,
-        "plazoMaxDias": "s208",
-        "plazoMinDias": "s209",
-        "plazoPrecancelacionDias": "s20a",
+        "plazoMaxDias": 520,
+        "plazoMinDias": 521,
+        "plazoPrecancelacionDias": 522,
         "tea": 523,
         "teaPrecancelacion": 524,
         "tna": 525,
@@ -63,7 +63,7 @@
   "new": {
     "proveedor_plazo_fijo_precancelable": {
       "proveedor_plazo_fijo_precancelable_ref01": {
-        "avisoPrecancelacionDias": "s2a8",
+        "avisoPrecancelacionDias": 680,
         "canal": "s2a9",
         "enlace": "s2aa",
         "entidad": "s2ab",
@@ -72,13 +72,126 @@
         "moneda": "s2af",
         "montoMaximo": 688,
         "montoMinimo": 689,
-        "plazoMaxDias": "s2b2",
-        "plazoMinDias": "s2b3",
-        "plazoPrecancelacionDias": "s2b4",
+        "plazoMaxDias": 690,
+        "plazoMinDias": 691,
+        "plazoPrecancelacionDias": 692,
         "tea": 693,
         "teaPrecancelacion": 694,
         "tna": 695,
         "tnaPrecancelacion": 696
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/finanzas/tasas/plazoFijoPrecancelable": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-finanzas-tasas-plazo-fijo-precancelable",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "avisoPrecancelacionDias": {
+                        "description": "Días hábiles de aviso previo para precancelar",
+                        "nullable": true,
+                        "type": "integer"
+                      },
+                      "canal": {
+                        "description": "Canales publicados para constituir el plazo fijo",
+                        "nullable": true,
+                        "type": "string"
+                      },
+                      "enlace": {
+                        "description": "URL de la fuente",
+                        "format": "uri",
+                        "type": "string"
+                      },
+                      "entidad": {
+                        "description": "Nombre de la entidad",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "Identificador estable del proveedor",
+                        "type": "string"
+                      },
+                      "logo": {
+                        "description": "URL del logo de la entidad",
+                        "format": "uri",
+                        "type": "string"
+                      },
+                      "modalidad": {
+                        "description": "Modalidad publicada por la entidad",
+                        "nullable": true,
+                        "type": "string"
+                      },
+                      "moneda": {
+                        "description": "Moneda de constitución",
+                        "type": "string"
+                      },
+                      "montoMaximo": {
+                        "description": "Monto máximo de constitución",
+                        "nullable": true,
+                        "type": "number"
+                      },
+                      "montoMinimo": {
+                        "description": "Monto mínimo de constitución",
+                        "nullable": true,
+                        "type": "number"
+                      },
+                      "plazoMaxDias": {
+                        "description": "Plazo máximo en días",
+                        "nullable": true,
+                        "type": "integer"
+                      },
+                      "plazoMinDias": {
+                        "description": "Plazo mínimo en días",
+                        "type": "integer"
+                      },
+                      "plazoPrecancelacionDias": {
+                        "description": "Días mínimos para ejercer la precancelación",
+                        "type": "integer"
+                      },
+                      "tea": {
+                        "description": "Tasa Efectiva Anual",
+                        "format": "float",
+                        "nullable": true,
+                        "type": "number"
+                      },
+                      "teaPrecancelacion": {
+                        "description": "Tasa Efectiva Anual aplicada ante precancelación",
+                        "format": "float",
+                        "nullable": true,
+                        "type": "number"
+                      },
+                      "tna": {
+                        "description": "Tasa Nominal Anual",
+                        "format": "float",
+                        "nullable": true,
+                        "type": "number"
+                      },
+                      "tnaPrecancelacion": {
+                        "description": "Tasa Nominal Anual aplicada ante precancelación",
+                        "format": "float",
+                        "nullable": true,
+                        "type": "number"
+                      }
+                    },
+                    "title": "ProveedorPlazoFijoPrecancelable",
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Devuelve una lista de proveedores con condiciones de plazo fijo UVA precancelable"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

@@ -83,6 +83,12 @@ main: kit: entity: fondo_comun_inversion_variable: {
               }
             ]
           }
+          contract: {
+            id: "GET /v1/finanzas/fci/variables/{fecha}"
+            json: "{\"operationId\":\"get-finanzas-fci-variables-fecha\",\"parameters\":[{\"description\":\"Fecha de consulta\",\"example\":\"ultimo\",\"in\":\"path\",\"name\":\"fecha\",\"required\":true,\"schema\":{\"format\":\"date\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"condiciones\":{\"nullable\":true,\"type\":\"string\"},\"condicionesCorto\":{\"nullable\":true,\"type\":\"string\"},\"fecha\":{\"type\":\"string\"},\"fondo\":{\"description\":\"Nombre del fondo común de inversión (clase o denominación oficial).\",\"type\":\"string\"},\"nombre\":{\"description\":\"Identificador de la fuente en Argentina Datos (por ejemplo el proveedor o el canal).\",\"type\":\"string\"},\"tea\":{\"type\":\"number\"},\"tipo\":{\"description\":\"Clasificación del instrumento. Valor conocido: `billetera` (cuenta remunerada en billetera digital).\",\"enum\":[\"billetera\"],\"type\":\"string\"},\"tna\":{\"type\":\"number\"},\"tope\":{\"nullable\":true,\"type\":\"number\"}},\"title\":\"FondoComunInversionVariable\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de Fondos Comunes de Inversión\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/v1/finanzas/fci/variables/{fecha}"
           rename: {

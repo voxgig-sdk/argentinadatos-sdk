@@ -22,5 +22,40 @@
         "valor": 81
       }
     }
+  },
+  "requests": {
+    "GET /v1/finanzas/indices/uva": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-finanzas-indices-uva",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "fecha": {
+                        "type": "string"
+                      },
+                      "valor": {
+                        "type": "number"
+                      }
+                    },
+                    "title": "IndiceUVA",
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Devuelve una lista de índices UVA"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

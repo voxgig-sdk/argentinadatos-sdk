@@ -38,6 +38,12 @@ main: kit: entity: hipotecario_uva_tna: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /v1/finanzas/creditos/hipotecariosUva"
+            json: "{\"operationId\":\"get-finanzas-creditos-hipotecarios-uva\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"entidad\":{\"description\":\"Nombre del banco u oferente del crédito hipotecario UVA\",\"type\":\"string\"},\"metadata\":{\"description\":\"Detalle de condiciones\",\"properties\":{\"financiamiento\":{\"description\":\"Porcentaje o condición de financiamiento\",\"type\":\"string\"},\"plazo_max_anios\":{\"description\":\"Plazo máximo del préstamo en años\",\"type\":\"integer\"},\"relacion_cuota_ingreso\":{\"description\":\"Relación cuota–ingreso indicada en la fuente (p. ej. porcentaje del ingreso)\",\"type\":\"string\"}},\"type\":\"object\"},\"nombreComercial\":{\"description\":\"Nombre comercial\",\"type\":\"string\"},\"tna\":{\"description\":\"Tasa Nominal Anual\",\"format\":\"float\",\"maximum\":1,\"minimum\":0,\"type\":\"number\"}},\"title\":\"HipotecarioUvaTna\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de TNA de créditos hipotecarios UVA\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/v1/finanzas/creditos/hipotecariosUva"
           segments: [

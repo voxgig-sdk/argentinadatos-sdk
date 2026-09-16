@@ -22,5 +22,40 @@
         "valor": 81
       }
     }
+  },
+  "requests": {
+    "GET /v1/finanzas/tasas/depositos30Dias": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-finanzas-tasas-depositos-30-dias",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "fecha": {
+                        "type": "string"
+                      },
+                      "valor": {
+                        "type": "number"
+                      }
+                    },
+                    "title": "TasaInteres",
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Devuelve una lista de tasas de interés por depósitos a 30 días"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

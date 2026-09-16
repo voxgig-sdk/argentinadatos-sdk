@@ -22,5 +22,73 @@
         "valor": 81
       }
     }
+  },
+  "requests": {
+    "GET /v1/finanzas/indices/inflacion": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-finanzas-indices-inflacion",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "fecha": {
+                        "type": "string"
+                      },
+                      "valor": {
+                        "type": "number"
+                      }
+                    },
+                    "title": "IndiceInflacion",
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Devuelve una lista de índices de inflación"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /v1/finanzas/indices/inflacionInteranual": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-finanzas-indices-inflacion-interanual",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "fecha": {
+                        "type": "string"
+                      },
+                      "valor": {
+                        "type": "number"
+                      }
+                    },
+                    "title": "IndiceInflacion",
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Devuelve una lista de índices de inflación"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

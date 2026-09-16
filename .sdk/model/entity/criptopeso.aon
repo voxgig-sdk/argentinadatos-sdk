@@ -32,6 +32,12 @@ main: kit: entity: criptopeso: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /v1/finanzas/criptopesos"
+            json: "{\"operationId\":\"get-finanzas-criptopesos\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"entidad\":{\"description\":\"Nombre de la entidad que ofrece el criptopeso\",\"type\":\"string\"},\"tna\":{\"description\":\"Tasa Nominal Anual en porcentaje\",\"format\":\"float\",\"type\":\"number\"},\"token\":{\"description\":\"Token del criptopeso (ej: ARGt, wARS)\",\"type\":\"string\"}},\"title\":\"Criptopeso\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de tasas de criptopesos\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/v1/finanzas/criptopesos"
           segments: [

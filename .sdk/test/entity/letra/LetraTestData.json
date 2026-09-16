@@ -34,5 +34,54 @@
         "vpv": 204
       }
     }
+  },
+  "requests": {
+    "GET /v1/finanzas/letras": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-finanzas-letras",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "fechaEmision": {
+                        "description": "Fecha de emisión original (ISO 8601)",
+                        "type": "string"
+                      },
+                      "fechaVencimiento": {
+                        "description": "Fecha de vencimiento (ISO 8601)",
+                        "type": "string"
+                      },
+                      "tem": {
+                        "description": "Tasa Efectiva Mensual (%)",
+                        "type": "number"
+                      },
+                      "ticker": {
+                        "description": "Código del instrumento (ej: S31G5, T17O5)",
+                        "type": "string"
+                      },
+                      "vpv": {
+                        "description": "Valor de Pago al Vencimiento por cada $100 de valor nominal",
+                        "type": "number"
+                      }
+                    },
+                    "title": "LetraCapitalizable",
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Devuelve una lista de letras capitalizables activas"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

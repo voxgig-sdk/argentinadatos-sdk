@@ -29,5 +29,56 @@
         "tipo": "sa3"
       }
     }
+  },
+  "requests": {
+    "GET /v1/feriados/{año}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-feriados",
+        "parameters": [
+          {
+            "description": "Año de consulta",
+            "example": 2026,
+            "in": "path",
+            "name": "año",
+            "required": true,
+            "schema": {
+              "maximum": 2026,
+              "minimum": 2016,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "fecha": {
+                        "type": "string"
+                      },
+                      "nombre": {
+                        "type": "string"
+                      },
+                      "tipo": {
+                        "type": "string"
+                      }
+                    },
+                    "title": "Feriado",
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Devuelve los feriados del año actual"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

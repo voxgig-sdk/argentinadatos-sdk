@@ -40,6 +40,8 @@ const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 // AFTER the imports on purpose: TypeScript hoists `import` above any
@@ -59,16 +61,12 @@ const utility_1 = require("../../utility");
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.ARGENTINADATOS_TEST_LIVE;
         for (const op of ['list']) {
-            if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'rem.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'rem.' + op, live))
                 return;
         }
         const setup = basicSetup();
-        // The basic flow consumes synthetic IDs and field values from the
-        // fixture (entity TestData.json). Those don't exist on the live API.
-        // Skip live runs unless the user provided a real ENTID env override.
-        if (setup.syntheticOnly) {
-            t.skip('live entity test uses synthetic IDs from fixture — set ARGENTINADATOS_TEST_REM_ENTID JSON to run live');
-            return;
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [{ "active": true, "name": "desvio", "req": false, "type": "`$NUMBER`", "index$": 0 }, { "active": true, "format": "date", "name": "fecha", "req": false, "short": "Fecha ISO del primer día del mes del informe", "type": "`$STRING`", "index$": 1 }, { "active": true, "name": "fuente", "req": false, "type": "`$STRING`", "index$": 2 }, { "active": true, "name": "indicador", "req": false, "short": "Indicador relevado", "type": "`$STRING`", "index$": 3 }, { "active": true, "name": "informe", "req": false, "short": "Informe REM en formato YYYY-MM", "type": "`$STRING`", "index$": 4 }, { "active": true, "name": "maximo", "req": false, "type": "`$NUMBER`", "index$": 5 }, { "active": true, "name": "mediana", "req": false, "type": "`$NUMBER`", "index$": 6 }, { "active": true, "name": "minimo", "req": false, "type": "`$NUMBER`", "index$": 7 }, { "active": true, "name": "muestra", "req": false, "short": "Muestra de participantes: todos o TOP 10", "type": "`$STRING`", "index$": 8 }, { "active": true, "name": "participantes", "req": false, "type": "`$INTEGER`", "index$": 9 }, { "active": true, "name": "percentil10", "req": false, "type": "`$NUMBER`", "index$": 10 }, { "active": true, "name": "percentil25", "req": false, "type": "`$NUMBER`", "index$": 11 }, { "active": true, "name": "percentil75", "req": false, "type": "`$NUMBER`", "index$": 12 }, { "active": true, "name": "percentil90", "req": false, "type": "`$NUMBER`", "index$": 13 }, { "active": true, "name": "periodo", "req": false, "short": "Período original informado por el BCRA", "type": "`$STRING`", "index$": 14 }, { "active": true, "format": "date", "name": "periodoDesde", "req": false, "short": "Fecha de inicio del período normalizado", "type": "`$STRING`", "index$": 15 }, { "active": true, "format": "date", "name": "periodoHasta", "req": false, "short": "Fecha de fin del período normalizado", "type": "`$STRING`", "index$": 16 }, { "active": true, "name": "periodoTipo", "req": false, "short": "Tipo de período normalizado", "type": "`$STRING`", "index$": 17 }, { "active": true, "name": "promedio", "req": false, "type": "`$NUMBER`", "index$": 18 }, { "active": true, "name": "publicacionUrl", "req": false, "type": "`$STRING`", "index$": 19 }, { "active": true, "name": "referencia", "req": false, "short": "Referencia original de la tabla", "type": "`$STRING`", "index$": 20 }, { "active": true, "format": "date", "name": "referenciaFecha", "req": false, "short": "Fecha detectada en la referencia, si corresponde", "type": "`$STRING`", "index$": 21 }, { "active": true, "name": "unidad", "req": false, "short": "Unidad inferida desde la referencia", "type": "`$STRING`", "index$": 22 }, { "active": true, "name": "xlsxUrl", "req": false, "type": "`$STRING`", "index$": 23 }], "name": "rem", "op": { "list": { "input": "data", "name": "list", "points": [{ "active": true, "args": { "params": [{ "active": true, "example": 2026, "kind": "param", "name": "año", "orig": "año", "reqd": true, "type": "`$INTEGER`", "index$": 0 }, { "active": true, "example": "03", "kind": "param", "name": "mes", "orig": "mes", "reqd": true, "type": "`$STRING`", "index$": 1 }] }, "contract": { "id": "GET /v1/rems/{año}/{mes}", "json": "{\"operationId\":\"get-rems-anio-mes\",\"parameters\":[{\"description\":\"Año del informe REM\",\"example\":2026,\"in\":\"path\",\"name\":\"año\",\"required\":true,\"schema\":{\"minimum\":2016,\"type\":\"integer\"}},{\"description\":\"Mes del informe REM con dos dígitos\",\"example\":\"03\",\"in\":\"path\",\"name\":\"mes\",\"required\":true,\"schema\":{\"pattern\":\"^(0[1-9]|1[0-2])$\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"desvio\":{\"nullable\":true,\"type\":\"number\"},\"fecha\":{\"description\":\"Fecha ISO del primer día del mes del informe\",\"format\":\"date\",\"type\":\"string\"},\"fuente\":{\"type\":\"string\"},\"indicador\":{\"description\":\"Indicador relevado\",\"type\":\"string\"},\"informe\":{\"description\":\"Informe REM en formato YYYY-MM\",\"type\":\"string\"},\"maximo\":{\"nullable\":true,\"type\":\"number\"},\"mediana\":{\"nullable\":true,\"type\":\"number\"},\"minimo\":{\"nullable\":true,\"type\":\"number\"},\"muestra\":{\"description\":\"Muestra de participantes: todos o TOP 10\",\"enum\":[\"todos\",\"top_10\"],\"type\":\"string\"},\"participantes\":{\"nullable\":true,\"type\":\"integer\"},\"percentil10\":{\"nullable\":true,\"type\":\"number\"},\"percentil25\":{\"nullable\":true,\"type\":\"number\"},\"percentil75\":{\"nullable\":true,\"type\":\"number\"},\"percentil90\":{\"nullable\":true,\"type\":\"number\"},\"periodo\":{\"description\":\"Período original informado por el BCRA\",\"type\":\"string\"},\"periodoDesde\":{\"description\":\"Fecha de inicio del período normalizado\",\"format\":\"date\",\"nullable\":true,\"type\":\"string\"},\"periodoHasta\":{\"description\":\"Fecha de fin del período normalizado\",\"format\":\"date\",\"nullable\":true,\"type\":\"string\"},\"periodoTipo\":{\"description\":\"Tipo de período normalizado\",\"type\":\"string\"},\"promedio\":{\"nullable\":true,\"type\":\"number\"},\"publicacionUrl\":{\"nullable\":true,\"type\":\"string\"},\"referencia\":{\"description\":\"Referencia original de la tabla\",\"type\":\"string\"},\"referenciaFecha\":{\"description\":\"Fecha detectada en la referencia, si corresponde\",\"format\":\"date\",\"nullable\":true,\"type\":\"string\"},\"unidad\":{\"description\":\"Unidad inferida desde la referencia\",\"nullable\":true,\"type\":\"string\"},\"xlsxUrl\":{\"nullable\":true,\"type\":\"string\"}},\"title\":\"RemExpectativa\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de expectativas del REM para el período indicado\"}},\"securitySource\":\"unspecified\"}", "source": "openapi3", "version": 1 }, "kind": "http", "method": "GET", "orig": "/v1/rems/{año}/{mes}", "segments": [{ "lit": "v1" }, { "lit": "rems" }, { "var": "año" }, { "var": "mes" }], "select": { "exist": ["año", "mes"] }, "transform": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [["rem"]] }, "key$": "rem", "name__orig": "rem", "Name": "Rem", "name_": "rem", "name-": "rem", "NAME": "REM", "index$": 21 }, { "active": true, "entity": "rem", "key$": "BasicRemFlow", "kind": "basic", "name": "BasicRemFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": {}, "match": { "año": "año01", "mes": "mes01" }, "op": "list", "spec": [], "valid": [{ "apply": "ItemExists", "def": { "ref": "rem_ref01" } }], "index$": 0 }] }, 'Rem');
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -103,12 +101,6 @@ function basicSetup(extra) {
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
-    // Detect whether the user provided a real ENTID JSON via env var. The
-    // basic flow consumes synthetic IDs from the fixture file; without an
-    // override those synthetic IDs reach the live API and 4xx. Surface this
-    // to the test so it can skip rather than fail.
-    const idmapEnvVal = process.env['ARGENTINADATOS_TEST_REM_ENTID'];
-    const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{');
     const env = (0, utility_1.envOverride)({
         'ARGENTINADATOS_TEST_REM_ENTID': idmap,
         'ARGENTINADATOS_TEST_LIVE': 'FALSE',
@@ -116,7 +108,13 @@ function basicSetup(extra) {
     });
     idmap = env['ARGENTINADATOS_TEST_REM_ENTID'];
     const live = 'TRUE' === env.ARGENTINADATOS_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
+        const rawIds = process.env['ARGENTINADATOS_TEST_REM_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
         client = new __1.ArgentinadatosSDK(merge([
             // FIRST, so the generated fields below win: sdk-test-control.json's
             // test.client.options adds to the live client, it does not redirect it.
@@ -127,7 +125,8 @@ function basicSetup(extra) {
             // argument at all - so a bare 'extra' silently discarded the apikey
             // and server values above and handed the SDK undefined. Harmless
             // while there was nothing in that object; not harmless now.
-            extra || {}
+            extra || {},
+            { system: { fetch: transport.fetch } }
         ]));
     }
     const setup = {
@@ -139,7 +138,7 @@ function basicSetup(extra) {
         data: entityData,
         explain: 'TRUE' === env.ARGENTINADATOS_TEST_EXPLAIN,
         live,
-        syntheticOnly: live && !idmapOverridden,
+        transport,
         now: Date.now(),
     };
     return setup;

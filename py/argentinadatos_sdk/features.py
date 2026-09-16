@@ -1,12 +1,18 @@
 # Argentinadatos SDK feature factory
 
 from argentinadatos_sdk.feature.base_feature import ArgentinadatosBaseFeature
+from argentinadatos_sdk.feature.ratelimit_feature import ArgentinadatosRatelimitFeature
+from argentinadatos_sdk.feature.retry_feature import ArgentinadatosRetryFeature
 from argentinadatos_sdk.feature.test_feature import ArgentinadatosTestFeature
+from argentinadatos_sdk.feature.timeout_feature import ArgentinadatosTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: ArgentinadatosBaseFeature(),
+    "ratelimit": lambda: ArgentinadatosRatelimitFeature(),
+    "retry": lambda: ArgentinadatosRetryFeature(),
     "test": lambda: ArgentinadatosTestFeature(),
+    "timeout": lambda: ArgentinadatosTimeoutFeature(),
 }
 
 

@@ -24,7 +24,71 @@
         "repr": "auto"
       },
       "contributor": {},
-      "docs": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "acta": {
           "active": true,
@@ -197,6 +261,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /v1/diputados/actas",
+                    "json": "{\"operationId\":\"get-diputados-actas\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"abstenciones\":{\"type\":\"integer\"},\"ausentes\":{\"type\":\"integer\"},\"fecha\":{\"format\":\"date-time\",\"type\":\"string\"},\"id\":{\"type\":\"string\"},\"numeroActa\":{\"type\":\"string\"},\"periodo\":{\"type\":\"string\"},\"presidente\":{\"type\":\"string\"},\"resultado\":{\"type\":\"string\"},\"reunion\":{\"type\":\"string\"},\"titulo\":{\"type\":\"string\"},\"votos\":{\"items\":{\"properties\":{\"diputado\":{\"type\":\"string\"},\"imagen\":{\"type\":\"string\"},\"tipoVoto\":{\"enum\":[\"afirmativo\",\"negativo\",\"abstencion\",\"ausente\",\"presidente\"],\"type\":\"string\"},\"videoDiscurso\":{\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"votosAfirmativos\":{\"type\":\"integer\"},\"votosNegativos\":{\"type\":\"integer\"}},\"title\":\"ActaDiputados\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de actas de Diputados\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/diputados/actas",
@@ -220,6 +290,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /v1/senado/actas",
+                    "json": "{\"operationId\":\"get-senado-actas\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"abstenciones\":{\"type\":\"integer\"},\"acta\":{\"type\":\"string\"},\"actaId\":{\"nullable\":true,\"type\":\"integer\"},\"afirmativos\":{\"type\":\"integer\"},\"amn\":{\"type\":\"integer\"},\"ausentes\":{\"type\":\"integer\"},\"descripcion\":{\"type\":\"string\"},\"fecha\":{\"format\":\"date\",\"type\":\"string\"},\"mayoria\":{\"type\":\"string\"},\"miembros\":{\"type\":\"integer\"},\"negativos\":{\"type\":\"integer\"},\"observaciones\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"presentes\":{\"type\":\"integer\"},\"proyecto\":{\"type\":\"string\"},\"quorumTipo\":{\"type\":\"string\"},\"resultado\":{\"enum\":[\"afirmativa\",\"negativa\",\"cancelada lev.vot.\"],\"type\":\"string\"},\"titulo\":{\"nullable\":true,\"type\":\"string\"},\"votos\":{\"items\":{\"properties\":{\"banca\":{\"type\":\"string\"},\"nombre\":{\"type\":\"string\"},\"voto\":{\"enum\":[\"si\",\"no\",\"ausente\",\"abstencion\",\"no emite\",\"desconocido\"],\"type\":\"string\"}},\"title\":\"VotoData\",\"type\":\"object\"},\"type\":\"array\"}},\"title\":\"ActaSenado\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de actas del Senado\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/senado/actas",
@@ -260,6 +336,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /v1/diputados/actas/{año}",
+                    "json": "{\"operationId\":\"get-diputados-actas-año\",\"parameters\":[{\"description\":\"Año de consulta\",\"example\":2026,\"in\":\"path\",\"name\":\"año\",\"required\":true,\"schema\":{\"maximum\":2026,\"minimum\":2016,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"abstenciones\":{\"type\":\"integer\"},\"ausentes\":{\"type\":\"integer\"},\"fecha\":{\"format\":\"date-time\",\"type\":\"string\"},\"id\":{\"type\":\"string\"},\"numeroActa\":{\"type\":\"string\"},\"periodo\":{\"type\":\"string\"},\"presidente\":{\"type\":\"string\"},\"resultado\":{\"type\":\"string\"},\"reunion\":{\"type\":\"string\"},\"titulo\":{\"type\":\"string\"},\"votos\":{\"items\":{\"properties\":{\"diputado\":{\"type\":\"string\"},\"imagen\":{\"type\":\"string\"},\"tipoVoto\":{\"enum\":[\"afirmativo\",\"negativo\",\"abstencion\",\"ausente\",\"presidente\"],\"type\":\"string\"},\"videoDiscurso\":{\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"votosAfirmativos\":{\"type\":\"integer\"},\"votosNegativos\":{\"type\":\"integer\"}},\"title\":\"ActaDiputados\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de actas de Diputados\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -307,6 +389,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /v1/senado/actas/{año}",
+                    "json": "{\"operationId\":\"get-senado-actas-año\",\"parameters\":[{\"description\":\"Año de consulta\",\"example\":2026,\"in\":\"path\",\"name\":\"año\",\"required\":true,\"schema\":{\"maximum\":2026,\"minimum\":2016,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"abstenciones\":{\"type\":\"integer\"},\"acta\":{\"type\":\"string\"},\"actaId\":{\"nullable\":true,\"type\":\"integer\"},\"afirmativos\":{\"type\":\"integer\"},\"amn\":{\"type\":\"integer\"},\"ausentes\":{\"type\":\"integer\"},\"descripcion\":{\"type\":\"string\"},\"fecha\":{\"format\":\"date\",\"type\":\"string\"},\"mayoria\":{\"type\":\"string\"},\"miembros\":{\"type\":\"integer\"},\"negativos\":{\"type\":\"integer\"},\"observaciones\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"presentes\":{\"type\":\"integer\"},\"proyecto\":{\"type\":\"string\"},\"quorumTipo\":{\"type\":\"string\"},\"resultado\":{\"enum\":[\"afirmativa\",\"negativa\",\"cancelada lev.vot.\"],\"type\":\"string\"},\"titulo\":{\"nullable\":true,\"type\":\"string\"},\"votos\":{\"items\":{\"properties\":{\"banca\":{\"type\":\"string\"},\"nombre\":{\"type\":\"string\"},\"voto\":{\"enum\":[\"si\",\"no\",\"ausente\",\"abstencion\",\"no emite\",\"desconocido\"],\"type\":\"string\"}},\"title\":\"VotoData\",\"type\":\"object\"},\"type\":\"array\"}},\"title\":\"ActaSenado\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de actas del Senado\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -399,6 +487,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /v1/finanzas/bonos-cer",
+                    "json": "{\"operationId\":\"get-finanzas-bonos-cer\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"bonos\":{\"description\":\"Filas de la grilla soberanos CER\",\"items\":{\"properties\":{\"fechaVencimiento\":{\"description\":\"Fecha de vencimiento (ISO 8601, solo fecha: yyyy-MM-dd)\",\"format\":\"date\",\"type\":\"string\"},\"precioArs\":{\"description\":\"Precio de cotización en pesos argentinos\",\"type\":\"number\"},\"ticker\":{\"description\":\"Código del bono (ej. TZX26, TX26)\",\"type\":\"string\"},\"tirPorcentaje\":{\"description\":\"Tasa interna de retorno (TIR) en porcentaje\",\"type\":\"number\"},\"volumen\":{\"description\":\"Volumen nominal negociado, si la fuente lo publica\",\"type\":\"number\"}},\"required\":[\"ticker\",\"precioArs\",\"tirPorcentaje\",\"fechaVencimiento\"],\"title\":\"BonoSoberanoCer\",\"type\":\"object\"},\"type\":\"array\"},\"errorExtraccion\":{\"description\":\"Solo si falló la extracción: mensaje de error\",\"type\":\"string\"},\"fechaActualizacion\":{\"description\":\"Instante en que se generó el recurso (UTC, ISO 8601 con sufijo Z)\",\"format\":\"date-time\",\"type\":\"string\"}},\"required\":[\"fechaActualizacion\",\"bonos\"],\"title\":\"BonosCer\",\"type\":\"object\"}}},\"description\":\"Listado de bonos soberanos CER con marca temporal de actualización\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/bonos-cer",
@@ -491,6 +585,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /v1/cotizaciones/dolares",
+                    "json": "{\"operationId\":\"get-cotizaciones-dolares\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"casa\":{\"type\":\"string\"},\"compra\":{\"type\":\"number\"},\"fecha\":{\"type\":\"string\"},\"moneda\":{\"type\":\"string\"},\"venta\":{\"type\":\"number\"}},\"title\":\"Cotizacion\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de cotizaciones del dólar\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/cotizaciones/dolares",
@@ -541,6 +641,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /v1/cotizaciones/dolares/{casa}/{fecha}",
+                    "json": "{\"operationId\":\"get-cotizaciones-dolares-casa-fecha\",\"parameters\":[{\"description\":\"Casa de cambio\",\"example\":\"blue\",\"in\":\"path\",\"name\":\"casa\",\"required\":true,\"schema\":{\"enum\":[\"oficial\",\"blue\",\"bolsa\",\"contadoconliqui\",\"cripto\",\"mayorista\",\"solidario\",\"turista\"],\"type\":\"string\"}},{\"description\":\"Fecha de consulta\",\"example\":\"2024/01/01\",\"in\":\"path\",\"name\":\"fecha\",\"required\":true,\"schema\":{\"format\":\"date\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"casa\":{\"type\":\"string\"},\"compra\":{\"type\":\"number\"},\"fecha\":{\"type\":\"string\"},\"moneda\":{\"type\":\"string\"},\"venta\":{\"type\":\"number\"}},\"title\":\"Cotizacion\",\"type\":\"object\"}}},\"description\":\"Devuelve una lista de cotizaciones del dólar\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/cotizaciones/dolares/{casa}/{fecha}",
@@ -586,6 +692,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /v1/cotizaciones/dolares/{casa}",
+                    "json": "{\"operationId\":\"get-cotizaciones-dolares-casa\",\"parameters\":[{\"description\":\"Casa de cambio\",\"example\":\"blue\",\"in\":\"path\",\"name\":\"casa\",\"required\":true,\"schema\":{\"enum\":[\"oficial\",\"blue\",\"bolsa\",\"contadoconliqui\",\"cripto\",\"mayorista\",\"solidario\",\"turista\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"casa\":{\"type\":\"string\"},\"compra\":{\"type\":\"number\"},\"fecha\":{\"type\":\"string\"},\"moneda\":{\"type\":\"string\"},\"venta\":{\"type\":\"number\"}},\"title\":\"Cotizacion\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de cotizaciones del dólar\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -663,6 +775,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /v1/finanzas/criptopesos",
+                    "json": "{\"operationId\":\"get-finanzas-criptopesos\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"entidad\":{\"description\":\"Nombre de la entidad que ofrece el criptopeso\",\"type\":\"string\"},\"tna\":{\"description\":\"Tasa Nominal Anual en porcentaje\",\"format\":\"float\",\"type\":\"number\"},\"token\":{\"description\":\"Token del criptopeso (ej: ARGt, wARS)\",\"type\":\"string\"}},\"title\":\"Criptopeso\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de tasas de criptopesos\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/criptopesos",
@@ -729,6 +847,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /v1/finanzas/cuentas-remuneradas-usd",
+                    "json": "{\"operationId\":\"get-finanzas-cuentas-remuneradas-usd\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"entidad\":{\"description\":\"Identificador de la entidad (p. ej. BNA, GALICIA, SUPERVIELLE)\",\"type\":\"string\"},\"tasa\":{\"description\":\"Tasa de rendimiento anual en formato decimal (p. ej. 0.02 = 2 % anual)\",\"format\":\"float\",\"type\":\"number\"},\"tope\":{\"description\":\"Monto máximo en USD remunerado a esa tasa, o null si no hay tope o no se informó\",\"format\":\"float\",\"nullable\":true,\"type\":\"number\"}},\"title\":\"CuentaRemuneradaUsd\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Lista de entidades con tasa y tope vigentes al último relevamiento\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/cuentas-remuneradas-usd",
@@ -845,6 +969,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /v1/diputados/diputados",
+                    "json": "{\"operationId\":\"get-diputados-diputados\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"apellido\":{\"type\":\"string\"},\"bloque\":{\"type\":\"string\"},\"ceseFecha\":{\"format\":\"date-time\",\"type\":\"string\"},\"foto\":{\"format\":\"uri\",\"nullable\":true,\"type\":\"string\"},\"genero\":{\"type\":\"string\"},\"id\":{\"type\":\"string\"},\"juramentoFecha\":{\"format\":\"date-time\",\"type\":\"string\"},\"nombre\":{\"type\":\"string\"},\"periodoBloque\":{\"properties\":{\"fin\":{\"format\":\"date-time\",\"nullable\":true,\"type\":\"string\"},\"inicio\":{\"format\":\"date-time\",\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"periodoMandato\":{\"properties\":{\"fin\":{\"format\":\"date-time\",\"nullable\":true,\"type\":\"string\"},\"inicio\":{\"format\":\"date-time\",\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"provincia\":{\"type\":\"string\"}},\"title\":\"Diputado\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de diputados\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/diputados/diputados",
@@ -900,6 +1030,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /v1/finanzas/rendimientos",
+                    "json": "{\"operationId\":\"get-finanzas-rendimientos\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"entidad\":{\"type\":\"string\"},\"rendimientos\":{\"items\":{\"properties\":{\"apy\":{\"type\":\"number\"},\"fecha\":{\"type\":\"string\"},\"moneda\":{\"type\":\"string\"}},\"title\":\"Rendimiento\",\"type\":\"object\"},\"type\":\"array\"}},\"title\":\"EntidadRendimiento\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de rendimientos\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/rendimientos",
@@ -955,6 +1091,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /v1/estado",
+                    "json": "{\"operationId\":\"get-estado\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"aleatorio\":{\"type\":\"integer\"},\"estado\":{\"type\":\"string\"}},\"title\":\"Estado\",\"type\":\"object\"}}},\"description\":\"Devuelve el estado de la API\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/estado",
@@ -1013,6 +1155,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /v1/eventos/presidenciales",
+                    "json": "{\"operationId\":\"get-eventos-presidenciales\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"evento\":{\"type\":\"string\"},\"fecha\":{\"type\":\"string\"},\"tipo\":{\"type\":\"string\"}},\"title\":\"EventoPresidencial\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de eventos presidenciales\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/eventos/presidenciales",
@@ -1096,6 +1244,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /v1/feriados/{año}",
+                    "json": "{\"operationId\":\"get-feriados\",\"parameters\":[{\"description\":\"Año de consulta\",\"example\":2026,\"in\":\"path\",\"name\":\"año\",\"required\":true,\"schema\":{\"maximum\":2026,\"minimum\":2016,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"fecha\":{\"type\":\"string\"},\"nombre\":{\"type\":\"string\"},\"tipo\":{\"type\":\"string\"}},\"title\":\"Feriado\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve los feriados del año actual\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/feriados/{año}",
@@ -1147,6 +1301,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /v1/rems",
+                    "json": "{\"operationId\":\"get-rems\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"example\":\"/rems/2026/03\",\"type\":\"string\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de endpoints relativos disponibles\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/rems",
@@ -1241,6 +1401,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /v1/finanzas/fci/mercadoDinero/{fecha}",
+                    "json": "{\"operationId\":\"get-finanzas-fci-mercado-dinero-fecha\",\"parameters\":[{\"description\":\"Fecha de consulta\",\"example\":\"ultimo\",\"in\":\"path\",\"name\":\"fecha\",\"required\":true,\"schema\":{\"format\":\"date\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"ccp\":{\"type\":\"number\"},\"fecha\":{\"type\":\"string\"},\"fondo\":{\"type\":\"string\"},\"horizonte\":{\"enum\":[\"corto\",\"medio\",\"largo\"],\"type\":\"string\"},\"patrimonio\":{\"type\":\"number\"},\"tipo\":{\"type\":\"string\"},\"vcp\":{\"type\":\"number\"}},\"title\":\"FondoComunInversion\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de Fondos Comunes de Inversión\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/fci/mercadoDinero/{fecha}",
@@ -1285,6 +1451,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /v1/finanzas/fci/rentaFija/{fecha}",
+                    "json": "{\"operationId\":\"get-finanzas-fci-renta-fija-fecha\",\"parameters\":[{\"description\":\"Fecha de consulta\",\"example\":\"ultimo\",\"in\":\"path\",\"name\":\"fecha\",\"required\":true,\"schema\":{\"format\":\"date\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"ccp\":{\"type\":\"number\"},\"fecha\":{\"type\":\"string\"},\"fondo\":{\"type\":\"string\"},\"horizonte\":{\"enum\":[\"corto\",\"medio\",\"largo\"],\"type\":\"string\"},\"patrimonio\":{\"type\":\"number\"},\"tipo\":{\"type\":\"string\"},\"vcp\":{\"type\":\"number\"}},\"title\":\"FondoComunInversion\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de Fondos Comunes de Inversión\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1331,6 +1503,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /v1/finanzas/fci/rentaMixta/{fecha}",
+                    "json": "{\"operationId\":\"get-finanzas-fci-renta-mixta-fecha\",\"parameters\":[{\"description\":\"Fecha de consulta\",\"example\":\"ultimo\",\"in\":\"path\",\"name\":\"fecha\",\"required\":true,\"schema\":{\"format\":\"date\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"ccp\":{\"type\":\"number\"},\"fecha\":{\"type\":\"string\"},\"fondo\":{\"type\":\"string\"},\"horizonte\":{\"enum\":[\"corto\",\"medio\",\"largo\"],\"type\":\"string\"},\"patrimonio\":{\"type\":\"number\"},\"tipo\":{\"type\":\"string\"},\"vcp\":{\"type\":\"number\"}},\"title\":\"FondoComunInversion\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de Fondos Comunes de Inversión\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/fci/rentaMixta/{fecha}",
@@ -1376,6 +1554,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /v1/finanzas/fci/rentaVariable/{fecha}",
+                    "json": "{\"operationId\":\"get-finanzas-fci-renta-variable-fecha\",\"parameters\":[{\"description\":\"Fecha de consulta\",\"example\":\"ultimo\",\"in\":\"path\",\"name\":\"fecha\",\"required\":true,\"schema\":{\"format\":\"date\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"ccp\":{\"type\":\"number\"},\"fecha\":{\"type\":\"string\"},\"fondo\":{\"type\":\"string\"},\"horizonte\":{\"enum\":[\"corto\",\"medio\",\"largo\"],\"type\":\"string\"},\"patrimonio\":{\"type\":\"number\"},\"tipo\":{\"type\":\"string\"},\"vcp\":{\"type\":\"number\"}},\"title\":\"FondoComunInversion\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de Fondos Comunes de Inversión\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/fci/rentaVariable/{fecha}",
@@ -1420,6 +1604,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /v1/finanzas/fci/retornoTotal/{fecha}",
+                    "json": "{\"operationId\":\"get-finanzas-fci-retorno-total-fecha\",\"parameters\":[{\"description\":\"Fecha de consulta\",\"example\":\"ultimo\",\"in\":\"path\",\"name\":\"fecha\",\"required\":true,\"schema\":{\"format\":\"date\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"ccp\":{\"type\":\"number\"},\"fecha\":{\"type\":\"string\"},\"fondo\":{\"type\":\"string\"},\"horizonte\":{\"enum\":[\"corto\",\"medio\",\"largo\"],\"type\":\"string\"},\"patrimonio\":{\"type\":\"number\"},\"tipo\":{\"type\":\"string\"},\"vcp\":{\"type\":\"number\"}},\"title\":\"FondoComunInversion\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de Fondos Comunes de Inversión\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1541,6 +1731,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /v1/finanzas/fci/otros/{fecha}",
+                    "json": "{\"operationId\":\"get-finanzas-fci-otros-fecha\",\"parameters\":[{\"description\":\"Fecha de consulta\",\"example\":\"ultimo\",\"in\":\"path\",\"name\":\"fecha\",\"required\":true,\"schema\":{\"format\":\"date\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"fecha\":{\"type\":\"string\"},\"fondo\":{\"type\":\"string\"},\"tea\":{\"type\":\"number\"},\"tna\":{\"type\":\"number\"},\"tope\":{\"type\":\"number\"}},\"title\":\"FondoComunInversionOtro\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de Fondos Comunes de Inversión\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1679,6 +1875,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /v1/finanzas/fci/variables/{fecha}",
+                    "json": "{\"operationId\":\"get-finanzas-fci-variables-fecha\",\"parameters\":[{\"description\":\"Fecha de consulta\",\"example\":\"ultimo\",\"in\":\"path\",\"name\":\"fecha\",\"required\":true,\"schema\":{\"format\":\"date\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"condiciones\":{\"nullable\":true,\"type\":\"string\"},\"condicionesCorto\":{\"nullable\":true,\"type\":\"string\"},\"fecha\":{\"type\":\"string\"},\"fondo\":{\"description\":\"Nombre del fondo común de inversión (clase o denominación oficial).\",\"type\":\"string\"},\"nombre\":{\"description\":\"Identificador de la fuente en Argentina Datos (por ejemplo el proveedor o el canal).\",\"type\":\"string\"},\"tea\":{\"type\":\"number\"},\"tipo\":{\"description\":\"Clasificación del instrumento. Valor conocido: `billetera` (cuenta remunerada en billetera digital).\",\"enum\":[\"billetera\"],\"type\":\"string\"},\"tna\":{\"type\":\"number\"},\"tope\":{\"nullable\":true,\"type\":\"number\"}},\"title\":\"FondoComunInversionVariable\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de Fondos Comunes de Inversión\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/fci/variables/{fecha}",
@@ -1766,6 +1968,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /v1/finanzas/creditos/hipotecariosUva",
+                    "json": "{\"operationId\":\"get-finanzas-creditos-hipotecarios-uva\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"entidad\":{\"description\":\"Nombre del banco u oferente del crédito hipotecario UVA\",\"type\":\"string\"},\"metadata\":{\"description\":\"Detalle de condiciones\",\"properties\":{\"financiamiento\":{\"description\":\"Porcentaje o condición de financiamiento\",\"type\":\"string\"},\"plazo_max_anios\":{\"description\":\"Plazo máximo del préstamo en años\",\"type\":\"integer\"},\"relacion_cuota_ingreso\":{\"description\":\"Relación cuota–ingreso indicada en la fuente (p. ej. porcentaje del ingreso)\",\"type\":\"string\"}},\"type\":\"object\"},\"nombreComercial\":{\"description\":\"Nombre comercial\",\"type\":\"string\"},\"tna\":{\"description\":\"Tasa Nominal Anual\",\"format\":\"float\",\"maximum\":1,\"minimum\":0,\"type\":\"number\"}},\"title\":\"HipotecarioUvaTna\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de TNA de créditos hipotecarios UVA\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/creditos/hipotecariosUva",
@@ -1824,6 +2032,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /v1/finanzas/indices/inflacion",
+                    "json": "{\"operationId\":\"get-finanzas-indices-inflacion\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"fecha\":{\"type\":\"string\"},\"valor\":{\"type\":\"number\"}},\"title\":\"IndiceInflacion\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de índices de inflación\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/indices/inflacion",
@@ -1850,6 +2064,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /v1/finanzas/indices/inflacionInteranual",
+                    "json": "{\"operationId\":\"get-finanzas-indices-inflacion-interanual\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"fecha\":{\"type\":\"string\"},\"valor\":{\"type\":\"number\"}},\"title\":\"IndiceInflacion\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de índices de inflación\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/indices/inflacionInteranual",
@@ -1908,6 +2128,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /v1/finanzas/indices/uva",
+                    "json": "{\"operationId\":\"get-finanzas-indices-uva\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"fecha\":{\"type\":\"string\"},\"valor\":{\"type\":\"number\"}},\"title\":\"IndiceUVA\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de índices UVA\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/indices/uva",
@@ -1989,6 +2215,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /v1/finanzas/letras",
+                    "json": "{\"operationId\":\"get-finanzas-letras\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"fechaEmision\":{\"description\":\"Fecha de emisión original (ISO 8601)\",\"type\":\"string\"},\"fechaVencimiento\":{\"description\":\"Fecha de vencimiento (ISO 8601)\",\"type\":\"string\"},\"tem\":{\"description\":\"Tasa Efectiva Mensual (%)\",\"type\":\"number\"},\"ticker\":{\"description\":\"Código del instrumento (ej: S31G5, T17O5)\",\"type\":\"string\"},\"vpv\":{\"description\":\"Valor de Pago al Vencimiento por cada $100 de valor nominal\",\"type\":\"number\"}},\"title\":\"LetraCapitalizable\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de letras capitalizables activas\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/letras",
@@ -2088,6 +2320,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /v1/presidentes",
+                    "json": "{\"operationId\":\"get-presidentes\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"fin\":{\"description\":\"Fecha de fin del mandato (formato yyyy-MM-dd). Null si es el presidente actual.\",\"nullable\":true,\"type\":\"string\"},\"imagen\":{\"description\":\"URL de la imagen del presidente\",\"format\":\"uri\",\"nullable\":true,\"type\":\"string\"},\"inicio\":{\"description\":\"Fecha de inicio del mandato (formato yyyy-MM-dd)\",\"nullable\":true,\"type\":\"string\"},\"nombre\":{\"type\":\"string\"},\"partido\":{\"nullable\":true,\"type\":\"string\"},\"partidoImagen\":{\"description\":\"URL de la imagen del logo del partido político\",\"format\":\"uri\",\"nullable\":true,\"type\":\"string\"},\"periodoPresidencial\":{\"description\":\"Rango de años del período presidencial (ej: '2019-2023')\",\"nullable\":true,\"type\":\"string\"},\"vicepresidente\":{\"description\":\"Nombre del vicepresidente. Puede ser 'Cargo inexistente' o 'vacante' en ciertos periodos.\",\"nullable\":true,\"type\":\"string\"}},\"title\":\"Presidente\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de presidentes\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/presidentes",
@@ -2257,6 +2495,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /v1/finanzas/tasas/plazoFijoPrecancelable",
+                    "json": "{\"operationId\":\"get-finanzas-tasas-plazo-fijo-precancelable\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"avisoPrecancelacionDias\":{\"description\":\"Días hábiles de aviso previo para precancelar\",\"nullable\":true,\"type\":\"integer\"},\"canal\":{\"description\":\"Canales publicados para constituir el plazo fijo\",\"nullable\":true,\"type\":\"string\"},\"enlace\":{\"description\":\"URL de la fuente\",\"format\":\"uri\",\"type\":\"string\"},\"entidad\":{\"description\":\"Nombre de la entidad\",\"type\":\"string\"},\"id\":{\"description\":\"Identificador estable del proveedor\",\"type\":\"string\"},\"logo\":{\"description\":\"URL del logo de la entidad\",\"format\":\"uri\",\"type\":\"string\"},\"modalidad\":{\"description\":\"Modalidad publicada por la entidad\",\"nullable\":true,\"type\":\"string\"},\"moneda\":{\"description\":\"Moneda de constitución\",\"type\":\"string\"},\"montoMaximo\":{\"description\":\"Monto máximo de constitución\",\"nullable\":true,\"type\":\"number\"},\"montoMinimo\":{\"description\":\"Monto mínimo de constitución\",\"nullable\":true,\"type\":\"number\"},\"plazoMaxDias\":{\"description\":\"Plazo máximo en días\",\"nullable\":true,\"type\":\"integer\"},\"plazoMinDias\":{\"description\":\"Plazo mínimo en días\",\"type\":\"integer\"},\"plazoPrecancelacionDias\":{\"description\":\"Días mínimos para ejercer la precancelación\",\"type\":\"integer\"},\"tea\":{\"description\":\"Tasa Efectiva Anual\",\"format\":\"float\",\"nullable\":true,\"type\":\"number\"},\"teaPrecancelacion\":{\"description\":\"Tasa Efectiva Anual aplicada ante precancelación\",\"format\":\"float\",\"nullable\":true,\"type\":\"number\"},\"tna\":{\"description\":\"Tasa Nominal Anual\",\"format\":\"float\",\"nullable\":true,\"type\":\"number\"},\"tnaPrecancelacion\":{\"description\":\"Tasa Nominal Anual aplicada ante precancelación\",\"format\":\"float\",\"nullable\":true,\"type\":\"number\"}},\"title\":\"ProveedorPlazoFijoPrecancelable\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de proveedores con condiciones de plazo fijo UVA precancelable\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/tasas/plazoFijoPrecancelable",
@@ -2336,6 +2580,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /v1/finanzas/tasas/plazoFijoUvaPagoPeriodico",
+                    "json": "{\"operationId\":\"get-finanzas-tasas-plazo-fijo-uva-pago-periodico\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"entidad\":{\"description\":\"Nombre de la entidad\",\"type\":\"string\"},\"id\":{\"description\":\"Identificador estable del proveedor (p. ej. bna)\",\"type\":\"string\"},\"logo\":{\"description\":\"URL del logo de la entidad\",\"format\":\"uri\",\"type\":\"string\"},\"tasas\":{\"description\":\"Tasas por rango de plazo\",\"items\":{\"description\":\"Tasa para un rango de plazo dentro de un proveedor\",\"properties\":{\"nombre\":{\"description\":\"Nombre del tipo de plazo fijo\",\"type\":\"string\"},\"plazoMaxDias\":{\"description\":\"Máximo de días del rango de plazo\",\"type\":\"integer\"},\"plazoMinDias\":{\"description\":\"Mínimo de días del rango de plazo\",\"type\":\"integer\"},\"tea\":{\"description\":\"Tasa Efectiva Anual\",\"format\":\"float\",\"type\":\"number\"},\"tna\":{\"description\":\"Tasa Nominal Anual\",\"format\":\"float\",\"type\":\"number\"}},\"title\":\"TasaPlazoFijoUvaPagoPeriodico\",\"type\":\"object\"},\"type\":\"array\"}},\"title\":\"ProveedorPlazoFijoUvaPagoPeriodico\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de proveedores, cada uno con sus tasas por rango de plazo\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/tasas/plazoFijoUvaPagoPeriodico",
@@ -2562,6 +2812,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /v1/rems/{año}/{mes}",
+                    "json": "{\"operationId\":\"get-rems-anio-mes\",\"parameters\":[{\"description\":\"Año del informe REM\",\"example\":2026,\"in\":\"path\",\"name\":\"año\",\"required\":true,\"schema\":{\"minimum\":2016,\"type\":\"integer\"}},{\"description\":\"Mes del informe REM con dos dígitos\",\"example\":\"03\",\"in\":\"path\",\"name\":\"mes\",\"required\":true,\"schema\":{\"pattern\":\"^(0[1-9]|1[0-2])$\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"desvio\":{\"nullable\":true,\"type\":\"number\"},\"fecha\":{\"description\":\"Fecha ISO del primer día del mes del informe\",\"format\":\"date\",\"type\":\"string\"},\"fuente\":{\"type\":\"string\"},\"indicador\":{\"description\":\"Indicador relevado\",\"type\":\"string\"},\"informe\":{\"description\":\"Informe REM en formato YYYY-MM\",\"type\":\"string\"},\"maximo\":{\"nullable\":true,\"type\":\"number\"},\"mediana\":{\"nullable\":true,\"type\":\"number\"},\"minimo\":{\"nullable\":true,\"type\":\"number\"},\"muestra\":{\"description\":\"Muestra de participantes: todos o TOP 10\",\"enum\":[\"todos\",\"top_10\"],\"type\":\"string\"},\"participantes\":{\"nullable\":true,\"type\":\"integer\"},\"percentil10\":{\"nullable\":true,\"type\":\"number\"},\"percentil25\":{\"nullable\":true,\"type\":\"number\"},\"percentil75\":{\"nullable\":true,\"type\":\"number\"},\"percentil90\":{\"nullable\":true,\"type\":\"number\"},\"periodo\":{\"description\":\"Período original informado por el BCRA\",\"type\":\"string\"},\"periodoDesde\":{\"description\":\"Fecha de inicio del período normalizado\",\"format\":\"date\",\"nullable\":true,\"type\":\"string\"},\"periodoHasta\":{\"description\":\"Fecha de fin del período normalizado\",\"format\":\"date\",\"nullable\":true,\"type\":\"string\"},\"periodoTipo\":{\"description\":\"Tipo de período normalizado\",\"type\":\"string\"},\"promedio\":{\"nullable\":true,\"type\":\"number\"},\"publicacionUrl\":{\"nullable\":true,\"type\":\"string\"},\"referencia\":{\"description\":\"Referencia original de la tabla\",\"type\":\"string\"},\"referenciaFecha\":{\"description\":\"Fecha detectada en la referencia, si corresponde\",\"format\":\"date\",\"nullable\":true,\"type\":\"string\"},\"unidad\":{\"description\":\"Unidad inferida desde la referencia\",\"nullable\":true,\"type\":\"string\"},\"xlsxUrl\":{\"nullable\":true,\"type\":\"string\"}},\"title\":\"RemExpectativa\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de expectativas del REM para el período indicado\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/rems/{año}/{mes}",
@@ -2776,6 +3032,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /v1/rems/ultimo",
+                    "json": "{\"operationId\":\"get-rems-ultimo\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"desvio\":{\"nullable\":true,\"type\":\"number\"},\"fecha\":{\"description\":\"Fecha ISO del primer día del mes del informe\",\"format\":\"date\",\"type\":\"string\"},\"fuente\":{\"type\":\"string\"},\"indicador\":{\"description\":\"Indicador relevado\",\"type\":\"string\"},\"informe\":{\"description\":\"Informe REM en formato YYYY-MM\",\"type\":\"string\"},\"maximo\":{\"nullable\":true,\"type\":\"number\"},\"mediana\":{\"nullable\":true,\"type\":\"number\"},\"minimo\":{\"nullable\":true,\"type\":\"number\"},\"muestra\":{\"description\":\"Muestra de participantes: todos o TOP 10\",\"enum\":[\"todos\",\"top_10\"],\"type\":\"string\"},\"participantes\":{\"nullable\":true,\"type\":\"integer\"},\"percentil10\":{\"nullable\":true,\"type\":\"number\"},\"percentil25\":{\"nullable\":true,\"type\":\"number\"},\"percentil75\":{\"nullable\":true,\"type\":\"number\"},\"percentil90\":{\"nullable\":true,\"type\":\"number\"},\"periodo\":{\"description\":\"Período original informado por el BCRA\",\"type\":\"string\"},\"periodoDesde\":{\"description\":\"Fecha de inicio del período normalizado\",\"format\":\"date\",\"nullable\":true,\"type\":\"string\"},\"periodoHasta\":{\"description\":\"Fecha de fin del período normalizado\",\"format\":\"date\",\"nullable\":true,\"type\":\"string\"},\"periodoTipo\":{\"description\":\"Tipo de período normalizado\",\"type\":\"string\"},\"promedio\":{\"nullable\":true,\"type\":\"number\"},\"publicacionUrl\":{\"nullable\":true,\"type\":\"string\"},\"referencia\":{\"description\":\"Referencia original de la tabla\",\"type\":\"string\"},\"referenciaFecha\":{\"description\":\"Fecha detectada en la referencia, si corresponde\",\"format\":\"date\",\"nullable\":true,\"type\":\"string\"},\"unidad\":{\"description\":\"Unidad inferida desde la referencia\",\"nullable\":true,\"type\":\"string\"},\"xlsxUrl\":{\"nullable\":true,\"type\":\"string\"}},\"title\":\"RemExpectativa\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de expectativas del último REM\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/rems/ultimo",
@@ -2859,6 +3121,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /v1/finanzas/rendimientos/{entidad}",
+                    "json": "{\"operationId\":\"get-finanzas-rendimientos-entidad\",\"parameters\":[{\"description\":\"Entidad\",\"example\":\"nexo\",\"in\":\"path\",\"name\":\"entidad\",\"required\":true,\"schema\":{\"enum\":[\"nexo\",\"fiwind\",\"letsbit\",\"belo\",\"lemoncash\",\"ripio\",\"satoshitango\",\"lucamoney\",\"decrypto\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"apy\":{\"type\":\"number\"},\"fecha\":{\"type\":\"string\"},\"moneda\":{\"type\":\"string\"}},\"title\":\"Rendimiento\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de rendimientos\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/rendimientos/{entidad}",
@@ -2926,6 +3194,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /v1/finanzas/indices/riesgo-pais",
+                    "json": "{\"operationId\":\"get-finanzas-indices-riesgo-pais\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"fecha\":{\"type\":\"string\"},\"valor\":{\"type\":\"number\"}},\"title\":\"RiesgoPais\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de riesgo país\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/indices/riesgo-pais",
@@ -2958,6 +3232,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /v1/finanzas/indices/riesgo-pais/ultimo",
+                    "json": "{\"operationId\":\"get-finanzas-indices-riesgo-pais-ultimo\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"fecha\":{\"type\":\"string\"},\"valor\":{\"type\":\"number\"}},\"title\":\"RiesgoPais\",\"type\":\"object\"}}},\"description\":\"Devuelve el último valor de riesgo país\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/indices/riesgo-pais/ultimo",
@@ -3087,6 +3367,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /v1/senado/senadores",
+                    "json": "{\"operationId\":\"get-senado-senadores\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"email\":{\"format\":\"email\",\"nullable\":true,\"type\":\"string\"},\"foto\":{\"format\":\"uri\",\"nullable\":true,\"type\":\"string\"},\"id\":{\"type\":\"string\"},\"nombre\":{\"type\":\"string\"},\"observaciones\":{\"nullable\":true,\"type\":\"string\"},\"partido\":{\"type\":\"string\"},\"periodoLegal\":{\"properties\":{\"fin\":{\"format\":\"date\",\"nullable\":true,\"type\":\"string\"},\"inicio\":{\"format\":\"date\",\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"periodoReal\":{\"properties\":{\"fin\":{\"format\":\"date\",\"nullable\":true,\"type\":\"string\"},\"inicio\":{\"format\":\"date\",\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"provincia\":{\"type\":\"string\"},\"redes\":{\"items\":{\"type\":\"string\"},\"nullable\":true,\"type\":\"array\"},\"reemplazo\":{\"nullable\":true,\"type\":\"string\"},\"telefono\":{\"nullable\":true,\"type\":\"string\"}},\"title\":\"Senador\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de senadores\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/senado/senadores",
@@ -3142,6 +3428,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /v1/finanzas/tasas/depositos30Dias",
+                    "json": "{\"operationId\":\"get-finanzas-tasas-depositos-30-dias\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"fecha\":{\"type\":\"string\"},\"valor\":{\"type\":\"number\"}},\"title\":\"TasaInteres\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de tasas de interés por depósitos a 30 días\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/tasas/depositos30Dias",
@@ -3218,6 +3510,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /v1/finanzas/tasas/plazoFijo",
+                    "json": "{\"operationId\":\"get-finanzas-tasas-plazo-fijo\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"entidad\":{\"type\":\"string\"},\"logo\":{\"description\":\"URL del logo de la entidad\",\"format\":\"uri\",\"nullable\":true,\"type\":\"string\"},\"tnaClientes\":{\"description\":\"Tasa Nominal Anual para clientes, en porcentaje\",\"example\":123.45,\"format\":\"float\",\"nullable\":true,\"type\":\"number\"},\"tnaNoClientes\":{\"description\":\"Tasa Nominal Anual para no clientes, en porcentaje\",\"example\":123.45,\"format\":\"float\",\"nullable\":true,\"type\":\"number\"}},\"title\":\"TasaPlazoFijo\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de tasas de plazo fijo\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/v1/finanzas/tasas/plazoFijo",
@@ -3250,13 +3548,223 @@
         }
       },
       "feature": {
+        "ratelimit": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "burst": 5,
+              "rate": 5
+            },
+            "optspec": {
+              "now": "`$FUNCTION`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "ratelimit",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Client-side rate limiting via a token bucket",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
+        "retry": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "factor": 2,
+              "maxDelay": 2000,
+              "minDelay": 50,
+              "retries": 2,
+              "statuses": [
+                408,
+                425,
+                429,
+                500,
+                502,
+                503,
+                504
+              ]
+            },
+            "optspec": {
+              "jitter": "`$BOOLEAN`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "retry",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Automatic retry of transient failures with exponential backoff",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
         "test": {
           "active": true,
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "config": {
             "options": {
               "active": false
-            }
+            },
+            "optspec": {
+              "entity": "`$MAP`",
+              "net": "`$MAP`"
+            },
+            "strict": false
           },
           "hook": {
             "GetData": {
@@ -3346,6 +3854,102 @@
           },
           "title": "In-memory mock transport for testing without a live server",
           "transport": "base",
+          "version": "0.0.1"
+        },
+        "timeout": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "ms": 30000
+            },
+            "optspec": {
+              "clearTimer": "`$FUNCTION`",
+              "setTimer": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "timeout",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Per-request timeout with transport abort",
+          "transport": "wrap",
           "version": "0.0.1"
         }
       },
@@ -4196,6 +4800,48 @@
         "website": "https://argentinadatos.com"
       },
       "option": {},
+      "optspec": {
+        "allow": {
+          "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+          "op": "create,update,load,list,remove,command,direct,graphql"
+        },
+        "apikey": "",
+        "auth": {
+          "basic": false,
+          "prefix": ""
+        },
+        "base": "http://localhost:8000",
+        "clean": {
+          "keys": "key,token,id"
+        },
+        "entity": {
+          "`$CHILD`": {
+            "`$OPEN`": true,
+            "active": false,
+            "alias": {}
+          }
+        },
+        "extend": "`$ANY`",
+        "headers": {
+          "`$CHILD`": "`$STRING`"
+        },
+        "prefix": "",
+        "secret": "",
+        "server": {
+          "`$CHILD`": ""
+        },
+        "suffix": "",
+        "system": {
+          "fetch": "`$ANY`"
+        },
+        "test": {
+          "active": false,
+          "entity": {
+            "`$OPEN`": true
+          }
+        },
+        "utility": {}
+      },
       "repo": {
         "host": "github.com",
         "path": ""
@@ -4750,6 +5396,7 @@
           },
           "package": "@voxgig/sdkgen",
           "provides": {
+            "schema": true,
             "sekreto": true
           },
           "publish": {
@@ -4791,7 +5438,7 @@
         "live": {
           "app": false,
           "base": "",
-          "strict": false
+          "strict": true
         }
       }
     }

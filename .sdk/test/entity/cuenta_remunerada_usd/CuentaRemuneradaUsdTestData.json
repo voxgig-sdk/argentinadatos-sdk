@@ -26,5 +26,49 @@
         "tope": 122
       }
     }
+  },
+  "requests": {
+    "GET /v1/finanzas/cuentas-remuneradas-usd": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-finanzas-cuentas-remuneradas-usd",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "entidad": {
+                        "description": "Identificador de la entidad (p. ej. BNA, GALICIA, SUPERVIELLE)",
+                        "type": "string"
+                      },
+                      "tasa": {
+                        "description": "Tasa de rendimiento anual en formato decimal (p. ej. 0.02 = 2 % anual)",
+                        "format": "float",
+                        "type": "number"
+                      },
+                      "tope": {
+                        "description": "Monto máximo en USD remunerado a esa tasa, o null si no hay tope o no se informó",
+                        "format": "float",
+                        "nullable": true,
+                        "type": "number"
+                      }
+                    },
+                    "title": "CuentaRemuneradaUsd",
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Lista de entidades con tasa y tope vigentes al último relevamiento"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

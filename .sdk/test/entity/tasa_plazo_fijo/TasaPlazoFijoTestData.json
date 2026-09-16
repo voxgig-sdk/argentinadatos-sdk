@@ -30,5 +30,57 @@
         "tnaNoClientes": 163
       }
     }
+  },
+  "requests": {
+    "GET /v1/finanzas/tasas/plazoFijo": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-finanzas-tasas-plazo-fijo",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "entidad": {
+                        "type": "string"
+                      },
+                      "logo": {
+                        "description": "URL del logo de la entidad",
+                        "format": "uri",
+                        "nullable": true,
+                        "type": "string"
+                      },
+                      "tnaClientes": {
+                        "description": "Tasa Nominal Anual para clientes, en porcentaje",
+                        "example": 123.45,
+                        "format": "float",
+                        "nullable": true,
+                        "type": "number"
+                      },
+                      "tnaNoClientes": {
+                        "description": "Tasa Nominal Anual para no clientes, en porcentaje",
+                        "example": 123.45,
+                        "format": "float",
+                        "nullable": true,
+                        "type": "number"
+                      }
+                    },
+                    "title": "TasaPlazoFijo",
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Devuelve una lista de tasas de plazo fijo"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

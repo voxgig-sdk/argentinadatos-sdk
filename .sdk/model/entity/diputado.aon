@@ -76,6 +76,12 @@ main: kit: entity: diputado: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /v1/diputados/diputados"
+            json: "{\"operationId\":\"get-diputados-diputados\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"apellido\":{\"type\":\"string\"},\"bloque\":{\"type\":\"string\"},\"ceseFecha\":{\"format\":\"date-time\",\"type\":\"string\"},\"foto\":{\"format\":\"uri\",\"nullable\":true,\"type\":\"string\"},\"genero\":{\"type\":\"string\"},\"id\":{\"type\":\"string\"},\"juramentoFecha\":{\"format\":\"date-time\",\"type\":\"string\"},\"nombre\":{\"type\":\"string\"},\"periodoBloque\":{\"properties\":{\"fin\":{\"format\":\"date-time\",\"nullable\":true,\"type\":\"string\"},\"inicio\":{\"format\":\"date-time\",\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"periodoMandato\":{\"properties\":{\"fin\":{\"format\":\"date-time\",\"nullable\":true,\"type\":\"string\"},\"inicio\":{\"format\":\"date-time\",\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"provincia\":{\"type\":\"string\"}},\"title\":\"Diputado\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de diputados\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/v1/diputados/diputados"
           segments: [

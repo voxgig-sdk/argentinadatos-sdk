@@ -29,5 +29,80 @@
         "tasas": []
       }
     }
+  },
+  "requests": {
+    "GET /v1/finanzas/tasas/plazoFijoUvaPagoPeriodico": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-finanzas-tasas-plazo-fijo-uva-pago-periodico",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "entidad": {
+                        "description": "Nombre de la entidad",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "Identificador estable del proveedor (p. ej. bna)",
+                        "type": "string"
+                      },
+                      "logo": {
+                        "description": "URL del logo de la entidad",
+                        "format": "uri",
+                        "type": "string"
+                      },
+                      "tasas": {
+                        "description": "Tasas por rango de plazo",
+                        "items": {
+                          "description": "Tasa para un rango de plazo dentro de un proveedor",
+                          "properties": {
+                            "nombre": {
+                              "description": "Nombre del tipo de plazo fijo",
+                              "type": "string"
+                            },
+                            "plazoMaxDias": {
+                              "description": "Máximo de días del rango de plazo",
+                              "type": "integer"
+                            },
+                            "plazoMinDias": {
+                              "description": "Mínimo de días del rango de plazo",
+                              "type": "integer"
+                            },
+                            "tea": {
+                              "description": "Tasa Efectiva Anual",
+                              "format": "float",
+                              "type": "number"
+                            },
+                            "tna": {
+                              "description": "Tasa Nominal Anual",
+                              "format": "float",
+                              "type": "number"
+                            }
+                          },
+                          "title": "TasaPlazoFijoUvaPagoPeriodico",
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "title": "ProveedorPlazoFijoUvaPagoPeriodico",
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Devuelve una lista de proveedores, cada uno con sus tasas por rango de plazo"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

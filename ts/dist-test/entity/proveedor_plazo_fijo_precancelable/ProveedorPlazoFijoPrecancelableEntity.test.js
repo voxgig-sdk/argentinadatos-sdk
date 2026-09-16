@@ -40,6 +40,8 @@ const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 // AFTER the imports on purpose: TypeScript hoists `import` above any
@@ -59,16 +61,12 @@ const utility_1 = require("../../utility");
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.ARGENTINADATOS_TEST_LIVE;
         for (const op of ['list']) {
-            if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'proveedor_plazo_fijo_precancelable.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'proveedor_plazo_fijo_precancelable.' + op, live))
                 return;
         }
         const setup = basicSetup();
-        // The basic flow consumes synthetic IDs and field values from the
-        // fixture (entity TestData.json). Those don't exist on the live API.
-        // Skip live runs unless the user provided a real ENTID env override.
-        if (setup.syntheticOnly) {
-            t.skip('live entity test uses synthetic IDs from fixture — set ARGENTINADATOS_TEST_PROVEEDOR_PLAZO_FIJO_PRECANCELABLE_ENTID JSON to run live');
-            return;
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [{ "active": true, "name": "avisoPrecancelacionDias", "req": false, "short": "Días hábiles de aviso previo para precancelar", "type": "`$INTEGER`", "index$": 0 }, { "active": true, "name": "canal", "req": false, "short": "Canales publicados para constituir el plazo fijo", "type": "`$STRING`", "index$": 1 }, { "active": true, "format": "uri", "name": "enlace", "req": false, "short": "URL de la fuente", "type": "`$STRING`", "index$": 2 }, { "active": true, "name": "entidad", "req": false, "short": "Nombre de la entidad", "type": "`$STRING`", "index$": 3 }, { "active": true, "name": "id", "req": false, "short": "Identificador estable del proveedor", "type": "`$STRING`", "index$": 4 }, { "active": true, "format": "uri", "name": "logo", "req": false, "short": "URL del logo de la entidad", "type": "`$STRING`", "index$": 5 }, { "active": true, "name": "modalidad", "req": false, "short": "Modalidad publicada por la entidad", "type": "`$STRING`", "index$": 6 }, { "active": true, "name": "moneda", "req": false, "short": "Moneda de constitución", "type": "`$STRING`", "index$": 7 }, { "active": true, "name": "montoMaximo", "req": false, "short": "Monto máximo de constitución", "type": "`$NUMBER`", "index$": 8 }, { "active": true, "name": "montoMinimo", "req": false, "short": "Monto mínimo de constitución", "type": "`$NUMBER`", "index$": 9 }, { "active": true, "name": "plazoMaxDias", "req": false, "short": "Plazo máximo en días", "type": "`$INTEGER`", "index$": 10 }, { "active": true, "name": "plazoMinDias", "req": false, "short": "Plazo mínimo en días", "type": "`$INTEGER`", "index$": 11 }, { "active": true, "name": "plazoPrecancelacionDias", "req": false, "short": "Días mínimos para ejercer la precancelación", "type": "`$INTEGER`", "index$": 12 }, { "active": true, "format": "float", "name": "tea", "req": false, "short": "Tasa Efectiva Anual", "type": "`$NUMBER`", "index$": 13 }, { "active": true, "format": "float", "name": "teaPrecancelacion", "req": false, "short": "Tasa Efectiva Anual aplicada ante precancelación", "type": "`$NUMBER`", "index$": 14 }, { "active": true, "format": "float", "name": "tna", "req": false, "short": "Tasa Nominal Anual", "type": "`$NUMBER`", "index$": 15 }, { "active": true, "format": "float", "name": "tnaPrecancelacion", "req": false, "short": "Tasa Nominal Anual aplicada ante precancelación", "type": "`$NUMBER`", "index$": 16 }], "id": { "field": "id", "name": "id" }, "name": "proveedor_plazo_fijo_precancelable", "op": { "list": { "input": "data", "name": "list", "points": [{ "active": true, "args": {}, "contract": { "id": "GET /v1/finanzas/tasas/plazoFijoPrecancelable", "json": "{\"operationId\":\"get-finanzas-tasas-plazo-fijo-precancelable\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"avisoPrecancelacionDias\":{\"description\":\"Días hábiles de aviso previo para precancelar\",\"nullable\":true,\"type\":\"integer\"},\"canal\":{\"description\":\"Canales publicados para constituir el plazo fijo\",\"nullable\":true,\"type\":\"string\"},\"enlace\":{\"description\":\"URL de la fuente\",\"format\":\"uri\",\"type\":\"string\"},\"entidad\":{\"description\":\"Nombre de la entidad\",\"type\":\"string\"},\"id\":{\"description\":\"Identificador estable del proveedor\",\"type\":\"string\"},\"logo\":{\"description\":\"URL del logo de la entidad\",\"format\":\"uri\",\"type\":\"string\"},\"modalidad\":{\"description\":\"Modalidad publicada por la entidad\",\"nullable\":true,\"type\":\"string\"},\"moneda\":{\"description\":\"Moneda de constitución\",\"type\":\"string\"},\"montoMaximo\":{\"description\":\"Monto máximo de constitución\",\"nullable\":true,\"type\":\"number\"},\"montoMinimo\":{\"description\":\"Monto mínimo de constitución\",\"nullable\":true,\"type\":\"number\"},\"plazoMaxDias\":{\"description\":\"Plazo máximo en días\",\"nullable\":true,\"type\":\"integer\"},\"plazoMinDias\":{\"description\":\"Plazo mínimo en días\",\"type\":\"integer\"},\"plazoPrecancelacionDias\":{\"description\":\"Días mínimos para ejercer la precancelación\",\"type\":\"integer\"},\"tea\":{\"description\":\"Tasa Efectiva Anual\",\"format\":\"float\",\"nullable\":true,\"type\":\"number\"},\"teaPrecancelacion\":{\"description\":\"Tasa Efectiva Anual aplicada ante precancelación\",\"format\":\"float\",\"nullable\":true,\"type\":\"number\"},\"tna\":{\"description\":\"Tasa Nominal Anual\",\"format\":\"float\",\"nullable\":true,\"type\":\"number\"},\"tnaPrecancelacion\":{\"description\":\"Tasa Nominal Anual aplicada ante precancelación\",\"format\":\"float\",\"nullable\":true,\"type\":\"number\"}},\"title\":\"ProveedorPlazoFijoPrecancelable\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de proveedores con condiciones de plazo fijo UVA precancelable\"}},\"securitySource\":\"unspecified\"}", "source": "openapi3", "version": 1 }, "kind": "http", "method": "GET", "orig": "/v1/finanzas/tasas/plazoFijoPrecancelable", "segments": [{ "lit": "v1" }, { "lit": "finanzas" }, { "lit": "tasas" }, { "lit": "plazoFijoPrecancelable" }], "select": {}, "transform": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [] }, "key$": "proveedor_plazo_fijo_precancelable", "name__orig": "proveedor_plazo_fijo_precancelable", "Name": "ProveedorPlazoFijoPrecancelable", "name_": "proveedor_plazo_fijo_precancelable", "name-": "proveedor-plazo-fijo-precancelable", "NAME": "PROVEEDOR_PLAZO_FIJO_PRECANCELABLE", "index$": 19 }, { "active": true, "entity": "proveedor_plazo_fijo_precancelable", "key$": "BasicProveedorPlazoFijoPrecancelableFlow", "kind": "basic", "name": "BasicProveedorPlazoFijoPrecancelableFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": {}, "match": {}, "op": "list", "spec": [], "valid": [{ "apply": "ItemExists", "def": { "ref": "proveedor_plazo_fijo_precancelable_ref01" } }], "index$": 0 }] }, 'ProveedorPlazoFijoPrecancelable');
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -101,12 +99,6 @@ function basicSetup(extra) {
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
-    // Detect whether the user provided a real ENTID JSON via env var. The
-    // basic flow consumes synthetic IDs from the fixture file; without an
-    // override those synthetic IDs reach the live API and 4xx. Surface this
-    // to the test so it can skip rather than fail.
-    const idmapEnvVal = process.env['ARGENTINADATOS_TEST_PROVEEDOR_PLAZO_FIJO_PRECANCELABLE_ENTID'];
-    const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{');
     const env = (0, utility_1.envOverride)({
         'ARGENTINADATOS_TEST_PROVEEDOR_PLAZO_FIJO_PRECANCELABLE_ENTID': idmap,
         'ARGENTINADATOS_TEST_LIVE': 'FALSE',
@@ -114,7 +106,13 @@ function basicSetup(extra) {
     });
     idmap = env['ARGENTINADATOS_TEST_PROVEEDOR_PLAZO_FIJO_PRECANCELABLE_ENTID'];
     const live = 'TRUE' === env.ARGENTINADATOS_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
+        const rawIds = process.env['ARGENTINADATOS_TEST_PROVEEDOR_PLAZO_FIJO_PRECANCELABLE_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
         client = new __1.ArgentinadatosSDK(merge([
             // FIRST, so the generated fields below win: sdk-test-control.json's
             // test.client.options adds to the live client, it does not redirect it.
@@ -125,7 +123,8 @@ function basicSetup(extra) {
             // argument at all - so a bare 'extra' silently discarded the apikey
             // and server values above and handed the SDK undefined. Harmless
             // while there was nothing in that object; not harmless now.
-            extra || {}
+            extra || {},
+            { system: { fetch: transport.fetch } }
         ]));
     }
     const setup = {
@@ -137,7 +136,7 @@ function basicSetup(extra) {
         data: entityData,
         explain: 'TRUE' === env.ARGENTINADATOS_TEST_EXPLAIN,
         live,
-        syntheticOnly: live && !idmapOverridden,
+        transport,
         now: Date.now(),
     };
     return setup;

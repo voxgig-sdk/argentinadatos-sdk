@@ -25,5 +25,70 @@
         "valor": 81
       }
     }
+  },
+  "requests": {
+    "GET /v1/finanzas/indices/riesgo-pais": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-finanzas-indices-riesgo-pais",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "fecha": {
+                        "type": "string"
+                      },
+                      "valor": {
+                        "type": "number"
+                      }
+                    },
+                    "title": "RiesgoPais",
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Devuelve una lista de riesgo país"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /v1/finanzas/indices/riesgo-pais/ultimo": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-finanzas-indices-riesgo-pais-ultimo",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "fecha": {
+                      "type": "string"
+                    },
+                    "valor": {
+                      "type": "number"
+                    }
+                  },
+                  "title": "RiesgoPais",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Devuelve el último valor de riesgo país"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

@@ -26,5 +26,43 @@
         "tipo": "s7a"
       }
     }
+  },
+  "requests": {
+    "GET /v1/eventos/presidenciales": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-eventos-presidenciales",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "evento": {
+                        "type": "string"
+                      },
+                      "fecha": {
+                        "type": "string"
+                      },
+                      "tipo": {
+                        "type": "string"
+                      }
+                    },
+                    "title": "EventoPresidencial",
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Devuelve una lista de eventos presidenciales"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

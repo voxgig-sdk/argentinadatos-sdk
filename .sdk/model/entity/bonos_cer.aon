@@ -44,6 +44,12 @@ main: kit: entity: bonos_cer: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /v1/finanzas/bonos-cer"
+            json: "{\"operationId\":\"get-finanzas-bonos-cer\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"bonos\":{\"description\":\"Filas de la grilla soberanos CER\",\"items\":{\"properties\":{\"fechaVencimiento\":{\"description\":\"Fecha de vencimiento (ISO 8601, solo fecha: yyyy-MM-dd)\",\"format\":\"date\",\"type\":\"string\"},\"precioArs\":{\"description\":\"Precio de cotización en pesos argentinos\",\"type\":\"number\"},\"ticker\":{\"description\":\"Código del bono (ej. TZX26, TX26)\",\"type\":\"string\"},\"tirPorcentaje\":{\"description\":\"Tasa interna de retorno (TIR) en porcentaje\",\"type\":\"number\"},\"volumen\":{\"description\":\"Volumen nominal negociado, si la fuente lo publica\",\"type\":\"number\"}},\"required\":[\"ticker\",\"precioArs\",\"tirPorcentaje\",\"fechaVencimiento\"],\"title\":\"BonoSoberanoCer\",\"type\":\"object\"},\"type\":\"array\"},\"errorExtraccion\":{\"description\":\"Solo si falló la extracción: mensaje de error\",\"type\":\"string\"},\"fechaActualizacion\":{\"description\":\"Instante en que se generó el recurso (UTC, ISO 8601 con sufijo Z)\",\"format\":\"date-time\",\"type\":\"string\"}},\"required\":[\"fechaActualizacion\",\"bonos\"],\"title\":\"BonosCer\",\"type\":\"object\"}}},\"description\":\"Listado de bonos soberanos CER con marca temporal de actualización\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/v1/finanzas/bonos-cer"
           segments: [

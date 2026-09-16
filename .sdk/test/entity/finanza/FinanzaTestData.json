@@ -10,5 +10,32 @@
     "finanza": {
       "finanza_ref01": {}
     }
+  },
+  "requests": {
+    "GET /v1/rems": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-rems",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "example": "/rems/2026/03",
+                    "type": "string"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Devuelve una lista de endpoints relativos disponibles"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

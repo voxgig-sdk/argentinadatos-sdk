@@ -60,6 +60,12 @@ main: kit: entity: fondo_comun_inversion: {
               }
             ]
           }
+          contract: {
+            id: "GET /v1/finanzas/fci/mercadoDinero/{fecha}"
+            json: "{\"operationId\":\"get-finanzas-fci-mercado-dinero-fecha\",\"parameters\":[{\"description\":\"Fecha de consulta\",\"example\":\"ultimo\",\"in\":\"path\",\"name\":\"fecha\",\"required\":true,\"schema\":{\"format\":\"date\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"ccp\":{\"type\":\"number\"},\"fecha\":{\"type\":\"string\"},\"fondo\":{\"type\":\"string\"},\"horizonte\":{\"enum\":[\"corto\",\"medio\",\"largo\"],\"type\":\"string\"},\"patrimonio\":{\"type\":\"number\"},\"tipo\":{\"type\":\"string\"},\"vcp\":{\"type\":\"number\"}},\"title\":\"FondoComunInversion\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de Fondos Comunes de Inversión\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/v1/finanzas/fci/mercadoDinero/{fecha}"
           segments: [
@@ -101,6 +107,12 @@ main: kit: entity: fondo_comun_inversion: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /v1/finanzas/fci/rentaFija/{fecha}"
+            json: "{\"operationId\":\"get-finanzas-fci-renta-fija-fecha\",\"parameters\":[{\"description\":\"Fecha de consulta\",\"example\":\"ultimo\",\"in\":\"path\",\"name\":\"fecha\",\"required\":true,\"schema\":{\"format\":\"date\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"ccp\":{\"type\":\"number\"},\"fecha\":{\"type\":\"string\"},\"fondo\":{\"type\":\"string\"},\"horizonte\":{\"enum\":[\"corto\",\"medio\",\"largo\"],\"type\":\"string\"},\"patrimonio\":{\"type\":\"number\"},\"tipo\":{\"type\":\"string\"},\"vcp\":{\"type\":\"number\"}},\"title\":\"FondoComunInversion\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de Fondos Comunes de Inversión\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/v1/finanzas/fci/rentaFija/{fecha}"
@@ -144,6 +156,12 @@ main: kit: entity: fondo_comun_inversion: {
               }
             ]
           }
+          contract: {
+            id: "GET /v1/finanzas/fci/rentaMixta/{fecha}"
+            json: "{\"operationId\":\"get-finanzas-fci-renta-mixta-fecha\",\"parameters\":[{\"description\":\"Fecha de consulta\",\"example\":\"ultimo\",\"in\":\"path\",\"name\":\"fecha\",\"required\":true,\"schema\":{\"format\":\"date\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"ccp\":{\"type\":\"number\"},\"fecha\":{\"type\":\"string\"},\"fondo\":{\"type\":\"string\"},\"horizonte\":{\"enum\":[\"corto\",\"medio\",\"largo\"],\"type\":\"string\"},\"patrimonio\":{\"type\":\"number\"},\"tipo\":{\"type\":\"string\"},\"vcp\":{\"type\":\"number\"}},\"title\":\"FondoComunInversion\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de Fondos Comunes de Inversión\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/v1/finanzas/fci/rentaMixta/{fecha}"
           segments: [
@@ -186,6 +204,12 @@ main: kit: entity: fondo_comun_inversion: {
               }
             ]
           }
+          contract: {
+            id: "GET /v1/finanzas/fci/rentaVariable/{fecha}"
+            json: "{\"operationId\":\"get-finanzas-fci-renta-variable-fecha\",\"parameters\":[{\"description\":\"Fecha de consulta\",\"example\":\"ultimo\",\"in\":\"path\",\"name\":\"fecha\",\"required\":true,\"schema\":{\"format\":\"date\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"ccp\":{\"type\":\"number\"},\"fecha\":{\"type\":\"string\"},\"fondo\":{\"type\":\"string\"},\"horizonte\":{\"enum\":[\"corto\",\"medio\",\"largo\"],\"type\":\"string\"},\"patrimonio\":{\"type\":\"number\"},\"tipo\":{\"type\":\"string\"},\"vcp\":{\"type\":\"number\"}},\"title\":\"FondoComunInversion\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de Fondos Comunes de Inversión\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/v1/finanzas/fci/rentaVariable/{fecha}"
           segments: [
@@ -227,6 +251,12 @@ main: kit: entity: fondo_comun_inversion: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /v1/finanzas/fci/retornoTotal/{fecha}"
+            json: "{\"operationId\":\"get-finanzas-fci-retorno-total-fecha\",\"parameters\":[{\"description\":\"Fecha de consulta\",\"example\":\"ultimo\",\"in\":\"path\",\"name\":\"fecha\",\"required\":true,\"schema\":{\"format\":\"date\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"ccp\":{\"type\":\"number\"},\"fecha\":{\"type\":\"string\"},\"fondo\":{\"type\":\"string\"},\"horizonte\":{\"enum\":[\"corto\",\"medio\",\"largo\"],\"type\":\"string\"},\"patrimonio\":{\"type\":\"number\"},\"tipo\":{\"type\":\"string\"},\"vcp\":{\"type\":\"number\"}},\"title\":\"FondoComunInversion\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de Fondos Comunes de Inversión\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/v1/finanzas/fci/retornoTotal/{fecha}"

@@ -61,5 +61,105 @@
         "telefono": "s1eb"
       }
     }
+  },
+  "requests": {
+    "GET /v1/senado/senadores": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-senado-senadores",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "email": {
+                        "format": "email",
+                        "nullable": true,
+                        "type": "string"
+                      },
+                      "foto": {
+                        "format": "uri",
+                        "nullable": true,
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "nombre": {
+                        "type": "string"
+                      },
+                      "observaciones": {
+                        "nullable": true,
+                        "type": "string"
+                      },
+                      "partido": {
+                        "type": "string"
+                      },
+                      "periodoLegal": {
+                        "properties": {
+                          "fin": {
+                            "format": "date",
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "inicio": {
+                            "format": "date",
+                            "nullable": true,
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "periodoReal": {
+                        "properties": {
+                          "fin": {
+                            "format": "date",
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "inicio": {
+                            "format": "date",
+                            "nullable": true,
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "provincia": {
+                        "type": "string"
+                      },
+                      "redes": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "nullable": true,
+                        "type": "array"
+                      },
+                      "reemplazo": {
+                        "nullable": true,
+                        "type": "string"
+                      },
+                      "telefono": {
+                        "nullable": true,
+                        "type": "string"
+                      }
+                    },
+                    "title": "Senador",
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Devuelve una lista de senadores"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

@@ -37,5 +37,183 @@
         "venta": 245
       }
     }
+  },
+  "requests": {
+    "GET /v1/cotizaciones/dolares": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-cotizaciones-dolares",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "casa": {
+                        "type": "string"
+                      },
+                      "compra": {
+                        "type": "number"
+                      },
+                      "fecha": {
+                        "type": "string"
+                      },
+                      "moneda": {
+                        "type": "string"
+                      },
+                      "venta": {
+                        "type": "number"
+                      }
+                    },
+                    "title": "Cotizacion",
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Devuelve una lista de cotizaciones del dólar"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /v1/cotizaciones/dolares/{casa}/{fecha}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-cotizaciones-dolares-casa-fecha",
+        "parameters": [
+          {
+            "description": "Casa de cambio",
+            "example": "blue",
+            "in": "path",
+            "name": "casa",
+            "required": true,
+            "schema": {
+              "enum": [
+                "oficial",
+                "blue",
+                "bolsa",
+                "contadoconliqui",
+                "cripto",
+                "mayorista",
+                "solidario",
+                "turista"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Fecha de consulta",
+            "example": "2024/01/01",
+            "in": "path",
+            "name": "fecha",
+            "required": true,
+            "schema": {
+              "format": "date",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "casa": {
+                      "type": "string"
+                    },
+                    "compra": {
+                      "type": "number"
+                    },
+                    "fecha": {
+                      "type": "string"
+                    },
+                    "moneda": {
+                      "type": "string"
+                    },
+                    "venta": {
+                      "type": "number"
+                    }
+                  },
+                  "title": "Cotizacion",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Devuelve una lista de cotizaciones del dólar"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /v1/cotizaciones/dolares/{casa}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-cotizaciones-dolares-casa",
+        "parameters": [
+          {
+            "description": "Casa de cambio",
+            "example": "blue",
+            "in": "path",
+            "name": "casa",
+            "required": true,
+            "schema": {
+              "enum": [
+                "oficial",
+                "blue",
+                "bolsa",
+                "contadoconliqui",
+                "cripto",
+                "mayorista",
+                "solidario",
+                "turista"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "casa": {
+                        "type": "string"
+                      },
+                      "compra": {
+                        "type": "number"
+                      },
+                      "fecha": {
+                        "type": "string"
+                      },
+                      "moneda": {
+                        "type": "string"
+                      },
+                      "venta": {
+                        "type": "number"
+                      }
+                    },
+                    "title": "Cotizacion",
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Devuelve una lista de cotizaciones del dólar"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

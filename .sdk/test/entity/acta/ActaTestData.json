@@ -2,22 +2,22 @@
   "existing": {
     "acta": {
       "ACTA00": {
-        "abstenciones": "sfa",
+        "abstenciones": 250,
         "acta": "sfb",
-        "actaId": "sfc",
-        "afirmativos": "sfd",
-        "amn": "sfe",
-        "ausentes": "sff",
+        "actaId": 252,
+        "afirmativos": 253,
+        "amn": 254,
+        "ausentes": 255,
         "descripcion": "s100",
         "fecha": "s101",
         "id": "ACTA00",
         "mayoria": "s103",
-        "miembros": "s104",
-        "negativos": "s105",
+        "miembros": 260,
+        "negativos": 261,
         "numeroActa": "s106",
         "observaciones": [],
         "periodo": "s108",
-        "presentes": "s109",
+        "presentes": 265,
         "presidente": "s10a",
         "proyecto": "s10b",
         "quorumTipo": "s10c",
@@ -25,26 +25,26 @@
         "reunion": "s10e",
         "titulo": "s10f",
         "votos": [],
-        "votosAfirmativos": "s111",
-        "votosNegativos": "s112"
+        "votosAfirmativos": 273,
+        "votosNegativos": 274
       },
       "ACTA01": {
-        "abstenciones": "s1f4",
+        "abstenciones": 500,
         "acta": "s1f5",
-        "actaId": "s1f6",
-        "afirmativos": "s1f7",
-        "amn": "s1f8",
-        "ausentes": "s1f9",
+        "actaId": 502,
+        "afirmativos": 503,
+        "amn": 504,
+        "ausentes": 505,
         "descripcion": "s1fa",
         "fecha": "s1fb",
         "id": "ACTA01",
         "mayoria": "s1fd",
-        "miembros": "s1fe",
-        "negativos": "s1ff",
+        "miembros": 510,
+        "negativos": 511,
         "numeroActa": "s200",
         "observaciones": [],
         "periodo": "s202",
-        "presentes": "s203",
+        "presentes": 515,
         "presidente": "s204",
         "proyecto": "s205",
         "quorumTipo": "s206",
@@ -52,26 +52,26 @@
         "reunion": "s208",
         "titulo": "s209",
         "votos": [],
-        "votosAfirmativos": "s20b",
-        "votosNegativos": "s20c"
+        "votosAfirmativos": 523,
+        "votosNegativos": 524
       },
       "ACTA02": {
-        "abstenciones": "s2ee",
+        "abstenciones": 750,
         "acta": "s2ef",
-        "actaId": "s2f0",
-        "afirmativos": "s2f1",
-        "amn": "s2f2",
-        "ausentes": "s2f3",
+        "actaId": 752,
+        "afirmativos": 753,
+        "amn": 754,
+        "ausentes": 755,
         "descripcion": "s2f4",
         "fecha": "s2f5",
         "id": "ACTA02",
         "mayoria": "s2f7",
-        "miembros": "s2f8",
-        "negativos": "s2f9",
+        "miembros": 760,
+        "negativos": 761,
         "numeroActa": "s2fa",
         "observaciones": [],
         "periodo": "s2fc",
-        "presentes": "s2fd",
+        "presentes": 765,
         "presidente": "s2fe",
         "proyecto": "s2ff",
         "quorumTipo": "s300",
@@ -79,29 +79,29 @@
         "reunion": "s302",
         "titulo": "s303",
         "votos": [],
-        "votosAfirmativos": "s305",
-        "votosNegativos": "s306"
+        "votosAfirmativos": 773,
+        "votosNegativos": 774
       }
     }
   },
   "new": {
     "acta": {
       "acta_ref01": {
-        "abstenciones": "s3e8",
+        "abstenciones": 1000,
         "acta": "s3e9",
-        "actaId": "s3ea",
-        "afirmativos": "s3eb",
-        "amn": "s3ec",
-        "ausentes": "s3ed",
+        "actaId": 1002,
+        "afirmativos": 1003,
+        "amn": 1004,
+        "ausentes": 1005,
         "descripcion": "s3ee",
         "fecha": "s3ef",
         "mayoria": "s3f1",
-        "miembros": "s3f2",
-        "negativos": "s3f3",
+        "miembros": 1010,
+        "negativos": 1011,
         "numeroActa": "s3f4",
         "observaciones": [],
         "periodo": "s3f6",
-        "presentes": "s3f7",
+        "presentes": 1015,
         "presidente": "s3f8",
         "proyecto": "s3f9",
         "quorumTipo": "s3fa",
@@ -109,8 +109,450 @@
         "reunion": "s3fc",
         "titulo": "s3fd",
         "votos": [],
-        "votosAfirmativos": "s3ff",
-        "votosNegativos": "s400"
+        "votosAfirmativos": 1023,
+        "votosNegativos": 1024
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/diputados/actas": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-diputados-actas",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "abstenciones": {
+                        "type": "integer"
+                      },
+                      "ausentes": {
+                        "type": "integer"
+                      },
+                      "fecha": {
+                        "format": "date-time",
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "numeroActa": {
+                        "type": "string"
+                      },
+                      "periodo": {
+                        "type": "string"
+                      },
+                      "presidente": {
+                        "type": "string"
+                      },
+                      "resultado": {
+                        "type": "string"
+                      },
+                      "reunion": {
+                        "type": "string"
+                      },
+                      "titulo": {
+                        "type": "string"
+                      },
+                      "votos": {
+                        "items": {
+                          "properties": {
+                            "diputado": {
+                              "type": "string"
+                            },
+                            "imagen": {
+                              "type": "string"
+                            },
+                            "tipoVoto": {
+                              "enum": [
+                                "afirmativo",
+                                "negativo",
+                                "abstencion",
+                                "ausente",
+                                "presidente"
+                              ],
+                              "type": "string"
+                            },
+                            "videoDiscurso": {
+                              "nullable": true,
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      },
+                      "votosAfirmativos": {
+                        "type": "integer"
+                      },
+                      "votosNegativos": {
+                        "type": "integer"
+                      }
+                    },
+                    "title": "ActaDiputados",
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Devuelve una lista de actas de Diputados"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /v1/senado/actas": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-senado-actas",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "abstenciones": {
+                        "type": "integer"
+                      },
+                      "acta": {
+                        "type": "string"
+                      },
+                      "actaId": {
+                        "nullable": true,
+                        "type": "integer"
+                      },
+                      "afirmativos": {
+                        "type": "integer"
+                      },
+                      "amn": {
+                        "type": "integer"
+                      },
+                      "ausentes": {
+                        "type": "integer"
+                      },
+                      "descripcion": {
+                        "type": "string"
+                      },
+                      "fecha": {
+                        "format": "date",
+                        "type": "string"
+                      },
+                      "mayoria": {
+                        "type": "string"
+                      },
+                      "miembros": {
+                        "type": "integer"
+                      },
+                      "negativos": {
+                        "type": "integer"
+                      },
+                      "observaciones": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "presentes": {
+                        "type": "integer"
+                      },
+                      "proyecto": {
+                        "type": "string"
+                      },
+                      "quorumTipo": {
+                        "type": "string"
+                      },
+                      "resultado": {
+                        "enum": [
+                          "afirmativa",
+                          "negativa",
+                          "cancelada lev.vot."
+                        ],
+                        "type": "string"
+                      },
+                      "titulo": {
+                        "nullable": true,
+                        "type": "string"
+                      },
+                      "votos": {
+                        "items": {
+                          "properties": {
+                            "banca": {
+                              "type": "string"
+                            },
+                            "nombre": {
+                              "type": "string"
+                            },
+                            "voto": {
+                              "enum": [
+                                "si",
+                                "no",
+                                "ausente",
+                                "abstencion",
+                                "no emite",
+                                "desconocido"
+                              ],
+                              "type": "string"
+                            }
+                          },
+                          "title": "VotoData",
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "title": "ActaSenado",
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Devuelve una lista de actas del Senado"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /v1/diputados/actas/{año}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-diputados-actas-año",
+        "parameters": [
+          {
+            "description": "Año de consulta",
+            "example": 2026,
+            "in": "path",
+            "name": "año",
+            "required": true,
+            "schema": {
+              "maximum": 2026,
+              "minimum": 2016,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "abstenciones": {
+                        "type": "integer"
+                      },
+                      "ausentes": {
+                        "type": "integer"
+                      },
+                      "fecha": {
+                        "format": "date-time",
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "numeroActa": {
+                        "type": "string"
+                      },
+                      "periodo": {
+                        "type": "string"
+                      },
+                      "presidente": {
+                        "type": "string"
+                      },
+                      "resultado": {
+                        "type": "string"
+                      },
+                      "reunion": {
+                        "type": "string"
+                      },
+                      "titulo": {
+                        "type": "string"
+                      },
+                      "votos": {
+                        "items": {
+                          "properties": {
+                            "diputado": {
+                              "type": "string"
+                            },
+                            "imagen": {
+                              "type": "string"
+                            },
+                            "tipoVoto": {
+                              "enum": [
+                                "afirmativo",
+                                "negativo",
+                                "abstencion",
+                                "ausente",
+                                "presidente"
+                              ],
+                              "type": "string"
+                            },
+                            "videoDiscurso": {
+                              "nullable": true,
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      },
+                      "votosAfirmativos": {
+                        "type": "integer"
+                      },
+                      "votosNegativos": {
+                        "type": "integer"
+                      }
+                    },
+                    "title": "ActaDiputados",
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Devuelve una lista de actas de Diputados"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /v1/senado/actas/{año}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-senado-actas-año",
+        "parameters": [
+          {
+            "description": "Año de consulta",
+            "example": 2026,
+            "in": "path",
+            "name": "año",
+            "required": true,
+            "schema": {
+              "maximum": 2026,
+              "minimum": 2016,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "abstenciones": {
+                        "type": "integer"
+                      },
+                      "acta": {
+                        "type": "string"
+                      },
+                      "actaId": {
+                        "nullable": true,
+                        "type": "integer"
+                      },
+                      "afirmativos": {
+                        "type": "integer"
+                      },
+                      "amn": {
+                        "type": "integer"
+                      },
+                      "ausentes": {
+                        "type": "integer"
+                      },
+                      "descripcion": {
+                        "type": "string"
+                      },
+                      "fecha": {
+                        "format": "date",
+                        "type": "string"
+                      },
+                      "mayoria": {
+                        "type": "string"
+                      },
+                      "miembros": {
+                        "type": "integer"
+                      },
+                      "negativos": {
+                        "type": "integer"
+                      },
+                      "observaciones": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "presentes": {
+                        "type": "integer"
+                      },
+                      "proyecto": {
+                        "type": "string"
+                      },
+                      "quorumTipo": {
+                        "type": "string"
+                      },
+                      "resultado": {
+                        "enum": [
+                          "afirmativa",
+                          "negativa",
+                          "cancelada lev.vot."
+                        ],
+                        "type": "string"
+                      },
+                      "titulo": {
+                        "nullable": true,
+                        "type": "string"
+                      },
+                      "votos": {
+                        "items": {
+                          "properties": {
+                            "banca": {
+                              "type": "string"
+                            },
+                            "nombre": {
+                              "type": "string"
+                            },
+                            "voto": {
+                              "enum": [
+                                "si",
+                                "no",
+                                "ausente",
+                                "abstencion",
+                                "no emite",
+                                "desconocido"
+                              ],
+                              "type": "string"
+                            }
+                          },
+                          "title": "VotoData",
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "title": "ActaSenado",
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Devuelve una lista de actas del Senado"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

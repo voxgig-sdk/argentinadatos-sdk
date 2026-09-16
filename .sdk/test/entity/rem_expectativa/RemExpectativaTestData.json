@@ -11,7 +11,7 @@
         "mediana": 246,
         "minimo": 247,
         "muestra": "sf8",
-        "participantes": "sf9",
+        "participantes": 249,
         "percentil10": 250,
         "percentil25": 251,
         "percentil75": 252,
@@ -37,7 +37,7 @@
         "mediana": 486,
         "minimo": 487,
         "muestra": "s1e8",
-        "participantes": "s1e9",
+        "participantes": 489,
         "percentil10": 490,
         "percentil25": 491,
         "percentil75": 492,
@@ -63,7 +63,7 @@
         "mediana": 726,
         "minimo": 727,
         "muestra": "s2d8",
-        "participantes": "s2d9",
+        "participantes": 729,
         "percentil10": 730,
         "percentil25": 731,
         "percentil75": 732,
@@ -93,7 +93,7 @@
         "mediana": 966,
         "minimo": 967,
         "muestra": "s3c8",
-        "participantes": "s3c9",
+        "participantes": 969,
         "percentil10": 970,
         "percentil25": 971,
         "percentil75": 972,
@@ -108,6 +108,142 @@
         "referenciaFecha": "s3d5",
         "unidad": "s3d6",
         "xlsxUrl": "s3d7"
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/rems/ultimo": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-rems-ultimo",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "desvio": {
+                        "nullable": true,
+                        "type": "number"
+                      },
+                      "fecha": {
+                        "description": "Fecha ISO del primer día del mes del informe",
+                        "format": "date",
+                        "type": "string"
+                      },
+                      "fuente": {
+                        "type": "string"
+                      },
+                      "indicador": {
+                        "description": "Indicador relevado",
+                        "type": "string"
+                      },
+                      "informe": {
+                        "description": "Informe REM en formato YYYY-MM",
+                        "type": "string"
+                      },
+                      "maximo": {
+                        "nullable": true,
+                        "type": "number"
+                      },
+                      "mediana": {
+                        "nullable": true,
+                        "type": "number"
+                      },
+                      "minimo": {
+                        "nullable": true,
+                        "type": "number"
+                      },
+                      "muestra": {
+                        "description": "Muestra de participantes: todos o TOP 10",
+                        "enum": [
+                          "todos",
+                          "top_10"
+                        ],
+                        "type": "string"
+                      },
+                      "participantes": {
+                        "nullable": true,
+                        "type": "integer"
+                      },
+                      "percentil10": {
+                        "nullable": true,
+                        "type": "number"
+                      },
+                      "percentil25": {
+                        "nullable": true,
+                        "type": "number"
+                      },
+                      "percentil75": {
+                        "nullable": true,
+                        "type": "number"
+                      },
+                      "percentil90": {
+                        "nullable": true,
+                        "type": "number"
+                      },
+                      "periodo": {
+                        "description": "Período original informado por el BCRA",
+                        "type": "string"
+                      },
+                      "periodoDesde": {
+                        "description": "Fecha de inicio del período normalizado",
+                        "format": "date",
+                        "nullable": true,
+                        "type": "string"
+                      },
+                      "periodoHasta": {
+                        "description": "Fecha de fin del período normalizado",
+                        "format": "date",
+                        "nullable": true,
+                        "type": "string"
+                      },
+                      "periodoTipo": {
+                        "description": "Tipo de período normalizado",
+                        "type": "string"
+                      },
+                      "promedio": {
+                        "nullable": true,
+                        "type": "number"
+                      },
+                      "publicacionUrl": {
+                        "nullable": true,
+                        "type": "string"
+                      },
+                      "referencia": {
+                        "description": "Referencia original de la tabla",
+                        "type": "string"
+                      },
+                      "referenciaFecha": {
+                        "description": "Fecha detectada en la referencia, si corresponde",
+                        "format": "date",
+                        "nullable": true,
+                        "type": "string"
+                      },
+                      "unidad": {
+                        "description": "Unidad inferida desde la referencia",
+                        "nullable": true,
+                        "type": "string"
+                      },
+                      "xlsxUrl": {
+                        "nullable": true,
+                        "type": "string"
+                      }
+                    },
+                    "title": "RemExpectativa",
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Devuelve una lista de expectativas del último REM"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

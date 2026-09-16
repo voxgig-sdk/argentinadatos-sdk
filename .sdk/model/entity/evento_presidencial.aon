@@ -28,6 +28,12 @@ main: kit: entity: evento_presidencial: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /v1/eventos/presidenciales"
+            json: "{\"operationId\":\"get-eventos-presidenciales\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"evento\":{\"type\":\"string\"},\"fecha\":{\"type\":\"string\"},\"tipo\":{\"type\":\"string\"}},\"title\":\"EventoPresidencial\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de eventos presidenciales\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/v1/eventos/presidenciales"
           segments: [

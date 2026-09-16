@@ -23,6 +23,12 @@ main: kit: entity: indice_uva: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /v1/finanzas/indices/uva"
+            json: "{\"operationId\":\"get-finanzas-indices-uva\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"fecha\":{\"type\":\"string\"},\"valor\":{\"type\":\"number\"}},\"title\":\"IndiceUVA\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de índices UVA\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/v1/finanzas/indices/uva"
           segments: [

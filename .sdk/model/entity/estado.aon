@@ -23,6 +23,12 @@ main: kit: entity: estado: {
       name: "load"
       points: [
         {
+          contract: {
+            id: "GET /v1/estado"
+            json: "{\"operationId\":\"get-estado\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"aleatorio\":{\"type\":\"integer\"},\"estado\":{\"type\":\"string\"}},\"title\":\"Estado\",\"type\":\"object\"}}},\"description\":\"Devuelve el estado de la API\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/v1/estado"
           segments: [

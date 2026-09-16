@@ -50,6 +50,12 @@ main: kit: entity: rendimiento: {
               }
             ]
           }
+          contract: {
+            id: "GET /v1/finanzas/rendimientos/{entidad}"
+            json: "{\"operationId\":\"get-finanzas-rendimientos-entidad\",\"parameters\":[{\"description\":\"Entidad\",\"example\":\"nexo\",\"in\":\"path\",\"name\":\"entidad\",\"required\":true,\"schema\":{\"enum\":[\"nexo\",\"fiwind\",\"letsbit\",\"belo\",\"lemoncash\",\"ripio\",\"satoshitango\",\"lucamoney\",\"decrypto\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"apy\":{\"type\":\"number\"},\"fecha\":{\"type\":\"string\"},\"moneda\":{\"type\":\"string\"}},\"title\":\"Rendimiento\",\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Devuelve una lista de rendimientos\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/v1/finanzas/rendimientos/{entidad}"
           rename: {
