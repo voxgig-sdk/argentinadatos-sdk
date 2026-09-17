@@ -127,90 +127,90 @@ class Config {
 
     entity: {
       
-      acta: {
-      },
-
-      bonos_cer: {
-      },
-
-      cotizacion: {
-      },
-
-      criptopeso: {
-      },
-
-      cuenta_remunerada_usd: {
-      },
-
-      diputado: {
-      },
-
-      entidad_rendimiento: {
-      },
-
-      estado: {
-      },
-
-      evento_presidencial: {
-      },
-
-      feriado: {
-      },
-
-      finanza: {
-      },
-
-      fondo_comun_inversion: {
-      },
-
-      fondo_comun_inversion_otro: {
-      },
-
-      fondo_comun_inversion_variable: {
-      },
-
-      hipotecario_uva_tna: {
-      },
-
-      indice_inflacion: {
-      },
-
-      indice_uva: {
-      },
-
-      letra: {
-      },
-
-      presidente: {
-      },
-
-      proveedor_plazo_fijo_precancelable: {
-      },
-
-      proveedor_plazo_fijo_uva_pago_periodico: {
-      },
-
-      rem: {
-      },
-
-      rem_expectativa: {
-      },
-
-      rendimiento: {
-      },
-
-      riesgo_pai: {
-      },
-
-      senador: {
-      },
-
-      tasa_intere: {
-      },
-
-      tasa_plazo_fijo: {
-      },
-
+        acta: {
+        },
+  
+        bonos_cer: {
+        },
+  
+        cotizacion: {
+        },
+  
+        criptopeso: {
+        },
+  
+        cuenta_remunerada_usd: {
+        },
+  
+        diputado: {
+        },
+  
+        entidad_rendimiento: {
+        },
+  
+        estado: {
+        },
+  
+        evento_presidencial: {
+        },
+  
+        feriado: {
+        },
+  
+        finanza: {
+        },
+  
+        fondo_comun_inversion: {
+        },
+  
+        fondo_comun_inversion_otro: {
+        },
+  
+        fondo_comun_inversion_variable: {
+        },
+  
+        hipotecario_uva_tna: {
+        },
+  
+        indice_inflacion: {
+        },
+  
+        indice_uva: {
+        },
+  
+        letra: {
+        },
+  
+        presidente: {
+        },
+  
+        proveedor_plazo_fijo_precancelable: {
+        },
+  
+        proveedor_plazo_fijo_uva_pago_periodico: {
+        },
+  
+        rem: {
+        },
+  
+        rem_expectativa: {
+        },
+  
+        rendimiento: {
+        },
+  
+        riesgo_pai: {
+        },
+  
+        senador: {
+        },
+  
+        tasa_intere: {
+        },
+  
+        tasa_plazo_fijo: {
+        },
+  
     }
   }
 

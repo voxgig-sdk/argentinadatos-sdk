@@ -105,12 +105,12 @@ local result, err = client:Rendimiento():load({ id = "test01" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/argentinadatos-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/argentinadatos-sdk/releases) |
-| Python | `voxgig-sdk-argentinadatos` | publish pending — [install from git tag](https://github.com/voxgig-sdk/argentinadatos-sdk/releases) |
-| PHP | `voxgig-sdk/argentinadatos` | publish pending — [install from git tag](https://github.com/voxgig-sdk/argentinadatos-sdk/releases) |
+| TypeScript | `@voxgig-sdk/argentinadatos-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/argentinadatos-sdk/tags) |
+| Python | `voxgig-sdk-argentinadatos` | publish pending — [install from git tag](https://github.com/voxgig-sdk/argentinadatos-sdk/tags) |
+| PHP | `voxgig-sdk/argentinadatos` | publish pending — [install from git tag](https://github.com/voxgig-sdk/argentinadatos-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/argentinadatos-sdk/go` | `go get github.com/voxgig-sdk/argentinadatos-sdk/go@latest` |
-| Ruby | `voxgig-sdk-argentinadatos` | publish pending — [install from git tag](https://github.com/voxgig-sdk/argentinadatos-sdk/releases) |
-| Lua | `voxgig-sdk-argentinadatos` | publish pending — [install from git tag](https://github.com/voxgig-sdk/argentinadatos-sdk/releases) |
+| Ruby | `voxgig-sdk-argentinadatos` | publish pending — [install from git tag](https://github.com/voxgig-sdk/argentinadatos-sdk/tags) |
+| Lua | `voxgig-sdk-argentinadatos` | publish pending — [install from git tag](https://github.com/voxgig-sdk/argentinadatos-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/argentinadatos-sdk/go-cli` | `go install github.com/voxgig-sdk/argentinadatos-sdk/go-cli/cmd/argentinadatos@latest` |
 | Go MCP server | `github.com/voxgig-sdk/argentinadatos-sdk/go-mcp` | `go get github.com/voxgig-sdk/argentinadatos-sdk/go-mcp@latest` |
 
